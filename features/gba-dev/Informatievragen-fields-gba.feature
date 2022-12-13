@@ -418,7 +418,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
     Abstract Scenario: met fields is gevraagd om <veld> van een <adressoort>
       Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde                    |
-      | gemeente van inschrijving (09.10) | <gemeentecode>            |
+      | gemeente van inschrijving (09.10) | <gemeenteVanInschrijving> |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                              | waarde                    |
       | straatnaam (11.10)                | <straat>                  |
@@ -430,7 +430,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | postcode (11.60)                  | <postcode>                |
       | woonplaats (11.70)                | <woonplaats>              |
       | locatiebeschrijving (12.10)       | <locatiebeschrijving>     |
-      | gemeente_code                     | <gemeenteVanInschrijving> |
+      | gemeente_code                     | <gemeentecode>            |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -449,8 +449,8 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | huisnummertoevoeging                 | <huisnummertoevoeging>    |
       | aanduidingBijHuisnummer.code         | <aanduidingBijHuisnummer> |
       | aanduidingBijHuisnummer.omschrijving | <aanduiding omschrijving> |
-      | verblijfadres.postcode               | <postcode>                |
-      | verblijfadres.woonplaats             | <woonplaats>              |
+      | postcode                             | <postcode>                |
+      | woonplaats                           | <woonplaats>              |
       | locatiebeschrijving                  | <locatiebeschrijving>     |
 
       Voorbeelden:
