@@ -4,7 +4,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
   Zoeken en raadplegen van gegevens van burgers worden "geprotocolleerd" (formeel gelogd).
 
   Protocollering moet gebeuren op twee niveau's:
-  - bij de bron (RvIG) op het niveau van afnemende organisaties
+  - bij de RvIG op het niveau van afnemende organisaties
   - bij de afnemende organisatie op het niveau van gebruikers
 
   Deze feature beschrijft alleen de werking van protocollering op het niveau van afnemende organisaties bij de bron (RvIG)

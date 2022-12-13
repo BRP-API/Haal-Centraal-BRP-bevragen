@@ -2,7 +2,6 @@
 
 Functionaliteit: protocollering gevraagde en geleverde gegevens verblijfplaats
 
-
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam            | waarde     |
@@ -75,7 +74,7 @@ Functionaliteit: protocollering gevraagde en geleverde gegevens verblijfplaats
       | datum aanvang adres buitenland (13.20) | 00000000 |
 
 
-  Rule: Gevraagde velden in fields worden vertaald naar elementnummers volgens Logisch ontwerp BRP
+  Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
     Ook alle velden die worden meegeleverd voor het bepalen van het verblijfplaats type worden opgenomen.
     # het is nog niet duidelijk in hoeverre de volgorde van rubrieken een bepaalde volgorde of sortering aan moet houden (voor testbaarheid is dat wel nodig)
@@ -118,7 +117,7 @@ Functionaliteit: protocollering gevraagde en geleverde gegevens verblijfplaats
       | verblijfplaatsBinnenland.verblijfadres                    | 081110 081115 081120 081130 081140 081150 081160 081170 081210                                                                       |
       | verblijfplaatsBinnenland                                  | 081010 081030 081110 081115 081120 081130 081140 081150 081160 081170 081180 081190 081210 088510                                    |
 
-  Rule: Gevraagde velden in fields worden vertaald naar elementnummers volgens Logisch ontwerp BRP
+  Rule: In het antwoord geleverde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
     Alleen velden die echt geleverd zijn, dus een waarde hebben in de response, worden opgenomen als geleverde rubriek
     Ook alle velden die worden meegeleverd voor het bepalen van het verblijfplaats type worden opgenomen.
@@ -160,6 +159,3 @@ Functionaliteit: protocollering gevraagde en geleverde gegevens verblijfplaats
       | 1041968780 | 000000061           | verblijfplaatsBinnenland.verblijfadres |                                                                                            |
       | 1041968780 | 000000061           | verblijfplaats                         | 081310 081320 088510                                                                       |
       | 1041968780 | 000000061           | verblijfplaatsBinnenland               |                                                                                            |
-
-      
-      
