@@ -452,9 +452,139 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
   Rule: Alleen een autorisatie tabelregel waarbij de Datum beëindiging tabelregel (35.99.99) leeg is of in de toekomst ligt wordt gebruikt
 
-    Scenario: Afnemer met beëindigde tabelregel en actuele tabelregel zonder einddatum
+    @fout-case
+    Scenario: Autorisatie voor ad hoc gegevensverstrekking is ingetrokken
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
+      | 010120 010210                   | N                        | 20201128                | 20221201                                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode |        |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | 19830526              | Maassen               | Pieter            | M                           |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | burgerservicenummer             |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                      |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
+      | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
+      | status   | 403                                                         |
+      | detail   | U heeft geen autorisatie voor ad hoc gegevensverstrekking.  |
+      | code     | unauthorizedParameter                                       |
+      | instance | /haalcentraal/api/brp/personen                              |
 
-    Scenario: Afnemer met beëindigde tabelregel en actuele tabelregel met einddatum in de toekomst
+    @fout-case
+    Scenario: Autorisatie voor gebruikte parameter is ingetrokken
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
+      | 10120 80810 81110 81120 81130 81140 81150 81190 | N                        | 20201128                | 20221201                                |
+      | 10120 80810 81110 81120 81130 81140 81150       | N                        | 20221201                |                                         |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode | 0518   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
+      | 0599          | 0599200000219679                           |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                          | waarde                               |
+      | type                          | ZoekMetNummeraanduidingIdentificatie |
+      | nummeraanduidingIdentificatie | 0599200000219679                     |
+      | fields                        | burgerservicenummer                  |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                                      |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                                 |
+      | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                   |
+      | status   | 403                                                                                         |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): nummeraanduidingIdentificatie. |
+      | code     | unauthorizedParameter                                                                       |
+      | instance | /haalcentraal/api/brp/personen                                                              |
 
-    Scenario: Afnemer met alleen een beëindigde tabelregel (einddatum in het verleden)
+    @fout-case
+    Scenario: Autorisatie voor gevraagd veld is ingetrokken
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
+      | 10120 81010 81110 81210 81310   | N                        | 20201128                | 20221201                                |
+      | 10120 81110 81210 81310         | N                        | 20221201                |                                         |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode | 0518   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) | functie adres (10.10) |
+      | 0599                              | W                     |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeente_code                | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | verblijfplaats.functieAdres     |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | code     | authorization                                                           |
+      | instance | /haalcentraal/api/brp/personen                                          |
 
+    Scenario: Autorisatie voor gevraagd veld is toegevoegd
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
+      | 10120  81110 81210 81310        | N                        | 20201128                | 20221201                                |
+      | 10120 81010 81110 81210 81310   | N                        | 20221201                |                                         |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode | 0518   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) | functie adres (10.10) |
+      | 0599                              | W                     |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeente_code                | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | verblijfplaats.functieAdres     |
+      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+      | naam                      | waarde    |
+      | type                      | Adres     |
+      | functieAdres.code         | W         |
+      | functieAdres.omschrijving | woonadres |
+
+    Scenario: Autorisatie heeft einddatum in de toekomst
+      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
+      | 10120 81010 81110 81210 81310   | N                        | 20221201                | 20300101                                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 12345  |
+      | gemeenteCode | 0518   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) | functie adres (10.10) |
+      | 0599                              | W                     |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeente_code                | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | verblijfplaats.functieAdres     |
+      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+      | naam                      | waarde    |
+      | type                      | Adres     |
+      | functieAdres.code         | W         |
+      | functieAdres.omschrijving | woonadres |
