@@ -171,7 +171,6 @@ const columnNameMap = new Map([
 
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 
-    ['land adres buitenland (13.10)', 'vertrek_land_code'],
     ['land (13.10)', 'vertrek_land_code'],
     ['land_adres_buitenland (13.10)', 'vertrek_land_code'],
     ['land adres buitenland (13.10)', 'vertrek_land_code'],
