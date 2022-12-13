@@ -50,6 +50,7 @@ Rule: de 'adresseringBinnenland' field alias kan niet worden gebruikt in combina
     | code   | name      | reason                                       |
     | fields | fields[0] | Parameter bevat een niet bestaande veldnaam. |
 
+    Voorbeelden:
     | field       |
     | adresregel3 |
     | land        |

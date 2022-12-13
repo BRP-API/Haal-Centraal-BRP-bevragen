@@ -1,8 +1,8 @@
 #language: nl
 
-Functionaliteit: PersoonBeperkt: geboorte
+Functionaliteit: Persoon beperkt: geboorte velden vragen met fields
 
-  Scenario: persoon heeft 'geboorte' datum veld: 'geboortedatum (03.10)'
+  Abstract Scenario: 'geboortedatum (03.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
     | geslachtsnaam (02.40) | Maassen  |
@@ -12,9 +12,16 @@ Functionaliteit: PersoonBeperkt: geboorte
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Maassen                             |
     | geboortedatum | 1983-05-26                          |
-    | fields        | geboorte.datum                      |
+    | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende 'geboorte' gegevens
     | naam              | waarde      |
     | datum.type        | Datum       |
     | datum.datum       | 1983-05-26  |
     | datum.langFormaat | 26 mei 1983 |
+
+    Voorbeelden:
+    | fields                     |
+    | geboorte.datum             |
+    | geboorte.datum.type        |
+    | geboorte.datum.datum       |
+    | geboorte.datum.langFormaat |

@@ -168,7 +168,6 @@ const columnNameMap = new Map([
     ['woonplaats (11.70)', 'woon_plaats_naam'],
     ['identificatiecode verblijfplaats (11.80)', 'verblijf_plaats_ident_code'],
     ['identificatiecode nummeraanduiding (11.90)', 'nummer_aand_ident_code'],
-    ['land adres buitenland (13.10)', 'vertrek_land_code'],
 
     ['locatiebeschrijving (12.10)', 'locatie_beschrijving'],
 
@@ -189,6 +188,7 @@ const columnNameMap = new Map([
     ['einddatum uitsluiting Europees kiesrecht (31.30)', 'europees_uitsluit_eind_datum'],
 
     ['indicatie gezag minderjarige (32.10)', 'minderjarig_gezag_ind'],
+
     ['indicatie curateleregister (33.10)', 'curatele_register_ind'],
 
     ['aanduiding uitgesloten kiesrecht (38.10)', 'kiesrecht_uitgesl_aand'],
@@ -209,6 +209,7 @@ const columnNameMap = new Map([
 
     ['reden beëindigen (64.10)', 'nl_nat_verlies_reden'],
 	
+    ['bijzonder nederlanderschap (65.10)', 'bijzonder_nl_aand'],
     ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand' ],
 
     ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum' ],
@@ -238,14 +239,14 @@ const columnNameMap = new Map([
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
     ['omschrijving verdrag (88.20)', 'verdrag_oms'],
-
+	
     ['gemeentecode (92.10)', 'gemeente_code'],
     ['gemeente_code', 'gemeente_code'],
 
 ]);
 
 Before(function() {
-    if(this.context.sql.useDb && pool == undefined) {
+    if(this.context.sql.useDb && pool === undefined) {
         pool = new Pool(this.context.sql.poolConfig);
         logSqlStatements = this.context.sql.logStatements;
     }
@@ -1074,7 +1075,7 @@ After({tags: '@fout-case'}, async function() {
 });
 
 After({tags: 'not @fout-case'}, async function() {
-    if(this.pool === undefined) {
+    if(pool === undefined) {
         return;
     }
 

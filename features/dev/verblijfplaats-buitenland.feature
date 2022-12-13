@@ -2,29 +2,6 @@
 
 Functionaliteit: Persoon: verblijfplaats buitenland
 
-  Abstract Scenario: persoon heeft 'verblijfplaats buitenland' datum veld: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                                   | waarde   |
-    | land adres buitenland (13.10)          | 6014     |
-    | datum aanvang adres buitenland (13.20) | 20220128 |
-    | datum ingang geldigheid (85.10)        | 20220222 |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | verblijfplaats.<naam>           |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam               | waarde                   |
-    | type               | VerblijfplaatsBuitenland |
-    | <naam>.type        | Datum                    |
-    | <naam>.datum       | <waarde>                 |
-    | <naam>.langFormaat | <lang formaat>           |
-
-    Voorbeelden:
-    | naam                  | waarde     | lang formaat     |
-    | datumVan              | 2022-01-28 | 28 januari 2022  |
-    | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
-
   Abstract Scenario: 'verblijfplaats buitenland' veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |

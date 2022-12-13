@@ -53,7 +53,7 @@ components:
       description: |
         Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
       example: "baron Van den Aedel"
-    AdresseringBeperkt:
+    AdresseringBasis:
       type: "object"
       description: ""
       properties:
@@ -67,7 +67,7 @@ components:
           $ref: "common.yaml#/components/schemas/Waardetabel"
     Adressering:
       allOf:
-        - $ref: "#/components/schemas/AdresseringBeperkt"
+        - $ref: "#/components/schemas/AdresseringBasis"
         - properties:
             aanhef:
               $ref: "#/components/schemas/Aanhef"
@@ -77,6 +77,12 @@ components:
               $ref: "#/components/schemas/GebruikInLopendeTekst"
             inOnderzoek:
               $ref: "#/components/schemas/AdresseringInOnderzoek"
+    AdresseringBeperkt:
+      allOf:
+        - $ref: "#/components/schemas/AdresseringBasis"
+        - properties:
+            inOnderzoek:
+              $ref: "#/components/schemas/AdresseringInOnderzoekBeperkt"
     AdresseringInOnderzoek:
       description: |
         Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
@@ -100,5 +106,20 @@ components:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         datumIngangOnderzoekPartner:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekVerblijfplaats:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+    AdresseringInOnderzoekBeperkt:
+      description: |
+        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+      type: object
+      properties:
+        adresregel1:
+          type: boolean
+        adresregel2:
+          type: boolean
+        adresregel3:
+          type: boolean
+        land:
+          type: boolean
         datumIngangOnderzoekVerblijfplaats:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'

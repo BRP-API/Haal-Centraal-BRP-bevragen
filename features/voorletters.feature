@@ -15,17 +15,14 @@ Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere
 
 Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
 
-	Abstract Scenario: <titel>
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
+  Abstract Scenario: <titel>
+    Gegeven de persoon met burgerservicenummer '000000413' heeft de volgende gegevens
     | naam              | waarde      |
     | voornamen (02.10) | <voornamen> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999995078                       |
+    | burgerservicenummer | 000000413                       |
     | fields              | naam.voorletters                |
     Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam        | waarde        |
@@ -42,19 +39,17 @@ Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesch
     | A                    | A           | Voornaam bestaat uit één letter                     | Een voornaam bestaand uit één letter, wordt afgekort tot een letter zonder .                                                      |
     | J P                  | J P         | Meerdere voornamen bestaan uit één letter           | Een voornaam bestaand uit één letter, gevolgd door een andere voornaam, wordt afgekort tot voorletters gescheiden door een spatie |
 
-	Scenario: Geen voornamen
-    Gegeven het systeem heeft een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En de persoon heeft de volgende 'naam' gegevens
-    | naam              | waarde |
-    | voornamen (02.10) |        |
+  Scenario: Geen voornamen
+    Gegeven de persoon met burgerservicenummer '000000425' heeft de volgende gegevens
+    | naam                  | waarde |
+    | voornamen (02.10)     |        |
+    | geslachtsnaam (02.40) | Boer   | 
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
     | type                | RaadpleegMetBurgerservicenummer      |
-    | burgerservicenummer | 999995078                            |
+    | burgerservicenummer | 000000425                            |
     | fields              | burgerservicenummer,naam.voorletters |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
-    | burgerservicenummer | 999995078 |
-    En heeft de persoon een leeg 'naam' object
+    | burgerservicenummer | 000000425 |
+    En heeft de persoon een leeg 'naam' object 
