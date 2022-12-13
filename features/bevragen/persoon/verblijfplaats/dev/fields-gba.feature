@@ -202,7 +202,6 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.functieAdres             | datumAanvangAdreshouding | 20150808      | functieAdres.code | W             | functieAdres.omschrijving | woonadres     |
     | verblijfplaatsBinnenland.verblijfadres                                              | huisnummer               | 31            |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer | datumAanvangAdreshouding | 20150808      | huisnummer        | 31            |                           |               |
-    | verblijfplaatsBinnenland.verblijfadres.regel1                                       |                          |               |                   |               |                           |               |
 
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
 
@@ -252,11 +251,10 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de fie
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.functieAdres                      | datumAanvangAdreshouding | 20150808      | functieAdres.code | W             | functieAdres.omschrijving | woonadres     |
     | verblijfplaatsBinnenland.verblijfadres                                                       |                          |               |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
-    | verblijfplaatsBinnenland.verblijfadres.regel1                                                |                          |               |                   |               |                           |               |
 
 Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats object wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
 
-  Abstract Scenario: één of meerdere velden van een verblijfplaats buitenland wordt gevraagd met field pad '<fields>'
+  Abstract Scenario: één of meerdere velden wordt gevraagd met field pad '<fields>', maar persoon heeft een verblijfplaats buitenland
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                                   | waarde                      |
     | datum aanvang adres buitenland (13.20) | 20150808                    |
