@@ -30,9 +30,9 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | naamOpenbareRuimte               | <straat>              |
       | huisnummer                       | <huisnr>              |
       | postcode                         | <postcode>            |
-	  | locatiebeschrijving              | <locatiebeschrijving> |
+      | locatiebeschrijving              | <locatiebeschrijving> |
 
-# Zodra dat kan 'verblijfplaats.verblijfadres' vervangen door 'verblijfplaatsBinnenland'
+# Zodra dat kan 'verblijfplaats' vervangen door 'verblijfplaatsBinnenland'
       Voorbeelden:
       | fields                                                                      | straat      | huisnrInBRP | huisnr | postcodeInBRP  | postcode  | locatiebeschrijving          |
       | verblijfplaats.verblijfadres.straat                                         | Boterondiep | 31          |        | 3077AW         |           |                              |
