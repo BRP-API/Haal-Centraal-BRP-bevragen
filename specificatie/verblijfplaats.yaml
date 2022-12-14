@@ -166,8 +166,6 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     LocatieBeperkt:
@@ -289,14 +287,10 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfplaatsOnbekend:
-      description: |
-        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
@@ -416,8 +410,6 @@ components:
             type:
               type: boolean
             datumVan:
-              type: boolean
-            functieAdres:
               type: boolean
             datumIngangGeldigheid:
               type: boolean
