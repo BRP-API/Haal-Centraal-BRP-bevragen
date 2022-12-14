@@ -290,7 +290,9 @@ Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
     Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'inschrijving' gegevens
     | naam                                             | waarde   |
     | datum opschorting bijhouding (67.10)             | 00000000 |
+    | Europees kiesrecht (31.10)                       | 1        |
     | einddatum uitsluiting Europees kiesrecht (31.30) | 00000000 |
+    | aanduiding uitgesloten kiesrecht (38.10)         | A        |
     | einddatum uitsluiting kiesrecht (38.20)          | 00000000 | 
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                             |
