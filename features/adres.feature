@@ -3,36 +3,7 @@
 @post-assert
 Functionaliteit: Adresvelden vullen
 
-  Rule: Voor een binnenlands adres wordt veld "straat" gevuld met de naam openbare ruimte (11.15) wanneer die bekend is, en anders met straatnaam (11.10). Veld "korteNaam" wordt gevuld met straatnaam (11.10).
-
-    Abstract Scenario: opnemen straat bij een binnenlands adres
-    Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
-      | naam                  | waarde      |
-      | functie adres (10.10) | W           |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde                 |
-      | straatnaam (11.10)           | <straatnaam>           |
-      | naam openbare ruimte (11.15) | <naam openbare ruimte> |
-      | gemeente_code                | 0518                   |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                       |
-      | type                | RaadpleegMetBurgerservicenummer              |
-      | burgerservicenummer | <burgerservicenummer>                        |
-      | fields              | verblijfplaats                               |
-      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde      |
-      | type                      | Adres       |
-      | functieAdres.code         | W           |
-      | functieAdres.omschrijving | woonadres   |
-      | verblijfadres.straat      | <straat>    |
-      | verblijfadres.korteNaam   | <korteNaam> |
-
-      Voorbeelden:
-      | burgerservicenummer | straatnaam               | naam openbare ruimte                    | straat                                  | korteNaam                |
-      | 000000152           | Kappeyne v d Cappellostr | Annelien Kappeyne van de Coppellostraat | Annelien Kappeyne van de Coppellostraat | Kappeyne v d Cappellostr |
-      | 000000164           | Zomerdijkstraat          |                                         | Zomerdijkstraat                         | Zomerdijkstraat          |
-
-  Rule: Voor een binnenlands adres wordt adresregel1 samengesteld conform NEN 5825:2002
+   Rule: Voor een binnenlands adres wordt adresregel1 samengesteld conform NEN 5825:2002
     - Veld adresregel1 wordt samengesteld uit korteNaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
     - De aanduidingBijHuisnummer (11.50) waarde "to" (tegenover) wordt in "adresregel1" opgenomen als "t/o", waarde "by" wordt in "adresregel1" opgenomen als "bij"
     - Tussen kortenaam en aanduidingBijHuisnummer of huisnummer wordt een spatie opgenomen
