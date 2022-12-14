@@ -27,7 +27,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                |
       | straat                           | <straat>              |
-      | naamOpenbareRuimte               | <straat>              |
       | huisnummer                       | <huisnr>              |
       | postcode                         | <postcode>            |
       | locatiebeschrijving              | <locatiebeschrijving> |
@@ -80,7 +79,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                |
       | straat                           | <straat>              |
-      | naamOpenbareRuimte               | <straat>              |
       | huisnummer                       | <huisnr>              |
       | postcode                         | <postcode>            |
       | locatiebeschrijving              | <locatiebeschrijving> |
@@ -140,7 +138,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                     |
       | straat                           | <straat>                   |
-      | naamOpenbareRuimte               | <straat>                   |
       | locatiebeschrijving              | <locatiebeschrijving>      |
       | datumAanvangAdreshouding         | <datumAanvangAdreshouding> |
 
@@ -176,7 +173,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                        |
       | straat                           | <straat>                      |
-      | naamOpenbareRuimte               | <straat>                      |
       | locatiebeschrijving              | <locatiebeschrijving>         |
       | datumAanvangAdreshouding         | <datumAanvangAdreshouding>    |
       | land.code                        | <landcode>                    |
