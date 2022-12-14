@@ -157,11 +157,11 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
 
    Abstract Scenario: Vragen om datumVan van een <omschrijving>adres zonder de alias verblijfplaatsBinnenland
       Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'verblijfplaats' gegevens
-      | naam                                   | waarde                       |
-      | functieAdres.code (10.10)              | W                            |
-      | datum aanvang adreshouding (10.30)     | <datumAanvangAdreshouding>   |
-      | land (13.10)                           | <landcode>                   |
-      | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland |
+      | naam                                   | waarde                        |
+      | functieAdres.code (10.10)              | W                             |
+      | datum aanvang adreshouding (10.30)     | <datumAanvangAdreshouding>    |
+      | land (13.10)                           | <landcode>                    |
+      | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland> |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                         | waarde                |
       | straatnaam (11.10)           | <straat>              |
