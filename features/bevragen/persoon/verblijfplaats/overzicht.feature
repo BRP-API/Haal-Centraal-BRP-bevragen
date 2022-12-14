@@ -4,7 +4,7 @@ Functionaliteit: verblijfplaats
 
 Rule: Een verblijfplaats is een adres wanneer straatnaam (11.10) een waarde heeft
 
-  Abstract Scenario: '<gba veld>' heeft een waarde
+  Abstract Scenario: 'straatnaam (11.10)' heeft een waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                               | waarde   |
     | datum aanvang adreshouding (10.30) | 20170423 |
@@ -47,7 +47,7 @@ Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving
 
 Rule: Een verblijfplaats is een verblijfplaats buitenland wanneer 'land adres buitenland (13.10)' ongelijk is aan 0000
 
-  Scenario: '<gba veld>' heeft een waarde
+  Scenario: 'land adres buitenland (13.10)' heeft een waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                          | waarde   |
     | land adres buitenland (13.10) | 6014     |
@@ -75,7 +75,7 @@ Rule: Een verblijfplaats is een onbekend verblijfplaats wanneer 'land adres buit
     | naam | waarde                 |
     | type | VerblijfplaatsOnbekend |
 
-Rule: Een persoon heeft geen verblijfplaats wanneer geen enkel gegeven van adres een waarde heeft én locatiebeschrijving geen waarde heeft én 'land adres buitenland' geen waarde heeft
+Rule: Een persoon heeft geen verblijfplaats wanneer 'straatnaam (11.10)' én 'locatiebeschrijving (12.10)' én 'land adres buitenland (13.10)' geen waarde heeft
 
   Scenario: De adres gegevens én locatiebeschrijving hebben geen waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -115,7 +115,7 @@ Rule: Een persoon heeft geen verblijfplaats wanneer de verblijfplaatsBinnenland 
     | fields              | verblijfplaatsBinnenland        |
     Dan heeft de response een persoon zonder gegevens
 
-  Voorbeelden:
-  | land code | type       |
-  | 6014      | buitenland |
-  | 0000      | onbekend   |
+    Voorbeelden:
+    | land code | type       |
+    | 6014      | buitenland |
+    | 0000      | onbekend   |
