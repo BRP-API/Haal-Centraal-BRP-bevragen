@@ -54,7 +54,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -87,7 +87,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
        En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code | identificatiecode nummeraanduiding (11.90) |
       | 0599          | 0599200000219679                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000219679                     |
@@ -113,7 +113,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Maassen                             |
@@ -145,7 +145,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                            |
       | type                | RaadpleegMetBurgerservicenummer                                   |
       | burgerservicenummer | 000000024                                                         |
@@ -171,7 +171,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) | aanduiding naamgebruik (61.10) |
       | 19830526              | Maassen               | Pieter            | M                           | E                              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -206,7 +206,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -238,7 +238,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
       | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30) | soort verbintenis (15.10) |
       | Jan               | Groenen               | 19820526              | 20171103                                                           | 0513                                                                | 6030                                                              | H                         |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                                 |
       | type                | RaadpleegMetBurgerservicenummer                                        |
       | burgerservicenummer | 000000024                                                              |
@@ -265,7 +265,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0001                  | 001                   | 19750707                        |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -297,7 +297,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon heeft een ouder '2' met de volgende gegevens
       | voornamen (02.10)  |
       | Christiaan         |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -331,7 +331,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon heeft een ouder '2' met de volgende gegevens
       | voornamen (02.10) |
       | Mark              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -367,7 +367,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon heeft een 'partner' met de volgende gegevens
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -394,7 +394,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon heeft een 'partner' met de volgende gegevens
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -434,7 +434,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | 0518                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code | 0518 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Maassen                             |
@@ -464,7 +464,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -491,10 +491,10 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
-       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code | identificatiecode nummeraanduiding (11.90) |
       | 0599          | 0599200000219679                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000219679                     |
@@ -524,7 +524,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code                | 0599            |
       | straatnaam (11.10)           | Borgesiusstraat |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -553,16 +553,16 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code                | 0599            |
       | straatnaam (11.10)           | Borgesiusstraat |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.functieAdres     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde    |
-      | type                      | Adres     |
-      | functieAdres.code         | W         |
-      | functieAdres.omschrijving | woonadres |
+      | naam                      | waarde          |
+      | straat                    | Borgesiusstraat |
+      | functieAdres.code         | W               |
+      | functieAdres.omschrijving | woonadres       |
 
     Scenario: Autorisatie heeft einddatum in de toekomst
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
@@ -584,7 +584,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.functieAdres     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde    |
-      | type                      | Adres     |
-      | functieAdres.code         | W         |
-      | functieAdres.omschrijving | woonadres |
+      | naam                      | waarde          |
+      | straat                    | Borgesiusstraat |
+      | functieAdres.code         | W               |
+      | functieAdres.omschrijving | woonadres       |
