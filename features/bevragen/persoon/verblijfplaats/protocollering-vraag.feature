@@ -4,8 +4,7 @@ Functionaliteit: protocollering van de vraag voor verblijfplaats
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
-    Ook alle velden die worden meegeleverd voor het bepalen van het verblijfplaats type worden opgenomen.
-    # het is nog niet duidelijk in hoeverre de volgorde van rubrieken een bepaalde volgorde of sortering aan moet houden (voor testbaarheid is dat wel nodig)
+    Ook alle velden die worden meegeleverd voor het bepalen van het verblijfplaats type worden vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als zoekrubrieken <zoek rubrieken>
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens

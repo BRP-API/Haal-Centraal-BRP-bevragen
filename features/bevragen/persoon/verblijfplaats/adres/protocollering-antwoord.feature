@@ -5,7 +5,7 @@ Functionaliteit: protocollering van het antwoord voor verblijfplaats Adres
   Rule: In het antwoord geleverde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
     Alleen velden die echt geleverd zijn, dus een waarde hebben in de response, worden opgenomen als geleverde rubriek
-    Ook alle velden die worden meegeleverd voor het bepalen van het verblijfplaats type worden opgenomen.
+    Ook alle velden die worden meegeleverd voor het bepalen van het verblijfplaats type worden vastgelegd in het veld 'request_geleverde_rubrieken'.
     
     Abstract Scenario: Protocolleren van geleverde velden voor <fields veld> voor een persoon met BAG adres met huisletter en toevoeging
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
