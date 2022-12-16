@@ -21,7 +21,7 @@ Functionaliteit: protocollering van het antwoord voor verblijfplaats locatie
       | naam                        | waarde                            |
       | gemeente_code               | 0530                              |
       | locatiebeschrijving (12.10) | Woonboot tegenover de Grote Sloot |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000036                       |

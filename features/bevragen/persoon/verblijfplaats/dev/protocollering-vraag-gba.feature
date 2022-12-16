@@ -28,7 +28,7 @@ Functionaliteit: protocollering van de vraag voor verblijfplaats
       | woonplaats (11.70)                         | Scheveningen     |
       | identificatiecode verblijfplaats (11.80)   | 0518010000747448 |
       | identificatiecode nummeraanduiding (11.90) | 0518200000747446 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |

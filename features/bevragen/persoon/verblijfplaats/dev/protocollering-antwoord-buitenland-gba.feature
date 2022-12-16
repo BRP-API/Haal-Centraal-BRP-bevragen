@@ -19,7 +19,7 @@ Functionaliteit: protocollering van het antwoord voor verblijfplaats buitenland
       | regel 1 adres buitenland (13.30)       | Rue du pomme 25 |
       | regel 2 adres buitenland (13.40)       | Bruxelles       |
       | regel 3 adres buitenland (13.50)       | postcode 1000   |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000048                       |

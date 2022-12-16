@@ -16,7 +16,7 @@ Functionaliteit: protocollering van het antwoord voor verblijfplaats onbekend
       | gemeente van inschrijving (09.10)      | 1999     |
       | land (13.10)                           | 0000     |
       | datum aanvang adres buitenland (13.20) | 00000000 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000061                       |
