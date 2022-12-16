@@ -22,13 +22,14 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisnummertoevoeging (11.40)               | 2                |
       | postcode (11.60)                           | 2497BV           |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                 | waarde                      |
-      | type                 | ZoekMetPostcodeEnHuisnummer |
-      | postcode             | 2497BV                      |
-      | huisnummer           | 103                         |
-      | huisletter           | b                           |
-      | huisnummertoevoeging | 2                           |
-      | fields               | burgerservicenummer         |
+      | naam                    | waarde                      |
+      | type                    | ZoekMetPostcodeEnHuisnummer |
+      | postcode                | 2497BV                      |
+      | huisnummer              | 103                         |
+      | huisletter              | b                           |
+      | huisnummertoevoeging    | 2                           |
+      | gemeenteVanInschrijving | 0599                        |
+      | fields                  | burgerservicenummer         |
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                                    |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                               |
@@ -37,9 +38,6 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): <parameter niet toegestaan>. |
       | code     | unauthorizedParameter                                                                     |
       | instance | /haalcentraal/api/brp/personen                                                            |
-      En heeft het object de volgende 'invalidParams' gegevens
-      | code         | name                        | reason                                                  |
-      | unauthorized | <parameter niet toegestaan> | Niet geautoriseerd voor het gebruik van deze parameter. |
 
       Voorbeelden:
       | ad hoc rubrieken                                      | parameter niet toegestaan | ontbrekende rubriek |
@@ -47,6 +45,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | 10120 80910 80810 81110 81120 81130 81140 81150 81190 | postcode                  | 81160               |
       | 10120 80910 80810 81110 81120 81140 81150 81160 81190 | huisletter                | 81130               |
       | 10120 80910 80810 81110 81120 81130 81150 81160 81190 | huisnummertoevoeging      | 81140               |
+      | 10120 80810 81110 81120 81130 81140 81150 81160 81190 | gemeenteVanInschrijving   | 80910               |
 
     @fout-case
     Scenario: Gebruik van meerdere parameters waarvoor de afnemer niet geautoriseerd is
