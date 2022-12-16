@@ -17,7 +17,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code | identificatiecode nummeraanduiding (11.90) |
       | 0599          | 0599200000219679                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000219679                     |
@@ -47,7 +47,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeente_code | identificatiecode nummeraanduiding (11.90) |
       | 0599          | 0599200000219679                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000219679                     |

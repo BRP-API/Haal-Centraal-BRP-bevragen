@@ -21,7 +21,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisletter (11.30)                         | b                |
       | huisnummertoevoeging (11.40)               | 2                |
       | postcode (11.60)                           | 2497BV           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
       | postcode             | 2497BV                      |
@@ -67,7 +67,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisletter (11.30)                         | b                |
       | huisnummertoevoeging (11.40)               | 2                |
       | postcode (11.60)                           | 2497BV           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
       | postcode             | 2497BV                      |
@@ -104,7 +104,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisletter (11.30)                         | b                |
       | huisnummertoevoeging (11.40)               | 2                |
       | postcode (11.60)                           | 2497BV           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
       | postcode             | 2497BV                      |
