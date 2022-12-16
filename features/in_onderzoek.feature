@@ -803,7 +803,7 @@ Functionaliteit: in onderzoek
       | gemeente van inschrijving (09.10) | 0518     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                              | waarde |
-      | officieleStraatnaamnaam (11.10)                | spui   |
+      | straatnaam (11.10)                | spui   |
       | huisnummer (11.20)                | 70     |
       | gemeentecode (92.10)              | 0518   |
       Als personen wordt gezocht met de volgende parameters
@@ -818,7 +818,6 @@ Functionaliteit: in onderzoek
       | naam                                                       | waarde        |
       | type                                                       | Adres         |
       | verblijfadres.huisnummer                                   | 70            |
-      | verblijfadres.officieleStraatnaam                          | spui          |
       | verblijfadres.korteStraatnaam                              | spui          |
       | verblijfadres.woonplaats                                   | 's-Gravenhage |
       | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07    |
