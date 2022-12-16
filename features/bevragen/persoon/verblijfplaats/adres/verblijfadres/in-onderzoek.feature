@@ -27,13 +27,13 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | inOnderzoek.datumIngangOnderzoek.langFormaat | <lang formaat> |
     En heeft de 'verblijfplaats' de volgende 'verblijfadres' gegevens
     | naam                                         | waarde                   |
-    | korteNaam                                    | Spui                     |
+    | korteStraatnaam                              | Spui                     |
     | inOnderzoek.aanduidingBijHuisnummer          | <aanduidingBijHuisnr io> |
     | inOnderzoek.huisletter                       | <huisletter io>          |
     | inOnderzoek.huisnummer                       | <huisnr io>              |
     | inOnderzoek.huisnummertoevoeging             | <huisnrtoevoeging io>    |
-    | inOnderzoek.korteNaam                        | <korteNaam io>           |
-    | inOnderzoek.straat                           | <straat io>              |
+    | inOnderzoek.korteStraatnaam                  | <korteNaam io>           |
+    | inOnderzoek.officieleStraatnaam              | <straat io>              |
     | inOnderzoek.postcode                         | <postcode io>            |
     | inOnderzoek.woonplaats                       | <woonplaats io>          |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
@@ -44,7 +44,7 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | aanduiding in onderzoek | aanduidingBijHuisnr io | huisletter io | huisnr io | huisnrtoevoeging io | straat io | postcode io | korteNaam io | woonplaats io | type io | datum type | datum      | lang formaat | type                          |
     | 080000                  | true                   | true          | true      | true                | true      | true        | true         | true          | true    | Datum      | 2002-07-01 | 1 juli 2002  | hele categorie verblijfplaats |
     | 081100                  | true                   | true          | true      | true                | true      | true        | true         | true          | true    | Datum      | 2002-07-01 | 1 juli 2002  | hele groep adres              |
-    | 081110                  |                        |               |           |                     | true      |             | true         |               | true    | Datum      | 2002-07-01 | 1 juli 2002  | straatnaam                    |
+    | 081110                  |                        |               |           |                     |           |             | true         |               | true    | Datum      | 2002-07-01 | 1 juli 2002  | straatnaam                    |
     | 081115                  |                        |               |           |                     | true      |             |              |               |         |            |            |              | naam openbare ruimte          |
     | 081120                  |                        |               | true      |                     |           |             |              |               |         |            |            |              | huisnummer                    |
     | 081130                  |                        | true          |           |                     |           |             |              |               |         |            |            |              | huisletter                    |
@@ -74,15 +74,15 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
 
     Voorbeelden:
     | aanduiding in onderzoek | type                      | veld naam               | gevraagde fields                                     |
-    | 081115                  | naam openbare ruimte      | straat                  | verblijfplaats.verblijfadres.postcode                |
+    | 081115                  | naam openbare ruimte      | officieleStraatnaam     | verblijfplaats.verblijfadres.postcode                |
     | 081120                  | huisnummer                | huisnummer              | verblijfplaats.verblijfadres.huisnummertoevoeging    |
     | 081130                  | huisletter                | huisletter              | verblijfplaats.verblijfadres.huisnummer              |
-    | 081140                  | huisnummertoevoeging      | huisnummertoevoeging    | verblijfplaats.verblijfadres.straat                  |
+    | 081140                  | huisnummertoevoeging      | huisnummertoevoeging    | verblijfplaats.verblijfadres.officieleStraatnaam     |
     | 081150                  | aanduiding bij huisnummer | aanduidingBijHuisnummer | verblijfplaats.verblijfadres.huisletter              |
-    | 081160                  | postcode                  | postcode                | verblijfplaats.verblijfadres.straat                  |
+    | 081160                  | postcode                  | postcode                | verblijfplaats.verblijfadres.officieleStraatnaam     |
     | 081170                  | woonplaatsnaam            | woonplaats              | verblijfplaats.verblijfadres.aanduidingBijHuisnummer |
 
-  Scenario: 'straatnaam' is in onderzoek, maar veld 'korteNaam' wordt niet gevraagd
+  Scenario: 'straatnaam' is in onderzoek, maar veld 'korteStraatnaam' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                               | waarde   |
     | datum aanvang adreshouding (10.30) | 20220128 |

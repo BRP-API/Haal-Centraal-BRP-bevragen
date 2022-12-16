@@ -69,16 +69,16 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres veld
     | type                               | Adres  |
     | verblijfadres.huisnummertoevoeging | 2      |
 
-  Scenario: 'naam openbare ruimte (11.15)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.straat'
+  Scenario: 'naam openbare ruimte (11.15)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.officieleStraatnaam'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | RaadpleegMetBurgerservicenummer     |
     | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
+    | fields              | verblijfplaats.verblijfadres.officieleStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam                 | waarde |
-    | type                 | Adres  |
-    | verblijfadres.straat | Spui   |
+    | naam                              | waarde |
+    | type                              | Adres  |
+    | verblijfadres.officieleStraatnaam | Spui   |
 
   Scenario: 'postcode (11.60)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.postcode'
     Als personen wordt gezocht met de volgende parameters
@@ -91,16 +91,16 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres veld
     | type                   | Adres  |
     | verblijfadres.postcode | 1234AA |
 
-  Scenario: 'straatnaam (11.10)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.korteNaam'
+  Scenario: 'straatnaam (11.10)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.korteStraatnaam'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                 |
     | type                | RaadpleegMetBurgerservicenummer        |
     | burgerservicenummer | 000000152                              |
-    | fields              | verblijfplaats.verblijfadres.korteNaam |
+    | fields              | verblijfplaats.verblijfadres.korteStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam                    | waarde |
-    | type                    | Adres  |
-    | verblijfadres.korteNaam | Spui   |
+    | naam                          | waarde |
+    | type                          | Adres  |
+    | verblijfadres.korteStraatnaam | Spui   |
 
   Scenario: 'woonplaats (11.70)' wordt gevraagd met field pad 'verblijfplaats.verblijfadres.woonplaats'
     Als personen wordt gezocht met de volgende parameters
@@ -127,7 +127,8 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres veld
     | verblijfadres.huisletter                           | a             |
     | verblijfadres.huisnummer                           | 123           |
     | verblijfadres.huisnummertoevoeging                 | 2             |
-    | verblijfadres.straat                               | Spui          |
+    | verblijfadres.officieleStraatnaam                  | Spui          |
+    | verblijfadres.korteStraatnaam                      | Spui          |
     | verblijfadres.postcode                             | 1234AA        |
     | verblijfadres.korteNaam                            | Spui          |
     | verblijfadres.woonplaats                           | 's-Gravenhage |

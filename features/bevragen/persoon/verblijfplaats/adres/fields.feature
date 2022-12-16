@@ -100,4 +100,4 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | functieAdres.omschrijving         | woonadres        |
     | adresseerbaarObjectIdentificatie  | 0599010000208579 |
     | nummeraanduidingIdentificatie     | 0599200000219678 |
-    | verblijfadres.korteNaam           | Spui             |
+    | verblijfadres.korteStraatnaam     | Spui             |

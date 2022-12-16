@@ -3,9 +3,13 @@
 @post-assert
 Functionaliteit: Adresvelden vullen
 
-  Rule: Voor een binnenlands adres wordt veld "straat" gevuld met de naam openbare ruimte (11.15) wanneer die bekend is, en anders met straatnaam (11.10). Veld "korteNaam" wordt gevuld met straatnaam (11.10).
 
-    Abstract Scenario: opnemen straat bij een binnenlands adres
+# Onderstaande rule en scenario moeten m.i. nog steeds verplaatst worden naar 
+  Rule: Voor een binnenlands adres wordt:
+          -  veld "officieleStraatnaam" gevuld met de naam openbare ruimte (11.15). 
+          -  veld "korteStraatnaam" wordt gevuld met straatnaam (11.10).
+
+    Abstract Scenario: opnemen officieleStraatnaam en korteStraatnaam bij een binnenlands adres
     Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
       | naam                  | waarde      |
       | functie adres (10.10) | W           |
@@ -20,22 +24,22 @@ Functionaliteit: Adresvelden vullen
       | burgerservicenummer | <burgerservicenummer>                        |
       | fields              | verblijfplaats                               |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde      |
-      | type                      | Adres       |
-      | functieAdres.code         | W           |
-      | functieAdres.omschrijving | woonadres   |
-      | verblijfadres.straat      | <straat>    |
-      | verblijfadres.korteNaam   | <korteNaam> |
+      | naam                              | waarde               |
+      | type                              | Adres                |
+      | functieAdres.code                 | W                    |
+      | functieAdres.omschrijving         | woonadres            |
+      | verblijfadres.officieleStraatnaam | <officielestraat>    |
+      | verblijfadres.korteStraatNaam     | <korteNaam>          |
 
       Voorbeelden:
-      | burgerservicenummer | straatnaam               | naam openbare ruimte                    | straat                                  | korteNaam                |
+      | burgerservicenummer | straatnaam               | naam openbare ruimte                    | officielestraat                         | korteNaam                |
       | 000000152           | Kappeyne v d Cappellostr | Annelien Kappeyne van de Coppellostraat | Annelien Kappeyne van de Coppellostraat | Kappeyne v d Cappellostr |
-      | 000000164           | Zomerdijkstraat          |                                         | Zomerdijkstraat                         | Zomerdijkstraat          |
+      | 000000164           | Zomerdijkstraat          |                                         |                                         | Zomerdijkstraat          |
 
   Rule: Voor een binnenlands adres wordt adresregel1 samengesteld conform NEN 5825:2002
-    - Veld adresregel1 wordt samengesteld uit korteNaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
+    - Veld adresregel1 wordt samengesteld uit korteStraatnaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
     - De aanduidingBijHuisnummer (11.50) waarde "to" (tegenover) wordt in "adresregel1" opgenomen als "t/o", waarde "by" wordt in "adresregel1" opgenomen als "bij"
-    - Tussen kortenaam en aanduidingBijHuisnummer of huisnummer wordt een spatie opgenomen
+    - Tussen korteStraatnaam en aanduidingBijHuisnummer of huisnummer wordt een spatie opgenomen
     - Tussen aanduidingBijHuisnummer en huisnummer wordt een spatie opgenomen
     - Tussen het huisnummer en de huisnummertoevoeging (wat in de NEN een samenstelling is van huisletter en huisnummertoevoeging, niet gescheiden van elkaar) moet een koppelteken ("-") worden geplaatst indien de huisnummertoevoeging met een cijfer begint, een spatie in alle andere gevallen
 
@@ -203,7 +207,7 @@ Functionaliteit: Adresvelden vullen
       En heeft de persoon een leeg 'adressering' object
       # personen: [{ adressering: {} }]
 
-  Rule: Voor een binnenlands adres worden de adresregels in de adressering alleen opgenomen wanneer ten minste straat en huisnummer een waarde hebben
+  Rule: Voor een binnenlands adres worden de adresregels in de adressering alleen opgenomen wanneer ten minste straatnaam (11.10) en huisnummer (11.20) een waarde hebben
     - een standaardwaarde in de bron geldt hier niet als waarde
     - een string met lengte nul ("") geldt hier niet als waarde
 
