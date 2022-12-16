@@ -49,11 +49,16 @@ components:
       type: string
       pattern: ^[a-zA-Z0-9 \-]{1,4}$
       example: "bis"
-    KorteNaam:
+    KorteStraatnaam:
       description: |
-        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+        De verkorte versie van de officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of de straatnaam van een niet-BAG adres.
       type: string
       maxLength: 24
+    OfficieleStraatnaam:
+      description: |
+        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG).
+      type: string
+      maxLength: 80
     Locatiebeschrijving:
       type: string
       maxLength: 35
@@ -77,7 +82,7 @@ components:
       example: "2341SX"
     Straat:
       type: string
-      maxLength: 80
+      maxLength: 24
       example: "Tulpstraat"
     Woonplaats:
       description: |
@@ -89,8 +94,8 @@ components:
     VerblijfadresBinnenland:
       type: object
       properties:
-        straat:
-          $ref: '#/components/schemas/Straat'
+        officieleStraatnaam:
+          $ref: '#/components/schemas/OfficieleStraatnaam'
         huisnummer:
           $ref: '#/components/schemas/Huisnummer'
         huisletter:
@@ -103,8 +108,8 @@ components:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
-        korteNaam:
-          $ref: '#/components/schemas/KorteNaam'
+        korteStraatnaam:
+          $ref: '#/components/schemas/KorteStraatnaam'
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
     VerblijfadresBuitenland:
@@ -377,11 +382,11 @@ components:
               type: boolean
             huisnummertoevoeging:
               type: boolean
-            straat:
+            officieleStraatnaam:
               type: boolean
             postcode:
               type: boolean
-            korteNaam:
+            korteStraatnaam:
               type: boolean
             woonplaats:
               type: boolean

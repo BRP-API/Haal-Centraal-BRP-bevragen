@@ -192,7 +192,7 @@ components:
             huisnummertoevoeging:
               $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
             straat:
-              $ref: 'filter.yaml#/components/schemas/StraatFilter'
+              $ref: 'filter.yaml#/components/schemas/OfficieleStraatnaamFilter'
     ZoekMetNummeraanduidingIdentificatie:
       required:
         - nummeraanduidingIdentificatie

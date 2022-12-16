@@ -31,9 +31,9 @@ components:
       type: string
       maxLength: 40
       description: |
-        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+        Het eerste deel van een adres is een combinatie van de korteStraatnaam en huisnummer.
       # example: "1600 Pennsylvania Avenue NW"
-      example: "Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3"
+      example: "Kappeyne v d Cappellostr 26A-3"
     Adresregel2:
       type: string
       maxLength: 50
