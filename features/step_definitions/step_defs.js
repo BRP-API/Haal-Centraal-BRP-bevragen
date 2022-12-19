@@ -118,7 +118,8 @@ const tableNameMap = new Map([
     ['overlijden', 'lo3_pl_overlijden'],
     ['adres', 'lo3_adres'],
     ['geboorte', 'lo3_pl_persoon'],
-    ['immigratie', 'lo3_pl_verblijfplaats']
+    ['immigratie', 'lo3_pl_verblijfplaats'],
+    ['autorisatie', 'lo3_autorisatie']
 ]);
 
 const columnNameMap = new Map([
@@ -243,6 +244,10 @@ const columnNameMap = new Map([
     ['gemeentecode (92.10)', 'gemeente_code'],
     ['gemeente_code', 'gemeente_code'],
 
+    ['Rubrieknummer ad hoc (35.95.60)', 'ad_hoc_rubrieken'],
+    ['Medium ad hoc (35.95.67)', 'ad_hoc_medium'],
+    ['Datum ingang (35.99.98)', 'tabel_regel_start_datum'],
+
 ]);
 
 Before(function() {
@@ -257,11 +262,23 @@ async function deleteRecords(client, sqlData) {
         return;
     }
 
-    const pl_id = sqlData.ids.pl_id;
-    const adres_id = sqlData.ids.adres_id;
-
     for(const [key] of tableNameMap) {
-        await client.query(createDeleteStatement(key, key === 'adres' ? adres_id : pl_id));
+        let id;
+        switch(key)
+        {
+            case 'adres':
+                id = sqlData.ids.adres_id;
+                break;
+            case 'autorisatie':
+                id = sqlData.ids.autorisatie_id;
+                break;
+            default:
+                id = sqlData.ids.pl_id;
+                break;
+        }
+        if(id !== undefined) {
+            await client.query(createDeleteStatement(key, id));
+        }
     }
 }
 
@@ -303,6 +320,29 @@ After(async function() {
         }
     }
 });
+
+function insertIntoAutorisatieStatement(data) {
+    let statement = {
+        text: 'INSERT INTO public.lo3_autorisatie(autorisatie_id',
+        values: []
+    };
+
+    data.forEach(function(row) {
+        statement.text += `,${row[0]}`;
+        statement.values.push(row[1]);
+    });
+
+    statement.text += ') VALUES((SELECT MAX(autorisatie_id)+1 FROM public.lo3_autorisatie)';
+    statement.values.forEach(function(_value, index) {
+        statement.text += `,$${index+1}`;
+    });
+    statement.text += ') RETURNING *';
+
+    if(logSqlStatements) {
+        console.log(statement);
+    }
+    return statement;
+}
 
 function insertIntoAdresStatement(data) {
     let statement = {
@@ -382,9 +422,19 @@ function insertIntoStatement(tabelNaam, data) {
 }
 
 function createDeleteStatement(tabelNaam, id) {
-    const naamId = tabelNaam === 'adres'
-        ? 'adres_id'
-        : 'pl_id';
+    let naamId;
+    
+    switch(tabelNaam) {
+        case 'adres':
+            naamId = 'adres_id';
+            break;
+        case 'autorisatie':
+            naamId = 'autorisatie_id';
+            break;
+        default:
+            naamId = 'pl_id';
+            break;
+    }
 
     const statement = {
         text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${naamId}=$1`,
@@ -505,6 +555,18 @@ Given(/^de response body is gelijk aan$/, function (docString) {
     };
 });
 
+Given(/^de afnemer met indicatie '(.*)' heeft de volgende '(.*)' gegevens$/, function (afnemerCode, tabelNaam, dataTable) {
+    if(this.context.sqlData === undefined) {
+        this.context.sqlData = [];
+    }
+    this.context.sqlData.push({});
+
+    let sqlData = this.context.sqlData.at(-1);
+
+    sqlData[tabelNaam] = [
+        [[ 'afnemer_code', afnemerCode ], ['geheimhouding_ind', 0], ['verstrekkings_beperking', 0]].concat(createArrayFrom(dataTable))];
+});
+
 Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
     if(this.context.sqlData === undefined) {
         this.context.sqlData = [];
@@ -610,9 +672,14 @@ function createStatementData(key, plId, adresId, rowData) {
 async function executeSql(client, sqlData) {
     let plId = undefined;
     let adresId = undefined;
+    let autorisatieId = undefined;
 
     if(sqlData.ids !== undefined && sqlData.ids.adres_id !== undefined) {
         adresId = sqlData.ids.adres_id;
+    }
+    if(sqlData['autorisatie'] !== undefined) {
+        const res = await client.query(insertIntoAutorisatieStatement(sqlData['autorisatie'][0]));
+        autorisatieId = res.rows[0]['autorisatie_id'];
     }
     if(sqlData['adres'] !== undefined) {
         const res = await client.query(insertIntoAdresStatement(sqlData['adres'][0]));
@@ -624,9 +691,7 @@ async function executeSql(client, sqlData) {
     }
 
     for(const key of Object.keys(sqlData)) {
-        if (key === 'inschrijving' ||
-            key === 'adres' ||
-            key === 'ids') {
+        if (['inschrijving', 'adres', 'ids', 'autorisatie'].includes(key)) {
             continue;
         }
 
@@ -638,14 +703,11 @@ async function executeSql(client, sqlData) {
         }
     }
 
-    sqlData.ids = sqlData.adres !== undefined
-        ? {
-            'pl_id' : plId,
-            'adres_id': adresId
-          }
-        : {
-            'pl_id' : plId
-        };
+    sqlData.ids = {
+        autorisatie_id: autorisatieId,
+        adres_id: adresId,
+        pl_id: plId
+    };
 }
 
 async function executeSqlStatements(sqlData) {
@@ -1179,6 +1241,11 @@ Given(/^(?:de|het) '(.*)' heeft GEEN '(.*)' gegevens$/, function (_relatie, _geg
 Given(/^de consumer is geautoriseerd voor '(.*)' gegevens$/, function (scope) {
 });
 
+Given(/^de geauthenticeerde consumer heeft de volgende '(.*)' gegevens$/, function (propertyName, dataTable) {
+    const param = dataTable.hashes().find(param => param.naam === 'afnemerID');
+    this.context.afnemerId = param.waarde;
+});
+
 function createRequestBody(dataTable) {
     let requestBody = {};
     dataTable.hashes()
@@ -1238,10 +1305,10 @@ function createHeaders(dataTable, extraHeaders) {
     return headers;
 }
 
-async function getOAuthAccessToken(oAuthSettings) {
+async function getOAuthAccessToken(accessTokenUrl, oAuthSettings) {
     const config = {
         method: 'post',
-        url: oAuthSettings.accessTokenUrl,
+        url: accessTokenUrl,
         headers: { 'content-type': 'application/x-www-form-urlencoded'},
         data: new URLSearchParams({
             grant_type: 'client_credentials',
@@ -1314,14 +1381,17 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
     });
 
     if(this.context.oAuth.enable) {
+        const accessTokenUrl = this.context.oAuth.accessTokenUrl;
+        const oAuthSettings = this.context.oAuth.clients.find(client => client.afnemerID === this.context.afnemerId);
+
         if(accessToken === undefined) {
             console.log("no access token. authenticate");
-            accessToken = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(accessTokenUrl, oAuthSettings);
         }
         this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, accessToken, dataTable);
         if(this.context.response.status === 401) {
             console.log("access denied. access token expired");
-            accessToken = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(accessTokenUrl, oAuthSettings);
             this.context.response = await postBevragenRequestWithOAuth(this.context.proxyUrl, accessToken, dataTable);
         }
     } else {
@@ -1340,14 +1410,17 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
     });
 
     if(this.context.oAuth.enable) {
+        const accessTokenUrl = this.context.oAuth.accessTokenUrl;
+        const oAuthSettings = this.context.oAuth.clients.find(client => client.afnemerID === this.context.afnemerId);
+
         if(accessToken === undefined) {
             console.log("no access token. authenticate");
-            accessToken = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(accessTokenUrl, oAuthSettings);
         }
         this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, accessToken, dataTable);
         if(this.context.response.status === 401) {
             console.log("access denied. access token expired");
-            accessToken = await getOAuthAccessToken(this.context.oAuth);
+            accessToken = await getOAuthAccessToken(accessTokenUrl, oAuthSettings);
             this.context.response = await postBevragenRequestWithOAuth(this.context.gbaUrl, accessToken, dataTable);
         }
     } else {

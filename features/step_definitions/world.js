@@ -5,7 +5,7 @@ class World {
         this.context.proxyUrl = "http://localhost:5001/haalcentraal/api/brp";
         this.context.gbaUrl = "http://localhost:8000/haalcentraal/api/brp/v2";
         this.context.extraHeaders = [
-            { "naam": "Authorization", "waarde": "" }
+            { "naam": "Authorization", "waarde": "Basic OTkwMDA4fDU5OTp0ZW1wc29sdXRpb24h" }
         ];
         this.context.persoon = {};
         this.context.zoekResponse = {
@@ -21,16 +21,20 @@ class World {
                 database: "rvig_haalcentraal_testdata",
                 password: "root",
                 port: 5432,
-                max: 150,
                 allowExitOnIdle: true
             }
         };
         this.context.oAuth = {
             enable: true,
             accessTokenUrl: "https://login.dev.idsecure.nl/nidp/oauth/nam/token",
-            clientId: "",
-            clientSecret: "",
-            scopes: ["companyData"]
+            clients:[
+                {
+                    afnemerID: "000008",
+                    clientId: "5ddfe678-928b-4270-a20a-0d6cd5979f31",
+                    clientSecret: "NgRKvAHaG8jJs9mhqfRKvVIH3f_gN0MRa1ycnXPMLYouv1-0HMt51xDrY6pnoz39dgbgZtDlwIy0dwdoB3UwQA",
+                    scopes: ["000000099000000080000"]
+                }
+            ]
         }
     }
 }
