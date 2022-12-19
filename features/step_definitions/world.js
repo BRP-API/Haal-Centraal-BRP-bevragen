@@ -25,7 +25,7 @@ class World {
             }
         };
         this.context.oAuth = {
-            enable: true,
+            enable: false,
             accessTokenUrl: "https://login.dev.idsecure.nl/nidp/oauth/nam/token",
             clients:[
                 {
