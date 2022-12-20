@@ -3,7 +3,7 @@ class World {
         this.context = parameters;
         this.context.dataPath = "src/config/BrpService";
         this.context.proxyUrl = "http://localhost:5001/haalcentraal/api/brp";
-        this.context.gbaUrl = "http://localhost:8000/haalcentraal/api/brp/v2";
+        this.context.gbaUrl = "http://localhost:8000/haalcentraal/api/brp";
         this.context.extraHeaders = [
             { "naam": "Authorization", "waarde": "Basic OTkwMDA4fDU5OTp0ZW1wc29sdXRpb24h" }
         ];
@@ -13,7 +13,7 @@ class World {
         };
         this.context.sql = {
             useDb: true,
-            logStatements: true,
+            logStatements: false,
             cleanup: true,
             poolConfig: {
                 user: "root",
