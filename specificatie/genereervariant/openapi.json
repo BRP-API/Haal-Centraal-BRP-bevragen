@@ -546,7 +546,7 @@
               "$ref" : "#/components/schemas/Huisnummertoevoeging"
             },
             "straat" : {
-              "$ref" : "#/components/schemas/OfficieleStraatnaamFilter"
+              "$ref" : "#/components/schemas/StraatFilter"
             }
           }
         } ]
@@ -989,7 +989,7 @@
         "description" : "De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.\n",
         "example" : "2341SX"
       },
-      "OfficieleStraatnaamFilter" : {
+      "StraatFilter" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$",
         "type" : "string",
         "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
@@ -1330,7 +1330,7 @@
       "Adresregel1" : {
         "maxLength" : 40,
         "type" : "string",
-        "description" : "Het eerste deel van een adres is een combinatie van de korteStraatnaam en huisnummer.\n",
+        "description" : "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
         "example" : "Kappeyne v d Cappellostr 26A-3"
       },
       "Adresregel2" : {
@@ -1960,6 +1960,9 @@
           "officieleStraatnaam" : {
             "$ref" : "#/components/schemas/OfficieleStraatnaam"
           },
+          "korteStraatnaam" : {
+            "$ref" : "#/components/schemas/KorteStraatnaam"
+          },
           "huisnummer" : {
             "$ref" : "#/components/schemas/Huisnummer"
           },
@@ -1978,9 +1981,6 @@
           "woonplaats" : {
             "$ref" : "#/components/schemas/Woonplaats"
           },
-          "korteStraatnaam" : {
-            "$ref" : "#/components/schemas/KorteStraatnaam"
-          },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
           }
@@ -1989,7 +1989,12 @@
       "OfficieleStraatnaam" : {
         "maxLength" : 80,
         "type" : "string",
-        "description" : "De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG).\n"
+        "description" : "De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).\n"
+      },
+      "KorteStraatnaam" : {
+        "maxLength" : 24,
+        "type" : "string",
+        "description" : "De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG), zo nodig verkort tot maximaal 24 tekens, of de straatnaam van een niet-BAG adres.\n"
       },
       "Woonplaats" : {
         "title" : "woonplaats naam",
@@ -1997,11 +2002,6 @@
         "type" : "string",
         "description" : "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
         "example" : "Duiven"
-      },
-      "KorteStraatnaam" : {
-        "maxLength" : 24,
-        "type" : "string",
-        "description" : "De verkorte versie van de officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of de straatnaam van een niet-BAG adres.\n"
       },
       "VerblijfadresBinnenlandInOnderzoek" : {
         "allOf" : [ {
