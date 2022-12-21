@@ -781,8 +781,9 @@ components:
       pattern: "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\\
         *{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$"
       type: string
-      description: |
-        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      description: "Een naam die door de gemeente aan een openbare ruimte is gegeven.\
+        \ **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.**\
+        \ **Zoeken met tekstvelden is case-insensitive.** \n"
       example: Tulpstraat
     NummeraanduidingIdentificatie:
       pattern: "^[0-9]{16}$"
@@ -1029,7 +1030,7 @@ components:
       maxLength: 40
       type: string
       description: |
-        Het eerste deel van een adres is een combinatie van de korteStraatnaam en huisnummer.
+        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
       example: Kappeyne v d Cappellostr 26A-3
     Adresregel2:
       maxLength: 50
@@ -1060,6 +1061,7 @@ components:
         Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
     AbstractDatum:
       required:
+      - langFormaat
       - type
       type: object
       properties:
@@ -1485,6 +1487,8 @@ components:
       properties:
         officieleStraatnaam:
           $ref: '#/components/schemas/OfficieleStraatnaam'
+        korteStraatnaam:
+          $ref: '#/components/schemas/KorteStraatnaam'
         huisnummer:
           $ref: '#/components/schemas/Huisnummer'
         huisletter:
@@ -1497,15 +1501,18 @@ components:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
-        korteStraatnaam:
-          $ref: '#/components/schemas/KorteStraatnaam'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfadresBinnenlandInOnderzoek'
     OfficieleStraatnaam:
       maxLength: 80
       type: string
       description: |
-        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG).
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).
+    KorteStraatnaam:
+      maxLength: 24
+      type: string
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG), zo nodig verkort tot maximaal 24 tekens, of de straatnaam van een niet-BAG adres.
     Woonplaats:
       title: woonplaats naam
       pattern: "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$"
@@ -1513,11 +1520,6 @@ components:
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
       example: Duiven
-    KorteStraatnaam:
-      maxLength: 24
-      type: string
-      description: |
-        De verkorte versie van de officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of de straatnaam van een niet-BAG adres.
     VerblijfadresBinnenlandInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
