@@ -11,7 +11,7 @@ paths:
       description: |
         Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.
 
-        1.  Raadpleeg met burgerservicenummer
+        1.  Raadpleeg met burgerservicenummer 
         2.  Zoek met geslachtsnaam en geboortedatum
         3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
         4.  Zoek met postcode en huisnummer
