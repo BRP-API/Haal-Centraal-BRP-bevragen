@@ -75,9 +75,27 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
 
     Voorbeelden:
     | field                                           | element                                    | waarde           |
-    | verblijfplaats.verblijfadres.woonplaats         | woonplaats (11.70)                         | .                |
     | verblijfplaats.nummeraanduidingIdentificatie    | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
     | verblijfplaats.adresseerbaarObjectIdentificatie | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
+
+  Scenario: onbekend waarde "." voor woonplaats (11.70)
+   Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
+    | naam                  | waarde |
+    | functie adres (10.10) | W      |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens   
+    | naam                 | waarde     |
+    | gemeentecode (92.10) | 0344       |
+    | straatnaam (11.10)   | een straat |
+    | woonplaats (11.70)   | .          |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000188                               |
+    | fields              | verblijfplaats.verblijfadres.woonplaats |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam | waarde |
+    | type | Adres  |
+    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
   Scenario: volledig onbekende datum aanvang adreshouding in verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens

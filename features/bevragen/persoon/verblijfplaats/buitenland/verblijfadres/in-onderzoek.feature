@@ -23,6 +23,7 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | inOnderzoek.datumIngangOnderzoek.datum       | <datum>                  |
     | inOnderzoek.datumIngangOnderzoek.langFormaat | <lang formaat>           |
     En heeft de 'verblijfplaats' de volgende 'verblijfadres' gegevens
+    | naam                                         | waarde                       |
     | land.code                                    | 6014                         |
     | land.omschrijving                            | Verenigde Staten van Amerika |
     | inOnderzoek.regel1                           | <regel1 io>                  |
@@ -242,4 +243,24 @@ Rule: 'type' veld van 'verblijfplaats buitenland' is in onderzoek als het identi
     | aanduiding in onderzoek | regel1 io | datum type | datum      | lang formaat | type                          |
     | 080000                  | true      | Datum      | 2002-07-01 | 1 juli 2002  | hele categorie verblijfplaats |
     | 081300                  | true      | Datum      | 2002-07-01 | 1 juli 2002  | hele groep adres buitenland   |
-    | 081310                  |           |            |            |              | land adres buitenland         |
+
+  Scenario: 'land adres buitenland' veld is in onderzoek en regel1 wordt gevraagd
+  
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                    |
+    | land adres buitenland (13.10)   | 6014                      |
+    | aanduiding in onderzoek (83.10) | 081310 |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 000000152                           |
+    | fields              | verblijfplaats.verblijfadres.regel1 |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                                         | waarde                   |
+    | type                                         | VerblijfplaatsBuitenland |
+    | inOnderzoek.type                             | true                     |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                    |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01               |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002              |
+    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens

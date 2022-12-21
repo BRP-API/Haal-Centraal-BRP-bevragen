@@ -190,7 +190,6 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
 
     Voorbeelden:
     | gba in onderzoek waarde |
-    | 081000                  |
     | 081010                  |
 
 Rule: 'type' veld van 'verblijfplaats binnenland (locatie)' is in onderzoek als het identificerende gegeven van locatie ('locatiebeschrijving (12.10)') in onderzoek is
@@ -210,8 +209,8 @@ Rule: 'type' veld van 'verblijfplaats binnenland (locatie)' is in onderzoek als 
     | burgerservicenummer | 000000152                       |
     | fields              | verblijfplaats.functieAdres     |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
+    | naam | waarde  |
+    | type | Locatie |
     En heeft de 'verblijfplaats' de volgende 'inOnderzoek' gegevens
     | naam                             | waarde            |
     | type                             | true              |

@@ -96,5 +96,5 @@ Rule: 'type' veld van 'verblijfplaats onbekend' is in onderzoek als het identifi
     Voorbeelden:
     | aanduiding in onderzoek | datumVan io | type                          |
     | 080000                  | true        | hele categorie verblijfplaats |
-    | 081300                  |             | hele groep adres buitenland   |
+    | 081300                  | true        | hele groep adres buitenland   |
     | 081310                  |             | land adres buitenland         |
