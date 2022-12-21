@@ -34,6 +34,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt o
     | gemeentecode (92.10) | 0519   |
     | straatnaam (11.10)   | Spui   |
     | huisnummer (11.20)   | 31     |
+    | huisletter (11.30)   | a      |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -51,10 +52,11 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt o
     | verblijfplaats.type                                             |                          |               |                   |               |                           |               |
     | verblijfplaats.datumVan                                         | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
     | verblijfplaats.datumVan,verblijfplaats.functieAdres             | datumAanvangAdreshouding | 20150808      | functieAdres.code | W             | functieAdres.omschrijving | woonadres     |
-    | verblijfplaats.verblijfadres                                    | huisnummer               | 31            |                   |               |                           |               |
+    | verblijfplaats.verblijfadres                                    | huisnummer               | 31            | huisletter        | a             |                           |               |
     | verblijfplaats.datumVan,verblijfplaats.verblijfadres.huisnummer | datumAanvangAdreshouding | 20150808      | huisnummer        | 31            |                           |               |
     | verblijfplaats.verblijfadres.regel1                             |                          |               |                   |               |                           |               |
-
+    | verblijfplaats.verblijfadres.huisletter                         | huisletter               | a             |                   |               |                           |               |
+    
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
 
   Scenario: alle velden van een locatie wordt gevraagd met field pad 'verblijfplaats'

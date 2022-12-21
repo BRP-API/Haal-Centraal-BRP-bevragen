@@ -21,6 +21,10 @@ builder.Host.UseSerilog((context, config) =>
         .Enrich.With<ActivityEnricher>()
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
 });
+builder.Services.AddHttpLogging(options =>
+{
+    options.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
+});
 
 // Add services to the container.
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -43,6 +47,8 @@ builder.Services.AddScoped<PersoonRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseHttpLogging();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

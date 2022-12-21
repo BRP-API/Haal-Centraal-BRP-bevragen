@@ -13,10 +13,9 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | functieAdres.code (10.10)              | W        |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                |
-      | straatnaam (11.10)                         | <straat>              |
-      | naam openbare ruimte (11.15)               | <straat>              |
+      | straatnaam (11.10)                         | <straatInBRP>         |
+      | naam openbare ruimte (11.15)               | <openbareRuimteNaam>  |
       | huisnummer (11.20)                         | <huisnrInBRP>         |
-      | postcode (11.60)                           | <postcodeInBRP>       |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving> |
       | gemeentecode (92.10)                       | 0599                  |
       Als gba personen wordt gezocht met de volgende parameters
@@ -27,32 +26,29 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                |
       | straat                           | <straat>              |
-      | naamOpenbareRuimte               | <straat>              |
+      | naamOpenbareRuimte               | <openbareRuimteNaam>  |
       | huisnummer                       | <huisnr>              |
-      | postcode                         | <postcode>            |
       | locatiebeschrijving              | <locatiebeschrijving> |
 
 # Zodra dat kan 'verblijfplaats' vervangen door 'verblijfplaatsBinnenland'
       Voorbeelden:
-      | fields                                                                      | straat      | huisnrInBRP | huisnr | postcodeInBRP  | postcode  | locatiebeschrijving          |
-      | verblijfplaats.verblijfadres.straat                                         | Boterondiep | 31          |        | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres.huisnummer                                     | Boterondiep | 31          | 31     | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | Boterondiep | 31          | 31     | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.postcode   | Boterondiep | 31          |        | 3077AW         | 3077AW    |                              |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            | Boterondiep | 31          |        | 3077AW         |           |                              |
-      | verblijfplaats.type                                                         | Boterondiep | 31          |        | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres                                                | Boterondiep | 31          | 31     | 3077AW         | 3077AW    |                              |
-      | verblijfplaats.verblijfadres.straat                                         | .           | 0           |        | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres.huisnummer                                     | .           | 0           | 0      | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | .           | 0           | 0      | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.postcode   | .           | 0           |        | 3077AW         | 3077AW    |                              |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            | .           | 0           |        | 3077AW         |           |                              |
-      | verblijfplaats.type                                                         | .           | 0           |        | 3077AW         |           |                              |
-      | verblijfplaats.verblijfadres                                                | .           | 0           | 0      | 3077AW         | 3077AW    |                              |
-      | verblijfplaats.verblijfadres.straat                                         |             |             |        |                |           | Woonboot in de Grotere Sloot |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            |             |             |        |                |           | Woonboot in de Grotere Sloot |
-      | verblijfplaats.type                                                         |             |             |        |                |           | Woonboot in de Grotere Sloot |
-      | verblijfplaats.verblijfadres                                                |             |             |        |                |           | Woonboot in de Grotere Sloot |
+      | fields                                                                      | openbareRuimteNaam | straatInBRP | straat      | huisnrInBRP | huisnr | locatiebeschrijving          |
+      | verblijfplaats.verblijfadres.straat                                         | Boterondiep        | Boterondiep | Boterondiep | 31          |        |                              |
+      | verblijfplaats.verblijfadres.huisnummer                                     | Boterondiep        | Boterondiep |             | 31          | 31     |                              |
+      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | Boterondiep        | Boterondiep | Boterondiep | 31          | 31     |                              |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            | Boterondiep        | Boterondiep |             | 31          |        |                              |
+      | verblijfplaats.type                                                         | Boterondiep        | Boterondiep |             | 31          |        |                              |
+      | verblijfplaats.verblijfadres                                                | Boterondiep        | Boterondiep | Boterondiep | 31          | 31     |                              |
+      | verblijfplaats.verblijfadres.straat                                         | .                  | .           | .           | 0           |        |                              |
+      | verblijfplaats.verblijfadres.huisnummer                                     | .                  | .           |             | 0           | 0      |                              |
+      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | .                  | .           | .           | 0           | 0      |                              |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            | .                  | .           |             | 0           |        |                              |
+      | verblijfplaats.type                                                         | .                  | .           |             | 0           |        |                              |
+      | verblijfplaats.verblijfadres                                                | .                  | .           | .           | 0           | 0      |                              |
+      | verblijfplaats.verblijfadres.straat                                         |                    |             |             |             |        | Woonboot in de Grotere Sloot |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            |                    |             |             |             |        | Woonboot in de Grotere Sloot |
+      | verblijfplaats.type                                                         |                    |             |             |             |        | Woonboot in de Grotere Sloot |
+      | verblijfplaats.verblijfadres                                                |                    |             |             |             |        | Woonboot in de Grotere Sloot |
 
   Rule: als verblijfplaats of één of meerdere velden van verblijfplaats wordt gevraagd dan worden de gevraagde velden geleverd aangevuld met de velden straat, locatiebeschrijving en land
     - dit geldt ongeacht of deze velden een standaardwaarde hebben of niet
@@ -66,10 +62,9 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | regel 1 adres buitenland (13.30)       | <regel1InBRP> |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde                |
-      | straatnaam (11.10)                         | <straat>              |
-      | naam openbare ruimte (11.15)               | <straat>              |
+      | straatnaam (11.10)                         | <straatInBRP>         |
+      | naam openbare ruimte (11.15)               | <naamOpenbareRuimte>  |
       | huisnummer (11.20)                         | <huisnrInBRP>         |
-      | postcode (11.60)                           | <postcodeInBRP>       |
       | locatiebeschrijving (12.10)                | <locatiebeschrijving> |
       | gemeentecode (92.10)                       | 0599                  |
       Als gba personen wordt gezocht met de volgende parameters
@@ -80,42 +75,40 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                |
       | straat                           | <straat>              |
-      | naamOpenbareRuimte               | <straat>              |
+      | naamOpenbareRuimte               | <naamOpenbareRuimte>  |
       | huisnummer                       | <huisnr>              |
-      | postcode                         | <postcode>            |
       | locatiebeschrijving              | <locatiebeschrijving> |
       | land.code                        | <landcode>            |
+	  | land.omschrijving                | <land>                |
       | regel1                           | <regel1>              |
 
       Voorbeelden:
-      | fields                                                                      | straat      | huisnrInBRP | huisnr | postcodeInBRP | postcode | locatiebeschrijving          | landcode | regel1InBRP       | regel1            | omschrijving |
-      | verblijfplaats.verblijfadres.straat                                         | Boterondiep | 31          |        | 3077AW        |          |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.verblijfadres.huisnummer                                     | Boterondiep | 31          | 31     | 3077AW        |          |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | Boterondiep | 31          | 31     | 3077AW        |          |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.verblijfadres.postcode                                       | Boterondiep | 31          |        | 3077AW        | 3077AW   |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.type                                                         | Boterondiep | 31          |        | 3077AW        |          |                              |          |                   |                   | type         |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            | Boterondiep | 31          |        | 3077AW        |          |                              |          |                   |                   | locatie      |
-      | verblijfplaats.regel1                                                       | Boterondiep | 31          |        | 3077AW        |          |                              |          |                   |                   | buitenlands  |
-      | verblijfplaats.verblijfadres.straat                                         | .           | 0           |        | 3077AW        |          |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.verblijfadres.huisnummer                                     | .           | 0           | 0      | 3077AW        |          |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | .           | 0           | 0      | 3077AW        |          |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.verblijfadres.postcode                                       | .           | 0           |        | 3077AW        | 3077AW   |                              |          |                   |                   | binnenlands  |
-      | verblijfplaats.type                                                         | .           | 0           |        | 3077AW        |          |                              |          |                   |                   | type         |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            | .           | 0           |        | 3077AW        |          |                              |          |                   |                   | locatie      |
-      | verblijfplaats.regel1                                                       | .           | 0           |        | 3077AW        |          |                              |          |                   |                   | buitenlands  |
-      | verblijfplaats.verblijfadres.straat                                         |             |             |        |               |          | Woonboot in de Grotere Sloot |          |                   |                   | binnenlands  |
-      | verblijfplaats.type                                                         |             |             |        |               |          | Woonboot in de Grotere Sloot |          |                   |                   | type         |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            |             |             |        |               |          | Woonboot in de Grotere Sloot |          |                   |                   | locatie      |
-      | verblijfplaats.verblijfadres.regel1                                         |             |             |        |               |          | Woonboot in de Grotere Sloot |          |                   |                   | buitenlands  |
-      | verblijfplaats.verblijfadres.straat                                         |             |             |        |               |          |                              | 0599     | 14 Rue Camulogene |                   | binnenlands  |
-      | verblijfplaats.type                                                         |             |             |        |               |          |                              | 0599     | 14 Rue Camulogene |                   | type         |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            |             |             |        |               |          |                              | 0599     | 14 Rue Camulogene |                   | locatie      |
-      | verblijfplaats.regel1                                                       |             |             |        |               |          |                              | 0599     | 14 Rue Camulogene | 14 Rue Camulogene | buitenlands  |
-      | verblijfplaats.regel1,verblijfplaats.land                                   |             |             |        |               |          |                              | 0599     | 14 Rue Camulogene | 14 Rue Camulogene | buitenlands  |
-      | verblijfplaats.verblijfadres.straat                                         |             |             |        |               |          |                              | 0000     |                   |                   | binnenlands  |
-      | verblijfplaats.type                                                         |             |             |        |               |          |                              | 0000     |                   |                   | type         |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                            |             |             |        |               |          |                              | 0000     |                   |                   | locatie      |
-      | verblijfplaats.regel1                                                       |             |             |        |               |          |                              | 0000     |                   |                   | buitenlands  |
+      | fields                                                                      | naamOpenbareRuimte | straatInBRP | straat      | huisnrInBRP | huisnr | locatiebeschrijving          | landcode | land      | regel1InBRP       | regel1            | omschrijving |
+      | verblijfplaats.verblijfadres.straat                                         | Boterondiep        | Boterondiep | Boterondiep | 31          |        |                              |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.verblijfadres.huisnummer                                     | Boterondiep        | Boterondiep |             | 31          | 31     |                              |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | Boterondiep        | Boterondiep | Boterondiep | 31          | 31     |                              |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.type                                                         | Boterondiep        | Boterondiep |             | 31          |        |                              |          |           |                   |                   | type         |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            | Boterondiep        | Boterondiep |             | 31          |        |                              |          |           |                   |                   | locatie      |
+      | verblijfplaats.verblijfadres.regel1                                         | Boterondiep        | Boterondiep |             | 31          |        |                              |          |           |                   |                   | buitenlands  |
+      | verblijfplaats.verblijfadres.straat                                         | .                  | .           | .           | 0           |        |                              |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.verblijfadres.huisnummer                                     | .                  | .           |             | 0           | 0      |                              |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.verblijfadres.straat,verblijfplaats.verblijfadres.huisnummer | .                  | .           | .           | 0           | 0      |                              |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.type                                                         | .                  | .           |             | 0           |        |                              |          |           |                   |                   | type         |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            | .                  | .           |             | 0           |        |                              |          |           |                   |                   | locatie      |
+      | verblijfplaats.verblijfadres.regel1                                         | .                  | .           |             | 0           |        |                              |          |           |                   |                   | buitenlands  |
+      | verblijfplaats.verblijfadres.straat                                         |                    |             |             |             |        | Woonboot in de Grotere Sloot |          |           |                   |                   | binnenlands  |
+      | verblijfplaats.type                                                         |                    |             |             |             |        | Woonboot in de Grotere Sloot |          |           |                   |                   | type         |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            |                    |             |             |             |        | Woonboot in de Grotere Sloot |          |           |                   |                   | locatie      |
+      | verblijfplaats.verblijfadres.regel1                                         |                    |             |             |             |        | Woonboot in de Grotere Sloot |          |           |                   |                   | buitenlands  |
+      | verblijfplaats.verblijfadres.straat                                         |                    |             |             |             |        |                              | 0599     | Frankrijk | 14 Rue Camulogene |                   | binnenlands  |
+      | verblijfplaats.type                                                         |                    |             |             |             |        |                              | 0599     | Frankrijk | 14 Rue Camulogene |                   | type         |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            |                    |             |             |             |        |                              | 0599     | Frankrijk | 14 Rue Camulogene |                   | locatie      |
+      | verblijfplaats.verblijfadres.regel1                                         |                    |             |             |             |        |                              | 0599     | Frankrijk | 14 Rue Camulogene | 14 Rue Camulogene | buitenlands  |
+      | verblijfplaats.verblijfadres.regel1,verblijfplaats.verblijfadres.land       |                    |             |             |             |        |                              | 0599     | Frankrijk | 14 Rue Camulogene | 14 Rue Camulogene | buitenlands  |
+      | verblijfplaats.verblijfadres.straat                                         |                    |             |             |             |        |                              | 0000     | Onbekend  |                   |                   | binnenlands  |
+      | verblijfplaats.type                                                         |                    |             |             |             |        |                              | 0000     | Onbekend  |                   |                   | type         |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            |                    |             |             |             |        |                              | 0000     | Onbekend  |                   |                   | locatie      |
+      | verblijfplaats.regel1                                                       |                    |             |             |             |        |                              | 0000     | Onbekend  |                   |                   | buitenlands  |
 
   Rule: wanneer gevraagd wordt om verblijfplaatsBinnenland.datumVan van de verblijfplaats, wordt datumAanvangAdreshouding geleverd
     - dit datumveld wordt geleverd samen met de velden die automatisch geleverd worden omdat ze nodig zijn voor het bepalen van het type
@@ -127,8 +120,7 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
       | datum aanvang adreshouding (10.30) | <datumAanvangAdreshouding> |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                         | waarde                |
-      | straatnaam (11.10)           | <straat>              |
-      | naam openbare ruimte (11.15) | <straat>              |
+      | naam openbare ruimte (11.15) | <naamOpenbareRuimte>  |
       | locatiebeschrijving (12.10)  | <locatiebeschrijving> |
       | gemeentecode (92.10)         | 0599                  |
       Als gba personen wordt gezocht met de volgende parameters
@@ -139,16 +131,15 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
 #      | fields              | verblijfplaatsBinnenland.datumVan |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                     |
-      | straat                           | <straat>                   |
-      | naamOpenbareRuimte               | <straat>                   |
+      | naamOpenbareRuimte               | <naamOpenbareRuimte>       |
       | locatiebeschrijving              | <locatiebeschrijving>      |
       | datumAanvangAdreshouding         | <datumAanvangAdreshouding> |
 
       Voorbeelden:
-      | omschrijving | datumAanvangAdreshouding | straat      | locatiebeschrijving          |
-      | binnenlands  | 20150808                 | Boterondiep |                              |
-      | binnenlands  | 20150808                 | .           |                              |
-      | locatie      | 20000310                 |             | Woonboot in de Grotere Sloot |
+      | omschrijving | datumAanvangAdreshouding | naamOpenbareRuimte | locatiebeschrijving          |
+      | binnenlands  | 20150808                 | Boterondiep        |                              |
+      | binnenlands  | 20150808                 | .                  |                              |
+      | locatie      | 20000310                 |                    | Woonboot in de Grotere Sloot |
 
   Rule: wanneer gevraagd wordt om datumVan van de verblijfplaats zonder de alias 'verblijfplaatsBinnenland', wordt datumAanvangAdreshouding of datumAanvangAdresBuitenland geleverd
     - deze datumvelden worden geleverd samen met de velden die automatisch geleverd worden omdat ze nodig zijn voor het bepalen van het type
@@ -156,49 +147,34 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide verblijfplaat
     - datumAanvangAdresBuitenland wordt geleverd als het veld land wordt geleverd
 
    Abstract Scenario: Vragen om datumVan van een <omschrijving>adres zonder de alias verblijfplaatsBinnenland
-      Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'verblijfplaats' gegevens
-      | naam                                   | waarde                       |
-      | functieAdres.code (10.10)              | W                            |
-      | datum aanvang adreshouding (10.30)     | <datumAanvangAdreshouding>   |
-      | land (13.10)                           | <landcode>                   |
-      | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland |
+      Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde                        |
+      | datum aanvang adreshouding (10.30)     | <datumAanvangAdreshouding>    |
+      | land (13.10)                           | <landcode>                    |
+      | datum aanvang adres buitenland (13.20) | <datumAanvangAdresBuitenland> |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                         | waarde                |
-      | straatnaam (11.10)           | <straat>              |
-      | naam openbare ruimte (11.15) | <straat>              |
+      | naam openbare ruimte (11.15) | <naamOpenbareRuimte>  |
       | locatiebeschrijving (12.10)  | <locatiebeschrijving> |
       | gemeentecode (92.10)         | 0599                  |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000322                       |
+      | burgerservicenummer | 000000310                       |
       | fields              | verblijfplaats.datumVan         |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde                        |
-      | straat                           | <straat>                      |
-      | naamOpenbareRuimte               | <straat>                      |
+      | naamOpenbareRuimte               | <naamOpenbareRuimte>          |
       | locatiebeschrijving              | <locatiebeschrijving>         |
       | datumAanvangAdreshouding         | <datumAanvangAdreshouding>    |
       | land.code                        | <landcode>                    |
+	  | land.omschrijving                | <land>                        |
       | datumAanvangAdresBuitenland      | <datumAanvangAdresBuitenland> |
 
       Voorbeelden:
-      | straat      | locatiebeschrijving          | landcode | omschrijving | datumAanvangAdreshouding | datumAanvangAdresBuitenland |
-      | Boterondiep |                              |          | binnenlands  | 20150808                 |                             |
-      | Boterondiep |                              |          | locatie      | 20150808                 |                             |
-      | Boterondiep |                              |          | buitenlands  | 20150808                 |                             |
-      | .           |                              |          | binnenlands  | 20150808                 |                             |
-      | .           |                              |          | locatie      | 20150808                 |                             |
-      | .           |                              |          | buitenlands  | 20150808                 |                             |
-      |             | Woonboot in de Grotere Sloot |          | binnenlands  | 20150808                 |                             |
-      |             | Woonboot in de Grotere Sloot |          | locatie      | 20150808                 |                             |
-      |             | Woonboot in de Grotere Sloot |          | buitenlands  | 20150808                 |                             |
-      |             |                              | 0599     | binnenlands  |                          | 20150808                    |
-      |             |                              | 0599     | locatie      |                          | 20150808                    |
-      |             |                              | 0599     | buitenlands  |                          | 20150808                    |
-      |             |                              | 0000     | binnenlands  |                          | 20150808                    |
-      |             |                              | 0000     | locatie      |                          | 20150808                    |
-      |             |                              | 0000     | buitenlands  |                          | 20150808                    |
-      |             |                              | 0000     | binnenlands  |                          |                             |
-      |             |                              | 0000     | locatie      |                          |                             |
-      |             |                              | 0000     | buitenlands  |                          |                             |
+      | naamOpenbareRuimte | locatiebeschrijving          | landcode | land      | omschrijving | datumAanvangAdreshouding | datumAanvangAdresBuitenland |
+      | Boterondiep        |                              |          |           | binnenlands  | 20150808                 |                             |
+      | .                  |                              |          |           | binnenlands  | 20150808                 |                             |
+      |                    | Woonboot in de Grotere Sloot |          |           | locatie      | 20150808                 |                             |
+      |                    |                              | 0599     | Frankrijk | buitenlands  |                          | 20150808                    |
+      |                    |                              | 0000     | Onbekend  | buitenlands  |                          | 20150808                    |
