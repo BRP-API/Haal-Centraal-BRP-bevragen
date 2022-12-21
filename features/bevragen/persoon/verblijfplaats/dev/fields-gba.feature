@@ -57,7 +57,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt, 
     | verblijfplaats.verblijfadres                                    | huisnummer               | 31            | huisletter        | a             |                           |               |
     | verblijfplaats.verblijfadres.huisletter                         | huisletter               | a             |                   |               |                           |               |
 
-# enkele van de voorbeelden hierboven naar volgende rule en hier nog scenario's definiëren met standaardwaarden
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt, als 'straatnaam (11.10)' niet aanwezig is, hetzij 'locatiebeschrijving (12.10)' hetzij 'land adres buitenland (13.10)' geleverd
 
@@ -104,7 +104,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt, 
     | verblijfplaats.verblijfadres.huisnummer                                         |
     | verblijfplaats.verblijfadres.huisnummer,verblijfplaats.verblijfadres.huisletter |
 
-# Hieronder ook scenario's definiëren (ook met standaardwaarden)
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt, als deze aanwezig is, ook 'locatiebeschrijving (12.10)' geleverd
 
@@ -156,7 +156,7 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt
     | verblijfplaats.datumVan,verblijfplaats.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
     | verblijfplaats.verblijfadres.locatiebeschrijving                         |                          |               |                   |               |                           |               |
 
-# enkele van de voorbeelden hierboven naar volgende rule en hier nog scenario's definiëren met standaardwaarden
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt, als 'locatiebeschrijving (12.10)' niet aanwezig is, hetzij 'straatnaam (11.10)' hetzij 'land adres buitenland (13.10)' geleverd
 
@@ -203,7 +203,7 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt
     | verblijfplaats.verblijfadres.locatiebeschrijving                                           |
     | verblijfplaats.verblijfadres.locatiebeschrijving,verblijfplaats.verblijfadres.functieAdres |
 
-# Hieronder ook scenario's definiëren (ook met standaardwaarden)
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt gevraagd, dan wordt, als deze aanwezig is, ook 'land adres buitenland (13.10)' geleverd
 
@@ -302,7 +302,7 @@ Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt g
     | verblijfplaats.verblijfadres.regel1                                   |
     | verblijfplaats.verblijfadres.regel1,verblijfplaats.verblijfadres.land |
 
-# Hieronder ook scenario's definiëren (ook met standaardwaarden)
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt, als deze aanwezig is, ook 'straatnaam (11.10)' geleverd
 
@@ -354,7 +354,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | verblijfplaatsBinnenland.verblijfadres                                              | huisnummer               | 31            |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer | datumAanvangAdreshouding | 20150808      | huisnummer        | 31            |                           |               |
 
-# hier nog scenario's definiëren met standaardwaarden
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt, als deze niet aanwezig is, 'locatiebeschrijving (12.10)' geleverd
 
@@ -382,7 +382,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | verblijfplaatsBinnenland.verblijfadres.huisnummer                                   |                          |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisletter | datumAanvangAdreshouding | 20150808      |
 
-# Hieronder ook scenario's definiëren (ook met standaardwaarden)
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt, als deze aanwezig is, ook 'locatiebeschrijving (12.10)' geleverd
 
@@ -433,7 +433,7 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de fie
     | verblijfplaatsBinnenland.verblijfadres                                                       |                          |               |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
 
-# hier nog scenario's definiëren met standaardwaarden
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt, als deze niet aanwezig is, 'straatnaam (11.10)' geleverd
 
@@ -461,9 +461,9 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de fie
     | verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving                                   |                          |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |
 
-# Hieronder ook scenario's definiëren (ook met standaardwaarden)
+# Hieronder nog scenario's definiëren met standaardwaarden
 
-Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats object wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
+Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
 
   Abstract Scenario: de persoon heeft een verblijfplaats buitenland en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -481,13 +481,9 @@ Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats o
     Dan heeft de response een persoon zonder 'verblijfplaats' gegevens
 
     Voorbeelden:
-    | fields                                                                              |
-    | verblijfplaatsBinnenland                                                            |
-    | verblijfplaatsBinnenland.type                                                       |
-    | verblijfplaatsBinnenland.datumVan                                                   |
-    | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.functieAdres             |
-    | verblijfplaatsBinnenland.verblijfadres                                              |
-    | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer |
+    | fields                                                        |
+    | verblijfplaatsBinnenland.regel1                               |
+    | verblijfplaatsBinnenland.regel1,verblijfplaatsBinnenland.land |
 
   Abstract Scenario: de persoon heeft een verblijfplaats buitenland met een onbekend land en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -510,105 +506,131 @@ Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats o
     | verblijfplaatsBinnenland.verblijfadres                                              |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer |
 
-Rule: wanneer om datumVan van een adres wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
+# Hieronder nog scenario's definiëren met standaardwaarden
 
-   Scenario: datumVan van een adres wordt gevraagd met field pad 'verblijfplaats.verblijfadres.datumVan'
-      Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
-      | naam                               | waarde   |
-      | datum aanvang adreshouding (10.30) | 20150808 |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                 | waarde |
-      | gemeentecode (92.10) | 0519   |
-      | straatnaam (11.10)   | Spui   |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                |
-      | type                | RaadpleegMetBurgerservicenummer       |
-      | burgerservicenummer | 000000310                             |
-      | fields              | verblijfplaats.verblijfadres.datumVan |
-      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde   |
-      | straat                   | Spui     |
-      | datumAanvangAdreshouding | 20150808 |
+Rule: wanneer om datumVan wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
 
+  Scenario: datumVan wordt gevraagd met field pad 'verblijfplaats.verblijfadres.datumVan' en adres is aanwezig
+    Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                 | waarde |
+    | gemeentecode (92.10) | 0519   |
+    | straatnaam (11.10)   | Spui   |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000310                       |
+    | fields              | verblijfplaats.datumVan         |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam                     | waarde   |
+    | straat                   | Spui     |
+    | datumAanvangAdreshouding | 20150808 |
 
+# Hieronder nog scenario's definiëren met standaardwaarden
 
+Rule: wanneer om datumVan wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
 
+  Scenario: datumVan wordt gevraagd met field pad 'verblijfplaats.verblijfadres.datumVan' en locatie is aanwezig
+    Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                        | waarde                      |
+    | gemeentecode (92.10)        | 0519                        |
+    | locatiebeschrijving (12.10) | Woonboot bij de Grote Sloot |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000310                       |
+    | fields              | verblijfplaats.datumVan         |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam                     | waarde                      |
+    | locatiebeschrijving      | Woonboot bij de Grote Sloot |
+    | datumAanvangAdreshouding | 20150808                    |
 
+# Hieronder nog scenario's definiëren met standaardwaarden
 
+Rule: wanneer om datumVan wordt gevraagd, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' geleverd
 
+  Scenario: datumVan wordt gevraagd met field pad 'verblijfplaats.verblijfadres.datumVan' en verblijfplaats buitenland is aanwezig
+    Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+    | naam                                   | waarde                      |
+    | datum aanvang adres buitenland (13.20) | 20150808                    |
+    | land adres buitenland (13.10)          | 6014                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000310                       |
+    | fields              | verblijfplaats.datumVan         |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                        | waarde                       |
+    | land.code                   | 6014                         |
+    | land.omschrijving           | Verenigde Staten van Amerika |
+    | datumAanvangAdresBuitenland | 20150808                     |
 
+# Hieronder nog scenario's definiëren met standaardwaarden
 
+Rule: wanneer om datumVan wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
 
+  Scenario: datumVan wordt gevraagd met field pad 'verblijfplaatsBinnenland.datumVan' en adres is aanwezig
+    Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                 | waarde |
+    | gemeentecode (92.10) | 0519   |
+    | straatnaam (11.10)   | Spui   |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 000000310                         |
+    | fields              | verblijfplaatsBinnenland.datumVan |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam                     | waarde   |
+    | straat                   | Spui     |
+    | datumAanvangAdreshouding | 20150808 |
 
+# Hieronder nog scenario's definiëren met standaardwaarden
 
+Rule: wanneer om datumVan wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
 
-Rule: wanneer om datumVan van een adres wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
+  Scenario: datumVan wordt gevraagd met field pad 'verblijfplaatsBinnenland.datumVan' en locatie is aanwezig
+    Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                        | waarde                      |
+    | gemeentecode (92.10)        | 0519                        |
+    | locatiebeschrijving (12.10) | Woonboot bij de Grote Sloot |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 000000310                         |
+    | fields              | verblijfplaatsBinnenland.datumVan |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam                     | waarde                      |
+    | locatiebeschrijving      | Woonboot bij de Grote Sloot |
+    | datumAanvangAdreshouding | 20150808                    |
 
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
+# Hieronder nog scenario's definiëren met standaardwaarden
 
-Rule: wanneer om datumVan van een adres wordt gevraagd, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' geleverd
+Rule: wanneer om datumVan wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
 
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
+  Scenario: datumVan wordt gevraagd met field pad 'verblijfplaatsBinnenland.datumVan' en verblijfplaats buitenland is aanwezig
+    Gegeven de persoon met burgerservicenummer '000000310' heeft de volgende 'verblijfplaats' gegevens
+    | naam                                   | waarde                      |
+    | datum aanvang adres buitenland (13.20) | 20150808                    |
+    | land adres buitenland (13.10)          | 6014                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 000000310                         |
+    | fields              | verblijfplaatsBinnenland.datumVan |
+    Dan heeft de response een persoon zonder 'verblijfplaats' gegevens
 
-Rule: wanneer om datumVan van een locatie wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een locatie wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een locatie wordt gevraagd, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een verblijfplaats buitenland wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een verblijfplaats buitenland wordt gevraagd, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een verblijfplaats buitenland wordt gevraagd, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)'  geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een verblijfplaats buitenland wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'straatnaam (11.10)' aanwezig zijn, een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een verblijfplaats buitenland wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adreshouding (10.30)’ en 'locatiebeschrijving (12.10)' aanwezig zijn, een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
-
-Rule: wanneer om datumVan van een verblijfplaats buitenland wordt gevraagd met de field alias verblijfplaatsBinnenland, wordt, als ‘datum aanvang adres buitenland (13.20)’ en 'land adres buitenland (13.10)' aanwezig zijn, een verblijfplaats zonder gegevens/leeg verblijfplaats object geleverd
-
-# En scenario’s uit informatievragen-fields-gba.feature overnemen
+# Hieronder nog scenario's definiëren met standaardwaarden
 
 Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
