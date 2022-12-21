@@ -1,6 +1,7 @@
 ﻿using HaalCentraal.BrpProxy.Generated;
 using Newtonsoft.Json;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace BrpProxy.Validators
 {
@@ -113,7 +114,7 @@ namespace BrpProxy.Validators
             return retval;
         }
 
-        public static T? Filter<T>(this T entity, IEnumerable<string> fields)
+        public static T? Filter<T>(this T? entity, IEnumerable<string> fields)
         {
             if (entity == null)
             {
@@ -222,6 +223,163 @@ namespace BrpProxy.Validators
             if (val == null) return (null, default);
 
             return (pi, (TResult)val);
+        }
+
+        public static IEnumerable<string> ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths(this IEnumerable<string>? fields)
+        {
+            var retval = new List<string>();
+
+            if(fields == null)
+            {
+                return retval;
+            }
+
+            foreach (var field in fields)
+            {
+                switch (field)
+                {
+                    case "geboorte.datum":
+                    case "verblijfplaats.type":
+                        retval.Add(field);
+                        break;
+                    case "verblijfplaatsBinnenland.type":
+                        retval.Add("verblijfplaats.type");
+                        break;
+                    default:
+                        retval.Add(
+                            Regex.Replace(field,
+                                @"(\.type|\.datum|\.langFormaat|\.jaar|\.maand|\.onbekend|\.code|\.omschrijving)$|(Binnenland)", ""));
+                        break;
+                }
+            }
+
+            return retval;
+        }
+
+        private static bool HeeftGeenInOnderzoekField(this string field)
+        {
+            return new[]
+            {
+                "aNummer",
+                "datumEersteInschrijvingGBA"
+            }
+            .Contains(field);
+        }
+
+        private static bool IsPersoonField(this string field)
+        {
+            return new[]
+            {
+                "burgerservicenummer",
+                "leeftijd",
+                "geslacht"
+            }
+            .Contains(field);
+        }
+
+        private static bool IsGemeenteField(this string field)
+        {
+            return new[]
+            {
+                "gemeenteVanInschrijving",
+                "datumInschrijvingInGemeente"
+            }
+            .Contains(field);
+        }
+
+        private static bool IsGezagField(this string field)
+        {
+            return new[]
+            {
+                "indicatieGezagMinderjarige",
+                "indicatieCurateleRegister"
+            }
+            .Contains(field);
+        }
+
+        private static bool IsVerblijfplaatsFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "verblijfplaats"
+            }
+            .Contains(fieldPart);
+        }
+
+        private static bool IsVerblijfadresFieldPart(this string fieldPart) => fieldPart == "verblijfadres";
+
+        public static IEnumerable<string> AddInOnderzoekFields(this IEnumerable<string> fields)
+        {
+            var retval = new List<string>();
+
+            foreach (var field in fields)
+            {
+                retval.Add(field);
+                if (field.HeeftGeenInOnderzoekField())
+                {
+                    continue;
+                }
+
+                var fieldParts = field.Split('.');
+                switch (fieldParts.Length)
+                {
+                    case 1:
+                        if (fieldParts[0].IsVerblijfplaatsFieldPart())
+                        {
+                            retval.Add($"{fieldParts[0]}.inOnderzoek");
+                        }
+                        else
+                        {
+                            retval.Add($"inOnderzoek.{fieldParts[0]}");
+                            if (fieldParts[0].IsPersoonField())
+                            {
+                                retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
+                            }
+                            else if (fieldParts[0].IsGemeenteField())
+                            {
+                                retval.Add("inOnderzoek.datumIngangOnderzoekGemeente");
+                            }
+                            else if (fieldParts[0].IsGezagField())
+                            {
+                                retval.Add("inOnderzoek.datumIngangOnderzoekGezag");
+                            }
+                            else
+                            {
+                                retval.Add("inOnderzoek.datumIngangOnderzoek");
+                            }
+                        }
+                        break;
+                    case 2:
+                        if (fieldParts[1].IsVerblijfadresFieldPart())
+                        {
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.type");
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
+                        }
+                        else
+                        {
+                            if (fieldParts[0].IsVerblijfplaatsFieldPart())
+                            {
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.type");
+                            }
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.{fieldParts[1]}");
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
+                        }
+                        break;
+                    case 3:
+                        if (fieldParts[0].IsVerblijfplaatsFieldPart())
+                        {
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.type");
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
+                        }
+                        retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.{fieldParts[2]}");
+                        retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.datumIngangOnderzoek");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return retval.Distinct();
         }
     }
 }

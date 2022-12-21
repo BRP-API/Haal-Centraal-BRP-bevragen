@@ -12,14 +12,24 @@ public class FieldsHelper
     public ReadOnlyDictionary<string,string> PersoonFieldPaths { get; }
     public ReadOnlyCollection<string> BeperktPersoonFieldPaths { get; }
 
-    private static IDictionary<string, string> SetupFieldShortcuts(string persoonFieldsMappingFilePath)
+    private IDictionary<string, string> SetupFieldShortcuts(string persoonFieldsMappingFilePath)
     {
         var dictionary = new Dictionary<string, string>();
 
-        foreach (var line in File.ReadAllLines(persoonFieldsMappingFilePath).Skip(1))
+        foreach(var kvp in PersoonFieldPaths)
         {
-            var lineItems = line.Split(',');
-            dictionary.Add(lineItems[0], lineItems[1]);
+            if (kvp.Key.StartsWith("verblijfplaats") &&
+                !new[]
+                {
+                    "verblijfplaats.verblijfadres.regel1",
+                    "verblijfplaats.verblijfadres.regel2",
+                    "verblijfplaats.verblijfadres.regel3",
+                    "verblijfplaats.verblijfadres.land"
+                }.Contains(kvp.Key))
+            {
+                dictionary.Add(kvp.Key.Replace("verblijfplaats", "verblijfplaatsBinnenland"), kvp.Value);
+            }
+            dictionary.Add(kvp.Key, kvp.Value);
         }
 
         return dictionary;
@@ -54,64 +64,24 @@ public class FieldsHelper
     {
         _logger = logger;
 
-        PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonFieldsMapping"]));
-        PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonBeperktFieldsMapping"]));
         PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
         BeperktPersoonFieldPaths = new ReadOnlyCollection<string>(typeof(PersoonBeperkt).GetPropertyPaths("HaalCentraal"));
+        PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonFieldsMapping"]));
+        PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonBeperktFieldsMapping"]));
     }
 
     public ICollection<string> AddExtraPersoonFields(ICollection<string> fields)
     {
-        var retval = new List<string>()
-        {
+        var retval = fields
+            .ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths()
+            .AddInOnderzoekFields()
+            .ToList();
+
+        retval.AddRange(new[]
+            {
             "geheimhoudingPersoonsgegevens",
-            "opschortingBijhouding.reden"
-        };
-
-        foreach(var field in fields)
-        {
-            var fieldFullPath = PersoonFieldShortcuts[field];
-            retval.Add(fieldFullPath);
-
-            if (new[] { "adressering.aanhef", "adressering.aanschrijfwijze", "adressering.gebruikInLopendeTekst" }.Contains(fieldFullPath))
-            {
-                retval.Add("adressering.inOnderzoek.datumIngangOnderzoekPersoon");
-                retval.Add("adressering.inOnderzoek.datumIngangOnderzoekPartner");
-            }
-            if (new[] { "adressering.adresregel1", "adressering.adresregel2", "adressering.adresregel3" }.Contains(fieldFullPath))
-            {
-                retval.Add("adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
-            }
-            if (new[] { "aNummer", "burgerservicenummer", "leeftijd", "geslacht", "geslacht.code", "geslacht.omschrijving" }.Contains(fieldFullPath))
-            {
-                retval.Add("inOnderzoek.datumIngangOnderzoekPersoon");
-            }
-            if (new[] { "gemeenteVanInschrijving", "datumInschrijvingInGemeente" }.Contains(fieldFullPath))
-            {
-                retval.Add("inOnderzoek.datumIngangOnderzoekGemeente");
-            }
-            if (field.Contains("overlijden"))
-            {
-                retval.Add("overlijden.indicatieOverleden");
-                retval.Add("overlijden.inOnderzoek.indicatieOverleden");
-            }
-            if (new[] {"indicatieGezagMinderjarige", "indicatieCurateleRegister" }.Contains(fieldFullPath))
-            {
-                retval.Add("inOnderzoek.datumIngangOnderzoekGezag");
-            }
-
-            var inOnderzoekField = PersoonFieldPaths[fieldFullPath];
-            if (!string.IsNullOrEmpty(inOnderzoekField))
-            {
-                retval.Add(inOnderzoekField);
-                var datumIngangOnderzoekField = inOnderzoekField.EndsWith("inOnderzoek")
-                    ? $"{inOnderzoekField}.datumIngangOnderzoek"
-                    : $"{inOnderzoekField[0..inOnderzoekField.LastIndexOf('.')]}.datumIngangOnderzoek";
-                retval.Add(datumIngangOnderzoekField);
-            }
-        }
-
-        retval = retval.Distinct().ToList();
+            "opschortingBijhouding"
+            });
 
         _logger.LogDebug("extra persoon fields: {@fields}", retval);
 

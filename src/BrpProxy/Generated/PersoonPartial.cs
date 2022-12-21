@@ -28,7 +28,7 @@ public partial class Persoon
 
     public bool ShouldSerializeUitsluitingKiesrecht() => UitsluitingKiesrecht != null && UitsluitingKiesrecht.ShouldSerialize();
 
-    public bool ShouldSerializeVerblijfplaats() => Verblijfplaats != null && Verblijfplaats.ShouldSerialize();
+    public bool ShouldSerializeVerblijfplaats() => Verblijfplaats != null;
 
     public bool ShouldSerializeVerblijfstitel() => Verblijfstitel != null && Verblijfstitel.ShouldSerialize();
 
@@ -55,7 +55,6 @@ public partial class Persoon
         ShouldSerializeOverlijden() ||
         ShouldSerializePartners() ||
         ShouldSerializeUitsluitingKiesrecht() ||
-        ShouldSerializeVerblijfplaats() ||
         ShouldSerializeVerblijfstitel()
         ;
 }

@@ -7,12 +7,11 @@ public partial class Adres
         DatumIngangGeldigheid != null ||
         DatumVan != null ||
         FunctieAdres != null ||
-        InOnderzoek != null ||
         NummeraanduidingIdentificatie != null ||
         Verblijfadres != null
         ;
 
-    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null;
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
     public bool ShouldSerializeVerblijfadres() => Verblijfadres != null;
 }

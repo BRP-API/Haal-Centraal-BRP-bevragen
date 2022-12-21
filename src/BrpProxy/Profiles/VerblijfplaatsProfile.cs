@@ -21,8 +21,7 @@ public class VerblijfplaatsProfile : Profile
         CreateMap<GbaVerblijfplaats, VerblijfadresBinnenland>()
             .ForMember(dest => dest.Straat, opt =>
             {
-                opt.PreCondition(src => src.Straat != ".");
-                opt.MapFrom(src => src.MapStraat());
+                opt.MapFrom(src => src.NaamOpenbareRuimte);
             })
             .ForMember(dest => dest.KorteNaam, opt => 
             {
