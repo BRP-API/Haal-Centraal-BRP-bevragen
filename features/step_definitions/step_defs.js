@@ -119,7 +119,8 @@ const tableNameMap = new Map([
     ['adres', 'lo3_adres'],
     ['geboorte', 'lo3_pl_persoon'],
     ['immigratie', 'lo3_pl_verblijfplaats'],
-    ['autorisatie', 'lo3_autorisatie']
+    ['autorisatie', 'lo3_autorisatie'],
+    ['protocollering', 'haalcentraal_vraag']
 ]);
 
 const columnNameMap = new Map([
@@ -272,6 +273,8 @@ async function deleteRecords(client, sqlData) {
             case 'autorisatie':
                 id = sqlData.ids.autorisatie_id;
                 break;
+            case 'protocollering':
+                break;
             default:
                 id = sqlData.ids.pl_id;
                 break;
@@ -288,35 +291,37 @@ function equals(sqlData, adresData) {
 }
 
 After(async function() {
-    if(pool !== undefined && this.context.sql.cleanup) {
-        let client;
-        try {
-            client = await pool.connect();
+    if(pool === undefined || !this.context.sql.cleanup) {
+        return;
+    }
+    
+    let client;
+    try {
+        client = await pool.connect();
 
-            let adresData;
+        let adresData;
 
-            if(this.context.sqlData !== undefined) {
-                for(const sqlData of this.context.sqlData) {
-                    if (equals(sqlData, ['adres', 'ids'])) {
-                        adresData = sqlData;
-                    }
-                    else {
-                        await deleteRecords(client, sqlData);
-                    }
+        if(this.context.sqlData !== undefined) {
+            for(const sqlData of this.context.sqlData) {
+                if (equals(sqlData, ['adres', 'ids'])) {
+                    adresData = sqlData;
+                }
+                else {
+                    await deleteRecords(client, sqlData);
                 }
             }
+        }
 
-            if(adresData !== undefined) {
-                await deleteRecords(client, adresData);
-            }
+        if(adresData !== undefined) {
+            await deleteRecords(client, adresData);
         }
-        catch(ex) {
-            console.log(ex.stack);
-        }
-        finally {
-            if(client !== undefined) {
-                client.release();
-            }
+    }
+    catch(ex) {
+        console.log(ex.stack);
+    }
+    finally {
+        if(client !== undefined) {
+            client.release();
         }
     }
 });
@@ -742,6 +747,42 @@ async function executeSqlStatements(sqlData) {
     }
 }
 
+Then(/^heeft de persoon met anummer '(.*)' de volgende '(.*)' gegevens$/, async function (anummer, tabelNaam, dataTable) {
+    this.context.verifyResponse = false;
+    const sqlData = dataTable.hashes()[0];
+
+    if (sqlData !== undefined && pool !== undefined) {
+        let res;
+        let client;
+        try {
+            let tableName = tableNameMap.get(tabelNaam);
+            if(tableName === undefined) {
+                tableName = tabelNaam;
+            }
+            const sql = `SELECT * FROM public.${tableName} WHERE anummer=${anummer} ORDER BY request_datum DESC LIMIT 1`;
+
+            client = await pool.connect();
+            res = await client.query(sql);
+        }
+        catch(ex) {
+            console.log(ex);
+        }
+        finally {
+            if(client !== undefined){
+                client.release();
+            }
+        }
+
+        should.exist(res);
+        res.rows.length.should.equal(1, `Geen ${tabelNaam} gegevens gevonden voor persoon met anummer ${anummer}`);
+
+        const actual = res.rows[0]; 
+        Object.keys(sqlData).forEach(function(key) {
+            actual[key].split(' ').should.have.members(sqlData[key].split(' '), `${actual[key]} !== ${sqlData[key]}`);
+        });
+    }
+});
+
 Given(/^een adres heeft de volgende gegevens$/, function (dataTable) {
     if(this.context.sqlData === undefined) {
         this.context.sqlData = [];
@@ -1107,6 +1148,10 @@ function setPersoonProperties(persoon, propertyGroupName, dataTable) {
 }
 
 After(async function() {
+    if(this.context.verifyResponse !== undefined &&
+        !this.context.verifyResponse) {
+        return;
+    }
     if(this.context.response === undefined) {
         return;
     }
