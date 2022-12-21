@@ -1030,7 +1030,7 @@ components:
       maxLength: 40
       type: string
       description: |
-        Het eerste deel van een adres is een combinatie van de straat en huisnummer.
+        Het eerste deel van een adres is een combinatie van de korteStraatnaam en huisnummer.
       example: Kappeyne v d Cappellostr 26A-3
     Adresregel2:
       maxLength: 50
