@@ -28,6 +28,10 @@ builder.Host.UseSerilog((context, config) =>
         .WriteTo.File(new EcsTextFormatter(), context.Configuration["Ecs:Path"])
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
 });
+builder.Services.AddHttpLogging(options =>
+{
+    options.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
+});
 
 builder.Services.AddOpenTelemetryTracing(b =>
 {
@@ -54,6 +58,7 @@ builder.Services.AddOcelot()
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseHttpLogging();
 
 //app.UseHttpsRedirection();
 

@@ -118,3 +118,23 @@ WHERE titel_predicaat_soort = 'predikaat';
 ALTER TABLE public.lo3_pl_persoon RENAME COLUMN titel_predikaat TO titel_predicaat;
 ```
 
+### Create haalcentraal_vraag tabel script
+
+Voer de volgende regels uit:
+
+```
+CREATE TABLE IF NOT EXISTS public.haalcentraal_vraag
+(
+    request_id character varying(32) COLLATE pg_catalog."default" NOT NULL,
+    request_datum timestamp without time zone NOT NULL DEFAULT now(),
+    afnemer_code integer NOT NULL,
+    anummer bigint NOT NULL,
+    request_zoek_rubrieken text COLLATE pg_catalog."default",
+    request_geleverde_rubrieken text COLLATE pg_catalog."default",
+    verwerkt boolean DEFAULT false
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+```
