@@ -1063,11 +1063,15 @@ Functionaliteit: in onderzoek
       | naam                            | waarde   |
       | aanduiding in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)  | 20220307 |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                                | waarde                |
+      | straatnaam (11.10)                  | .                     |
+      | gemeentecode (92.10)                | 0344                  |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                              |
       | type                | RaadpleegMetBurgerservicenummer                     |
       | burgerservicenummer | 000000577                                           |
-      | fields              | adresregel1,adresregel2,officieleStraatnaam,korteStraatnaam,woonplaats |
+      | fields              | adressering.adresregel1,adressering.adresregel2,verblijfplaats.verblijfadres.officieleStraatnaam,verblijfplaats.verblijfadres.korteStraatnaam,verblijfplaats.verblijfadres.woonplaats |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                                                                      | waarde                   |
       | adressering.inOnderzoek.adresregel1                                       | <adresregel1>            |
@@ -1077,7 +1081,7 @@ Functionaliteit: in onderzoek
       | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat    | 7 maart 2022             | 
       | verblijfplaats.type                                                       | <type>                   |  
       | verblijfplaats.inOnderzoek.type                                           | <verbl.plaats type>      |
-      | verblijfplaats.inOnderzoek.datumIngangOnderzoek.datum                     | <verbl.plaats datum>     |
+      | verblijfplaats.inOnderzoek.datumIngangOnderzoek.datum                     | <verbl.plaats datum>     |    
       | verblijfplaats.inOnderzoek.datumIngangOnderzoek.type                      | <verbl.plaats datumtype> |
       | verblijfplaats.inOnderzoek.datumIngangOnderzoek.langFormaat               | <verbl.plaats lang>      |
       | verblijfplaats.verblijfadres.inOnderzoek.korteStraatnaam                  | <korteNaam>              |

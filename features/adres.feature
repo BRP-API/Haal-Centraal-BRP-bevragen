@@ -4,42 +4,10 @@
 Functionaliteit: Adresvelden vullen
 
 
-# Onderstaande rule en scenario moeten m.i. nog steeds verplaatst worden naar 
-  Rule: Voor een binnenlands adres wordt:
-          -  veld "officieleStraatnaam" gevuld met de naam openbare ruimte (11.15). 
-          -  veld "korteStraatnaam" wordt gevuld met straatnaam (11.10).
-
-    Abstract Scenario: opnemen officieleStraatnaam en korteStraatnaam bij een binnenlands adres
-    Gegeven de persoon met burgerservicenummer '<burgerservicenummer>' heeft de volgende 'verblijfplaats' gegevens
-      | naam                  | waarde      |
-      | functie adres (10.10) | W           |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde                 |
-      | straatnaam (11.10)           | <straatnaam>           |
-      | naam openbare ruimte (11.15) | <naam openbare ruimte> |
-      | gemeente_code                | 0518                   |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                       |
-      | type                | RaadpleegMetBurgerservicenummer              |
-      | burgerservicenummer | <burgerservicenummer>                        |
-      | fields              | verblijfplaats                               |
-      Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam                              | waarde               |
-      | type                              | Adres                |
-      | functieAdres.code                 | W                    |
-      | functieAdres.omschrijving         | woonadres            |
-      | verblijfadres.officieleStraatnaam | <officielestraat>    |
-      | verblijfadres.korteStraatNaam     | <korteNaam>          |
-
-      Voorbeelden:
-      | burgerservicenummer | straatnaam               | naam openbare ruimte                    | officielestraat                         | korteNaam                |
-      | 000000152           | Kappeyne v d Cappellostr | Annelien Kappeyne van de Coppellostraat | Annelien Kappeyne van de Coppellostraat | Kappeyne v d Cappellostr |
-      | 000000164           | Zomerdijkstraat          |                                         |                                         | Zomerdijkstraat          |
-
   Rule: Voor een binnenlands adres wordt adresregel1 samengesteld conform NEN 5825:2002
-    - Veld adresregel1 wordt samengesteld uit korteStraatnaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
+    - Veld adresregel1 wordt samengesteld uit straatnaam + aanduidingBijHuisnummer + huisnummer + huisletter + huisnummertoevoeging
     - De aanduidingBijHuisnummer (11.50) waarde "to" (tegenover) wordt in "adresregel1" opgenomen als "t/o", waarde "by" wordt in "adresregel1" opgenomen als "bij"
-    - Tussen korteStraatnaam en aanduidingBijHuisnummer of huisnummer wordt een spatie opgenomen
+    - Tussen straatnaam en aanduidingBijHuisnummer of huisnummer wordt een spatie opgenomen
     - Tussen aanduidingBijHuisnummer en huisnummer wordt een spatie opgenomen
     - Tussen het huisnummer en de huisnummertoevoeging (wat in de NEN een samenstelling is van huisletter en huisnummertoevoeging, niet gescheiden van elkaar) moet een koppelteken ("-") worden geplaatst indien de huisnummertoevoeging met een cijfer begint, een spatie in alle andere gevallen
 

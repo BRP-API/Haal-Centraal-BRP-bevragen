@@ -8,13 +8,13 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
 
 Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
   Het gaat om de volgende properties en standaardwaardes van de persoon:
-  | property                                         | standaardwaarde  |
-  | ------------------------------------------------ | ---------------- |
-  | verblijfplaats.korteStraatnaam                   | .                |
-  | verblijfplaats.huisnummer                        | 0                |
-  | verblijfplaats.woonplaats                        | .                |
-  | verblijfplaats.nummeraanduidingIdentificatie     | 0000000000000000 |
-  | verblijfplaats.adresseerbaarObjectIdentificatie  | 0000000000000000 |
+  | property                                   | standaardwaarde  |
+  | ------------------------------------------ | ---------------- |
+  | straatnaam (11.10)                         | .                |
+  | huisnummer (11.20)                         | 0                |
+  | woonplaats (11.70)                         | .                |
+  | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
+  | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
 
   Scenario: onbekend waarde "." voor straatnaam 
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfplaats' gegevens
