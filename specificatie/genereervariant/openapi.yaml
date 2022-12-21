@@ -781,8 +781,9 @@ components:
       pattern: "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\\
         *{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$"
       type: string
-      description: |
-        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      description: "Een naam die door de gemeente aan een openbare ruimte is gegeven.\
+        \ **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.**\
+        \ **Zoeken met tekstvelden is case-insensitive.** \n"
       example: Tulpstraat
     NummeraanduidingIdentificatie:
       pattern: "^[0-9]{16}$"
