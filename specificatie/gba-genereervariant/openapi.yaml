@@ -412,7 +412,7 @@ components:
           huisnummertoevoeging:
             $ref: '#/components/schemas/Huisnummertoevoeging'
           straat:
-            $ref: '#/components/schemas/StraatFilter'
+            $ref: '#/components/schemas/OfficieleStraatnaamFilter'
     ZoekMetNummeraanduidingIdentificatie:
       required:
       - nummeraanduidingIdentificatie
@@ -706,7 +706,7 @@ components:
       description: |
         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
       example: 2341SX
-    StraatFilter:
+    OfficieleStraatnaamFilter:
       pattern: "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\\
         *{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$"
       type: string
