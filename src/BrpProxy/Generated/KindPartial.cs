@@ -11,7 +11,7 @@
 
         public bool ShouldSerializeInOnderzoek() => InOnderzoek != null;
 
-        public bool ShouldSerializeNaam() => Naam != null;
+        public bool ShouldSerializeNaam() => Naam != null && Naam.ShouldSerialize();
 
         public bool ShouldSerializeGeboorte() => Geboorte != null;
     }

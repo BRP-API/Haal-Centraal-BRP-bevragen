@@ -23,6 +23,10 @@ public class VerblijfplaatsBeperktConverter : ITypeConverter<GbaVerblijfplaatsBe
 {
     public AbstractVerblijfplaatsBeperkt? Convert(GbaVerblijfplaatsBeperkt source, AbstractVerblijfplaatsBeperkt? destination, ResolutionContext context)
     {
+        if (source == null)
+        {
+            return null;
+        }
         if (source.IsOnbekendVerblijfplaatsBuitenland())
         {
             return context.Mapper.Map<VerblijfplaatsOnbekendBeperkt>(source);

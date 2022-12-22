@@ -30,7 +30,7 @@ namespace BrpProxy.Tests
                     },
                     Verblijfadres = new VerblijfadresBinnenland
                     {
-                        Straat = "Spui"
+                        OfficieleStraatnaam = "Spui"
                     },
                     InOnderzoek = new AdresInOnderzoek
                     {

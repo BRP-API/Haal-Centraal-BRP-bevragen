@@ -83,22 +83,22 @@ namespace BrpProxy.Tests
                             "verblijfplaats.verblijfadres",
                             "verblijfplaats.verblijfadres.inOnderzoek"
                         })]
-        [InlineData(new[] { "verblijfplaats.verblijfadres.straat" },
+        [InlineData(new[] { "verblijfplaats.verblijfadres.officieleStraatnaam" },
                     new[]
                         {
                             "verblijfplaats.inOnderzoek.type",
                             "verblijfplaats.inOnderzoek.datumIngangOnderzoek",
-                            "verblijfplaats.verblijfadres.straat",
-                            "verblijfplaats.verblijfadres.inOnderzoek.straat",
+                            "verblijfplaats.verblijfadres.officieleStraatnaam",
+                            "verblijfplaats.verblijfadres.inOnderzoek.officieleStraatnaam",
                             "verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek"
                         })]
-        [InlineData(new[] { "verblijfplaats.verblijfadres.straat", "verblijfplaats.verblijfadres.huisnummer" },
+        [InlineData(new[] { "verblijfplaats.verblijfadres.officieleStraatnaam", "verblijfplaats.verblijfadres.huisnummer" },
                     new[]
                         {
                             "verblijfplaats.inOnderzoek.type",
                             "verblijfplaats.inOnderzoek.datumIngangOnderzoek",
-                            "verblijfplaats.verblijfadres.straat",
-                            "verblijfplaats.verblijfadres.inOnderzoek.straat",
+                            "verblijfplaats.verblijfadres.officieleStraatnaam",
+                            "verblijfplaats.verblijfadres.inOnderzoek.officieleStraatnaam",
                             "verblijfplaats.verblijfadres.huisnummer",
                             "verblijfplaats.verblijfadres.inOnderzoek.huisnummer",
                             "verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek"

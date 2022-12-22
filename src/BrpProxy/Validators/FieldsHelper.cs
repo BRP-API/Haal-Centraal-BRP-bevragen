@@ -10,7 +10,7 @@ public class FieldsHelper
     public ReadOnlyDictionary<string,string> PersoonFieldShortcuts { get; private set; }
     public ReadOnlyDictionary<string, string> PersoonBeperktFieldShortcuts { get; }
     public ReadOnlyDictionary<string,string> PersoonFieldPaths { get; }
-    public ReadOnlyCollection<string> BeperktPersoonFieldPaths { get; }
+    public ReadOnlyDictionary<string,string> BeperktPersoonFieldPaths { get; }
 
     private IDictionary<string, string> SetupFieldShortcuts(string persoonFieldsMappingFilePath)
     {
@@ -29,6 +29,29 @@ public class FieldsHelper
             {
                 dictionary.Add(kvp.Key.Replace("verblijfplaats", "verblijfplaatsBinnenland"), kvp.Value);
             }
+            dictionary.Add(kvp.Key, kvp.Value);
+        }
+
+        return dictionary;
+    }
+
+    private IDictionary<string, string> SetupPersoonBeperktFieldShortcuts()
+    {
+        var dictionary = new Dictionary<string, string>();
+
+        foreach (var kvp in BeperktPersoonFieldPaths)
+        {
+            //if (kvp.Key.StartsWith("verblijfplaats") &&
+            //    !new[]
+            //    {
+            //        "verblijfplaats.verblijfadres.regel1",
+            //        "verblijfplaats.verblijfadres.regel2",
+            //        "verblijfplaats.verblijfadres.regel3",
+            //        "verblijfplaats.verblijfadres.land"
+            //    }.Contains(kvp.Key))
+            //{
+            //    dictionary.Add(kvp.Key.Replace("verblijfplaats", "verblijfplaatsBinnenland"), kvp.Value);
+            //}
             dictionary.Add(kvp.Key, kvp.Value);
         }
 
@@ -60,19 +83,45 @@ public class FieldsHelper
         return dictionary;
     }
 
+    public static IDictionary<string, string> SetupPersoonBeperktFieldInOnderzoekMapping()
+    {
+        var dictionary = new Dictionary<string, string>();
+
+        var persoonFields = typeof(PersoonBeperkt).GetPropertyPaths("HaalCentraal");
+        var persoonInOnderzoekFields = persoonFields.Where(x => x.IsInOnderzoekField()).OrderBy(x => x);
+        foreach (var field in persoonFields)
+        {
+            if (field.IsInOnderzoekField())
+            {
+                dictionary.Add(field, "");
+            }
+            else if (field.Contains('.'))
+            {
+                dictionary.Add(field, ToNestedInOnderzoekPath(persoonInOnderzoekFields, field));
+            }
+            else
+            {
+                dictionary.Add(field, ToInOnderzoekpath(persoonInOnderzoekFields, field));
+            }
+        }
+
+        return dictionary;
+    }
+
     public FieldsHelper(IConfiguration configuration, ILogger<FieldsHelper> logger)
     {
         _logger = logger;
 
         PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
-        BeperktPersoonFieldPaths = new ReadOnlyCollection<string>(typeof(PersoonBeperkt).GetPropertyPaths("HaalCentraal"));
+        BeperktPersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldInOnderzoekMapping());
         PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonFieldsMapping"]));
-        PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonBeperktFieldsMapping"]));
+        PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldShortcuts());
     }
 
     public ICollection<string> AddExtraPersoonFields(ICollection<string> fields)
     {
         var retval = fields
+            .Where(f => !f.Contains("inOnderzoek"))
             .ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths()
             .AddInOnderzoekFields()
             .ToList();
@@ -90,22 +139,16 @@ public class FieldsHelper
 
     public ICollection<string> AddExtraPersoonBeperktFields(ICollection<string> fields)
     {
-        var retval = new List<string>()
-        {
-            "geheimhoudingPersoonsgegevens",
-            "opschortingBijhouding.reden"
-        };
+        var retval = fields
+            .ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths()
+            .AddInOnderzoekFields()
+            .ToList();
 
-        foreach (var field in fields)
-        {
-            var fieldFullPath = PersoonBeperktFieldShortcuts[field];
-            retval.Add(fieldFullPath);
-            if (field.Contains("overlijden"))
+        retval.AddRange(new[]
             {
-                retval.Add("overlijden.indicatieOverleden");
-                retval.Add("overlijden.inOnderzoek.indicatieOverleden");
-            }
-        }
+            "geheimhoudingPersoonsgegevens",
+            "opschortingBijhouding"
+            });
 
         _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
 

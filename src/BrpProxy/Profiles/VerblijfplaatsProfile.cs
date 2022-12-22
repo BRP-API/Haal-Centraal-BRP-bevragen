@@ -19,11 +19,11 @@ public class VerblijfplaatsProfile : Profile
             ;
 
         CreateMap<GbaVerblijfplaats, VerblijfadresBinnenland>()
-            .ForMember(dest => dest.Straat, opt =>
+            .ForMember(dest => dest.OfficieleStraatnaam, opt =>
             {
                 opt.MapFrom(src => src.NaamOpenbareRuimte);
             })
-            .ForMember(dest => dest.KorteNaam, opt => 
+            .ForMember(dest => dest.KorteStraatnaam, opt => 
             {
                 opt.PreCondition(src => src.Straat != ".");
                 opt.MapFrom(src => src.Straat);
@@ -102,12 +102,7 @@ public class VerblijfplaatsProfile : Profile
             ;
 
         CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresBinnenland>()
-            .ForMember(dest => dest.Straat, opt =>
-            {
-                opt.PreCondition(src => src.Straat != ".");
-                opt.MapFrom(src => src.Straat);
-            })
-            .ForMember(dest => dest.KorteNaam, opt =>
+            .ForMember(dest => dest.KorteStraatnaam, opt =>
             {
                 opt.PreCondition(src => src.Straat != ".");
                 opt.MapFrom(src => src.Straat);

@@ -10,6 +10,8 @@ public class RaadpleegMetBurgerservicenummerQueryValidator : AbstractValidator<R
     const string MaxItemsErrorMessage = "maxItems||Array bevat meer dan {0} items.";
     const string BsnPattern = @"^[0-9]{9}$";
     const string BsnPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {BsnPattern}.";
+    const string GemeenteVanInschrijvingPattern = @"^[0-9]{4}$";
+    const string GemeenteVanInschrijvingPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {GemeenteVanInschrijvingPattern}.";
 
     public RaadpleegMetBurgerservicenummerQueryValidator(FieldsHelper fieldsHelper)
     {
@@ -31,5 +33,9 @@ public class RaadpleegMetBurgerservicenummerQueryValidator : AbstractValidator<R
         RuleForEach(x => x.Fields)
             .SetValidator(new PersoonFieldsValidator(fieldsHelper))
             .When(x => x.Fields != null && x.Fields.Count > 0 && x.Fields.Count < 131);
+
+        RuleFor(x => x.GemeenteVanInschrijving)
+            .Cascade(CascadeMode.Stop)
+            .Matches(GemeenteVanInschrijvingPattern).WithMessage(GemeenteVanInschrijvingPatternErrorMessage);
     }
 }

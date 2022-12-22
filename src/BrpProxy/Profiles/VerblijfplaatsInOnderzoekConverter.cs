@@ -90,9 +90,9 @@ public class VerblijfadresBinnenlandInOnderzoekConverter : ITypeConverter<GbaInO
                 Huisletter = true,
                 Huisnummer = true,
                 Huisnummertoevoeging = true,
-                KorteNaam = true,
+                KorteStraatnaam = true,
                 Postcode = true,
-                Straat = true,
+                OfficieleStraatnaam = true,
                 Woonplaats = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
@@ -104,13 +104,12 @@ public class VerblijfadresBinnenlandInOnderzoekConverter : ITypeConverter<GbaInO
             },
             "081110" => new VerblijfadresBinnenlandInOnderzoek
             {
-                KorteNaam = true,
-                Straat = true,
+                KorteStraatnaam = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
             "081115" => new VerblijfadresBinnenlandInOnderzoek
             {
-                Straat = true,
+                OfficieleStraatnaam = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
             },
             "081120" => new VerblijfadresBinnenlandInOnderzoek

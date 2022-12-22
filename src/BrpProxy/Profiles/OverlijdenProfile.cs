@@ -9,7 +9,7 @@ public class OverlijdenProfile : Profile
 {
     public OverlijdenProfile()
     {
-        CreateMap<GbaOverlijdenBasis, OverlijdenBasis>()
+        CreateMap<GbaOverlijdenBeperkt, OverlijdenBeperkt>()
             .ForMember(dest => dest.IndicatieOverleden, opt => opt.MapFrom(src => true));
 
         CreateMap<GbaOverlijden, Overlijden>()
