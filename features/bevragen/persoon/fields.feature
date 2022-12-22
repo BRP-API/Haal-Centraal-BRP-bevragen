@@ -83,15 +83,16 @@ Functionaliteit: Persoon velden vragen met fields
   Scenario: 'indicatie geheim (70.10)' wordt gevraagd met field pad(en) '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
     | naam                     | waarde |
-    | indicatie geheim (70.10) | 7      |
+    | indicatie geheim (70.10) | 1      |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                          | waarde |
-    | geheimhoudingPersoonsgegevens | true   |
+    | naam                          | waarde    |
+    | burgerservicenummer           | 000000152 |
+    | geheimhoudingPersoonsgegevens | true      |
 
     Voorbeelden:
     | fields                                            |

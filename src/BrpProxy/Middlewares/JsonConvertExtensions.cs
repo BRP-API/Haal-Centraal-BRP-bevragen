@@ -8,5 +8,14 @@ namespace BrpProxy.Middlewares
         {
             return JsonConvert.SerializeObject(obj);
         }
+
+        public static string ToJsonWithoutNullAndDefaultValues(this object? obj)
+        {
+            return JsonConvert.SerializeObject(obj, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                DefaultValueHandling = DefaultValueHandling.Ignore
+            });
+        }
     }
 }

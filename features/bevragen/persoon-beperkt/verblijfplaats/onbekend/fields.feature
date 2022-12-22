@@ -27,5 +27,5 @@ Functionaliteit: Persoon beperkt: verblijfplaats onbekend velden vragen met fiel
     | fields                                   |
     | verblijfplaats                           |
     | verblijfplaats.functieAdres              |
-    | verblijfplaasts.functieAdres.code        |
+    | verblijfplaats.functieAdres.code         |
     | verblijfplaats.functieAdres.omschrijving |
