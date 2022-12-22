@@ -20,6 +20,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
   In het verkregen token is de afnemerindicatie opgenomen die de afnemer uniek identificeert. Op basis van de afnemerindicatie kan de autorisatie worden opgezocht.
   Wanneer de afnemer een gemeente is, is er ook een gemeentecode opgenomen in de Oauth token.
 
+  Voor één afnemer kunnen er meerdere rijen zijn in de autorisatietabel, maar daarvan kan er maar één actueel zijn. Alleen de actuele mag worden gebruikt.
+  Een autorisatie is actueel wanneer de Datum ingang (35.99.98) in het verleden ligt en Datum beëindiging tabelregel (35.99.99) leeg is of in de toekomst ligt.
+
   # Autorisaties worden opgeslagen in de tabel lo3_autorisatie. Deze bevat minimaal:
   #  - autorisatie_id: technische identificatie (primary key) = max(autorisatie_id)+1
   #  - afnemer_code: vullen met 'Afnemersindicatie (35.95.10)' in Gegeven, wordt ook opgenomen in Oauth token gestuurd bij Als stap
@@ -27,9 +30,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
   #  - tabel_regel_eind_datum: vullen met 'Datum beëindiging tabelregel (35.99.99)' in Gegeven stap
   #  - ad_hoc_medium: vullen met 'Medium ad hoc (35.95.67)' in Gegeven stap, vaste waarde 'N' (betekent dat de autorisatie er wel is)
   #  - ad_hoc_rubrieken: vullen met waarde voor 'Rubrieknummer ad hoc (35.95.60)' in Gegeven stap
-
-  Voor één afnemer kunnen er meerdere rijen zijn in de autorisatietabel, maar daarvan kan er maar één actueel zijn. Alleen de actuele mag worden gebruikt.
-  Een autorisatie is actueel wanneer de Datum ingang (35.99.98) in het verleden ligt en Datum beëindiging tabelregel (35.99.99) leeg is of in de toekomst ligt.
 
 
   # To Do (t.z.t.): alleen regel gebruiken met datum ingang <= vandaag
@@ -44,12 +44,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Afnemer is niet geautoriseerd voor ad hoc gegevensverstrekking
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '8' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 010120 010210                   |                          | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 8      |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
