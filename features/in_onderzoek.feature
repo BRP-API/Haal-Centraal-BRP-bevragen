@@ -1063,10 +1063,7 @@ Functionaliteit: in onderzoek
       | naam                            | waarde   |
       | aanduiding in onderzoek (83.10) | <waarde> |
       | datum ingang onderzoek (83.20)  | 20220307 |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                                | waarde                |
-      | straatnaam (11.10)                  | .                     |
-      | gemeentecode (92.10)                | 0344                  |
+      | land (13.10)                    | 0000     |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                              |
       | type                | RaadpleegMetBurgerservicenummer                     |

@@ -130,5 +130,4 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres veld
     | verblijfadres.officieleStraatnaam                  | Spui          |
     | verblijfadres.korteStraatnaam                      | Spui          |
     | verblijfadres.postcode                             | 1234AA        |
-    | verblijfadres.korteNaam                            | Spui          |
     | verblijfadres.woonplaats                           | 's-Gravenhage |
