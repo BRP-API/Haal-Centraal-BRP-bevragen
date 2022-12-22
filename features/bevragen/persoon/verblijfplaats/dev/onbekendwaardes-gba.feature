@@ -28,10 +28,10 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfpl
     | straatnaam (11.10)   | .      |
     | huisnummer (11.20)   | 1      |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                 |
-    | type                | RaadpleegMetBurgerservicenummer        |
-    | burgerservicenummer | 000000164                              |
-    | fields              | verblijfplaats.verblijfadres.korteNaam |
+    | naam                | waarde                                       |
+    | type                | RaadpleegMetBurgerservicenummer              |
+    | burgerservicenummer | 000000164                                    |
+    | fields              | verblijfplaats.verblijfadres.korteStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam   | waarde |
     | straat | .      |
