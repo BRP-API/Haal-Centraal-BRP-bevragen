@@ -11,14 +11,14 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfpl
   Het gaat om de volgende properties en standaardwaardes van de persoon:
   | property                                         | standaardwaarde  |
   | ------------------------------------------------ | ---------------- |
-  | verblijfplaats.korteNaam                         | .                |
+  | verblijfplaats.straat                            | .                |
   | verblijfplaats.huisnummer                        | 0                |
   | verblijfplaats.woonplaats                        | .                |
   | verblijfplaats.nummeraanduidingIdentificatie     | 0000000000000000 |
   | verblijfplaats.adresseerbaarObjectIdentificatie  | 0000000000000000 |
   | verblijfplaats.land                              | 0000             |
 
-  Scenario: onbekend waarde "." voor straat
+  Scenario: onbekend waarde "." voor straatnaam
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfplaats' gegevens
     | naam                  | waarde |
     | functie adres (10.10) | W      |
