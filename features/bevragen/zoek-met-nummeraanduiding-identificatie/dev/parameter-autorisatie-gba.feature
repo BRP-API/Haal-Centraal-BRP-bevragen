@@ -15,8 +15,8 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -44,8 +44,8 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -63,7 +63,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
 
-    Scenario: Gemeente is niet geautoriseerd voor verblijfplaats en vindt alleen eigen inwoners met zoeken op postcode en huisnummer
+    Scenario: Gemeente is niet geautoriseerd voor verblijfplaats en vindt alleen eigen inwoners bij zoeken op nummeraanduidingIdentificatie
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |
@@ -75,8 +75,8 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |

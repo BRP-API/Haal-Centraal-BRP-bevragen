@@ -5,7 +5,8 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | gemeente van inschrijving (09.10) | datum aanvang adreshouding (10.30) | functie adres (10.10) |
       | 0599                              | 19860801                           | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
       | straatnaam (11.10)           | Borgesiusstraat |
       | huisnummer (11.20)           | 103             |
       | huisletter (11.30)           | b               |
@@ -18,7 +19,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
     Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het veld mee gevuld of van afgeleid wordt
 
     @fout-case
-    Scenario: Afnemer vraagt om een veld waarvoor deze niet geautoriseerd is
+    Scenario: Afnemer vraagt functieAdres, waarvoor deze niet geautoriseerd is
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                                         | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 | N                        | 20201128                |
@@ -42,7 +43,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | instance | /haalcentraal/api/brp/personen                                          |
 
     @fout-case
-    Scenario: Afnemer vraagt om groep verblijfplaats en is niet geautoriseerd voor functie adres
+    Scenario: Afnemer vraagt om groep verblijfplaats en is niet geautoriseerd voor functie adres (81010)
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                                         | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 | N                        | 20201128                |
@@ -76,10 +77,11 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | afnemerID    | 12345  |
       | gemeenteCode | 0599   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                             |
-      | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 000000024                          |
-      | fields              | burgerservicenummer,verblijfplaats |
+      | naam       | waarde                             |
+      | type       | ZoekMetPostcodeEnHuisnummer        |
+      | postcode   | 2497BV                             |
+      | huisnummer | 103                                |
+      | fields     | burgerservicenummer,verblijfplaats |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                      | waarde          |
       | straat                    | Borgesiusstraat |
@@ -129,7 +131,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
     - 81310: land
 
     @fout-case
-    Abstract Scenario: Afnemer is wel geautoriseerd voor gevraagde veld, maar niet voor alle velden nodig voor verblijfplaats type
+    Abstract Scenario: Afnemer is wel geautoriseerd voor gevraagde veld, maar niet voor <missende autorisatie> die nodig is voor verblijfplaats type
       Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
@@ -169,10 +171,11 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | afnemerID    | 12345  |
       | gemeenteCode | 0518   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                       |
-      | type                | RaadpleegMetBurgerservicenummer              |
-      | burgerservicenummer | 000000024                                    |
-      | fields              | burgerservicenummer,verblijfplaatsBinnenland |
+      | naam       | waarde                                       |
+      | type       | ZoekMetPostcodeEnHuisnummer                  |
+      | postcode   | 2497BV                                       |
+      | huisnummer | 103                                          |
+      | fields     | burgerservicenummer,verblijfplaatsBinnenland |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                      | waarde          |
       | straat                    | Borgesiusstraat |

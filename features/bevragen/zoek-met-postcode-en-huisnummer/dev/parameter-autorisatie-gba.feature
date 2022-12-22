@@ -15,12 +15,13 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                              | 0599             |
-      | straatnaam (11.10)                         | Borgesiusstraat  |
-      | huisnummer (11.20)                         | 103              |
-      | huisletter (11.30)                         | b                |
-      | huisnummertoevoeging (11.40)               | 2                |
-      | postcode (11.60)                           | 2497BV           |
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      | huisnummer (11.20)           | 103             |
+      | huisletter (11.30)           | b               |
+      | huisnummertoevoeging (11.40) | 2               |
+      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
@@ -60,12 +61,13 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                              | 0599             |
-      | straatnaam (11.10)                         | Borgesiusstraat  |
-      | huisnummer (11.20)                         | 103              |
-      | huisletter (11.30)                         | b                |
-      | huisnummertoevoeging (11.40)               | 2                |
-      | postcode (11.60)                           | 2497BV           |
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      | huisnummer (11.20)           | 103             |
+      | huisletter (11.30)           | b               |
+      | huisnummertoevoeging (11.40) | 2               |
+      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
@@ -97,12 +99,13 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                              | 0599             |
-      | straatnaam (11.10)                         | Borgesiusstraat  |
-      | huisnummer (11.20)                         | 103              |
-      | huisletter (11.30)                         | b                |
-      | huisnummertoevoeging (11.40)               | 2                |
-      | postcode (11.60)                           | 2497BV           |
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      | huisnummer (11.20)           | 103             |
+      | huisletter (11.30)           | b               |
+      | huisnummertoevoeging (11.40) | 2               |
+      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
