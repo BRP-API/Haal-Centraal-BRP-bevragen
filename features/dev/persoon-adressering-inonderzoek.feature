@@ -339,10 +339,10 @@ Functionaliteit: Persoon adressering in onderzoek
       | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
       | datum ingang onderzoek (83.20)  | 20020701                  |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                              | waarde |
-      | gemeente van inschrijving (09.10) | 0518   |
-      | straatnaam (11.10)                | Spruit |
-      | huisnummer (11.20)                | 123    |
+      | naam                 | waarde |
+      | gemeentecode (92.10) | 0518   |
+      | straatnaam (11.10)   | Spruit |
+      | huisnummer (11.20)   | 123    |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -392,11 +392,11 @@ Functionaliteit: Persoon adressering in onderzoek
       | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
       | datum ingang onderzoek (83.20)  | 20020701                  |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                              | waarde |
-      | gemeente van inschrijving (09.10) | 0518   |
-      | straatnaam (11.10)                | Spruit |
-      | huisnummer (11.20)                | 123    |
-      Als personen wordt gezocht met de volgende parameters
+      | naam                 | waarde |
+      | gemeentecode (92.10) | 0518   |
+      | straatnaam (11.10)   | Spruit |
+      | huisnummer (11.20)   | 123    |
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
