@@ -239,6 +239,8 @@ namespace BrpProxy.Validators
                 switch (field)
                 {
                     case "geboorte.datum":
+                    case "partners.aangaanHuwelijkPartnerschap.datum":
+                    case "partners.geboorte.datum":
                     case "verblijfplaats.type":
                         retval.Add(field);
                         break;
@@ -248,7 +250,7 @@ namespace BrpProxy.Validators
                     default:
                         retval.Add(
                             Regex.Replace(field,
-                                @"(\.type|\.datum|\.langFormaat|\.jaar|\.maand|\.onbekend|\.code|\.omschrijving)$|(Binnenland)", ""));
+                                @"(\.type|\.datum|\.langFormaat|\.jaar|\.maand|\.onbekend|\.code|\.soort|\.omschrijving)$|(Binnenland)", ""));
                         break;
                 }
             }
