@@ -13,11 +13,11 @@ Functionaliteit: Persoon beperkt: verblijfplaats binnenland
     | huisnummer (11.20) | 123    |
     | postcode (11.60)   | 1234AA |
     Als personen wordt gezocht met de volgende parameters
-    | naam       | waarde                      |
-    | type       | ZoekMetPostcodeEnHuisnummer |
-    | postcode   | 1234AA                      |
-    | huisnummer | 123                         |
-    | fields     | adresregel2                 |
+    | naam       | waarde                                       |
+    | type       | ZoekMetPostcodeEnHuisnummer                  |
+    | postcode   | 1234AA                                       |
+    | huisnummer | 123                                          |
+    | fields     | burgerservicenummer,adressering.adresregel2  |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000152 |

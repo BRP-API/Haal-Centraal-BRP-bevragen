@@ -2,7 +2,7 @@
 
 Functionaliteit: GBA persoon: Immigratie
 
-  Abstract Scenario: persoon heeft 'immigratie' veld: 'land vanwaar ingeschreven (14.10)'
+  Scenario: persoon heeft 'immigratie' veld: 'land vanwaar ingeschreven (14.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                              | waarde |
     | land vanwaar ingeschreven (14.10) | 6014   |
@@ -67,7 +67,7 @@ Functionaliteit: GBA persoon: Immigratie
     | naam                | waarde                                                          |
     | type                | RaadpleegMetBurgerservicenummer                                 |
     | burgerservicenummer | 000000152                                                       |
-    | fields              | vanuitVerblijfplaatsOnbekend,indicatieVestigingVanuitBuitenland |
+    | fields              | immigratie.vanuitVerblijfplaatsOnbekend,immigratie.indicatieVestigingVanuitBuitenland |
     Dan heeft de response een persoon met de volgende 'immigratie' gegevens
     | naam                                 | waarde   |
     | landVanwaarIngeschreven.code         | 0000     |

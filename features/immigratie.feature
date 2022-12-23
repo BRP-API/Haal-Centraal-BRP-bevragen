@@ -9,10 +9,10 @@ Functionaliteit: Immigratie
       | naam                                 | waarde            |
       | datum vestiging in Nederland (14.20) | <datum vestiging> |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                             |
-      | type                | RaadpleegMetBurgerservicenummer    |
-      | burgerservicenummer | 000000152                          |
-      | fields              | indicatieVestigingVanuitBuitenland |
+      | naam                | waarde                                        |
+      | type                | RaadpleegMetBurgerservicenummer               |
+      | burgerservicenummer | 000000152                                     |
+      | fields              | immigratie.indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                               | waarde |
       | indicatieVestigingVanuitBuitenland | true   |
@@ -34,7 +34,7 @@ Functionaliteit: Immigratie
       | naam                | waarde                                                          |
       | type                | RaadpleegMetBurgerservicenummer                                 |
       | burgerservicenummer | 000000152                                                       |
-      | fields              | vanuitVerblijfplaatsOnbekend,indicatieVestigingVanuitBuitenland |
+      | fields              | immigratie.vanuitVerblijfplaatsOnbekend,immigratie.indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                         | waarde |
       | vanuitVerblijfplaatsOnbekend | true   |
@@ -48,7 +48,7 @@ Functionaliteit: Immigratie
       | naam                | waarde                                                          |
       | type                | RaadpleegMetBurgerservicenummer                                 |
       | burgerservicenummer | 000000152                                                       |
-      | fields              | vanuitVerblijfplaatsOnbekend,indicatieVestigingVanuitBuitenland |
+      | fields              | immigratie.vanuitVerblijfplaatsOnbekend,immigratie.indicatieVestigingVanuitBuitenland |
       Dan heeft de response een persoon met de volgende 'immigratie' gegevens
       | naam                               | waarde |
       | indicatieVestigingVanuitBuitenland | true   |

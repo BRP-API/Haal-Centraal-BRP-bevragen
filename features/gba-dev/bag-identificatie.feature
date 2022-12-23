@@ -23,10 +23,11 @@ Functionaliteit: BAG-identificatie met waarde die niet voldoet aan de specificat
       | naam                | waarde                                                                  |
       | type                | RaadpleegMetBurgerservicenummer                                         |
       | burgerservicenummer | 000000024                                                               |
-      | fields              | postcode,nummeraanduidingIdentificatie,adresseerbaarObjectIdentificatie |
+      | fields              | verblijfplaats.verblijfadres.postcode,verblijfplaats.nummeraanduidingIdentificatie,verblijfplaats.adresseerbaarObjectIdentificatie |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-      | naam     | waarde |
-      | postcode | 1001XX |
+      | naam     | waarde      |
+      | postcode | 1001XX      |
+      | straat   | Kromme dijk |
 
       Voorbeelden:
       | omschrijving                 | gemeente code | verblijfplaats id | nummeraanduiding id |
@@ -51,9 +52,10 @@ Functionaliteit: BAG-identificatie met waarde die niet voldoet aan de specificat
       | naam                | waarde                                                                  |
       | type                | RaadpleegMetBurgerservicenummer                                         |
       | burgerservicenummer | 000000024                                                               |
-      | fields              | postcode,nummeraanduidingIdentificatie,adresseerbaarObjectIdentificatie |
+      | fields              | verblijfplaats.verblijfadres.postcode,verblijfplaats.nummeraanduidingIdentificatie,verblijfplaats.adresseerbaarObjectIdentificatie |
       Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
       | naam                             | waarde           |
       | postcode                         | 1001XX           |
+      | straat                           | Kromme dijk      |
       | adresseerbaarObjectIdentificatie | 0363010000123456 |
       | nummeraanduidingIdentificatie    | 0363200000123456 |

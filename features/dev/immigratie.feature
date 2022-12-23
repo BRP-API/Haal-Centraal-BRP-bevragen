@@ -22,24 +22,20 @@ Functionaliteit: Persoon: immigratie
     | immigratie.landVanwaarIngeschreven.code         |
     | immigratie.landVanwaarIngeschreven.omschrijving |
 
-  Abstract Scenario: persoon heeft 'immigratie' datum veld: 'datum vestiging in nederland (14.20)'
+  Scenario: persoon heeft 'immigratie' datum veld: 'datum vestiging in nederland (14.20)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                                 | waarde   |
     | datum vestiging in Nederland (14.20) | 20020701 |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | <field>                         |
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 000000152                            |
+    | fields              | immigratie.datumVestigingInNederland |
     Dan heeft de response een persoon met de volgende 'immigratie' gegevens
     | naam                                  | waarde      |
     | datumVestigingInNederland.type        | Datum       |
     | datumVestigingInNederland.datum       | 2002-07-01  |
     | datumVestigingInNederland.langFormaat | 1 juli 2002 |
-
-    Voorbeelden:
-    | field                     |
-    | datumVestigingInNederland |
 
   Abstract Scenario: 'immigratie' veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

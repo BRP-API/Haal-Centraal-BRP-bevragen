@@ -101,9 +101,9 @@ Functionaliteit: Waardetabel met code en omschrijving
       | <prefix>omschrijving        | <waarde-omschrijving> |
 
       Voorbeelden:
-      | tabel         | waarde-code | waarde-omschrijving | lo3-naam                       | fieldnaam           | prefix              | type                     |
-      | Functie_adres | B           | briefadres          | functieAdres.code (10.10)      | functieAdres        | functieAdres.       | VerblijfplaatsOnbekend   |
-      | Landen        | 9087        | Djibouti            | land adres buitenland (13.10)  | verblijfplaats      | verblijfadres.land. | VerblijfplaatsBuitenland |
+      | tabel         | waarde-code | waarde-omschrijving | lo3-naam                       | fieldnaam                   | prefix              | type                     |
+      | Functie_adres | B           | briefadres          | functieAdres.code (10.10)      | verblijfplaats.functieAdres | functieAdres.       | VerblijfplaatsOnbekend   |
+      | Landen        | 9087        | Djibouti            | land adres buitenland (13.10)  | verblijfplaats              | verblijfadres.land. | VerblijfplaatsBuitenland |
 
 
     Abstract Scenario: Omschrijving bij code voor <tabel> bij Geboorte
