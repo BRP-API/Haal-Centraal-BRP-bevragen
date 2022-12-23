@@ -44,12 +44,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Afnemer is niet geautoriseerd voor ad hoc gegevensverstrekking
-      Gegeven de afnemer met indicatie '8' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 010210                   |                          | 20201128                |
+      | 10120 10210                     |                          | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 8      |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
@@ -62,10 +62,10 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                      |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
-      | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
+      | title    | U bent niet geautoriseerd voor deze operatie.               |
       | status   | 403                                                         |
-      | detail   | U heeft geen autorisatie voor ad hoc gegevensverstrekking.  |
-      | code     | unauthorizedParameter                                       |
+      | detail   | Niet geautoriseerd voor ad hoc bevragingen.                 |
+      | code     | unauthorized                                                |
       | instance | /haalcentraal/api/brp/personen                              |
 
 
@@ -74,12 +74,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Zoeken met een zoektype met verplichte parameter waarvoor de afnemer niet geautoriseerd is
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80810 81110 81120 81130 81140 81150 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
@@ -103,12 +103,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Zoeken met een optionele parameter waarvoor de afnemer niet geautoriseerd is
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10210 10220 10230 10240 10310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
@@ -135,12 +135,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Afnemer vraagt om een veld (geboorte.plaats) waarvoor deze niet geautoriseerd is
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10210 10220 10230 10240 10310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
@@ -155,18 +155,44 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[2].                             |
+      | detail   | De foutieve fields waarden zijn: geboorte.plaats                        |
+      | code     | authorization                                                           |
+      | instance | /haalcentraal/api/brp/personen                                          |
+
+    @fout-case
+    Scenario: Afnemer vraagt om meerdere velden (geboorteplaatsen geboorteland) waarvoor deze niet geautoriseerd is
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 10210 10220 10230 10240 10310 | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode |        |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
+      | 19830526              | Maassen               | Pieter            | M                           |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                       |
+      | type                | RaadpleegMetBurgerservicenummer              |
+      | burgerservicenummer | 000000024                                    |
+      | fields              | geboorte.datum,geboorte.plaats,geboorte.land |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | detail   | De foutieve fields waarden zijn: geboorte.plaats, geboorte.land         |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om gegevensgroep <fields> en is niet geautoriseerd voor <missende autorisatie>
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) | aanduiding naamgebruik (61.10) |
@@ -181,7 +207,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: <fields>                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -191,17 +217,16 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | geboorte        | 10120 10310                   | geboorteplaats (10320), geboorteland (10330) |
       | nationaliteiten | 10120 40510 46310 46410 46510 | datumIngangGeldigheid (48510)                |
 
-
   Rule: Vragen met fields gevraagd om een veld dat is afgeleid van één of meerdere andere velden, wanneer de gebruiker niet geautoriseerd is voor al die velden, geeft een foutmelding
-
+  
     @fout-case
     Scenario: Afnemer vraagt om afgeleid gegeven <fields> en is niet geautoriseerd <missende autorisatie>
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
@@ -216,7 +241,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: <fields>                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -227,13 +252,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | immigratie.indicatieVestigingVanuitBuitenland | 10120 81410      | datum vestiging in nederland (81420) |
 
     @fout-case
-    Scenario: Afnemer zonder autorisatie voor historischeaangaanHuwelijkPartnerschap vraagt om partner aangaanHuwelijkPartnerschap van persoon met actuele partner
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+    Scenario: Afnemer zonder autorisatie voor historische aangaanHuwelijkPartnerschap (550610) vraagt om partner aangaanHuwelijkPartnerschap van persoon met actuele partner
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 050240 050610            | N                        | 20201128                |
+      | 10120 50240 50610               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
       | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30) | soort verbintenis (15.10) |
@@ -244,23 +269,22 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | burgerservicenummer | 000000024                                                              |
       | fields              | partners.naam.geslachtsnaam,partners.aangaanHuwelijkPartnerschap.datum |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                  |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
-      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
-      | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                             |
-      | code     | authorization                                                           |
-      | instance | /haalcentraal/api/brp/personen                                          |
-      # Hier is de missende autorisatie een historische aangaanHuwelijkPartnerschap (550610)
+      | naam     | waarde                                                                      |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                 |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden.     |
+      | status   | 403                                                                         |
+      | detail   | De foutieve fields waarden zijn: partners.aangaanHuwelijkPartnerschap.datum |
+      | code     | authorization                                                               |
+      | instance | /haalcentraal/api/brp/personen                                              |
 
     @fout-case
     Scenario: Afnemer zonder autorisatie bijzonder Nederlanderschap vraagt om een gegeven van nationaliteit van persoon met Nederlandse nationaliteit
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 40510                     | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
@@ -275,21 +299,47 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: nationaliteiten.nationaliteit          |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
+    @fout-case
+    Scenario: Afnemer (niet gemeente) vindt geen enkele persoon op de zoekvraag en fields vraagt om geslacht (10410) waarvoor de afnemer niet geautoriseerd is
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 010120 010240 010310            | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode |        |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
+      | 19830526              | Maassen               | Pieter            |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam          | waarde                              |
+      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+      | geslachtsnaam | Maassen                             |
+      | geboortedatum | 1983-05-26                          |
+      | fields        | geslacht                            |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | detail   | De foutieve fields waarden zijn: geslacht                               |
+      | code     | authorization                                                           |
+      | instance | /haalcentraal/api/brp/personen                                          |
 
   Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
 
     @fout-case
     Abstract Scenario: Afnemer is <missende autorisatie>
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>                     | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10)  |
@@ -307,23 +357,23 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: ouders.ouderAanduiding                 |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | ad hoc rubrieken                   | missende autorisatie                  |
-      | 010120 010210 010220 010230 010240 | niet geautoriseerd voor oudergegevens |
-      | 010120 020210 020220 020230 020240 | niet geautoriseerd voor ouder 2       |
-      | 010120 030210 030220 030230 030240 | niet geautoriseerd voor ouder 1       |
+      | ad hoc rubrieken              | missende autorisatie                  |
+      | 10120 10210 10220 10230 10240 | niet geautoriseerd voor oudergegevens |
+      | 10120 20210 20220 20230 20240 | niet geautoriseerd voor ouder 2       |
+      | 10120 30210 30220 30230 30240 | niet geautoriseerd voor ouder 1       |
 
-    Abstract Scenario: Afnemer is wel geautoriseerd voor ten minste één gegeven van ouder 1 en van ouder 2
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+    Abstract Scenario: Afnemer is wel geautoriseerd voor <autorisatie>
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10) |
@@ -344,26 +394,27 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | ouderAanduiding | 2      |
 
       Voorbeelden:
-      | ad hoc rubrieken                   | autorisatie                                            |
-      | 010120 020210 030210               | exact 1 gegeven van ouder 1 en 1 gegeven van ouder 2   |
-      | 010120 020120 020210 030120 030210 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
+      | ad hoc rubrieken              | autorisatie                                            |
+      | 10120 20210 30210             | exact 1 gegeven van ouder 1 en 1 gegeven van ouder 2   |
+      | 10120 20120 20240 30310 30320 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
   
   
   Rule: Een gemeente als afnemer is geautoriseerd voor alle gegevens van eigen inwoners
 
     Scenario: Gemeente raadpleegt een eigen inwoner en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 050240 050610            | N                        | 20201128                |
+      | 10120 50240 50610               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | 0599 |
+      | gemeentecode (92.10) |
+      | 0599                 |
       En de persoon heeft een 'partner' met de volgende gegevens
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
@@ -377,20 +428,47 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | geslacht.code                 | M         |
       | geslacht.omschrijving         | man       |
 
+    Scenario: Gemeente vindt geen enkele persoon op de zoekvraag en fields vraagt om geslacht (10410) waarvoor de afnemer niet geautoriseerd is
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 010120 010240 010310            | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0599   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
+      | 19830526              | Maassen               | Pieter                         |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) |
+      | 0599                 |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam          | waarde                              |
+      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+      | geslachtsnaam | Maassen                             |
+      | geboortedatum | 1983-05-26                          |
+      | fields        | geslacht                            |
+      Dan heeft de response 0 personen
+      
+
     @fout-case
     Scenario: Gemeente raadpleegt een inwoner van een andere gemeente en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 010120 050240 050610            | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | 0599 |
+      | gemeentecode (92.10) |
+      | 0599                 |
       En de persoon heeft een 'partner' met de volgende gegevens
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
@@ -404,28 +482,28 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: partners.geslacht                      |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
     @fout-case
-    Scenario: Gemeente vindt op een zoekvraag een eigen inwoner én een inwoner van een andere gemeente en fields vraagt om een veld waarvoor de afnemer niet geautoriseerd is
-      # voeg parameter gemeenteVanInschrijving toe om te zorgen dat je alleen eigen inwoners vindt en deze fout niet krijgt
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+    Scenario: Gemeente vindt op een zoekvraag een eigen inwoner én een inwoner van een andere gemeente en fields vraagt om geslacht (10410) waarvoor de afnemer niet geautoriseerd is
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 010120 010240 010310            | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-      | 19830526              | Maassen               | Pieter            |
+      | 19830526              | Maassen               | Pieter                         |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | 0599 |
+      | gemeentecode (92.10) |
+      | 0599                 |
       En de persoon met burgerservicenummer '000000025' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
       | 19830526              | Maassen               | Jan Peter         | van                 |
@@ -433,7 +511,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) |
       | 0518                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | 0518 |
+      | gemeentecode (92.10) |
+      | 0518                 |
       Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -445,7 +524,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | detail   | De foutieve fields waarden zijn: geslacht                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -454,12 +533,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Autorisatie voor ad hoc gegevensverstrekking is ingetrokken
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 010120 010210                   | N                        | 20201128                | 20221201                                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode |        |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
@@ -474,19 +553,19 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
       | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
       | status   | 403                                                         |
-      | detail   | U heeft geen autorisatie voor ad hoc gegevensverstrekking.  |
+      | detail   | Niet geautoriseerd voor ad hoc bevragingen.                 |
       | code     | unauthorizedParameter                                       |
       | instance | /haalcentraal/api/brp/personen                              |
 
     @fout-case
     Scenario: Autorisatie voor gebruikte parameter is ingetrokken
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120 80810 81110 81120 81130 81140 81150 81190 | N                        | 20201128                | 20221201                                |
       | 10120 80810 81110 81120 81130 81140 81150       | N                        | 20221201                |                                         |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
@@ -510,13 +589,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
     @fout-case
     Scenario: Autorisatie voor gevraagd veld is ingetrokken
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120 81010 81110 81210 81310   | N                        | 20201128                | 20221201                                |
       | 10120 81110 81210 81310         | N                        | 20221201                |                                         |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
@@ -534,18 +613,18 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
     Scenario: Autorisatie voor gevraagd veld is toegevoegd
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120  81110 81210 81310        | N                        | 20201128                | 20221201                                |
       | 10120 81010 81110 81210 81310   | N                        | 20221201                |                                         |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
@@ -565,12 +644,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | functieAdres.omschrijving | woonadres       |
 
     Scenario: Autorisatie heeft einddatum in de toekomst
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120 81010 81110 81210 81310   | N                        | 20221201                | 20300101                                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
