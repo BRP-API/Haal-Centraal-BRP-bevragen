@@ -396,7 +396,7 @@ Functionaliteit: Persoon adressering in onderzoek
       | gemeentecode (92.10) | 0518   |
       | straatnaam (11.10)   | Spruit |
       | huisnummer (11.20)   | 123    |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 555550001                       |
