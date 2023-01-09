@@ -20,10 +20,10 @@ Functionaliteit: Persoon: partner ontbinding huwelijk/geregistreerd partnerschap
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | aanduiding in onderzoek | datum io | type |
-    | 050000                  | true     |      |
-    | 050700                  | true     |      |
-    | 050710                  | true     |      |
+    | aanduiding in onderzoek | datum io | type                                                      |
+    | 050000                  | true     | hele categorie huwelijk/geregistreerd partnerschap        |
+    | 050700                  | true     | hele groep ontbinding huwelijk/geregistreerd partnerschap |
+    | 050710                  | true     | datum ontbinding huwelijk/geregistreerd partnerschap      |
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -43,10 +43,10 @@ Functionaliteit: Persoon: partner ontbinding huwelijk/geregistreerd partnerschap
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field | type |
-    | 050000                  | datum |      |
-    | 050700                  | datum |      |
-    | 050710                  | datum |      |
+    | gba in onderzoek waarde | field | type                                                      |
+    | 050000                  | datum | hele categorie huwelijk/geregistreerd partnerschap        |
+    | 050700                  | datum | hele groep ontbinding huwelijk/geregistreerd partnerschap |
+    | 050710                  | datum | datum ontbinding huwelijk/geregistreerd partnerschap      |
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -61,5 +61,5 @@ Functionaliteit: Persoon: partner ontbinding huwelijk/geregistreerd partnerschap
     Dan heeft de response een persoon met een 'partner' zonder gegevens
 
     Voorbeelden:
-    | aanduiding in onderzoek | type | veld naam                              | gevraagde fields             |
-    | 050710                  |      | datum ontbinding huwelijk/partnerschap | partners.burgerservicenummer |
+    | aanduiding in onderzoek | type                                                 | veld naam                              | gevraagde fields             |
+    | 050710                  | datum ontbinding huwelijk/geregistreerd partnerschap | datum ontbinding huwelijk/partnerschap | partners.burgerservicenummer |

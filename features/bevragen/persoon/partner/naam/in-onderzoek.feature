@@ -24,13 +24,13 @@ Functionaliteit: Persoon: partner naam velden zijn in onderzoek
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                  |
 
     Voorbeelden:
-    | aanduiding in onderzoek | voornamen io | adellijkeTitelPredicaat io | voorvoegsel io | geslachtsnaam io | voorletters io | type |
-    | 050000                  | true         | true                       | true           | true             | true           |      |
-    | 050200                  | true         | true                       | true           | true             | true           |      |
-    | 050210                  | true         |                            |                |                  | true           |      |
-    | 050220                  |              | true                       |                |                  |                |      |
-    | 050230                  |              |                            | true           |                  |                |      |
-    | 050240                  |              |                            |                | true             |                |      |
+    | aanduiding in onderzoek | voornamen io | adellijkeTitelPredicaat io | voorvoegsel io | geslachtsnaam io | voorletters io | type                                               |
+    | 050000                  | true         | true                       | true           | true             | true           | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050200                  | true         | true                       | true           | true             | true           | hele groep naam                                    |
+    | 050210                  | true         |                            |                |                  | true           | voornamen                                          |
+    | 050220                  |              | true                       |                |                  |                | adellijke titel/predicaat                          |
+    | 050230                  |              |                            | true           |                  |                | voorvoegsel geslachtsnaam                          |
+    | 050240                  |              |                            |                | true             |                | geslachtsnaam                                      |
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -50,22 +50,22 @@ Functionaliteit: Persoon: partner naam velden zijn in onderzoek
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | aanduiding in onderzoek | field                   | type |
-    | 050000                  | voornamen               |      |
-    | 050200                  | voornamen               |      |
-    | 050210                  | voornamen               |      |
-    | 050000                  | adellijkeTitelPredicaat |      |
-    | 050200                  | adellijkeTitelPredicaat |      |
-    | 050220                  | adellijkeTitelPredicaat |      |
-    | 050000                  | voorvoegsel             |      |
-    | 050200                  | voorvoegsel             |      |
-    | 050230                  | voorvoegsel             |      |
-    | 050000                  | geslachtsnaam           |      |
-    | 050200                  | geslachtsnaam           |      |
-    | 050240                  | geslachtsnaam           |      |
-    | 050000                  | voorletters             |      |
-    | 050200                  | voorletters             |      |
-    | 050210                  | voorletters             |      |
+    | aanduiding in onderzoek | field                   | type                                               |
+    | 050000                  | voornamen               | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050200                  | voornamen               | hele groep naam                                    |
+    | 050210                  | voornamen               | voornamen                                          |
+    | 050000                  | adellijkeTitelPredicaat | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050200                  | adellijkeTitelPredicaat | hele groep naam                                    |
+    | 050220                  | adellijkeTitelPredicaat | adellijke titel/predicaat                          |
+    | 050000                  | voorvoegsel             | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050200                  | voorvoegsel             | hele groep naam                                    |
+    | 050230                  | voorvoegsel             | voorvoegsel geslachtsnaam                          |
+    | 050000                  | geslachtsnaam           | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050200                  | geslachtsnaam           | hele groep naam                                    |
+    | 050240                  | geslachtsnaam           | geslachtsnaam                                      |
+    | 050000                  | voorletters             | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050200                  | voorletters             | hele groep naam                                    |
+    | 050210                  | voorletters             | voornamen                                          |
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -80,8 +80,8 @@ Functionaliteit: Persoon: partner naam velden zijn in onderzoek
     Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
 
     Voorbeelden:
-    | aanduiding in onderzoek | type | veld naam               | gevraagde fields                      |
-    | 050210                  |      | voornamen               | partners.naam.voorvoegsel             |
-    | 050220                  |      | adellijkeTitelPredicaat | partners.naam.voornamen               |
-    | 050230                  |      | voorvoegsel             | partners.naam.geslachtsnaam           |
-    | 050240                  |      | geslachtsnaam           | partners.naam.adellijkeTitelPredicaat |
+    | aanduiding in onderzoek | type                      | veld naam               | gevraagde fields                      |
+    | 050210                  | voornamen                 | voornamen               | partners.naam.voorvoegsel             |
+    | 050220                  | adellijke titel/predicaat | adellijkeTitelPredicaat | partners.naam.voornamen               |
+    | 050230                  | voorvoegsel geslachtsnaam | voorvoegsel             | partners.naam.geslachtsnaam           |
+    | 050240                  | geslachtsnaam             | geslachtsnaam           | partners.naam.adellijkeTitelPredicaat |

@@ -22,12 +22,12 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | aanduiding in onderzoek | datum io | plaats io | land io | type |
-    | 050000                  | true     | true      | true    |      |
-    | 050600                  | true     | true      | true    |      |
-    | 050610                  | true     |           |         |      |
-    | 050620                  |          | true      |         |      |
-    | 050630                  |          |           | true    |      |
+    | aanduiding in onderzoek | datum io | plaats io | land io | type                                                           |
+    | 050000                  | true     | true      | true    | hele categorie huwelijk/geregistreerd partnerschap             |
+    | 050600                  | true     | true      | true    | hele groep huwelijksluiting/aangaan geregistreerd partnerschap |
+    | 050610                  | true     |           |         | datum huwelijksluiting/aangaan geregistreerd partnerschap      |
+    | 050620                  |          | true      |         | plaats huwelijksluiting/aangaan geregistreerd partnerschap     |
+    | 050630                  |          |           | true    | land huwelijksluiting/aangaan geregistreerd partnerschap       |
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -47,16 +47,16 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | aanduiding in onderzoek | field  | type |
-    | 050000                  | datum  |      |
-    | 050600                  | datum  |      |
-    | 050610                  | datum  |      |
-    | 050000                  | plaats |      |
-    | 050600                  | plaats |      |
-    | 050620                  | plaats |      |
-    | 050000                  | land   |      |
-    | 050600                  | land   |      |
-    | 050630                  | land   |      |
+    | aanduiding in onderzoek | field  | type                                                           |
+    | 050000                  | datum  | hele categorie huwelijk/geregistreerd partnerschap             |
+    | 050600                  | datum  | hele groep huwelijksluiting/aangaan geregistreerd partnerschap |
+    | 050610                  | datum  | datum huwelijksluiting/aangaan geregistreerd partnerschap      |
+    | 050000                  | plaats | hele categorie huwelijk/geregistreerd partnerschap             |
+    | 050600                  | plaats | hele groep huwelijksluiting/aangaan geregistreerd partnerschap |
+    | 050620                  | plaats | plaats huwelijksluiting/aangaan geregistreerd partnerschap     |
+    | 050000                  | land   | hele categorie huwelijk/geregistreerd partnerschap             |
+    | 050600                  | land   | hele groep huwelijksluiting/aangaan geregistreerd partnerschap |
+    | 050630                  | land   | land huwelijksluiting/aangaan geregistreerd partnerschap       |
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -71,7 +71,7 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
     Dan heeft de response een persoon met een 'partner' zonder 'aangaanHuwelijkPartnerschap' gegevens
 
     Voorbeelden:
-    | gba in onderzoek waarde | type | veld naam                            | gevraagde fields                            |
-    | 050610                  |      | datum aangaan huwelijk/partnerschap  | partners.aangaanHuwelijkPartnerschap.plaats |
-    | 050620                  |      | plaats aangaan huwelijk/partnerschap | partners.aangaanHuwelijkPartnerschap.land   |
-    | 050630                  |      | land aangaan huwelijk/partnerschap   | partners.aangaanHuwelijkPartnerschap.datum  |
+    | gba in onderzoek waarde | type                                                       | veld naam                            | gevraagde fields                            |
+    | 050610                  | datum huwelijksluiting/aangaan geregistreerd partnerschap  | datum aangaan huwelijk/partnerschap  | partners.aangaanHuwelijkPartnerschap.plaats |
+    | 050620                  | plaats huwelijksluiting/aangaan geregistreerd partnerschap | plaats aangaan huwelijk/partnerschap | partners.aangaanHuwelijkPartnerschap.land   |
+    | 050630                  | land huwelijksluiting/aangaan geregistreerd partnerschap   | land aangaan huwelijk/partnerschap   | partners.aangaanHuwelijkPartnerschap.datum  |

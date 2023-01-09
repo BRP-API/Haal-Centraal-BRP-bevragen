@@ -22,12 +22,12 @@ Functionaliteit: Persoon: partner geboorte velden zijn in onderzoek
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | aanduiding in onderzoek | datum io | plaats io | land io | type |
-    | 050000                  | true     | true      | true    |      |
-    | 050300                  | true     | true      | true    |      |
-    | 050310                  | true     |           |         |      |
-    | 050320                  |          | true      |         |      |
-    | 050330                  |          |           | true    |      |
+    | aanduiding in onderzoek | datum io | plaats io | land io | type                                               |
+    | 050000                  | true     | true      | true    | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050300                  | true     | true      | true    | hele groep geboorte                                |
+    | 050310                  | true     |           |         | geboortedatum                                      |
+    | 050320                  |          | true      |         | geboorteplaats                                     |
+    | 050330                  |          |           | true    | geboorteland                                       |
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -47,16 +47,16 @@ Functionaliteit: Persoon: partner geboorte velden zijn in onderzoek
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | aanduiding in onderzoek | field  | type |
-    | 050000                  | datum  |      |
-    | 050300                  | datum  |      |
-    | 050310                  | datum  |      |
-    | 050000                  | plaats |      |
-    | 050300                  | plaats |      |
-    | 050320                  | plaats |      |
-    | 050000                  | land   |      |
-    | 050300                  | land   |      |
-    | 050330                  | land   |      |
+    | aanduiding in onderzoek | field  | type                                               |
+    | 050000                  | datum  | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050300                  | datum  | hele groep geboorte                                |
+    | 050310                  | datum  | geboortedatum                                      |
+    | 050000                  | plaats | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050300                  | plaats | hele groep geboorte                                |
+    | 050320                  | plaats | geboorteplaats                                     |
+    | 050000                  | land   | hele categorie huwelijk/geregistreerd partnerschap |
+    | 050300                  | land   | hele groep geboorte                                |
+    | 050330                  | land   | geboorteland                                       |
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -71,7 +71,7 @@ Functionaliteit: Persoon: partner geboorte velden zijn in onderzoek
     Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
 
     Voorbeelden:
-    | aanduiding in onderzoek | type | veld naam      | gevraagde fields         |
-    | 050310                  |      | geboortedatum  | partners.geboorte.plaats |
-    | 050320                  |      | geboorteplaats | partners.geboorte.land   |
-    | 050330                  |      | geboorteland   | partners.geboorte.datum  |
+    | aanduiding in onderzoek | type           | veld naam      | gevraagde fields         |
+    | 050310                  | geboortedatum  | geboortedatum  | partners.geboorte.plaats |
+    | 050320                  | geboorteplaats | geboorteplaats | partners.geboorte.land   |
+    | 050330                  | geboorteland   | geboorteland   | partners.geboorte.datum  |
