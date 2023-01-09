@@ -27,6 +27,11 @@ public class PartnerProfile : Profile
                     src.AangaanHuwelijkPartnerschap ??= new GbaAangaanHuwelijkPartnerschap();
                     src.AangaanHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
                 }
+                if(src.OntbindingHuwelijkPartnerschap != null || src.InOnderzoek != null)
+                {
+                    src.OntbindingHuwelijkPartnerschap ??= new GbaOntbindingHuwelijkPartnerschap();
+                    src.OntbindingHuwelijkPartnerschap.InOnderzoek = src.InOnderzoek;
+                }
             })
             .ForMember(dest => dest.SoortVerbintenis, opt =>
             {

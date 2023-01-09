@@ -54,7 +54,6 @@ namespace BrpProxy.Tests
                             "inOnderzoek.datumIngangOnderzoekGezag"
                         })]
 
-
         [InlineData(new[] { "verblijfplaats"},
                     new[] { "verblijfplaats", "verblijfplaats.inOnderzoek"})]
         [InlineData(new[] { "verblijfplaats.datumVan" },

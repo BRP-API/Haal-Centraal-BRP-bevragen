@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BrpProxy.Mappers;
 using HaalCentraal.BrpProxy.Generated;
 using HaalCentraal.BrpProxy.Generated.Gba;
 
@@ -10,6 +11,13 @@ public class OntbondenPartnerInOnderzoekConverter : ITypeConverter<GbaInOnderzoe
     {
         return source?.AanduidingGegevensInOnderzoek switch
         {
+            "050000" or
+            "050700" or
+            "050710" => new OntbindingHuwelijkPartnerschapInOnderzoek
+            {
+                Datum = true,
+                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
+            },
             _ => null
         };
     }
