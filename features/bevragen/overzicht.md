@@ -59,10 +59,23 @@ Een veld wordt gevraagd door het volledig pad van het betreffende veld op te gev
 
 Zie de [fields](./fields.feature) en de [fields fout cases](./fields-fout-cases.feature) feature bestanden voor meer informatie en voorbeelden over het gebruik van veld paden en de fields parameter. 
 
-Voor een Datum en Waardetabel veld wordt altijd alle 'kind' velden geleverd. In de [fields](./fields.feature) zijn onder de volgende rules voorbeelden hiervan opgenomen:
+### Filteren van value type velden
+
+Value types zijn simpele componenten waarvan de velden samen een waarde representeren. De BRP API kent de volgende value types:
+
+- VolledigeDatum
+- DatumOnbekend
+- JaarDatum
+- JaarMaandDatum
+- Waardetabel
+- AdellijkeTitelPredicaatType
+
+Om de waarde in een value type te kunnen interpreteren, zijn alle velden van de value type nodig. Daarom wordt het vragen van één of meerdere velden van een value type behandeld als het vragen van alle velden van de value type. In de [fields](./fields.feature) feature bestand zijn onder de volgende rules voorbeelden hiervan opgenomen:
 
 - Rule: Het vragen van één of meerdere velden van een 'waardetabel' veld levert alle velden van de 'waardetabel' veld
 - Rule: Het vragen van één of meerdere velden van een 'datum' veld levert alle velden van de 'datum' veld
+
+### Altijd geleverde (gegevensgroep) velden
 
 De volgende (gegevensgroep) velden hoeven niet met de fields parameter te worden gevraagd. Deze worden meegeleverd als de bijbehorende situatie van toepassing is:
 
