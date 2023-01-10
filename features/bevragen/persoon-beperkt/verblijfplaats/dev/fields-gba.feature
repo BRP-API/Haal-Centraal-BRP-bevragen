@@ -1,8 +1,8 @@
 #language: nl
 
-Functionaliteit: GBA verblijfplaats - vragen van velden met fields
+Functionaliteit: GBA verblijfplaats beperkt - vragen van velden met fields
 
-  Om het type van een verblijfplaats af te kunnen leiden moet ook het identificerende gegeven van de verblijfplaats type worden geleverd
+  Om het type van een verblijfplaats beperkt af te kunnen leiden moet ook het identificerende gegeven van de verblijfplaats type worden geleverd
 
 Rule: wanneer één of meerdere te bevragen velden van adres beperkt wordt gevraagd, dan wordt ook de waarde van 'straatnaam (11.10)' geleverd
 
