@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: partner velden zijn in onderzoek
 
-  Abstract Scenario: '<type>' is in onderzoek en alle 'root' velden wordt gevraagd
+  Abstract Scenario: '<type>' is in onderzoek en de velden burgerservicenummer, soortVerbintenis en geslacht wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
