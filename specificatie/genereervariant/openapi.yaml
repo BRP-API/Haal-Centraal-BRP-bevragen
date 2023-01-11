@@ -792,12 +792,17 @@ components:
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       example: "0518200000366054"
     GeboorteBeperkt:
+      allOf:
+      - $ref: '#/components/schemas/GeboorteBasis'
+      - type: object
+        properties:
+          inOnderzoek:
+            $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
+    GeboorteBasis:
       type: object
       properties:
         datum:
           $ref: '#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
     GeboorteInOnderzoekBeperkt:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
@@ -1307,7 +1312,7 @@ components:
         * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
         * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
-      - $ref: '#/components/schemas/GeboorteBeperkt'
+      - $ref: '#/components/schemas/GeboorteBasis'
       - type: object
         properties:
           land:

@@ -1002,13 +1002,22 @@
         "example" : "0518200000366054"
       },
       "GeboorteBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/GeboorteBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/GeboorteInOnderzoekBeperkt"
+            }
+          }
+        } ]
+      },
+      "GeboorteBasis" : {
         "type" : "object",
         "properties" : {
           "datum" : {
             "$ref" : "#/components/schemas/AbstractDatum"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/GeboorteInOnderzoekBeperkt"
           }
         }
       },
@@ -1714,7 +1723,7 @@
       "Geboorte" : {
         "description" : "Gegevens over de geboorte.\n* **datum** - datum waarop de persoon is geboren.\n* **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n* **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/GeboorteBeperkt"
+          "$ref" : "#/components/schemas/GeboorteBasis"
         }, {
           "type" : "object",
           "properties" : {
