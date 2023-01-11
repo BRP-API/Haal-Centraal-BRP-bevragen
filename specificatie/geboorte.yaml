@@ -20,13 +20,18 @@ components:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             plaats:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
-    GeboorteBeperkt:
+    GeboorteBasis:
       type: object
       properties:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
+    GeboorteBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/GeboorteBasis'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
     Geboorte:
       description: |
         Gegevens over de geboorte.
@@ -34,7 +39,7 @@ components:
         * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
         * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
-        - $ref: '#/components/schemas/GeboorteBeperkt'
+        - $ref: '#/components/schemas/GeboorteBasis'
         - type: object
           properties:
             land:

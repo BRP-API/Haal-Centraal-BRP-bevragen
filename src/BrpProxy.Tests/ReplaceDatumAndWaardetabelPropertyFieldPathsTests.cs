@@ -1,11 +1,6 @@
 ﻿using BrpProxy.Validators;
 using FluentAssertions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace BrpProxy.Tests
@@ -14,7 +9,19 @@ namespace BrpProxy.Tests
     {
         [Theory]
         [InlineData(new string[] { "geboorte.datum" }, new string[] { "geboorte.datum" })]
+        [InlineData(new string[] { "geboorte.datum.datum" }, new string[] { "geboorte.datum" })]
         public void Geboorte(IEnumerable<string> input, IEnumerable<string> expected)
+        {
+            input.ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths().Should().BeEquivalentTo(expected);
+        }
+
+        [Theory]
+        [InlineData(new string[] { "partners.aangaanHuwelijkPartnerschap.datum" }, new string[] { "partners.aangaanHuwelijkPartnerschap.datum" })]
+        [InlineData(new string[] { "partners.aangaanHuwelijkPartnerschap.datum.datum" }, new string[] { "partners.aangaanHuwelijkPartnerschap.datum" })]
+        [InlineData(new string[] { "partners.geboorte.datum" }, new string[] { "partners.geboorte.datum" })]
+        [InlineData(new string[] { "partners.geboorte.datum.datum" }, new string[] { "partners.geboorte.datum" })]
+        [InlineData(new string[] { "partners.naam.adellijkeTitelPredicaat.soort" }, new string[] { "partners.naam.adellijkeTitelPredicaat" })]
+        public void Partner(IEnumerable<string> input, IEnumerable<string> expected)
         {
             input.ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths().Should().BeEquivalentTo(expected);
         }

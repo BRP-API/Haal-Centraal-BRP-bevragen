@@ -285,6 +285,18 @@ async function deleteRecords(client, sqlData) {
     }
 }
 
+async function deleteAdresRecord(client, sqlData) {
+    if(sqlData.ids === undefined) {
+        return;
+    }
+
+    const id = sqlData.ids.adres_id;
+
+    if(id !== undefined) {
+        await client.query(createDeleteStatement('adres', id));
+    }
+}
+
 function equals(sqlData, adresData) {
     return Object.keys(sqlData).length === adresData.length &&
            Object.keys(sqlData).every((v, i) => v === adresData[i])
@@ -307,13 +319,17 @@ After(async function() {
                     adresData = sqlData;
                 }
                 else {
+                    if (adresData !== undefined &&
+                        adresData.ids.adres_id == sqlData.ids.adres_id) {
+                            sqlData.ids.adres_id = undefined;
+                        }
                     await deleteRecords(client, sqlData);
                 }
             }
         }
 
         if(adresData !== undefined) {
-            await deleteRecords(client, adresData);
+            await deleteAdresRecord(client, adresData);
         }
     }
     catch(ex) {
