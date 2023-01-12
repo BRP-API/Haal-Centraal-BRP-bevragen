@@ -2,7 +2,7 @@
 
 Functionaliteit: GBA verblijfplaats - vragen van velden met fields
 
-Rule: wanneer één of meerdere adresregel velden voor een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
+Rule: wanneer één of meerdere adresregel velden voor een persoon met een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
 
   Scenario: persoon heeft een adres met alleen een straatnaam en huisnummer als verblijfplaats en adresregel1 wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -227,7 +227,7 @@ Rule: wanneer één of meerdere adresregel velden voor een adres wordt gevraagd,
     | .                        | 88         | een straatnaam met standaardwaarde |
     | Jonkheer van Riemsdijkln | 0          | een huisnummer met standaardwaarde |
 
-Rule: wanneer één of meerdere adresregel velden voor een adres wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Rule: wanneer één of meerdere adresregel velden voor een persoon met een adres wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: persoon heeft adres als verblijfplaats, '<type>' is in onderzoek en één of meerdere adresregel velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -274,7 +274,7 @@ Rule: wanneer één of meerdere adresregel velden voor een adres wordt gevraagd 
     | 088500                  | hele groep geldigheid              | adressering.adresregel1,adressering.land                                                 |
     | 088510                  | datum ingang geldigheid            | adressering.adresregel2,adressering.adresregel3                                          |
 
-Rule: wanneer één of meerdere adresregel velden voor een locatie wordt gevraagd, dan wordt altijd de waarde van 'locatiebeschrijving (12.10)' geleverd
+Rule: wanneer één of meerdere adresregel velden voor een persoon met een locatie wordt gevraagd, dan wordt altijd de waarde van 'locatiebeschrijving (12.10)' geleverd
 
   Scenario: persoon heeft een locatie als verblijfplaats en adresregel1 wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -349,7 +349,7 @@ Rule: wanneer één of meerdere adresregel velden voor een locatie wordt gevraag
     | adresregel3 |
     | land        |
 
-Rule: wanneer één of meerdere adresregel velden voor een locatie wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Rule: wanneer één of meerdere adresregel velden voor een persoon met een locatie wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: persoon heeft locatie als verblijfplaats, '<type>' is in onderzoek en één of meerdere adresregel velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -386,7 +386,7 @@ Rule: wanneer één of meerdere adresregel velden voor een locatie wordt gevraag
     | 088500                  | hele groep geldigheid         | adressering.adresregel2,adressering.adresregel3                                          |
     | 088510                  | datum ingang geldigheid       | adressering.adresregel2,adressering.land                                                 |
 
-Rule: wanneer één of meerdere adresregel velden voor een verblijfplaats buitenland wordt gevraagd, dan wordt altijd alle verblijfplaats buitenland velden geleverd
+Rule: wanneer één of meerdere adresregel velden voor een persoon met een verblijfplaats buitenland wordt gevraagd, dan wordt altijd alle verblijfplaats buitenland velden geleverd
 
   Abstract Scenario: persoon heeft een verblijfplaats buitenland
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -469,7 +469,7 @@ Rule: wanneer één of meerdere adresregel velden voor een verblijfplaats buiten
     | adresregel3 |
     | land        |
 
-Rule: wanneer één of meerdere adresregel velden voor een verblijfplaats buitenland wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Rule: wanneer één of meerdere adresregel velden voor een persoon met een verblijfplaats buitenland wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: persoon heeft een verblijfplaats buitenland, '<type>' is in onderzoek en één of meerdere adresregel velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
