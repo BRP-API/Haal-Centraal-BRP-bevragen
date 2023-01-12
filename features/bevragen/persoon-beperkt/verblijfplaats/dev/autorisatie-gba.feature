@@ -25,7 +25,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                                          |
@@ -38,7 +38,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -49,7 +49,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                             |
@@ -62,7 +62,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats                         |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -74,7 +74,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | 10120 81110 81120 81160 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                             |
@@ -94,7 +94,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | 10120 10240 10310 81110 81120 81160 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) |
@@ -119,7 +119,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -137,7 +137,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                      |
@@ -150,7 +150,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[0].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -168,7 +168,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                                       |
