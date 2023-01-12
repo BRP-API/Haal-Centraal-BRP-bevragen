@@ -8,15 +8,15 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
 
 Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
   Het gaat om de volgende properties en standaardwaardes van de persoon:
-  | property                                         | standaardwaarde  |
-  | ------------------------------------------------ | ---------------- |
-  | verblijfplaats.korteNaam                         | .                |
-  | verblijfplaats.huisnummer                        | 0                |
-  | verblijfplaats.woonplaats                        | .                |
-  | verblijfplaats.nummeraanduidingIdentificatie     | 0000000000000000 |
-  | verblijfplaats.adresseerbaarObjectIdentificatie  | 0000000000000000 |
+  | property                                   | standaardwaarde  |
+  | ------------------------------------------ | ---------------- |
+  | straatnaam (11.10)                         | .                |
+  | huisnummer (11.20)                         | 0                |
+  | woonplaats (11.70)                         | .                |
+  | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
+  | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
 
-  Scenario: onbekend waarde "." voor straat 
+  Scenario: onbekend waarde "." voor straatnaam 
     Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'verblijfplaats' gegevens
     | naam                  | waarde |
     | functie adres (10.10) | W      |
@@ -26,10 +26,10 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
     | straatnaam (11.10)   | .      |
     | huisnummer (11.20)   | 1      |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                 |
-    | type                | RaadpleegMetBurgerservicenummer        |
-    | burgerservicenummer | 000000164                              |
-    | fields              | verblijfplaats.verblijfadres.korteNaam |
+    | naam                | waarde                                       |
+    | type                | RaadpleegMetBurgerservicenummer              |
+    | burgerservicenummer | 000000164                                    |
+    | fields              | verblijfplaats.verblijfadres.korteStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
@@ -75,9 +75,27 @@ Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
 
     Voorbeelden:
     | field                                           | element                                    | waarde           |
-    | verblijfplaats.verblijfadres.woonplaats         | woonplaats (11.70)                         | .                |
     | verblijfplaats.nummeraanduidingIdentificatie    | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
     | verblijfplaats.adresseerbaarObjectIdentificatie | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
+
+  Scenario: onbekend waarde "." voor woonplaats (11.70)
+   Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
+    | naam                  | waarde |
+    | functie adres (10.10) | W      |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens   
+    | naam                 | waarde     |
+    | gemeentecode (92.10) | 0344       |
+    | straatnaam (11.10)   | een straat |
+    | woonplaats (11.70)   | .          |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                  |
+    | type                | RaadpleegMetBurgerservicenummer         |
+    | burgerservicenummer | 000000188                               |
+    | fields              | verblijfplaats.verblijfadres.woonplaats |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam | waarde |
+    | type | Adres  |
+    En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
   Scenario: volledig onbekende datum aanvang adreshouding in verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens

@@ -16,6 +16,8 @@ public class ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator : PersonenQueryVa
     const string VoornamenPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {VoornamenPattern}.";
     const string VoorvoegselPattern = @"^[a-zA-Z \']{1,10}$";
     const string VoorvoegselPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {VoorvoegselPattern}.";
+    const string GemeenteVanInschrijvingPattern = @"^[0-9]{4}$";
+    const string GemeenteVanInschrijvingPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {GemeenteVanInschrijvingPattern}.";
 
     public ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator(FieldsHelper fieldsHelper)
         : base(fieldsHelper)
@@ -41,5 +43,9 @@ public class ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator : PersonenQueryVa
         RuleFor(x => x.Geslacht)
             .Matches(GeslachtPattern).WithMessage(GeslachtPatternErrorMessage)
             .When(x => !string.IsNullOrWhiteSpace(x.Geslacht));
+
+        RuleFor(x => x.GemeenteVanInschrijving)
+            .Cascade(CascadeMode.Stop)
+            .Matches(GemeenteVanInschrijvingPattern).WithMessage(GemeenteVanInschrijvingPatternErrorMessage);
     }
 }

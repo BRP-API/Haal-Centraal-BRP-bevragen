@@ -781,8 +781,9 @@ components:
       pattern: "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\\
         *{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$"
       type: string
-      description: |
-        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      description: "Een naam die door de gemeente aan een openbare ruimte is gegeven.\
+        \ **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.**\
+        \ **Zoeken met tekstvelden is case-insensitive.** \n"
       example: Tulpstraat
     NummeraanduidingIdentificatie:
       pattern: "^[0-9]{16}$"
@@ -791,12 +792,17 @@ components:
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       example: "0518200000366054"
     GeboorteBeperkt:
+      allOf:
+      - $ref: '#/components/schemas/GeboorteBasis'
+      - type: object
+        properties:
+          inOnderzoek:
+            $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
+    GeboorteBasis:
       type: object
       properties:
         datum:
           $ref: '#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
     GeboorteInOnderzoekBeperkt:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
@@ -994,8 +1000,6 @@ components:
       - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
       - type: object
         properties:
-          functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     LocatieBeperkt:
@@ -1032,7 +1036,7 @@ components:
       type: string
       description: |
         Het eerste deel van een adres is een combinatie van de straat en huisnummer.
-      example: Laan van de landinrichtingscommissie Duiven-Westervoort 26A-3
+      example: Kappeyne v d Cappellostr 26A-3
     Adresregel2:
       maxLength: 50
       type: string
@@ -1062,6 +1066,7 @@ components:
         Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
     AbstractDatum:
       required:
+      - langFormaat
       - type
       type: object
       properties:
@@ -1307,7 +1312,7 @@ components:
         * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
         * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
-      - $ref: '#/components/schemas/GeboorteBeperkt'
+      - $ref: '#/components/schemas/GeboorteBasis'
       - type: object
         properties:
           land:
@@ -1485,8 +1490,10 @@ components:
     VerblijfadresBinnenland:
       type: object
       properties:
-        straat:
-          $ref: '#/components/schemas/Straat'
+        officieleStraatnaam:
+          $ref: '#/components/schemas/OfficieleStraatnaam'
+        korteStraatnaam:
+          $ref: '#/components/schemas/KorteStraatnaam'
         huisnummer:
           $ref: '#/components/schemas/Huisnummer'
         huisletter:
@@ -1499,14 +1506,18 @@ components:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
-        korteNaam:
-          $ref: '#/components/schemas/KorteNaam'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfadresBinnenlandInOnderzoek'
-    Straat:
+    OfficieleStraatnaam:
       maxLength: 80
       type: string
-      example: Tulpstraat
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).
+    KorteStraatnaam:
+      maxLength: 24
+      type: string
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG), zo nodig verkort tot maximaal 24 tekens, of de straatnaam van een niet-BAG adres.
     Woonplaats:
       title: woonplaats naam
       pattern: "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$"
@@ -1514,11 +1525,6 @@ components:
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
       example: Duiven
-    KorteNaam:
-      maxLength: 24
-      type: string
-      description: |
-        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
     VerblijfadresBinnenlandInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
@@ -1532,11 +1538,11 @@ components:
             type: boolean
           huisnummertoevoeging:
             type: boolean
-          straat:
+          officieleStraatnaam:
             type: boolean
           postcode:
             type: boolean
-          korteNaam:
+          korteStraatnaam:
             type: boolean
           woonplaats:
             type: boolean
@@ -1564,14 +1570,10 @@ components:
           functieAdres:
             type: boolean
     VerblijfplaatsOnbekend:
-      description: |
-        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
         properties:
-          functieAdres:
-            $ref: '#/components/schemas/Waardetabel'
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
@@ -1586,8 +1588,6 @@ components:
           type:
             type: boolean
           datumVan:
-            type: boolean
-          functieAdres:
             type: boolean
           datumIngangGeldigheid:
             type: boolean

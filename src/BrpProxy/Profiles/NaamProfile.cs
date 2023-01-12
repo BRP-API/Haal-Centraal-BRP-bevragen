@@ -9,7 +9,7 @@ public class NaamProfile : Profile
 {
     public NaamProfile()
     {
-        CreateMap<GbaNaamBasis, NaamBasis>()
+        CreateMap<GbaNaamBasis, NaamPersoonBeperkt>()
             .ForMember(dest => dest.Voorletters, opt => opt.MapFrom(src => src.Voorletters()))
             .ForMember(dest => dest.Geslachtsnaam, opt =>
             {
@@ -44,6 +44,7 @@ public class NaamProfile : Profile
             })
             ;
 
+        CreateMap<GbaInOnderzoek, NaamPersoonInOnderzoekBeperkt?>().ConvertUsing<NaamPersoonInOnderzoekBeperktConverter>();
         CreateMap<GbaInOnderzoek, NaamPersoonInOnderzoek?>().ConvertUsing<NaamPersoonInOnderzoekConverter>();
     }
 }

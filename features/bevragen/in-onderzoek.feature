@@ -95,7 +95,7 @@ Rule: vragen van een inOnderzoek gegevensgroep veld of één of meerdere velden 
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000097                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder 'naam' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | fields                                                         | sub titel                          |

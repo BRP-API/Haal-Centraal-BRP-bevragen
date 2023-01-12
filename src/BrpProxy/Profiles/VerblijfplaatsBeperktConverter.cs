@@ -4,54 +4,42 @@ using HaalCentraal.BrpProxy.Generated.Gba;
 
 namespace BrpProxy.Profiles;
 
+public static class VerblijfplaatsBeperktConverterExtensions
+{
+    public static bool IsOnbekendVerblijfplaatsBuitenland(this GbaVerblijfplaatsBeperkt source) =>
+        source.Land != null &&
+        source.Land.Code == "0000";
+
+    public static bool IsVerblijfplaatsBuitenland(this GbaVerblijfplaatsBeperkt source) =>
+        source.Land != null &&
+        source.Land.Code != "0000";
+
+    public static bool IsAdres(this GbaVerblijfplaatsBeperkt source) => !string.IsNullOrWhiteSpace(source.Straat);
+
+    public static bool IsLocatie(this GbaVerblijfplaatsBeperkt source) => !string.IsNullOrWhiteSpace(source.Locatiebeschrijving);
+}
+
 public class VerblijfplaatsBeperktConverter : ITypeConverter<GbaVerblijfplaatsBeperkt, AbstractVerblijfplaatsBeperkt?>
 {
-    private static bool VerblijfBuitenlandIsOnbekend(GbaVerblijfplaatsBeperkt source)
-    {
-        return
-            (source.Land == null || source.Land.Code == "0000") &&
-            string.IsNullOrWhiteSpace(source.Regel1) &&
-            string.IsNullOrWhiteSpace(source.Regel2) &&
-            string.IsNullOrWhiteSpace(source.Regel3)
-            ;
-    }
-
-    private static bool AdresIsOnbekend(GbaVerblijfplaatsBeperkt source)
-    {
-        return
-            (string.IsNullOrWhiteSpace(source.Straat) || source.Straat == ".") &&
-            source.Huisnummer == 0 &&
-            string.IsNullOrWhiteSpace(source.Huisletter) &&
-            string.IsNullOrWhiteSpace(source.Huisnummertoevoeging) &&
-            source.AanduidingBijHuisnummer == null &&
-            string.IsNullOrWhiteSpace(source.Postcode) &&
-            (string.IsNullOrWhiteSpace(source.Woonplaats) || source.Woonplaats == ".")
-            ;
-    }
-
-    private static bool LocatieIsOnbekend(GbaVerblijfplaatsBeperkt source)
-    {
-        return string.IsNullOrWhiteSpace(source.Locatiebeschrijving);
-    }
-
     public AbstractVerblijfplaatsBeperkt? Convert(GbaVerblijfplaatsBeperkt source, AbstractVerblijfplaatsBeperkt? destination, ResolutionContext context)
     {
-        if (source == null) return null;
-        if (VerblijfBuitenlandIsOnbekend(source) &&
-            AdresIsOnbekend(source) &&
-            LocatieIsOnbekend(source))
+        if (source == null)
+        {
+            return null;
+        }
+        if (source.IsOnbekendVerblijfplaatsBuitenland())
         {
             return context.Mapper.Map<VerblijfplaatsOnbekendBeperkt>(source);
         }
-        if (!VerblijfBuitenlandIsOnbekend(source))
+        if (source.IsVerblijfplaatsBuitenland())
         {
             return context.Mapper.Map<VerblijfplaatsBuitenlandBeperkt>(source);
         }
-        if (!AdresIsOnbekend(source))
+        if (source.IsAdres())
         {
             return context.Mapper.Map<AdresBeperkt>(source);
         }
-        if (!LocatieIsOnbekend(source))
+        if (source.IsLocatie())
         {
             return context.Mapper.Map<LocatieBeperkt>(source);
         }

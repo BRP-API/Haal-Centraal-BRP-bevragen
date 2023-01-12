@@ -40,8 +40,8 @@ public static class AdresregelsMapper
 
     private static string? Adresregel1(this VerblijfadresBinnenland adres)
     {
-        if (string.IsNullOrWhiteSpace(adres.KorteNaam) ||
-            string.IsNullOrWhiteSpace(adres.Postcode) ||
+        if (string.IsNullOrWhiteSpace(adres.KorteStraatnaam) ||
+            //string.IsNullOrWhiteSpace(adres.Postcode) ||
             adres.Huisnummer == 0)
         {
             return null;
@@ -49,9 +49,9 @@ public static class AdresregelsMapper
 
         StringBuilder retval = new();
 
-        if (!string.IsNullOrWhiteSpace(adres.KorteNaam))
+        if (!string.IsNullOrWhiteSpace(adres.KorteStraatnaam))
         {
-            retval.Append(adres.KorteNaam);
+            retval.Append(adres.KorteStraatnaam);
         }
         if (adres.AanduidingBijHuisnummer != null)
         {
@@ -161,9 +161,7 @@ public static class AdresregelsMapper
 
     private static string? Adresregel2(this VerblijfadresBinnenland adres, IWaardetabel? gemeenteVanInschrijving)
     {
-        if (string.IsNullOrWhiteSpace(adres.KorteNaam) ||
-            string.IsNullOrWhiteSpace(adres.Postcode) ||
-            adres.Huisnummer == 0)
+        if (string.IsNullOrWhiteSpace(adres.Postcode))
         {
             return null;
         }

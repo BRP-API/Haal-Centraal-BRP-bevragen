@@ -2,74 +2,6 @@
 
 Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
 
-  Abstract Scenario: persoon heeft 'verblijfadres' veld met onbekend waarde: '<gba naam>'
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde   |
-    | datum aanvang adreshouding (10.30) | 20220128 |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                         | waarde       |
-    | gemeente_code                | 0518         |
-    | naam openbare ruimte (11.15) | Spui         |
-    | <gba naam>                   | <gba waarde> |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | verblijfplaats.<naam>           |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam | waarde |
-    | type | Adres  |
-
-    Voorbeelden:
-    | gba naam           | gba waarde | naam                     |
-    | straatnaam (11.10) | .          | verblijfadres.straat     |
-    | huisnummer (11.20) | 0          | verblijfadres.huisnummer |
-    | woonplaats (11.70) | .          | verblijfadres.woonplaats |
-
-  Abstract Scenario: verblijfadres veld(en) van persoon is/zijn in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                               | waarde                    |
-    | datum aanvang adreshouding (10.30) | 20220128                  |
-    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)     | 20020701                  |
-    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam               | waarde |
-    | gemeente_code      | 0518   |
-    | straatnaam (11.10) | Spui   |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                   |
-    | type                | RaadpleegMetBurgerservicenummer          |
-    | burgerservicenummer | 000000152                                |
-    | fields              | verblijfplaats.verblijfadres.inOnderzoek |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam                                                       | waarde                             |
-    | type                                                       | Adres                              |
-    | verblijfadres.inOnderzoek.aanduidingBijHuisnummer          | <aanduidingBijHuisnr in onderzoek> |
-    | verblijfadres.inOnderzoek.huisletter                       | <huisletter in onderzoek>          |
-    | verblijfadres.inOnderzoek.huisnummer                       | <huisnr in onderzoek>              |
-    | verblijfadres.inOnderzoek.huisnummertoevoeging             | <huisnrtoevoeging in onderzoek>    |
-    | verblijfadres.inOnderzoek.straat                           | <straat in onderzoek>              |
-    | verblijfadres.inOnderzoek.postcode                         | <postcode in onderzoek>            |
-    | verblijfadres.inOnderzoek.korteNaam                        | <korteNaam in onderzoek>           |
-    | verblijfadres.inOnderzoek.woonplaats                       | <woonplaats in onderzoek>          |
-    | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                              |
-    | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                         |
-    | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                        |
-
-    Voorbeelden:
-    | gba in onderzoek waarde | aanduidingBijHuisnr in onderzoek | huisletter in onderzoek | huisnr in onderzoek | huisnrtoevoeging in onderzoek | straat in onderzoek | postcode in onderzoek | korteNaam in onderzoek | woonplaats in onderzoek |
-    | 080000                  | true                             | true                    | true                | true                          | true                | true                  | true                   | true                    |
-    | 080900                  |                                  |                         |                     |                               |                     |                       |                        | true                    |
-    | 080910                  |                                  |                         |                     |                               |                     |                       |                        | true                    |
-    | 081100                  | true                             | true                    | true                | true                          | true                | true                  | true                   | true                    |
-    | 081110                  |                                  |                         |                     |                               | true                |                       | true                   |                         |
-    | 081115                  |                                  |                         |                     |                               | true                |                       |                        |                         |
-    | 081120                  |                                  |                         | true                |                               |                     |                       |                        |                         |
-    | 081130                  |                                  | true                    |                     |                               |                     |                       |                        |                         |
-    | 081140                  |                                  |                         |                     | true                          |                     |                       |                        |                         |
-    | 081150                  | true                             |                         |                     |                               |                     |                       |                        |                         |
-    | 081160                  |                                  |                         |                     |                               |                     | true                  |                        |                         |
-    | 081170                  |                                  |                         |                     |                               |                     |                       |                        | true                    |
 
   Abstract Scenario: niet-verblijfadres veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -226,15 +158,15 @@ Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
     | gemeente_code                | 0518   |
     | naam openbare ruimte (11.15) | Spui   |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
+    | naam                | waarde                                           |
+    | type                | RaadpleegMetBurgerservicenummer                  |
+    | burgerservicenummer | 000000152                                        |
+    | fields              | verblijfplaats.verblijfadres.officieleStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                                                       | waarde      |
     | type                                                       | Adres       |
-    | verblijfadres.straat                                       | Spui        |
-    | verblijfadres.inOnderzoek.straat                           | true        |
+    | verblijfadres.officieleStraatnaam                          | Spui        |
+    | verblijfadres.inOnderzoek.officieleStraatnaam              | true        |
     | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum       |
     | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
     | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
@@ -243,7 +175,6 @@ Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
     | gba in onderzoek waarde |
     | 080000                  |
     | 081100                  |
-    | 081110                  |
     | 081115                  |
 
   Abstract Scenario: 'postcode (11.60)' is in onderzoek
@@ -290,12 +221,12 @@ Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
     | naam                | waarde                                 |
     | type                | RaadpleegMetBurgerservicenummer        |
     | burgerservicenummer | 000000152                              |
-    | fields              | verblijfplaats.verblijfadres.korteNaam |
+    | fields              | verblijfplaats.verblijfadres.korteStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                                                       | waarde      |
     | type                                                       | Adres       |
-    | verblijfadres.korteNaam                                    | Spui        |
-    | verblijfadres.inOnderzoek.korteNaam                        | true        |
+    | verblijfadres.korteStraatnaam                              | Spui        |
+    | verblijfadres.inOnderzoek.korteStraatnaam                  | true        |
     | verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum       |
     | verblijfadres.inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
     | verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
@@ -421,10 +352,10 @@ Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
     | gemeente_code                | 0518   |
     | huisnummertoevoeging (11.40) | 2      |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
+    | naam                | waarde                                           |
+    | type                | RaadpleegMetBurgerservicenummer                  |
+    | burgerservicenummer | 000000152                                        |
+    | fields              | verblijfplaats.verblijfadres.officieleStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |
@@ -470,10 +401,10 @@ Functionaliteit: Persoon: verblijfplaats binnenland - verblijfadres
     | gemeente_code    | 0518   |
     | postcode (11.60) | 1234AA |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                              |
-    | type                | RaadpleegMetBurgerservicenummer     |
-    | burgerservicenummer | 000000152                           |
-    | fields              | verblijfplaats.verblijfadres.straat |
+    | naam                | waarde                                           |
+    | type                | RaadpleegMetBurgerservicenummer                  |
+    | burgerservicenummer | 000000152                                        |
+    | fields              | verblijfplaats.verblijfadres.officieleStraatnaam |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam | waarde |
     | type | Adres  |

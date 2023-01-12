@@ -49,11 +49,16 @@ components:
       type: string
       pattern: ^[a-zA-Z0-9 \-]{1,4}$
       example: "bis"
-    KorteNaam:
+    KorteStraatnaam:
       description: |
-        De officiële openbareruimtenaam uit de Basisregistratie Gebouwen en Adressen (BAG) of een verkorte versie.
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG), zo nodig verkort tot maximaal 24 tekens, of de straatnaam van een niet-BAG adres.
       type: string
       maxLength: 24
+    OfficieleStraatnaam:
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).
+      type: string
+      maxLength: 80
     Locatiebeschrijving:
       type: string
       maxLength: 35
@@ -77,7 +82,7 @@ components:
       example: "2341SX"
     Straat:
       type: string
-      maxLength: 80
+      maxLength: 24
       example: "Tulpstraat"
     Woonplaats:
       description: |
@@ -89,8 +94,10 @@ components:
     VerblijfadresBinnenland:
       type: object
       properties:
-        straat:
-          $ref: '#/components/schemas/Straat'
+        officieleStraatnaam:
+          $ref: '#/components/schemas/OfficieleStraatnaam'
+        korteStraatnaam:
+          $ref: '#/components/schemas/KorteStraatnaam'
         huisnummer:
           $ref: '#/components/schemas/Huisnummer'
         huisletter:
@@ -103,8 +110,6 @@ components:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
           $ref: '#/components/schemas/Woonplaats'
-        korteNaam:
-          $ref: '#/components/schemas/KorteNaam'
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
     VerblijfadresBuitenland:
@@ -166,8 +171,6 @@ components:
         - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
         - type: object
           properties:
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     LocatieBeperkt:
@@ -289,14 +292,10 @@ components:
             inOnderzoek:
               $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfplaatsOnbekend:
-      description: |
-        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'
         - type: object
           properties:
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
@@ -312,14 +311,18 @@ components:
           $ref: '#/components/schemas/Regel2'
         regel3:
           $ref: '#/components/schemas/Regel3'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumAanvangAdresBuitenland:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
         adresseerbaarObjectIdentificatie:
           $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
         nummeraanduidingIdentificatie:
           $ref: '#/components/schemas/NummeraanduidingIdentificatie'
         functieAdres:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
+        naamOpenbareRuimte:
+          $ref: '#/components/schemas/NaamOpenbareRuimte'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:
@@ -332,18 +335,14 @@ components:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
-        land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         datumAanvangAdreshouding:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumAanvangAdresBuitenland:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        naamOpenbareRuimte:
-          $ref: '#/components/schemas/NaamOpenbareRuimte'
         inOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     VerblijfplaatsBuitenlandInOnderzoek:
@@ -383,11 +382,11 @@ components:
               type: boolean
             huisnummertoevoeging:
               type: boolean
-            straat:
+            officieleStraatnaam:
               type: boolean
             postcode:
               type: boolean
-            korteNaam:
+            korteStraatnaam:
               type: boolean
             woonplaats:
               type: boolean
@@ -416,8 +415,6 @@ components:
             type:
               type: boolean
             datumVan:
-              type: boolean
-            functieAdres:
               type: boolean
             datumIngangGeldigheid:
               type: boolean

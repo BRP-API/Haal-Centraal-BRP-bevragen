@@ -916,7 +916,7 @@
       "StraatFilter" : {
         "pattern" : "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$",
         "type" : "string",
-        "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
+        "description" : "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** \n",
         "example" : "Tulpstraat"
       },
       "NummeraanduidingIdentificatie" : {
@@ -1096,7 +1096,7 @@
         }
       },
       "Straat" : {
-        "maxLength" : 80,
+        "maxLength" : 24,
         "type" : "string",
         "example" : "Tulpstraat"
       },
@@ -1250,6 +1250,12 @@
           "regel3" : {
             "$ref" : "#/components/schemas/Regel3"
           },
+          "land" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "datumAanvangAdresBuitenland" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
           "adresseerbaarObjectIdentificatie" : {
             "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
           },
@@ -1259,8 +1265,8 @@
           "functieAdres" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
-          "woonplaats" : {
-            "$ref" : "#/components/schemas/Woonplaats"
+          "naamOpenbareRuimte" : {
+            "$ref" : "#/components/schemas/NaamOpenbareRuimte"
           },
           "straat" : {
             "$ref" : "#/components/schemas/Straat"
@@ -1280,23 +1286,17 @@
           "postcode" : {
             "$ref" : "#/components/schemas/Postcode"
           },
+          "woonplaats" : {
+            "$ref" : "#/components/schemas/Woonplaats"
+          },
           "locatiebeschrijving" : {
             "$ref" : "#/components/schemas/Locatiebeschrijving"
-          },
-          "land" : {
-            "$ref" : "#/components/schemas/Waardetabel"
           },
           "datumIngangGeldigheid" : {
             "$ref" : "#/components/schemas/GbaDatum"
           },
           "datumAanvangAdreshouding" : {
             "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "datumAanvangAdresBuitenland" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          },
-          "naamOpenbareRuimte" : {
-            "$ref" : "#/components/schemas/NaamOpenbareRuimte"
           },
           "inOnderzoek" : {
             "$ref" : "#/components/schemas/GbaInOnderzoek"

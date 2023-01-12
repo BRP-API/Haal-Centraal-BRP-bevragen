@@ -7,12 +7,11 @@ public partial class Adres
         DatumIngangGeldigheid != null ||
         DatumVan != null ||
         FunctieAdres != null ||
-        InOnderzoek != null ||
         NummeraanduidingIdentificatie != null ||
         Verblijfadres != null
         ;
 
-    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null;
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
     public bool ShouldSerializeVerblijfadres() => Verblijfadres != null;
 }
@@ -36,9 +35,9 @@ public partial class VerblijfadresBinnenland
         !string.IsNullOrWhiteSpace(Huisletter) ||
         Huisnummer > 0 ||
         !string.IsNullOrWhiteSpace(Huisnummertoevoeging) ||
-        !string.IsNullOrWhiteSpace(KorteNaam) ||
+        !string.IsNullOrWhiteSpace(KorteStraatnaam) ||
         !string.IsNullOrWhiteSpace(Postcode) ||
-        !string.IsNullOrWhiteSpace(Straat) ||
+        !string.IsNullOrWhiteSpace(OfficieleStraatnaam) ||
         !string.IsNullOrWhiteSpace(Woonplaats) ||
         InOnderzoek != null
         ;
@@ -53,9 +52,9 @@ public partial class VerblijfadresBinnenlandInOnderzoek
         Huisletter.HasValue ||
         Huisnummer.HasValue ||
         Huisnummertoevoeging.HasValue ||
-        KorteNaam.HasValue ||
+        KorteStraatnaam.HasValue ||
         Postcode.HasValue ||
-        Straat.HasValue ||
+        OfficieleStraatnaam.HasValue ||
         Woonplaats.HasValue;
 }
 

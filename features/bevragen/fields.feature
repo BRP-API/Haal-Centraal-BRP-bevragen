@@ -9,7 +9,7 @@ Functionaliteit: persoon/persoon beperkt velden vragen met fields
   Achtergrond:
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | anummer (01.10) | voornamen (02.10) | geslachtsnaam (02.40) | aanduiding naamgebruik (61.10) | geslachtsaanduiding (04.10) | geboortedatum (03.10) |
-    | 1234567890      | Yvonne Johanna    | Kierkegaard           | E                              | V                           | 19561115              |
+    | 1234567890      | Yvonne Johanna    | Kierkegaarde          | E                              | V                           | 19561115              |
     En de persoon heeft een 'partner' met de volgende gegevens
     | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) |
     | 999992971                   | Robert            | Bronwaßer             |
@@ -39,7 +39,7 @@ Rule: Alleen met fields gevraagde velden worden geleverd
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | Kierkegaard                         |
+    | geslachtsnaam | Kierkegaarde                        |
     | geboortedatum | 1956-11-15                          |
     | fields        | burgerservicenummer                 |
     Dan heeft de response een persoon met alleen de volgende gegevens
@@ -66,9 +66,9 @@ Rule: Alleen met fields gevraagde velden worden geleverd
     Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam                               | waarde                        |
     | voornamen                          | Yvonne Johanna                |
-    | geslachtsnaam                      | Kierkegaard                   |
+    | geslachtsnaam                      | Kierkegaarde                  |
     | voorletters                        | Y.J.                          |
-    | volledigeNaam                      | Yvonne Johanna Kierkegaard    |
+    | volledigeNaam                      | Yvonne Johanna Kierkegaarde   |
     | aanduidingNaamgebruik.code         | E                             |
     | aanduidingNaamgebruik.omschrijving | gebruik alleen de eigen naam. |
 
@@ -76,15 +76,15 @@ Rule: Alleen met fields gevraagde velden worden geleverd
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | Kierkegaard                         |
+    | geslachtsnaam | Kierkegaarde                        |
     | geboortedatum | 1956-11-15                          |
     | fields        | naam                                |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam          | waarde                     |
-    | voornamen     | Yvonne Johanna             |
-    | geslachtsnaam | Kierkegaard                |
-    | voorletters   | Y.J.                       |
-    | volledigeNaam | Yvonne Johanna Kierkegaard |
+    Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
+    | naam          | waarde                      |
+    | voornamen     | Yvonne Johanna              |
+    | geslachtsnaam | Kierkegaarde                |
+    | voorletters   | Y.J.                        |
+    | volledigeNaam | Yvonne Johanna Kierkegaarde |
 
 Rule: Het volledige pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn 'ouder' velden met een '.' karakter tussen de veld namen 
 
@@ -95,8 +95,8 @@ Rule: Het volledige pad van een veld is de samenvoeging van de naam van het veld
     | burgerservicenummer | 000000152                       |
     | fields              | naam.geslachtsnaam              |
     Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
-    | naam          | waarde      |
-    | geslachtsnaam | Kierkegaard |
+    | naam          | waarde       |
+    | geslachtsnaam | Kierkegaarde |
 
   Scenario: meerdere velden van een 'gegevensgroep' veld van een persoon wordt gevraagd
     Als personen wordt gezocht met de volgende parameters
@@ -106,7 +106,7 @@ Rule: Het volledige pad van een veld is de samenvoeging van de naam van het veld
     | fields              | naam.geslachtsnaam,naam.voornamen |
     Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
     | naam          | waarde         |
-    | geslachtsnaam | Kierkegaard    |
+    | geslachtsnaam | Kierkegaarde   |
     | voornamen     | Yvonne Johanna |
 
   Scenario: velden van meerdere 'gegevensgroepen' van een persoon wordt gevraagd
@@ -116,8 +116,8 @@ Rule: Het volledige pad van een veld is de samenvoeging van de naam van het veld
     | burgerservicenummer | 000000152                         |
     | fields              | naam.geslachtsnaam,geboorte.datum |
     Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
-    | naam          | waarde      |
-    | geslachtsnaam | Kierkegaard |
+    | naam          | waarde       |
+    | geslachtsnaam | Kierkegaarde |
     En heeft de persoon de volgende 'geboorte' gegevens
     | naam              | waarde           |
     | datum.type        | Datum            |

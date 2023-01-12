@@ -15,17 +15,17 @@ Functionaliteit: in onderzoek
     | burgerservicenummer | 000000152                             |
     | fields              | burgerservicenummer,geslacht,leeftijd |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                                | waarde                             |
-    | burgerservicenummer                                 | 000000152                          |
-    | leeftijd                                            | 20                                 |
-    | geslacht.code                                       | M                                  |
-    | geslacht.omschrijving                               | man                                |
-    | inOnderzoek.burgerservicenummer                     | <burgerservicenummer in onderzoek> |
-    | inOnderzoek.geslacht                                | <geslacht in onderzoek>            |
-    | inOnderzoek.leeftijd                                | <leeftijd in onderzoek>            |
-    | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum                              |
-    | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01                         |
-    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002                        |
+    | naam                                                | waarde                   |
+    | burgerservicenummer                                 | 000000152                |
+    | leeftijd                                            | 20                       |
+    | geslacht.code                                       | M                        |
+    | geslacht.omschrijving                               | man                      |
+    | inOnderzoek.burgerservicenummer                     | <burgerservicenummer io> |
+    | inOnderzoek.geslacht                                | <geslacht io>            |
+    | inOnderzoek.leeftijd                                | <leeftijd io>            |
+    | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum                    |
+    | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01               |
+    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002              |
 
     Voorbeelden:
     | aanduiding in onderzoek | burgerservicenummer io | geslacht io | leeftijd io | type                   |

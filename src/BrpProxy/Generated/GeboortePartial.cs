@@ -5,8 +5,7 @@ public partial class Geboorte
     public bool ShouldSerialize() =>
         Datum != null ||
         Land != null ||
-        Plaats != null ||
-        InOnderzoek != null
+        Plaats != null
         ;
 
     public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
