@@ -9,7 +9,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | 10120 80910 81010 81110 81120 81130 81140 81150 81160 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
@@ -38,7 +38,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | 10120 81010 81110 81120 81130 81140 81150 81160 81190 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
@@ -69,7 +69,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | 10120                           | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
-      | afnemerID    | 12345  |
+      | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
