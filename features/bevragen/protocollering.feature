@@ -52,8 +52,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geboortedatum heeft alleen jaar bekend | leeftijd    |
       | naam ouder is heeft standaardwaarde    | ouders.naam |
 
-  Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het wel in 'request_geleverde_rubrieken' en niet in 'request_zoek_rubrieken' opgenomen.
-    # To Do: vraag staat uit bij RvIG of dit waar is, dus of dit wel of juist niet geprotocolleerd moet worden
+  Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_geleverde_rubrieken' en niet in 'request_zoek_rubrieken' opgenomen.
     Dit betreft geheimhouding, opschorting, in onderzoek, RNI en verificatie
 
   Rule: Wanneer een veld wordt gevraagd dat wordt bepaald uit een of meerdere andere velden, dan worden alle daarvoor nodige velden in 'request_zoek_rubrieken' opgenomen.

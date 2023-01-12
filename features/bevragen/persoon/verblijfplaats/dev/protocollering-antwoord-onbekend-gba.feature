@@ -32,3 +32,33 @@ Functionaliteit: protocollering van het antwoord voor verblijfplaats onbekend
       | verblijfplaatsBinnenland.verblijfadres | 081110 081115 081120 081130 081140 081150 081160 081170 081210                                                                       |                      |
       | verblijfplaats                         | 081010 081030 081110 081115 081120 081130 081140 081150 081160 081170 081180 081190 081210 081310 081320 081330 081340 081350 088510 | 081310 081320 088510 |
       | verblijfplaatsBinnenland               | 081010 081030 081110 081115 081120 081130 081140 081150 081160 081170 081180 081190 081210 088510                                    |                      |
+
+  Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_geleverde_rubrieken' opgenomen
+    
+    Abstract Scenario: Verblijfplaats buitenland in onderzoek wordt automatisch meegeleverd maar niet geprotocolleerd
+      Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
+      | naam            | waarde     |
+      | anummer (01.10) | 1041968780 |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                                   | waarde   |
+      | gemeente van inschrijving (09.10)      | 1999     |
+      | land (13.10)                           | 0000     |
+      | datum aanvang adres buitenland (13.20) | 00000000 |
+      | aanduiding in onderzoek (83.10)        | 081300   |
+      | datum ingang onderzoek (83.20)         | 20120920 |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000061                       |
+      | fields              | <fields>                        |
+      Dan is protocollering opgeslagen met de volgende gegevens
+      | anummer    | request_zoek_rubrieken | request_geleverde_rubrieken |
+      | 1041968780 | <zoek rubrieken>       | <geleverde rubrieken>       |
+
+      Voorbeelden:
+      | fields                                 | zoek rubrieken                                                                                                                       | geleverde rubrieken  |
+      | verblijfplaats.datumVan                | 081030 081110 081210 081310 081320                                                                                                   | 081310 081320        |
+      | verblijfplaats.verblijfadres           | 081110 081115 081120 081130 081140 081150 081160 081170 081210 081310 081330 081340 081350                                           | 081310               |
+      | verblijfplaatsBinnenland.verblijfadres | 081110 081115 081120 081130 081140 081150 081160 081170 081210                                                                       |                      |
+      | verblijfplaats                         | 081010 081030 081110 081115 081120 081130 081140 081150 081160 081170 081180 081190 081210 081310 081320 081330 081340 081350 088510 | 081310 081320 088510 |
+      | verblijfplaatsBinnenland               | 081010 081030 081110 081115 081120 081130 081140 081150 081160 081170 081180 081190 081210 088510                                    |                      |
