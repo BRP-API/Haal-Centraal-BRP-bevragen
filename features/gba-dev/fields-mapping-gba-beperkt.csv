@@ -1,16 +1,15 @@
 volledig pad,gba pad
-adressering,naam|geslacht|gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving|verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
-adressering.adresregel1,verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|verblijfplaats.locatiebeschrijving|verblijfplaats.regel1
-adressering.adresregel2,gemeenteVanInschrijving|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.regel2
-adressering.adresregel3,verblijfplaats.regel3
-adressering.land,verblijfplaats.land
-adressering.land.code,verblijfplaats.land
-adressering.land.omschrijving,verblijfplaats.land
-adresseringBinnenland,naam|geslacht|gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving|verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
-adresseringBinnenland.adresregel1,verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|verblijfplaats.locatiebeschrijving
-adresseringBinnenland.adresregel2,gemeenteVanInschrijving|verblijfplaats.postcode|verblijfplaats.woonplaats
+adressering,gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving|verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adressering.adresregel1,verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|                                                  verblijfplaats.locatiebeschrijving|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3|verblijfplaats.land
+adressering.adresregel2,gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving|verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adressering.adresregel3,verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adressering.land,verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adressering.land.code,verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adressering.land.omschrijving,verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adresseringBinnenland,gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving|verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
+adresseringBinnenland.adresregel1,verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.huisletter|verblijfplaats.huisnummertoevoeging|verblijfplaats.aanduidingBijHuisnummer|                                                  verblijfplaats.locatiebeschrijving|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3|verblijfplaats.land
+adresseringBinnenland.adresregel2,gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving|verblijfplaats.land|verblijfplaats.regel1|verblijfplaats.regel2|verblijfplaats.regel3
 naam.volledigeNaam,naam
 naam.voorletters,naam.voornamen
 overlijden.indicatieOverleden,overlijden.datum
-inOnderzoek.datumIngangOnderzoekPersoon,inOnderzoek.datumIngangOnderzoek
 leeftijd,geboorte.datum|overlijden.datum
