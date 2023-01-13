@@ -1,10 +1,12 @@
+# language: nl
+
 Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
 
   Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     
     @fout-case
     Abstract Scenario: Zoeken met parameter <parameter niet toegestaan> waarvoor de afnemer niet geautoriseerd is (<ontbrekende rubriek>)
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -50,7 +52,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
 
     @fout-case
     Scenario: Gebruik van meerdere parameters waarvoor de afnemer niet geautoriseerd is
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 80810 81110 81120 81150 81160 81190 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -88,7 +90,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
 
     Scenario: Gemeente is niet geautoriseerd voor de zoekparameters en vindt alleen eigen inwoners
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
