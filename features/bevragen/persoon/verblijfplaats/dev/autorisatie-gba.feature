@@ -14,7 +14,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | huisletter (11.30)           | b               |
       | huisnummertoevoeging (11.40) | 2               |
       | postcode (11.60)             | 2497BV          |
-      | woonplaatsnaam (11.70)       | Scheveningen    |
+      | woonplaats (11.70)           | Scheveningen    |
 
 
   Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
@@ -186,7 +186,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -198,6 +198,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
    
   
   Rule: Wanneer met fields gevraagd is voor datumVan en afnemer is niet geautoriseerd voor datumAanvangAdreshouding én datumAanvangAdresBuitenland, wordt een foutmelding gegeven
+    # de foutmelding toont het met fields gevraagde veld, in dit geval datumVan, niet het onderliggende veld waaruit deze gevuld wordt
 
     Scenario: Afnemer vraagt om datumVan en is geautoriseerd voor datum aanvang adreshouding (81030) én datum aanvang adres buitenland (81320)
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -236,7 +237,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: fields[1].                             |
+      | detail   | De foutieve fields waarden zijn: verblijfplaats.datumVan                |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
