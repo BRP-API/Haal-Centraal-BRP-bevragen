@@ -248,6 +248,7 @@ const columnNameMap = new Map([
     ['Rubrieknummer ad hoc (35.95.60)', 'ad_hoc_rubrieken'],
     ['Medium ad hoc (35.95.67)', 'ad_hoc_medium'],
     ['Datum ingang (35.99.98)', 'tabel_regel_start_datum'],
+    ['Datum beëindiging tabelregel (35.99.99)', 'tabel_regel_eind_datum'],
 
 ]);
 
