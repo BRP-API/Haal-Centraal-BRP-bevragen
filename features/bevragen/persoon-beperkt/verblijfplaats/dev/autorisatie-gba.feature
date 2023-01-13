@@ -1,3 +1,5 @@
+# language: nl
+
 Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
 
     Achtergrond:
@@ -12,7 +14,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | huisletter (11.30)           | b               |
       | huisnummertoevoeging (11.40) | 2               |
       | postcode (11.60)             | 2497BV          |
-      | woonplaatsnaam (11.70)       | Scheveningen    |
+      | woonplaats (11.70)           | Scheveningen    |
 
 
   Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
@@ -20,7 +22,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
 
     @fout-case
     Scenario: Afnemer vraagt functieAdres, waarvoor deze niet geautoriseerd is
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                                         | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -44,7 +46,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
 
     @fout-case
     Scenario: Afnemer vraagt om groep verblijfplaats en is niet geautoriseerd voor functie adres (81010)
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                                         | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -69,7 +71,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
   Rule: Een gemeente als afnemer is geautoriseerd voor alle verblijfplaatsgegevens van eigen inwoners
 
     Scenario: Gemeente vraagt om groep verblijfplaats van een eigen inwoner en functie adres (81010) zit niet in de autorisatie
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 81110 81120 81160 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -89,7 +91,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
       | functieAdres.omschrijving | woonadres       |
 
     Scenario: Gemeente vindt op een zoekvraag een eigen inwoner én een inwoner van een andere gemeente en fields vraagt om een veld waarvoor de afnemer niet geautoriseerd is
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10240 10310 81110 81120 81160 81210 81310 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -132,7 +134,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
 
     @fout-case
     Abstract Scenario: Afnemer is wel geautoriseerd voor gevraagde veld, maar niet voor <missende autorisatie> die nodig is voor verblijfplaats type
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
@@ -163,7 +165,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens PersoonBeperkt
   Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
     Scenario: Afnemer vraagt om alleen binnengemeentelijke verblijfplaatsgegevens en is niet geautoriseerd voor verblijf buitenland
-      Gegeven de afnemer met indicatie '12345' heeft de volgende 'autorisatie' gegevens
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                                   | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
