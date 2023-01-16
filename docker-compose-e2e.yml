@@ -49,7 +49,7 @@ services:
     ports:
       - "5001:5000"
     volumes:
-      - ./src/config/BrpProxy/configuration:/app/configuration
+      - ./src/config/BrpProxy/configuration/ocelot-e2e.json:/app/configuration/ocelot.json
       - ./src/config/BrpProxy/mapping:/app/mapping
       - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
       - ./elastic:/app/elastic
