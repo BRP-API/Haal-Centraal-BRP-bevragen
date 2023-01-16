@@ -23,65 +23,65 @@ Achtergrond:
   |  312 | Vaststelling staatloosheid                           |
 
   Scenario: persoon heeft een nationaliteit
-  Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
-  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
-  | 0001                  | 001                   | 19750707                        |
-  Als gba personen wordt gezocht met de volgende parameters
-  | naam                | waarde                          |
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 000000012                       |
-  | fields              | nationaliteiten                 |
-  Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-  | naam                       | waarde                                            |
-  | nationaliteit.code         | 0001                                              |
-  | nationaliteit.omschrijving | Nederlandse                                       |
-  | redenOpname.code           | 001                                               |
-  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art. 1, onder a |
-  | datumIngangGeldigheid      | 19750707                                          |
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+    | 0001                  | 001                   | 19750707                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+    | naam                       | waarde                                            |
+    | nationaliteit.code         | 0001                                              |
+    | nationaliteit.omschrijving | Nederlandse                                       |
+    | redenOpname.code           | 001                                               |
+    | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art. 1, onder a |
+    | datumIngangGeldigheid      | 19750707                                          |
 
   Scenario: persoon heeft meerdere nationaliteiten
-  Gegeven de persoon met burgerservicenummer '000000218' heeft een 'nationaliteit' met de volgende gegevens
-  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
-  | 0001                  | 001                   | 19750707                        |
-  En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
-  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
-  | 0263                  | 301                   | 19620107                        |
-  Als gba personen wordt gezocht met de volgende parameters
-  | naam                | waarde                          |
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 000000218                       |
-  | fields              | nationaliteiten                 |
-  Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-  | naam                       | waarde        |
-  | nationaliteit.code         | 0001          |
-  | nationaliteit.omschrijving | Nederlandse   |
-  | redenOpname.code           | 001                                                |
-  | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art. 1, onder a  |
-  | datumIngangGeldigheid      | 19750707                                           |
-  En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
-  | naam                       | waarde                                   |
-  | nationaliteit.code         | 0263                                     |
-  | nationaliteit.omschrijving | Surinaamse                               |
-  | redenOpname.code           | 301                                      |
-  | redenOpname.omschrijving   | Vaststelling bezit vreemde nationaliteit |
-  | datumIngangGeldigheid      | 19620107                                 |
+    Gegeven de persoon met burgerservicenummer '000000218' heeft een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+    | 0001                  | 001                   | 19750707                        |
+    En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+    | 0263                  | 301                   | 19620107                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000218                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
+    | naam                       | waarde        |
+    | nationaliteit.code         | 0001          |
+    | nationaliteit.omschrijving | Nederlandse   |
+    | redenOpname.code           | 001                                                |
+    | redenOpname.omschrijving   | Wet op het Nederlanderschap 1892, art. 1, onder a  |
+    | datumIngangGeldigheid      | 19750707                                           |
+    En heeft de persoon een 'nationaliteit' met alleen de volgende gegevens
+    | naam                       | waarde                                   |
+    | nationaliteit.code         | 0263                                     |
+    | nationaliteit.omschrijving | Surinaamse                               |
+    | redenOpname.code           | 301                                      |
+    | redenOpname.omschrijving   | Vaststelling bezit vreemde nationaliteit |
+    | datumIngangGeldigheid      | 19620107                                 |
 
   Scenario: persoon heeft een nationaliteit met reden opname = onbekend
-  Gegeven de persoon met burgerservicenummer '000000231' heeft een 'nationaliteit' met de volgende gegevens
-  | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
-  | 0001                  | 000                   | 19750707                        |
-  Als gba personen wordt gezocht met de volgende parameters
-  | naam                | waarde                          |
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 000000231                       |
-  | fields              | nationaliteiten                 |
-  Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
-  | naam                       | waarde       |
-  | nationaliteit.code         | 0001         |
-  | nationaliteit.omschrijving | Nederlandse  |
-  | redenOpname.code           | 000          |
-  | redenOpname.omschrijving   | Onbekend     |
-  | datumIngangGeldigheid      | 19750707     |
+    Gegeven de persoon met burgerservicenummer '000000231' heeft een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+    | 0001                  | 000                   | 19750707                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000231                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+    | naam                       | waarde       |
+    | nationaliteit.code         | 0001         |
+    | nationaliteit.omschrijving | Nederlandse  |
+    | redenOpname.code           | 000          |
+    | redenOpname.omschrijving   | Onbekend     |
+    | datumIngangGeldigheid      | 19750707     |
 
   Scenario: de persoon is Staatloos
     Gegeven de persoon met burgerservicenummer '000000255' heeft een 'nationaliteit' met de volgende gegevens
@@ -115,7 +115,6 @@ Achtergrond:
     | redenOpname.code                    | 310                                     |
     | redenOpname.omschrijving            | Vaststelling bijzonder Nederlanderschap |
     | datumIngangGeldigheid               | 19570115                                |
-
 
   Scenario: de persoon wordt behandeld als Nederlander, nationaliteit heeft code 0002
     Gegeven de persoon met burgerservicenummer '000000115' heeft een 'nationaliteit' met de volgende gegevens
@@ -219,7 +218,6 @@ Achtergrond:
     | redenOpname.code                  | 301                                                  |
     | redenOpname.omschrijving          | Vaststelling bezit vreemde nationaliteit             |
     | datumIngangGeldigheid             | 20100801                                             |
-
 
   Scenario: geactualiseerde ingangsdatum geldigheid
     Gegeven de persoon met burgerservicenummer '000000267' heeft een 'nationaliteit' met de volgende gegevens
