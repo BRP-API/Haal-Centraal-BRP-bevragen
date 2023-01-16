@@ -11,10 +11,10 @@ Functionaliteit: BAG-identificatie met waarde die niet voldoet aan de specificat
       | naam                               | waarde   |
       | datum aanvang adreshouding (10.30) | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam               | waarde          |
-      | gemeente_code      | <gemeente code> |
-      | straatnaam (11.10) | Kromme dijk     |
-      | <naam veld>        | <waarde veld>   |
+      | naam                 | waarde          |
+      | gemeentecode (92.10) | <gemeente code> |
+      | straatnaam (11.10)   | Kromme dijk     |
+      | <naam veld>          | <waarde veld>   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -38,10 +38,10 @@ Functionaliteit: BAG-identificatie met waarde die niet voldoet aan de specificat
       | naam                               | waarde   |
       | datum aanvang adreshouding (10.30) | 20150808 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                                       | waarde           |
-      | gemeente_code                              | 0363             |
-      | straatnaam (11.10)                         | Kromme dijk      |
-      | <naam veld>                                | <waarde veld>    |
+      | naam                 | waarde        |
+      | gemeentecode (92.10) | 0363          |
+      | straatnaam (11.10)   | Kromme dijk   |
+      | <naam veld>          | <waarde veld> |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
