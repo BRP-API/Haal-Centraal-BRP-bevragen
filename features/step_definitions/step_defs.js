@@ -1444,6 +1444,10 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
     if(this.context.oAuth.enable) {
         const accessTokenUrl = this.context.oAuth.accessTokenUrl;
         const oAuthSettings = this.context.oAuth.clients.find(client => client.afnemerID === this.context.afnemerId);
+        if(oAuthSettings === undefined) {
+            console.log(`geen oAuthSettings gevonden voor afnemerId '${this.context.afnemerId}'`);
+            return;
+        }
 
         if(accessToken === undefined) {
             console.log("no access token. authenticate");
@@ -1473,6 +1477,10 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
     if(this.context.oAuth.enable) {
         const accessTokenUrl = this.context.oAuth.accessTokenUrl;
         const oAuthSettings = this.context.oAuth.clients.find(client => client.afnemerID === this.context.afnemerId);
+        if(oAuthSettings === undefined) {
+            console.log(`geen oAuthSettings gevonden voor afnemerId '${this.context.afnemerId}'`);
+            return;
+        }
 
         if(accessToken === undefined) {
             console.log("no access token. authenticate");
