@@ -130,8 +130,6 @@ components:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
         overlijden:
           $ref: 'overlijden.yaml#/components/schemas/OverlijdenBeperkt'
-        verblijfplaats:
-          $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaatsBeperkt'
         adressering:
           $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
         rni:
