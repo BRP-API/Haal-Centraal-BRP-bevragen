@@ -213,11 +213,11 @@ Functionaliteit: Waardetabel met code en omschrijving
         | land vanwaar ingeschreven (14.10) | Landen              | immigratie                   | landVanwaarIngeschreven | 1234   |
         # In het laatste voorbeeld zou eigenlijk de "groep" immigratie moeten zijn. Echter is dit nog niet geïmplementeerd in de automation code. Als dit correct geïmplementeerd is kan de kolom "fields" vervallen en kan daarvoer "groep" gebruikt worden
 
-        Rule: wanneer de waarde voor een geboorteplaats(03.20) of een overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) geen valide gemeentecode bevat wordt de de code geleverd in zowel de code als de omschrijving
-          - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
-          - als er in de geboorteplaats (03.20) of de overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) een waarde staat die niet voorkomt in de landelijke tabel Gemeenten
-            dan wordt de waarde die in de plaats staat in zowel de code als de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
-
+  Rule: wanneer de waarde voor een geboorteplaats(03.20) of een overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) geen valide gemeentecode bevat wordt de plaats geleverd in de omschrijving en wordt veld code niet geleverd
+    - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
+    - als er in de geboorteplaats (03.20) of de overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) een waarde staat die niet voorkomt in de landelijke tabel Gemeenten
+      dan wordt de waarde die in de plaats staat in aleen de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
+      
       Scenario: Plaats is buitenlandse plaats of locatie bij code voor geboorteplaats (Als de code niet voorkomt in tabel gemeenten)
         Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens
         | geboorteplaats (03.20) |
@@ -229,7 +229,6 @@ Functionaliteit: Waardetabel met code en omschrijving
         | fields              | geboorte.plaats                 |
         Dan heeft de response een persoon met alleen de volgende 'geboorte' gegevens
         | naam                | waarde   |
-        | plaats.code         | Berlijn  |
         | plaats.omschrijving | Berlijn  |
 
       Scenario: Plaats is buitenlandse plaats of locatie bij code voor Overlijden
@@ -243,7 +242,6 @@ Functionaliteit: Waardetabel met code en omschrijving
         | fields              | overlijden.plaats                  |
         Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
         | naam                | waarde            |
-        | plaats.code         | 51° N.B. 4° O.L.  |
         | plaats.omschrijving | 51° N.B. 4° O.L.  |
 
 
@@ -258,7 +256,6 @@ Functionaliteit: Waardetabel met code en omschrijving
         | fields              | <fields>.<groep>                |
         Dan heeft de response een persoon met een '<relatiedan>' met de volgende '<groep>' gegevens
         | naam                | waarde   |
-        | plaats.code         | <waarde> |
         | plaats.omschrijving | <waarde> |
 
         Voorbeelden:
