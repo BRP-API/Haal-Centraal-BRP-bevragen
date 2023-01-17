@@ -143,10 +143,7 @@ Rule: wanneer één of meerdere adresregel velden voor een persoon met een adres
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000188                       |
     | fields              | adressering.<veld>              |
-    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
-    | naam       | waarde                   |
-    | straat     | Jonkheer van Riemsdijkln |
-    | huisnummer | 88                       |
+    Dan heeft de response een persoon zonder 'verblijfplaats' gegevens
 
     Voorbeelden:
     | veld        |
