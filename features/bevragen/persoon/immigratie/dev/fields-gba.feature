@@ -62,8 +62,8 @@ Rule: als één of meerdere immigratie velden van een verblijfplaats wordt gevra
     | inOnderzoek.aanduidingGegevensInOnderzoek | <aanduiding in onderzoek> |
     | inOnderzoek.datumIngangOnderzoek          | 20020701                  |
     Voorbeelden:
-    | aanduiding in onderzoek | fields                                        |
-    | 080000                  | immigratie                                    |
-    | 081400                  | immigratie.landVanwaarIngeschreven            |
-    | 081410                  | immigratie.datumVestigingInNederland          |
-    | 081420                  | immigratie.indicatieVestigingVanuitBuitenland |
+    | aanduiding in onderzoek | fields                                        | type                          |
+    | 080000                  | immigratie                                    | hele categorie verblijfplaats |
+    | 081400                  | immigratie.landVanwaarIngeschreven            | hele groep immigratie         |
+    | 081410                  | immigratie.datumVestigingInNederland          | land vanwaar ingeschreven     |
+    | 081420                  | immigratie.indicatieVestigingVanuitBuitenland | datum vestiging in Nederland  |
