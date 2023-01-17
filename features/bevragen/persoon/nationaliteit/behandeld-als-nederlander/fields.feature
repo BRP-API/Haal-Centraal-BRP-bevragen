@@ -47,3 +47,6 @@ Functionaliteit: Persoon: 'behandeld als Nederlander' nationaliteit velden vrage
     | nationaliteiten.datumIngangGeldigheid.type        |
     | nationaliteiten.datumIngangGeldigheid.datum       |
     | nationaliteiten.datumIngangGeldigheid.langFormaat |
+    | nationaliteiten.datumIngangGeldigheid.jaar        |
+    | nationaliteiten.datumIngangGeldigheid.maand       |
+    | nationaliteiten.datumIngangGeldigheid.onbekend    |

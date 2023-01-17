@@ -58,9 +58,9 @@ Rule: wanneer één of meerdere velden van een nationaliteit wordt gevraagd, dan
     | nationaliteiten.datumIngangGeldigheid.maand       | datumIngangGeldigheid | 20020701      |                          |                                                   |
     | nationaliteiten.datumIngangGeldigheid.onbekend    | datumIngangGeldigheid | 20020701      |                          |                                                   |
 
-Rule: wanneer één of meerdere velden van een 'bijzonder Nederlanderschap' nationaliteit wordt gevraagd, dan wordt ook de waarde van 'bijzonder Nederlanderschap (65.10)' geleverd
+Rule: wanneer 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden van nationaliteit wordt gevraagd, dan wordt ook de waarde van 'bijzonder Nederlanderschap (65.10)' geleverd
 
-  Scenario: alle velden van een 'bijzonder Nederlanderschap' nationaliteit wordt gevraagd met field pad 'nationaliteiten'
+  Scenario: persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde |
     | bijzonder Nederlanderschap (65.10) | <code> |
@@ -81,7 +81,7 @@ Rule: wanneer één of meerdere velden van een 'bijzonder Nederlanderschap' nati
     | B    |
     | V    |
     
-  Abstract Scenario: één of meerdere velden van een 'bijzonder Nederlanderschap' nationaliteit wordt gevraagd met field pad '<fields>'
+  Abstract Scenario: persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde   |
     | bijzonder Nederlanderschap (65.10) | <code>   |
@@ -101,6 +101,9 @@ Rule: wanneer één of meerdere velden van een 'bijzonder Nederlanderschap' nati
     Voorbeelden:
     | fields                                            | code | naam veld 1           | waarde veld 1 | naam veld 2              | waarde veld 2                                     |
     | nationaliteiten.type                              | V    |                       |               |                          |                                                   |
+    | nationaliteiten.nationaliteit                     | B    |                       |               |                          |                                                   |
+    | nationaliteiten.nationaliteit.code                | V    |                       |               |                          |                                                   |
+    | nationaliteiten.nationaliteit.omschrijving        | B    |                       |               |                          |                                                   |
     | nationaliteiten.redenOpname                       | B    | redenOpname.code      | 001           | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
     | nationaliteiten.redenOpname.code                  | V    | redenOpname.code      | 001           | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
     | nationaliteiten.redenOpname.omschrijving          | B    | redenOpname.code      | 001           | redenOpname.omschrijving | Wet op het Nederlanderschap 1892, art. 1, onder a |
@@ -132,14 +135,16 @@ Rule: als één of meerdere velden van een nationaliteit wordt gevraagd en de ca
     | inOnderzoek.datumIngangOnderzoek          | 20020701                  |
 
     Voorbeelden:
-    | aanduiding in onderzoek | fields                                                            | type                             |
-    | 040000                  | nationaliteiten                                                   | hele categorie nationaliteit     |
-    | 040500                  | nationaliteiten.type                                              | hele groep nationaliteit         |
-    | 040510                  | nationaliteiten.redenOpname                                       | nationaliteit                    |
-    | 046300                  | nationaliteiten.redenOpname.code                                  | hele groep opnemen nationaliteit |
-    | 046310                  | nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid | reden opname nationaliteit       |
+    | aanduiding in onderzoek | fields                                                            | type                                  |
+    | 040000                  | nationaliteiten                                                   | hele categorie nationaliteit          |
+    | 040500                  | nationaliteiten.type                                              | hele groep nationaliteit              |
+    | 040510                  | nationaliteiten.redenOpname                                       | nationaliteit                         |
+    | 046300                  | nationaliteiten.redenOpname.code                                  | hele groep opnemen nationaliteit      |
+    | 046310                  | nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid | reden opname nationaliteit            |
+    | 046500                  | nationaliteiten.nationaliteit                                     | hele groep bijzonder Nederlanderschap |
+    | 046510                  | nationaliteiten.nationaliteit.code                                | aanduiding bijzonder Nederlanderschap |
 
-  Abstract Scenario: '<type>' van een 'bijzonder Nederlanderschap' nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
+  Abstract Scenario: persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en '<type>' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde                    |
     | bijzonder Nederlanderschap (65.10) | B                         |

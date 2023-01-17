@@ -2,6 +2,28 @@
 
 Functionaliteit: Persoon: nationaliteit velden vragen met fields
 
+  Abstract Scenario: 'nationaliteit (05.10)' wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                  | waarde |
+    | nationaliteit (05.10) | 0001   |
+    | reden opname (63.10)  | 001    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
+    | naam                       | waarde        |
+    | type                       | Nationaliteit |
+    | nationaliteit.code         | 0001          |
+    | nationaliteit.omschrijving | Nederlandse   |
+
+    Voorbeelden:
+    | fields                                     |
+    | nationaliteiten.nationaliteit              |
+    | nationaliteiten.nationaliteit.code         |
+    | nationaliteiten.nationaliteit.omschrijving |
+
   Abstract Scenario: 'reden opname (63.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                  | waarde |
@@ -47,3 +69,6 @@ Functionaliteit: Persoon: nationaliteit velden vragen met fields
     | nationaliteiten.datumIngangGeldigheid.type        |
     | nationaliteiten.datumIngangGeldigheid.datum       |
     | nationaliteiten.datumIngangGeldigheid.langFormaat |
+    | nationaliteiten.datumIngangGeldigheid.jaar        |
+    | nationaliteiten.datumIngangGeldigheid.maand       |
+    | nationaliteiten.datumIngangGeldigheid.onbekend    |

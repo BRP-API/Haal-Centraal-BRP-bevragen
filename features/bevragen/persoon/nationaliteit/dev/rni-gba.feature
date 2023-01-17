@@ -8,7 +8,7 @@ Functionaliteit: nationaliteit
       | 0263                  | 301                   | 19620107                        | 201                   |
       En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) | rni-deelnemer (88.10) |
-      | 0052                  | 301                   | 19830326                        | 201                   |
+      | 0052                  | 301                   | 19830326                        | 501                   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -33,3 +33,8 @@ Functionaliteit: nationaliteit
       | deelnemer.code         | 0201                                              |
       | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
       | categorie              | Nationaliteit                                     |
+      En heeft de persoon nog een 'rni' met de volgende gegevens
+      | naam                   | waarde                                                             |
+      | deelnemer.code         | 0501                                                               |
+      | deelnemer.omschrijving | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) |
+      | categorie              | Nationaliteit                                                      |

@@ -1617,7 +1617,7 @@ function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
     expectedPersoon[relaties].push(expected);
 }
 
-Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
+Then(/^heeft de persoon ?(?:nog)? een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
     const expected = createObjectFrom(dataTable);
 
     let groep = toCollectionName(gegevensgroep);

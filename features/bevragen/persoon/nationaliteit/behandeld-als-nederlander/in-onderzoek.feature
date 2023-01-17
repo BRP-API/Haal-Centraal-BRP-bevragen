@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: 'behandeld als Nederlander' nationaliteit velden in onderzoek
 
-  Abstract Scenario: '<type>' is in onderzoek en alle 'behandeld als Nederlander' nationaliteit velden wordt gevraagd
+  Abstract Scenario: '<type>' is in onderzoek en alle nationaliteit velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
     | naam                               | waarde                    |
     | bijzonder Nederlanderschap (65.10) | B                         |
