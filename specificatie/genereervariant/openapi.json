@@ -681,9 +681,6 @@
           "overlijden" : {
             "$ref" : "#/components/schemas/OverlijdenBeperkt"
           },
-          "verblijfplaats" : {
-            "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
-          },
           "adressering" : {
             "$ref" : "#/components/schemas/AdresseringBeperkt"
           },
@@ -1002,13 +999,22 @@
         "example" : "0518200000366054"
       },
       "GeboorteBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/GeboorteBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "inOnderzoek" : {
+              "$ref" : "#/components/schemas/GeboorteInOnderzoekBeperkt"
+            }
+          }
+        } ]
+      },
+      "GeboorteBasis" : {
         "type" : "object",
         "properties" : {
           "datum" : {
             "$ref" : "#/components/schemas/AbstractDatum"
-          },
-          "inOnderzoek" : {
-            "$ref" : "#/components/schemas/GeboorteInOnderzoekBeperkt"
           }
         }
       },
@@ -1209,93 +1215,6 @@
               "type" : "boolean"
             }
           }
-        } ]
-      },
-      "AbstractVerblijfplaatsBeperkt" : {
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string"
-          }
-        },
-        "description" : "Gegevens over het verblijf of de woonlocatie van een persoon.\n",
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "VerblijfplaatsBuitenland" : "#/components/schemas/VerblijfplaatsBuitenlandBeperkt",
-            "Adres" : "#/components/schemas/AdresBeperkt",
-            "VerblijfplaatsOnbekend" : "#/components/schemas/VerblijfplaatsOnbekendBeperkt",
-            "Locatie" : "#/components/schemas/LocatieBeperkt"
-          }
-        }
-      },
-      "VerblijfplaatsBuitenlandBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
-            }
-          }
-        } ]
-      },
-      "VerblijfplaatsInOnderzoekBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
-      "AdresBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
-            }
-          },
-          "description" : "* **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
-        } ]
-      },
-      "VerblijfplaatsOnbekendBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
-            }
-          }
-        } ]
-      },
-      "LocatieBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractVerblijfplaatsBeperkt"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "functieAdres" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
-            }
-          },
-          "description" : "* **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n"
         } ]
       },
       "AdresseringBeperkt" : {
@@ -1714,7 +1633,7 @@
       "Geboorte" : {
         "description" : "Gegevens over de geboorte.\n* **datum** - datum waarop de persoon is geboren.\n* **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n* **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.\n",
         "allOf" : [ {
-          "$ref" : "#/components/schemas/GeboorteBeperkt"
+          "$ref" : "#/components/schemas/GeboorteBasis"
         }, {
           "type" : "object",
           "properties" : {
