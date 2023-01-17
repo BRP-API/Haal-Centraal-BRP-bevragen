@@ -3,15 +3,19 @@
 Functionaliteit: Persoon: adresregel velden in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek en alle adresregel velden worden gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                   |
-    | type                | RaadpleegMetBurgerservicenummer                                                          |
-    | burgerservicenummer | 000000152                                                                                |
-    | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
+    | naam          | waarde                                                                                   |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum                                                      |
+    | geslachtsnaam | Maassen                                                                                  |
+    | geboortedatum | 1983-05-26                                                                               |
+    | fields        | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
     Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam                                                       | waarde           |
     | inOnderzoek.adresregel1                                    | <adresregel1 io> |

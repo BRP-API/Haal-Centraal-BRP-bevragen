@@ -136,7 +136,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en
     | naam        | waarde          |
     | adresregel1 | Cronus 555 B73c |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie][huisnummer] bij [aanduiding bij huisnummer]'
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'by' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -158,7 +158,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding 
     | naam        | waarde                     |
     | adresregel1 | Graan voor Visch bij 15201 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie][huisnummer] t/o [aanduiding bij huisnummer]'
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'to' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -179,6 +179,222 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding 
     Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
     | naam        | waarde              |
     | adresregel1 | 1e Exloërmond t/o 3 |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisletter]'
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'by' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | Graan voor Visch   | 15201              | B                  | by                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                       |
+    | adresregel1 | Graan voor Visch bij 15201 B |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisletter]'
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'to' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | 1e Exloërmond      | 3                  | B                  | to                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                |
+    | adresregel1 | 1e Exloërmond t/o 3 B |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisnummertoevoeging]
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | Graan voor Visch   | 15201              | III                          | by                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                         |
+    | adresregel1 | Graan voor Visch bij 15201 III |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer]-[huisnummertoevoeging]
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'by' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | Graan voor Visch   | 15201              | 2                            | by                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                       |
+    | adresregel1 | Graan voor Visch bij 15201-2 |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisnummertoevoeging]
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | 1e Exloërmond      | 3                  | III                          | to                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                  |
+    | adresregel1 | 1e Exloërmond t/o 3 III |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer]-[huisnummertoevoeging]
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'to' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | 1e Exloërmond      | 3                  | 2                            | to                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                |
+    | adresregel1 | 1e Exloërmond t/o 3-2 |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | Graan voor Visch   | 15201              | L                  | III                          | by                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                          |
+    | adresregel1 | Graan voor Visch bij 15201 LIII |
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'by' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | Graan voor Visch   | 15201              | L                  | 2                            | by                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                        |
+    | adresregel1 | Graan voor Visch bij 15201 L2 |
+
+Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | 1e Exloërmond      | 3                  | L                  | III                          | to                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                   |
+    | adresregel1 | 1e Exloërmond t/o 3 LIII |
+
+  Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'to' als verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | geboortedatum (03.10) |
+    | Maassen               | 19830526              |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | functie adres (10.10) |
+    | W                     |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) | aanduiding bij huisnummer (11.50) |
+    | 0518                 | 1e Exloërmond      | 3                  | L                  | 2                            | to                                |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | adressering.adresregel1             |
+    Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
+    | naam        | waarde                 |
+    | adresregel1 | 1e Exloërmond t/o 3 L2 |
 
 Rule: adresregel1 wordt voor een locatie gevuld met de locatiebeschrijving
 
