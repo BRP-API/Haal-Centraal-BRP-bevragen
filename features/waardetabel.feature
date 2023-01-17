@@ -256,7 +256,7 @@ Functionaliteit: Waardetabel met code en omschrijving
   Rule: wanneer de waarde voor een geboorteplaats(03.20) of een overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) geen valide gemeentecode bevat wordt de plaats geleverd in de omschrijving en wordt veld code niet geleverd
     - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
     - als er in de geboorteplaats (03.20) of de overlijdenplaats (08.20) of plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) een waarde staat die niet voorkomt in de landelijke tabel Gemeenten
-      dan wordt de waarde die in de plaats staat in aleen de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
+      dan wordt de waarde die in de plaats staat in alleen de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
 
     Scenario: Plaats is buitenlandse plaats of locatie bij geboorteplaats (Als de code niet voorkomt in tabel gemeenten)
       Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens
