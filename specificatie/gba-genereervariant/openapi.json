@@ -1051,9 +1051,6 @@
       "GbaVerblijfplaatsBeperkt" : {
         "type" : "object",
         "properties" : {
-          "functieAdres" : {
-            "$ref" : "#/components/schemas/Waardetabel"
-          },
           "straat" : {
             "$ref" : "#/components/schemas/Straat"
           },
