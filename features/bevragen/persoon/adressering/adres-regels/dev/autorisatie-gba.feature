@@ -15,7 +15,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | woonplaats (11.70)                | Scheveningen    |
 
 
-  Rule: Vragen met fields om een adresregel, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit aanhef wordt afgeleid, geeft een foutmelding
+  Rule: Vragen met fields om een adresregel, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit betreffende adresregel wordt afgeleid, geeft een foutmelding
 
     Scenario: Afnemer vraagt om adressering.adresregel1 en heeft de daarvoor minimale autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -182,8 +182,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | adressering.adresregel3         |
-      Dan heeft de response een persoon met een leeg 'verblijfplaats' object 
-      # PR #1540 verwacht in dit geval wel straat en huisnummmer
+      Dan heeft de response een persoon met een leeg 'verblijfplaats' object
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om adressering.adresregel3 en is niet geautoriseerd voor <missende autorisatie>
@@ -216,7 +215,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
     Scenario: Afnemer vraagt om adressering.land en heeft de daarvoor minimale autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120 81310                     | N                        | 20201128                |
+      | 10120 81310 81330 81340 81350   | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -227,13 +226,12 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | burgerservicenummer | 000000024                                   |
       | fields              | adressering.land |
       Dan heeft de response een persoon met een leeg 'verblijfplaats' object
-      # PR #1540 verwacht in dit geval wel straat en huisnummmer
 
     @fout-case
-    Scenario: Afnemer vraagt om adressering.land en is niet geautoriseerd voor verblijfplaats land
+    Abstract Scenario: Afnemer vraagt om adressering.land en is niet geautoriseerd voor verblijfplaats <missende autorisatie>
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120                           | N                        | 20201128                |
+      | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -251,3 +249,10 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | detail   | De foutieve fields waarden zijn: adressering.land                       |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
+
+      Voorbeelden:
+      | ad hoc rubrieken        | missende autorisatie |
+      | 10120 81330 81340 81350 | land (81310)         |
+      | 10120 81310 81340 81350 | regel1 (81330)       |
+      | 10120 81310 81330 81350 | regel2 (81340)       |
+      | 10120 81310 81330 81340 | regel3 (81350)       |
