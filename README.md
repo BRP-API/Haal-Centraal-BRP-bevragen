@@ -1,7 +1,7 @@
 # Haal Centraal BRP Persoon bevragen
 
-![lint oas](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
-![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
+![lint oas](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
+![generate postman collection](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
@@ -11,7 +11,7 @@ De laatste versie is 1.3.1. Lees de [release notes](https://vng-realisatie.githu
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
 * Lees de [Getting started](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen//getting-started)
-* Download de [technische specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml)
+* Download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml)
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
@@ -41,4 +41,4 @@ Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 ## Licentie
 
 Copyright &copy; VNG Realisatie 2020
-Licensed under the [EUPL](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md)
+Licensed under the [EUPL](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md)
