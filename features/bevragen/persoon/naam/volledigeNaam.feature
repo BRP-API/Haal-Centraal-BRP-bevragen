@@ -1,6 +1,5 @@
 # language: nl
 
-@ready @post-assert
 Functionaliteit: volledige naam
 
 Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
@@ -85,8 +84,8 @@ Rule: een adellijke titel wordt opgenomen tussen de voornamen en het voorvoegsel
 
   Abstract Scenario: volledige naam van persoon met adellijke titel
     Gegeven de persoon met burgerservicenummer '000000619' heeft de volgende gegevens
-    | naam                        | waarde                |
-    | geslachtsaanduiding (04.10) | <geslacht>            |
+    | naam                                 | waarde                    |
+    | geslachtsaanduiding (04.10)          | <geslacht>                |
     | voornamen (02.10)                    | <voornamen>               |
     | adellijke titel of predicaat (02.20) | <adellijkeTitelPredicaat> |
     | voorvoegsel (02.30)                  | <voorvoegsel>             |
