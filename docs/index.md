@@ -4,8 +4,8 @@ title: Haal Centraal BRP persoon bevragen
 ---
 # Haal Centraal {{ site.apiname }}
 
-![lint oas](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
-![generate postman collection](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
+![lint oas](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
+![generate postman collection](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
@@ -17,18 +17,18 @@ Versie 2.0 beta (API-Lab) is de versie die is gebruikt tijdens het API-Lab van 7
 Versie 2.0 (IO) is de versie waarmee de pilot wordt gestart. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
 
 ## Direct uitproberen?
-* Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
-* Lees de [Getting started](./getting-started)
-* Download de [technische specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
+* Bekijk de specificaties met [Swagger UI](swagger-ui) of [Redoc](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/redoc)
+* Lees de [Getting started](getting-started)
+* Download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
 Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 
-* [Historische BRP-gegevens bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
-* [Reisdocumenten bevragen](https://vng-realisatie.github.io/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
-* [Bewoning en medebewoners bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
-* [Landelijke tabellen bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
+* [Historische BRP-gegevens bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
+* [Reisdocumenten bevragen](https://BRP-API.github.io/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
+* [Bewoning en medebewoners bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
+* [Landelijke tabellen bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
 
 ## Bronnen
 
@@ -48,4 +48,4 @@ Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 ## Licentie
 
 Copyright &copy; VNG Realisatie 2020
-Licensed under the [EUPL](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md){:target="_blank" rel="noopener"}
+Licensed under the [EUPL](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md){:target="_blank" rel="noopener"}
