@@ -6,21 +6,21 @@
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
 
-De laatste versie is 1.3.1. Lees de [release notes](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/releasenotes.html) om te zien wat er gewijzigd is.
+De laatste versie is 1.3.1. Lees de [release notes](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/releasenotes.html) om te zien wat er gewijzigd is.
 
 ## Direct uitproberen?
-* Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen/redoc)
-* Lees de [Getting started](https://vng-realisatie.github.io/Haal-Centraal-BRP-bevragen//getting-started)
+* Bekijk de specificaties met [Swagger UI](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/redoc)
+* Lees de [Getting started](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen//getting-started)
 * Download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml)
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
 Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 
-* [Historische BRP-gegevens bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-historie-bevragen)
-* [Reisdocumenten bevragen](https://vng-realisatie.github.io/Haal-Centraal-Reisdocumenten-bevragen)
-* [Bewoning en medebewoners bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-bewoning)
-* [Landelijke tabellen bevragen](https://vng-realisatie.github.io/Haal-Centraal-BRP-tabellen-bevragen)
+* [Historische BRP-gegevens bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-historie-bevragen)
+* [Reisdocumenten bevragen](https://BRP-API.github.io/Haal-Centraal-Reisdocumenten-bevragen)
+* [Bewoning en medebewoners bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-bewoning)
+* [Landelijke tabellen bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-tabellen-bevragen)
 
 ## Bronnen
 
