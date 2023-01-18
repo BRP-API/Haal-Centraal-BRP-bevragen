@@ -16,12 +16,12 @@ Wil je de API gebruiken? Dit kun je doen:
 
 Je kunt een visuele representatie van de specificatie genereren met [Redoc]({{ site.baseurl }}/redoc-io).
 
-De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/develop/specificatie/genereervariant/openapi.yaml).
+De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/BRP-API{{ site.baseurl }}/blob/develop/specificatie/genereervariant/openapi.yaml).
 
 De [functionele documentatie](./features-v2) vind je in [features](./features-v2).
 
 ## Implementeer de API client
-Client code kun je genereren met de "[genereervariant](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/develop/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}" van de API-specificaties en een code generator. Een overzicht met codegeneratoren kun je vinden op [OpenAPI.Tools](https://openapi.tools/#sdk){:target="_blank" rel="noopener"}.
+Client code kun je genereren met de "[genereervariant](https://github.com/BRP-API{{ site.baseurl }}/blob/develop/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}" van de API-specificaties en een code generator. Een overzicht met codegeneratoren kun je vinden op [OpenAPI.Tools](https://openapi.tools/#sdk){:target="_blank" rel="noopener"}.
 
 Deze repo bevat scripts waarmee je met [OpenAPI Generator](https://openapi-generator.tech/){:target="_blank" rel="noopener"} client code kunt genereren in JAVA, .NET (Full Framework & Core) en Python. De makkelijkste manier om de code generatie scripts te gebruiken, is door deze repo te clonen. Na het clonen kun je met `npm install` de benodigde packages installeren en kun je met `npm run <script naam>` één van de volgende scripts uitvoeren:
 - oas:generate-java-client (voor JAVA client code)
@@ -58,7 +58,7 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
 
 - Clone de Haal Centraal BRP Persoon bevragen repository als deze niet eerder al is ge-clone-d<br/><br/>
   ```sh
-  git clone https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen.git
+  git clone https://github.com/BRP-API/Haal-Centraal-BRP-bevragen.git
   ```
 - Ga naar de aangemaakte folder<br/><br/>
   ```sh
