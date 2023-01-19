@@ -11,7 +11,7 @@ API voor het zoeken en raadplegen van actuele personen, partners, ouders en kind
 
 De laatste versie is 1.3.1. Lees de [release notes](releasenotes.md) om te zien wat er gewijzigd is.
 
-Voor de pilot wordt versie 2.0 (IO) gebruikt. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
+Voor de pilot BRP Bevragen wordt BRP Personen Bevragen versie 2.0 (IO) gebruikt. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](swagger-ui) of [Redoc](redoc)
@@ -19,7 +19,7 @@ Voor de pilot wordt versie 2.0 (IO) gebruikt. <!--Lees de [Getting started](./ge
 * Download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 
 ## Heb je meer nodig?
-Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
+Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP Bevragen API’s:
 
 * [Historische BRP-gegevens bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
 * [Reisdocumenten bevragen](https://BRP-API.github.io/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
