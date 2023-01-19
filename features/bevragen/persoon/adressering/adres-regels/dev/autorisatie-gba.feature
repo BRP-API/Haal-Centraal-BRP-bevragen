@@ -54,7 +54,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.adresregel1                |
+      | detail   | De foutieve fields waarden zijn: adressering.adresregel1.               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -130,7 +130,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.adresregel2                |
+      | detail   | De foutieve fields waarden zijn: adressering.adresregel2.               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -203,7 +203,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.adresregel3                |
+      | detail   | De foutieve fields waarden zijn: adressering.adresregel3.               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -246,7 +246,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.land                       |
+      | detail   | De foutieve fields waarden zijn: adressering.land.                      |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
