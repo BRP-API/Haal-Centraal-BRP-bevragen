@@ -58,7 +58,7 @@ Functionaliteit: Persoon: partner geboorte velden zijn in onderzoek
     | 050300                  | land   | hele groep geboorte                                |
     | 050330                  | land   | geboorteland                                       |
 
-  Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
+  Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
@@ -67,11 +67,11 @@ Functionaliteit: Persoon: partner geboorte velden zijn in onderzoek
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | <gevraagde fields>              |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
 
     Voorbeelden:
-    | aanduiding in onderzoek | type           | veld naam      | gevraagde fields         |
-    | 050310                  | geboortedatum  | geboortedatum  | partners.geboorte.plaats |
-    | 050320                  | geboorteplaats | geboorteplaats | partners.geboorte.land   |
-    | 050330                  | geboorteland   | geboorteland   | partners.geboorte.datum  |
+    | aanduiding in onderzoek | type           | fields                   |
+    | 050310                  | geboortedatum  | partners.geboorte.plaats |
+    | 050320                  | geboorteplaats | partners.geboorte.land   |
+    | 050330                  | geboorteland   | partners.geboorte.datum  |

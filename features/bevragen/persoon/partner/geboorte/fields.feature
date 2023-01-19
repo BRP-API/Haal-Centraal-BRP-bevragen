@@ -18,9 +18,14 @@ Functionaliteit: Persoon: partner geboorte velden vragen met fields
     | datum.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | fields                       |
-    | partners.geboorte.datum      |
-    | partners.geboorte.datum.type |
+    | fields                              |
+    | partners.geboorte.datum             |
+    | partners.geboorte.datum.type        |
+    | partners.geboorte.datum.datum       |
+    | partners.geboorte.datum.langFormaat |
+    | partners.geboorte.datum.jaar        |
+    | partners.geboorte.datum.maand       |
+    | partners.geboorte.datum.onbekend    |
 
   Abstract Scenario: 'geboorteplaats (03.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

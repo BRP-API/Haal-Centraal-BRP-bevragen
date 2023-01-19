@@ -22,14 +22,14 @@ Functionaliteit: Persoon: partner velden zijn in onderzoek
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002              |
 
     Voorbeelden:
-    | aanduiding in onderzoek | burgerservicenummer io | soort verbintenis io | geslacht io | type |
-    | 050000                  | true                   | true                 | true        |      |
-    | 050100                  | true                   |                      |             |      |
-    | 050120                  | true                   |                      |             |      |
-    | 050400                  |                        |                      | true        |      |
-    | 050410                  |                        |                      | true        |      |
-    | 051500                  |                        | true                 |             |      |
-    | 051510                  |                        | true                 |             |      |
+    | aanduiding in onderzoek | burgerservicenummer io | soort verbintenis io | geslacht io | type                            |
+    | 050000                  | true                   | true                 | true        | hele categorie partner          |
+    | 050100                  | true                   |                      |             | hele groep identificatienummers |
+    | 050120                  | true                   |                      |             | burgerservicenummer             |
+    | 050400                  |                        |                      | true        | hele groep geslacht             |
+    | 050410                  |                        |                      | true        | geslachtsaanduiding             |
+    | 051500                  |                        | true                 |             | hele groep soort verbintenis    |
+    | 051510                  |                        | true                 |             | soort verbintenis               |
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
