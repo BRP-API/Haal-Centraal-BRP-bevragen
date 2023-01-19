@@ -48,8 +48,8 @@ Functionaliteit: GBA Persoon: naam velden vragen met fields
 
   Scenario: 'volledige naam' wordt gevraagd met field pad 'naam.volledigeNaam'
     Gegeven de persoon met burgerservicenummer '000000619' heeft de volgende gegevens
-    | geslachtsaanduiding (04.10) | voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) |
-    | V                           | Carolina          | BS                                   | Van                 | Naersen               |
+    | geslachtsaanduiding (04.10) | voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) | aanduiding naamgebruik (61.10) |
+    | V                           | Carolina          | BS                                   | Van                 | Naersen               | E                              |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
