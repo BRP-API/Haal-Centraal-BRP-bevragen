@@ -1084,41 +1084,6 @@ Functionaliteit: in onderzoek
       | groep verblijf buitenland | 081300 | VerblijfplaatsOnbekend | true        | true        |           |                     |            | true              | 2022-03-07         | Datum                  | 7 maart 2022      |                   |                       |                  |
       | categorie verblijfplaats  | 080000 | VerblijfplaatsOnbekend | true        | true        | true      | true                | true       | true              | 2022-03-07         | Datum                  | 7 maart 2022      | 2022-03-07        | Datum                 | 7 maart 2022     | 
 
-    Abstract Scenario: <gegeven in onderzoek> is in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000589' heeft een 'nationaliteit' met de volgende gegevens
-      | naam                               | waarde                                |
-      | nationaliteit (05.10)              | <nationaliteit>                       |
-      | bijzonder Nederlanderschap (65.10) | <aanduidingBijzonderNederlanderschap> |
-      | datum ingang geldigheid (85.10)    | <datumIngangGeldigheid>               |
-      | aanduiding in onderzoek (83.10)    | <waarde>                              |
-      | datum ingang onderzoek (83.20)     | 20220307                              |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000589                       |
-      | fields              | nationaliteiten.inOnderzoek     |
-      Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
-      | naam                                         | waarde                       |
-      | type                                         | <nationaliteit type>         |
-      | inOnderzoek.type                             | <type in onderzoek>          |
-      | inOnderzoek.nationaliteit                    | <nationaliteit in onderzoek> |
-      | inOnderzoek.redenOpname                      | <redenOpname in onderzoek>   |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum                        |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                   |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                 |
-
-      Voorbeelden:
-      | gegeven in onderzoek                                          | nationaliteit | aanduidingBijzonderNederlanderschap | nationaliteit type         | datumIngangGeldigheid | waarde | type in onderzoek | nationaliteit in onderzoek | redenOpname in onderzoek |
-      | hele categorie nationaliteit                                  | 0052          |                                     | Nationaliteit              | 19560317              | 040000 | true              | true                       | true                     |
-      | hele categorie nationaliteit bij onbekende nationaliteit      | 0000          |                                     | NationaliteitOnbekend      | 00000000              | 040000 | true              |                            | true                     |
-      | hele categorie nationaliteit bij vastgesteld niet-Nederlander |               | V                                   | VastgesteldNietNederlander | 19710417              | 040000 | true              |                            | true                     |
-      | hele categorie nationaliteit bij behandeld als Nederlander    |               | B                                   | BehandeldAlsNederlander    | 19520831              | 040000 | true              |                            | true                     |
-      | veld nationaliteit                                            | 0052          |                                     | Nationaliteit              | 19560317              | 040510 | true              | true                       |                          |
-      | veld nationaliteit bij onbekende nationaliteit                | 0000          |                                     | NationaliteitOnbekend      | 19560317              | 040510 | true              |                            |                          |
-      | reden opname                                                  | 0052          |                                     | Nationaliteit              | 19560317              | 046310 |                   |                            | true                     |
-      | veld nationaliteit type bij vastgesteld niet-Nederlander      |               | V                                   | VastgesteldNietNederlander | 19710417              | 046510 | true              |                            |                          |
-      | veld nationaliteit type bij behandeld als Nederlander         |               | B                                   | BehandeldAlsNederlander    | 19710417              | 046510 | true              |                            |                          |
-
   Rule: onderzoek van een partnergegeven leidt alleen tot inOnderzoek van een samengesteld naamgegeven wanneer daarin de partnernaam wordt gebruikt
     - naam.aanduidingNaamgebruik is ongelijk aan 'E'
     - een of meerdere van de partner naamgegevens voorvoegsel, adellijkeTitelPredicaat of geslachtsnaam zijn in onderzoek
