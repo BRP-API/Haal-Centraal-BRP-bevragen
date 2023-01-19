@@ -1,8 +1,8 @@
 #language: nl
 
-Functionaliteit: Persoon: verblijfstitel
+Functionaliteit: Persoon: verblijfstitel velden vragen met fields
 
-  Abstract Scenario: persoon heeft 'verblijfstitel' veld: 'aanduiding verblijfstitel (39.10)'
+  Abstract Scenario: 'aanduiding verblijfstitel (39.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                              | waarde |
     | aanduiding verblijfstitel (39.10) | 09     |
@@ -10,19 +10,19 @@ Functionaliteit: Persoon: verblijfstitel
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | <field>                         |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
     | naam                    | waarde                         |
     | aanduiding.code         | 09                             |
     | aanduiding.omschrijving | Art. 9 van de Vreemdelingenwet |
 
     Voorbeelden:
-    | field                                  |
+    | fields                                 |
     | verblijfstitel.aanduiding              |
     | verblijfstitel.aanduiding.code         |
     | verblijfstitel.aanduiding.omschrijving |
 
-  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum ingang verblijfstitel (39.30)'
+  Abstract Scenario: 'datum ingang verblijfstitel (39.30)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
@@ -30,7 +30,7 @@ Functionaliteit: Persoon: verblijfstitel
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.<naam>           |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
     | naam                    | waarde          |
     | datumIngang.type        | Datum           |
@@ -38,10 +38,16 @@ Functionaliteit: Persoon: verblijfstitel
     | datumIngang.langFormaat | 1 februari 1998 |
 
     Voorbeelden:
-    | naam        |
-    | datumIngang |
+    | fields                                 |
+    | verblijfstitel.datumIngang             |
+    | verblijfstitel.datumIngang.type        |
+    | verblijfstitel.datumIngang.datum       |
+    | verblijfstitel.datumIngang.langFormaat |
+    | verblijfstitel.datumIngang.jaar        |
+    | verblijfstitel.datumIngang.maand       |
+    | verblijfstitel.datumIngang.onbekend    |
 
-  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde in de toekomst
+  Abstract Scenario: 'datum einde verblijfstitel (39.20)' met waarde in de toekomst wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
@@ -53,7 +59,7 @@ Functionaliteit: Persoon: verblijfstitel
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.<naam>           |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
     | naam                   | waarde           |
     | datumEinde.type        | Datum            |
@@ -61,43 +67,11 @@ Functionaliteit: Persoon: verblijfstitel
     | datumEinde.langFormaat | 31 december 2025 |
 
     Voorbeelden:
-    | naam       |
-    | datumEinde |
-
-  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde gelijk aan vandaag
-    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
-    | naam                                | waarde   |
-    | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
-    | naam                                | waarde   |
-    | datum ingang verblijfstitel (39.30) | 19980201 |
-    | datum einde verblijfstitel (39.20)  | vandaag  |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.<naam>           |
-    Dan heeft de response een persoon zonder gegevens
-
-    Voorbeelden:
-    | naam       |
-    | datumEinde |
-
-  Abstract Scenario: persoon heeft 'verblijfstitel' datum veld: 'datum einde verblijfstitel (39.20)' met waarde in het verleden
-    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
-    | naam                                | waarde   |
-    | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
-    | naam                                | waarde   |
-    | datum ingang verblijfstitel (39.30) | 19980201 |
-    | datum einde verblijfstitel (39.20)  | gisteren |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.<naam>           |
-    Dan heeft de response een persoon zonder gegevens
-
-    Voorbeelden:
-    | naam       |
-    | datumEinde |
+    | fields                                |
+    | verblijfstitel.datumEinde             |
+    | verblijfstitel.datumEinde.type        |
+    | verblijfstitel.datumEinde.datum       |
+    | verblijfstitel.datumEinde.langFormaat |
+    | verblijfstitel.datumEinde.jaar        |
+    | verblijfstitel.datumEinde.maand       |
+    | verblijfstitel.datumEinde.onbekend    |
