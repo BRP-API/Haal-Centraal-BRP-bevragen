@@ -84,9 +84,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
-       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -571,8 +571,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -601,8 +601,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
+      | gemeentecode (92.10) | 0599            |
+      | straatnaam (11.10)   | Borgesiusstraat |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -630,8 +630,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
+      | naam                 | waarde          |
+      | gemeentecode (92.10) | 0599            |
+      | straatnaam (11.10)   | Borgesiusstraat |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -655,8 +656,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
+      | naam                 | waarde          |
+      | gemeentecode (92.10) | 0599            |
+      | straatnaam (11.10)   | Borgesiusstraat |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
