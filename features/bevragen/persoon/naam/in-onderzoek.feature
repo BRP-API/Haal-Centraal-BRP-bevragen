@@ -33,6 +33,8 @@ Functionaliteit: Persoon: naam velden in onderzoek
     | 010220                  |              | true               |                |                  |                |                | true              | adellijke titel/predicaat |
     | 010230                  |              |                    | true           |                  |                |                | true              | voorvoegsel               |
     | 010240                  |              |                    |                | true             |                |                | true              | geslachtsnaam             |
+    | 010400                  |              |                    |                |                  |                |                | true              | hele groep geslacht       |
+    | 010410                  |              |                    |                |                  |                |                | true              | geslachtsaanduiding       |
     | 016100                  |              |                    |                |                  | true           |                |                   | hele groep naamgebruik    |
     | 016110                  |              |                    |                |                  | true           |                |                   | aanduiding naamgebruik    |
 
@@ -217,6 +219,8 @@ Functionaliteit: Persoon: naam velden in onderzoek
     | 010220                  | adellijke titel/predicaat |
     | 010230                  | voorvoegsel               |
     | 010240                  | geslachtsnaam             |
+    | 010400                  | hele groep geslacht       |
+    | 010410                  | geslachtsaanduiding       |
 
   Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
