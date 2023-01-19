@@ -239,6 +239,7 @@ namespace BrpProxy.Validators
                 switch (field)
                 {
                     case "geboorte.datum":
+                    case "kinderen.geboorte.datum":
                     case "partners.aangaanHuwelijkPartnerschap.datum":
                     case "partners.geboorte.datum":
                     case "verblijfplaats.type":
@@ -268,6 +269,14 @@ namespace BrpProxy.Validators
             .Contains(field);
         }
 
+        private static bool IsObjectField(this string field)
+        {
+            return new[]
+            {
+                "geboorte"
+            }
+            .Contains(field);
+        }
         private static bool IsPersoonField(this string field)
         {
             return new[]
@@ -299,6 +308,15 @@ namespace BrpProxy.Validators
             .Contains(field);
         }
 
+        private static bool IsCollectionFieldFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "kinderen"
+            }
+            .Contains(fieldPart);
+        }
+
         private static bool IsVerblijfplaatsFieldPart(this string fieldPart)
         {
             return new[]
@@ -326,7 +344,8 @@ namespace BrpProxy.Validators
                 switch (fieldParts.Length)
                 {
                     case 1:
-                        if (fieldParts[0].IsVerblijfplaatsFieldPart())
+                        if (fieldParts[0].IsVerblijfplaatsFieldPart() ||
+                            fieldParts[0].IsCollectionFieldFieldPart())
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek");
                         }
@@ -356,6 +375,11 @@ namespace BrpProxy.Validators
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek.type");
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
+                        }
+                        else if (fieldParts[0].IsCollectionFieldFieldPart() &&
+                                 fieldParts[1].IsObjectField())
+                        {
                             retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
                         }
                         else
