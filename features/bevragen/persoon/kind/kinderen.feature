@@ -1,6 +1,5 @@
 # language: nl
 
-@post-assert
 Functionaliteit: Kinderen van een persoon raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
@@ -135,11 +134,9 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | burgerservicenummer | 000000097 |
       | naam.voornamen      | Karel     |
 
-  @proxy
   Rule: Wanneer een kind alleen "onbekend"-waardes heeft, wordt er een 'kind' zonder gegevens geleverd.
     - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel wordt er ook een 'kind' zonder gegevens geleverd.
 
-    @proxy
     Scenario: Kind is volledig onbekend
       Gegeven de persoon met burgerservicenummer '000000176' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | geboorteplaats (03.20) | geboorteland (03.30) |
@@ -152,7 +149,6 @@ Functionaliteit: Kinderen van een persoon raadplegen
       Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
       En heeft het 'kind' geen 'geboorte' gegevens
 
-    @proxy
     Scenario: Met fields zijn alleen velden zonder waarde gevraagd
       Gegeven de persoon met burgerservicenummer '000000176' heeft een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) | 
