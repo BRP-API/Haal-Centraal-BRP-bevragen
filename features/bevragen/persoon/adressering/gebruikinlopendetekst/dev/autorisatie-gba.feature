@@ -32,7 +32,7 @@ Functionaliteit: autorisatie voor gebruikInLopendeTekst
       | aanduidingNaamgebruik.omschrijving | eigen geslachtsnaam |
 
     @fout-case
-    Scenario: Afnemer vraagt om gebruikInLopendeTekst en is niet geautoriseerd voor <missende autorisatie>
+    Abstract Scenario: Afnemer vraagt om gebruikInLopendeTekst en is niet geautoriseerd voor <missende autorisatie>
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
