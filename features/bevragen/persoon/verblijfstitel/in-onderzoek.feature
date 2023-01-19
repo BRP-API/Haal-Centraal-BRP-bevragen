@@ -1,35 +1,35 @@
 #language: nl
 
-Functionaliteit: Persoon: verblijfstitel in onderzoek
+Functionaliteit: Persoon: verblijfstitel velden in onderzoek
 
-  Abstract Scenario: verblijfstitel veld(en) van persoon is/zijn in onderzoek
+  Abstract Scenario: '<type>' is in onderzoek en alle verblijfstitel velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
+    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.inOnderzoek      |
+    | fields              | verblijfstitel                  |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam                                         | waarde                      |
-    | inOnderzoek.aanduiding                       | <aanduiding in onderzoek>   |
-    | inOnderzoek.datumEinde                       | <datum einde in onderzoek>  |
-    | inOnderzoek.datumIngang                      | <datum ingang in onderzoek> |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                       |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                  |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                 |
+    | naam                                         | waarde            |
+    | inOnderzoek.aanduiding                       | <aanduiding io>   |
+    | inOnderzoek.datumEinde                       | <datum einde io>  |
+    | inOnderzoek.datumIngang                      | <datum ingang io> |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum             |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01        |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002       |
 
     Voorbeelden:
-    | gba in onderzoek waarde | aanduiding in onderzoek | datum ingang in onderzoek | datum einde in onderzoek |
-    | 100000                  | true                    | true                      | true                     |
-    | 103900                  | true                    | true                      | true                     |
-    | 103910                  | true                    |                           |                          |
-    | 103920                  |                         |                           | true                     |
-    | 103930                  |                         | true                      |                          |
+    | aanduiding in onderzoek | aanduiding io | datum einde io | datum ingang io | type                        |
+    | 100000                  | true          | true           | true            | hele categorie persoon      |
+    | 103900                  | true          | true           | true            | hele groep verblijfstitel   |
+    | 103910                  | true          |                |                 | aanduiding verblijfstitel   |
+    | 103920                  |               | true           |                 | datum einde verblijfstitel  |
+    | 103930                  |               |                | true            | datum ingang verblijfstitel |
 
-  Abstract Scenario: 'aanduiding verblijfstitel (39.10)' is in onderzoek
+  Abstract Scenario: 'aanduiding verblijfstitel' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                              | waarde                    |
     | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
@@ -55,7 +55,7 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103900                  |
     | 103910                  |
 
-  Abstract Scenario: 'datum ingang verblijfstitel (39.30)' is in onderzoek
+  Abstract Scenario: 'datum ingang verblijfstitel' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde                    |
     | aanduiding in onderzoek (83.10)     | <gba in onderzoek waarde> |
@@ -82,7 +82,7 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103900                  |
     | 103930                  |
 
-  Abstract Scenario: 'datum einde verblijfstitel (39.20)' is in onderzoek
+  Abstract Scenario: 'datum einde verblijfstitel' is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
@@ -112,56 +112,20 @@ Functionaliteit: Persoon: verblijfstitel in onderzoek
     | 103900                  |
     | 103920                  |
 
-  Abstract Scenario: 'aanduiding verblijfstitel (39.10)' is in onderzoek, maar wordt niet gevraagd
+  Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
-    | naam                              | waarde                    |
-    | aanduiding in onderzoek (83.10)   | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)    | 20020701                  |
-    | aanduiding verblijfstitel (39.10) | 09                        |
+    | naam                            | waarde                    |
+    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
+    | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.datumIngang      |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon zonder 'verblijfstitel' gegevens
 
     Voorbeelden:
-    | gba in onderzoek waarde |
-    | 103910                  |
-
-  Abstract Scenario: 'datum ingang verblijfstitel (39.30)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
-    | naam                                | waarde                    |
-    | aanduiding in onderzoek (83.10)     | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)      | 20020701                  |
-    | datum ingang verblijfstitel (39.30) | 19980201                  |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.datumEinde       |
-    Dan heeft de response een persoon zonder 'verblijfstitel' gegevens
-
-    Voorbeelden:
-    | gba in onderzoek waarde |
-    | 103930                  |
-
-  Abstract Scenario: 'datum einde verblijfstitel (39.20)' is in onderzoek, maar wordt niet gevraagd
-    Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
-    | naam                                | waarde   |
-    | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
-    | naam                               | waarde                    |
-    | aanduiding in onderzoek (83.10)    | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)     | 20020701                  |
-    | datum einde verblijfstitel (39.20) | 20251231                  |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.aanduiding       |
-    Dan heeft de response een persoon zonder 'verblijfstitel' gegevens
-
-    Voorbeelden:
-    | gba in onderzoek waarde |
-    | 103920                  |
+    | aanduiding in onderzoek | fields                     | type                        |
+    | 103910                  | verblijfstitel.datumIngang | aanduiding verblijfstitel   |
+    | 103930                  | verblijfstitel.datumEinde  | datum ingang verblijfstitel |
+    | 103920                  | verblijfstitel.aanduiding  | datum einde verblijfstitel  |

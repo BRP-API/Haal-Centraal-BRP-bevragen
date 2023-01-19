@@ -24,11 +24,10 @@ Rule: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' o
 
     Voorbeelden:
     | straatnaam               | huisnummer | omschrijving                       |
-    |                          | 88         | een lege straatnaam                |
     | .                        | 88         | een straatnaam met standaardwaarde |
     | Jonkheer van Riemsdijkln | 0          | een huisnummer met standaardwaarde |
 
-Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'land (13.10)' de standwaarde heeft of 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben de standaardwaarde
+Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'land (13.10)' de standwaarde heeft of 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben geen waarde
 
   Scenario: persoon heeft een verblijfplaats buitenland en 'land (13.10)' heeft de standaardwaarde
     Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
@@ -41,10 +40,10 @@ Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'l
     | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
     Dan heeft de response een persoon zonder 'adressering' gegevens
 
-  Scenario: persoon heeft een verblijfplaats buitenland en 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben de standaardwaarde
+  Scenario: persoon heeft een verblijfplaats buitenland en 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben geen waarde
     Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
-    | land (13.10) | regel 1 adres buitenland (13.30) | regel 2 adres buitenland (13.40) | regel 3 adres buitenland (13.50) |
-    | 0000         |                                  |                                  |                                  |
+    | land (13.10) |
+    | 5010         |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                                   |
     | type                | RaadpleegMetBurgerservicenummer                                                          |

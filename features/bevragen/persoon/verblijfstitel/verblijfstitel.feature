@@ -5,8 +5,8 @@ Functionaliteit: Verblijfstitel
   Achtergrond:
     Gegeven landelijke tabel "Verblijfstitel" heeft de volgende waarden
     | code | omschrijving                                                                   |
-    |   00 | Onbekend                                                                       |
-    |   37 | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
+    | 00   | Onbekend                                                                       |
+    | 37   | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
   Rule: een verblijfstitel wordt alleen geleverd wanneer die nog geldig is
     - een verblijfstitel wordt geleverd wanneer Datum einde verblijfstitel (39.20) leeg is of een datum in de toekomst heeft
@@ -33,8 +33,8 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 000000103                       |
       | fields              | verblijfstitel.aanduiding       |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
-      | naam                    | waarde                                                                              |
-      | aanduiding.code         | 37                                                                                  |
+      | naam                    | waarde                                                                         |
+      | aanduiding.code         | 37                                                                             |
       | aanduiding.omschrijving | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
     Abstract Scenario: verblijfstitel heeft <titel>
@@ -47,8 +47,8 @@ Functionaliteit: Verblijfstitel
       | burgerservicenummer | 000000115                       |
       | fields              | verblijfstitel.aanduiding       |
       Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
-      | naam                    | waarde                                                                              |
-      | aanduiding.code         | 37                                                                                  |
+      | naam                    | waarde                                                                         |
+      | aanduiding.code         | 37                                                                             |
       | aanduiding.omschrijving | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
       Voorbeelden:
@@ -58,8 +58,8 @@ Functionaliteit: Verblijfstitel
 
     Abstract Scenario: verblijfstitel heeft <titel>
       Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'verblijfstitel' gegevens
-      | aanduiding verblijfstitel (39.10)   | datum einde verblijfstitel (39.20)  | datum ingang verblijfstitel (39.30) |
-      | 37                                  | <datumEinde>                        | 20210315                            |
+      | aanduiding verblijfstitel (39.10) | datum einde verblijfstitel (39.20) | datum ingang verblijfstitel (39.30) |
+      | 37                                | <datumEinde>                       | 20210315                            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
@@ -78,8 +78,8 @@ Functionaliteit: Verblijfstitel
 
     Scenario: vervallen verblijfstitel
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende 'verblijfstitel' gegevens
-      | aanduiding verblijfstitel (39.10)| datum ingang verblijfstitel (39.30) |
-      | 98                               | 20210315                            |
+      | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) |
+      | 98                                | 20210315                            |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                        |
       | type                | RaadpleegMetBurgerservicenummer               |

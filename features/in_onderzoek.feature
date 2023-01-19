@@ -367,26 +367,6 @@ Functionaliteit: in onderzoek
       | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                          |
       | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                   |
 
-    Scenario: persoon heeft aanduiding van verblijfstitel in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'verblijfstitel' gegevens
-      | naam                              | waarde   |
-      | aanduiding verblijfstitel (39.10) | 15       |
-      | aanduiding in onderzoek (83.10)   | 103910   |
-      | datum ingang onderzoek (83.20)    | 20220307 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000322                       |
-      | fields              | verblijfstitel.aanduiding       |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                        | waarde                                                                           |
-      | verblijfstitel.aanduiding.code                              | 15                                                                               |
-      | verblijfstitel.aanduiding.omschrijving                      | Benelux of EG richtl nrs 68/360/EEG, 73/148/EEG 75/34/EEG, verord nr 1251/70/EEG |
-      | verblijfstitel.inOnderzoek.aanduiding                       | true                                                                             |
-      | verblijfstitel.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07                                                                       |
-      | verblijfstitel.inOnderzoek.datumIngangOnderzoek.type        | Datum                                                                            |
-      | verblijfstitel.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                                                                     |
-
     Abstract Scenario: persoon heeft <veld> van ouder in onderzoek
       Gegeven de persoon met burgerservicenummer '000000334' heeft een ouder '<ouder>' met de volgende gegevens
       | naam                            | waarde   |
