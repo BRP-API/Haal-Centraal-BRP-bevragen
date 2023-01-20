@@ -43,18 +43,18 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | instance | /haalcentraal/api/brp/personen                                                            |
 
       Voorbeelden:
-      | ad hoc rubrieken                                      | parameter niet toegestaan | ontbrekende rubriek |
-      | 10120 80910 80810 81120 81130 81140 81150 81160 81190 | huisnummer                | 81110               |
-      | 10120 80910 80810 81110 81120 81130 81140 81150 81190 | postcode                  | 81160               |
-      | 10120 80910 80810 81110 81120 81140 81150 81160 81190 | huisletter                | 81130               |
-      | 10120 80910 80810 81110 81120 81130 81150 81160 81190 | huisnummertoevoeging      | 81140               |
-      | 10120 80810 81110 81120 81130 81140 81150 81160 81190 | gemeenteVanInschrijving   | 80910               |
+      | ad hoc rubrieken              | parameter niet toegestaan | ontbrekende rubriek |
+      | 10120 81120 81130 81140 81160 | gemeenteVanInschrijving   | 80910               |
+      | 10120 80910 81130 81140 81160 | huisnummer                | 81120               |
+      | 10120 80910 81120 81140 81160 | huisletter                | 81130               |
+      | 10120 80910 81120 81130 81160 | huisnummertoevoeging      | 81140               |
+      | 10120 80910 81120 81130 81140 | postcode                  | 81160               |
 
     @fout-case
     Scenario: Gebruik van meerdere parameters waarvoor de afnemer niet geautoriseerd is
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120 80910 80810 81110 81120 81150 81160 81190 | N                        | 20201128                |
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81120 81160               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -86,6 +86,69 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): huisletter, huisnummertoevoeging. |
       | code     | unauthorizedParameter                                                                          |
       | instance | /haalcentraal/api/brp/personen                                                                 |
+
+    Scenario: Zoeken met parameters postcode en huisnummer waarvoor de afnemer wel geautoriseerd is
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81120 81160               | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0518   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      | postcode (11.60)             | 2497BV          |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                    | waarde                      |
+      | type                    | ZoekMetPostcodeEnHuisnummer |
+      | postcode                | 2497BV                      |
+      | huisnummer              | 103                         |
+      | fields                  | burgerservicenummer         |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000024 |
+
+
+    Abstract Scenario: Zoeken met parameters postcode, huisnummer en <extra parameter> waarvoor de afnemer wel geautoriseerd is
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)             | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81120 <rubriek extra parameter> 81160 | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0518   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      | huisnummer (11.20)           | 103             |
+      | huisletter (11.30)           | b               |
+      | huisnummertoevoeging (11.40) | 2               |
+      | postcode (11.60)             | 2497BV          |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam             | waarde                      |
+      | type             | ZoekMetPostcodeEnHuisnummer |
+      | postcode         | 2497BV                      |
+      | huisnummer       | 103                         |
+      | <extra parameter> | <waarde>                    |
+      | fields           | burgerservicenummer         |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000024 |
+
+      Voorbeelden:
+      | extra parameter      | rubriek extra parameter | waarde |
+      | huisletter           | 81130                   | b      |
+      | huisnummertoevoeging | 81140                   | 2      |
+
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
 
