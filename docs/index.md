@@ -9,14 +9,11 @@ title: Haal Centraal BRP persoon bevragen
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). De start van de pilot BRP Bevragen is gepland in maart 2023.
 
-De laatste versie is 1.3.1. Lees de [release notes](releasenotes.md) om te zien wat er gewijzigd is.
-
 Voor de pilot BRP Bevragen wordt BRP Personen Bevragen versie 2.0 (IO) gebruikt. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
 
 ## Direct uitproberen?
-* Bekijk de specificaties met [Swagger UI](swagger-ui) of [Redoc](redoc)
-* Lees de [Getting started](getting-started)
-* Download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
+* Bekijk de specificaties met [Redoc](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/redoc-io)
+* Lees de [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/getting-started-v2)
 
 ## Heb je meer nodig?
 Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP Bevragen API’s:
@@ -25,6 +22,9 @@ Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP B
 * [Reisdocumenten bevragen](https://BRP-API.github.io/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
 * [Bewoning en medebewoners bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
 * [Landelijke tabellen bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
+
+
+Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](swagger-ui) of [Redoc](redoc) en download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 
 ## Bronnen
 
