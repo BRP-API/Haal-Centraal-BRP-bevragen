@@ -6,8 +6,7 @@ title: User Stories in Ontwikkeling
 # User stories
 
 - [Als gebruiker wil ik bij zoeken een afgevoerde PL niet vinden](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1233){:target="_blank" rel="noopener"}
-- [InOnderzoek opnemen in PersoonBeperkt. ](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1230){:target="_blank" rel="noopener"}
-- [Opnemen metagegevens bij een zoekvraag](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1214){:target="_blank" rel="noopener"}
+- [Als PO wil ik metagegevens opnemen bij een zoekvraag](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1214){:target="_blank" rel="noopener"}
 - [Als PO wil ik verplicht leveren dat een RNI gegeven is verstrekt door een bestuursorgaan of is geverifieerd door een ABO, inclusief verificatiedatum](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1213){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat nationaliteit geen magic strings meer bevat](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1025){:target="_blank" rel="noopener"}
 - [Als gebruiker van de API wil ik een lijst met van toepassing zijnde veldpaden voor fields](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1010){:target="_blank" rel="noopener"}
