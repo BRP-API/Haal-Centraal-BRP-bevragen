@@ -10,14 +10,14 @@ title: User Stories in Ontwikkeling
 - [Als PO wil ik verplicht leveren dat een RNI gegeven is verstrekt door een bestuursorgaan of is geverifieerd door een ABO, inclusief verificatiedatum](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1213){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat nationaliteit geen magic strings meer bevat](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1025){:target="_blank" rel="noopener"}
 - [Als gebruiker van de API wil ik een lijst met van toepassing zijnde veldpaden voor fields](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1010){:target="_blank" rel="noopener"}
-- [Wijziging van Waardetabel waarden voor enumeratievelden moet leiden tot nieuwe versie API](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1007){:target="_blank" rel="noopener"}
+- [Als PO wil dat wijziging van waarden in een waardentabel voor enumeratievelden tot nieuwe API versie leidt](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1007){:target="_blank" rel="noopener"}
 - [Als developer van een client applicatie wil ik de mogelijke waarden van een waardentabel kunnen downloaden](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1006){:target="_blank" rel="noopener"}
-- [Als developer wil ik bij een ontbonden huwelijk/partnerschap deze ook ontvangen](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1005){:target="_blank" rel="noopener"}
+- [Als developer wil ik de laatste partner ook ontvangen als het huwelijk/partnerschap ontbonden is](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1005){:target="_blank" rel="noopener"}
 - [Als developer van een client applicatie wil ik de datum in een voor een eindgebruiker leesbare vorm](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1000){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat uit de protocollering kan worden opgemaakt of een persoon in het antwoord op een zoekvraag is voorgekomen of dat een persoon geraadpleegd is](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/917){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat de response op een zoekvraag uitsluitend noodzakelijke gegevens bevat voor selectie van een te raadplegen persoon ](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/916){:target="_blank" rel="noopener"}
 - [Als PO wil ik het aantal combinaties van inputparameters verkleinen](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/915){:target="_blank" rel="noopener"}
-- [Als PO wil ik een strakkere specificatie van de validatieregels voor de response payload (outputvalidatie)](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/913){:target="_blank" rel="noopener"}
+- [Als PO wil ik een betere specificatie van de validatieregels voor de response payload (outputvalidatie)](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/913){:target="_blank" rel="noopener"}
 - [Als PO wil ik dat Rate Limiting headers worden opgenomen in de definitie](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/912){:target="_blank" rel="noopener"}
 - [Als PO wil ik een strakkere specificatie van validatieregels voor input parameters](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/911){:target="_blank" rel="noopener"}
 - [Als PO wil ik geen Uniform Resource Identifier met een BSN](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/910){:target="_blank" rel="noopener"}
