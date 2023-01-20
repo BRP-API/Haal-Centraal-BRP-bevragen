@@ -90,7 +90,6 @@ Functionaliteit: autorisatie partners
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: partners.                              |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -130,7 +129,6 @@ Functionaliteit: autorisatie partners
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: partners.<fields>.                              |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
