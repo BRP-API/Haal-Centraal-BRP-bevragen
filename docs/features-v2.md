@@ -3,7 +3,7 @@ layout: page-with-side-nav
 title: Features-v2
 ---
 # Features v. 2.0
-De onderstaande voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit versie 2.0 beta van de API.
+De onderstaande voorbeelden illustreren en specificeren zoveel mogelijk de functionaliteit van versie 2.0 (IO) van de API.
 De [behaviour driven specificatie](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop/features/README.md) geeft een uitleg van de wijze waarop deze features gebruikt kunnen worden.
 
 - [samenstellen naam aanhef](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop/features/aanhef.feature){:target="_blank" rel="noopener"}
