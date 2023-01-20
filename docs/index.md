@@ -9,7 +9,7 @@ title: Haal Centraal BRP persoon bevragen
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). De start van de pilot BRP Bevragen is gepland in maart 2023.
 
-Voor de pilot BRP Bevragen wordt BRP Personen Bevragen versie 2.0 (IO) gebruikt. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
+Voor de pilot BRP Bevragen wordt BRP Personen Bevragen versie 2.0 IO (In Ontwikkeling) gebruikt. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Redoc](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/redoc-io)
