@@ -2,6 +2,19 @@
 
 Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
 
+    Achtergrond:
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                         | waarde          |
+      | gemeentecode (92.10)         | 0599            |
+      | straatnaam (11.10)           | Borgesiusstraat |
+      | huisnummer (11.20)           | 103             |
+      | huisletter (11.30)           | b               |
+      | huisnummertoevoeging (11.40) | 2               |
+      | postcode (11.60)             | 2497BV          |
+
   Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     
     @fout-case
@@ -13,17 +26,6 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
-      | huisnummer (11.20)           | 103             |
-      | huisletter (11.30)           | b               |
-      | huisnummertoevoeging (11.40) | 2               |
-      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
@@ -59,17 +61,6 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
-      | huisnummer (11.20)           | 103             |
-      | huisletter (11.30)           | b               |
-      | huisnummertoevoeging (11.40) | 2               |
-      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
@@ -95,14 +86,6 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
-      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
@@ -122,17 +105,6 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0518   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
-      | huisnummer (11.20)           | 103             |
-      | huisletter (11.30)           | b               |
-      | huisnummertoevoeging (11.40) | 2               |
-      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam             | waarde                      |
       | type             | ZoekMetPostcodeEnHuisnummer |
@@ -160,17 +132,6 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
-      | huisnummer (11.20)           | 103             |
-      | huisletter (11.30)           | b               |
-      | huisnummertoevoeging (11.40) | 2               |
-      | postcode (11.60)             | 2497BV          |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
