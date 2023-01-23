@@ -48,6 +48,8 @@ namespace BrpProxy.Tests
         [InlineData("indicatieCurateleRegister", "inOnderzoek.indicatieCurateleRegister")]
         [InlineData("kinderen", "kinderen.inOnderzoek")]
         [InlineData("kinderen.burgerservicenummer", "kinderen.inOnderzoek.burgerservicenummer")]
+        [InlineData("kinderen.geboorte", "kinderen.geboorte.inOnderzoek")]
+        [InlineData("kinderen.geboorte.datum", "kinderen.geboorte.inOnderzoek.datum")]
         [InlineData("kinderen.naam", "kinderen.naam.inOnderzoek")]
         [InlineData("kinderen.naam.voornamen", "kinderen.naam.inOnderzoek.voornamen")]
         public void FieldsWithInOnderzoekMapping(string field, string expected)

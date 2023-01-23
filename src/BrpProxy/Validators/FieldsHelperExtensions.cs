@@ -240,6 +240,7 @@ namespace BrpProxy.Validators
                 {
                     case "geboorte.datum":
                     case "kinderen.geboorte.datum":
+                    case "ouders.geboorte.datum":
                     case "partners.aangaanHuwelijkPartnerschap.datum":
                     case "partners.geboorte.datum":
                     case "verblijfplaats.type":
@@ -312,7 +313,8 @@ namespace BrpProxy.Validators
         {
             return new[]
             {
-                "kinderen"
+                "kinderen",
+                "ouders"
             }
             .Contains(fieldPart);
         }
