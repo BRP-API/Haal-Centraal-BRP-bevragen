@@ -60,7 +60,6 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.adresregel1                |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -97,7 +96,7 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
     Scenario: Afnemer vraagt om adressering.adresregel2 en heeft de daarvoor minimale autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                             | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10240 10310 90910 81110 81120 81160 81170 81210 81310 81340 | N                        | 20201128                |
+      | 10240 10310 80910 81110 81120 81160 81170 81210 81310 81340 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -139,25 +138,24 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.adresregel2                |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
       | ad hoc rubrieken                                      | missende autorisatie            |
-      | 10240 10310 81110 81120 81160 81170 81210 81310 81340 | gemeenteVanInschrijving (90910) |
-      | 10240 10310 90910 81120 81160 81170 81210 81310 81340 | korteStraatnaam (81110)         |
-      | 10240 10310 90910 81110 81160 81170 81210 81310 81340 | huisnummer (81120)              |
-      | 10240 10310 90910 81110 81120 81170 81210 81310 81340 | postcode (81160)                |
-      | 10240 10310 90910 81110 81120 81160 81210 81310 81340 | woonplaats (81170)              |
-      | 10240 10310 90910 81110 81120 81160 81170 81310 81340 | locatiebeschrijving (81210)     |
-      | 10240 10310 90910 81110 81120 81160 81170 81210 81340 | land (81310)                    |
-      | 10240 10310 90910 81110 81120 81160 81170 81210 81310 | regel2 (81340)                  |
+      | 10240 10310 81110 81120 81160 81170 81210 81310 81340 | gemeenteVanInschrijving (80910) |
+      | 10240 10310 80910 81120 81160 81170 81210 81310 81340 | korteStraatnaam (81110)         |
+      | 10240 10310 80910 81110 81160 81170 81210 81310 81340 | huisnummer (81120)              |
+      | 10240 10310 80910 81110 81120 81170 81210 81310 81340 | postcode (81160)                |
+      | 10240 10310 80910 81110 81120 81160 81210 81310 81340 | woonplaats (81170)              |
+      | 10240 10310 80910 81110 81120 81160 81170 81310 81340 | locatiebeschrijving (81210)     |
+      | 10240 10310 80910 81110 81120 81160 81170 81210 81340 | land (81310)                    |
+      | 10240 10310 80910 81110 81120 81160 81170 81210 81310 | regel2 (81340)                  |
 
     Scenario: Afnemer vraagt om adresseringBinnenland.adresregel2 en heeft de daarvoor minimale autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10240 10310 90910 81110 81120 81160 81170 81210 | N                        | 20201128                |
+      | 10240 10310 80910 81110 81120 81160 81170 81210 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -215,7 +213,6 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.adresregel3                |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -260,7 +257,6 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: adressering.land                       |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 

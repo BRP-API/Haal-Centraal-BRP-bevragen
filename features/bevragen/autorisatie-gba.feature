@@ -84,9 +84,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
-       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -155,7 +155,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: geboorte.plaats                        |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -181,7 +180,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: geboorte.plaats, geboorte.land         |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -207,7 +205,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: <fields>                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -241,7 +238,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: <fields>                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -269,13 +265,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | burgerservicenummer | 000000024                                                              |
       | fields              | partners.naam.geslachtsnaam,partners.aangaanHuwelijkPartnerschap.datum |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                      |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                 |
-      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden.     |
-      | status   | 403                                                                         |
-      | detail   | De foutieve fields waarden zijn: partners.aangaanHuwelijkPartnerschap.datum |
-      | code     | authorization                                                               |
-      | instance | /haalcentraal/api/brp/personen                                              |
+      | naam     | waarde                                                                       |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                  |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden.      |
+      | status   | 403                                                                          |
+      | code     | authorization                                                                |
+      | instance | /haalcentraal/api/brp/personen                                               |
 
     @fout-case
     Scenario: Afnemer zonder autorisatie bijzonder Nederlanderschap vraagt om een gegeven van nationaliteit van persoon met Nederlandse nationaliteit
@@ -299,7 +294,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: nationaliteiten.nationaliteit          |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -326,7 +320,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: geslacht                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -357,7 +350,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: ouders.ouderAanduiding                 |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -482,7 +474,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: partners.geslacht                      |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -524,7 +515,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: geslacht                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -571,8 +561,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-      | 0599          | 0599200000219679                           |
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0599                 | 0599200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -601,8 +591,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
+      | gemeentecode (92.10) | 0599            |
+      | straatnaam (11.10)   | Borgesiusstraat |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -613,7 +603,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
@@ -630,8 +619,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
+      | naam                 | waarde          |
+      | gemeentecode (92.10) | 0599            |
+      | straatnaam (11.10)   | Borgesiusstraat |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -655,8 +645,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code                | 0599            |
-      | straatnaam (11.10)           | Borgesiusstraat |
+      | naam                 | waarde          |
+      | gemeentecode (92.10) | 0599            |
+      | straatnaam (11.10)   | Borgesiusstraat |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
