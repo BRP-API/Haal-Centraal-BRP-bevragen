@@ -217,6 +217,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | geboorte        | 10120 10310                   | geboorteplaats (10320), geboorteland (10330) |
       | nationaliteiten | 10120 40510 46310 46410 46510 | datumIngangGeldigheid (48510)                |
 
+
   Rule: Vragen met fields gevraagd om een veld dat is afgeleid van één of meerdere andere velden, wanneer de gebruiker niet geautoriseerd is voor al die velden, geeft een foutmelding
   
     @fout-case
@@ -330,6 +331,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 
+
   Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
 
     @fout-case
@@ -398,10 +400,36 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | 10120 20210 30210             | exact 1 gegeven van ouder 1 en 1 gegeven van ouder 2   |
       | 10120 20120 20240 30310 30320 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
   
+
+  Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+    Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
+    en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
+    dan wordt niet gekeken naar de autorisatie van de afnemer
+
+    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters maar zoekt alleen eigen inwoners
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120                           | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0599   |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                          | waarde                               |
+      | type                          | ZoekMetNummeraanduidingIdentificatie |
+      | nummeraanduidingIdentificatie | 0599200000219679                     |
+      | gemeenteVanInschrijving       | 0599                                 |
+      | fields                        | burgerservicenummer                  |
+      Dan heeft de response een persoon met alleen de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000024 |
   
   Rule: Een gemeente als afnemer is geautoriseerd voor alle gegevens van eigen inwoners
+    Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
+    en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
+    dan wordt niet gekeken naar de autorisatie van de afnemer
 
-    Scenario: Gemeente raadpleegt een eigen inwoner en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
+    Scenario: Gemeente raadpleegt een eigen inwoner met de gemeenteVanInschrijving parameter en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 50240 50610               | N                        | 20201128                |
@@ -419,46 +447,53 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | partners.geslacht               |
+      | naam                    | waarde                          |
+      | type                    | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer     | 000000024                       |
+      | gemeenteVanInschrijving | 0599                            |
+      | fields                  | partners.geslacht               |
       Dan heeft de response een persoon met een 'partner' met de volgende gegevens
       | naam                          | waarde    |
       | geslacht.code                 | M         |
       | geslacht.omschrijving         | man       |
 
-    Scenario: Gemeente vindt geen enkele persoon op de zoekvraag en fields vraagt om geslacht (10410) waarvoor de afnemer niet geautoriseerd is
+    @fout-case
+    Scenario: Gemeente raadpleegt een eigen inwoner zonder de gemeenteVanInschrijving parameter en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 010240 010310            | N                        | 20201128                |
+      | 10120 50240 50610               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0599   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-      | 19830526              | Maassen               | Pieter                         |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) |
       | 0599                 |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+      | Groenen               | M                           |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam          | waarde                              |
-      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam | Maassen                             |
-      | geboortedatum | 1983-05-26                          |
-      | fields        | geslacht                            |
-      Dan heeft de response 0 personen
-      
+      | naam                    | waarde                          |
+      | type                    | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer     | 000000024                       |
+      | fields                  | partners.geslacht               |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | detail   | De foutieve fields waarden zijn: partners.geslacht                      |
+      | code     | authorization                                                           |
+      | instance | /haalcentraal/api/brp/personen                                          |
 
     @fout-case
-    Scenario: Gemeente raadpleegt een inwoner van een andere gemeente en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
+    Scenario: Gemeente raadpleegt een inwoner van een andere gemeente met de gemeenteVanInschrijving parameter en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 050240 050610            | N                        | 20201128                |
+      | 10120 50240 50610               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -473,58 +508,17 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | partners.geslacht               |
+      | naam                    | waarde                          |
+      | type                    | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer     | 000000024                       |
+      | gemeenteVanInschrijving | 0599                            |
+      | fields                  | partners.geslacht               |
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                  |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
       | detail   | De foutieve fields waarden zijn: partners.geslacht                      |
-      | code     | authorization                                                           |
-      | instance | /haalcentraal/api/brp/personen                                          |
-
-    @fout-case
-    Scenario: Gemeente vindt op een zoekvraag een eigen inwoner én een inwoner van een andere gemeente en fields vraagt om geslacht (10410) waarvoor de afnemer niet geautoriseerd is
-      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 010240 010310            | N                        | 20201128                |
-      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-      | 19830526              | Maassen               | Pieter                         |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) |
-      | 0599                 |
-      En de persoon met burgerservicenummer '000000025' heeft de volgende gegevens
-      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
-      | 19830526              | Maassen               | Jan Peter         | van                 |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0518                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) |
-      | 0518                 |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam          | waarde                              |
-      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam | Maassen                             |
-      | geboortedatum | 1983-05-26                          |
-      | fields        | naam.geslachtsnaam,geslacht         |
-      Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                  |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
-      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
-      | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: geslacht                               |
       | code     | authorization                                                           |
       | instance | /haalcentraal/api/brp/personen                                          |
 

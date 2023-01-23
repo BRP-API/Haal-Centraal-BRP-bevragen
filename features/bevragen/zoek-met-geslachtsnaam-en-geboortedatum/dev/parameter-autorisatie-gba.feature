@@ -128,8 +128,11 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
 
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+    Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
+    en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
+    dan wordt niet gekeken naar de autorisatie van de afnemer
 
-    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters en vindt alleen eigen inwoners
+    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters maar zoekt alleen eigen inwoners
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |

@@ -95,8 +95,11 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | burgerservicenummer | 000000024 |
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+    Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
+    en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
+    dan wordt niet gekeken naar de autorisatie van de afnemer
 
-    Scenario: Gemeente is niet geautoriseerd voor verblijfplaats en vindt alleen eigen inwoners bij zoeken op nummeraanduidingIdentificatie
+    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters maar zoekt alleen eigen inwoners
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |
@@ -108,6 +111,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000219679                     |
+      | gemeenteVanInschrijving       | 0599                                 |
       | fields                        | burgerservicenummer                  |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
