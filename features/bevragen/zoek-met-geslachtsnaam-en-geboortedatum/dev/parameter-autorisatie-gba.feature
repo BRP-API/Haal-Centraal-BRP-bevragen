@@ -81,7 +81,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | code     | unauthorizedParameter                                                                                         |
       | instance | /haalcentraal/api/brp/personen                                                                                |
 
-    Scenario: Zoeken met alleen de verplichte parameters waarvoor de afnemer de minimale autorisatie heeft
+    Scenario: Afnemer zoekt met alleen de verplichte parameters en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10240 10310               | N                        | 20201128                |
@@ -100,7 +100,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | burgerservicenummer | 000000024 |
 
 
-    Abstract Scenario: Zoeken met de verplichte parameters en <extra parameter> waarvoor de afnemer de minimale autorisatie heeft
+    Abstract Scenario: Afnemer zoekt met de verplichte parameters en <extra parameter> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)             | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10240 10310 <rubriek extra parameter> | N                        | 20201128                |
