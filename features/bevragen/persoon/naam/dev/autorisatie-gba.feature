@@ -82,7 +82,7 @@ Functionaliteit: Autorisatie voor naam
 
   Rule: Wanneer met fields gevraagd wordt om voorletters en de gebruiker is niet geautoriseerd voor voornamen, wordt een foutmelding gegeven
 
-    Scenario: Afnemer vraagt om naam.voorletters en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om naam.voorletters en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10210                     | N                        | 20201128                |
@@ -124,7 +124,7 @@ Functionaliteit: Autorisatie voor naam
 
   Rule: Wanneer met fields gevraagd wordt om volledigeNaam en de gebruiker is niet geautoriseerd voor alle velden waaruit die wordt samengesteld, wordt een foutmelding gegeven
 
-    Scenario: Afnemer vraagt om naam.volledigeNaam en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om naam.volledigeNaam en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 10210 10220 10230 10240 10410 16110 | N                        | 20201128                |
