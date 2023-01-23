@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: kind velden zijn in onderzoek
 
-  Abstract Scenario: '<type>' is in onderzoek en burgeservicenummer wordt gevraagd
+  Abstract Scenario: '<type>' is in onderzoek en burgerservicenummer wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
