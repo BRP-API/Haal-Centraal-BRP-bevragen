@@ -367,34 +367,6 @@ Functionaliteit: in onderzoek
       | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.type        | Datum                          |
       | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022                   |
 
-    Abstract Scenario: persoon heeft <veld> van ouder in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000334' heeft een ouder '<ouder>' met de volgende gegevens
-      | naam                            | waarde   |
-      | voornamen (02.10)               | Willy    |
-      | aanduiding in onderzoek (83.10) | <waarde> |
-      | datum ingang onderzoek (83.20)  | 20220307 |
-      En de persoon heeft een ouder '<andere ouder>' met de volgende gegevens
-      | naam                          | waarde   |
-      | voornamen (02.10)             | Renée    |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000334                       |
-      | fields              | ouders.<veld>                   |
-      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-      | naam                                         | waarde       |
-      | inOnderzoek.<veld>                           | true         |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de persoon een 'ouder' zonder gegevens
-
-      Voorbeelden:
-      | waarde | veld                                    | ouder | andere ouder |
-      | 020120 | burgerservicenummer                     | 1     | 2            |
-      | 030410 | geslacht                                | 2     | 1            |
-      | 026210 | datumIngangFamilierechtelijkeBetrekking | 1     | 2            |
-
     Abstract Scenario: persoon heeft <groep> <veld> van partner in onderzoek
       Gegeven de persoon met burgerservicenummer '000000346' heeft een 'partner' met de volgende gegevens
       | naam                            | waarde    |
@@ -941,42 +913,6 @@ Functionaliteit: in onderzoek
       | datum van overlijden | datum overlijden     | 060810 |
       | groep overlijden     | groep overlijden     | 060800 |
       | categorie overlijden | categorie overlijden | 060000 |
-
-    Abstract Scenario: voorletters van een ouder in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000541' heeft een ouder '<ouder>' met de volgende gegevens
-      | naam                            | waarde           |
-      | aanduiding in onderzoek (83.10) | <waarde>         |
-      | datum ingang onderzoek (83.20)  | 20220307         |
-      | voornamen (02.10)               | <voornaam ouder> |
-      En de persoon heeft een ouder '<andere ouder>' met de volgende gegevens
-      | naam              | waarde                  |
-      | voornamen (02.10) | <voornaam andere ouder> |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                         |
-      | type                | RaadpleegMetBurgerservicenummer                |
-      | burgerservicenummer | 000000541                                      |
-      | fields              | ouders.ouderAanduiding,ouders.naam.voorletters |
-      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-      | naam                                              | waarde       |
-      | ouderAanduiding                                   | <ouder>      |
-      | naam.voorletters                                  | R.           |
-      | naam.inOnderzoek.voorletters                      | true         |
-      | naam.inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-      | naam.inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-      | naam.inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-      En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam             | waarde         |
-      | ouderAanduiding  | <andere ouder> |
-      | naam.voorletters | W.             |
-
-      Voorbeelden:
-      | gegeven in onderzoek   | waarde | ouder  | voornaam ouder | andere ouder | voornaam andere ouder |
-      | voornamen van ouder 1  | 020210 | 1      | Renée          | 2            | Willy                 |
-      | groep naam van ouder 1 | 020200 | 1      | Renée          | 2            | Willy                 |
-      | categorie ouder 1      | 020000 | 1      | Renée          | 2            | Willy                 |
-      | voornamen van ouder 2  | 030210 | 2      | Renée          | 1            | Willy                 |
-      | groep naam van ouder 2 | 030200 | 2      | Renée          | 1            | Willy                 |
-      | categorie ouder 2      | 030000 | 2      | Renée          | 1            | Willy                 |
 
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000553' heeft de volgende 'verblijfplaats' gegevens
