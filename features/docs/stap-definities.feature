@@ -75,6 +75,15 @@ Functionaliteit: Stap definities
       | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,kiesrecht_uitgesl_aand) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | A                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                     | 9999,0,0,P,000000012 |
 
+    Scenario: Persoon heeft 'kiesrecht' gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'kiesrecht' gegevens
+      | aanduiding uitgesloten kiesrecht (38.10) |
+      | A                                        |
+      Dan zijn de gegenereerde SQL statements
+      | key          | text                                                                                                                                                               | values               |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind,kiesrecht_uitgesl_aand) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1,$2) RETURNING * | 0,A                  |
+      | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                                   | 9999,0,0,P,000000012 |
+
   Rule: En de persoon heeft de volgende '<naam-pl-tabel>' gegevens
 
     Scenario: Persoon heeft ook gezagsverhouding gegevens
