@@ -26,7 +26,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) |
       | 1219379318      |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -41,7 +41,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) | voornamen (02.10) |  geslachtsnaam (02.40) | geboortedatum (03.10) |
       | 3965962492      | Jan Peter         |  Maassen               | 19830526              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Maassen                             |
@@ -58,7 +58,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) | geslachtsnaam (02.40) | geboortedatum (03.10) |
       | 6761521367      | Maassen               | 19830526              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                              |
       | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam              | Maassen                             |
@@ -75,7 +75,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 1346071371 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -96,7 +96,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 4363741376 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                                    |
       | type                | RaadpleegMetBurgerservicenummer                           |
       | burgerservicenummer | 000000024                                                 |
@@ -111,7 +111,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 5472698941 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -132,7 +132,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 5472698941 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -155,7 +155,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       En de persoon heeft een ouder '1' met de volgende gegevens
       | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | 20190614                                           | Moeder                | V                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -179,7 +179,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       En de persoon heeft een ouder '1' met de volgende gegevens
       | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | 20190614                                           | Moeder                | V                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -200,7 +200,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       En de persoon heeft een ouder '1' met de volgende gegevens
       | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | 20190614                                           | Moeder                | V                           |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -236,7 +236,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | indicatie geheim (70.10)             | 7             |
       | Datum verificatie (71.10)            | 20211103      |
       | Omschrijving verificatie (71.20)     | eigen verzoek |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                 |
       | type                | RaadpleegMetBurgerservicenummer        |
       | burgerservicenummer | 000000024                              |
@@ -251,7 +251,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 5264846450 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -278,7 +278,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 5264846450 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -299,7 +299,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 5264846450 |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -329,7 +329,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                      |
       | type                    | ZoekMetGeslachtsnaamEnGeboortedatum         |
       | geslachtsnaam           | Maassen                                     |

@@ -8,7 +8,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) | geslachtsnaam (02.40) | geboortedatum (03.10) |
       | 2683754153      | Maassen               | 19830526              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Maassen                             |
@@ -25,7 +25,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
       | anummer (01.10) | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) |
       | 7871538547      | Caroline          | Maassen               | 19830526              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Maassen                             |
@@ -48,7 +48,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam          | waarde |
       | gemeente_code | 0599   |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                              |
       | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam           | Maassen                             |
@@ -72,7 +72,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam          | waarde |
       | gemeente_code | 0599   |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam            | waarde                              |
       | type            | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam   | Maassen                             |
@@ -95,7 +95,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) | geslachtsnaam (02.40) | geboortedatum (03.10) |
       | 8980459813      | Maassen               | 19830526              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                              |
       | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam              | Maassen                             |

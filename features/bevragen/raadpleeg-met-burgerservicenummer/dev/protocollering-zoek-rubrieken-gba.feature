@@ -8,7 +8,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) |
       | 1219379318      |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -24,7 +24,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
       | anummer (01.10) |
       | 9607152635      |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024,000000048             |
@@ -46,7 +46,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam          | waarde |
       | gemeente_code | 0599   |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer     | 000000024                       |
