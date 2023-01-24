@@ -26,7 +26,7 @@ Functionaliteit: Persoon: Europees kiesrecht velden vragen met fields
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
     | naam                                             | waarde   |
     | Europees kiesrecht (31.10)                       | 1        |
-    | einddatum uitsluiting Europees kiesrecht (31.30) | 20230101 |
+    | einddatum uitsluiting Europees kiesrecht (31.30) | 20270101 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -35,8 +35,8 @@ Functionaliteit: Persoon: Europees kiesrecht velden vragen met fields
     Dan heeft de response een persoon met alleen de volgende 'europeesKiesrecht' gegevens
     | naam                             | waarde         |
     | einddatumUitsluiting.type        | Datum          |
-    | einddatumUitsluiting.datum       | 2023-01-01     |
-    | einddatumUitsluiting.langFormaat | 1 januari 2023 |
+    | einddatumUitsluiting.datum       | 2027-01-01     |
+    | einddatumUitsluiting.langFormaat | 1 januari 2027 |
 
     Voorbeelden:
     | fields                                             |

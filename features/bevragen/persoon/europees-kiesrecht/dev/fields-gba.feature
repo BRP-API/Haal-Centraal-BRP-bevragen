@@ -48,7 +48,7 @@ Functionaliteit: GBA Persoon: Europees kiesrecht velden vragen met fields
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'kiesrecht' gegevens
     | naam                                             | waarde   |
     | Europees kiesrecht (31.10)                       | 1        |
-    | einddatum uitsluiting Europees kiesrecht (31.30) | 20230101 |
+    | einddatum uitsluiting Europees kiesrecht (31.30) | 20270101 |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -56,7 +56,7 @@ Functionaliteit: GBA Persoon: Europees kiesrecht velden vragen met fields
     | fields              | <fields>                        |
     Dan heeft de response een persoon met alleen de volgende 'europeesKiesrecht' gegevens
     | naam                 | waarde   |
-    | einddatumUitsluiting | 20230101 |
+    | einddatumUitsluiting | 20270101 |
 
     Voorbeelden:
     | fields                                             |
