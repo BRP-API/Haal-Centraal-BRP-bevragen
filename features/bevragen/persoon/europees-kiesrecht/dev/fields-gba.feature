@@ -25,7 +25,7 @@ Functionaliteit: GBA Persoon: Europees kiesrecht velden vragen met fields
     | fields              | europeesKiesrecht               |
     Dan heeft de response een persoon zonder gegevens
 
-  Abstract Scenario: einddatum uitsluiting europees kiesrecht (31.30)
+  Abstract Scenario: einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde
     Gegeven de persoon met burgerservicenummer '000000115' heeft de volgende 'kiesrecht' gegevens
     | europees kiesrecht (31.10) |
     | <Europees kiesrecht>       |
@@ -109,7 +109,7 @@ Functionaliteit: GBA Persoon: Europees kiesrecht velden vragen met fields
     | volgende maand        |
     | volgend jaar          |
 
-  Abstract Scenario: einddatum uitsluiting europees kiesrecht (31.30) is onbekend
+  Scenario: einddatum uitsluiting europees kiesrecht (31.30) is onbekend
     Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'kiesrecht' gegevens
     | europees kiesrecht (31.10) | einddatum uitsluiting europees kiesrecht (31.30) |
     | 1                          | 00000000                                         |
