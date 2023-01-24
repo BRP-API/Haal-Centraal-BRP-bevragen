@@ -31,7 +31,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | naam                            |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '1219379318' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 1219379318 | 010120                 |
 
@@ -48,7 +48,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geboortedatum | 1983-05-26                          |
       | voornamen     | Jan Peter                           |
       | fields        | burgerservicenummer                 |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '3965962492' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 3965962492 | 010210, 010240, 010310 |
 
@@ -65,7 +65,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geboortedatum              | 1983-05-26                          |
       | inclusiefOverledenPersonen | true                                |
       | fields                     | burgerservicenummer,naam.voornamen  |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '6761521367' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 6761521367 | 010240, 010310         |
 
@@ -80,7 +80,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '1346071371' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 1346071371 | <gevraagde rubrieken>       |
 
@@ -101,7 +101,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer                           |
       | burgerservicenummer | 000000024                                                 |
       | fields              | geboorte.datum,partners.naam.voornamen,naam.geslachtsnaam |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '4363741376' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 4363741376 | 010240, 010310, 050210      |
 
@@ -116,7 +116,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <groep>                         |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '5472698941' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 5472698941 | <gevraagde rubrieken>       |
 
@@ -137,7 +137,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <relatie>                       |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '5472698941' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 5472698941 | <gevraagde rubrieken>       |
 
@@ -160,7 +160,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                 |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '5472698941' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 5472698941 | <gevraagde rubrieken>       |
 
@@ -184,7 +184,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | ouders.ouderAanduiding          |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '7531580186' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 7531580186 |                             |
 
@@ -205,7 +205,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '1748250197' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 1748250197 | <gevraagde rubrieken>       |
 
@@ -241,7 +241,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer        |
       | burgerservicenummer | 000000024                              |
       | fields              | burgerservicenummer,naam.geslachtsnaam |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '1748250197' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 1748250197 | 010120, 010240              |
 
@@ -256,7 +256,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '5264846450' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 5264846450 | <gevraagde rubrieken>       |
 
@@ -283,7 +283,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '5264846450' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 5264846450 | <gevraagde rubrieken>       |
 
@@ -304,7 +304,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '5264846450' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 5264846450 | <gevraagde rubrieken>       |
 
@@ -337,9 +337,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | voorvoegsel             | van                                         |
       | gemeenteVanInschrijving | 0599                                        |
       | fields                  | burgerservicenummer,naam.voornamen,geslacht |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '2937183560' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken                 | request_gevraagde_rubrieken |
       | 2937183560 | 010230, 010240, 010310, 010410, 080910 | 010120, 010210, 010410      |
-      En is protocollering opgeslagen met de volgende gegevens
+      En heeft de persoon met anummer '5069308085' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken                 | request_gevraagde_rubrieken |
       | 5069308085 | 010230, 010240, 010310, 010410, 080910 | 010120, 010210, 010410      |

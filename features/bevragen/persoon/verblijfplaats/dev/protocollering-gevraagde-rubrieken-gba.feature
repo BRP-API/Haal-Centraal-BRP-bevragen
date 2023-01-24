@@ -23,7 +23,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor verblijfplaats
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
       | fields              | <fields>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '8016043787' de volgende 'protocollering' gegevens
       | anummer    | request_gevraagde_rubrieken |
       | 8016043787 | <gevraagde rubrieken>       |
 

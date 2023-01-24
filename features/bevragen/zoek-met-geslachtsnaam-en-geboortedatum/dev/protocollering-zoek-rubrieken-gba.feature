@@ -14,7 +14,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       | geslachtsnaam | Maassen                             |
       | geboortedatum | 1983-05-26                          |
       | fields        | burgerservicenummer                 |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 2683754153 | 010240, 010310         |
 
@@ -31,10 +31,10 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       | geslachtsnaam | Maassen                             |
       | geboortedatum | 1983-05-26                          |
       | fields        | burgerservicenummer                 |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '4075979626' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 4075979626 | 010240, 010310         |
-      En is protocollering opgeslagen met de volgende gegevens
+      En heeft de persoon met anummer '7871538547' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 7871538547 | 010240, 010310         |
 
@@ -58,7 +58,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       | geslacht                | M                                   |
       | gemeenteVanInschrijving | 0599                                |
       | fields                  | burgerservicenummer                 |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '1970420703' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken                         |
       | 1970420703 | 010210, 010230, 010240, 010310, 010410, 080910 |
 
@@ -78,7 +78,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       | geslachtsnaam   | Maassen                             |
       | geboortedatum   | 1983-05-26                          |
       | <zoekparameter> | <zoekwaarde>                        |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '<A-nummer>' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | <A-nummer> | <zoekrubrieken>        |
 
@@ -102,6 +102,6 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       | geboortedatum              | 1983-05-26                          |
       | inclusiefOverledenPersonen | true                                |
       | fields                     | burgerservicenummer                 |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '8980459813' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 8980459813 | 010240, 010310         |

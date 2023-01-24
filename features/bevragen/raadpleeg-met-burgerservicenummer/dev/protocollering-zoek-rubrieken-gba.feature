@@ -13,7 +13,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | naam                            |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '1219379318' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 1219379318 | 010120                 |
 
@@ -29,10 +29,10 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024,000000048             |
       | fields              | naam                            |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '3840489314' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 3840489314 | 010120                 |
-      En is protocollering opgeslagen met de volgende gegevens
+      En heeft de persoon met anummer '9607152635' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 9607152635 | 010120                 |
 
@@ -52,6 +52,6 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | burgerservicenummer     | 000000024                       |
       | gemeenteVanInschrijving | 0599                            |
       | fields                  | naam                            |
-      Dan is protocollering opgeslagen met de volgende gegevens
+      Dan heeft de persoon met anummer '9756070217' de volgende 'protocollering' gegevens
       | anummer    | request_zoek_rubrieken |
       | 9756070217 | 010120, 080910         |
