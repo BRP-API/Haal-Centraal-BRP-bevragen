@@ -6,9 +6,21 @@ public partial class Ouder
 
     public bool ShouldSerializeNaam() => Naam != null;
 
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
+
     public bool ShouldSerialize() =>
-        ShouldSerializeGeboorte() ||
-        ShouldSerializeNaam() ||
-        !string.IsNullOrWhiteSpace(OuderAanduiding) ||
-        InOnderzoek != null;
+        !string.IsNullOrWhiteSpace(Burgerservicenummer) ||
+        DatumIngangFamilierechtelijkeBetrekking != null ||
+        Geslacht != null ||
+        !string.IsNullOrWhiteSpace(OuderAanduiding) 
+        ;
+}
+
+public partial class OuderInOnderzoek
+{
+    public bool ShouldSerialize() =>
+        Burgerservicenummer.HasValue ||
+        DatumIngangFamilierechtelijkeBetrekking.HasValue ||
+        Geslacht.HasValue
+        ;
 }

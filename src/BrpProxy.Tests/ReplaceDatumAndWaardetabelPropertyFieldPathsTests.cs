@@ -16,6 +16,14 @@ namespace BrpProxy.Tests
         }
 
         [Theory]
+        [InlineData(new string[] { "kinderen.geboorte.datum" }, new string[] { "kinderen.geboorte.datum" })]
+        [InlineData(new string[] { "kinderen.geboorte.datum.datum" }, new string[] { "kinderen.geboorte.datum" })]
+        public void Kind(IEnumerable<string> input, IEnumerable<string> expected)
+        {
+            input.ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths().Should().BeEquivalentTo(expected);
+        }
+
+        [Theory]
         [InlineData(new string[] { "partners.aangaanHuwelijkPartnerschap.datum" }, new string[] { "partners.aangaanHuwelijkPartnerschap.datum" })]
         [InlineData(new string[] { "partners.aangaanHuwelijkPartnerschap.datum.datum" }, new string[] { "partners.aangaanHuwelijkPartnerschap.datum" })]
         [InlineData(new string[] { "partners.geboorte.datum" }, new string[] { "partners.geboorte.datum" })]

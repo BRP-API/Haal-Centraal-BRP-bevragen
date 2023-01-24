@@ -132,63 +132,9 @@ components:
           $ref: '#/components/schemas/Locatiebeschrijving'
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfadresLocatieInOnderzoek"
-    AbstractVerblijfplaatsBeperkt:
-      type: object
-      description: |
-        Gegevens over het verblijf of de woonlocatie van een persoon.
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          VerblijfplaatsBuitenland: '#/components/schemas/VerblijfplaatsBuitenlandBeperkt'
-          Adres: '#/components/schemas/AdresBeperkt'
-          VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekendBeperkt'
-          Locatie: '#/components/schemas/LocatieBeperkt'
-    AdresBeperkt:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
-        - type: object
-          description: |
-            * **functieAdres** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-          properties:
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-              $ref: "#/components/schemas/VerblijfplaatsInOnderzoekBeperkt"
-    VerblijfplaatsBuitenlandBeperkt:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
-        - type: object
-          properties:
-            inOnderzoek:
-              $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
-    VerblijfplaatsOnbekendBeperkt:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
-        - type: object
-          properties:
-            inOnderzoek:
-              $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
-    LocatieBeperkt:
-      allOf:
-        - $ref: '#/components/schemas/AbstractVerblijfplaatsBeperkt'
-        - type: object
-          description: |
-            * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-          properties:
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            inOnderzoek:
-              $ref: '#/components/schemas/VerblijfplaatsInOnderzoekBeperkt'
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
-        functieAdres:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
         straat:
           $ref: '#/components/schemas/Straat'
         huisnummer:

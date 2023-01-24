@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: partner velden vragen met fields
 
-  Abstract Scenario: 'burgerservicenummer (01.20)' wordt gevraagd met field pad 'partners.burgerservicenummer'
+  Scenario: 'burgerservicenummer (01.20)' wordt gevraagd met field pad 'partners.burgerservicenummer'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                        | waarde    |
     | burgerservicenummer (01.20) | 123456789 |

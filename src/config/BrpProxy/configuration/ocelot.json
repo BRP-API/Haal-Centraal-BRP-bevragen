@@ -6,8 +6,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "haalcentraal_api",
-          "Port": "80"
+          "Host": "gbamock",
+          "Port": "5010"
         }
       ]
     }

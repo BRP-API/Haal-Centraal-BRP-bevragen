@@ -251,6 +251,7 @@ const columnNameMap = new Map([
     ['Rubrieknummer ad hoc (35.95.60)', 'ad_hoc_rubrieken'],
     ['Medium ad hoc (35.95.67)', 'ad_hoc_medium'],
     ['Datum ingang (35.99.98)', 'tabel_regel_start_datum'],
+    ['Datum beëindiging tabelregel (35.99.99)', 'tabel_regel_eind_datum'],
 
 ]);
 
@@ -859,11 +860,21 @@ function createPersoonMetGegevensgroep(burgerservicenummer, gegevensgroep, dataT
         ])
     ];
     if(gegevensgroep !== 'inschrijving') {
-        sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
-        sqlData[gegevensgroep] = [
-            [
-                [ 'volg_nr', '0']
-            ].concat(createArrayFrom(dataTable)) ];
+        if(gegevensgroep === 'kiesrecht') {
+            sqlData["inschrijving"] = [
+                [
+                    [ 'geheim_ind', '0' ]
+                ].concat(createArrayFrom(dataTable))
+            ];
+        }
+        else {
+            sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+            sqlData[gegevensgroep] = [
+                [
+                    [ 'volg_nr', '0']
+                ].concat(createArrayFrom(dataTable))
+            ];
+        }
     }
     else {
         sqlData[gegevensgroep] = [ createArrayFrom(dataTable) ];
@@ -1447,6 +1458,10 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
     if(this.context.oAuth.enable) {
         const accessTokenUrl = this.context.oAuth.accessTokenUrl;
         const oAuthSettings = this.context.oAuth.clients.find(client => client.afnemerID === this.context.afnemerId);
+        if(oAuthSettings === undefined) {
+            console.log(`geen oAuthSettings gevonden voor afnemerId '${this.context.afnemerId}'`);
+            return;
+        }
 
         if(accessToken === undefined) {
             console.log("no access token. authenticate");
@@ -1476,6 +1491,10 @@ When(/^gba personen wordt gezocht met de volgende parameters$/, async function (
     if(this.context.oAuth.enable) {
         const accessTokenUrl = this.context.oAuth.accessTokenUrl;
         const oAuthSettings = this.context.oAuth.clients.find(client => client.afnemerID === this.context.afnemerId);
+        if(oAuthSettings === undefined) {
+            console.log(`geen oAuthSettings gevonden voor afnemerId '${this.context.afnemerId}'`);
+            return;
+        }
 
         if(accessToken === undefined) {
             console.log("no access token. authenticate");
@@ -1611,7 +1630,7 @@ function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
     expectedPersoon[relaties].push(expected);
 }
 
-Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
+Then(/^heeft de persoon ?(?:nog)? een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
     const expected = createObjectFrom(dataTable);
 
     let groep = toCollectionName(gegevensgroep);
