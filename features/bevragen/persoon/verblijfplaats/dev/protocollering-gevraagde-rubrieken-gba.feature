@@ -9,25 +9,15 @@ Functionaliteit: protocollering van de gevraagde gegevens voor verblijfplaats
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken <gevraagde rubrieken>
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam            | waarde     |
-      | anummer (01.10) | 8468619643 |
+      | anummer (01.10) | 8016043787 |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                               | waarde   |
       | gemeente van inschrijving (09.10)  | 0518     |
-      | functie adres (10.10)              | W        |
-      | datum aanvang adreshouding (10.30) | 20190714 |
-      | datum ingang geldigheid (85.10)    | 20190714 |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                                       | waarde           |
       | gemeente_code                              | 0518             |
       | straatnaam (11.10)                         | Borgesiusstraat  |
-      | naam openbare ruimte (11.15)               | Borgesiusstraat  |
       | huisnummer (11.20)                         | 103              |
-      | huisletter (11.30)                         | b                |
-      | huisnummertoevoeging (11.40)               | 2                |
-      | postcode (11.60)                           | 2497BV           |
-      | woonplaats (11.70)                         | Scheveningen     |
-      | identificatiecode verblijfplaats (11.80)   | 0518010000747448 |
-      | identificatiecode nummeraanduiding (11.90) | 0518200000747446 |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -35,7 +25,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor verblijfplaats
       | fields              | <fields>                        |
       Dan is protocollering opgeslagen met de volgende gegevens
       | anummer    | request_gevraagde_rubrieken |
-      | 8468619643 | <gevraagde rubrieken>       |
+      | 8016043787 | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | fields                                                    | gevraagde rubrieken                                                                                                                                    |

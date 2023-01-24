@@ -7,7 +7,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
     Scenario: Raadpleeg één persoon op burgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) |
-      | 3082507314      |
+      | 1219379318      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -15,15 +15,15 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | fields              | naam                            |
       Dan is protocollering opgeslagen met de volgende gegevens
       | anummer    | request_zoek_rubrieken |
-      | 3082507314 | 010120                 |
+      | 1219379318 | 010120                 |
 
     Scenario: Raadpleeg meerdere personen op burgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) |
-      | 3082507314      |
+      | 3840489314      |
       En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
       | anummer (01.10) |
-      | 6181490645      |
+      | 9607152635      |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -31,15 +31,15 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | fields              | naam                            |
       Dan is protocollering opgeslagen met de volgende gegevens
       | anummer    | request_zoek_rubrieken |
-      | 3082507314 | 010120                 |
+      | 3840489314 | 010120                 |
       En is protocollering opgeslagen met de volgende gegevens
       | anummer    | request_zoek_rubrieken |
-      | 6181490645 | 010120                 |
+      | 9607152635 | 010120                 |
 
-    Scenario: Raadpleeg één persoon op burgerservicenummer
+    Scenario: Raadpleeg een persoon op burgerservicenummer en gemeenteVanInschrijving
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) |
-      | 3082507314      |
+      | 9756070217      |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                               | waarde   |
       | gemeente van inschrijving (09.10)  | 0599     |
@@ -54,4 +54,4 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | fields                  | naam                            |
       Dan is protocollering opgeslagen met de volgende gegevens
       | anummer    | request_zoek_rubrieken |
-      | 3082507314 | 010120, 080910         |
+      | 9756070217 | 010120, 080910         |
