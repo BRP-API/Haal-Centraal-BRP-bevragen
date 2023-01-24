@@ -857,11 +857,21 @@ function createPersoonMetGegevensgroep(burgerservicenummer, gegevensgroep, dataT
         ])
     ];
     if(gegevensgroep !== 'inschrijving') {
-        sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
-        sqlData[gegevensgroep] = [
-            [
-                [ 'volg_nr', '0']
-            ].concat(createArrayFrom(dataTable)) ];
+        if(gegevensgroep === 'kiesrecht') {
+            sqlData["inschrijving"] = [
+                [
+                    [ 'geheim_ind', '0' ]
+                ].concat(createArrayFrom(dataTable))
+            ];
+        }
+        else {
+            sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+            sqlData[gegevensgroep] = [
+                [
+                    [ 'volg_nr', '0']
+                ].concat(createArrayFrom(dataTable))
+            ];
+        }
     }
     else {
         sqlData[gegevensgroep] = [ createArrayFrom(dataTable) ];
