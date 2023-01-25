@@ -48,6 +48,32 @@ Functionaliteit: Persoon: Europees kiesrecht velden vragen met fields
     | europeesKiesrecht.einddatumUitsluiting.maand       |
     | europeesKiesrecht.einddatumUitsluiting.onbekend    |
 
+  Abstract Scenario: 'einddatum uitsluiting Europees kiesrecht (31.30)' van het type '<type>' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                                             | waarde     |
+    | Europees kiesrecht (31.10)                       | 1          |
+    | einddatum uitsluiting Europees kiesrecht (31.30) | <GbaDatum> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 000000152                              |
+    | fields              | europeesKiesrecht.einddatumUitsluiting |
+    Dan heeft de response een persoon met alleen de volgende 'europeesKiesrecht' gegevens
+    | naam                             | waarde        |
+    | einddatumUitsluiting.type        | <type>        |
+    | einddatumUitsluiting.datum       | <datum>       |
+    | einddatumUitsluiting.jaar        | <jaar>        |
+    | einddatumUitsluiting.maand       | <maand>       |
+    | einddatumUitsluiting.onbekend    | <onbekend>    |
+    | einddatumUitsluiting.langFormaat | <langFormaat> |
+
+    Voorbeelden:
+    | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat |
+    | Datum          | 20300701 | 2030-07-01 |      |       |          | 1 juli 2030 |
+    | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend    |
+    | JaarDatum      | 20300000 |            | 2030 |       |          | 2030        |
+    | JaarMaandDatum | 20300700 |            | 2030 | 7     |          | juli 2030   |
+
   Scenario: persoon heeft geen 'Europees kiesrecht' gegevens
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
     | naam                     | waarde |
