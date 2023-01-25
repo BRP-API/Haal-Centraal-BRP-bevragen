@@ -82,3 +82,28 @@ Functionaliteit: Persoon: ouder velden vragen met fields
     | ouders.datumIngangFamilierechtelijkeBetrekking.jaar        |
     | ouders.datumIngangFamilierechtelijkeBetrekking.maand       |
     | ouders.datumIngangFamilierechtelijkeBetrekking.onbekend    |
+
+  Abstract Scenario: 'datum ingang familierechtelijke betrekking (62.10)' van het type '<type>' wordt gevraagd met field pad 'ouders.datumIngangFamilierechtelijkeBetrekking'
+    Gegeven de persoon met burgerservicenummer '000000218' heeft een ouder '1' met de volgende gegevens
+      | naam                                               | waarde     |
+      | datum ingang familierechtelijke betrekking (62.10) | <GbaDatum> |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                         |
+      | type                | RaadpleegMetBurgerservicenummer                |
+      | burgerservicenummer | 000000218                                      |
+      | fields              | ouders.datumIngangFamilierechtelijkeBetrekking |
+      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+      | naam                                                | waarde        |
+      | datumIngangFamilierechtelijkeBetrekking.type        | <type>        |
+      | datumIngangFamilierechtelijkeBetrekking.datum       | <datum>       |
+      | datumIngangFamilierechtelijkeBetrekking.jaar        | <jaar>        |
+      | datumIngangFamilierechtelijkeBetrekking.maand       | <maand>       |
+      | datumIngangFamilierechtelijkeBetrekking.onbekend    | <onbekend>    |
+      | datumIngangFamilierechtelijkeBetrekking.langFormaat | <langFormaat> |
+
+      Voorbeelden:
+      | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+      | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+      | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+      | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+      | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
