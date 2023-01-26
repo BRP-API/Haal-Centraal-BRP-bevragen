@@ -41,7 +41,7 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -94,8 +94,9 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
+
 
   Rule: Wanneer met fields gevraagd wordt om volledigeNaam en de gebruiker is niet geautoriseerd voor alle velden waaruit die wordt samengesteld, wordt een foutmelding gegeven
 
@@ -146,7 +147,7 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
