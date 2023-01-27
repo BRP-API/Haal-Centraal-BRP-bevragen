@@ -638,7 +638,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) | straatnaam (11.10) |
       | 0599                 | Plein              |
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
