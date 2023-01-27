@@ -594,7 +594,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: Autorisatie voor gevraagd veld is toegevoegd
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
-      | 10120  81110 81210 81310        | N                        | 20201128                | 20221201                                |
+      | 10120 81110 81210 81310         | N                        | 20201128                | 20221201                                |
       | 10120 81010 81110 81210 81310   | N                        | 20221201                |                                         |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
