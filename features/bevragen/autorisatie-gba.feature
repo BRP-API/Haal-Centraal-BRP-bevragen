@@ -537,7 +537,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120 80810 81110 81120 81130 81140 81150 81190 | N                        | 20201128                | 20221201                                |
-      | 10120 80810 81110 81120 81130 81140 81150       | N                        | 20221201                |                                         |
+      En de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)                 | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 80810 81110 81120 81130 81140 81150       | N                        | 20221201                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -567,7 +569,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120 81010 81110 81210 81310   | N                        | 20201128                | 20221201                                |
-      | 10120 81110 81210 81310         | N                        | 20221201                |                                         |
+      En de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81110 81210 81310         | N                        | 20221201                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -576,8 +580,8 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | 0599            |
-      | straatnaam (11.10)   | Borgesiusstraat |
+      | gemeentecode (92.10) | straatnaam (11.10) |
+      | 0599                 | Plein              |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -595,7 +599,9 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 10120 81110 81210 81310         | N                        | 20201128                | 20221201                                |
-      | 10120 81010 81110 81210 81310   | N                        | 20221201                |                                         |
+      En de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81010 81110 81210 81310   | N                        | 20221201                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -630,19 +636,18 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam                 | waarde          |
-      | gemeentecode (92.10) | 0599            |
-      | straatnaam (11.10)   | Borgesiusstraat |
+      | gemeentecode (92.10) | straatnaam (11.10) |
+      | 0599                 | Plein              |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.functieAdres     |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde          |
-      | straat                    | Borgesiusstraat |
-      | functieAdres.code         | W               |
-      | functieAdres.omschrijving | woonadres       |
+      | naam                      | waarde    |
+      | straat                    | Plein     |
+      | functieAdres.code         | W         |
+      | functieAdres.omschrijving | woonadres |
 
   Rule: Alleen een autorisatie tabelregel waarbij de Datum ingang (35.99.98) gelijk is aan vandaag of in het verleden ligt wordt gebruikt
 
