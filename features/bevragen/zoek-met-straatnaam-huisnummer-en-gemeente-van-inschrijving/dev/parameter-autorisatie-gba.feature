@@ -5,15 +5,26 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
-      | 0599                              |
+      | 0800                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
+      | gemeentecode (92.10)         | 0800            |
       | straatnaam (11.10)           | Borgesiusstraat |
       | huisnummer (11.20)           | 123             |
       | huisletter (11.30)           | b               |
       | huisnummertoevoeging (11.40) | 2               |
       | postcode (11.60)             | 2497BV          |
+      En de persoon met burgerservicenummer '000000048' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                         | waarde     |
+      | gemeentecode (92.10)         | 0599       |
+      | straatnaam (11.10)           | Koolsingel |
+      | huisnummer (11.20)           | 45         |
+      | huisletter (11.30)           | a          |
+      | huisnummertoevoeging (11.40) | III        |
+      | postcode (11.60)             | 4321XY     |
 
   Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     
@@ -25,14 +36,14 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                           |
       | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
-      | straat                  | Borgesiusstraat                                  |
-      | huisnummer              | 123                                              |
-      | huisletter              | b                                                |
-      | huisnummertoevoeging    | 2                                                |
+      | straat                  | Koolsingel                                       |
+      | huisnummer              | 45                                               |
+      | huisletter              | a                                                |
+      | huisnummertoevoeging    | III                                              |
       | gemeenteVanInschrijving | 0599                                             |
       | fields                  | burgerservicenummer                              |
       Dan heeft de response een object met de volgende gegevens
@@ -60,14 +71,14 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                           |
       | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
-      | straat                  | Borgesiusstraat                                  |
-      | huisnummer              | 123                                              |
-      | huisletter              | b                                                |
-      | huisnummertoevoeging    | 2                                                |
+      | straat                  | Koolsingel                                       |
+      | huisnummer              | 45                                               |
+      | huisletter              | a                                                |
+      | huisnummertoevoeging    | III                                              |
       | gemeenteVanInschrijving | 0599                                             |
       | fields                  | burgerservicenummer                              |
       Dan heeft de response een object met de volgende gegevens
@@ -86,17 +97,17 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                           |
       | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
-      | straat                  | Borgesiusstraat                                  |
-      | huisnummer              | 123                                              |
+      | straat                  | Koolsingel                                       |
+      | huisnummer              | 45                                               |
       | gemeenteVanInschrijving | 0599                                             |
       | fields                  | burgerservicenummer                              |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      | burgerservicenummer | 000000048 |
 
 
     Abstract Scenario: Afnemer zoekt met de verplichte parameters en <extra parameter> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
@@ -106,23 +117,23 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                           |
       | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
-      | straat                  | Borgesiusstraat                                  |
-      | huisnummer              | 123                                              |
+      | straat                  | Koolsingel                                       |
+      | huisnummer              | 45                                               |
       | gemeenteVanInschrijving | 0599                                             |
       | <extra parameter>       | <waarde>                                         |
       | fields                  | burgerservicenummer                              |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      | burgerservicenummer | 000000048 |
 
       Voorbeelden:
       | extra parameter      | rubriek extra parameter | waarde |
-      | huisletter           | 81130                   | b      |
-      | huisnummertoevoeging | 81140                   | 2      |
+      | huisletter           | 81130                   | a      |
+      | huisnummertoevoeging | 81140                   | III    |
 
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
@@ -137,7 +148,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                           |
       | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -145,7 +156,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       | huisnummer              | 123                                              |
       | huisletter              | b                                                |
       | huisnummertoevoeging    | 2                                                |
-      | gemeenteVanInschrijving | 0599                                             |
+      | gemeenteVanInschrijving | 0800                                             |
       | fields                  | burgerservicenummer                              |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |

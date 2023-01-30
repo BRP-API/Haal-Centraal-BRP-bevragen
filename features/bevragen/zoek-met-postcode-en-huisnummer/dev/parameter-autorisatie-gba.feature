@@ -5,10 +5,10 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
-      | 0599                              |
+      | 0800                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
+      | gemeentecode (92.10)         | 0800            |
       | straatnaam (11.10)           | Borgesiusstraat |
       | huisnummer (11.20)           | 103             |
       | huisletter (11.30)           | b               |
@@ -25,7 +25,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
@@ -60,7 +60,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
@@ -85,7 +85,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
@@ -104,14 +104,14 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam             | waarde                      |
-      | type             | ZoekMetPostcodeEnHuisnummer |
-      | postcode         | 2497BV                      |
-      | huisnummer       | 103                         |
+      | naam              | waarde                      |
+      | type              | ZoekMetPostcodeEnHuisnummer |
+      | postcode          | 2497BV                      |
+      | huisnummer        | 103                         |
       | <extra parameter> | <waarde>                    |
-      | fields           | burgerservicenummer         |
+      | fields            | burgerservicenummer         |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000024 |
@@ -123,23 +123,27 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
 
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+    Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
+    en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
+    dan wordt niet gekeken naar de autorisatie van de afnemer
 
-    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters en vindt alleen eigen inwoners
+    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters maar zoekt alleen eigen inwoners
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                 | waarde                      |
-      | type                 | ZoekMetPostcodeEnHuisnummer |
-      | postcode             | 2497BV                      |
-      | huisnummer           | 103                         |
-      | huisletter           | b                           |
-      | huisnummertoevoeging | 2                           |
-      | fields               | burgerservicenummer         |
+      | naam                    | waarde                      |
+      | type                    | ZoekMetPostcodeEnHuisnummer |
+      | postcode                | 2497BV                      |
+      | huisnummer              | 103                         |
+      | huisletter              | b                           |
+      | huisnummertoevoeging    | 2                           |
+      | gemeenteVanInschrijving | 0800                        |
+      | fields                  | burgerservicenummer         |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000024 |

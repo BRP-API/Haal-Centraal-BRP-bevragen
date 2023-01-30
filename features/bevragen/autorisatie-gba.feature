@@ -413,12 +413,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
-      | nummeraanduidingIdentificatie | 0599200000219679                     |
-      | gemeenteVanInschrijving       | 0599                                 |
+      | nummeraanduidingIdentificatie | 0800200000219679                     |
+      | gemeenteVanInschrijving       | 0800                                 |
       | fields                        | burgerservicenummer                  |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
@@ -436,13 +436,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
-      | 0599                              |
+      | 0800                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) |
-      | 0599                 |
+      | 0800                 |
       En de persoon heeft een 'partner' met de volgende gegevens
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
@@ -450,7 +450,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer     | 000000024                       |
-      | gemeenteVanInschrijving | 0599                            |
+      | gemeenteVanInschrijving | 0800                            |
       | fields                  | partners.geslacht               |
       Dan heeft de response een persoon met een 'partner' met de volgende gegevens
       | naam                          | waarde    |
@@ -465,13 +465,13 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
-      | 0599                              |
+      | 0800                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) |
-      | 0599                 |
+      | 0800                 |
       En de persoon heeft een 'partner' met de volgende gegevens
       | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
       | Groenen               | M                           |
@@ -497,7 +497,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |

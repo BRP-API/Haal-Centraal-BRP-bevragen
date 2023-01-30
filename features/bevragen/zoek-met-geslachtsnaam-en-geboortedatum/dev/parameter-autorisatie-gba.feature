@@ -12,6 +12,16 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | geslachtsaanduiding (04.10) | M        |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
+      | 0800                              |
+      En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
+      | naam                        | waarde   |
+      | voornamen (02.10)           | Anna     |
+      | voorvoegsel (02.30)         | de       |
+      | geslachtsnaam (02.40)       | Vries    |
+      | geboortedatum (03.10)       | 20010604 |
+      | geslachtsaanduiding (04.10) | V        |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
       | 0599                              |
 
   Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
@@ -24,7 +34,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                              |
       | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -61,15 +71,15 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                              |
       | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam           | Maassen                             |
-      | geboortedatum           | 1983-05-26                          |
-      | voornamen               | Pieter                              |
-      | voorvoegsel             | van                                 |
-      | geslacht                | M                                   |
+      | geslachtsnaam           | Vries                               |
+      | geboortedatum           | 2001-06-04                          |
+      | voornamen               | Anna                                |
+      | voorvoegsel             | de                                  |
+      | geslacht                | V                                   |
       | gemeenteVanInschrijving | 0599                                |
       | fields                  | burgerservicenummer                 |
       Dan heeft de response een object met de volgende gegevens
@@ -88,16 +98,16 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                    | waarde                              |
-      | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam           | Maassen                             |
-      | geboortedatum           | 1983-05-26                          |
-      | fields                  | burgerservicenummer                 |
+      | naam          | waarde                              |
+      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+      | geslachtsnaam | Vries                               |
+      | geboortedatum | 2001-06-04                          |
+      | fields        | burgerservicenummer                 |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      | burgerservicenummer | 000000048 |
 
 
     Abstract Scenario: Afnemer zoekt met de verplichte parameters en <extra parameter> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
@@ -107,23 +117,23 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam              | waarde                              |
       | type              | ZoekMetGeslachtsnaamEnGeboortedatum |
-      | geslachtsnaam     | Maassen                             |
-      | geboortedatum     | 1983-05-26                          |
+      | geslachtsnaam     | Vries                               |
+      | geboortedatum     | 2001-06-04                          |
       | <extra parameter> | <waarde>                            |
       | fields            | burgerservicenummer                 |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      | burgerservicenummer | 000000048 |
 
       Voorbeelden:
       | extra parameter         | rubriek extra parameter | waarde |
-      | voornamen               | 10210                   | Pieter |
-      | voorvoegsel             | 10230                   | van    |
-      | geslacht                | 10410                   | M      |
+      | voornamen               | 10210                   | Anna   |
+      | voorvoegsel             | 10230                   | de     |
+      | geslacht                | 10410                   | V      |
       | gemeenteVanInschrijving | 80910                   | 0599   |
 
 
@@ -139,7 +149,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                              |
       | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -148,7 +158,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | voornamen               | Pieter                              |
       | voorvoegsel             | van                                 |
       | geslacht                | M                                   |
-      | gemeenteVanInschrijving | 0599                                |
+      | gemeenteVanInschrijving | 0800                                |
       | fields                  | burgerservicenummer                 |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
