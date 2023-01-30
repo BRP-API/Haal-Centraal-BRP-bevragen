@@ -1,7 +1,7 @@
 #language: nl
 
 @gba
-Functionaliteit: Persoon: overlijden velden vragen met fields
+Functionaliteit: Persoon beperkt: overlijden velden vragen met fields
 
   Abstract Scenario: 'datum overlijden (08.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -26,13 +26,6 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
     | fields                        |
     | overlijden                    |
     | overlijden.indicatieOverleden |
-    | overlijden.datum              |
-    | overlijden.datum.type         |
-    | overlijden.datum.datum        |
-    | overlijden.datum.langFormaat  |
-    | overlijden.datum.jaar         |
-    | overlijden.datum.maand        |
-    | overlijden.datum.onbekend     |
 
   Abstract Scenario: '<type>' van een overlijden is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
