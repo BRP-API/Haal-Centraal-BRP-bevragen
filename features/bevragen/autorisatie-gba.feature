@@ -50,7 +50,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -80,7 +80,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
@@ -109,7 +109,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -141,7 +141,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -167,7 +167,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -193,7 +193,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) | aanduiding naamgebruik (61.10) |
       | 19830526              | Maassen               | Pieter            | M                           | E                              |
@@ -228,7 +228,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -260,7 +260,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
       | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30) | soort verbintenis (15.10) |
       | Jan               | Groenen               | 19820526              | 20171103                                                           | 0513                                                                | 6030                                                              | H                         |
@@ -286,7 +286,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft een 'nationaliteit' met de volgende gegevens
       | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
       | 0001                  | 001                   | 19750707                        |
@@ -312,7 +312,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
       | 19830526              | Maassen               | Pieter            |
@@ -342,7 +342,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10)  |
       | Chantal            |
@@ -376,7 +376,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
       | voornamen (02.10) |
       | Chantal           |
@@ -533,7 +533,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -560,7 +560,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
@@ -590,7 +590,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
@@ -619,7 +619,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
@@ -644,7 +644,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | functie adres (10.10) |
       | 0599                              | W                     |
