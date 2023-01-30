@@ -678,9 +678,6 @@
           "opschortingBijhouding" : {
             "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
           },
-          "overlijden" : {
-            "$ref" : "#/components/schemas/OverlijdenBeperkt"
-          },
           "adressering" : {
             "$ref" : "#/components/schemas/AdresseringBeperkt"
           },
@@ -1179,44 +1176,6 @@
         },
         "description" : "* **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
-      "OverlijdenBeperkt" : {
-        "description" : "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/OverlijdenBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/OverlijdenInOnderzoekBeperkt"
-            }
-          }
-        } ]
-      },
-      "OverlijdenBasis" : {
-        "type" : "object",
-        "properties" : {
-          "indicatieOverleden" : {
-            "$ref" : "#/components/schemas/IndicatieOverleden"
-          }
-        }
-      },
-      "IndicatieOverleden" : {
-        "type" : "boolean",
-        "description" : "Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.\n"
-      },
-      "OverlijdenInOnderzoekBeperkt" : {
-        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieOverleden" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
-      },
       "AdresseringBeperkt" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/AdresseringBasis"
@@ -1681,48 +1640,7 @@
         } ]
       },
       "Overlijden" : {
-        "description" : "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/OverlijdenBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            },
-            "land" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "plaats" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/OverlijdenInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "OverlijdenInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/InOnderzoek"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "indicatieOverleden" : {
-              "type" : "boolean"
-            },
-            "datum" : {
-              "type" : "boolean"
-            },
-            "land" : {
-              "type" : "boolean"
-            },
-            "plaats" : {
-              "type" : "boolean"
-            }
-          }
-        } ]
+        "description" : "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\ntype: object\nproperties:\n  datum:\n    $ref: 'datum.yaml#/components/schemas/AbstractDatum'\n  land:\n    $ref: 'common.yaml#/components/schemas/Waardetabel'\n  plaats:\n    $ref: 'common.yaml#/components/schemas/Waardetabel'\n  inOnderzoek:\n    $ref: '#/components/schemas/OverlijdenInOnderzoek'\n"
       },
       "AbstractVerblijfplaats" : {
         "required" : [ "type" ],

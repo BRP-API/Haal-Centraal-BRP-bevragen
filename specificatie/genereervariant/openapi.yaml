@@ -520,8 +520,6 @@ components:
           $ref: '#/components/schemas/NaamPersoonBeperkt'
         opschortingBijhouding:
           $ref: '#/components/schemas/OpschortingBijhoudingBasis'
-        overlijden:
-          $ref: '#/components/schemas/OverlijdenBeperkt'
         adressering:
           $ref: '#/components/schemas/AdresseringBeperkt'
         rni:
@@ -921,37 +919,6 @@ components:
           $ref: '#/components/schemas/Waardetabel'
       description: |
         * **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).
-    OverlijdenBeperkt:
-      description: |
-        Gegevens over het overlijden.
-        * **datum** - datum waarop de persoon is overleden.
-        * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
-      allOf:
-      - $ref: '#/components/schemas/OverlijdenBasis'
-      - type: object
-        properties:
-          inOnderzoek:
-            $ref: '#/components/schemas/OverlijdenInOnderzoekBeperkt'
-    OverlijdenBasis:
-      type: object
-      properties:
-        indicatieOverleden:
-          $ref: '#/components/schemas/IndicatieOverleden'
-    IndicatieOverleden:
-      type: boolean
-      description: |
-        Geeft aan dat iemand is overleden (waarde true), ongeacht of de overlijdensdatum bekend is.
-    OverlijdenInOnderzoekBeperkt:
-      description: |
-        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          indicatieOverleden:
-            type: boolean
     AdresseringBeperkt:
       allOf:
       - $ref: '#/components/schemas/AdresseringBasis'
@@ -1286,34 +1253,16 @@ components:
         * **datum** - datum waarop de persoon is overleden.
         * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
-      allOf:
-      - $ref: '#/components/schemas/OverlijdenBasis'
-      - type: object
+        type: object
         properties:
           datum:
-            $ref: '#/components/schemas/AbstractDatum'
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           land:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: 'common.yaml#/components/schemas/Waardetabel'
           plaats:
-            $ref: '#/components/schemas/Waardetabel'
+            $ref: 'common.yaml#/components/schemas/Waardetabel'
           inOnderzoek:
             $ref: '#/components/schemas/OverlijdenInOnderzoek'
-    OverlijdenInOnderzoek:
-      description: |
-        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
-      allOf:
-      - $ref: '#/components/schemas/InOnderzoek'
-      - type: object
-        properties:
-          indicatieOverleden:
-            type: boolean
-          datum:
-            type: boolean
-          land:
-            type: boolean
-          plaats:
-            type: boolean
     AbstractVerblijfplaats:
       required:
       - type
