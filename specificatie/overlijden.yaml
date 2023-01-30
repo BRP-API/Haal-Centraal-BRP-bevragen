@@ -23,16 +23,16 @@ components:
         * **datum** - datum waarop de persoon is overleden.
         * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
         * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
-        type: object
-        properties:
-          datum:
-            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-          land:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
-          plaats:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: '#/components/schemas/OverlijdenInOnderzoek'
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        plaats:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/OverlijdenInOnderzoek'
     OverlijdenInOnderzoek:
       description: |
         Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
