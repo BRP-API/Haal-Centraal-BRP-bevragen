@@ -78,10 +78,6 @@ public class VerblijfplaatsProfile : Profile
             .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
             ;
 
-        CreateMap<GbaVerblijfplaatsBeperkt, AbstractVerblijfplaatsBeperkt?>().ConvertUsing<VerblijfplaatsBeperktConverter>();
-
-        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfplaatsOnbekendBeperkt>();
-
         CreateMap<GbaVerblijfplaatsBeperkt, VerblijfplaatsBuitenlandBeperkt>()
             .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
             ;
