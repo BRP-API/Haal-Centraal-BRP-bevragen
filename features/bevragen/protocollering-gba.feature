@@ -88,6 +88,15 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | fields                      | gevraagde rubrieken |
       | naam.voornamen              | 010210              |
       | geboorte.datum              | 010310              |
+      | geboorte.datum.type         | 010310              |
+      | geboorte.datum.datum        | 010310              |
+      | geboorte.datum.langFormaat  | 010310              |
+      | geboorte.datum.jaar         | 010310              |
+      | geboorte.datum.maand        | 010310              |
+      | geboorte.datum.onbekend     | 010310              |
+      | geslacht                    | 010410              |
+      | geslacht.code               | 010410              |
+      | geslacht.omschrijving       | 010410              |
       | partners.naam.geslachtsnaam | 050140              |
 
   Rule: Gevraagde rubrieken worden oplopend gesorteerd en gescheiden door komma en spatie
