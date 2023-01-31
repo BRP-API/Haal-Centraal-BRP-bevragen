@@ -11,11 +11,12 @@ Functionaliteit: Persoon beperkt: opschorting bijhouding velden vragen met field
     | naam                                 | waarde |
     | reden opschorting bijhouding (67.20) | O      |
     Als personen wordt gezocht met de volgende parameters
-    | naam          | waarde                              |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | Maassen                             |
-    | geboortedatum | 1983-05-26                          |
-    | fields        | <fields>                            |
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Maassen                             |
+    | geboortedatum              | 1983-05-26                          |
+    | inclusiefOverledenPersonen | true                                |
+    | fields                     | <fields>                            |
     Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
     | naam               | waarde     |
     | reden.code         | O          |

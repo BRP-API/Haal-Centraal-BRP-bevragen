@@ -15,7 +15,7 @@ Functionaliteit: Persoon beperkt: Opschorting bijhouding
 
 Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
 
-  Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met geslachtsnaam en geboortedatum
+  Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met geslachtsnaam en geboortedatum <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | F                                    |
@@ -24,38 +24,16 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam              | Vries                               |
     | geboortedatum              | 2004-05-26                          |
-    | inclusiefOverledenPersonen | true                                |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>      |
     | fields                     | burgerservicenummer                 |
     Dan heeft de response 0 personen
 
-  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met geslachtsnaam en geboortedatum
-    En de persoon heeft de volgende 'inschrijving' gegevens
-    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | <reden opschorting bijhouding>       |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                       | waarde                              |
-    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam              | Vries                               |
-    | geboortedatum              | 2004-05-26                          |
-    | inclusiefOverledenPersonen | true                                |
-    | fields                     | burgerservicenummer                 |
-    Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 000000024 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde                           |
-    | reden.code         | <reden opschorting bijhouding>   |
-    | reden.omschrijving | <reden opschorting omschrijving> |
-
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       |
-    | O                            | overlijden                           |
-    | E                            | emigratie                            |
-    | M                            | ministerieel besluit                 |
-    | R                            | persoonslijst is aangelegd in de rni |
-    | .                            | onbekend                             |
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
 
-  Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving
+  Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | F                                    |
@@ -65,14 +43,145 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | geslachtsnaam              | Vries                                |
     | voornamen                  | William                              |
     | gemeenteVanInschrijving    | 0530                                 |
-    | inclusiefOverledenPersonen | true                                 |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>       |
     | fields                     | burgerservicenummer                  |
     Dan heeft de response 0 personen
 
-  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met nummeraanduiding identificatie <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200000219679                     |
+    | inclusiefOverledenPersonen    | <inclusief overleden personen>       |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met postcode en huisnummer <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                         |
+    | type                       | ZoekMetPostcodeEnHuisnummer    |
+    | postcode                   | 1628HJ                         |
+    | huisnummer                 | 31                             |
+    | inclusiefOverledenPersonen | <inclusief overleden personen> |
+    | fields                     | burgerservicenummer            |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met straat, huisnummer en gemeente van inschrijving <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | F                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                                           |
+    | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
+    | gemeenteVanInschrijving    | 0530                                             |
+    | straat                     | Haagse Reigerstraat                              |
+    | huisnummer                 | 31                                               |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>                   |
+    | fields                     | burgerservicenummer                              |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+
+  Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met geslachtsnaam en geboortedatum exclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Vries                               |
+    | geboortedatum | 2004-05-26                          |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response 0 personen
+
+  Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met geslachtsnaam en geboortedatum inclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Vries                               |
+    | geboortedatum              | 2004-05-26                          |
+    | inclusiefOverledenPersonen | true                                |
+    | fields                     | burgerservicenummer                 |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde     |
+    | burgerservicenummer                      | 000000024  |
+    | opschortingBijhouding.reden.code         | O          |
+    | opschortingBijhouding.reden.omschrijving | overlijden |
+
+  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met geslachtsnaam en geboortedatum <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | <reden opschorting bijhouding>       |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Vries                               |
+    | geboortedatum              | 2004-05-26                          |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>      |
+    | fields                     | burgerservicenummer                 |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+
+    Voorbeelden:
+    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                            | true                         | inclusief                    |
+    | M                            | ministerieel besluit                 | true                         | inclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
+    | .                            | onbekend                             | true                         | inclusief                    |
+    | E                            | emigratie                            | false                        | exclusief                    |
+    | M                            | ministerieel besluit                 | false                        | exclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
+    | .                            | onbekend                             | false                        | exclusief                    |
+
+  Scenario: persoon opgeschort met reden O" (overlijden) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving exclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                    | waarde                               |
+    | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
+    | geslachtsnaam           | Vries                                |
+    | voornamen               | William                              |
+    | gemeenteVanInschrijving | 0530                                 |
+    | fields                  | burgerservicenummer                  |
+    Dan heeft de response 0 personen
+
+  Scenario: persoon opgeschort met reden O" (overlijden) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving inclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
     Als personen wordt gezocht met de volgende parameters
     | naam                       | waarde                               |
     | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
@@ -82,25 +191,44 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | inclusiefOverledenPersonen | true                                 |
     | fields                     | burgerservicenummer                  |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 000000024 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde                           |
-    | reden.code         | <reden opschorting bijhouding>   |
-    | reden.omschrijving | <reden opschorting omschrijving> |
+    | naam                                     | waarde     |
+    | burgerservicenummer                      | 000000024  |
+    | opschortingBijhouding.reden.code         | O          |
+    | opschortingBijhouding.reden.omschrijving | overlijden |
 
-    Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       |
-    | O                            | overlijden                           |
-    | E                            | emigratie                            |
-    | M                            | ministerieel besluit                 |
-    | R                            | persoonslijst is aangelegd in de rni |
-    | .                            | onbekend                             |
-
-  Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met nummeraanduiding identificatie
+  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | F                                    |
+    | 20220829                             | <reden opschorting bijhouding>       |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                               |
+    | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
+    | geslachtsnaam              | Vries                                |
+    | voornamen                  | William                              |
+    | gemeenteVanInschrijving    | 0530                                 |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>       |
+    | fields                     | burgerservicenummer                  |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+
+    Voorbeelden:
+    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                            | true                         | inclusief                    |
+    | M                            | ministerieel besluit                 | true                         | inclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
+    | .                            | onbekend                             | true                         | inclusief                    |
+    | E                            | emigratie                            | false                        | exclusief                    |
+    | M                            | ministerieel besluit                 | false                        | exclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
+    | .                            | onbekend                             | false                        | exclusief                    |
+
+  Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met nummeraanduiding identificatie exclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
     Als personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -108,7 +236,23 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | fields                        | burgerservicenummer                  |
     Dan heeft de response 0 personen
 
-  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met nummeraanduiding identificatie
+  Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met nummeraanduiding identificatie inclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200000219679                     |
+    | inclusiefOverledenPersonen    | true                                 |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde     |
+    | burgerservicenummer                      | 000000024  |
+    | opschortingBijhouding.reden.code         | O          |
+    | opschortingBijhouding.reden.omschrijving | overlijden |
+
+  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met nummeraanduiding identificatie <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | <reden opschorting bijhouding>       |
@@ -116,27 +260,41 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
     | nummeraanduidingIdentificatie | 0599200000219679                     |
+    | inclusiefOverledenPersonen    | <inclusief overleden personen>       |
     | fields                        | burgerservicenummer                  |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 000000024 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde                           |
-    | reden.code         | <reden opschorting bijhouding>   |
-    | reden.omschrijving | <reden opschorting omschrijving> |
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       |
-    | O                            | overlijden                           |
-    | E                            | emigratie                            |
-    | M                            | ministerieel besluit                 |
-    | R                            | persoonslijst is aangelegd in de rni |
-    | .                            | onbekend                             |
+    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                            | true                         | inclusief                    |
+    | M                            | ministerieel besluit                 | true                         | inclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
+    | .                            | onbekend                             | true                         | inclusief                    |
+    | E                            | emigratie                            | false                        | exclusief                    |
+    | M                            | ministerieel besluit                 | false                        | exclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
+    | .                            | onbekend                             | false                        | exclusief                    |
 
-  Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met postcode en huisnummer
+  Abstract Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met postcode en huisnummer exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | F                                    |
+    | 20220829                             | O                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam       | waarde                      |
+    | type       | ZoekMetPostcodeEnHuisnummer |
+    | postcode   | 1628HJ                      |
+    | huisnummer | 31                          |
+    | fields     | burgerservicenummer         |
+    Dan heeft de response 0 personen
+
+  Abstract Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met postcode en huisnummer inclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
     Als personen wordt gezocht met de volgende parameters
     | naam                       | waarde                      |
     | type                       | ZoekMetPostcodeEnHuisnummer |
@@ -144,39 +302,57 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | huisnummer                 | 31                          |
     | inclusiefOverledenPersonen | true                        |
     | fields                     | burgerservicenummer         |
-    Dan heeft de response 0 personen
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde     |
+    | burgerservicenummer                      | 000000024  |
+    | opschortingBijhouding.reden.code         | O          |
+    | opschortingBijhouding.reden.omschrijving | overlijden |
 
-  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met postcode en huisnummer
+  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met postcode en huisnummer <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | <reden opschorting bijhouding>       |
     Als personen wordt gezocht met de volgende parameters
-    | naam                       | waarde                      |
-    | type                       | ZoekMetPostcodeEnHuisnummer |
-    | postcode                   | 1628HJ                      |
-    | huisnummer                 | 31                          |
-    | inclusiefOverledenPersonen | true                        |
-    | fields                     | burgerservicenummer         |
+    | naam                       | waarde                         |
+    | type                       | ZoekMetPostcodeEnHuisnummer    |
+    | postcode                   | 1628HJ                         |
+    | huisnummer                 | 31                             |
+    | inclusiefOverledenPersonen | <inclusief overleden personen> |
+    | fields                     | burgerservicenummer            |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 000000024 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde                           |
-    | reden.code         | <reden opschorting bijhouding>   |
-    | reden.omschrijving | <reden opschorting omschrijving> |
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       |
-    | O                            | overlijden                           |
-    | E                            | emigratie                            |
-    | M                            | ministerieel besluit                 |
-    | R                            | persoonslijst is aangelegd in de rni |
-    | .                            | onbekend                             |
+    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                            | true                         | inclusief                    |
+    | M                            | ministerieel besluit                 | true                         | inclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
+    | .                            | onbekend                             | true                         | inclusief                    |
+    | E                            | emigratie                            | false                        | exclusief                    |
+    | M                            | ministerieel besluit                 | false                        | exclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
+    | .                            | onbekend                             | false                        | exclusief                    |
 
-  Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met straat, huisnummer en gemeente van inschrijving
+  Abstract Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met straat, huisnummer en gemeente van inschrijving exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | F                                    |
+    | 20220829                             | O                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                    | waarde                                           |
+    | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
+    | gemeenteVanInschrijving | 0530                                             |
+    | straat                  | Haagse Reigerstraat                              |
+    | huisnummer              | 31                                               |
+    | fields                  | burgerservicenummer                              |
+    Dan heeft de response 0 personen
+
+  Abstract Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met straat, huisnummer en gemeente van inschrijving inclusief overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | O                                    |
     Als personen wordt gezocht met de volgende parameters
     | naam                       | waarde                                           |
     | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -185,9 +361,13 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | huisnummer                 | 31                                               |
     | inclusiefOverledenPersonen | true                                             |
     | fields                     | burgerservicenummer                              |
-    Dan heeft de response 0 personen
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                     | waarde     |
+    | burgerservicenummer                      | 000000024  |
+    | opschortingBijhouding.reden.code         | O          |
+    | opschortingBijhouding.reden.omschrijving | overlijden |
 
-  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met straat, huisnummer en gemeente van inschrijving
+  Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met straat, huisnummer en gemeente van inschrijving <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20220829                             | <reden opschorting bijhouding>       |
@@ -197,20 +377,21 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | gemeenteVanInschrijving    | 0530                                             |
     | straat                     | Haagse Reigerstraat                              |
     | huisnummer                 | 31                                               |
-    | inclusiefOverledenPersonen | true                                             |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>                   |
     | fields                     | burgerservicenummer                              |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde    |
-    | burgerservicenummer | 000000024 |
-    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde                           |
-    | reden.code         | <reden opschorting bijhouding>   |
-    | reden.omschrijving | <reden opschorting omschrijving> |
+    | naam                                     | waarde                           |
+    | burgerservicenummer                      | 000000024                        |
+    | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
+    | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       |
-    | O                            | overlijden                           |
-    | E                            | emigratie                            |
-    | M                            | ministerieel besluit                 |
-    | R                            | persoonslijst is aangelegd in de rni |
-    | .                            | onbekend                             |
+    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                            | true                         | inclusief                    |
+    | M                            | ministerieel besluit                 | true                         | inclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
+    | .                            | onbekend                             | true                         | inclusief                    |
+    | E                            | emigratie                            | false                        | exclusief                    |
+    | M                            | ministerieel besluit                 | false                        | exclusief                    |
+    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
+    | .                            | onbekend                             | false                        | exclusief                    |
