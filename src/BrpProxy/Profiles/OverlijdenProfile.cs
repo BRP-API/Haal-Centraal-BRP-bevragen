@@ -9,17 +9,8 @@ public class OverlijdenProfile : Profile
 {
     public OverlijdenProfile()
     {
-        CreateMap<GbaOverlijdenBeperkt, OverlijdenBeperkt>()
-            .ForMember(dest => dest.IndicatieOverleden, opt =>
-            {
-                opt.PreCondition(src => !string.IsNullOrEmpty(src.Datum));
-                opt.MapFrom(src => true);
-            })
-            ;
-
         CreateMap<GbaOverlijden, Overlijden>()
             .ForMember(dest => dest.Datum, opt => opt.MapFrom(src => src.Datum.Map()))
-            .ForMember(dest => dest.IndicatieOverleden, opt => opt.MapFrom(src => !string.IsNullOrEmpty(src.Datum)))
             .ForMember(dest => dest.Land, opt =>
             {
                 opt.PreCondition(src => src.Land?.Code != "0000");
@@ -33,6 +24,5 @@ public class OverlijdenProfile : Profile
             ;
 
         CreateMap<GbaInOnderzoek, OverlijdenInOnderzoek?>().ConvertUsing<OverlijdenInOnderzoekConverter>();
-        CreateMap<GbaInOnderzoek, OverlijdenInOnderzoekBeperkt?>().ConvertUsing<OverlijdenInOnderzoekBeperktConverter>();
     }
 }

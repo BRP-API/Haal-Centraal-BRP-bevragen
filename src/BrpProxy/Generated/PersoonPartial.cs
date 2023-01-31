@@ -24,7 +24,7 @@ public partial class Persoon
 
     public bool ShouldSerializeOpschortingBijhouding() => OpschortingBijhouding != null && OpschortingBijhouding.ShouldSerialize();
 
-    public bool ShouldSerializeOverlijden() => Overlijden != null && Overlijden.ShouldSerialize();
+    public bool ShouldSerializeOverlijden() => Overlijden != null;
 
     public bool ShouldSerializeUitsluitingKiesrecht() => UitsluitingKiesrecht != null && UitsluitingKiesrecht.ShouldSerialize();
 

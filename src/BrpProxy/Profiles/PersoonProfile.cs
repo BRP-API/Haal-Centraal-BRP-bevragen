@@ -12,7 +12,8 @@ public class PersoonProfile : Profile
         CreateMap<GbaPersoonBeperkt, PersoonBeperkt>()
             .ForMember(dest => dest.Leeftijd, opt =>
             {
-                opt.PreCondition(src => src.Overlijden == null);
+                opt.PreCondition(src => src.OpschortingBijhouding == null ||
+                src.OpschortingBijhouding.Reden.Code != "O");
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
             .AfterMap((src, dest) =>
