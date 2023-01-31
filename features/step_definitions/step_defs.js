@@ -221,6 +221,9 @@ const columnNameMap = new Map([
 
     ['indicatie geheim (70.10)', 'geheim_ind'],
 
+    ['datum verificatie (71.10)', 'verificatie_datum'],
+    ['omschrijving verificatie (71.20)', 'verificatie_oms'],
+
     ['aktenummer (81.20)', 'akte_nr' ],
 	
     ['gemeente document (82.10)', 'doc_gemeente_code' ],
