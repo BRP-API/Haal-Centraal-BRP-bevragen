@@ -17,7 +17,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
 
   Rule: Vragen met fields om een adresregel, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit betreffende adresregel wordt afgeleid, geeft een foutmelding
 
-    Scenario: Afnemer vraagt om adressering.adresregel1 en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om adressering.adresregel1 en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                       | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 81110 81120 81130 81140 81150 81210 81310 81330 | N                        | 20201128                |
@@ -54,7 +54,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -68,7 +68,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | 10120 81110 81120 81130 81140 81150 81210 81330 | land (81310)                    |
       | 10120 81110 81120 81130 81140 81150 81210 81310 | regel1 (81330)                  |
 
-    Scenario: Afnemer vraagt om adresseringBinnenland.adresregel1 en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om adresseringBinnenland.adresregel1 en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 81110 81120 81130 81140 81150 81210 | N                        | 20201128                |
@@ -86,7 +86,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | straat     | Borgesiusstraat |
       | huisnummer | 103             |
 
-    Scenario: Afnemer vraagt om adressering.adresregel2 en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om adressering.adresregel2 en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)                       | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81120 81160 81170 81210 81310 81340 | N                        | 20201128                |
@@ -129,7 +129,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -143,7 +143,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | 10120 80910 81110 81120 81160 81170 81210 81340 | land (81310)                    |
       | 10120 80910 81110 81120 81160 81170 81210 81310 | regel2 (81340)                  |
 
-    Scenario: Afnemer vraagt om adresseringBinnenland.adresregel2 en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om adresseringBinnenland.adresregel2 en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60)           | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 80910 81110 81120 81160 81170 81210 | N                        | 20201128                |
@@ -167,7 +167,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | postcode   | 2497BV          |
       | woonplaats | Scheveningen    |
 
-    Scenario: Afnemer vraagt om adressering.adresregel3 en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om adressering.adresregel3 en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 81310 81350               | N                        | 20201128                |
@@ -201,7 +201,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -209,7 +209,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | 10120 81350      | land (81310)         |
       | 10120 81310      | regel3 (81350)       |
 
-    Scenario: Afnemer vraagt om adressering.land en heeft de daarvoor minimale autorisatie
+    Scenario: Afnemer vraagt om adressering.land en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 81310 81330 81340 81350   | N                        | 20201128                |
@@ -243,7 +243,7 @@ Functionaliteit: autorisatie adressering adresregels Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
