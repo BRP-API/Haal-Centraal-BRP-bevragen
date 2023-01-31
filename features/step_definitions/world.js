@@ -17,10 +17,10 @@ class World {
             cleanup: true,
             poolConfig: {
                 user: "root",
-                host: "localhost",
+                host: "host.docker.internal",
                 database: "rvig_haalcentraal_testdata",
                 password: "root",
-                port: 5432,
+                port: 5440,
                 allowExitOnIdle: true
             }
         };
