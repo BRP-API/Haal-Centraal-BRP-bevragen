@@ -97,7 +97,10 @@ Functionaliteit: Persoon: overlijden
   Rule: leeftijd veld wordt niet geleverd voor overleden personen
 
     Scenario: leeftijd wordt gevraagd van een overleden persoon
-      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
+      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      | geboortedatum (03.10) |
+      | 19500304              |
+      En de persoon heeft de volgende 'overlijden' gegevens
       | datum overlijden (08.10) | plaats overlijden (08.20) | land overlijden (08.30) |
       | 20020701                 | 0518                      | 6030                    |
       En de persoon heeft de volgende 'inschrijving' gegevens

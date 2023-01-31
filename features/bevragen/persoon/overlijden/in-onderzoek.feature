@@ -7,7 +7,7 @@ Functionaliteit: Persoon: overlijden velden in onderzoek
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | datum overlijden (08.10)        | 20020701                  |
+    | datum overlijden (08.10)        | 20020601                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -16,8 +16,8 @@ Functionaliteit: Persoon: overlijden velden in onderzoek
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam                                         | waarde      |
     | datum.type                                   | Datum       |
-    | datum.datum                                  | 2002-07-01  |
-    | datum.langFormaat                            | 1 juli 2002 |
+    | datum.datum                                  | 2002-06-01  |
+    | datum.langFormaat                            | 1 juni 2002 |
     | inOnderzoek.datum                            | <datum io>  |
     | inOnderzoek.plaats                           | <plaats io> |
     | inOnderzoek.land                             | <land io>   |
@@ -38,7 +38,7 @@ Functionaliteit: Persoon: overlijden velden in onderzoek
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | datum overlijden (08.10)        | 20020701                  |
+    | datum overlijden (08.10)        | 20020601                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -47,8 +47,8 @@ Functionaliteit: Persoon: overlijden velden in onderzoek
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam                                         | waarde      |
     | datum.type                                   | Datum       |
-    | datum.datum                                  | 2002-07-01  |
-    | datum.langFormaat                            | 1 juli 2002 |
+    | datum.datum                                  | 2002-06-01  |
+    | datum.langFormaat                            | 1 juni 2002 |
     | inOnderzoek.<field>                          | true        |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
@@ -65,7 +65,7 @@ Functionaliteit: Persoon: overlijden velden in onderzoek
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
-    | datum overlijden (08.10)        | 20020701                  |
+    | datum overlijden (08.10)        | 20020601                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |

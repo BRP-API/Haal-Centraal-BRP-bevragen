@@ -29,13 +29,13 @@ Functionaliteit: Persoon beperkt: leeftijd veld vragen met fields
     | naam                                 | waarde |
     | reden opschorting bijhouding (67.20) | O      |
     Als gba personen wordt gezocht met de volgende parameters
-    | naam          | waarde                              |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | Maassen                             |
-    | geboortedatum | 1950-03-04                          |
-    | fields        | leeftijd                            |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                                     | waarde     |
-    | geboorte.datum                           | 19500304   |
-    | opschortingBijhouding.reden.code         | O          |
-    | opschortingBijhouding.reden.omschrijving | overlijden |
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Maassen                             |
+    | geboortedatum              | 1950-03-04                          |
+    | inclusiefOverledenPersonen | true                                |
+    | fields                     | leeftijd                            |
+    Dan heeft de response een persoon met alleen de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |

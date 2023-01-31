@@ -17,7 +17,6 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
 
     Voorbeelden:
     | fields                        |
-    | overlijden                    |
     | overlijden.datum              |
     | overlijden.datum.type         |
     | overlijden.datum.datum        |

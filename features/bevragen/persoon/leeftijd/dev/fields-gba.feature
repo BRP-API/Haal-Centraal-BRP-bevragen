@@ -32,8 +32,7 @@ Functionaliteit: Persoon: leeftijd veld vragen met fields
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
     | fields              | leeftijd                        |
-    Dan heeft de response een persoon met alleen de volgende gegevens
-    | naam                                     | waarde     |
-    | geboorte.datum                           | 19500304   |
-    | opschortingBijhouding.reden.code         | O          |
-    | opschortingBijhouding.reden.omschrijving | overlijden |
+    Dan heeft de response een persoon met alleen de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |
