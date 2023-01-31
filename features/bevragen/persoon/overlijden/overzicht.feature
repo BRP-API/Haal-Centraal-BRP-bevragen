@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: overlijden
 
-  Wanneer een consumer van de BRP API gegevens bevraagd van een overleden persoon
+  Wanneer een consumer van de BRP API gegevens bevraagt van een overleden persoon
   Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens zonder expliciet om overlijden gegevens te vragen met de fields parameter
 
   Rule: opschorting bijhouding met reden "O" wordt altijd geleverd als de gevraagde persoon is overleden. Ook als het niet met fields is gevraagd
