@@ -262,10 +262,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
 
       Voorbeelden:
       | fields                               | gevraagde rubrieken                                                                    |
-      | leeftijd                             | 010310, 060810                                                                         |
+      | leeftijd                             | 010310                                                                                 |
       | naam.voorletters                     | 010210                                                                                 |
       | naam.volledigeNaam                   | 010210, 010220, 010230, 010240, 010410                                                 |
-      | overlijden.indicatieOverleden        | 060810                                                                                 |
       | verblijfplaats.datumVan              | 081030, 081320                                                                         |
       | adressering.aanschrijfwijze          | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
       | adressering.adresregel1              | 081110, 081120, 081130, 081140, 081150, 081210, 081310, 081330                         |
@@ -311,7 +310,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Voorbeelden:
       | fields                                                                   | gevraagde rubrieken                                                                    |
       | adressering.aanhef,adressering.aanschrijfwijze,naam                      | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
-      | leeftijd,geboorte.datum,overlijden.indicatieOverleden                    | 010310, 060810                                                                         |
+      | leeftijd,geboorte.datum                                                  | 010310                                                                                 |
       | verblijfplaats.functieAdres,verblijfplaats.verblijfadres.korteStraatnaam | 081010, 081110, 081210, 081310                                                         |
 
   Rule: Wanneer in het antwoord meerdere personen worden geleverd, dan wordt er per geleverde persoon een protocolleringsrecord opgenomen
