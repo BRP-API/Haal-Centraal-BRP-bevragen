@@ -1,4 +1,6 @@
-﻿namespace HaalCentraal.BrpProxy.Generated;
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace HaalCentraal.BrpProxy.Generated;
 
 public partial class Overlijden
 {
@@ -7,7 +9,10 @@ public partial class Overlijden
         IndicatieOverleden ||
         Land != null ||
         Plaats != null ||
-        (InOnderzoek != null && InOnderzoek.ShouldSerialize());
+        InOnderzoek != null
+        ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 }
 
 public partial class OverlijdenInOnderzoek
@@ -17,4 +22,19 @@ public partial class OverlijdenInOnderzoek
         Datum.HasValue ||
         Plaats.HasValue ||
         Land.HasValue;
+}
+
+public partial class OverlijdenBeperkt
+{
+    public bool ShouldSerialize() =>
+        IndicatieOverleden ||
+        InOnderzoek != null
+        ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
+}
+
+public partial class OverlijdenInOnderzoekBeperkt
+{
+    public bool ShouldSerialize() => IndicatieOverleden.HasValue;
 }

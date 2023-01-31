@@ -46,3 +46,28 @@ Functionaliteit: Persoon: immigratie velden vragen met fields
     | immigratie.datumVestigingInNederland.jaar        |
     | immigratie.datumVestigingInNederland.maand       |
     | immigratie.datumVestigingInNederland.onbekend    |
+
+  Abstract Scenario: 'datum vestiging in nederland (14.20)' van het type '<type>' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland'
+    Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde     |
+    | datum vestiging in Nederland (14.20) | <GbaDatum> |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                               |
+    | type                | RaadpleegMetBurgerservicenummer      |
+    | burgerservicenummer | 000000140                            |
+    | fields              | immigratie.datumVestigingInNederland |
+    Dan heeft de response een persoon met de volgende 'immigratie' gegevens
+    | naam                                  | waarde        |
+    | datumVestigingInNederland.type        | <type>        |
+    | datumVestigingInNederland.datum       | <datum>       |
+    | datumVestigingInNederland.jaar        | <jaar>        |
+    | datumVestigingInNederland.maand       | <maand>       |
+    | datumVestigingInNederland.onbekend    | <onbekend>    |
+    | datumVestigingInNederland.langFormaat | <langFormaat> |
+
+    Voorbeelden:
+    | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
+    | Datum          | 20200308 | 2020-03-08 |      |       |          | 8 maart 2020 |
+    | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
+    | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
+    | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
