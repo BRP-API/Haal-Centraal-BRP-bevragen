@@ -13,7 +13,6 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam               | waarde      |
-    | indicatieOverleden | true        |
     | datum.type         | Datum       |
     | datum.datum        | 2002-07-01  |
     | datum.langFormaat  | 1 juli 2002 |
@@ -39,7 +38,6 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
       | fields              | overlijden.datum                |
       Dan heeft de response een persoon met de volgende 'overlijden' gegevens
       | naam               | waarde        |
-      | indicatieOverleden | true          |
       | datum.type         | <type>        |
       | datum.datum        | <datum>       |
       | datum.jaar         | <jaar>        |
@@ -65,7 +63,6 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam                | waarde        |
-    | indicatieOverleden  | true          |
     | plaats.code         | 0518          |
     | plaats.omschrijving | 's-Gravenhage |
 
@@ -86,7 +83,6 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam               | waarde                       |
-    | indicatieOverleden | true                         |
     | land.code          | 6014                         |
     | land.omschrijving  | Verenigde Staten van Amerika |
 

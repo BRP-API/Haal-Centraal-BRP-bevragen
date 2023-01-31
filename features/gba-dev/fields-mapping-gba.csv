@@ -29,7 +29,7 @@ europeesKiesrecht.einddatumUitsluiting.onbekend,europeesKiesrecht.einddatumUitsl
 immigratie.indicatieVestigingVanuitBuitenland,immigratie.datumVestigingInNederland
 immigratie.vanuitVerblijfplaatsOnbekend,immigratie.landVanwaarIngeschreven
 kinderen.naam.voorletters,kinderen.naam.voornamen
-leeftijd,geboorte.datum|overlijden.datum
+leeftijd,geboorte.datum
 naam.volledigeNaam,naam.voornamen|naam.adellijkeTitelPredicaat|naam.voorvoegsel|naam.geslachtsnaam|geslacht
 naam.voorletters,naam.voornamen
 nationaliteiten.datumIngangGeldigheid,nationaliteiten.datumIngangGeldigheid|nationaliteiten.nationaliteit|nationaliteiten.aanduidingBijzonderNederlanderschap
@@ -47,7 +47,6 @@ nationaliteiten.redenOpname.code,nationaliteiten.redenOpname|nationaliteiten.nat
 nationaliteiten.redenOpname.omschrijving,nationaliteiten.redenOpname|nationaliteiten.nationaliteit|nationaliteiten.aanduidingBijzonderNederlanderschap
 nationaliteiten.type,nationaliteiten.nationaliteit|nationaliteiten.aanduidingBijzonderNederlanderschap
 ouders.naam.voorletters,ouders.naam.voornamen
-overlijden.indicatieOverleden,overlijden.datum
 partners.naam.voorletters,partners.naam.voornamen
 uitsluitingKiesrecht.einddatum,uitsluitingKiesrecht.einddatum
 uitsluitingKiesrecht.einddatum.type,uitsluitingKiesrecht.einddatum

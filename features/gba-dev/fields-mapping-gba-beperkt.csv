@@ -11,5 +11,4 @@ adresseringBinnenland.adresregel1,verblijfplaats.straat|verblijfplaats.huisnumme
 adresseringBinnenland.adresregel2,gemeenteVanInschrijving|verblijfplaats.straat|verblijfplaats.huisnummer|verblijfplaats.postcode|verblijfplaats.woonplaats|verblijfplaats.locatiebeschrijving
 naam.volledigeNaam,naam.voornamen|naam.adellijkeTitelPredicaat|naam.voorvoegsel|naam.geslachtsnaam|geslacht
 naam.voorletters,naam.voornamen
-overlijden.indicatieOverleden,overlijden.datum
-leeftijd,geboorte.datum|overlijden.datum
+leeftijd,geboorte.datum
