@@ -589,6 +589,17 @@ Given(/^de response body is gelijk aan$/, function (docString) {
     };
 });
 
+Given(/^de response headers is gelijk aan$/, function (dataTable) {
+    if(this.context.response.headers === undefined) {
+        this.context.response.headers = {};
+    }
+    let headers = this.context.response.headers;
+
+    dataTable.hashes().forEach(function(row){
+        headers[row.naam] = row.waarde;
+    });
+});
+
 Given(/^de afnemer met indicatie '(.*)' heeft de volgende '(.*)' gegevens$/, function (afnemerCode, tabelNaam, dataTable) {
     if(this.context.sqlData === undefined) {
         this.context.sqlData = [];
@@ -1187,7 +1198,7 @@ function setPersoonProperties(persoon, propertyGroupName, dataTable) {
 }
 
 After(async function() {
-    if(this.context.verifyResponse !== undefined &&
+    if(this.context.verifyResponse === undefined ||
         !this.context.verifyResponse) {
         return;
     }
@@ -1554,6 +1565,8 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
 });
 
 Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
+    this.context.verifyResponse = true;
+
     const expected = createObjectFrom(dataTable);
 
     if(this.context.expected === undefined) {
@@ -1563,6 +1576,8 @@ Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gege
 });
 
 Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
+    this.context.verifyResponse = true;
+
     let expected = {};
     expected[gegevensgroep] = createObjectFrom(dataTable, true);
 
@@ -1604,6 +1619,8 @@ Then(/^heeft de persoon een leeg '(.*)' object$/, function(gegevensgroep) {
 });
 
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
+    this.context.verifyResponse = true;
+
     const expected = createObjectFrom(dataTable);
 
     let relaties = toCollectionName(relatie);
@@ -1624,6 +1641,7 @@ Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende
 Then(/^heeft de persoon een '(.*)' met ?(?:alleen)? de volgende '(.*)' gegevens$/, addRelatieToExpectedPersoon);
 
 function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
+    this.context.verifyResponse = true;
     let expected = {};
     setPersoonProperties(expected, gegevensgroep, dataTable);
 
@@ -1700,6 +1718,7 @@ Then(/^heeft de '(.*)' GEEN '(.*)' gegevens$/, function (_relatie, _gegevensgroe
 });
 
 Then(/^heeft de response een object met de volgende gegevens$/, function (dataTable) {
+    this.context.verifyResponse = true;
     const expected = createObjectFrom(dataTable);
 
     if(this.context.expected === undefined) {
@@ -1714,6 +1733,7 @@ Then(/^heeft het object de volgende '(.*)' gegevens$/, function (gegevensgroep, 
 });
 
 Then(/^heeft de response een persoon met een '([a-zA-Z]*)' met een '([a-zA-Z]*)' met een leeg '([a-zA-Z]*)' object$/, function (relatie, gegevensgroep, gegevensgroep2) {
+    this.context.verifyResponse = true;
     this.context.leaveEmptyObjects = true;
     let expected = {};
     expected[gegevensgroep] = {};
@@ -1741,6 +1761,7 @@ Given('de persoon heeft nooit een actueel of ontbonden huwelijk of partnerschap 
 });
 
 function createEmptyPersoon() {
+    this.context.verifyResponse = true;
     this.context.leaveEmptyObjects = true;
 
     if(this.context.expected === undefined) {
@@ -1753,6 +1774,7 @@ Then(/^heeft de response een leeg persoon object$/, createEmptyPersoon);
 Then(/^heeft de response een persoon zonder gegevens$/, createEmptyPersoon);
 
 function createEmptyGegevensgroepInGegevensgroepCollectie(relatie, gegevensgroep) {
+    this.context.verifyResponse = true;
     this.context.leaveEmptyObjects = true;
 
     let relaties = toCollectionName(relatie);
@@ -1789,6 +1811,7 @@ Then(/^heeft (?:de|het) '(\w*)' geen '(\w*)' gegevens$/, createEmptyGegevensgroe
 Then(/^heeft de persoon een '(\w*)' zonder '(\w*)' gegevens$/, createEmptyGegevensgroepInGegevensgroepCollectie);
 
 function createEmptyGegevensgroepOfEmptyGegevensgroepCollectie(relatie) {
+    this.context.verifyResponse = true;
     this.context.leaveEmptyObjects = true;
 
     if(this.context.expected === undefined) {
@@ -1812,6 +1835,7 @@ Then(/^heeft de response een persoon zonder '(\w*)' gegevens$/, createEmptyGegev
 Then(/^heeft de persoon (?:GEEN|geen) '(\w*)' gegevens$/, createEmptyGegevensgroepOfEmptyGegevensgroepCollectie);
 
 function createEmptyObjectInGegevensgroepCollectie(gegevensgroep) {
+    this.context.verifyResponse = true;
     this.context.leaveEmptyObjects = true;
 
     if(this.context.expected === undefined) {
