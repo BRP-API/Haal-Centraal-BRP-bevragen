@@ -813,31 +813,6 @@ Functionaliteit: in onderzoek
       | groep geboorte               | 010300 |
       | categorie persoon            | 010000 |
 
-    Abstract Scenario: indicatieOverleden van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000528' heeft de volgende 'overlijden' gegevens
-      | naam                             | waarde   |
-      | aanduiding in onderzoek (83.10)  | <waarde> |
-      | datum ingang onderzoek (83.20)   | 20220307 |
-      | datum overlijden (08.10)         | 20220218 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000528                       |
-      | fields              | overlijden.indicatieOverleden   |
-      Dan heeft de response een persoon met de volgende 'overlijden' gegevens
-      | naam                                         | waarde       |
-      | indicatieOverleden                           | true         |
-      | inOnderzoek.indicatieOverleden               | true         |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-
-      Voorbeelden:
-      | gegeven in onderzoek | reden                | waarde |
-      | datum van overlijden | datum overlijden     | 060810 |
-      | groep overlijden     | groep overlijden     | 060800 |
-      | categorie overlijden | categorie overlijden | 060000 |
-
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000553' heeft de volgende 'verblijfplaats' gegevens
       | naam                                   | waarde                        |
