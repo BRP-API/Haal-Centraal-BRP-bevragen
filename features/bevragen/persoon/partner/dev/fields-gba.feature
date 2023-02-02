@@ -94,3 +94,63 @@ Functionaliteit: GBA persoon: partner
     | partners                                   |
     | partners.aangaanHuwelijkPartnerschap       |
     | partners.aangaanHuwelijkPartnerschap.datum |
+
+  Scenario: onbekend waarde in een partner voor soortVerbintenis
+    Gegeven de persoon met burgerservicenummer '000000206' heeft een 'partner' met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer (01.20) | 000000218 |
+    | soort verbintenis (15.10)   | .         |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000206                       |
+    | fields              | partners                        |
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
+    | naam                          | waarde    |
+    | burgerservicenummer           | 000000218 |
+    | soortVerbintenis.code         | .         |
+    | soortVerbintenis.omschrijving | onbekend  |
+
+  Abstract Scenario: onbekend waarde in een <relatie> voor <groep> <veld>
+    Gegeven de persoon met burgerservicenummer '000000267' heeft een 'partner' met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer (01.20) | 000000279 |
+    | <element>                   | 0000      |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000267                       |
+    | fields              | partners.<groep>.<veld>         |
+    Dan heeft de response een persoon met een 'partner' met de volgende gegevens
+    | naam                        | waarde   |
+    | <groep>.<veld>.code         | 0000     |
+    | <groep>.<veld>.omschrijving | Onbekend |
+
+    Voorbeelden:
+    | groep                       | veld   | element                                                             |
+    | geboorte                    | plaats | geboorteplaats (03.20)                                              |
+    | geboorte                    | land   | geboorteland (03.30)                                                |
+    | aangaanHuwelijkPartnerschap | plaats | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) |
+    | aangaanHuwelijkPartnerschap | land   | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   |
+
+  Scenario: volledig onbekende geboortedatum en datum aanvang huwelijk bij partner
+   Gegeven de persoon met burgerservicenummer '000000395' heeft een 'partner' met de volgende gegevens
+    | naam                                                               | waarde    |
+    | burgerservicenummer (01.20)                                        | 000000401 |
+    | geboortedatum (03.10)                                              | 00000000  |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 00000000  |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                                                                              |
+    | type                | RaadpleegMetBurgerservicenummer                                                                                     |
+    | burgerservicenummer | 000000395                                                                                                           |
+    | fields              | burgerservicenummer,partners.burgerservicenummer,partners.geboorte.datum,partners.aangaanHuwelijkPartnerschap.datum |
+    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000395 |
+    En heeft de persoon een 'partner' met alleen de volgende gegevens
+    | naam                              | waarde    |
+    | burgerservicenummer               | 000000401 |
+    | geboorte.datum                    | 00000000  |
+    | aangaanHuwelijkPartnerschap.datum | 00000000  |
+
+ 

@@ -67,3 +67,17 @@ Functionaliteit: GBA Persoon: naam velden vragen met fields
     | adellijkeTitelPredicaat.omschrijving | barones  |
     | voorvoegsel                          | Van      |
     | geslachtsnaam                        | Naersen  |
+
+  Scenario: onbekend waarde "." voor geslachtsnaam
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 000000152                              |
+    | fields              | burgerservicenummer,naam.geslachtsnaam |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000152 |
+    | naam.geslachtsnaam  | .         | 

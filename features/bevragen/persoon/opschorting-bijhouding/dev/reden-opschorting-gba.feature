@@ -29,3 +29,16 @@ Functionaliteit: Reden opschorting bijhouding in persoon
       | R                            | pl is aangelegd in de rni      |
       | F                            | fout                           |
       | .                            | onbekend                       |
+
+  Scenario: volledig onbekende datum Opschorting Bijhouding
+    Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde   |
+    | datum opschorting bijhouding (67.10) | 00000000 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000322                       |
+    | fields              | opschortingBijhouding.datum     |
+    Dan heeft de response een persoon met alleen de volgende 'opschortingBijhouding' gegevens
+    | naam  | waarde   |
+    | datum | 00000000 |
