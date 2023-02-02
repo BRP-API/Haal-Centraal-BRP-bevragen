@@ -54,7 +54,7 @@ Rule: nummeraanduiding identificatie is een verplichte parameter
 
 Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
-  Abstract Scenario: Zoek overleden personen die zijn ingeschreven op het adres met de opgegeven nummeraanduiding identificatie
+  Scenario: Zoek overleden personen die zijn ingeschreven op het adres met de opgegeven nummeraanduiding identificatie
     Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0599                              |
