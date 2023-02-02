@@ -72,6 +72,21 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
     | overlijden.plaats.code         |
     | overlijden.plaats.omschrijving |
 
+  Abstract Scenario: 'plaats overlijden (08.20)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'overlijden' gegevens
+    | naam                      | waarde |
+    | plaats overlijden (08.20) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon zonder 'overlijden' gegevens
+
+    Voorbeelden:
+    | fields            |
+    | overlijden.plaats |
+
   Abstract Scenario: 'land overlijden (08.30)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
     | datum overlijden (08.10) | land overlijden (08.30) |
@@ -91,3 +106,18 @@ Functionaliteit: Persoon: overlijden velden vragen met fields
     | overlijden.land              |
     | overlijden.land.code         |
     | overlijden.land.omschrijving |
+
+  Abstract Scenario: 'land overlijden (08.30)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'overlijden' gegevens
+    | naam                    | waarde |
+    | land overlijden (08.30) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon zonder 'overlijden' gegevens
+
+    Voorbeelden:
+    | fields          |
+    | overlijden.land |

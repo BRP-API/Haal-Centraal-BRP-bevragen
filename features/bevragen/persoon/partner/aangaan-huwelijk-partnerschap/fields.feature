@@ -72,6 +72,21 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
     | partners.aangaanHuwelijkPartnerschap.plaats.code         |
     | partners.aangaanHuwelijkPartnerschap.plaats.omschrijving |
 
+  Abstract Scenario: 'plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                                                                | waarde |
+    | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'partner' zonder 'aangaanHuwelijkPartnerschap' gegevens
+
+    Voorbeelden:
+    | fields                                      |
+    | partners.aangaanHuwelijkPartnerschap.plaats |
+
   Abstract Scenario: 'land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                                                              | waarde |
@@ -91,3 +106,18 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
     | partners.aangaanHuwelijkPartnerschap.land              |
     | partners.aangaanHuwelijkPartnerschap.land.code         |
     | partners.aangaanHuwelijkPartnerschap.land.omschrijving |
+
+  Abstract Scenario: 'land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                                                              | waarde |
+    | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'partner' zonder 'aangaanHuwelijkPartnerschap' gegevens
+
+    Voorbeelden:
+    | fields                                    |
+    | partners.aangaanHuwelijkPartnerschap.land |

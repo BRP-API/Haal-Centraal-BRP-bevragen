@@ -21,6 +21,21 @@ Functionaliteit: Persoon: ouder naam velden vragen met fields
     | 2                | voorvoegsel (02.30)   | ouders.naam.voorvoegsel   | voorvoegsel   | de     |
     | 1                | geslachtsnaam (02.40) | ouders.naam.geslachtsnaam | geslachtsnaam | Groen  |
 
+  Abstract Scenario: 'geslachtsnaam (02.40)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'ouder' zonder 'naam' gegevens
+
+    Voorbeelden:
+    | fields                    |
+    | ouders.naam.geslachtsnaam |
+
   Abstract Scenario: 'adellijke titel of predicaat (02.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                                 | waarde |

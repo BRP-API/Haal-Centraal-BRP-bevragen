@@ -71,3 +71,21 @@ Functionaliteit: Persoon: opschorting bijhouding velden vragen met fields
     | opschortingBijhouding.reden              |
     | opschortingBijhouding.reden.code         |
     | opschortingBijhouding.reden.omschrijving |
+
+  Abstract Scenario: 'reden opschorting bijhouding (67.20)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde |
+    | reden opschorting bijhouding (67.20) | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde   |
+    | reden.code         | .        |
+    | reden.omschrijving | onbekend |
+
+    Voorbeelden:
+    | fields                      |
+    | opschortingBijhouding.reden |

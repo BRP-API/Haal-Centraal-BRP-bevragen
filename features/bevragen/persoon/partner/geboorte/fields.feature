@@ -72,6 +72,21 @@ Functionaliteit: Persoon: partner geboorte velden vragen met fields
     | partners.geboorte.plaats.code         |
     | partners.geboorte.plaats.omschrijving |
 
+  Abstract Scenario: 'geboorteplaats (03.20)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                   | waarde |
+    | geboorteplaats (03.20) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | fields                   |
+    | partners.geboorte.plaats |
+
   Abstract Scenario: 'geboorteland (03.30)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                 | waarde |
@@ -91,3 +106,18 @@ Functionaliteit: Persoon: partner geboorte velden vragen met fields
     | partners.geboorte.land              |
     | partners.geboorte.land.code         |
     | partners.geboorte.land.omschrijving |
+
+  Abstract Scenario: 'geboorteland (03.30)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | naam                 | waarde |
+    | geboorteland (03.30) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'partner' zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | fields                 |
+    | partners.geboorte.land |
