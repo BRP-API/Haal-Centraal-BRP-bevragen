@@ -18,7 +18,7 @@ public partial class Persoon
 
     public bool ShouldSerializeGeboorte() => Geboorte != null;
 
-    public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
+    public bool ShouldSerializeImmigratie() => Immigratie != null;
 
     public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
