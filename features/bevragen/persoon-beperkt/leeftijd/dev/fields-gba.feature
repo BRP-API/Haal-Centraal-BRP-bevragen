@@ -40,6 +40,9 @@ Functionaliteit: GBA Persoon beperkt: leeftijd veld vragen met fields
     | naam               | waarde     |
     | reden.code         | O          |
     | reden.omschrijving | overlijden |
+    En heeft de persoon de volgende 'geboorte' gegevens
+    | naam  | waarde   |
+    | datum | 19500304 |
 
 Rule: wanneer het leeftijd veld voor een persoon wordt gevraagd en de categorie persoon (01) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
