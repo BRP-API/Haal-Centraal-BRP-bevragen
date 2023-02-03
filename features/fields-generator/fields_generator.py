@@ -175,6 +175,7 @@ for schemaComponent in SETTINGS.get("schemaComponents"):
 
     f = open (filePath, "w")
 
+    f.write ("pad\n")
     for field in fields:
         f.write (field.replace("(A)", "") + "\n")
     
