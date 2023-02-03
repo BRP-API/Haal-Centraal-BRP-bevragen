@@ -22,6 +22,21 @@ Functionaliteit: GBA immigratie - vragen van velden met fields
     | immigratie.landVanwaarIngeschreven.code         |
     | immigratie.landVanwaarIngeschreven.omschrijving |
 
+  Scenario: onbekend waarde voor immigratie: land vanwaar ingeschreven (14.10)
+    Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde |
+    | land vanwaar ingeschreven (14.10) | 0000   |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                 |
+    | type                | RaadpleegMetBurgerservicenummer                        |
+    | burgerservicenummer | 000000243                                              |
+    | fields              | burgerservicenummer,immigratie.landVanwaarIngeschreven |
+    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam                                            | waarde    |
+    | burgerservicenummer                             | 000000243 |
+    | immigratie.landVanwaarIngeschreven.code         | 0000      |
+    | immigratie.landVanwaarIngeschreven.omschrijving | Onbekend  |
+
   Abstract Scenario: 'datum vestiging in nederland (14.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                                 | waarde   |

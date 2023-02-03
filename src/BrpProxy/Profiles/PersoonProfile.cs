@@ -16,6 +16,7 @@ public class PersoonProfile : Profile
                 src.OpschortingBijhouding.Reden.Code != "O");
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
+            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
             .AfterMap((src, dest) =>
             {
                 //if(dest.Verblijfplaats != null)

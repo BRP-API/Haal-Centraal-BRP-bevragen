@@ -103,19 +103,19 @@ Functionaliteit: Persoon: verblijfstitel velden vragen met fields
 
   Abstract Scenario: 'datum einde verblijfstitel (39.20)' met type '<type>' en waarde in de toekomst wordt gevraagd met field pad 'verblijfstitel.datumEinde'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
-    | naam                                | waarde     |
-    | datum ingang verblijfstitel (39.30) | 19980201 |
-    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                                | waarde   |
     | datum ingang verblijfstitel (39.30) | 19980201 |
+    En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
+    | naam                                | waarde     |
+    | datum ingang verblijfstitel (39.30) | 19980201   |
     | datum einde verblijfstitel (39.20)  | <GbaDatum> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | verblijfstitel.datumEinde      |
+    | fields              | verblijfstitel.datumEinde       |
     Dan heeft de response een persoon met de volgende 'verblijfstitel' gegevens
-    | naam                    | waarde        |
+    | naam                   | waarde        |
     | datumEinde.type        | <type>        |
     | datumEinde.datum       | <datum>       |
     | datumEinde.jaar        | <jaar>        |

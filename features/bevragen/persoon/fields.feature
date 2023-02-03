@@ -169,25 +169,40 @@ Functionaliteit: Persoon velden vragen met fields
     | gemeenteVanInschrijving.code         |
     | gemeenteVanInschrijving.omschrijving |
 
+  Abstract Scenario: 'gemeente van inschrijving (09.10)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde |
+    | gemeente van inschrijving (09.10) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon zonder gegevens
+
+    Voorbeelden:
+    | fields                  |
+    | gemeenteVanInschrijving |
+
   Abstract Scenario: 'geslachtsaanduiding (04.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                        | waarde |
-    | geslachtsaanduiding (04.10) | M      |
+    | geslachtsaanduiding (04.10) | <code> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                  | waarde |
-    | geslacht.code         | M      |
-    | geslacht.omschrijving | man    |
+    | naam                  | waarde         |
+    | geslacht.code         | <code>         |
+    | geslacht.omschrijving | <omschrijving> |
 
     Voorbeelden:
-    | fields                |
-    | geslacht              |
-    | geslacht.code         |
-    | geslacht.omschrijving |
+    | fields                | code | omschrijving |
+    | geslacht              | O    | onbekend     |
+    | geslacht.code         | M    | man          |
+    | geslacht.omschrijving | V    | vrouw        |
 
   Scenario: 'leeftijd' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

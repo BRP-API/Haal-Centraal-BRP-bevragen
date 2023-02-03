@@ -41,6 +41,17 @@ Functionaliteit: Persoon: naam velden vragen met fields
     | naam          | waarde  |
     | geslachtsnaam | Naersen |
 
+  Scenario: 'geslachtsnaam (02.40)' met standaardwaarde wordt gevraagd met field pad 'naam.geslachtsnaam'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | naam.geslachtsnaam              |
+    Dan heeft de response een persoon zonder 'naam' gegevens
+
   Abstract Scenario: 'adellijke titel of predicaat (02.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                                 | waarde |

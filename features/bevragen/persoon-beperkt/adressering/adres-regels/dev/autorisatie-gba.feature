@@ -1,5 +1,6 @@
 # language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie adressering adresregels PersoonBeperkt 
 
     Achtergrond:

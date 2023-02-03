@@ -101,6 +101,48 @@ namespace BrpProxy.Mappers
             return retval;
         }
 
+        public static PersoonInOnderzoekBeperkt? InOnderzoek(this GbaPersoonBeperkt persoon)
+        {
+            if (persoon.PersoonInOnderzoek == null )
+            {
+                return null;
+            }
+
+            PersoonInOnderzoekBeperkt retval = new();
+
+            if (persoon.PersoonInOnderzoek != null)
+            {
+                switch (persoon.PersoonInOnderzoek.AanduidingGegevensInOnderzoek)
+                {
+                    case "010000":
+                        retval.Burgerservicenummer = true;
+                        retval.Geslacht = true;
+                        retval.Leeftijd = true;
+                        retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
+                        break;
+                    case "010100":
+                    case "010120":
+                        retval.Burgerservicenummer = true;
+                        retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
+                        break;
+                    case "010300":
+                    case "010310":
+                        retval.Leeftijd = true;
+                        retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
+                        break;
+                    case "010400":
+                    case "010410":
+                        retval.Geslacht = true;
+                        retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return retval;
+        }
+
         public static AdresseringInOnderzoek? AdresseringInOnderzoek(this GbaPersoon persoon)
         {
             if(persoon.PersoonInOnderzoek == null &&

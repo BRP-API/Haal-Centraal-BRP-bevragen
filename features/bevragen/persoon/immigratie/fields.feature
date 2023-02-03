@@ -22,6 +22,21 @@ Functionaliteit: Persoon: immigratie velden vragen met fields
     | immigratie.landVanwaarIngeschreven.code         |
     | immigratie.landVanwaarIngeschreven.omschrijving |
 
+  Scenario: 'land vanwaar ingeschreven (14.10)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                              | waarde |
+    | land vanwaar ingeschreven (14.10) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon zonder 'immigratie' gegevens
+
+    Voorbeelden:
+    | fields                             |
+    | immigratie.landVanwaarIngeschreven |
+
   Abstract Scenario: 'datum vestiging in nederland (14.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                                 | waarde   |

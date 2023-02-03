@@ -2,7 +2,5 @@
 
 public partial class PersoonBeperkt
 {
-    public Waardetabel? GemeenteVanInschrijving { get; set; }
-
-    public bool ShouldSerializeGemeenteVanInschrijving() => false;
+    public bool ShouldSerializeRni() => Rni != null && Rni.Count > 0;
 }

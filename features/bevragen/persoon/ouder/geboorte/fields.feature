@@ -29,13 +29,13 @@ Functionaliteit: Persoon: ouder geboorte velden vragen met fields
 
   Abstract Scenario: 'geboortedatum (03.10)' van het type '<type>' wordt gevraagd met field pad 'ouders.geboorte.datum'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
-    | naam                  | waarde   |
+    | naam                  | waarde     |
     | geboortedatum (03.10) | <GbaDatum> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | ouders.geboorte.datum                        |
+    | fields              | ouders.geboorte.datum           |
     Dan heeft de response een persoon met een 'ouder' met de volgende 'geboorte' gegevens
     | naam              | waarde        |
     | datum.type        | <type>        |
@@ -76,6 +76,21 @@ Functionaliteit: Persoon: ouder geboorte velden vragen met fields
     | ouders.geboorte.plaats.code         |
     | ouders.geboorte.plaats.omschrijving |
 
+  Abstract Scenario: 'geboorteplaats (03.20)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                   | waarde |
+    | geboorteplaats (03.20) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'ouder' zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | fields                 |
+    | ouders.geboorte.plaats |
+
   Abstract Scenario: 'geboorteland (03.30)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '2' met de volgende gegevens
     | naam                 | waarde |
@@ -98,3 +113,18 @@ Functionaliteit: Persoon: ouder geboorte velden vragen met fields
     | ouders.geboorte.land              |
     | ouders.geboorte.land.code         |
     | ouders.geboorte.land.omschrijving |
+
+  Abstract Scenario: 'geboorteland (03.30)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+    | naam                 | waarde |
+    | geboorteland (03.30) | 0000   |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'ouder' zonder 'geboorte' gegevens
+
+    Voorbeelden:
+    | fields               |
+    | ouders.geboorte.land |

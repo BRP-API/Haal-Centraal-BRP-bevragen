@@ -10,13 +10,15 @@ public partial class Persoon
 
     public bool ShouldSerializePartners() => Partners != null;
 
+    public bool ShouldSerializeRni() => Rni != null && Rni.Count > 0;
+
     public bool ShouldSerializeAdressering() => Adressering != null;
 
     public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
 
     public bool ShouldSerializeGeboorte() => Geboorte != null;
 
-    public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
+    public bool ShouldSerializeImmigratie() => Immigratie != null;
 
     public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 

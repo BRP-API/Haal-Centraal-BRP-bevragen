@@ -83,6 +83,12 @@ namespace BrpProxy.Middlewares
 
                 await _next(context);
 
+                if (context.Response.StatusCode == StatusCodes.Status404NotFound)
+                {
+                    await context.HandleNotFound(orgBodyStream, _logger);
+                    return;
+                }
+
                 var body = await context.Response.ReadBodyAsync();
 
                 _logger.LogDebug("original responseBody: {@body}", body);
