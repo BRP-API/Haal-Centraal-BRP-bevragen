@@ -6,9 +6,14 @@ De gegenereerde lijst bevat alle mogelijke waarden die in de "fields" parameter 
 
 Er zijn rijen opgenomen voor simple type velden (string, integer, boolean), en ook voor objecten (groepen velden).
 
-Deze lijst bevat ook velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd zullen worden (bijv. geheimhouding, inOnderzoek en type).
+Deze lijst bevat ook velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd 
+zullen worden (bijv. geheimhouding, inOnderzoek en type, sub-velden van datum, sub-velden van waardetabel).
+Gebruik command line argument --filter om de lijst velden te krijgen zonder de automatisch geleverde velden.
 
-De csv lijst wordt opgeslagen onder de naam "fields-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de schemacomponent voor de resource in de response.
+De csv lijst wordt opgeslagen onder de naam "fields-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de 
+schemacomponent voor de resource in de response.
+Bij gebruik van het --filter argument wordt de csv lijst opgeslagen onder de naam "fields-filtered-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de 
+schemacomponent voor de resource in de response.
 
 Command line arguments:
 --config        bestand van projectspecifieke configuratie json bestand
