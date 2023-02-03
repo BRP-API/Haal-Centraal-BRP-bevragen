@@ -93,3 +93,14 @@ Achtergrond:
     | aanduiding.omschrijving | Onbekend |
     | datumIngang             | 00000000 |
     | datumEinde              | 00000000 |
+
+    Scenario: vervallen verblijfstitel (aanduiding 98) wordt niet geleverd
+      Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende 'verblijfstitel' gegevens
+      | aanduiding verblijfstitel (39.10) | datum einde verblijfstitel (39.20) | datum ingang verblijfstitel (39.30) |
+      | 98                                | 20660201                           | 20210315                            |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000176                       |
+      | fields              | verblijfstitel                  |
+      Dan heeft de response een persoon zonder gegevens
