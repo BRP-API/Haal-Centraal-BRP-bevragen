@@ -1,6 +1,9 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
 apiname: "BRP Personen bevragen"
 url: "http://localhost:4000"
+# M.b.v. de optionele variabele 'logo' kan een ander logo dan het VNG logo in de rechterbovenhoek geplaatst worden.
+# Het betreffende bestand zal dan wel in de folder '\assets\img' van het remote the 'VNG-Realisatie/jekyll-theme-haal-centraal' moeten worden geplaatst.
+# Met de variabele 'organisation-url' kan de link onder het logo worden bepaald.
 logo: "BZK_RIG_Logo_online_ex_pos_nl.png"
 organisation-url: "http://www.rvig.nl"
 # nav is t.b.v. generatie side-navigation menu.
