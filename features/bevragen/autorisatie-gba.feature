@@ -1,5 +1,6 @@
 # language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie voor het gebruik van de API
   Autorisatie voor het gebruik van de API gebeurt op twee niveau's:
   1. autorisatie van de gebruiker door de afnemende organisatie
