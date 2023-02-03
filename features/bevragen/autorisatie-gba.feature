@@ -241,8 +241,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
 
       Voorbeelden:
       | fields                                        | ad hoc rubrieken | missende autorisatie                 |
-      | leeftijd                                      | 10120 10310      | overlijdensdatum (60810)             |
-      | leeftijd                                      | 10120 60810      | geboortedatum (10310)                |
+      | leeftijd                                      | 10120            | geboortedatum (10310)                |
       | immigratie.indicatieVestigingVanuitBuitenland | 10120 81410      | datum vestiging in nederland (81420) |
 
     @fout-case
