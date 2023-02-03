@@ -4,8 +4,9 @@ Functionaliteit: GBA immigratie - vragen van velden met fields
 
   Abstract Scenario: 'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-    | naam                              | waarde |
-    | land vanwaar ingeschreven (14.10) | 6014   |
+    | naam                                 | waarde   |
+    | land vanwaar ingeschreven (14.10)    | 6014     |
+    | datum vestiging in Nederland (14.20) | 20020701 |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -21,6 +22,7 @@ Functionaliteit: GBA immigratie - vragen van velden met fields
     | immigratie.landVanwaarIngeschreven              |
     | immigratie.landVanwaarIngeschreven.code         |
     | immigratie.landVanwaarIngeschreven.omschrijving |
+    | immigratie.vanuitVerblijfplaatsOnbekend         |
 
   Scenario: onbekend waarde voor immigratie: land vanwaar ingeschreven (14.10)
     Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfplaats' gegevens
@@ -40,6 +42,7 @@ Functionaliteit: GBA immigratie - vragen van velden met fields
   Abstract Scenario: 'datum vestiging in nederland (14.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                                 | waarde   |
+    | land vanwaar ingeschreven (14.10)    | 6014     |
     | datum vestiging in Nederland (14.20) | 20020701 |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -59,6 +62,7 @@ Functionaliteit: GBA immigratie - vragen van velden met fields
     | immigratie.datumVestigingInNederland.jaar        |
     | immigratie.datumVestigingInNederland.maand       |
     | immigratie.datumVestigingInNederland.onbekend    |
+    | immigratie.indicatieVestigingVanuitBuitenland    |
 
 Rule: als één of meerdere immigratie velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
