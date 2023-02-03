@@ -35,4 +35,9 @@ Functionaliteit: autorisatie verificatie Persoon Beperkt
       | verificatie                   |
       | verificatie.omschrijving      |
       | verificatie.datum             |
+      | verificatie.datum.type        |
+      | verificatie.datum.datum       |
       | verificatie.datum.langFormaat |
+      | verificatie.datum.jaar        |
+      | verificatie.datum.maand       |
+      | verificatie.datum.onbekend    |

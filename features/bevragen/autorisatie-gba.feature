@@ -400,36 +400,27 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | rni-deelnemer (88.10) | omschrijving verdrag (88.20)                |
-      | 0101                  | Belastingverdrag tussen België en Nederland |
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | indicatie geheim (70.10) | reden opschorting bijhouding (67.20) |
-      | 7                        | E                                    |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'inschrijving' gegevens
+      | indicatie geheim (70.10) |
+      | 7                        |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
-      | fields              | <fields>                        |
+      | fields              | burgerservicenummer,<fields>    |
       Dan heeft de response een persoon met de volgende gegevens
-      | naam                                     | waarde    |
-      | geheimhoudingPersoonsgegevens            | 7         |
-      | opschortingBijhouding.reden.code         | E         |
-      | opschortingBijhouding.reden.omschrijving | emigratie |
-      En heeft de persoon een 'rni' met de volgende gegevens
-      | naam                   | waarde                                          |
-      | deelnemer.code         | 0101                                            |
-      | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
-      | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
-      | categorie              | Persoon                                         |
+      | naam                          | waarde    |
+      | burgerservicenummer           | 000000024 |
+      | geheimhoudingPersoonsgegevens | 7         |
 
       Voorbeelden:
-      | fields                        |
-      | geheimhoudingPersoonsgegevens |
-      | opschortingBijhouding.reden   |
-      | naam.inOnderzoek              |
-      | rni                           |
-      | verificatie                   |
+      | fields                          |
+      | geheimhoudingPersoonsgegevens   |
+      | opschortingBijhouding.reden     |
+      | inOnderzoek.burgerservicenummer |
+      | naam.inOnderzoek                |
+      | rni                             |
+      | verificatie                     |
 
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
