@@ -36,8 +36,8 @@ Achtergrond:
 
   Scenario: verblijfstitel heeft een datum einde in het verleden
     Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'verblijfstitel' gegevens
-    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | datum einde verblijfstitel (39.20) |
-    | 37                                | 19980201                            | 20020701                           |
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | datum einde verblijfstitel (39.20) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 37                                | 19980201                            | 20020701                           | 100000                          | 20230127                       |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -47,8 +47,8 @@ Achtergrond:
 
   Scenario: verblijfstitel heeft een datum einde vandaag
     Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'verblijfstitel' gegevens
-    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | datum einde verblijfstitel (39.20) |
-    | 37                                | 19980201                            | vandaag                            |
+    | aanduiding verblijfstitel (39.10) | datum ingang verblijfstitel (39.30) | datum einde verblijfstitel (39.20) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 37                                | 19980201                            | vandaag                            | 100000                          | 20230127                       |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
