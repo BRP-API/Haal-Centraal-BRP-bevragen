@@ -15,6 +15,7 @@ Functionaliteit: GBA Persoon beperkt: Opschorting bijhouding
     | 0530                 | 0599200000219679                           | 1628HJ           | 31                 | Haagse Reigerstraat |
 
 Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
+    Een afgevoerde persoonslijst heeft opschorting bijhouding reden "F" (fout)
 
   Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met geslachtsnaam en geboortedatum <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens

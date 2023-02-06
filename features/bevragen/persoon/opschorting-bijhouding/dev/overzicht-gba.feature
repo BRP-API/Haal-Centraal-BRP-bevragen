@@ -23,6 +23,7 @@ Functionaliteit: Persoon: Opschorting bijhouding
     | 0518                 | Spui               | 70                 | 1234AA           |
 
 Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de reden opschorting geleverd en indien gevraagd de aNummer, burgerservicenummer en datum opschorting
+    Een afgevoerde persoonslijst heeft opschorting bijhouding reden "F" (fout)
 
   Abstract Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en veld(en) '<fields>' wordt gevraagd 
     Als gba personen wordt gezocht met de volgende parameters
@@ -73,3 +74,35 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | nationaliteiten         |
     | ouders                  |
     | verblijfplaats          |
+
+  Abstract Scenario: geraadpleegde persoons is opgeschort met reden "<opschorting>" en met fields gevraafde velden worden wel geleverd 
+    Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
+    | anummer (01.10) | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
+    | 9876543210      | Anna              | Maassen               | 19630716              | V                           |
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | <opschorting>                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                 |
+    | type                | RaadpleegMetBurgerservicenummer        |
+    | burgerservicenummer | 000000048                              |
+    | fields              | geboorte.datum,geslacht,naam.voornamen |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                  | waarde   |
+    | geboorte.datum        | 19630716 |
+    | geslacht.code         | V        |
+    | geslacht.omschrijving | vrouw    |
+    | naam.voornamen        | Anna     |
+    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde                     |
+    | reden.code         | <opschorting>              |
+    | reden.omschrijving | <opschorting omschrijving> |
+
+    Voorbeelden:
+    | opschorting | opschorting omschrijving  |
+    | O           | overlijden                |
+    | E           | emigratie                 |
+    | M           | ministerieel besluit      |
+    | R           | pl is aangelegd in de rni |
+    | .           | onbekend                  |
+    
