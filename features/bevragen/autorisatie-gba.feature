@@ -60,7 +60,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                      |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
-      | title    | U bent niet geautoriseerd voor deze operatie.               |
+      | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
       | status   | 403                                                         |
       | detail   | Niet geautoriseerd voor ad hoc bevragingen.                 |
       | code     | unauthorized                                                |
