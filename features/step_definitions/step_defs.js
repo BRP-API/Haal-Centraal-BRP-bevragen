@@ -1513,6 +1513,7 @@ async function handleOAuthRequest(oAuth, afnemerId, sqlDatas, endpointUrl, dataT
 }
 
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    this.context.proxyAanroep = true
     if(this.context.oAuth.enable) {
         this.context.response = await handleOAuthRequest(this.context.oAuth, this.context.afnemerId, this.context.sqlData, this.context.proxyUrl, dataTable);
     } else {
@@ -1523,6 +1524,7 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+    this.context.proxyAanroep = false;
     if(this.context.oAuth.enable) {
         this.context.response = await handleOAuthRequest(this.context.oAuth, this.context.afnemerId, this.context.sqlData, this.context.gbaUrl, dataTable);
     } else {
@@ -1567,7 +1569,7 @@ Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)'$/, function (gegevensgro
 Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     this.context.verifyResponse = true;
 
-    const expected = createObjectFrom(dataTable);
+    const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     if(this.context.expected === undefined) {
         this.context.expected = [];
@@ -1579,7 +1581,7 @@ Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegeven
     this.context.verifyResponse = true;
 
     let expected = {};
-    expected[gegevensgroep] = createObjectFrom(dataTable, true);
+    expected[gegevensgroep] = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     if(this.context.expected === undefined) {
         this.context.expected = [];
@@ -1588,7 +1590,7 @@ Then(/^heeft de response een persoon met ?(?:alleen)? de volgende '(.*)' gegeven
 });
 
 Then(/^heeft de persoon ?(?:alleen)? de volgende '(.*)' gegevens$/, function (gegevensgroep, dataTable) {
-    const expected = createObjectFrom(dataTable, true);
+    const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     if(Object.keys(expected).length === 0) return;
 
@@ -1621,7 +1623,7 @@ Then(/^heeft de persoon een leeg '(.*)' object$/, function(gegevensgroep) {
 Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
     this.context.verifyResponse = true;
 
-    const expected = createObjectFrom(dataTable);
+    const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     let relaties = toCollectionName(relatie);
 
@@ -1659,7 +1661,7 @@ function addRelatieToExpectedPersoon(relatie, gegevensgroep, dataTable) {
 }
 
 Then(/^heeft de persoon ?(?:nog)? een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
-    const expected = createObjectFrom(dataTable);
+    const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     let groep = toCollectionName(gegevensgroep);
 
@@ -1676,7 +1678,7 @@ Then(/^heeft de persoon ?(?:nog)? een '(.*)' met ?(?:alleen)? de volgende gegeve
 });
 
 Then(/^heeft (?:de|het) '(.*)' ?(?:alleen)? de volgende '(.*)' gegevens$/, function (relatie, gegevensgroep, dataTable) {
-    const expected = createObjectFrom(dataTable);
+    const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     if(this.context.expected === undefined) {
         console.log(`creeer eerst een '${relatie}' met "Dan heeft de persoon een '${relatie}' met alleen de volgende gegevens"`);
@@ -1719,7 +1721,7 @@ Then(/^heeft de '(.*)' GEEN '(.*)' gegevens$/, function (_relatie, _gegevensgroe
 
 Then(/^heeft de response een object met de volgende gegevens$/, function (dataTable) {
     this.context.verifyResponse = true;
-    const expected = createObjectFrom(dataTable);
+    const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     if(this.context.expected === undefined) {
         this.context.expected = expected;
