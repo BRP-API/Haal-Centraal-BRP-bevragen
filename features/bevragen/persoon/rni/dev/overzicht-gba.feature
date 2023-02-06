@@ -254,7 +254,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam          | waarde |
     | voornamen     | Peter  |
     | geslachtsnaam | Jansen |
-    En heeft de persoon geen 'rni' gegevens
 
     Voorbeelden:
     | fields   |
@@ -277,7 +276,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | burgerservicenummer | 000000048       |
     | <naam veld 1>       | <waarde veld 1> |
     | <naam veld 2>       | <waarde veld 2> |
-    En heeft de persoon geen 'rni' gegevens
 
     Voorbeelden:
     | naam gba veld                        | waarde gba veld | naam veld 1                      | waarde veld 1 | naam veld 2                              | waarde veld 2 | fields                  |
