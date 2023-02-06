@@ -437,8 +437,11 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) | identificatiecode nummeraanduiding (11.90) |
-      | 0800                              | 0800200000219679                           |
+      | gemeente van inschrijving (09.10) |
+      | 0800                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0800                 | 0800200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
