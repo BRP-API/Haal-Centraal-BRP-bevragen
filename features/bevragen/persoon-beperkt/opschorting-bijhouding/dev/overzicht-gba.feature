@@ -156,15 +156,15 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
-    | E                            | emigratie                            | true                         | inclusief                    |
-    | M                            | ministerieel besluit                 | true                         | inclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
-    | .                            | onbekend                             | true                         | inclusief                    |
-    | E                            | emigratie                            | false                        | exclusief                    |
-    | M                            | ministerieel besluit                 | false                        | exclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
-    | .                            | onbekend                             | false                        | exclusief                    |
+    | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                      | true                         | inclusief                    |
+    | M                            | ministerieel besluit           | true                         | inclusief                    |
+    | R                            | pl is aangelegd in de rni      | true                         | inclusief                    |
+    | .                            | onbekend                       | true                         | inclusief                    |
+    | E                            | emigratie                      | false                        | exclusief                    |
+    | M                            | ministerieel besluit           | false                        | exclusief                    |
+    | R                            | pl is aangelegd in de rni      | false                        | exclusief                    |
+    | .                            | onbekend                       | false                        | exclusief                    |
 
   Scenario: persoon opgeschort met reden O" (overlijden) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -216,15 +216,15 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
-    | E                            | emigratie                            | true                         | inclusief                    |
-    | M                            | ministerieel besluit                 | true                         | inclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
-    | .                            | onbekend                             | true                         | inclusief                    |
-    | E                            | emigratie                            | false                        | exclusief                    |
-    | M                            | ministerieel besluit                 | false                        | exclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
-    | .                            | onbekend                             | false                        | exclusief                    |
+    | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                      | true                         | inclusief                    |
+    | M                            | ministerieel besluit           | true                         | inclusief                    |
+    | R                            | pl is aangelegd in de rni      | true                         | inclusief                    |
+    | .                            | onbekend                       | true                         | inclusief                    |
+    | E                            | emigratie                      | false                        | exclusief                    |
+    | M                            | ministerieel besluit           | false                        | exclusief                    |
+    | R                            | pl is aangelegd in de rni      | false                        | exclusief                    |
+    | .                            | onbekend                       | false                        | exclusief                    |
 
   Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met nummeraanduiding identificatie exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -270,15 +270,15 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
-    | E                            | emigratie                            | true                         | inclusief                    |
-    | M                            | ministerieel besluit                 | true                         | inclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
-    | .                            | onbekend                             | true                         | inclusief                    |
-    | E                            | emigratie                            | false                        | exclusief                    |
-    | M                            | ministerieel besluit                 | false                        | exclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
-    | .                            | onbekend                             | false                        | exclusief                    |
+    | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                      | true                         | inclusief                    |
+    | M                            | ministerieel besluit           | true                         | inclusief                    |
+    | R                            | pl is aangelegd in de rni      | true                         | inclusief                    |
+    | .                            | onbekend                       | true                         | inclusief                    |
+    | E                            | emigratie                      | false                        | exclusief                    |
+    | M                            | ministerieel besluit           | false                        | exclusief                    |
+    | R                            | pl is aangelegd in de rni      | false                        | exclusief                    |
+    | .                            | onbekend                       | false                        | exclusief                    |
 
   Abstract Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met postcode en huisnummer exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -327,15 +327,15 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
-    | E                            | emigratie                            | true                         | inclusief                    |
-    | M                            | ministerieel besluit                 | true                         | inclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
-    | .                            | onbekend                             | true                         | inclusief                    |
-    | E                            | emigratie                            | false                        | exclusief                    |
-    | M                            | ministerieel besluit                 | false                        | exclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
-    | .                            | onbekend                             | false                        | exclusief                    |
+    | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                      | true                         | inclusief                    |
+    | M                            | ministerieel besluit           | true                         | inclusief                    |
+    | R                            | pl is aangelegd in de rni      | true                         | inclusief                    |
+    | .                            | onbekend                       | true                         | inclusief                    |
+    | E                            | emigratie                      | false                        | exclusief                    |
+    | M                            | ministerieel besluit           | false                        | exclusief                    |
+    | R                            | pl is aangelegd in de rni      | false                        | exclusief                    |
+    | .                            | onbekend                       | false                        | exclusief                    |
 
   Abstract Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met straat, huisnummer en gemeente van inschrijving exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -387,12 +387,12 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
 
     Voorbeelden:
-    | reden opschorting bijhouding | reden opschorting omschrijving       | inclusief overleden personen | zoek overleden personen type |
-    | E                            | emigratie                            | true                         | inclusief                    |
-    | M                            | ministerieel besluit                 | true                         | inclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | true                         | inclusief                    |
-    | .                            | onbekend                             | true                         | inclusief                    |
-    | E                            | emigratie                            | false                        | exclusief                    |
-    | M                            | ministerieel besluit                 | false                        | exclusief                    |
-    | R                            | persoonslijst is aangelegd in de rni | false                        | exclusief                    |
-    | .                            | onbekend                             | false                        | exclusief                    |
+    | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
+    | E                            | emigratie                      | true                         | inclusief                    |
+    | M                            | ministerieel besluit           | true                         | inclusief                    |
+    | R                            | pl is aangelegd in de rni      | true                         | inclusief                    |
+    | .                            | onbekend                       | true                         | inclusief                    |
+    | E                            | emigratie                      | false                        | exclusief                    |
+    | M                            | ministerieel besluit           | false                        | exclusief                    |
+    | R                            | pl is aangelegd in de rni      | false                        | exclusief                    |
+    | .                            | onbekend                       | false                        | exclusief                    |
