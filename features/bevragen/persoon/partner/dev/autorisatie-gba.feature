@@ -48,28 +48,7 @@ Functionaliteit: autorisatie partners
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | partners                        |
-      Dan heeft de response een persoon met een 'partner' met de volgende gegevens
-      | naam                                            | waarde                     |
-      | burgerservicenummer                             | 000000188                  |
-      | naam.voornamen                                  | Pieter                     |
-      | naam.adellijkeTitelPredicaat.code               | JH                         |
-      | naam.adellijkeTitelPredicaat.omschrijving       | jonkheer                   |
-      | naam.adellijkeTitelPredicaat.soort              | predicaat                  |
-      | naam.voorvoegsel                                | van den                    |
-      | naam.geslachtsnaam                              | Aedel                      |
-      | geboorte.datum                                  | 19580701                   |
-      | geboorte.plaats.omschrijving                    | Berlijn                    |
-      | geboorte.land.code                              | 6029                       |
-      | geboorte.land.omschrijving                      | Duitsland                  |
-      | geslacht.code                                   | M                          |
-      | geslacht.omschrijving                           | man                        |
-      | aangaanHuwelijkPartnerschap.datum               | 20010808                   |
-      | aangaanHuwelijkPartnerschap.plaats.omschrijving | Parijs                     |
-      | aangaanHuwelijkPartnerschap.land.code           | 5002                       |
-      | aangaanHuwelijkPartnerschap.land.omschrijving   | Frankrijk                  |
-      | ontbindingHuwelijkPartnerschap.datum            | 20180317                   |
-      | soortVerbintenis.code                           | P                          |
-      | soortVerbintenis.omschrijving                   | geregistreerd partnerschap |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om partners en is niet geautoriseerd voor <missende autorisatie>
@@ -148,3 +127,4 @@ Functionaliteit: autorisatie partners
       | aangaanHuwelijkPartnerschap.land     | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50710 51510 | 50630                |
       | ontbindingHuwelijkPartnerschap.datum | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50630 51510 | 50710                |
       | soortVerbintenis                     | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50630 50710 | 51510                |
+      
