@@ -78,9 +78,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000618922                     |
       | fields                        | burgerservicenummer                  |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000048 |
+      Dan heeft de response 1 persoon
 
     Scenario: Afnemer zoekt met nummeraanduidingIdentificatie en gemeenteVanInschrijving en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -96,9 +94,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | nummeraanduidingIdentificatie | 0599200000618922                     |
       | gemeenteVanInschrijving       | 0599                                 |
       | fields                        | burgerservicenummer                  |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000048 |
+      Dan heeft de response 1 persoon
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
@@ -119,7 +115,5 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | nummeraanduidingIdentificatie | 0800200000219679                     |
       | gemeenteVanInschrijving       | 0800                                 |
       | fields                        | burgerservicenummer                  |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon
      

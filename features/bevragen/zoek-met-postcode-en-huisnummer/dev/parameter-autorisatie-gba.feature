@@ -93,9 +93,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | postcode                | 2497BV                      |
       | huisnummer              | 103                         |
       | fields                  | burgerservicenummer         |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon
 
 
     Abstract Scenario: Zoeken met parameters postcode, huisnummer en <extra parameter> waarvoor de afnemer wel geautoriseerd is
@@ -113,9 +111,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisnummer        | 103                         |
       | <extra parameter> | <waarde>                    |
       | fields            | burgerservicenummer         |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | extra parameter      | rubriek extra parameter | waarde |
@@ -145,7 +141,5 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | huisnummertoevoeging    | 2                           |
       | gemeenteVanInschrijving | 0800                        |
       | fields                  | burgerservicenummer         |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon
       

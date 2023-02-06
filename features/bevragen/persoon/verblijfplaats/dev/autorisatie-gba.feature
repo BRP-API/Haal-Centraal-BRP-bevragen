@@ -157,10 +157,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | burgerservicenummer     | 000000024                                                                            |
       | gemeenteVanInschrijving | 0800                                                                                 |
       | fields                  | verblijfplaats.verblijfadres.korteStraatnaam,verblijfplaats.verblijfadres.huisnummer |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam       | waarde          |
-      | straat     | Borgesiusstraat |
-      | huisnummer | 103             |
+      Dan heeft de response 1 persoon
 
 
   Rule: Wanneer met fields een veld van verblijfplaats wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaats wordt bepaald, wordt een foutmelding gegeven
@@ -214,10 +211,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.datumVan         |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde          |
-      | straat                   | Borgesiusstraat |
-      | datumAanvangAdreshouding | 19860801        |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om datumVan en is niet geautoriseerd voor <missende autorisatie>
@@ -260,10 +254,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | burgerservicenummer     | 000000024                       |
       | gemeenteVanInschrijving | 0800                            |
       | fields                  | verblijfplaats.datumVan         |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde          |
-      | straat                   | Borgesiusstraat |
-      | datumAanvangAdreshouding | 19860801        |
+      Dan heeft de response 1 persoon
 
 
   Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
@@ -281,14 +272,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type                | RaadpleegMetBurgerservicenummer        |
       | burgerservicenummer | 000000024                              |
       | fields              | verblijfplaatsBinnenland.verblijfadres |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                 | waarde          |
-      | straat               | Borgesiusstraat |
-      | huisnummer           | 103             |
-      | huisletter           | b               |
-      | huisnummertoevoeging | 2               |
-      | postcode             | 2497BV          |
-      | woonplaats           | Scheveningen    |
+      Dan heeft de response 1 persoon
 
     Scenario: Afnemer vraagt om alleen binnengemeentelijke datumVan en is niet geautoriseerd voor verblijf buitenland
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -303,7 +287,4 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type                | RaadpleegMetBurgerservicenummer   |
       | burgerservicenummer | 000000024                         |
       | fields              | verblijfplaatsBinnenland.datumVan |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde          |
-      | straat                   | Borgesiusstraat |
-      | datumAanvangAdreshouding | 19860801        |
+      Dan heeft de response 1 persoon

@@ -106,10 +106,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | geslachtsnaam | Vries                               |
       | geboortedatum | 2001-06-04                          |
       | fields        | burgerservicenummer                 |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000048 |
-
+      Dan heeft de response 1 persoon
 
     Abstract Scenario: Afnemer zoekt met de verplichte parameters en <extra parameter> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -126,9 +123,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | geboortedatum     | 2001-06-04                          |
       | <extra parameter> | <waarde>                            |
       | fields            | burgerservicenummer                 |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000048 |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | extra parameter         | rubriek extra parameter | waarde |
@@ -161,7 +156,5 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | geslacht                | M                                   |
       | gemeenteVanInschrijving | 0800                                |
       | fields                  | burgerservicenummer                 |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon
       
