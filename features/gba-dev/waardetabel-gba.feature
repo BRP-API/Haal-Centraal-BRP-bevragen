@@ -85,7 +85,7 @@ Functionaliteit: Waardetabel met code en omschrijving
 
       Voorbeelden:
       | tabel         | waarde-code | waarde-omschrijving | lo3-naam                       | fieldnaam           | prefix              |
-      | Functie_adres | B           | briefadres          | functieAdres.code (10.10)      | functieAdres        | functieAdres.       |
+      | Functie_adres | B           | briefadres          | functieAdres.code (10.10)      | verblijfplaats.functieAdres        | functieAdres.       |
       | Landen        | 9087        | Djibouti            | land adres buitenland (13.10)  | verblijfplaats      | land. |
 
       Rule: voor adellijkeTitelPredicaat wordt naast 'code' en 'omschrijving' ook 'soort' geleverd

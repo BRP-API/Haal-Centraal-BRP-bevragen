@@ -1,6 +1,7 @@
 #language: nl
 
 Functionaliteit: GBA persoon: in onderzoek
+
   Abstract Scenario: gemeente van inschrijving is in onderzoek en wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                              | waarde                    |
@@ -51,3 +52,21 @@ Functionaliteit: GBA persoon: in onderzoek
     | 080000                  |
     | 080900                  |
     | 080920                  |
+
+Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
+  - Datum einde onderzoek (83.30) heeft een waarde
+
+  Scenario: onderzoek is beëindigd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | voornamen (02.10) | geboortedatum (03.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) | 
+    | Arnitta           | 19231213              | 010000                          | 20120920                       | 20120922                      |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                            |
+    | type                | RaadpleegMetBurgerservicenummer                   |
+    | burgerservicenummer | 000000152                                         |
+    | fields              | burgerservicenummer,naam.voornamen,geboorte.datum |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000152 |
+    | naam.voornamen      | Arnitta   |
+    | geboorte.datum      | 19231213  |
