@@ -11,9 +11,10 @@ Functionaliteit: GBA persoon : leveren van RNI-deelnemer gegevens
 
   Achtergrond:
     Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarden
-    | code | omschrijving                                      |
-    | 0101 | Belastingdienst (inzake heffingen en toeslagen)   |
-    | 0201 | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+    | code | omschrijving                                                       |
+    | 0101 | Belastingdienst (inzake heffingen en toeslagen)                    |
+    | 0201 | Sociale Verzekeringsbank (inzake AOW, Anw en AKW)                  |
+    | 0501 | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) |
 
 Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationaliteit), 06 (Overlijden) en/of 08 (Verblijfplaats) worden geleverd wanneer één of meerdere velden uit die categoriën wordt gevraagd
 
