@@ -390,6 +390,39 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | 10120 20120 20240 30310 30320 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
   
 
+  Rule: Vragen met fields om een veld dat automatisch wordt meegeleverd vereist geen autorisatie voor dat veld
+
+    Abstract Scenario: Afnemer vraagt om <fields> en heeft dat niet in de autorisatie
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 010120                          | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0800   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'inschrijving' gegevens
+      | indicatie geheim (70.10) |
+      | 7                        |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | burgerservicenummer,<fields>    |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                          | waarde    |
+      | burgerservicenummer           | 000000024 |
+      | geheimhoudingPersoonsgegevens | 7         |
+
+      Voorbeelden:
+      | fields                          |
+      | geheimhoudingPersoonsgegevens   |
+      | opschortingBijhouding.reden     |
+      | inOnderzoek.burgerservicenummer |
+      | naam.inOnderzoek                |
+      | rni                             |
+      | verificatie                     |
+
+
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
