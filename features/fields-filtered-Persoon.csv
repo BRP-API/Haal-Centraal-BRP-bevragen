@@ -37,7 +37,6 @@ kinderen.geboorte.land
 kinderen.geboorte.plaats
 kinderen.naam
 kinderen.naam.adellijkeTitelPredicaat
-kinderen.naam.adellijkeTitelPredicaat.soort
 kinderen.naam.geslachtsnaam
 kinderen.naam.voorletters
 kinderen.naam.voornamen
@@ -45,7 +44,6 @@ kinderen.naam.voorvoegsel
 leeftijd
 naam
 naam.adellijkeTitelPredicaat
-naam.adellijkeTitelPredicaat.soort
 naam.geslachtsnaam
 naam.volledigeNaam
 naam.voorletters
@@ -68,7 +66,6 @@ ouders.geboorte.plaats
 ouders.geslacht
 ouders.naam
 ouders.naam.adellijkeTitelPredicaat
-ouders.naam.adellijkeTitelPredicaat.soort
 ouders.naam.geslachtsnaam
 ouders.naam.voorletters
 ouders.naam.voornamen
@@ -91,7 +88,6 @@ partners.geboorte.plaats
 partners.geslacht
 partners.naam
 partners.naam.adellijkeTitelPredicaat
-partners.naam.adellijkeTitelPredicaat.soort
 partners.naam.geslachtsnaam
 partners.naam.voorletters
 partners.naam.voornamen

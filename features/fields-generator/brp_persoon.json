@@ -26,7 +26,8 @@
         "DatumOnbekend",
         "JaarDatum",
         "JaarMaandDatum",
-        "Waardetabel"
+        "Waardetabel",
+        "AdellijkeTitelPredicaatType"
     ],
     "sourceYaml": "/specificatie/genereervariant/openapi.yaml",
     "fieldslistFolder": "/features/"
