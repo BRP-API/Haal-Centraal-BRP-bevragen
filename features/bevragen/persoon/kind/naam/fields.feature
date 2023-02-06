@@ -21,6 +21,21 @@ Functionaliteit: Persoon: kind naam velden vragen met fields
     | voorvoegsel (02.30)   | kinderen.naam.voorvoegsel   | voorvoegsel   | in den |
     | geslachtsnaam (02.40) | kinderen.naam.geslachtsnaam | geslachtsnaam | Jansen |
 
+  Abstract Scenario: 'geslachtsnaam (02.40)' met standaardwaarde wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | .      |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'kind' zonder 'naam' gegevens
+
+    Voorbeelden:
+    | fields                      |
+    | kinderen.naam.geslachtsnaam |
+
   Abstract Scenario: 'adellijke titel of predicaat (02.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
     | naam                                 | waarde |

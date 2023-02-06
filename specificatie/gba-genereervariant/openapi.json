@@ -669,9 +669,6 @@
           "opschortingBijhouding" : {
             "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
           },
-          "overlijden" : {
-            "$ref" : "#/components/schemas/GbaOverlijdenBeperkt"
-          },
           "gemeenteVanInschrijving" : {
             "$ref" : "#/components/schemas/Waardetabel"
           },
@@ -1028,26 +1025,6 @@
         },
         "description" : "* **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
-      "GbaOverlijdenBeperkt" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/GbaOverlijdenBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
-            }
-          }
-        } ]
-      },
-      "GbaOverlijdenBasis" : {
-        "type" : "object",
-        "properties" : {
-          "datum" : {
-            "$ref" : "#/components/schemas/GbaDatum"
-          }
-        }
-      },
       "GbaVerblijfplaatsBeperkt" : {
         "type" : "object",
         "properties" : {
@@ -1218,22 +1195,21 @@
         } ]
       },
       "GbaOverlijden" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/GbaOverlijdenBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "land" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "plaats" : {
-              "$ref" : "#/components/schemas/Waardetabel"
-            },
-            "inOnderzoek" : {
-              "$ref" : "#/components/schemas/GbaInOnderzoek"
-            }
+        "type" : "object",
+        "properties" : {
+          "datum" : {
+            "$ref" : "#/components/schemas/GbaDatum"
+          },
+          "land" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "plaats" : {
+            "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "inOnderzoek" : {
+            "$ref" : "#/components/schemas/GbaInOnderzoek"
           }
-        } ]
+        }
       },
       "GbaVerblijfplaats" : {
         "type" : "object",

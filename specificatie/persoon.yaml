@@ -95,8 +95,6 @@ components:
           $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
-        overlijden:
-          $ref: 'overlijden.yaml#/components/schemas/GbaOverlijdenBeperkt'
         gemeenteVanInschrijving:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
         verblijfplaats:
@@ -128,8 +126,6 @@ components:
           $ref: 'naam.yaml#/components/schemas/NaamPersoonBeperkt'
         opschortingBijhouding:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhoudingBasis'
-        overlijden:
-          $ref: 'overlijden.yaml#/components/schemas/OverlijdenBeperkt'
         adressering:
           $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
         rni:

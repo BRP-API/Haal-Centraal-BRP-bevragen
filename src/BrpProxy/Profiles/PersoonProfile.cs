@@ -12,21 +12,23 @@ public class PersoonProfile : Profile
         CreateMap<GbaPersoonBeperkt, PersoonBeperkt>()
             .ForMember(dest => dest.Leeftijd, opt =>
             {
-                opt.PreCondition(src => src.Overlijden == null);
+                opt.PreCondition(src => src.OpschortingBijhouding == null ||
+                src.OpschortingBijhouding.Reden.Code != "O");
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
+            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
             .AfterMap((src, dest) =>
             {
-                if(dest.Verblijfplaats != null)
-                {
-                    dest.Adressering = new AdresseringBeperkt
-                    {
-                        Adresregel1 = dest.Verblijfplaats.Adresregel1(),
-                        Adresregel2 = dest.Verblijfplaats.Adresregel2(dest.GemeenteVanInschrijving),
-                        Adresregel3 = dest.Verblijfplaats.Adresregel3(),
-                        Land = dest.Verblijfplaats.Land()
-                    };
-                }
+                //if(dest.Verblijfplaats != null)
+                //{
+                //    dest.Adressering = new AdresseringBeperkt
+                //    {
+                //        Adresregel1 = dest.Verblijfplaats.Adresregel1(),
+                //        Adresregel2 = dest.Verblijfplaats.Adresregel2(dest.GemeenteVanInschrijving),
+                //        Adresregel3 = dest.Verblijfplaats.Adresregel3(),
+                //        Land = dest.Verblijfplaats.Land()
+                //    };
+                //}
             })
             ;
 

@@ -17,17 +17,6 @@ public static class AdresregelsMapper
         };
     }
 
-    public static string? Adresregel1(this AbstractVerblijfplaatsBeperkt verblijfplaats)
-    {
-        return verblijfplaats switch
-        {
-            AdresBeperkt a => a.Adresregel1(),
-            LocatieBeperkt l => l.Adresregel1(),
-            VerblijfplaatsBuitenlandBeperkt b => b.Adresregel1(),
-            _ => null
-        };
-    }
-
     private static string? Adresregel1(this Adres verblijfplaats)
     {
         return verblijfplaats.Verblijfadres.Adresregel1();
@@ -138,17 +127,6 @@ public static class AdresregelsMapper
         };
     }
 
-    public static string? Adresregel2(this AbstractVerblijfplaatsBeperkt verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
-    {
-        return verblijfplaats switch
-        {
-            AdresBeperkt a => a.Adresregel2(gemeenteVanInschrijving),
-            LocatieBeperkt l => l.Adresregel2(gemeenteVanInschrijving),
-            VerblijfplaatsBuitenlandBeperkt b => b.Adresregel2(),
-            _ => null
-        };
-    }
-
     private static string? Adresregel2(this Adres verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
     {
         return verblijfplaats.Verblijfadres.Adresregel2(gemeenteVanInschrijving);
@@ -214,15 +192,6 @@ public static class AdresregelsMapper
         };
     }
 
-    public static string? Adresregel3(this AbstractVerblijfplaatsBeperkt verblijfplaats)
-    {
-        return verblijfplaats switch
-        {
-            VerblijfplaatsBuitenlandBeperkt b => b.Verblijfadres?.Adresregel3(),
-            _ => null
-        };
-    }
-
     private static string? Adresregel3(this VerblijfadresBuitenland adres)
     {
         return
@@ -239,15 +208,6 @@ public static class AdresregelsMapper
         return verblijfplaats switch
         {
             VerblijfplaatsBuitenland b => b.Verblijfadres.Land(),
-            _ => null
-        };
-    }
-
-    public static Waardetabel? Land(this AbstractVerblijfplaatsBeperkt verblijfplaats)
-    {
-        return verblijfplaats switch
-        {
-            VerblijfplaatsBuitenlandBeperkt b => b.Verblijfadres?.Land(),
             _ => null
         };
     }
