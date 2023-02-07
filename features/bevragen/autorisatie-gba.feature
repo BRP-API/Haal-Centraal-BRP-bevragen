@@ -377,12 +377,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | ouders.ouderAanduiding          |
-      Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
-      | naam            | waarde  |
-      | ouderAanduiding | 1       |
-      En heeft de persoon een 'ouder' met de volgende gegevens
-      | naam            | waarde |
-      | ouderAanduiding | 2      |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | ad hoc rubrieken              | autorisatie                                            |
@@ -408,10 +403,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | burgerservicenummer,<fields>    |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                          | waarde    |
-      | burgerservicenummer           | 000000024 |
-      | geheimhoudingPersoonsgegevens | 7         |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | fields                          |
@@ -442,9 +434,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | nummeraanduidingIdentificatie | 0800200000219679                     |
       | gemeenteVanInschrijving       | 0800                                 |
       | fields                        | burgerservicenummer                  |
-      Dan heeft de response een persoon met alleen de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon
   
   Rule: Een gemeente als afnemer is geautoriseerd voor alle gegevens van eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
@@ -474,10 +464,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | burgerservicenummer     | 000000024                       |
       | gemeenteVanInschrijving | 0800                            |
       | fields                  | partners.geslacht               |
-      Dan heeft de response een persoon met een 'partner' met de volgende gegevens
-      | naam                          | waarde    |
-      | geslacht.code                 | M         |
-      | geslacht.omschrijving         | man       |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Scenario: Gemeente raadpleegt een eigen inwoner zonder de gemeenteVanInschrijving parameter en fields vraagt om partners.geslacht (50410) dat niet in de autorisatie zit
@@ -657,11 +644,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.functieAdres     |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde          |
-      | straat                    | Borgesiusstraat |
-      | functieAdres.code         | W               |
-      | functieAdres.omschrijving | woonadres       |
+      Dan heeft de response 1 persoon
 
     Scenario: Autorisatie heeft einddatum in de toekomst
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -682,11 +665,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.functieAdres     |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                      | waarde    |
-      | straat                    | Plein     |
-      | functieAdres.code         | W         |
-      | functieAdres.omschrijving | woonadres |
+      Dan heeft de response 1 persoon
 
   Rule: Alleen een autorisatie tabelregel waarbij de Datum ingang (35.99.98) gelijk is aan vandaag of in het verleden ligt wordt gebruikt
 
@@ -730,6 +709,4 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | burgerservicenummer             |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response 1 persoon

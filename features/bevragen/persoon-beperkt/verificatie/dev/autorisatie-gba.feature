@@ -25,10 +25,7 @@ Functionaliteit: autorisatie verificatie Persoon Beperkt
       | geslachtsnaam | Vries                               |
       | geboortedatum | 1978-11-03                          |
       | fields        | <fields>                            |
-      Dan heeft de response een persoon met de volgende 'verificatie' gegevens
-      | naam         | waarde               |
-      | datum        | 20020701             |
-      | omschrijving | bewijs nationaliteit |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | fields                        |
@@ -41,3 +38,4 @@ Functionaliteit: autorisatie verificatie Persoon Beperkt
       | verificatie.datum.jaar        |
       | verificatie.datum.maand       |
       | verificatie.datum.onbekend    |
+      

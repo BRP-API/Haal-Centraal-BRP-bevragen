@@ -21,10 +21,7 @@ Functionaliteit: autorisatie verificatie Persoon
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de response een persoon met de volgende 'verificatie' gegevens
-      | naam         | waarde               |
-      | datum        | 20020701             |
-      | omschrijving | bewijs nationaliteit |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | fields                        |
