@@ -760,9 +760,9 @@ async function executeSql(client, sqlData) {
 
 async function executeSqlStatements(sqlData) {
     if (sqlData !== undefined && pool !== undefined) {
-        let client;
+        const client = await pool.connect();
         try {
-            client = await pool.connect();
+            await client.query('BEGIN');
 
             let adres_id;
             for(const sqlDataElement of sqlData) {
@@ -778,9 +778,12 @@ async function executeSqlStatements(sqlData) {
                     adres_id = sqlDataElement.ids.adres_id;
                 }
             }
+
+            await client.query('COMMIT');
         }
         catch(ex) {
             console.log(ex);
+            await client.query('ROLLBACK');
         }
         finally {
             if(client !== undefined){
