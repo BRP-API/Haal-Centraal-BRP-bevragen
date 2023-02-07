@@ -1220,6 +1220,9 @@
             "adresseerbaarObjectIdentificatie" : {
               "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
             },
+            "nummeraanduidingIdentificatie" : {
+              "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
+            },
             "datumAanvangAdresBuitenland" : {
               "$ref" : "#/components/schemas/GbaDatum"
             },
@@ -1234,9 +1237,6 @@
             },
             "naamOpenbareRuimte" : {
               "$ref" : "#/components/schemas/NaamOpenbareRuimte"
-            },
-            "nummeraanduidingIdentificatie" : {
-              "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
             }
           }
         } ]

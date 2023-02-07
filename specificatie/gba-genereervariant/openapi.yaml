@@ -939,6 +939,8 @@ components:
         properties:
           adresseerbaarObjectIdentificatie:
             $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+          nummeraanduidingIdentificatie:
+            $ref: '#/components/schemas/NummeraanduidingIdentificatie'
           datumAanvangAdresBuitenland:
             $ref: '#/components/schemas/GbaDatum'
           datumAanvangAdreshouding:
@@ -949,8 +951,6 @@ components:
             $ref: '#/components/schemas/Waardetabel'
           naamOpenbareRuimte:
             $ref: '#/components/schemas/NaamOpenbareRuimte'
-          nummeraanduidingIdentificatie:
-            $ref: '#/components/schemas/NummeraanduidingIdentificatie'
     AdresseerbaarObjectIdentificatie:
       pattern: "^[0-9]{16}$"
       type: string
