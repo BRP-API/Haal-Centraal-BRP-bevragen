@@ -83,7 +83,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                         |
       | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                           |
       | status   | 403                                                                                 |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): voorvoegsel, geslacht. |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): geslacht, voorvoegsel. |
       | code     | unauthorizedParameter                                                               |
       | instance | /haalcentraal/api/brp/personen                                                      |
 
