@@ -60,7 +60,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                      |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
-      | title    | U bent niet geautoriseerd voor deze operatie.               |
+      | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
       | status   | 403                                                         |
       | detail   | Niet geautoriseerd voor ad hoc bevragingen.                 |
       | code     | unauthorized                                                |
@@ -420,7 +420,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
     dan wordt niet gekeken naar de autorisatie van de afnemer
 
-    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters maar zoekt alleen eigen inwoners
+    Scenario: Gemeente is niet geautoriseerd voor de zoekparameters maar zoekt alleen eigen inwoners met parameter gemeenteVanInschrijving
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |
@@ -428,6 +428,12 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0800                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+      | 0800                 | 0800200000219679                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
