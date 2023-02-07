@@ -75,7 +75,7 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | ouders                  |
     | verblijfplaats          |
 
-  Abstract Scenario: geraadpleegde persoons is opgeschort met reden "<opschorting>" en met fields gevraafde velden worden wel geleverd 
+  Abstract Scenario: geraadpleegde persoon is opgeschort met reden "<opschorting>" en met fields gevraagde velden worden wel geleverd 
     Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
     | anummer (01.10) | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
     | 9876543210      | Anna              | Maassen               | 19630716              | V                           |
