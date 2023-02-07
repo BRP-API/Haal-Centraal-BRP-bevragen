@@ -255,6 +255,8 @@ components:
           properties:
             adresseerbaarObjectIdentificatie:
               $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+            nummeraanduidingIdentificatie:
+              $ref: '#/components/schemas/NummeraanduidingIdentificatie'
             datumAanvangAdresBuitenland:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
             datumAanvangAdreshouding:
@@ -265,8 +267,6 @@ components:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             naamOpenbareRuimte:
               $ref: '#/components/schemas/NaamOpenbareRuimte'
-            nummeraanduidingIdentificatie:
-              $ref: '#/components/schemas/NummeraanduidingIdentificatie'
     VerblijfplaatsBuitenlandInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
