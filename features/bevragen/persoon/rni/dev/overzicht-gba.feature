@@ -365,7 +365,7 @@ Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een 
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder 'rni' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | fields                      | sub titel              |
