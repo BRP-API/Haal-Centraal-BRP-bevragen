@@ -9,8 +9,8 @@ Rule: nummeraanduiding identificatie is een verplichte parameter
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-    | 0599          | 0599200000219679                           |
+    | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+    | 0599                 | 0599200000219679                           |
     Als personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -31,8 +31,8 @@ Rule: nummeraanduiding identificatie is een verplichte parameter
 
   Scenario: Er zijn meerdere personen ingeschreven op het adres met de opgegeven nummeraanduiding identificatie
     Gegeven een adres heeft de volgende gegevens
-    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-    | 0518          | 0518200000617227                           |
+    | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+    | 0518                 | 0518200000617227                           |
     En de persoon met burgerservicenummer '000000024' is ingeschreven op het adres met de volgende gegevens
     | gemeente van inschrijving (09.10) |
     | 0518                              |
@@ -59,11 +59,11 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-    | 0599          | 0599200051001502                           |
-    En de persoon heeft de volgende 'overlijden' gegevens
-    | datum overlijden (08.10) |
-    | 20180526                 |
+    | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+    | 0599                 | 0599200051001502                           |
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde |
+    | reden opschorting bijhouding (67.20) | O      |
     Als personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -74,6 +74,10 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000025 |
+    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |
 
 Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 
@@ -82,8 +86,8 @@ Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om 
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-    | 0599          | 0599200051001502                           |
+    | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+    | 0599                 | 0599200051001502                           |
     Als personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
@@ -100,8 +104,8 @@ Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om 
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | identificatiecode nummeraanduiding (11.90) |
-    | 0599          | 0599200051001502                           |
+    | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
+    | 0599                 | 0599200051001502                           |
     Als personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |

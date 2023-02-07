@@ -104,4 +104,3 @@ Functionaliteit: leveren van een datum
         | datum.type         | DatumOnbekend |
         | datum.onbekend     | true          |
         | datum.langFormaat  | onbekend      |
-        | indicatieOverleden | true          |
