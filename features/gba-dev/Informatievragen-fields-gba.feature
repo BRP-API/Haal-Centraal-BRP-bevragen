@@ -153,23 +153,6 @@ Functionaliteit: vertalen van gevraagde samengestelde of afgeleide velden naar l
       | geboorte.datum   | 19960229 |
       | overlijden.datum | 20151001 |
 
-  Rule: wanneer gevraagd wordt om indicatieOverleden, wordt overlijden.datum geleverd
-
-    Scenario: met fields is gevraagd om indicatieOverleden van een overleden persoon
-      Gegeven de persoon met burgerservicenummer '000000267' heeft de volgende 'overlijden' gegevens
-      | naam                      | waarde       |
-      | datum overlijden (08.10)  | 20151001     |
-      | plaats overlijden (08.20) | Buenos Aires |
-      | land overlijden (08.30)   | 7015         |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000267                       |
-      | fields              | indicatieOverleden              |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam             | waarde   |
-      | overlijden.datum | 20151001 |
-
 #  Rule: wanneer een veld van verblijfplaats wordt gevraagd, worden de velden geleverd die nodig zijn voor het bepalen van het type verblijfplaats
 #    - dit betreft alle velden uit groepen 11 (adres), 12 (locatie) en land, regel 1, regel 2 en regel 3 van groep 13 (verblijf buitenland)
 
