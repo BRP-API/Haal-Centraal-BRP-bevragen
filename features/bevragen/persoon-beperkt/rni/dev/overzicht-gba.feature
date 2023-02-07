@@ -195,7 +195,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
 
 Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een rni gegevensgroep veld met de fields parameter worden genegeerd
 
-  Abstract Scenario: <sub titel> wordt gevraagd en hele categorie persoon is in onderzoek
+  Abstract Scenario: <sub titel> wordt gevraagd en een RNI-deelnemer heeft de persoonsgegevens aangeleverd
     Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
     | naam                         | waarde                                      |
     | geslachtsnaam (02.40)        | Jansen                                      |
@@ -211,8 +211,8 @@ Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een 
     Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
-    | fields                      | sub titel              |
-    | rni.deelnemer               | Eén rni veld           |
-    | rni.deelnemer.code          | Eén rni veld           |
-    | rni.deelnemer,rni.categorie | Meerdere rni velden    |
-    | rni                         | rni gegevensgroep veld |
+    | fields                      | sub titel               |
+    | rni.deelnemer               | RNI veld deelnemer      |
+    | rni.deelnemer.code          | RNI veld deelnemer.code |
+    | rni.deelnemer,rni.categorie | Meerdere RNI velden     |
+    | rni                         | RNI gegevensgroep veld  |
