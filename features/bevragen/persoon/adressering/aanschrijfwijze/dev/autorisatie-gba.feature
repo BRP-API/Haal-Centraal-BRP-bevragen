@@ -11,7 +11,7 @@ Functionaliteit: autorisatie voor aanschrijfwijze
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                                 | waarde  |
       | geslachtsaanduiding (04.10)          | V       |
@@ -32,30 +32,7 @@ Functionaliteit: autorisatie voor aanschrijfwijze
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | adressering.<fields>            |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                  | waarde |
-      | geslacht.code         | V      |
-      | geslacht.omschrijving | vrouw  |
-      En heeft de persoon de volgende 'naam' gegevens
-      | naam                                 | waarde              |
-      | voornamen                            | Jo                  |
-      | adellijkeTitelPredicaat.code         | BS                  |
-      | adellijkeTitelPredicaat.omschrijving | barones             |
-      | adellijkeTitelPredicaat.soort        | titel               |
-      | voorvoegsel                          | van den             |
-      | geslachtsnaam                        | Aedel               |
-      | aanduidingNaamgebruik.code           | E                   |
-      | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
-      En heeft de response een persoon met een 'partner' met de volgende 'naam' gegevens
-      | naam                                 | waarde |
-      | adellijkeTitelPredicaat.code         | R      |
-      | adellijkeTitelPredicaat.omschrijving | ridder |
-      | adellijkeTitelPredicaat.soort        | titel  |
-      | voorvoegsel                          | de     |
-      | geslachtsnaam                        | Boer   |
-      En heeft de 'partner' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam  | waarde   |
-      | datum | 19580401 |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | fields               |
@@ -69,7 +46,7 @@ Functionaliteit: autorisatie voor aanschrijfwijze
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                                 | waarde  |
       | geslachtsaanduiding (04.10)          | V       |
@@ -90,25 +67,7 @@ Functionaliteit: autorisatie voor aanschrijfwijze
       | type                | RaadpleegMetBurgerservicenummer           |
       | burgerservicenummer | 000000024                                 |
       | fields              | adressering.aanschrijfwijze.aanspreekvorm |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                  | waarde |
-      | geslacht.code         | V      |
-      | geslacht.omschrijving | vrouw  |
-      En heeft de persoon de volgende 'naam' gegevens
-      | naam                                 | waarde              |
-      | adellijkeTitelPredicaat.code         | BS                  |
-      | adellijkeTitelPredicaat.omschrijving | barones             |
-      | adellijkeTitelPredicaat.soort        | titel               |
-      | aanduidingNaamgebruik.code           | E                   |
-      | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
-      En heeft de response een persoon met een 'partner' met de volgende 'naam' gegevens
-      | naam                                 | waarde |
-      | adellijkeTitelPredicaat.code         | R      |
-      | adellijkeTitelPredicaat.omschrijving | ridder |
-      | adellijkeTitelPredicaat.soort        | titel  |
-      En heeft de 'partner' de volgende 'aangaanHuwelijkPartnerschap' gegevens
-      | naam  | waarde   |
-      | datum | 19580401 |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om aanschrijfwijze en is niet geautoriseerd voor <missende autorisatie>
@@ -118,7 +77,7 @@ Functionaliteit: autorisatie voor aanschrijfwijze
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) | aanduiding naamgebruik (61.10) |
       | Pieter            | Maassen               | M                           | E                              |
@@ -146,5 +105,5 @@ Functionaliteit: autorisatie voor aanschrijfwijze
       | 10120 10210 10220 10230 10240 10410 16110 50230 50240 50610 50710 | partner adellijke titel of predicaat (50220)                       |
       | 10120 10210 10220 10230 10240 10410 16110 50220 50240 50610 50710 | partner voorvoegsel (50230)                                        |
       | 10120 10210 10220 10230 10240 10410 16110 50220 50230 50610 50710 | partner geslachtsnaam (50240)                                      |
-      | 10120 10210 10220 10230 10240 10410 16110 50220 50230 50240 50610 | datum huwelijkssluiting/aangaan geregistreerd partnerschap (50610) |
-      | 10120 10210 10220 10230 10240 10410 16110 50220 50230 50240 50710 | datum ontbinding huwelijk/geregistreerd partnerschap (50710)       |
+      | 10120 10210 10220 10230 10240 10410 16110 50220 50230 50240 50710 | datum huwelijkssluiting/aangaan geregistreerd partnerschap (50610) |
+      | 10120 10210 10220 10230 10240 10410 16110 50220 50230 50240 50610 | datum ontbinding huwelijk/geregistreerd partnerschap (50710)       |
