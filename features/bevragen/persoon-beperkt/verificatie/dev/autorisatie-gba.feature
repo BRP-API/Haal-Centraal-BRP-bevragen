@@ -7,7 +7,7 @@ Functionaliteit: autorisatie verificatie Persoon Beperkt
     Abstract Scenario: Afnemer vraagt om <fields> en heeft geen verificatie in de autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120                          | N                        | 20201128                |
+      | 010240 010310                   | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
