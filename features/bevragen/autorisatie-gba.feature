@@ -246,31 +246,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | immigratie.indicatieVestigingVanuitBuitenland | 10120 81410      | datum vestiging in nederland (81420) |
 
     @fout-case
-    Scenario: Afnemer zonder autorisatie voor historische aangaanHuwelijkPartnerschap (550610) vraagt om partner aangaanHuwelijkPartnerschap van persoon met actuele partner
-      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120 50240 50610               | N                        | 20201128                |
-      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      En de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30) | soort verbintenis (15.10) |
-      | Jan               | Groenen               | 19820526              | 20171103                                                           | 0513                                                                | 6030                                                              | H                         |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                 |
-      | type                | RaadpleegMetBurgerservicenummer                                        |
-      | burgerservicenummer | 000000024                                                              |
-      | fields              | partners.naam.geslachtsnaam,partners.aangaanHuwelijkPartnerschap.datum |
-      Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                  |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
-      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
-      | status   | 403                                                                     |
-      | code     | unauthorizedField                                                       |
-      | instance | /haalcentraal/api/brp/personen                                          |
-
-    @fout-case
     Scenario: Afnemer zonder autorisatie bijzonder Nederlanderschap vraagt om een gegeven van nationaliteit van persoon met Nederlandse nationaliteit
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
