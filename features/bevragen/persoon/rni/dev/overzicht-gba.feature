@@ -11,9 +11,10 @@ Functionaliteit: GBA persoon : leveren van RNI-deelnemer gegevens
 
   Achtergrond:
     Gegeven landelijke tabel "RNI-deelnemerstabel" heeft de volgende waarden
-    | code | omschrijving                                      |
-    | 0101 | Belastingdienst (inzake heffingen en toeslagen)   |
-    | 0201 | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+    | code | omschrijving                                                       |
+    | 0101 | Belastingdienst (inzake heffingen en toeslagen)                    |
+    | 0201 | Sociale Verzekeringsbank (inzake AOW, Anw en AKW)                  |
+    | 0501 | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) |
 
 Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationaliteit), 06 (Overlijden) en/of 08 (Verblijfplaats) worden geleverd wanneer één of meerdere velden uit die categoriën wordt gevraagd
 
@@ -118,10 +119,14 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | verblijfplaats type       | waarde | omschrijving | fields                                |
-    | verblijfplaats buitenland | 5010   | België       | verblijfplaats                        |
-    | verblijfplaats onbekend   | 0000   | Onbekend     | verblijfplaats.verblijfadres.postcode |
-    | verblijfplaats buitenland | 5010   | België       | verblijfplaats.verblijfadres,rni      |
+    | verblijfplaats type       | waarde | omschrijving | fields                                    |
+    | verblijfplaats buitenland | 5010   | België       | verblijfplaats                            |
+    | verblijfplaats onbekend   | 0000   | Onbekend     | verblijfplaats.verblijfadres.postcode     |
+    | verblijfplaats buitenland | 5010   | België       | verblijfplaats.verblijfadres,rni          |
+    | verblijfplaats buitenland | 5010   | België       | adressering                               |
+    | verblijfplaats buitenland | 5010   | België       | adressering.adresregel1                   |
+    | verblijfplaats buitenland | 5010   | België       | adressering.land                          |
+    | verblijfplaats buitenland | 5010   | België       | adressering.land.omschrijving             |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (<verblijfplaats type>) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
@@ -151,6 +156,40 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | verblijfplaats type | naam gba veld               | waarde   | naam veld           | fields                                           |
     | locatie             | locatiebeschrijving (12.10) | woonboot | locatiebeschrijving | verblijfplaats.verblijfadres.land                |
     | adres               | straatnaam (11.10)          | Spui     | straat              | verblijfplaats.verblijfadres.locatiebeschrijving |
+
+  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 en <fields> wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
+    | naam                         | waarde                               |
+    | rni-deelnemer (88.10)        | 0201                                 |
+    | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | gemeentecode (92.10) | straatnaam (11.10) |
+    | 0518                 | Spui               |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000036                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met een 'rni' met de volgende gegevens
+    | naam                   | waarde                                            |
+    | deelnemer.code         | 0201                                              |
+    | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+    | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
+    | categorie              | Verblijfplaats                                    |
+
+    Voorbeelden:
+    | fields                                                  |
+    | gemeenteVanInschrijving                                 |
+    | datumInschrijvingInGemeente                             |
+    | datumInschrijvingInGemeente.type                        |
+    | datumInschrijvingInGemeente.datum                       |
+    | datumInschrijvingInGemeente.langFormaat                 |
+    | immigratie                                              |
+    | immigratie.datumVestigingInNederland                    |
+    | immigratie.datumVestigingInNederland.type               |
+    | immigratie.vanuitVerblijfplaatsOnbekend                 |
+    | immigratie.inOnderzoek                                  |
+    | immigratie.inOnderzoek.datumIngangOnderzoek.langFormaat |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -192,6 +231,35 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | fields                  |
     | naam,verblijfplaats     |
     | naam,verblijfplaats,rni |
+
+  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor een categorie en een veld uit een andere categorie wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+    | naam                         | waarde                                      |
+    | voornamen (02.10)            | Peter                                       |
+    | rni-deelnemer (88.10)        | 0101                                        |
+    | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | naam                         | waarde                               |
+    | land (13.10)                 | 5010                                 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000024                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam              | waarde |
+    | land.code         | 5010   |
+    | land.omschrijving | België |
+
+    Voorbeelden:
+    | fields                                 |
+    | verblijfplaats                         |
+    | verblijfplaats.verblijfadres           |
+    | verblijfplaats.verblijfadres.land      |
+    | verblijfplaats.verblijfadres.land.code |
+    | verblijfplaats.verblijfadres.regel1    |
+    | adressering.adresregel1                |
+    | adressering.land                       |
 
   Abstract Scenario: persoon heeft meerdere nationaliteiten aangeleverd door RNI deelnemer
     Gegeven de persoon met burgerservicenummer '000000140' heeft een 'nationaliteit' met de volgende gegevens
@@ -254,7 +322,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam          | waarde |
     | voornamen     | Peter  |
     | geslachtsnaam | Jansen |
-    En heeft de persoon geen 'rni' gegevens
 
     Voorbeelden:
     | fields   |
@@ -277,7 +344,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | burgerservicenummer | 000000048       |
     | <naam veld 1>       | <waarde veld 1> |
     | <naam veld 2>       | <waarde veld 2> |
-    En heeft de persoon geen 'rni' gegevens
 
     Voorbeelden:
     | naam gba veld                        | waarde gba veld | naam veld 1                      | waarde veld 1 | naam veld 2                              | waarde veld 2 | fields                  |
@@ -299,7 +365,7 @@ Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een 
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder 'rni' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | fields                      | sub titel              |
