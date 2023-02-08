@@ -174,9 +174,9 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     En de persoon met burgerservicenummer '000000035' heeft de volgende gegevens
     | geboortedatum (03.10) | geslachtsnaam (02.40) |
     | 19830526              | Jansen                |
-    En de persoon heeft de volgende 'overlijden' gegevens
-    | datum overlijden (08.10) |
-    | 20220301                 |
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde |
+    | reden opschorting bijhouding (67.20) | O      |
     Als personen wordt gezocht met de volgende parameters
     | naam                       | waarde                              |
     | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -191,7 +191,10 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     En heeft de response een persoon met de volgende gegevens
     | naam                          | waarde    |
     | burgerservicenummer           | 000000035 |
-    | overlijden.indicatieOverleden | true      |
+    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |
 
 Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 

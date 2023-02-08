@@ -239,6 +239,9 @@ namespace BrpProxy.Validators
                 switch (field)
                 {
                     case "geboorte.datum":
+                    case "kinderen.geboorte.datum":
+                    case "ouders.geboorte.datum":
+                    case "overlijden.datum":
                     case "partners.aangaanHuwelijkPartnerschap.datum":
                     case "partners.geboorte.datum":
                     case "verblijfplaats.type":
@@ -268,6 +271,14 @@ namespace BrpProxy.Validators
             .Contains(field);
         }
 
+        private static bool IsObjectField(this string field)
+        {
+            return new[]
+            {
+                "geboorte"
+            }
+            .Contains(field);
+        }
         private static bool IsPersoonField(this string field)
         {
             return new[]
@@ -299,6 +310,25 @@ namespace BrpProxy.Validators
             .Contains(field);
         }
 
+        private static bool IsCollectionFieldFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "kinderen",
+                "ouders"
+            }
+            .Contains(fieldPart);
+        }
+
+        private static bool IsOverlijdenFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "overlijden"
+            }
+            .Contains(fieldPart);
+        }
+
         private static bool IsVerblijfplaatsFieldPart(this string fieldPart)
         {
             return new[]
@@ -326,7 +356,9 @@ namespace BrpProxy.Validators
                 switch (fieldParts.Length)
                 {
                     case 1:
-                        if (fieldParts[0].IsVerblijfplaatsFieldPart())
+                        if (fieldParts[0].IsVerblijfplaatsFieldPart() ||
+                            fieldParts[0].IsCollectionFieldFieldPart() ||
+                            fieldParts[0].IsOverlijdenFieldPart())
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek");
                         }
@@ -358,6 +390,11 @@ namespace BrpProxy.Validators
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
                             retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
                         }
+                        else if (fieldParts[0].IsCollectionFieldFieldPart() &&
+                                 fieldParts[1].IsObjectField())
+                        {
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
+                        }
                         else
                         {
                             if (fieldParts[0].IsVerblijfplaatsFieldPart())
@@ -382,6 +419,21 @@ namespace BrpProxy.Validators
                 }
             }
             return retval.Distinct();
+        }
+
+        public static IEnumerable<string> AddAlwaysReturnedFields(this IEnumerable<string> fields)
+        {
+            var retval = new List<string>(fields);
+
+            retval.AddRange(new[]
+            {
+                "geheimhoudingPersoonsgegevens",
+                "opschortingBijhouding",
+                "overlijden.indicatieOverleden",
+                "rni"
+            });
+
+            return retval;
         }
     }
 }

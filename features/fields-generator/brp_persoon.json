@@ -16,18 +16,18 @@
         "type",
         "inOnderzoek",
         "geheimhoudingPersoonsgegevens",
-        "opschortingBijhouding.reden",
-        "jaar",
-        "maand",
-        "onbekend",
-        "langFormaat"
+        "reden",
+        "rni",
+        "verificatie"
     ],
-    "dateComponents": [
+    "autoComponents": [
         "AbstractDatum",
         "VolledigeDatum",
         "DatumOnbekend",
         "JaarDatum",
-        "JaarMaandDatum"
+        "JaarMaandDatum",
+        "Waardetabel",
+        "AdellijkeTitelPredicaatType"
     ],
     "sourceYaml": "/specificatie/genereervariant/openapi.yaml",
     "fieldslistFolder": "/features/"

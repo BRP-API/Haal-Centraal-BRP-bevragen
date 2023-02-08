@@ -1,14 +1,15 @@
 # language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
 
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) | datum aanvang adreshouding (10.30) |
-      | 0599                              | 19860801                           |
+      | 0800                              | 19860801                           |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                         | waarde          |
-      | gemeentecode (92.10)         | 0599            |
+      | gemeentecode (92.10)         | 0800            |
       | straatnaam (11.10)           | Borgesiusstraat |
       | huisnummer (11.20)           | 103             |
       | huisletter (11.30)           | b               |
@@ -28,7 +29,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                             |
       | type                | RaadpleegMetBurgerservicenummer                    |
@@ -39,8 +40,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: verblijfplaats.<gevraagd veld>         |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -69,7 +69,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                           |
       | type                | RaadpleegMetBurgerservicenummer                  |
@@ -80,8 +80,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: verblijfplaats.verblijfadres           |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -106,7 +105,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                             |
       | type                | RaadpleegMetBurgerservicenummer    |
@@ -117,8 +116,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: verblijfplaats                         |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -140,8 +138,11 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | datumIngangGeldigheid            | 10120 80910 81010 81030 81110 81150 81160 81210 81310 81320 81330 81340 81350 | 88510                |
 
 
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle verblijfplaatsgegevens van eigen inwoners
-
+  Rule: Een gemeente als afnemer is geautoriseerd voor alle verblijfplaats gegevens van eigen inwoners
+    Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
+     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
+     dan wordt niet gekeken naar de autorisatie van de afnemer
+     
     Scenario: Gemeente vraagt van een eigen inwoner om velden in verblijfplaats en er zit geen enkel verblijfplaatsgegeven in de autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
@@ -149,16 +150,14 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                               |
-      | type                | RaadpleegMetBurgerservicenummer                                                      |
-      | burgerservicenummer | 000000024                                                                            |
-      | fields              | verblijfplaats.verblijfadres.korteStraatnaam,verblijfplaats.verblijfadres.huisnummer |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam       | waarde          |
-      | straat     | Borgesiusstraat |
-      | huisnummer | 103             |
+      | naam                    | waarde                                                                               |
+      | type                    | RaadpleegMetBurgerservicenummer                                                      |
+      | burgerservicenummer     | 000000024                                                                            |
+      | gemeenteVanInschrijving | 0800                                                                                 |
+      | fields                  | verblijfplaats.verblijfadres.korteStraatnaam,verblijfplaats.verblijfadres.huisnummer |
+      Dan heeft de response 1 persoon
 
 
   Rule: Wanneer met fields een veld van verblijfplaats wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaats wordt bepaald, wordt een foutmelding gegeven
@@ -175,7 +174,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                          |
       | type                | RaadpleegMetBurgerservicenummer                 |
@@ -186,8 +185,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: verblijfplaats.functieAdres            |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -207,16 +205,13 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | verblijfplaats.datumVan         |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde          |
-      | straat                   | Borgesiusstraat |
-      | datumAanvangAdreshouding | 19860801        |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om datumVan en is niet geautoriseerd voor <missende autorisatie>
@@ -226,7 +221,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                      |
       | type                | RaadpleegMetBurgerservicenummer             |
@@ -237,8 +232,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
       | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
       | status   | 403                                                                     |
-      | detail   | De foutieve fields waarden zijn: verblijfplaats.datumVan                |
-      | code     | authorization                                                           |
+      | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
@@ -246,23 +240,21 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | 10120 81010 81110 81210 81310 81320 | datumAanvangAdreshouding (81030)    |
       | 10120 81010 81030 81110 81210 81310 | datumAanvangAdresBuitenland (81320) |
 
-    Scenario: Gemeente vraagt om datumVan van eigen inwoner en is niet geautoriseerd voor datumVan voor buitengemeentelijke personen
+    Scenario: Gemeente vraagt om datumVan van eigen inwoner en is niet geautoriseerd voor datumAanvangAdreshouding
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120 81010 81030 81110 81210 81310 | N                        | 20201128                |
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81110 81210 81310         | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0599   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | verblijfplaats.datumVan         |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde          |
-      | straat                   | Borgesiusstraat |
-      | datumAanvangAdreshouding | 19860801        |
+      | naam                    | waarde                          |
+      | type                    | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer     | 000000024                       |
+      | gemeenteVanInschrijving | 0800                            |
+      | fields                  | verblijfplaats.datumVan         |
+      Dan heeft de response 1 persoon
 
 
   Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
@@ -274,20 +266,13 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                 |
       | type                | RaadpleegMetBurgerservicenummer        |
       | burgerservicenummer | 000000024                              |
       | fields              | verblijfplaatsBinnenland.verblijfadres |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                 | waarde          |
-      | straat               | Borgesiusstraat |
-      | huisnummer           | 103             |
-      | huisletter           | b               |
-      | huisnummertoevoeging | 2               |
-      | postcode             | 2497BV          |
-      | woonplaats           | Scheveningen    |
+      Dan heeft de response 1 persoon
 
     Scenario: Afnemer vraagt om alleen binnengemeentelijke datumVan en is niet geautoriseerd voor verblijf buitenland
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -296,13 +281,10 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0518   |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                            |
       | type                | RaadpleegMetBurgerservicenummer   |
       | burgerservicenummer | 000000024                         |
       | fields              | verblijfplaatsBinnenland.datumVan |
-      Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-      | naam                     | waarde          |
-      | straat                   | Borgesiusstraat |
-      | datumAanvangAdreshouding | 19860801        |
+      Dan heeft de response 1 persoon

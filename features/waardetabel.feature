@@ -232,7 +232,6 @@ Functionaliteit: Waardetabel met code en omschrijving
       | fields              | overlijden.land                 |
       Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
       | naam               | waarde     |
-      | indicatieOverleden | true       |
       | land.code          | 1234       |
 
     Abstract Scenario: code voor <element> komt niet voor in de tabel <tabel>
@@ -282,7 +281,6 @@ Functionaliteit: Waardetabel met code en omschrijving
       | fields              | overlijden.plaats                  |
       Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
       | naam                | waarde            |
-      | indicatieOverleden  | true              |
       | plaats.omschrijving | 51° N.B. 4° O.L.  |
 
 

@@ -7,41 +7,41 @@ Functionaliteit: Zoek met postcode en huisnummer
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | postcode (11.60) | huisnummer (11.20) |
-    | 0599          | 2628HJ           | 2                  |
+    | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
+    | 0599                 | 2628HJ           | 2                  |
     En de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | postcode (11.60) | huisnummer (11.20) | huisletter (11.30) |
-    | 0599          | 2628HJ           | 2                  | A                  |
+    | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) | huisletter (11.30) |
+    | 0599                 | 2628HJ           | 2                  | A                  |
     En de persoon met burgerservicenummer '000000026' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | postcode (11.60) | huisnummer (11.20) | huisnummertoevoeging (11.40) |
-    | 0599          | 2628HJ           | 2                  | III                          |
+    | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) | huisnummertoevoeging (11.40) |
+    | 0599                 | 2628HJ           | 2                  | III                          |
     En de persoon met burgerservicenummer '000000027' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | postcode (11.60) | huisnummer (11.20) | aanduiding bij huisnummer (11.50) |
-    | 0599          | 2628HJ           | 2                  | to                                |
+    | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) | aanduiding bij huisnummer (11.50) |
+    | 0599                 | 2628HJ           | 2                  | to                                |
     En de persoon met burgerservicenummer '000000028' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | postcode (11.60) | huisnummer (11.20) |
-    | 0599          | 2629HJ           | 2                  |
-    En de persoon heeft de volgende 'overlijden' gegevens
-    | datum overlijden (08.10) |
-    | 20220301                 |
+    | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
+    | 0599                 | 2629HJ           | 2                  |
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde |
+    | reden opschorting bijhouding (67.20) | O      |
     En de persoon met burgerservicenummer '000000029' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0600                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | postcode (11.60) | huisnummer (11.20) |
-    | 0600          | 2630HJ           | 2                  |
+    | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
+    | 0600                 | 2630HJ           | 2                  |
 
 Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters. Postcode mag zowel met als zonder spatie tussen de cijfer- en letterdeel worden verstrekt.
 
@@ -138,6 +138,9 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | fields                     | burgerservicenummer         |
     Dan heeft de response 1 persoon
     En heeft de response een persoon met de volgende gegevens
-    | naam                          | waarde    |
-    | burgerservicenummer           | 000000028 |
-    | overlijden.indicatieOverleden | true      |
+    | naam                | waarde    |
+    | burgerservicenummer | 000000028 |
+    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |

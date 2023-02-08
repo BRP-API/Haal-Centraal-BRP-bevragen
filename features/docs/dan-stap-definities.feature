@@ -11,12 +11,16 @@ Functionaliteit: Dan stap definities
         "titel": "dit is de titel"
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een object met de volgende gegevens
       | naam  | waarde          |
       | titel | dit is de titel |
 
   Rule: En heeft het object de volgende '<gegevensgroep>' gegevens
 
+    @fout-case
     Scenario: En heeft het object de volgende 'invalidParams' gegevens
       Gegeven de response body is gelijk aan
       """
@@ -29,6 +33,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde                   |
+      | content-type | application/problem+json |
       Dan heeft de response een object met de volgende gegevens
       | naam   | waarde |
       | status | 400    |
@@ -49,6 +56,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
 
       Voorbeelden:
@@ -69,6 +79,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -95,6 +108,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
       | naam          | waarde |
       | geslachtsnaam | Jansen |
@@ -121,6 +137,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
       | naam                | waarde    |
       | burgerservicenummer | 000000013 |
@@ -149,6 +168,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
       | naam          | waarde    |
       | geslachtsnaam | Pietersen |
@@ -171,6 +193,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon zonder 'kind' gegevens
 
   Rule: Dan heeft de response een persoon zonder '<gegevensgroep>' gegevens
@@ -187,6 +212,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
 
       Voorbeelden:
@@ -211,6 +239,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
 
       Voorbeelden:
@@ -236,6 +267,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan <stap definitie met hetzelfde gedrag>
 
       Voorbeelden:
@@ -261,6 +295,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende 'naam' gegevens
       | naam          | waarde |
       | geslachtsnaam | Jansen |
@@ -293,6 +330,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -323,6 +363,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -355,6 +398,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -383,6 +429,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende 'geboorte' gegevens
       | naam  | waarde     |
       | datum | 2022-05-06 |
@@ -402,6 +451,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -421,6 +473,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -442,6 +497,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -465,6 +523,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -489,6 +550,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response een persoon met een 'partner' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -508,6 +572,9 @@ Functionaliteit: Dan stap definities
         "personen": []
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response 0 personen
 
     Scenario: Dan heeft de response 1 persoon
@@ -517,6 +584,21 @@ Functionaliteit: Dan stap definities
         "personen": [ {} ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
+      Dan heeft de response 1 persoon
+
+    Scenario: Dan heeft de response 1 persoon en persoon heeft geen gegevens
+      Gegeven de response body is gelijk aan
+      """
+      {
+        "personen": [ {} ]
+      }
+      """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response 1 persoon
       En heeft de response een persoon zonder gegevens
 
@@ -534,6 +616,9 @@ Functionaliteit: Dan stap definities
         ]
       }
       """
+      En de response headers is gelijk aan
+      | naam         | waarde           |
+      | content-type | application/json |
       Dan heeft de response 2 personen
       En heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
