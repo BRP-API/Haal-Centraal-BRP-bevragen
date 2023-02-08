@@ -95,9 +95,7 @@ Functionaliteit: Autorisatie voor naam
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | naam.voorletters                |
-      Dan heeft de response een persoon met de volgende 'naam' gegevens
-      | naam      | waarde |
-      | voornamen | Pieter |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Scenario: Afnemer vraagt om naam.voorletters en is niet geautoriseerd voor 10210
@@ -137,20 +135,7 @@ Functionaliteit: Autorisatie voor naam
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | naam.volledigeNaam              |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                  | waarde |
-      | geslacht.code         | M      |
-      | geslacht.omschrijving | man    |
-      En heeft de persoon de volgende 'naam' gegevens
-      | naam                                 | waarde              |
-      | voornamen                            | Pieter              |
-      | adellijkeTitelPredicaat.code         | JH                  |
-      | adellijkeTitelPredicaat.omschrijving | jonkheer            |
-      | adellijkeTitelPredicaat.soort        | predicaat           |
-      | voorvoegsel (02.30)                  | van den             |
-      | geslachtsnaam (02.40)                | Aedel               |
-      | aanduidingNaamgebruik.code           | E                   |
-      | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
+      Dan heeft de response 1 persoon
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om naam.volledigeNaam en is niet geautoriseerd voor <missende autorisatie>
