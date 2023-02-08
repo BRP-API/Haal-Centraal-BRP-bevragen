@@ -23,7 +23,7 @@ Functionaliteit: Autorisatie voor naam
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -55,7 +55,7 @@ Functionaliteit: Autorisatie voor naam
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -89,7 +89,7 @@ Functionaliteit: Autorisatie voor naam
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -105,7 +105,7 @@ Functionaliteit: Autorisatie voor naam
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -129,7 +129,7 @@ Functionaliteit: Autorisatie voor naam
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -145,7 +145,7 @@ Functionaliteit: Autorisatie voor naam
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode |        |
+      | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
