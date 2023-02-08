@@ -45,7 +45,7 @@ Functionaliteit: Persoon beperkt velden vragen met fields
   Abstract Scenario: 'indicatie geheim (70.10)' wordt gevraagd met '<fields>'
     En de persoon heeft de volgende 'inschrijving' gegevens
     | naam                     | waarde |
-    | indicatie geheim (70.10) | 6      |
+    | indicatie geheim (70.10) | 1      |
     Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -53,8 +53,9 @@ Functionaliteit: Persoon beperkt velden vragen met fields
     | geboortedatum | vandaag - 10 jaar                   |
     | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                          | waarde |
-    | geheimhoudingPersoonsgegevens | true   |
+    | naam                          | waarde    |
+    | burgerservicenummer           | 000000152 |
+    | geheimhoudingPersoonsgegevens | true      |
 
     Voorbeelden:
     | fields                                            |

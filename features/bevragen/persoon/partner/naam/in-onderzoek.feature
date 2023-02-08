@@ -67,7 +67,7 @@ Functionaliteit: Persoon: partner naam velden zijn in onderzoek
     | 050200                  | voorletters             | hele groep naam                                    |
     | 050210                  | voorletters             | voornamen                                          |
 
-  Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
+  Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                            | waarde                    |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
@@ -76,12 +76,12 @@ Functionaliteit: Persoon: partner naam velden zijn in onderzoek
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | <gevraagde fields>              |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met een 'partner' zonder 'naam' gegevens
 
     Voorbeelden:
-    | aanduiding in onderzoek | type                      | veld naam               | gevraagde fields                      |
-    | 050210                  | voornamen                 | voornamen               | partners.naam.voorvoegsel             |
-    | 050220                  | adellijke titel/predicaat | adellijkeTitelPredicaat | partners.naam.voornamen               |
-    | 050230                  | voorvoegsel geslachtsnaam | voorvoegsel             | partners.naam.geslachtsnaam           |
-    | 050240                  | geslachtsnaam             | geslachtsnaam           | partners.naam.adellijkeTitelPredicaat |
+    | aanduiding in onderzoek | type                      | fields                                |
+    | 050210                  | voornamen                 | partners.naam.voorvoegsel             |
+    | 050220                  | adellijke titel/predicaat | partners.naam.voornamen               |
+    | 050230                  | voorvoegsel geslachtsnaam | partners.naam.geslachtsnaam           |
+    | 050240                  | geslachtsnaam             | partners.naam.adellijkeTitelPredicaat |

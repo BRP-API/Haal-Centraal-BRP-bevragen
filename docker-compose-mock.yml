@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+
+  seq:
+    container_name: seq
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:80
+
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/opentelemetry-all-in-one:latest
+    ports:
+      - 13133:13133
+      - 16686:16686
+      - 4317:55680
+
+  brpproxy:
+    container_name: brpproxy
+    image: iswish/haal-centraal-brp-bevragen-proxy:2.0.13
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:5000
+      # - ClientCertificate__Name=client.localhost-client.p12
+      # - ClientCertificate__Password=changeit
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./src/config/BrpProxy/configuration/ocelot.json:/app/configuration/ocelot.json
+      - ./src/config/BrpProxy/mapping:/app/mapping
+      - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
+      - ./elastic:/app/elastic
+      # - ./src/config/BrpProxy/certificates:/app/certificates
+
+  gbamock:
+    container_name: gbamock
+    image: iswish/haal-centraal-brp-bevragen-gba-mock:2.0.2
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      #- ASPNETCORE_URLS=https://+:5011;http://+:5010
+      - ASPNETCORE_URLS=http://+:5010
+    ports:
+      - "5010:5010"
+      #- "5011:5011"
+    volumes:
+      #- ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      #- ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ./src/config/BrpService:/app/Data

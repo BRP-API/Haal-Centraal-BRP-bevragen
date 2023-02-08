@@ -10,8 +10,8 @@ Rule: Straat (niet hoofdlettergevoelig), huisnummer en gemeente van inschrijving
     | gemeente van inschrijving (09.10) |
     | 0599                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) |
-    | 0599          | Boterdiep          | 32                 |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) |
+    | 0599                 | Boterdiep          | 32                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -35,8 +35,8 @@ Rule: Straat (niet hoofdlettergevoelig), huisnummer en gemeente van inschrijving
     | gemeente van inschrijving (09.10) |
     | 0693                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) |
-    | 0693          | A                  | 14                 |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) |
+    | 0693                 | A                  | 14                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -54,8 +54,8 @@ Rule: Straat (niet hoofdlettergevoelig), huisnummer en gemeente van inschrijving
     | gemeente van inschrijving (09.10) |
     | 0518                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10)       | naam openbare ruimte (11.15) | huisnummer (11.20) |
-    | 0518          | Ln Copes van Cattenburch | Laan Copes van Cattenburch   | 39                 |
+    | gemeentecode (92.10) | straatnaam (11.10)       | naam openbare ruimte (11.15) | huisnummer (11.20) |
+    | 0518                 | Ln Copes van Cattenburch | Laan Copes van Cattenburch   | 39                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -75,14 +75,14 @@ Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toege
     | gemeente van inschrijving (09.10) |
     | 0518                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) |
-    | 0518          | Leyweg             | 62                 |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) |
+    | 0518                 | Leyweg             | 62                 |
     En de persoon met burgerservicenummer '000000027' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0518                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) |
-    | 0518          | Leyweg             | 62                 | e                  |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) |
+    | 0518                 | Leyweg             | 62                 | e                  |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -106,14 +106,14 @@ Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toege
     | gemeente van inschrijving (09.10) |
     | 0344                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) |
-    | 0344          | St. Jacobsstraat   | 401                | L                  | Toe                          |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisletter (11.30) | huisnummertoevoeging (11.40) |
+    | 0344                 | St. Jacobsstraat   | 401                | L                  | Toe                          |
     En de persoon met burgerservicenummer '000000029' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) |
     | 0363                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) | huisnummertoevoeging (11.40) |
-    | 0363          | Vitternkade        | 102                | II                           |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | huisnummertoevoeging (11.40) |
+    | 0363                 | Vitternkade        | 102                | II                           |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -138,17 +138,17 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
 
   Scenario: Zoek een overleden persoon
     Gegeven een adres heeft de volgende gegevens
-    | gemeente_code | straatnaam (11.10) | huisnummer (11.20) |
-    | 0363          | Afrikanerplein     | 2                  |
+    | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) |
+    | 0363                 | Afrikanerplein     | 2                  |
     En de persoon met burgerservicenummer '000000028' is ingeschreven op het adres met de volgende gegevens
     | gemeente van inschrijving (09.10) |
     | 0363                              |
     En de persoon met burgerservicenummer '000000029' is ingeschreven op het adres met de volgende gegevens
     | gemeente van inschrijving (09.10) |
     | 0363                              |
-    En de persoon heeft de volgende 'overlijden' gegevens
-    | datum overlijden (08.10) |
-    | 20080700                 |
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde |
+    | reden opschorting bijhouding (67.20) | O      |
     Als personen wordt gezocht met de volgende parameters
     | naam                       | waarde                                           |
     | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -164,6 +164,10 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     En heeft de response een persoon met alleen de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000029 |
+    En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde     |
+    | reden.code         | O          |
+    | reden.omschrijving | overlijden |
 
 Rule: Voor de straat parameter kan wildcard matching (niet hooflettergevoelig) worden toegepast.
       Er moet dan minimaal 7 letters (exclusief de wildcard "*" teken) worden opgegeven.
@@ -175,8 +179,8 @@ Rule: Voor de straat parameter kan wildcard matching (niet hooflettergevoelig) w
     | gemeente van inschrijving (09.10) |
     | 0518                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10)       | naam openbare ruimte (11.15) | huisnummer (11.20) |
-    | 0518          | Ln Copes van Cattenburch | Laan Copes van Cattenburch   | 39                 |
+    | gemeentecode (92.10) | straatnaam (11.10)       | naam openbare ruimte (11.15) | huisnummer (11.20) |
+    | 0518                 | Ln Copes van Cattenburch | Laan Copes van Cattenburch   | 39                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
@@ -199,8 +203,8 @@ Rule: Voor de straat parameter kan wildcard matching (niet hooflettergevoelig) w
     | gemeente van inschrijving (09.10) |
     | 0518                              |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | gemeente_code | straatnaam (11.10)       | naam openbare ruimte (11.15) | huisnummer (11.20) |
-    | 0518          | Ln Copes van Cattenburch | Laan Copes van Cattenburch   | 39                 |
+    | gemeentecode (92.10) | straatnaam (11.10)       | naam openbare ruimte (11.15) | huisnummer (11.20) |
+    | 0518                 | Ln Copes van Cattenburch | Laan Copes van Cattenburch   | 39                 |
     Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |

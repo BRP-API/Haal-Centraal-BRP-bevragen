@@ -100,7 +100,7 @@ Rule: vragen van een inOnderzoek gegevensgroep veld of één of meerdere velden 
     Voorbeelden:
     | fields                                                         | sub titel                          |
     | naam.inOnderzoek.datumIngangOnderzoek                          | Eén inOnderzoek veld               |
-    | naam.inOnderzoek.geslachtsnaam,inOnderzoek.burgerservicenummer | Meerdere inOndezoek velden         |
+    | naam.inOnderzoek.geslachtsnaam,inOnderzoek.burgerservicenummer | Meerdere inOnderzoek velden        |
     | naam.inOnderzoek                                               | Een inOnderzoek gegevensgroep veld |
 
   Scenario: een veld en niet bijbehorend inOnderzoek veld wordt gevraagd

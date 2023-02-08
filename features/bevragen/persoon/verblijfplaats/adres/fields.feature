@@ -15,7 +15,7 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | identificatiecode verblijfplaats (11.80)   | 0599010000208579 |
     | identificatiecode nummeraanduiding (11.90) | 0599200000219678 |
 
-  Scenario: 'datum aanvang adreshouding (10.30)' wordt gevraagd met field pad 'verblijfplaats.datumVan'
+  Abstract Scenario: 'datum aanvang adreshouding (10.30)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -28,12 +28,22 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | datumVan.datum       | 2015-08-08      |
     | datumVan.langFormaat | 8 augustus 2015 |
 
-  Scenario: 'datum ingang geldigheid (85.10)' wordt gevraagd met field pad 'verblijfplaats.datumIngangGeldigheid'
+    Voorbeelden:
+    | fields                              |
+    | verblijfplaats.datumVan             |
+    | verblijfplaats.datumVan.type        |
+    | verblijfplaats.datumVan.datum       |
+    | verblijfplaats.datumVan.langFormaat |
+    | verblijfplaats.datumVan.jaar        |
+    | verblijfplaats.datumVan.maand       |
+    | verblijfplaats.datumVan.onbekend    |
+    
+  Abstract Scenario: 'datum ingang geldigheid (85.10)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                               |
-    | type                | RaadpleegMetBurgerservicenummer      |
-    | burgerservicenummer | 000000152                            |
-    | fields              | verblijfplaats.datumIngangGeldigheid |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                              | waarde           |
     | type                              | Adres            |
@@ -41,6 +51,16 @@ Functionaliteit: Persoon: verblijfplaats binnenland (adres) velden vragen met fi
     | datumIngangGeldigheid.datum       | 2022-02-22       |
     | datumIngangGeldigheid.langFormaat | 22 februari 2022 |
 
+    Voorbeelden:
+    | fields                                           |
+    | verblijfplaats.datumIngangGeldigheid             |
+    | verblijfplaats.datumIngangGeldigheid.type        |
+    | verblijfplaats.datumIngangGeldigheid.datum       |
+    | verblijfplaats.datumIngangGeldigheid.langFormaat |
+    | verblijfplaats.datumIngangGeldigheid.jaar        |
+    | verblijfplaats.datumIngangGeldigheid.maand       |
+    | verblijfplaats.datumIngangGeldigheid.onbekend    |
+    
   Abstract Scenario: 'functie adres (10.10)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
