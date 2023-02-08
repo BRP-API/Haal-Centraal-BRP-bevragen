@@ -12,13 +12,19 @@ Functionaliteit: Fields vertalen van proxy naar gba voor aanschrijfwijze
       | voorvoegsel (02.30)                  | te        |
       | geslachtsnaam (02.40)                | Hoogh     |
       | aanduiding naamgebruik (61.10)       | E         |
-      En de persoon heeft een 'ex-partner' met de volgende gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | naam                                                               | waarde         |
       | voornamen (02.10)                                                  | Anna Catharina |
       | adellijke titel of predicaat (02.20)                               | BS             |
       | voorvoegsel (02.30)                                                | van den        |
       | geslachtsnaam (02.40)                                              | Aedel          |
       | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20010809       |
+      En de 'partner' is gewijzigd naar de volgende gegevens
+      | naam                                                               | waarde         |
+      | voornamen (02.10)                                                  | Anna Catharina |
+      | adellijke titel of predicaat (02.20)                               | BS             |
+      | voorvoegsel (02.30)                                                | van den        |
+      | geslachtsnaam (02.40)                                              | Aedel          |
       | datum ontbinding huwelijk/geregistreerd partnerschap (07.10)       | 20211109       |
 
   Rule: Voor adressering.aanschrijfwijze in fields moeten andere velden worden geleverd
