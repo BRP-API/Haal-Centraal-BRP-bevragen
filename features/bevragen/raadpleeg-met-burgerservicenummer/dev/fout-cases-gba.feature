@@ -1,12 +1,12 @@
 #language: nl
 
-Functionaliteit: Raadpleeg met burgerservicenummer - fout cases
+Functionaliteit: Raadpleeg met burgerservicenummer - fout cases GBA
 
 Rule: De burgerservicenummer parameter is een verplichte parameter
 
   @fout-case
   Scenario: De burgerservicenummer parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam   | waarde                          |
     | type   | RaadpleegMetBurgerservicenummer |
     | fields | burgerservicenummer             |
@@ -26,7 +26,7 @@ Rule: De burgerservicenummer parameter bevat een lijst met minimaal één burger
 
   @fout-case
   Abstract Scenario: De burgerservicenummer parameter bevat een lege lijst
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer |                                 |
@@ -45,7 +45,7 @@ Rule: De burgerservicenummer parameter bevat een lijst met minimaal één burger
 
   @fout-case
   Scenario: De burgerservicenummer parameter bevat een string van burgerservicenummers gescheiden door een komma
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                             | waarde                          |
     | type                             | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer (als string) | 999994086,999994086,999994086   |
@@ -66,7 +66,7 @@ Rule: Een burgerservicenummer is een string bestaande uit exact 9 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | <burgerservicenummers>          |
@@ -91,7 +91,7 @@ Rule: Een burgerservicenummer is een string bestaande uit exact 9 cijfers
 
   @fout-case
   Scenario: De burgerservicenummer parameter bevat meerdere ongeldige burgerservicenummers
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 1234567890,123456789,1234567890 |
@@ -113,7 +113,7 @@ Rule: De burgerservicenummer parameter bevat een lijst van maximaal 20 burgerser
 
   @fout-case
   Scenario: De burgerservicenummer parameter bevat meer dan 20 burgerservicenummers
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                                                                                                                                                            |
     | type                | RaadpleegMetBurgerservicenummer                                                                                                                                                                                   |
     | burgerservicenummer | 999999321,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802,999995492,999991802 |
@@ -134,7 +134,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                          |
     | type                    | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer     | 999999321,999995492             |
@@ -162,7 +162,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                          |
     | type                    | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer     | 999999321                       |

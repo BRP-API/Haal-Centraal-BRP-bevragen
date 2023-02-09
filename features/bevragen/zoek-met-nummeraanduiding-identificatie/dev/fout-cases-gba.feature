@@ -1,12 +1,12 @@
 #language: nl
 
-Functionaliteit: Zoek met nummeraanduiding identificatie - fout cases
+Functionaliteit: Zoek met nummeraanduiding identificatie - fout cases GBA
 
 Rule: nummeraanduidingIdentificatie is een verplichte parameter
 
   @fout-case
   Scenario: De nummeraanduidingIdentificatie parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam   | waarde                               |
     | type   | ZoekMetNummeraanduidingIdentificatie |
     | fields | burgerservicenummer                  |
@@ -24,7 +24,7 @@ Rule: nummeraanduidingIdentificatie is een verplichte parameter
 
   @fout-case
   Scenario: Een lege string is opgegeven als nummeraanduiding identificatie waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
     | nummeraanduidingIdentificatie |                                      |
@@ -45,7 +45,7 @@ Rule: Een nummeraanduidingIdentificatie is een string bestaande uit exact 16 cij
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
     | nummeraanduidingIdentificatie | <nummeraanduidingIdentificatie>      |
@@ -72,7 +72,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
     | nummeraanduidingIdentificatie | 0599200051001501                     |
@@ -99,7 +99,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                          | waarde                               |
     | type                          | ZoekMetNummeraanduidingIdentificatie |
     | nummeraanduidingIdentificatie | 0599200051001501                     |
