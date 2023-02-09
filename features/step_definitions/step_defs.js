@@ -1478,7 +1478,7 @@ async function handleOAuthRequest(oAuth, afnemerId, sqlDatas, endpointUrl, dataT
         oAuthSettings = oAuth.clients[0];
         console.log(`geen afnemer opgegeven voor scenario. oAuthSettings gebruiken van afnemer met ID '${oAuthSettings.afnemerID}'`);
 
-        let sqlData = sqlDatas.at(-1);
+        let sqlData = sqlDatas !== undefined ? sqlDatas.at(-1) : [];
 
         sqlData['autorisatie'] = [
             [
