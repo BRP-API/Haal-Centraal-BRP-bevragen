@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA Persoon: gezagsverhouding
+@gba
+Functionaliteit: gezagsverhouding
 
   Achtergrond:
     Gegeven landelijke tabel "Gezagsverhouding" heeft de volgende waarden

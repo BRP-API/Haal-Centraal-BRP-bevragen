@@ -1,7 +1,7 @@
 #language: nl
 
 @gba
-Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving (GBA)
+Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
 
 Rule: voorvoegsel is niet hoofdlettergevoelig
 

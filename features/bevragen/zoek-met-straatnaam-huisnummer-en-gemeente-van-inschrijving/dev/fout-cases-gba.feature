@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving - fout cases GBA
+@gba
+Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving - fout cases
 
 Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
 

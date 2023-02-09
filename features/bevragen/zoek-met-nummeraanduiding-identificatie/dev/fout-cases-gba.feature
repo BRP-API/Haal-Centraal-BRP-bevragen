@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Zoek met nummeraanduiding identificatie - fout cases GBA
+@gba
+Functionaliteit: Zoek met nummeraanduiding identificatie - fout cases
 
 Rule: nummeraanduidingIdentificatie is een verplichte parameter
 

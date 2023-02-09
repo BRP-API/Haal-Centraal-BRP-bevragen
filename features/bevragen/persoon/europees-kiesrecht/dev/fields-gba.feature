@@ -1,7 +1,7 @@
 # language: nl
 
 @gba
-Functionaliteit: GBA Persoon: Europees kiesrecht velden vragen met fields
+Functionaliteit: Europees kiesrecht velden vragen met fields
 
 	Scenario: persoon heeft geen Europees kiesrecht gegevens
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende gegevens

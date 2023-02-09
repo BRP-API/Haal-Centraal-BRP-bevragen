@@ -1,7 +1,7 @@
 #language: nl
 
 @gba
-Functionaliteit: Zoek met postcode en huisnummer (GBA)
+Functionaliteit: Zoek met postcode en huisnummer
 
 Rule: Postcode is niet hoofdlettergevoelig en mag zowel met als zonder spatie tussen het cijfer- en letterdeel worden verstrekt.
 

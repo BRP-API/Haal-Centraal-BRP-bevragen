@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Raadpleeg met burgerservicenummer - fout cases GBA
+@gba
+Functionaliteit: Raadpleeg met burgerservicenummer - fout cases
 
 Rule: De burgerservicenummer parameter is een verplichte parameter
 

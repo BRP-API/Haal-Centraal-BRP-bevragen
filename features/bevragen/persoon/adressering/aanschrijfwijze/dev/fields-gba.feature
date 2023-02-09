@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: Fields vertalen van proxy naar gba voor aanschrijfwijze
+@gba
+Functionaliteit: adressering aanschrijfwijze velden vragen met fields
 
 
     Achtergrond:

@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: Ouders van een GBA persoon raadplegen
+@gba
+Functionaliteit: ouder (persoon)
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 

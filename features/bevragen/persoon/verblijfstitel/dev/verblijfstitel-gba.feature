@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA persoon: Verblijfstitel
+@gba
+Functionaliteit: verblijfstitel (persoon)
 
 Achtergrond:
   Gegeven landelijke tabel "Verblijfstitel" heeft de volgende waarden

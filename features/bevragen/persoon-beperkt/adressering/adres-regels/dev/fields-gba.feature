@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA verblijfplaats - vragen van velden met fields
+@gba
+Functionaliteit: adressering (adresregel) velden vragen met fields (persoon beperkt)
 
 Rule: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
 

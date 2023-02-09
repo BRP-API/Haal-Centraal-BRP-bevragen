@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Persoon: overlijden velden vragen met fields
+@gba
+Functionaliteit: overlijden velden vragen met fields (persoon)
 
   Abstract Scenario: 'datum overlijden (08.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens

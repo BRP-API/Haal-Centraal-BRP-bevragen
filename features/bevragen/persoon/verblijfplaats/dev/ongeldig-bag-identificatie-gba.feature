@@ -1,5 +1,6 @@
 #language: nl
 
+@gba
 Functionaliteit: BAG-identificatie met waarde die niet voldoet aan de specificatie moet niet geleverd worden
   BAG-identificaties identificatiecode verblijfplaats (11.80) en identificatiecode nummeraanduiding (11.90) moeten bestaan uit exact 16 cijfers
 

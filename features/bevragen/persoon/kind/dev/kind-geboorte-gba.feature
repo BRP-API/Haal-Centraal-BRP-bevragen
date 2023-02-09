@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: Gba persoon: kind - geboorte
+@gba
+Functionaliteit: kind - geboorte
 
     Scenario: Kind heeft onbekend geboorte gegevens
       Gegeven de persoon met burgerservicenummer '000000152' heeft een 'kind' met de volgende gegevens

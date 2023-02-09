@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: geheimhouding: niet verstrekken van gegevens van een persoon aan derden
+@gba
+Functionaliteit: geheimhouding - niet verstrekken van gegevens van een persoon aan derden (persoon beperkt)
 
   Abstract Scenario: 'indicatie geheim (70.10)' met waarde <waarde> wordt gevraagd met veld pad 'geheimhoudingPersoonsgegevens'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

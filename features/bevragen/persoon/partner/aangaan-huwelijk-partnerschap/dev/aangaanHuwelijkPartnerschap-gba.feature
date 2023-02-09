@@ -1,5 +1,6 @@
 # language: nl
 
+@gba
 Functionaliteit: aangaan huwelijk/partnerschap bij actuele of ontbonden relatie
 
   Bij het registreren van het ontbinden van een huwelijk of partnerschap worden alle gegevens over het huwelijk of partnerschap 

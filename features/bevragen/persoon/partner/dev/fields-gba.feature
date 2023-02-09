@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA persoon: partner
+@gba
+Functionaliteit: partner velden vragen met fields (persoon)
 
   Abstract Scenario: partner heeft 'ontbindingHuwelijkPartnerschap' datum veld: 'datum ontbinding huwelijk/geregistreerd partnerschap (07.10)'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -134,7 +135,7 @@ Functionaliteit: GBA persoon: partner
     | aangaanHuwelijkPartnerschap | land   | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   |
 
   Scenario: volledig onbekende geboortedatum en datum aanvang huwelijk bij partner
-   Gegeven de persoon met burgerservicenummer '000000395' heeft een 'partner' met de volgende gegevens
+    Gegeven de persoon met burgerservicenummer '000000395' heeft een 'partner' met de volgende gegevens
     | naam                                                               | waarde    |
     | burgerservicenummer (01.20)                                        | 000000401 |
     | geboortedatum (03.10)                                              | 00000000  |
@@ -153,4 +154,17 @@ Functionaliteit: GBA persoon: partner
     | geboorte.datum                    | 00000000  |
     | aangaanHuwelijkPartnerschap.datum | 00000000  |
 
- 
+Rule: voornamen wordt geleverd met field pad 'naam.voorletters'
+
+  Scenario: 'voorletters' wordt gevraagd met field pad 'naam.voorletters'
+    Gegeven de persoon met burgerservicenummer '000000176' heeft een 'partner' met de volgende gegevens
+    | naam              | waarde   |
+    | voornamen (02.10) | Carolina |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000176                       |
+    | fields              | partners.naam.voorletters       |
+    Dan heeft de response een persoon met een 'partner' met de volgende gegevens
+    | naam           | waarde   |
+    | naam.voornamen | Carolina |

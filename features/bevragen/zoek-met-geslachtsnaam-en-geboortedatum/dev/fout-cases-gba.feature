@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases GBA
+@gba
+Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
 
 Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 

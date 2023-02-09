@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Fields vertalen van proxy naar gba voor aanhef
+@gba
+Functionaliteit: adressering aanhef veld vragen met fields
 
   Rule: Voor adressering.aanhef in fields moeten andere velden worden geleverd
 

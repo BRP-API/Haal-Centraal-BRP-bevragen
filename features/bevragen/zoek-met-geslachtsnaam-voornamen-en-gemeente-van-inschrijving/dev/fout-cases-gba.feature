@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving - fout cases GBA
+@gba
+Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving - fout cases
 
 Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parameters
 

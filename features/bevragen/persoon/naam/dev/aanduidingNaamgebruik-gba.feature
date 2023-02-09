@@ -1,5 +1,6 @@
 # language: nl
 
+@gba
 Functionaliteit: Aanduiding naamgebruik
 
 

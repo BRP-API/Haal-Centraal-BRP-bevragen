@@ -1,7 +1,7 @@
 # language: nl
 
-
-Functionaliteit: properties die gevuld zijn met standaard-waardes worden ongewijzigd geleverd voor de verblijfplaats. 
+@gba
+Functionaliteit: verblijfplaats velden met standaard-waardes worden ongewijzigd geleverd 
 
   Wanneer in de registratie specifieke waarden gereserveerd zijn voor een onbekende waarde, worden deze waarden ongewijzigd geleverd door de GBA-API.
   Wanneer een element in de registratie een standaardwaarde heeft, die betekent dat de waarde onbekend is, wordt het corresponderende veld opgenomen in de response met de betreffende waarde. 

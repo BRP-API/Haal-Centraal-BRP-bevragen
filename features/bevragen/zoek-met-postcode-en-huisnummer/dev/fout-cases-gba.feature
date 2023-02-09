@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Zoek met postcode en huisnummer - fout cases GBA
+@gba
+Functionaliteit: Zoek met postcode en huisnummer - fout cases
 
 Rule: Postcode en huisnummer zijn verplichte parameters
 

@@ -1,6 +1,9 @@
 #language: nl
 
-Functionaliteit: GBA immigratie - vragen van velden met fields
+@gba
+Functionaliteit: immigratie velden vragen met fields
+
+Rule: land vanwaar ingeschreven wordt geleverd bij field pad 'immigratie.landVanwaarIngeschreven' of 'immigratie.vanuitVerblijfplaatsOnbekend'
 
   Abstract Scenario: 'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -38,6 +41,8 @@ Functionaliteit: GBA immigratie - vragen van velden met fields
     | burgerservicenummer                             | 000000243 |
     | immigratie.landVanwaarIngeschreven.code         | 0000      |
     | immigratie.landVanwaarIngeschreven.omschrijving | Onbekend  |
+
+Rule: datum vestiging in Nederland wordt geleverd bij field pad 'immigratie.datumVestigingInNederland' of 'immigratie.indicatieVestigingVanuitBuitenland'
 
   Abstract Scenario: 'datum vestiging in nederland (14.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

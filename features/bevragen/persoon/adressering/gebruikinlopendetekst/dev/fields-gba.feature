@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Fields vertalen van proxy naar gba voor gebruikInLopendeTekst
+@gba
+Functionaliteit: adressering gebruikInLopendeTekst veld vragen met fields
 
   Rule: Voor adressering.gebruikInLopendeTekst in fields moeten andere velden worden geleverd
 
