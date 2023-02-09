@@ -7,7 +7,7 @@ Functionaliteit: GBA Persoon: Europees kiesrecht velden vragen met fields
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende gegevens
     | geslachtsnaam (02.40) |
     | Janssen               |
-		Als personen wordt gezocht met de volgende parameters
+		Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000164                       |

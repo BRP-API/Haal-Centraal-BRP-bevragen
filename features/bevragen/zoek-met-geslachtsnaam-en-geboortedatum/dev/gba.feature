@@ -30,7 +30,7 @@ Rule: geslacht is niet hoofdlettergevoelig
     Gegeven de persoon met burgerservicenummer '000000027' heeft de volgende gegevens
     | geboortedatum (03.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
     | 19830526              | Aedel                 | V                           |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Aedel                               |
