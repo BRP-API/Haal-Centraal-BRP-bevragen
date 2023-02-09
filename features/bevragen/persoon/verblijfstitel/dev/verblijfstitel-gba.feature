@@ -133,3 +133,17 @@ Achtergrond:
     | fields              | verblijfstitel                  |
     Dan heeft de response een persoon zonder gegevens
     
+Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+
+  Scenario: code voor aanduiding verblijfstitel (39.10) komt niet voor in de tabel Verblijfstitel
+    Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding verblijfstitel (39.10) |
+    | 01                                |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000243                       |
+    | fields              | verblijfstitel.aanduiding       |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
+    | naam            | waarde |
+    | aanduiding.code | 01     |

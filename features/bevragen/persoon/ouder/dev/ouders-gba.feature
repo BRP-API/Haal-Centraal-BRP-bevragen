@@ -323,3 +323,20 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     | naam                | waarde    |
     | burgerservicenummer | 000000401 |
     | geboorte.datum      | 00000000  |
+
+Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
+      - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
+      - als de waarde in de geboorteplaats (03.20) niet voorkomt in de landelijke tabel Gemeenten, dan wordt de waarde alleen in de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
+
+  Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
+    Gegeven de persoon met burgerservicenummer '000000309' heeft een ouder '1' met de volgende gegevens
+    | geboorteplaats (03.20) |
+    | 52°2'43N4°22'39"O      |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000309                       |
+    | fields              | ouders.geboorte.plaats          |
+    Dan heeft de response een persoon met een 'ouder' met de volgende 'geboorte' gegevens
+    | naam                | waarde            |
+    | plaats.omschrijving | 52°2'43N4°22'39"O |

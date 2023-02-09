@@ -116,3 +116,19 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | land.code                   | 6014                         |
     | land.omschrijving           | Verenigde Staten van Amerika |
     | datumAanvangAdresBuitenland | 00000000                     |
+
+Rule: wanneer er voor een code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+
+  Scenario: code voor land adres buitenland (13.10) komt niet voor in de tabel Landen
+    Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende 'verblijfplaats' gegevens
+    | land adres buitenland (13.10) |
+    | 1234                          |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                            |
+    | type                | RaadpleegMetBurgerservicenummer   |
+    | burgerservicenummer | 000000255                         |
+    | fields              | verblijfplaats.verblijfadres.land |
+    Dan heeft de response een persoon met alleen de volgende 'verblijfplaats' gegevens
+    | naam      | waarde |
+    | land.code | 1234   |
+

@@ -71,8 +71,8 @@ Functionaliteit: overlijden velden vragen met fields (persoon)
 
   Scenario: volledig onbekende overlijdensdatum
     Gegeven de persoon met burgerservicenummer '000000358' heeft de volgende 'overlijden' gegevens
-    | naam                      | waarde   |
-    | datum overlijden (08.10)  | 00000000 |
+    | naam                     | waarde   |
+    | datum overlijden (08.10) | 00000000 |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
     | type                | RaadpleegMetBurgerservicenummer      |
@@ -82,5 +82,20 @@ Functionaliteit: overlijden velden vragen met fields (persoon)
     | naam                | waarde    |
     | burgerservicenummer | 000000358 |
     En heeft de persoon de volgende 'overlijden' gegevens
-    | naam        | waarde   |
-    | datum       | 00000000 |
+    | naam  | waarde   |
+    | datum | 00000000 |
+
+Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+
+  Abstract Scenario: code voor land overlijden (08.30) komt niet voor in de tabel Landen
+    Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'overlijden' gegevens
+    | land overlijden (08.30) |
+    | 1234                    |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000243                       |
+    | fields              | overlijden.land                 |
+    Dan heeft de response een persoon met alleen de volgende 'overlijden' gegevens
+    | naam      | waarde |
+    | land.code | 1234   |
