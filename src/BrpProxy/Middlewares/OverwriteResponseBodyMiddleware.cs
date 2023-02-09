@@ -35,7 +35,6 @@ namespace BrpProxy.Middlewares
             try
             {
                 _logger.LogDebug("request headers: {@requestHeaders}", context.Request.Headers);
-                _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
 
                 if (! await context.MethodIsAllowed(orgBodyStream, _logger))
                 {
@@ -51,6 +50,7 @@ namespace BrpProxy.Middlewares
                 }
 
                 requestBody = await context.Request.ReadBodyAsync();
+                _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
 
                 PersonenQuery? personenQuery = null;
 
