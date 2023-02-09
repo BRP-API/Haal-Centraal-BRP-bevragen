@@ -52,8 +52,8 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
     | Cees              | Maassen               | 19611002              | 19820328                                                           |
     En de 'partner' is gewijzigd naar de volgende gegevens
-    | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
-    | 000000024                   | Cees              | Maassen               | 19611002              | 19830328                                                     |
+    | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
+    | Cees              | Maassen               | 19611002              | 19830328                                                     |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
