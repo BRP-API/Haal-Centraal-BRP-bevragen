@@ -24,7 +24,7 @@ Rule: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' o
     | geslachtsnaam | Maassen                                                                                  |
     | geboortedatum | 1983-05-26                                                                               |
     | fields        | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | straatnaam               | huisnummer | omschrijving                       |
@@ -47,7 +47,7 @@ Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'l
     | geslachtsnaam | Maassen                                                                                  |
     | geboortedatum | 1983-05-26                                                                               |
     | fields        | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
   Scenario: persoon heeft een verblijfplaats buitenland en 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben de standaardwaarde
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -62,4 +62,4 @@ Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'l
     | geslachtsnaam | Maassen                                                                                  |
     | geboortedatum | 1983-05-26                                                                               |
     | fields        | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
