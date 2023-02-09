@@ -88,7 +88,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                                                   |
       | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                                                     |
       | status   | 403                                                                                                           |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): voornamen, voorvoegsel, gemeenteVanInschrijving. |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): gemeenteVanInschrijving, voornamen, voorvoegsel. |
       | code     | unauthorizedParameter                                                                                         |
       | instance | /haalcentraal/api/brp/personen                                                                                |
 
