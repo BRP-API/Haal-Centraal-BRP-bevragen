@@ -429,7 +429,6 @@ namespace BrpProxy.Validators
             {
                 "geheimhoudingPersoonsgegevens",
                 "opschortingBijhouding",
-                "overlijden.indicatieOverleden",
                 "rni"
             });
 
