@@ -66,3 +66,30 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | geboorte.datum                       | 19601007 |
     | aangaanHuwelijkPartnerschap.datum    | 19931002 |
     | ontbindingHuwelijkPartnerschap.datum | 20000103 |
+
+
+  Scenario: persoon was getrouwd, gescheiden en daarna opnieuw met zelfde persoon getrouwd en daarna weer gescheiden
+    Gegeven de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
+    | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+    | Jan               | Groen                 | 19601007              | 19931002                                                           |
+    En de 'partner' is gewijzigd naar de volgende gegevens
+    | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
+    | Jan               | Groen                 | 19601007              | 20000103                                                     |
+    En de persoon heeft nog een 'partner' met de volgende gegevens
+    | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+    | Jan               | Groen                 | 19601007              | 19820328                                                           |
+    En de 'partner' is gewijzigd naar de volgende gegevens
+    | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
+    | Jan               | Groen                 | 19601007              | 19830328                                                     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000024                       |
+    | fields              | partners                        |
+    Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
+    | naam                                 | waarde   |
+    | naam.voornamen                       | Jan      |
+    | naam.geslachtsnaam                   | Groen    |
+    | geboorte.datum                       | 19601007 |
+    | aangaanHuwelijkPartnerschap.datum    | 19931002 |
+    | ontbindingHuwelijkPartnerschap.datum | 20000103 |
