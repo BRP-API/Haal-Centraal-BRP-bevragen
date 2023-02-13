@@ -179,18 +179,27 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | fields                                                  |
-    | gemeenteVanInschrijving                                 |
-    | datumInschrijvingInGemeente                             |
-    | datumInschrijvingInGemeente.type                        |
-    | datumInschrijvingInGemeente.datum                       |
-    | datumInschrijvingInGemeente.langFormaat                 |
-    | immigratie                                              |
-    | immigratie.datumVestigingInNederland                    |
-    | immigratie.datumVestigingInNederland.type               |
-    | immigratie.vanuitVerblijfplaatsOnbekend                 |
-    | immigratie.inOnderzoek                                  |
-    | immigratie.inOnderzoek.datumIngangOnderzoek.langFormaat |
+    | fields                                           |
+    | gemeenteVanInschrijving                          |
+    | gemeenteVanInschrijving.code                     |
+    | gemeenteVanInschrijving.omschrijving             |
+    | datumInschrijvingInGemeente                      |
+    | datumInschrijvingInGemeente.type                 |
+    | datumInschrijvingInGemeente.datum                |
+    | datumInschrijvingInGemeente.langFormaat          |
+    | datumInschrijvingInGemeente.jaar                 |
+    | datumInschrijvingInGemeente.maand                |
+    | datumInschrijvingInGemeente.onbekend             |
+    | immigratie                                       |
+    | immigratie.datumVestigingInNederland             |
+    | immigratie.datumVestigingInNederland.type        |
+    | immigratie.datumVestigingInNederland.datum       |
+    | immigratie.datumVestigingInNederland.langFormaat |
+    | immigratie.indicatieVestigingVanuitBuitenland    |
+    | immigratie.landVanwaarIngeschreven               |
+    | immigratie.landVanwaarIngeschreven.code          |
+    | immigratie.landVanwaarIngeschreven.omschrijving  |
+    | immigratie.vanuitVerblijfplaatsOnbekend          |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
