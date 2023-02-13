@@ -18,6 +18,10 @@ public class ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingQueryValidator : Pe
     public ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingQueryValidator(FieldsHelper fieldsHelper)
         : base(fieldsHelper)
     {
+        RuleForEach(x => x.AdditionalProperties)
+            .SetValidator(new AdditionalPropertiesValidator())
+            .When(x => x.AdditionalProperties.Count > 0);
+
         RuleFor(x => x.GemeenteVanInschrijving)
             .Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage(RequiredErrorMessage)

@@ -18,6 +18,10 @@ namespace BrpProxy.Validators
         public ZoekMetPostcodeEnHuisnummerQueryValidator(FieldsHelper fieldsHelper)
             : base(fieldsHelper)
         {
+            RuleForEach(x => x.AdditionalProperties)
+                .SetValidator(new AdditionalPropertiesValidator())
+                .When(x => x.AdditionalProperties.Count > 0);
+
             RuleFor(x => x.Postcode)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage(RequiredErrorMessage)
