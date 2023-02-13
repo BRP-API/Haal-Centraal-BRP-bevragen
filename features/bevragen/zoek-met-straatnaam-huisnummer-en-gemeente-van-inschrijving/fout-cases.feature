@@ -13,10 +13,10 @@ Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1                 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                   |
+    | title    | Een of meerdere parameters zijn niet correct.                               |
     | status   | 400                                                                         |
     | detail   | De foutieve parameter(s) zijn: gemeenteVanInschrijving, huisnummer, straat. |
-    | code     | paramsCombination                                                           |
+    | code     | paramsValidation                                                            |
     | instance | /haalcentraal/api/brp/personen                                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                    | reason                  |
@@ -36,10 +36,10 @@ Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1                 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.                   |
+    | title    | Een of meerdere parameters zijn niet correct.                               |
     | status   | 400                                                                         |
     | detail   | De foutieve parameter(s) zijn: gemeenteVanInschrijving, huisnummer, straat. |
-    | code     | paramsCombination                                                           |
+    | code     | paramsValidation                                                            |
     | instance | /haalcentraal/api/brp/personen                                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                    | reason                  |
@@ -237,7 +237,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | straat                  | Afrikanerplein                                   |
