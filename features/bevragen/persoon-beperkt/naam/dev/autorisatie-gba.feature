@@ -15,8 +15,8 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       | gemeente van inschrijving (09.10) |
       | 0518                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | postcode (11.60) | huisnummer (11.20) |
-      | 0518          | 2628HJ           | 2                  |
+      | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
+      | 0518                 | 2628HJ           | 2                  |
 
 
   Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
