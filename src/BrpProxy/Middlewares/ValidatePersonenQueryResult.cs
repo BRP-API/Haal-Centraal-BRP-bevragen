@@ -37,12 +37,8 @@ namespace BrpProxy.Middlewares
 
             var invalidParams = from error in result.Errors
                                 select CreateFrom(error.PropertyName, error.ErrorMessage);
-            var titel = invalidParams.Any(x => x.Code == "required")
-                ? "Minimale combinatie van parameters moet worden opgegeven."
-                : "Een of meerdere parameters zijn niet correct.";
-            var code = invalidParams.Any(x => x.Code == "required")
-                ? "paramsCombination"
-                : "paramsValidation";
+            var titel = "Een of meerdere parameters zijn niet correct.";
+            var code = "paramsValidation";
 
             return new ValidatePersonenQueryResult(context.CreateBadRequestFoutbericht(titel, code, invalidParams));
         }
@@ -56,12 +52,8 @@ namespace BrpProxy.Middlewares
                                     Code = error.ErrorMessage.Split("||")[0],
                                     Reason = error.ErrorMessage.Split("||")[1]
                                 };
-            var titel = invalidParams.Any(x => x.Code == "required")
-                ? "Minimale combinatie van parameters moet worden opgegeven."
-                : "Een of meerdere parameters zijn niet correct.";
-            var code = invalidParams.Any(x => x.Code == "required")
-                ? "paramsCombination"
-                : "paramsValidation";
+            var titel = "Een of meerdere parameters zijn niet correct.";
+            var code = "paramsValidation";
 
             return new ValidatePersonenQueryResult(context.CreateBadRequestFoutbericht(titel, code, invalidParams));
         }
