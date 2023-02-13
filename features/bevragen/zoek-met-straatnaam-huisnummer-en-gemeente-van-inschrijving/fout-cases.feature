@@ -237,7 +237,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | straat                  | Afrikanerplein                                   |

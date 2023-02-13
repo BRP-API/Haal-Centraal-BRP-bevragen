@@ -111,7 +111,7 @@ Rule: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
   Abstract Scenario: Een ongeldig getal is opgegeven als huisnummer waarde 
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 2628HJ                      |
