@@ -64,13 +64,13 @@ Rule: Alleen met fields gevraagde velden worden geleverd
     | burgerservicenummer | 000000152                       |
     | fields              | naam                            |
     Dan heeft de response een persoon met alleen de volgende 'naam' gegevens
-    | naam                               | waarde                        |
-    | voornamen                          | Yvonne Johanna                |
-    | geslachtsnaam                      | Kierkegaarde                  |
-    | voorletters                        | Y.J.                          |
-    | volledigeNaam                      | Yvonne Johanna Kierkegaarde   |
-    | aanduidingNaamgebruik.code         | E                             |
-    | aanduidingNaamgebruik.omschrijving | gebruik alleen de eigen naam. |
+    | naam                               | waarde                      |
+    | voornamen                          | Yvonne Johanna              |
+    | geslachtsnaam                      | Kierkegaarde                |
+    | voorletters                        | Y.J.                        |
+    | volledigeNaam                      | Yvonne Johanna Kierkegaarde |
+    | aanduidingNaamgebruik.code         | E                           |
+    | aanduidingNaamgebruik.omschrijving | eigen geslachtsnaam         |
 
   Scenario: alle velden van een 'gegevensgroep' veld van een 'persoon beperkt' wordt gevraagd
     Als personen wordt gezocht met de volgende parameters

@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: volledige naam
+Functionaliteit: volledige naam (persoon beperkt)
 
 Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
   - standaardwaarde "." voor geslachtsnaam wordt niet opgenomen in volledigeNaam

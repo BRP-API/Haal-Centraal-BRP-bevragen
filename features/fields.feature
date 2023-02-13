@@ -7,30 +7,13 @@ Functionaliteit: Fields
   Zodat ik alleen de gegevens terug krijg waarvoor ik doelbinding heb
 
   Achtergrond:
-      Gegeven het systeem heeft een persoon met de volgende gegevens
-      | naam                        | waarde     |
-      | anummer (01.10)             | 5875306514 |
-      | burgerservicenummer         | 999991929  |
-      | geslachtsaanduiding (04.10) | V          |
-      | geslacht.omschrijving       | vrouw      |
-      | indicatie geheim (70.10)    | 0          |
-      | inOnderzoek (83.10)         |            |
-      En de persoon heeft de volgende 'naam' gegevens
-      | naam                                 | waarde         |
-      | voornamen (02.10)                    | Yvonne Johanna |
-      | adellijke titel of predicaat (02.20) |                |
-      | voorvoegsel (02.30)                  |                |
-      | geslachtsnaam (02.40)                | Kierkegaard    |
-      | aanduiding naamgebruik (61.10)       | V              |
-      En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 999992971 |
-      En de 'partner' heeft de volgende 'naam' gegevens
-      | naam                             | waarde    |
-      | voornamen (02.10)                | Robert    |
-      | geslachtsnaam (02.40)            | Bronwaßer |
-      | geslachtsaanduiding.omschrijving | man       |
-      En de persoon heeft GEEN 'overlijden' gegevens
+    Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+    | anummer (01.10) | geslachtsaanduiding (04.10) | voornamen (02.10) | geslachtsnaam (02.40) | aanduiding naamgebruik (61.10) |
+    | 5875306514      | V                           | Yvonne Johanna    | Kierkegaard           | V                              |
+    En de persoon heeft een 'partner' met de volgende gegevens
+    | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+    | 999992971                   | Robert            | Bronwaßer             | M                           |
+
       En de persoon heeft de volgende 'kiesrecht' gegevens
       | naam                              | waarde |
       | uitgesloten van kiesrecht (38.10) | true   |
