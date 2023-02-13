@@ -17,6 +17,18 @@ public class PersoonProfile : Profile
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
             .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
+            .BeforeMap((src, dest) =>
+            {
+                if(src.Naam != null || src.PersoonInOnderzoek != null)
+                {
+                    src.Naam ??= new GbaNaamBasis();
+                    if (src.Geslacht != null)
+                    {
+                        src.Naam.Geslacht = src.Geslacht;
+                    }
+                    src.Naam.InOnderzoek = src.PersoonInOnderzoek;
+                }
+            })
             .AfterMap((src, dest) =>
             {
                 if (src.Verblijfplaats != null)
