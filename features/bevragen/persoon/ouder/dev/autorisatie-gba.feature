@@ -123,10 +123,10 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | ouders.datumIngangFamilierechtelijkeBetrekking          |
+      | naam                | waarde                                         |
+      | type                | RaadpleegMetBurgerservicenummer                |
+      | burgerservicenummer | 000000024                                      |
+      | fields              | ouders.datumIngangFamilierechtelijkeBetrekking |
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                  |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
