@@ -15,6 +15,7 @@ namespace BrpProxy.Tests
         [InlineData("geheimhoudingPersoonsgegevens")]
         [InlineData("opschortingBijhouding")]
         [InlineData("rni")]
+        [InlineData("verificatie")]
         public void AlwaysReturnedFields(string expectedField)
         {
             new List<string>().AddAlwaysReturnedFields().Should().Contain(expectedField);

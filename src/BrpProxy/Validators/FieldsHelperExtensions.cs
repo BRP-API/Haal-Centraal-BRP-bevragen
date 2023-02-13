@@ -447,7 +447,8 @@ namespace BrpProxy.Validators
             {
                 "geheimhoudingPersoonsgegevens",
                 "opschortingBijhouding",
-                "rni"
+                "rni",
+                "verificatie"
             });
 
             return retval;
