@@ -10,13 +10,15 @@ public partial class Persoon
 
     public bool ShouldSerializePartners() => Partners != null;
 
-    public bool ShouldSerializeAdressering() => Adressering != null;
+    public bool ShouldSerializeRni() => Rni != null && Rni.Count > 0;
+
+    public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
 
     public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
 
     public bool ShouldSerializeGeboorte() => Geboorte != null;
 
-    public bool ShouldSerializeImmigratie() => Immigratie != null && Immigratie.ShouldSerialize();
+    public bool ShouldSerializeImmigratie() => Immigratie != null;
 
     public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
 
@@ -24,7 +26,7 @@ public partial class Persoon
 
     public bool ShouldSerializeOpschortingBijhouding() => OpschortingBijhouding != null && OpschortingBijhouding.ShouldSerialize();
 
-    public bool ShouldSerializeOverlijden() => Overlijden != null && Overlijden.ShouldSerialize();
+    public bool ShouldSerializeOverlijden() => Overlijden != null;
 
     public bool ShouldSerializeUitsluitingKiesrecht() => UitsluitingKiesrecht != null && UitsluitingKiesrecht.ShouldSerialize();
 
@@ -42,7 +44,7 @@ public partial class Persoon
         IndicatieCurateleRegister ||
         IndicatieGezagMinderjarige != null ||
         Leeftijd > 0 ||
-        ShouldSerializeAdressering() ||
+        Adressering != null ||
         ShouldSerializeEuropeesKiesrecht() ||
         ShouldSerializeGeboorte() ||
         ShouldSerializeImmigratie() ||

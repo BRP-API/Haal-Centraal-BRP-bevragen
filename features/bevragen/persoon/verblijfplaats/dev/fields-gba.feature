@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA verblijfplaats - vragen van velden met fields
+@gba
+Functionaliteit: verblijfplaats velden vragen met fields (persoon)
 
   Om het type van een verblijfplaats af te kunnen leiden moet ook het identificerende gegeven van de verblijfplaats type worden geleverd
 

@@ -472,3 +472,32 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
     | De opgegeven gemeenteVanInschrijving waarde is minder dan 4 cijfers lang | 123                                    |
     | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
     | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |
+
+Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+
+  @fout-case
+  Abstract Scenario: <titel>
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | maassen                             |
+    | geboortedatum | 1983-05-26                          |
+    | <parameter>   | <waarde>                            |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: <parameter>.                 |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code         | name        | reason                      |
+    | unknownParam | <parameter> | Parameter is niet verwacht. |
+
+    Voorbeelden:
+    | titel                                     | parameter    | waarde     |
+    | zoeken met parameter uit ander zoektype   | postcode     | 1234AB     |
+    | typfout in naam optionele parameter       | voorvoegsels | van der    |
+    | zoeken met niet gespecificeerde parameter | bestaatNiet  | een waarde |

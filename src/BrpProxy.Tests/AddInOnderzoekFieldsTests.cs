@@ -54,6 +54,13 @@ namespace BrpProxy.Tests
                             "inOnderzoek.datumIngangOnderzoekGezag"
                         })]
 
+        [InlineData(new[] { "adressering" },
+                    new[] { "adressering", "adressering.inOnderzoek" })]
+        [InlineData(new[] { "adressering.adresregel1" },
+                    new[] { "adressering.adresregel1",
+                            "adressering.inOnderzoek.adresregel1",
+                            "adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats"})]
+
         [InlineData(new[] { "kinderen" },
                     new[] { "kinderen", "kinderen.inOnderzoek" })]
         [InlineData(new[] { "kinderen.burgerservicenummer" },
@@ -79,6 +86,13 @@ namespace BrpProxy.Tests
                     new[] { "ouders.geboorte.datum",
                             "ouders.geboorte.inOnderzoek.datum",
                             "ouders.geboorte.inOnderzoek.datumIngangOnderzoek"})]
+
+        [InlineData(new[] { "overlijden"},
+                    new[] { "overlijden", "overlijden.inOnderzoek"})]
+        [InlineData(new[] { "overlijden.datum" },
+                    new[] { "overlijden.datum",
+                            "overlijden.inOnderzoek.datum",
+                            "overlijden.inOnderzoek.datumIngangOnderzoek"})]
 
         [InlineData(new[] { "verblijfplaats"},
                     new[] { "verblijfplaats", "verblijfplaats.inOnderzoek"})]

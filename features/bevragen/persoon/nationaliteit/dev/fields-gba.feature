@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA Persoon: Nationaliteit
+@gba
+Functionaliteit: Nationaliteit (persoon)
 
 Rule: wanneer één of meerdere velden van een nationaliteit wordt gevraagd, dan wordt ook de waarde van 'nationaliteit (05.10)' geleverd
 
@@ -170,3 +171,47 @@ Rule: als één of meerdere velden van een nationaliteit wordt gevraagd en de ca
     | 046310                  | nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid | reden opname nationaliteit            |
     | 046500                  | nationaliteiten.datumIngangGeldigheid                             | hele groep bijzonder Nederlanderschap |
     | 046510                  | nationaliteiten.datumIngangGeldigheid.datum                       | aanduiding bijzonder Nederlanderschap |
+
+  Scenario: onbekend waarde voor nationaliteit
+    Gegeven de persoon met burgerservicenummer '000000280' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                            | waarde   |
+    | nationaliteit (05.10)           | 0000     |
+    | reden opname (63.10)            | 311      |
+    | datum ingang geldigheid (85.10) | 20030417 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 000000280                           |
+    | fields              | burgerservicenummer,nationaliteiten |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000280 |
+    En heeft de persoon een 'nationaliteit' met de volgende gegevens
+    | naam                              | waarde                               |
+    | nationaliteit.code                | 0000                                 |
+    | nationaliteit.omschrijving        | Onbekend                             |
+    | redenOpname.code                  | 311                                  |
+    | redenOpname.omschrijving          | Vaststelling onbekende nationaliteit |
+    | datumIngangGeldigheid             | 20030417                             |
+
+  Scenario: onbekend waarde voor reden opname nationaliteit
+    Gegeven de persoon met burgerservicenummer '000000280' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                            | waarde   |
+    | nationaliteit (05.10)           | 0052     |
+    | reden opname (63.10)            | 000      |
+    | datum ingang geldigheid (85.10) | 20030417 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                              |
+    | type                | RaadpleegMetBurgerservicenummer     |
+    | burgerservicenummer | 000000280                           |
+    | fields              | burgerservicenummer,nationaliteiten |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000280 |
+    En heeft de persoon een 'nationaliteit' met de volgende gegevens
+    | naam                              | waarde    |
+    | nationaliteit.code                | 0052      |
+    | nationaliteit.omschrijving        | Belgische |
+    | redenOpname.code                  | 000       |
+    | redenOpname.omschrijving          | Onbekend  |
+    | datumIngangGeldigheid             | 20030417  |

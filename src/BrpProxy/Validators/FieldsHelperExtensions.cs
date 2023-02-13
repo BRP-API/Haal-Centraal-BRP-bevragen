@@ -241,6 +241,7 @@ namespace BrpProxy.Validators
                     case "geboorte.datum":
                     case "kinderen.geboorte.datum":
                     case "ouders.geboorte.datum":
+                    case "overlijden.datum":
                     case "partners.aangaanHuwelijkPartnerschap.datum":
                     case "partners.geboorte.datum":
                     case "verblijfplaats.type":
@@ -319,6 +320,16 @@ namespace BrpProxy.Validators
             .Contains(fieldPart);
         }
 
+        private static bool IsGegevensgroepFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "adressering",
+                "overlijden"
+            }
+            .Contains(fieldPart);
+        }
+
         private static bool IsVerblijfplaatsFieldPart(this string fieldPart)
         {
             return new[]
@@ -329,6 +340,18 @@ namespace BrpProxy.Validators
         }
 
         private static bool IsVerblijfadresFieldPart(this string fieldPart) => fieldPart == "verblijfadres";
+
+        private static bool IsAdresregelFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "adresregel1",
+                "adresregel2",
+                "adresregel3",
+                "land"
+            }
+            .Contains(fieldPart);
+        }
 
         public static IEnumerable<string> AddInOnderzoekFields(this IEnumerable<string> fields)
         {
@@ -347,7 +370,8 @@ namespace BrpProxy.Validators
                 {
                     case 1:
                         if (fieldParts[0].IsVerblijfplaatsFieldPart() ||
-                            fieldParts[0].IsCollectionFieldFieldPart())
+                            fieldParts[0].IsCollectionFieldFieldPart() ||
+                            fieldParts[0].IsGegevensgroepFieldPart())
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek");
                         }
@@ -379,6 +403,11 @@ namespace BrpProxy.Validators
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
                             retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
                         }
+                        else if (fieldParts[1].IsAdresregelFieldPart())
+                        {
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.{fieldParts[1]}");
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
+                        }
                         else if (fieldParts[0].IsCollectionFieldFieldPart() &&
                                  fieldParts[1].IsObjectField())
                         {
@@ -408,6 +437,20 @@ namespace BrpProxy.Validators
                 }
             }
             return retval.Distinct();
+        }
+
+        public static IEnumerable<string> AddAlwaysReturnedFields(this IEnumerable<string> fields)
+        {
+            var retval = new List<string>(fields);
+
+            retval.AddRange(new[]
+            {
+                "geheimhoudingPersoonsgegevens",
+                "opschortingBijhouding",
+                "rni"
+            });
+
+            return retval;
         }
     }
 }

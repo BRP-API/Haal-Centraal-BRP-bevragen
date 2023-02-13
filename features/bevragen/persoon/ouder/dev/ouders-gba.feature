@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: Ouders van een GBA persoon raadplegen
+@gba
+Functionaliteit: ouder (persoon)
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
@@ -8,11 +9,11 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
 
   Scenario: Persoon heeft twee ouders
     Gegeven de persoon met burgerservicenummer '000000152' heeft een ouder '1' met de volgende gegevens
-    | voornamen (02.10)  |
-    | Lisette            |
+    | voornamen (02.10) |
+    | Lisette           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | voornamen (02.10)  |
-    | Guîllaumé          |
+    | voornamen (02.10) |
+    | Guîllaumé         |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
@@ -31,14 +32,14 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   Scenario: oudergegevens gecorrigeerd
     Gegeven de persoon met burgerservicenummer '000000164' heeft een ouder '1' met de volgende gegevens
-    | voornamen (02.10)  |
-    | Chantal            |
+    | voornamen (02.10) |
+    | Chantal           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | voornamen (02.10)  |
-    | Christiaan         |
+    | voornamen (02.10) |
+    | Christiaan        |
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
-    | voornamen (02.10)  |
-    | Mark               |
+    | voornamen (02.10) |
+    | Mark              |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
@@ -58,11 +59,11 @@ Rule: de actuele gegevens van ouders worden geleverd
     | voornamen (02.10) | geslachtsaanduiding (04.10) |
     | Noa               | V                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | voornamen (02.10)  | geslachtsaanduiding (04.10) |
-    | John               | M                           |
+    | voornamen (02.10) | geslachtsaanduiding (04.10) |
+    | John              | M                           |
     En de ouder '2' is gewijzigd naar de volgende gegevens
-    | voornamen (02.10)  | geslachtsaanduiding (04.10) |
-    | Johanna            | V                           |
+    | voornamen (02.10) | geslachtsaanduiding (04.10) |
+    | Johanna           | V                           |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                       |
     | type                | RaadpleegMetBurgerservicenummer                              |
@@ -112,17 +113,17 @@ Rule: de actuele gegevens van ouders worden geleverd
 
   Scenario: ontkenning gevolgd door erkenning
     Gegeven de persoon met burgerservicenummer '000000206' heeft een ouder '1' met de volgende gegevens
-    | voornamen (02.10) | 
-    | Chantal           | 
+    | voornamen (02.10) |
+    | Chantal           |
     En de persoon heeft een ouder '2' met de volgende gegevens
-    | voornamen (02.10)  |
-    | Mark               |
+    | voornamen (02.10) |
+    | Mark              |
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
-    | voornamen (02.10)  | 
-    |                    | 
+    | voornamen (02.10) |
+    |                   |
     En de ouder '2' is gecorrigeerd naar de volgende gegevens
-    | voornamen (02.10)  | 
-    | Wieger             | 
+    | voornamen (02.10) |
+    | Wieger            |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
@@ -284,3 +285,58 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     | field                                             |
     | ouders                                            |
     | ouders.ouderAanduiding,ouders.burgerservicenummer |
+
+  Abstract Scenario: onbekend waarde in voor een <groep>.<veld> bij ouders
+    Gegeven de persoon met burgerservicenummer '000000267' heeft een ouder '1' met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer (01.20) | 000000279 |
+    | <element>                   | 0000      |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000267                       |
+    | fields              | ouders.geboorte.<veld>          |
+    Dan heeft de response een persoon met een 'ouder' met de volgende 'geboorte' gegevens
+    | naam                | waarde   |
+    | <veld>.code         | 0000     |
+    | <veld>.omschrijving | Onbekend |
+
+    Voorbeelden:
+    | veld   | element                |
+    | plaats | geboorteplaats (03.20) |
+    | land   | geboorteland (03.30)   |
+
+  Scenario: volledig onbekende geboortedatum bij ouder
+   Gegeven de persoon met burgerservicenummer '000000395' heeft een ouder '1' met de volgende gegevens
+    | naam                        | waarde    |
+    | burgerservicenummer (01.20) | 000000401 |
+    | geboortedatum (03.10)       | 00000000  |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                               |
+    | type                | RaadpleegMetBurgerservicenummer                                      |
+    | burgerservicenummer | 000000395                                                            |
+    | fields              | burgerservicenummer,ouders.burgerservicenummer,ouders.geboorte.datum |
+    Dan heeft de response een persoon met alleen de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000395 |
+    En heeft de persoon een 'ouder' met alleen de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000401 |
+    | geboorte.datum      | 00000000  |
+
+Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
+      - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
+      - als de waarde in de geboorteplaats (03.20) niet voorkomt in de landelijke tabel Gemeenten, dan wordt de waarde alleen in de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
+
+  Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
+    Gegeven de persoon met burgerservicenummer '000000309' heeft een ouder '1' met de volgende gegevens
+    | geboorteplaats (03.20) |
+    | 52°2'43N4°22'39"O      |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000309                       |
+    | fields              | ouders.geboorte.plaats          |
+    Dan heeft de response een persoon met een 'ouder' met de volgende 'geboorte' gegevens
+    | naam                | waarde            |
+    | plaats.omschrijving | 52°2'43N4°22'39"O |

@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA Persoon: adressering - vragen van aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden met fields
+@gba
+Functionaliteit: adressering aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden vragen met fields
 
 Rule: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adressering van een persoon wordt gevraagd en de categorie persoon (01) heeft in onderzoek gegevens, dan worden deze ook geleverd
 

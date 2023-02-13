@@ -12,19 +12,22 @@ public class PersoonProfile : Profile
         CreateMap<GbaPersoonBeperkt, PersoonBeperkt>()
             .ForMember(dest => dest.Leeftijd, opt =>
             {
-                opt.PreCondition(src => src.Overlijden == null);
+                opt.PreCondition(src => src.OpschortingBijhouding == null ||
+                src.OpschortingBijhouding.Reden.Code != "O");
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
+            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
             .AfterMap((src, dest) =>
             {
-                if(dest.Verblijfplaats != null)
+                if (src.Verblijfplaats != null)
                 {
                     dest.Adressering = new AdresseringBeperkt
                     {
-                        Adresregel1 = dest.Verblijfplaats.Adresregel1(),
-                        Adresregel2 = dest.Verblijfplaats.Adresregel2(dest.GemeenteVanInschrijving),
-                        Adresregel3 = dest.Verblijfplaats.Adresregel3(),
-                        Land = dest.Verblijfplaats.Land()
+                        Adresregel1 = src.Verblijfplaats.Adresregel1(),
+                        Adresregel2 = src.Verblijfplaats.Adresregel2(src.GemeenteVanInschrijving),
+                        Adresregel3 = src.Verblijfplaats.Adresregel3(),
+                        Land = src.Verblijfplaats.Land(),
+                        InOnderzoek = src.AdresseringInOnderzoek()
                     };
                 }
             })
@@ -68,20 +71,21 @@ public class PersoonProfile : Profile
                         GebruikInLopendeTekst = dest.Naam.GebruikInLopendeTekst()
                     };
                 }
-                if(dest.Verblijfplaats != null)
+                if(src.Verblijfplaats != null)
                 {
-                    if (dest.Adressering == null) { dest.Adressering = new Adressering(); }
-
-                    dest.Adressering.Adresregel1 = dest.Verblijfplaats.Adresregel1();
-                    dest.Adressering.Adresregel2 = dest.Verblijfplaats.Adresregel2(dest.GemeenteVanInschrijving);
-                    dest.Adressering.Adresregel3 = dest.Verblijfplaats.Adresregel3();
-                    dest.Adressering.Land = dest.Verblijfplaats.Land();
+                    dest.Adressering = new Adressering
+                    {
+                        Adresregel1 = src.Verblijfplaats.Adresregel1(),
+                        Adresregel2 = src.Verblijfplaats.Adresregel2(src.GemeenteVanInschrijving),
+                        Adresregel3 = src.Verblijfplaats.Adresregel3(),
+                        Land = src.Verblijfplaats.Land()
+                    };
                 }
-                if(src.PersoonInOnderzoek != null ||
+                if (src.PersoonInOnderzoek != null ||
                     (src.Partners != null && src.Partners.Any(p => p.InOnderzoek != null))||
                     src.Verblijfplaats?.InOnderzoek != null)
                 {
-                    if (dest.Adressering == null) { dest.Adressering = new Adressering(); }
+                    dest.Adressering ??= new Adressering();
 
                     dest.Adressering.InOnderzoek = src.AdresseringInOnderzoek();
                 }

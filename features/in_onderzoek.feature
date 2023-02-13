@@ -790,54 +790,6 @@ Functionaliteit: in onderzoek
 
   Rule: een afgeleid gegeven wordt in inOnderzoek opgenomen wanneer ten minste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
 
-    Abstract Scenario: leeftijd van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000516' heeft de volgende gegevens
-      | naam                             | waarde   |
-      | aanduiding in onderzoek (83.10)  | <waarde> |
-      | datum ingang onderzoek (83.20)   | 20220307 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000516                       |
-      | fields              | leeftijd                        |
-      Dan heeft de response een persoon met de volgende gegevens
-      | naam                                                | waarde       |
-      | inOnderzoek.leeftijd                                | true         |
-      | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2022-03-07   |
-      | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum        |
-      | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 7 maart 2022 |
-
-      Voorbeelden:
-      | reden                        | waarde |
-      | geboortedatum van de persoon | 010310 |
-      | groep geboorte               | 010300 |
-      | categorie persoon            | 010000 |
-
-    Abstract Scenario: indicatieOverleden van de persoon in onderzoek omdat <gegeven in onderzoek> is in onderzoek
-      Gegeven de persoon met burgerservicenummer '000000528' heeft de volgende 'overlijden' gegevens
-      | naam                             | waarde   |
-      | aanduiding in onderzoek (83.10)  | <waarde> |
-      | datum ingang onderzoek (83.20)   | 20220307 |
-      | datum overlijden (08.10)         | 20220218 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000528                       |
-      | fields              | overlijden.indicatieOverleden   |
-      Dan heeft de response een persoon met de volgende 'overlijden' gegevens
-      | naam                                         | waarde       |
-      | indicatieOverleden                           | true         |
-      | inOnderzoek.indicatieOverleden               | true         |
-      | inOnderzoek.datumIngangOnderzoek.datum       | 2022-03-07   |
-      | inOnderzoek.datumIngangOnderzoek.type        | Datum        |
-      | inOnderzoek.datumIngangOnderzoek.langFormaat | 7 maart 2022 |
-
-      Voorbeelden:
-      | gegeven in onderzoek | reden                | waarde |
-      | datum van overlijden | datum overlijden     | 060810 |
-      | groep overlijden     | groep overlijden     | 060800 |
-      | categorie overlijden | categorie overlijden | 060000 |
-
     Abstract Scenario: verblijfplaats datumVan in onderzoek omdat <gegeven in onderzoek> is in onderzoek
       Gegeven de persoon met burgerservicenummer '000000553' heeft de volgende 'verblijfplaats' gegevens
       | naam                                   | waarde                        |

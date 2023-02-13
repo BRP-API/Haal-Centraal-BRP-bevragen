@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Reden opschorting bijhouding in persoon
+@gba
+Functionaliteit: reden opschorting bijhouding (persoon)
 
   Rule: Bij de code voor reden opschorting bijhouding moet de juiste omschrijving worden geleverd
      De juiste omschrijving staat in https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen/blob/master/docs/tabelwaarden.csv
@@ -29,3 +30,16 @@ Functionaliteit: Reden opschorting bijhouding in persoon
       | R                            | pl is aangelegd in de rni      |
       | F                            | fout                           |
       | .                            | onbekend                       |
+
+  Scenario: volledig onbekende datum Opschorting Bijhouding
+    Gegeven de persoon met burgerservicenummer '000000322' heeft de volgende 'inschrijving' gegevens
+    | naam                                 | waarde   |
+    | datum opschorting bijhouding (67.10) | 00000000 |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000322                       |
+    | fields              | opschortingBijhouding.datum     |
+    Dan heeft de response een persoon met alleen de volgende 'opschortingBijhouding' gegevens
+    | naam  | waarde   |
+    | datum | 00000000 |

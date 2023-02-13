@@ -1,27 +1,28 @@
 #!/usr/bin/env python
 
 """
-Genereert csv bestand met de optimale paden voor elk veld in de response.
-Het bestand heeft twee kolommen: "fields pad" en "volledig pad".
-De kolom "fields pad" bevat het pad die in de "fields" parameter ingevuld kan worden.
-In kolom "volledig pad" staat het volledige pad naar het veld dat moet worden geleverd.
-Per veld in de response is er één rij opgenomen met het kortst mogelijke pad dat uniek verwijst naar het veld.
+Genereert csv bestand met alle toegestane paden naar velden in de response.
+De gegenereerde lijst bevat alle mogelijke waarden die in de "fields" parameter ingevuld kunnen worden.
+
 Er zijn rijen opgenomen voor simple type velden (string, integer, boolean), en ook voor objecten (groepen velden).
 
-Deze lijst bevat geen velden die al automatisch geleverd zullen worden (bijv. geheimhouding, inOnderzoek en type).
-De velden die automatisch geleverd worden staan in het configuratiebestand in "autoFields".
+Deze lijst bevat ook velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd 
+zullen worden (bijv. geheimhouding, inOnderzoek en type, sub-velden van datum, sub-velden van waardetabel).
+Gebruik command line argument --filter om de lijst velden te krijgen zonder de automatisch geleverde velden.
 
-De csv lijst wordt opgeslagen onder de naam "fields-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de schemacomponent voor de resource in de response.
+De csv lijst wordt opgeslagen onder de naam "fields-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de 
+schemacomponent voor de resource in de response.
+Bij gebruik van het --filter argument wordt de csv lijst opgeslagen onder de naam "fields-filtered-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de 
+schemacomponent voor de resource in de response.
 
 Command line arguments:
 --config        bestand van projectspecifieke configuratie json bestand
+--filter        velden die automatisch worden geleverd worden niet opgenomen in de lijst
 --debug   -d    toon debug info
 --info    -i    toon voortgang info
 --help    -h    toon help op command line arguments
 
 Gebruik dit door bijvoorbeeld: python fields_generator.py --config"settings.json"
-
-Als input wordt de fields mapping gebruikt die is gegevenereerd met fields_mapping_generator.py. Deze moet dus eerst gedraaid worden vóór fields_generator kan worden gedraaid.
 """
 
 
@@ -29,11 +30,86 @@ import yaml, json
 from collections import OrderedDict
 import sys
 import os.path
+import config
 
 
-# lees command line arguments
+
+def writeComponent (path, ref, referer=""):
+    if debug==True:
+        print ("-- " + ref)
+    refList = ref.split("/")
+    component =  SWAGGER
+    for refPart in refList:
+        if refPart != "#":
+            component = component.get(refPart)
+
+    if refPart in SETTINGS.get("autoComponents"):
+        path += "(A)"
+
+    if component.get("properties") is not None:
+        properties = sorted(component.get("properties").items())
+        for property, propertyDef in properties:
+            writeProperty(path, property, propertyDef)
+
+    elif component.get("allOf") is not None:
+        for object in component.get("allOf"):
+            if "$ref" in object:
+                if object.get("$ref")!=referer:
+                    writeComponent (path, object.get("$ref"), ref)
+
+            if "properties" in object:
+                properties = sorted(object.get("properties").items())
+                for property, propertyDef in properties:
+                    writeProperty(path, property, propertyDef)
+
+    if component.get("discriminator") is not None:
+        for discriminator, component in  component.get("discriminator").get("mapping").items():
+            if debug==True:
+                print ("mapping: " + discriminator + " ==> " + component)
+
+            writeComponent (path, component, ref)
+
+
+def writeProperty(path, property, propertyDef):
+    if property in SETTINGS.get("autoFields"):
+        property += '(A)'
+
+    if path!="":
+        fields.append(path + "." + property)
+    else:
+        fields.append(property)
+
+    if path=="":
+        path = property
+    else:
+        path = path + "." + property
+
+    if "$ref" in propertyDef:
+        writeComponent (path, propertyDef.get("$ref"))
+
+    if "properties" in propertyDef:
+        properties = sorted(propertyDef.get("properties"))
+        for subProperty, subPropertyDef in properties:
+            writeProperty(path, subProperty, subPropertyDef)
+
+            if subProperty=="type":
+                print ("type")
+
+    if propertyDef.get('type') == "array":
+        if "$ref" in propertyDef.get('items'):
+            writeComponent (path, propertyDef.get("items").get("$ref"))
+
+
+def isAutoField(field):
+    return not "(A)" in field
+
+
+
+
+# read command line arguments
 debug = False
 info = False
+filterAutoFields = False
 settingsFileName = ""
 
 for argument in sys.argv:
@@ -47,12 +123,15 @@ for argument in sys.argv:
     elif (argument=="--help" or argument=="-h"):
         print ('Command line arguments:')
         print ('--config         bestand van projectspecifieke configuratie json bestand')
+        print ('--filter         velden die automatisch worden geleverd worden niet opgenomen in de lijst')
         print (' --info    -i    toon voortgangs info')
         print (' --debug   -d    toon debug info')
         print (' --help    -h    toon help op command line arguments')
         sys.exit()
+    if (argument=="--filter"):
+        filterAutoFields = True
 
-# lees configuratiebestand
+
 if settingsFileName!="":
     with open(settingsFileName) as settingsFile:
         SETTINGS = json.load(settingsFile)
@@ -60,93 +139,44 @@ else:
     print ("Geef het gewenste config bestand op met parameter --config.")
     sys.exit()
 
+if (not os.path.isdir(SETTINGS.get("projectFolder"))):
+    print ("Geef een correcte projectFolder in het config bestand.")
+    sys.exit()
+
+if (not os.path.isfile(SETTINGS.get("projectFolder") + SETTINGS.get("sourceYaml"))):
+    print ("Geef een correcte locatie op voor de API specificaties in sourceYaml.")
+    sys.exit()
+
+if (not os.path.isdir(SETTINGS.get("projectFolder") + SETTINGS.get("sheetFolder"))):
+    print ("Geef een correcte locatie op voor de te genereren sheets in sheetFolder.")
+    print (SETTINGS.get("projectFolder") + SETTINGS.get("sheetFolder"))
+    sys.exit()
 
 
-def readFieldsFile (fileName):
-    f = open (fileName, "r")
-    fieldLines = f.read().splitlines() 
-    f.close()
+#read source API specifications file into a Dict
+SWAGGER = yaml.full_load(open(SETTINGS.get("projectFolder") + SETTINGS.get("sourceYaml")))
 
-    fields = []
-    for fieldLine in fieldLines[1:]:
-        fields.append(readLine(fieldLine))
-
-    return fields
-
-
-def readLine (csvLine):
-    row = csvLine.split(SETTINGS.get('csvSeperator'))
-    return { "shortPath": row[0], "fullPath": row[1]}
-
-
-def isAutoField (fieldPath, autoFields):
-    for autoField in autoFields:
-        if autoField in fieldPath:
-            return True
-
-    if fieldPath.lower().count("datum") > 1:
-        if debug==True:
-            print ("Dubbele Datum: " + fieldPath)
-        return True
-
-    return False
-
-
-def fieldLength(e):
-    return len(e.get("shortPath"))
-
-
-def double(newItem, currentList):
-    sameItem = next((item for item in currentList if item["fullPath"] == newItem.get("fullPath")), None)
-    
-    if sameItem is None:
-        return False
-    else:
-        return True
-
-# voor elk schemaComponents item in het configuratiebestand wordt een bestand gegenereerd
 for schemaComponent in SETTINGS.get("schemaComponents"):
     if info==True:
-        print (schemaComponent.get("name"))
+            print (schemaComponent.get("name"))
 
-    inputPath = SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder") + "fields-mapping-"  + schemaComponent.get("name") + ".csv"
-    outputPath = SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder") + "fields-"  + schemaComponent.get("name") + ".csv"
+    if filterAutoFields==True:
+        filePath = SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder") + "fields-filtered-"  + schemaComponent.get("name") + ".csv"
+    else:
+        filePath = SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder") + "fields-"  + schemaComponent.get("name") + ".csv"
 
-    fields = readFieldsFile(inputPath)
+    fields = []
+    writeComponent ("", "#/components/schemas/" + schemaComponent.get("name"))
+    
+    fields = list(dict.fromkeys(fields)) # remove double fields paths
 
-    """
-    voor een schemacomponent die een subset is van een andere schemacomponent (bijv. zoekresultaat bevat een deel van de velden van raadpleegresultaat)
-    wordt de fields-mapping van de complete resource gebruikt
-    om te voorkomen dat voor de kleinere component paden worden toegestaan die in de volledige resource niet uniek zijn
-    """
-    if schemaComponent.get("fullResource") is not None:
-        if info==True:
-            print ("  -- full resource:", schemaComponent.get("fullResource"))
+    if filterAutoFields==True:
+        fields = filter(isAutoField, fields)
 
-        fullResourcePath = SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder") + "fields-mapping-"  + schemaComponent.get("fullResource") + ".csv"
-        fullResourceFields = readFieldsFile(fullResourcePath)
+    f = open (filePath, "w")
 
-    filteredFields = []
+    f.write ("pad\n")
     for field in fields:
-        # velden die automatisch (ongevraagd) worden geleverd worden niet opgenomen
-        if isAutoField(field.get("fullPath"), SETTINGS["autoFields"]):
-            continue
-
-        # elk veld(pad) wordt maximaal 1 keer opgenomen
-        if double(field, filteredFields):
-            continue
-
-        if schemaComponent.get("fullResource") is not None:
-            samePath = list( filter(lambda f: f.get("fullPath")==field.get("fullPath"), fullResourceFields) )
-        else:
-            samePath = list( filter(lambda f: f.get("fullPath")==field.get("fullPath"), fields) )
-            
-        samePath.sort(key=fieldLength)        
-        filteredFields.append(samePath[0])
-
-    # schrijf de lijst als csv bestand
-    f = open (outputPath, "w")
-    f.write ("fields pad" + SETTINGS.get('csvSeperator') + "volledig pad\n")
-    for field in filteredFields:
-        f.write (field.get("shortPath") + SETTINGS.get('csvSeperator') + field.get("fullPath") + "\n")
+        f.write (field.replace("(A)", "") + "\n")
+    
     f.close()

@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: Kinderen van een GBA persoon raadplegen
+@gba
+Functionaliteit: kinderen raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
 

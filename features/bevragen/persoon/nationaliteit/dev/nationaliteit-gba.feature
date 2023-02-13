@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA persoon: Nationaliteit
+@gba
+Functionaliteit: Nationaliteit
 
 Achtergrond:
   Gegeven landelijke tabel "Nationaliteiten" heeft de volgende waarden
@@ -238,3 +239,37 @@ Achtergrond:
     | redenOpname.code           | 311                                  |
     | redenOpname.omschrijving   | Vaststelling onbekende nationaliteit |
     | datumIngangGeldigheid      | 20200727                             |
+
+  Scenario: nationaliteit gewijzigd naar bijzonder Nederlanderschap
+    Gegeven de persoon met burgerservicenummer '000000267' heeft een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
+    | 0100                  | 301                   | 20200713                        |
+    En de 'nationaliteit' is gewijzigd naar de volgende gegevens
+    | reden opnemen (63.10) | bijzonder Nederlanderschap (65.10) | datum ingang geldigheid (85.10) |
+    | 310                   | V                                  | 20200724                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000267                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon met een 'nationaliteit' met de volgende gegevens
+    | naam                                | waarde                                  |
+    | aanduidingBijzonderNederlanderschap | V                                       |
+    | redenOpname.code                    | 310                                     |
+    | redenOpname.omschrijving            | Vaststelling bijzonder Nederlanderschap |
+    | datumIngangGeldigheid               | 20200724                                |
+
+  Scenario: persoon heeft alleen een beëindigde nationaliteit
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                  | waarde |
+    | nationaliteit (05.10) | 0001   |
+    En de 'nationaliteit' is gewijzigd naar de volgende gegevens
+    | naam                            | waarde |
+    | reden beëindigen (64.10)        | 410    |
+    | datum ingang geldigheid (85.10) | morgen |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon zonder 'nationaliteit' gegevens

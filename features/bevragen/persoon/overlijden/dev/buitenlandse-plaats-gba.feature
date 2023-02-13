@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Buitenlandse overlijdensplaats of locatie
+@gba
+Functionaliteit: overlijden buitenlandse plaats of locatie (persoon)
 
   Rule: wanneer de waarde voor een plaats overlijden (08.20) geen valide gemeentecode bevat wordt de plaats geleverd in de omschrijving en wordt veld code niet geleverd
     - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten

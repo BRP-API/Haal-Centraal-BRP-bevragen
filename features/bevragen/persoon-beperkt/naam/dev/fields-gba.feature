@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA Persoon beperkt: naam velden vragen met fields
+@gba
+Functionaliteit: naam velden vragen met fields (persoon beperkt)
 
   Scenario: 'voorletters' wordt gevraagd met field pad 'naam.voorletters'
     Gegeven de persoon met burgerservicenummer '000000413' heeft de volgende gegevens

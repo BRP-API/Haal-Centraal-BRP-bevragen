@@ -123,14 +123,10 @@ public class FieldsHelper
         var retval = fields
             .Where(f => !f.Contains("inOnderzoek"))
             .ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths()
+            .AddAlwaysReturnedFields()
             .AddInOnderzoekFields()
+            .Distinct()
             .ToList();
-
-        retval.AddRange(new[]
-            {
-            "geheimhoudingPersoonsgegevens",
-            "opschortingBijhouding"
-            });
 
         _logger.LogDebug("extra persoon fields: {@fields}", retval);
 
@@ -140,19 +136,16 @@ public class FieldsHelper
     public ICollection<string> AddExtraPersoonBeperktFields(ICollection<string> fields)
     {
         var retval = fields
+            .Where(f => !f.Contains("inOnderzoek"))
             .ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths()
+            .AddAlwaysReturnedFields()
             .AddInOnderzoekFields()
+            .Distinct()
             .ToList();
-
-        retval.AddRange(new[]
-            {
-            "geheimhoudingPersoonsgegevens",
-            "opschortingBijhouding"
-            });
 
         _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
 
-        return retval.Distinct().ToList();
+        return retval;
     }
 
     private static string ToInOnderzoekpath(IEnumerable<string> inOnderzoekPaths, string path)

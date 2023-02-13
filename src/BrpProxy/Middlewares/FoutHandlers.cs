@@ -9,6 +9,7 @@ namespace BrpProxy.Middlewares
         private const string ProblemJsonContentType = "application/problem+json";
 
         private const string BadRequestIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1";
+        private const string NotFoundIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.4";
         private const string MethodNotAllowedIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.5";
         private const string NotAcceptableIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6";
         private const string UnsupportedMediaTypeIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13";
@@ -17,6 +18,17 @@ namespace BrpProxy.Middlewares
         private static readonly Regex ConvertPropertyValueRegex = new(@"^Could not convert string to (?<code>.*):(.*). Path '(?<name>.*)'.$");
         private static readonly Regex RequiredPropertyRegex = new(@"^Required property '(?<name>.*)' expects a non-null value. Path ''.$");
         private static readonly Regex ConvertValueToCollectionRegex = new(@"^Error converting value ""(.*)"" to type '(.*)'. Path '(?<name>.*)'.$");
+
+        private static Foutbericht CreateNotFoundFoutbericht(this HttpContext context)
+        {
+            return new Foutbericht
+            {
+                Status = StatusCodes.Status404NotFound,
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Title = "Opgevraagde resource bestaat niet.",
+                Type = new Uri(NotFoundIdentifier)
+            };
+        }
 
         private static Foutbericht CreateMethodNotAllowedFoutbericht(this HttpContext context)
         {
@@ -166,6 +178,21 @@ namespace BrpProxy.Middlewares
             context.Response.StatusCode = foutbericht.Status!.Value;
             context.Response.ContentLength = bodyStream.Length;
             context.Response.ContentType = ProblemJsonContentType;
+        }
+
+        public static async Task<bool> HandleNotFound(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
+        {
+            logger.LogWarning("resource not found: {@requestPath}", context.Request.Path);
+
+            var foutbericht = context.CreateNotFoundFoutbericht();
+
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
+
+            context.SetResponseProperties(foutbericht, bodyStream);
+
+            await bodyStream.CopyToAsync(orgResponseBodyStream);
+
+            return false;
         }
 
         public static async Task<bool> MethodIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)

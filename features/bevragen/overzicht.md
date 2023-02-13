@@ -32,7 +32,7 @@ De volgende zoek operaties kunnen worden gebruikt om een persoon met niet-uniek 
 
 Het resultaat van deze operaties is een PersoonBeperkt collectie/lijst. Standaard bevat deze lijst alleen personen die in leven zijn. Om een overleden persoon te zoeken, moet de inclusiefOverledenPersonen parameter op true worden gezet. 
 
-Voor overleden personen wordt altijd het indicatieOverleden veld geleverd. Zie de [indicatie overleden](../overlijden-indicatie-overleden.feature) feature voor meer informatie over dit veld.
+Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'. Zie de [overlijden overzicht](./persoon-beperkt/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 
 ## Raadplegen van personen
@@ -45,7 +45,7 @@ Als de burgerservicenummer van de te bevragen personen wel bekend is, kan de vol
 
 Het resultaat van deze operatie is een Persoon collectie/lijst.
 
-Bij een overleden persoon in het raadpleeg resultaat wordt altijd het indicatieOverleden veld geleverd.  Zie de [indicatie overleden](../overlijden-indicatie-overleden.feature) feature voor meer informatie over dit veld.
+Bij een overleden persoon in het raadpleeg resultaat wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'.  Zie de [overlijden overzicht](./persoon/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 ## Filteren van de velden van de gevonden personen
 
@@ -80,7 +80,6 @@ Om de waarde in een value type te kunnen interpreteren, zijn alle velden van de 
 De volgende (gegevensgroep) velden hoeven niet met de fields parameter te worden gevraagd. Deze worden meegeleverd als de bijbehorende situatie van toepassing is:
 
 - geheimhoudingPersoonsgegevens
-- indicatieOverleden
 - inOnderzoek
 - opschortingBijhouding
 - rni
