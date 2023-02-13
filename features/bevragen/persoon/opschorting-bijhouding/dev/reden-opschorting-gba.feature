@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Reden opschorting bijhouding in persoon
+@gba
+Functionaliteit: reden opschorting bijhouding (persoon)
 
   Rule: Bij de code voor reden opschorting bijhouding moet de juiste omschrijving worden geleverd
      De juiste omschrijving staat in https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen/blob/master/docs/tabelwaarden.csv

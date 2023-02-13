@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: Gba persoon: kind - naam
+@gba
+Functionaliteit: kind - naam
 
     Abstract Scenario: Kind voorvoegsel naam is leeg
       Gegeven de persoon met burgerservicenummer '000000152' heeft een 'kind' met de volgende gegevens

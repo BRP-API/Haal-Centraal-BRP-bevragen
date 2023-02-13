@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA persoon: partner
+@gba
+Functionaliteit: partner
 
 Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt alleen de ex-partner met de meest recente datum ontbinding geleverd
 

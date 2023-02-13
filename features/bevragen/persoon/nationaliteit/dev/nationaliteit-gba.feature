@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA persoon: Nationaliteit
+@gba
+Functionaliteit: Nationaliteit
 
 Achtergrond:
   Gegeven landelijke tabel "Nationaliteiten" heeft de volgende waarden

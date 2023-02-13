@@ -1,5 +1,6 @@
 # language: nl
 
+@gba
 Functionaliteit: geheimhouding: niet verstrekken van gegevens van een persoon aan derden
 
   Abstract Scenario: 'indicatie geheim (70.10)' met waarde <waarde> wordt gevraagd met veld pad 'geheimhoudingPersoonsgegevens'

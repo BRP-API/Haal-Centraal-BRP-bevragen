@@ -1,12 +1,13 @@
 #language: nl
 
+@gba
 Functionaliteit: Zoek met postcode en huisnummer - fout cases
 
 Rule: Postcode en huisnummer zijn verplichte parameters
 
   @fout-case
   Scenario: De postcode en huisnummer parameters zijn niet opgegeven 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam   | waarde                      |
     | type   | ZoekMetPostcodeEnHuisnummer |
     | fields | burgerservicenummer         |
@@ -25,7 +26,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
 
   @fout-case
   Scenario: De postcode parameter is niet opgegeven 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | huisnummer | 2                           |
@@ -44,7 +45,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
 
   @fout-case
   Scenario: De huisnummer parameter is niet opgegeven 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam     | waarde                      |
     | type     | ZoekMetPostcodeEnHuisnummer |
     | postcode | 2628HJ                      |
@@ -63,7 +64,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
 
   @fout-case
   Scenario: Een lege string is opgegeven als postcode en huisnummer waarde 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   |                             |
@@ -84,7 +85,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | <postcode>                  |
@@ -139,7 +140,7 @@ Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 let
 
   @fout-case
   Abstract Scenario: Een ongeldig postcode is opgegeven 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | <postcode>                  |
@@ -165,7 +166,7 @@ Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 let
 
   @fout-case
   Scenario: Meerdere ongeldige parameters zijn opgegeven 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 0628HJ                      |
@@ -188,7 +189,7 @@ Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoe
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisletter' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 2628HJ                      |
@@ -219,7 +220,7 @@ Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaa
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisnummertoevoeging' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                 | waarde                      |
     | type                 | ZoekMetPostcodeEnHuisnummer |
     | postcode             | 2628HJ                      |
@@ -247,7 +248,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                       | waarde                         |
     | type                       | ZoekMetPostcodeEnHuisnummer    |
     | postcode                   | 2628HJ                         |
@@ -275,7 +276,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam        | waarde                      |
     | type        | ZoekMetPostcodeEnHuisnummer |
     | postcode    | 2628HJ                      |

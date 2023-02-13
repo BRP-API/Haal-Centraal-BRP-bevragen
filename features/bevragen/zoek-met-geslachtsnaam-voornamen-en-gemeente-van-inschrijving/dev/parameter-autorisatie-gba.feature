@@ -83,7 +83,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3                         |
       | title    | U bent niet geautoriseerd voor de gebruikte parameter(s).                           |
       | status   | 403                                                                                 |
-      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): voorvoegsel, geslacht. |
+      | detail   | U bent niet geautoriseerd voor het gebruik van parameter(s): geslacht, voorvoegsel. |
       | code     | unauthorizedParameter                                                               |
       | instance | /haalcentraal/api/brp/personen                                                      |
 
@@ -107,8 +107,8 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
 
     Abstract Scenario: Afnemer zoekt met de verplichte parameters en <extra parameter> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60)             | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120 10240 10310 <rubriek extra parameter> | N                        | 20201128                |
+      | Rubrieknummer ad hoc (35.95.60)                   | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 10210 10240 <rubriek extra parameter> 80910 | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |

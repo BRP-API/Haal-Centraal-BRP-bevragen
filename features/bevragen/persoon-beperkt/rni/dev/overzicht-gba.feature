@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA persoon : leveren van RNI-deelnemer gegevens
+@gba
+Functionaliteit: leveren van RNI-deelnemer gegevens (persoon beperkt)
 
   RNI-deelnemer gegevens die horen bij de volgende categoriën worden geleverd wanneer ten minste één gegeven van die categoriën wordt gevraagd
   | categorie | naam           |

@@ -14,7 +14,6 @@ namespace BrpProxy.Tests
         [Theory]
         [InlineData("geheimhoudingPersoonsgegevens")]
         [InlineData("opschortingBijhouding")]
-        [InlineData("overlijden.indicatieOverleden")]
         [InlineData("rni")]
         public void AlwaysReturnedFields(string expectedField)
         {

@@ -12,7 +12,7 @@ public partial class Persoon
 
     public bool ShouldSerializeRni() => Rni != null && Rni.Count > 0;
 
-    public bool ShouldSerializeAdressering() => Adressering != null;
+    public bool ShouldSerializeAdressering() => Adressering != null && Adressering.ShouldSerialize();
 
     public bool ShouldSerializeEuropeesKiesrecht() => EuropeesKiesrecht != null && EuropeesKiesrecht.ShouldSerialize();
 
@@ -44,7 +44,7 @@ public partial class Persoon
         IndicatieCurateleRegister ||
         IndicatieGezagMinderjarige != null ||
         Leeftijd > 0 ||
-        ShouldSerializeAdressering() ||
+        Adressering != null ||
         ShouldSerializeEuropeesKiesrecht() ||
         ShouldSerializeGeboorte() ||
         ShouldSerializeImmigratie() ||

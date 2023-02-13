@@ -1,4 +1,5 @@
 ﻿using HaalCentraal.BrpProxy.Generated;
+using Gba = HaalCentraal.BrpProxy.Generated.Gba;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -6,41 +7,41 @@ namespace BrpProxy.Mappers;
 
 public static class AdresregelsMapper
 {
-    public static string? Adresregel1(this AbstractVerblijfplaats verblijfplaats)
+    private static bool StraatHeeftStandaardWaarde(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats) =>
+        string.IsNullOrWhiteSpace(verblijfplaats.Straat) || verblijfplaats.Straat == ".";
+    private static bool HuisnummerHeeftStandaardWaarde(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats) =>
+        verblijfplaats.Huisnummer == 0;
+    private static bool LandHeeftStandaardWaarde(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats) =>
+        verblijfplaats.Land == null || verblijfplaats.Land.Code == "0000";
+    private static bool RegelsHebbenStandaardWaarde(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats) =>
+        string.IsNullOrWhiteSpace(verblijfplaats.Regel1) &&
+        string.IsNullOrWhiteSpace(verblijfplaats.Regel2) &&
+        string.IsNullOrWhiteSpace(verblijfplaats.Regel3);
+
+    public static string? Adresregel1(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats)
     {
-        return verblijfplaats switch
+        if (!verblijfplaats.StraatHeeftStandaardWaarde() && !verblijfplaats.HuisnummerHeeftStandaardWaarde())
         {
-            Adres a => a.Adresregel1(),
-            Locatie l => l.Adresregel1(),
-            VerblijfplaatsBuitenland b => b.Adresregel1(),
-            _ => null
-        };
-    }
-
-    private static string? Adresregel1(this Adres verblijfplaats)
-    {
-        return verblijfplaats.Verblijfadres.Adresregel1();
-    }
-
-    private static string? Adresregel1(this AdresBeperkt verblijfplaats)
-    {
-        return verblijfplaats.Verblijfadres?.Adresregel1();
-    }
-
-    private static string? Adresregel1(this VerblijfadresBinnenland adres)
-    {
-        if (string.IsNullOrWhiteSpace(adres.KorteStraatnaam) ||
-            //string.IsNullOrWhiteSpace(adres.Postcode) ||
-            adres.Huisnummer == 0)
-        {
-            return null;
+            return verblijfplaats.AdresToAdresregel1();
         }
+        if (!string.IsNullOrWhiteSpace(verblijfplaats.Locatiebeschrijving))
+        {
+            return verblijfplaats.LocatieToAdresregel1();
+        }
+        if (!string.IsNullOrWhiteSpace(verblijfplaats?.Land?.Code))
+        {
+            return verblijfplaats.VerblijfplaatsBuitenlandToAdresregel1();
+        }
+        return null;
+    }
 
+    private static string? AdresToAdresregel1(this Gba.GbaVerblijfplaatsBeperkt adres)
+    {
         StringBuilder retval = new();
 
-        if (!string.IsNullOrWhiteSpace(adres.KorteStraatnaam))
+        if (!string.IsNullOrWhiteSpace(adres.Straat))
         {
-            retval.Append(adres.KorteStraatnaam);
+            retval.Append(adres.Straat);
         }
         if (adres.AanduidingBijHuisnummer != null)
         {
@@ -85,59 +86,35 @@ public static class AdresregelsMapper
         return retval.ToString();
     }
 
-    private static string? Adresregel1(this Locatie verblijfplaats)
+    private static string? LocatieToAdresregel1(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats)
     {
-        return verblijfplaats.Verblijfadres.Locatiebeschrijving;
+        return verblijfplaats.Locatiebeschrijving;
     }
 
-    private static string? Adresregel1(this LocatieBeperkt? verblijfplaats)
-    {
-        return verblijfplaats?.Verblijfadres?.Locatiebeschrijving;
-    }
+    private static string? VerblijfplaatsBuitenlandToAdresregel1(this Gba.GbaVerblijfplaatsBeperkt adres) =>
+        adres.LandHeeftStandaardWaarde() ||
+        adres.RegelsHebbenStandaardWaarde()
+            ? null
+            : adres.Regel1;
 
-    private static string? Adresregel1(this VerblijfplaatsBuitenland verblijfplaats)
+    public static string? Adresregel2(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats, IWaardetabel gemeenteVanInschrijving)
     {
-        return verblijfplaats.Verblijfadres.Adresregel1();
-    }
-
-    private static string? Adresregel1(this VerblijfplaatsBuitenlandBeperkt verblijfplaats)
-    {
-        return verblijfplaats.Verblijfadres.Adresregel1();
-    }
-
-    private static string? Adresregel1(this VerblijfadresBuitenland? adres)
-    {
-        return
-            adres?.Land != null &&
-            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
-            !string.IsNullOrWhiteSpace(adres.Regel2) ||
-            !string.IsNullOrWhiteSpace(adres.Regel3))
-            ? adres.Regel1
-            : null;
-    }
-
-    public static string? Adresregel2(this AbstractVerblijfplaats verblijfplaats, IWaardetabel gemeenteVanInschrijving)
-    {
-        return verblijfplaats switch
+        if (!verblijfplaats.StraatHeeftStandaardWaarde() && !verblijfplaats.HuisnummerHeeftStandaardWaarde())
         {
-            Adres a => a.Adresregel2(gemeenteVanInschrijving),
-            Locatie l => l.Adresregel2(gemeenteVanInschrijving),
-            VerblijfplaatsBuitenland b => b.Adresregel2(),
-            _ => null
-        };
+            return verblijfplaats.AdresToAdresregel2(gemeenteVanInschrijving);
+        }
+        if (!string.IsNullOrWhiteSpace(verblijfplaats.Locatiebeschrijving))
+        {
+            return verblijfplaats.LocatieToAdresregel2(gemeenteVanInschrijving);
+        }
+        if (!string.IsNullOrWhiteSpace(verblijfplaats?.Land?.Code))
+        {
+            return verblijfplaats.VerblijfplaatsBuitenlandToAdresregel2();
+        }
+        return null;
     }
 
-    private static string? Adresregel2(this Adres verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
-    {
-        return verblijfplaats.Verblijfadres.Adresregel2(gemeenteVanInschrijving);
-    }
-
-    private static string? Adresregel2(this AdresBeperkt verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
-    {
-        return verblijfplaats.Verblijfadres?.Adresregel2(gemeenteVanInschrijving);
-    }
-
-    private static string? Adresregel2(this VerblijfadresBinnenland adres, IWaardetabel? gemeenteVanInschrijving)
+    private static string? AdresToAdresregel2(this Gba.GbaVerblijfplaatsBeperkt adres, IWaardetabel? gemeenteVanInschrijving)
     {
         if (string.IsNullOrWhiteSpace(adres.Postcode))
         {
@@ -152,74 +129,30 @@ public static class AdresregelsMapper
             : $"{postcodeNum} {postcodeAlfa}  {gemeenteVanInschrijving?.Omschrijving?.ToUpperInvariant()}";
     }
 
-    private static string? Adresregel2(this Locatie verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
+    private static string? LocatieToAdresregel2(this Gba.GbaVerblijfplaatsBeperkt _, IWaardetabel? gemeenteVanInschrijving)
     {
         return gemeenteVanInschrijving?.Omschrijving.ToUpperInvariant();
     }
 
-    private static string? Adresregel2(this LocatieBeperkt verblijfplaats, IWaardetabel? gemeenteVanInschrijving)
-    {
-        return gemeenteVanInschrijving?.Omschrijving.ToUpperInvariant();
-    }
+    private static string? VerblijfplaatsBuitenlandToAdresregel2(this Gba.GbaVerblijfplaatsBeperkt adres) =>
+        adres.LandHeeftStandaardWaarde() ||
+        adres.RegelsHebbenStandaardWaarde()
+            ? null
+            : adres.Regel2;
 
-    private static string? Adresregel2(this VerblijfplaatsBuitenland verblijfplaats)
-    {
-        return verblijfplaats.Verblijfadres.Adresregel2();
-    }
+    public static string? Adresregel3(this Gba.GbaVerblijfplaatsBeperkt adres) =>
+        adres.LandHeeftStandaardWaarde() ||
+        adres.RegelsHebbenStandaardWaarde()
+            ? null
+            : adres.Regel3;
 
-    private static string? Adresregel2(this VerblijfplaatsBuitenlandBeperkt verblijfplaats)
-    {
-        return verblijfplaats.Verblijfadres.Adresregel2();
-    }
-
-    private static string? Adresregel2(this VerblijfadresBuitenland? adres)
-    {
-        return
-            adres?.Land != null &&
-            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
-            !string.IsNullOrWhiteSpace(adres.Regel2) ||
-            !string.IsNullOrWhiteSpace(adres.Regel3))
-            ? adres.Regel2
-            : null;
-    }
-
-    public static string? Adresregel3(this AbstractVerblijfplaats verblijfplaats)
-    {
-        return verblijfplaats switch
-        {
-            VerblijfplaatsBuitenland b => b.Verblijfadres.Adresregel3(),
-            _ => null
-        };
-    }
-
-    private static string? Adresregel3(this VerblijfadresBuitenland adres)
-    {
-        return
-            adres.Land != null &&
-            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
-            !string.IsNullOrWhiteSpace(adres.Regel2) ||
-            !string.IsNullOrWhiteSpace(adres.Regel3))
-            ? adres.Regel3
-            : null;
-    }
-
-    public static Waardetabel? Land(this AbstractVerblijfplaats verblijfplaats)
-    {
-        return verblijfplaats switch
-        {
-            VerblijfplaatsBuitenland b => b.Verblijfadres.Land(),
-            _ => null
-        };
-    }
-
-    private static Waardetabel? Land(this VerblijfadresBuitenland adres)
-    {
-        return
-            adres.Land != null &&
-            (!string.IsNullOrWhiteSpace(adres.Regel1) ||
-            !string.IsNullOrWhiteSpace(adres.Regel2) ||
-            !string.IsNullOrWhiteSpace(adres.Regel3))
-            ? adres.Land
-            : null;
-    }
+    public static Waardetabel? Land(this Gba.GbaVerblijfplaatsBeperkt adres) =>
+        adres.LandHeeftStandaardWaarde() ||
+        adres.RegelsHebbenStandaardWaarde()
+            ? null
+            : new Waardetabel
+            {
+                Code = adres.Land.Code,
+                Omschrijving = adres.Land.Omschrijving
+            };
 }

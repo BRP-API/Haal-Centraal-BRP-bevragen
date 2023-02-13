@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GbaPersoon: verificatie velden vragen met fields
+@gba
+Functionaliteit: verificatie velden vragen met fields (persoon)
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
       | naam                             | waarde               |

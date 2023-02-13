@@ -1,12 +1,13 @@
 #language: nl
 
+@gba
 Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving - fout cases
 
 Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parameters
 
   @fout-case
   Scenario: De voornamen, geslachtsnaam en gemeenteVanInschrijving parameters zijn niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam   | waarde                               |
     | type   | ZoekMetNaamEnGemeenteVanInschrijving |
     | fields | burgerservicenummer                  |
@@ -26,7 +27,7 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
 
   @fout-case
   Scenario: Alleen de geslachtsnaam parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | Jan                                  |
@@ -46,7 +47,7 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
 
   @fout-case
   Scenario: Alleen de voornamen parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | geslachtsnaam           | Jansen                               |
@@ -66,7 +67,7 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
 
   @fout-case
   Scenario: Alleen de gemeenteVanInschrijving parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                               |
     | type          | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen     | Jan                                  |
@@ -86,7 +87,7 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
 
   @fout-case
   Scenario: Een lege string is opgegeven als voornamen, geslachtsnaam en gemeente van inschrijving waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               |                                      |
@@ -109,7 +110,7 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | <voornamen>                          |
@@ -142,7 +143,7 @@ Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 k
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | Jan                                  |
@@ -174,7 +175,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
 
   @fout-case
   Abstract Scenario: De "*" wildcard karakter staat niet aan het eind in de geslachtsnaam parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | Jan                                  |
@@ -207,7 +208,7 @@ Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 20
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | <voornamen>                          |
@@ -239,7 +240,7 @@ Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 e
 
   @fout-case
   Abstract Scenario: De "*" wildcard is opgegeven als eerste karakter in de voornamen parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | <voornamen>                          |
@@ -267,7 +268,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | Jan                                  |
@@ -299,7 +300,7 @@ Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 
 
   @fout-case
   Scenario: Een ongeldige waarde is opgegeven voor de 'voorvoegsel' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                 |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving   |
     | voornamen               | Jan                                    |
@@ -323,7 +324,7 @@ Rule: De geslacht waarde is één karakter lang en kan één van de volgende kar
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'geslacht' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | Jan                                  |
@@ -352,7 +353,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                       | waarde                               |
     | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen                  | Jan                                  |
@@ -381,7 +382,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                               |
     | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
     | voornamen               | Jan                                  |

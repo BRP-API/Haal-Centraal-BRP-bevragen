@@ -1,5 +1,6 @@
 #language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie verificatie Persoon
 
   Rule: Vragen met fields om verificatie vereist geen autorisatie voor dat veld

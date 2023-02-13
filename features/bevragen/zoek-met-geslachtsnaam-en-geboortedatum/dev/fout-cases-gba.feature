@@ -1,12 +1,13 @@
 #language: nl
 
+@gba
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
 
 Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   @fout-case
   Scenario: De geslachtsnaam en geboortedatum parameters zijn niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam   | waarde                              |
     | type   | ZoekMetGeslachtsnaamEnGeboortedatum |
     | fields | burgerservicenummer                 |
@@ -25,7 +26,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   @fout-case
   Scenario: Alleen de geslachtsnaam parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geboortedatum | 1983-05-26                          |
@@ -44,7 +45,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   @fout-case
   Scenario: Alleen de geboortedatum parameter is niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | maassen                             |
@@ -63,7 +64,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   @fout-case
   Scenario: Een lege string is opgegeven als geslachtsnaam en geboortedatum waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam |                                     |
@@ -84,7 +85,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | <geslachtsnaam>                     |
@@ -111,7 +112,7 @@ Rule: De geboortedatum is een datum string geformatteerd volgens de [ISO 8601 da
 
   @fout-case
   Abstract Scenario: Een ongeldig datum is opgegeven als geboortedatum waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Maassen                             |
@@ -142,7 +143,7 @@ Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 k
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | <geslachtsnaam>                     |
@@ -173,7 +174,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
 
   @fout-case
   Abstract Scenario: De "*" wildcard is opgegeven als eerste karakter in de geslachtsnaam parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | <geslachtsnaam filter>              |
@@ -198,7 +199,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
 
   @fout-case
   Abstract Scenario: De "*" wildcard komt meerdere keren voor in de geslachtsnaam parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | <geslachtsnaam filter>              |
@@ -226,7 +227,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
 
   @fout-case
   Abstract Scenario: De "*" wildcard karakter staat niet aan het eind in de geslachtsnaam parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | <geslachtsnaam filter>              |
@@ -251,7 +252,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
 
   @fout-case
   Abstract Scenario: De opgegeven geslachtsnaam exclusief "*" wildcard karakter is niet minimaal 3 karakters lang
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | <geslachtsnaam filter>              |
@@ -279,7 +280,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
 
   @fout-case
   Scenario: Er zijn meerdere ongeldige parameters opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                                 |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum    |
     | geslachtsnaam | <script>alert('hello world');</script> |
@@ -306,7 +307,7 @@ Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 19
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Jansen                              |
@@ -338,7 +339,7 @@ Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 e
 
   @fout-case
   Abstract Scenario: De "*" wildcard is opgegeven als eerste karakter in de voornamen parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Jansen                              |
@@ -369,7 +370,7 @@ Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 
 
   @fout-case
   Scenario: Een ongeldige waarde is opgegeven voor de 'voorvoegsel' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                                 |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum    |
     | geslachtsnaam | maassen                                |
@@ -392,7 +393,7 @@ Rule: De geslacht waarde is één karakter lang en kan één van de volgende kar
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'geslacht' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | maassen                             |
@@ -420,7 +421,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                       | waarde                              |
     | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam              | maassen                             |
@@ -448,7 +449,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                              |
     | type                    | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam           | maassen                             |
@@ -477,7 +478,7 @@ Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden 
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | maassen                             |

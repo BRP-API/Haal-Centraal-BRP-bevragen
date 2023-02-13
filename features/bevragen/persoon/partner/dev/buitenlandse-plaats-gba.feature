@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Buitenlandse geboorteplaats of locatie
+@gba
+Functionaliteit: partner buitenlandse geboorteplaats of locatie (persoon)
 
   Rule: wanneer de waarde voor een geboorteplaats(03.20) geen valide gemeentecode bevat wordt de plaats geleverd in de omschrijving en wordt veld code niet geleverd
     - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten

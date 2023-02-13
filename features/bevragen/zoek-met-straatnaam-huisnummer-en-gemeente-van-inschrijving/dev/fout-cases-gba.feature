@@ -1,12 +1,13 @@
 #language: nl
 
+@gba
 Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving - fout cases
 
 Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
 
   @fout-case
   Scenario: De straat, huisnummer en gemeenteVanInschrijving parameters zijn niet opgegeven
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam   | waarde                                           |
     | type   | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | fields | burgerservicenummer                              |
@@ -26,7 +27,7 @@ Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
 
   @fout-case
   Scenario: Een lege string is opgegeven als straat, huisnummer en gemeenteVanInschrijving waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | fields                  | burgerservicenummer                              |
@@ -56,7 +57,7 @@ Rule: een straat is een string bestaande uit minimaal 1 en maximaal 80 karakters
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | fields                  | burgerservicenummer                              |
@@ -89,7 +90,7 @@ Rule: een straat met wildcard is een string bestaande uit minimaal 7 en maximaal
 
   @fout-case
   Abstract Scenario: <titel>
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | straat                  | <straat>                                         |
@@ -118,7 +119,7 @@ Rule: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
   Abstract Scenario: Een ongeldig getal is opgegeven als huisnummer waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | fields                  | burgerservicenummer                              |
@@ -147,7 +148,7 @@ Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoe
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisletter' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | straat                  | leyweg                                           |
@@ -179,7 +180,7 @@ Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaa
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisnummertoevoeging' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | straat                  | leyweg                                           |
@@ -208,7 +209,7 @@ Rule: inclusiefOverledenPersonen is een boolean
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                       | waarde                                           |
     | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | straat                     | Afrikanerplein                                   |

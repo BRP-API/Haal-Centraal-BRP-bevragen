@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA persoon: geboorte in onderzoek
+@gba
+Functionaliteit: geboorte in onderzoek
 
   Abstract Scenario: geboorte veld(en) van persoon is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

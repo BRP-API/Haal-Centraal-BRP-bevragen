@@ -1,7 +1,7 @@
 # language: nl
 
 @gba
-Functionaliteit: GBA Persoon: uitsluiting kiesrecht velden vragen met fields
+Functionaliteit: uitsluiting kiesrecht velden vragen met fields (persoon)
 
 	Scenario: persoon heeft geen uitsluiting kiesrecht gegevens
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende gegevens

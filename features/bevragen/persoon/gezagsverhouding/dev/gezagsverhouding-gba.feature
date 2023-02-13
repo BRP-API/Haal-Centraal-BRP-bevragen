@@ -1,12 +1,18 @@
 #language: nl
 
-Functionaliteit: GBA Persoon: gezagsverhouding
+@gba
+Functionaliteit: gezagsverhouding
 
   Achtergrond:
     Gegeven landelijke tabel "Gezagsverhouding" heeft de volgende waarden
-    | code | waarde                            |
-    | 12   | Ouder1 en ouder2 hebben het gezag |
-    | 1    | Ouder1 heeft het gezag            |
+    | code | waarde                                                |
+    | 1    | Ouder1 heeft het gezag                                |
+    | 12   | Ouder1 en ouder2 hebben het gezag                     |
+    | 1D   | Ouder1 en een derde hebben het gezag                  |
+    | 2    | Ouder2 heeft het gezag                                |
+    | 2D   | Ouder2 en een derde hebben het gezag                  |
+    | D    | Een of meer derden hebben het gezag                   |
+    | 3D   | ouder1 + ouder2 + een of meer derden hebben het gezag |
 
 
   Abstract Scenario: persoon heeft 'gezagsverhouding' veld: 'indicatie gezag minderjarige (32.10)'
@@ -28,6 +34,31 @@ Functionaliteit: GBA Persoon: gezagsverhouding
     | indicatieGezagMinderjarige              |
     | indicatieGezagMinderjarige.code         |
     | indicatieGezagMinderjarige.omschrijving |
+
+  Abstract Scenario: persoon heeft 'indicatie gezag minderjarige (32.10)' met waarde '<code>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
+    | naam                                 | waarde |
+    | indicatie gezag minderjarige (32.10) | <code> |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | indicatieGezagMinderjarige      |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                    | waarde         |
+    | indicatieGezagMinderjarige.code         | <code>         |
+    | indicatieGezagMinderjarige.omschrijving | <omschrijving> |
+
+    Voorbeelden:
+    | code | omschrijving                                          |
+    | 1    | Ouder1 heeft het gezag                                |
+    | 12   | Ouder1 en ouder2 hebben het gezag                     |
+    | 1D   | Ouder1 en een derde hebben het gezag                  |
+    | 2    | Ouder2 heeft het gezag                                |
+    | 2D   | Ouder2 en een derde hebben het gezag                  |
+    | D    | Een of meer derden hebben het gezag                   |
+    | 3D   | ouder1 + ouder2 + een of meer derden hebben het gezag |
+    | 4    |                                                       |
 
   Scenario: persoon heeft 'gezagsverhouding' veld: 'indicatie curateleregister (33.10)'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens

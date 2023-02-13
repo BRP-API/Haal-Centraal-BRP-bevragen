@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA persoon: in onderzoek
+@gba
+Functionaliteit: persoon: in onderzoek
 
   Abstract Scenario: gemeente van inschrijving is in onderzoek en wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

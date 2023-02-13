@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA Persoon: overlijden-onjuist
+@gba
+Functionaliteit: overlijden onjuist (persoon)
 
   Rule: Onjuiste gegevens worden niet geleverd
 

@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Persoon: Opschorting bijhouding
+@gba
+Functionaliteit: opschorting bijhouding
 
   Achtergrond:
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens

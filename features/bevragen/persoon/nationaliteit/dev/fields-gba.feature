@@ -1,6 +1,7 @@
 # language: nl
 
-Functionaliteit: GBA Persoon: Nationaliteit
+@gba
+Functionaliteit: Nationaliteit (persoon)
 
 Rule: wanneer één of meerdere velden van een nationaliteit wordt gevraagd, dan wordt ook de waarde van 'nationaliteit (05.10)' geleverd
 

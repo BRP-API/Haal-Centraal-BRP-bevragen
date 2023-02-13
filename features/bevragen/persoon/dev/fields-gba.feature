@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: GBA persoon: velden vragen met fields
+@gba
+Functionaliteit: persoon velden vragen met fields
 
   Abstract Scenario: persoon heeft veld: 'anummer (01.10)' <sub-titel>
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

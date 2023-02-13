@@ -1,7 +1,7 @@
 #language: nl
 
 @gba
-Functionaliteit: GBA Persoon beperkt: leeftijd veld vragen met fields
+Functionaliteit: leeftijd veld vragen met fields (persoon beperkt)
 
   Scenario: persoon is niet overleden
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
