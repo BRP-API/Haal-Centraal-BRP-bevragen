@@ -128,7 +128,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | instance | /haalcentraal/api/brp/personen                                         |
 
 
-  Rule: Vragen met fields gevraagd om een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
+  Rule: Vragen met fields om een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
     Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het veld mee gevuld of van afgeleid wordt
 
     @fout-case
@@ -296,69 +296,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | code     | unauthorizedField                                                       |
       | instance | /haalcentraal/api/brp/personen                                          |
 
-
-  Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
-
-    @fout-case
-    Abstract Scenario: Afnemer is <missende autorisatie>
-      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | <ad hoc rubrieken>                     | N                        | 20201128                |
-      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
-      | voornamen (02.10)  |
-      | Chantal            |
-      En de persoon heeft een ouder '2' met de volgende gegevens
-      | voornamen (02.10)  |
-      | Christiaan         |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | ouders.ouderAanduiding          |
-      Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                  |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
-      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
-      | status   | 403                                                                     |
-      | code     | unauthorizedField                                                       |
-      | instance | /haalcentraal/api/brp/personen                                          |
-
-      Voorbeelden:
-      | ad hoc rubrieken              | missende autorisatie                  |
-      | 10120 10210 10220 10230 10240 | niet geautoriseerd voor oudergegevens |
-      | 10120 20210 20220 20230 20240 | niet geautoriseerd voor ouder 2       |
-      | 10120 30210 30220 30230 30240 | niet geautoriseerd voor ouder 1       |
-
-    Abstract Scenario: Afnemer is wel geautoriseerd voor <autorisatie>
-      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | <ad hoc rubrieken>              | N                        | 20201128                |
-      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
-      | voornamen (02.10) |
-      | Chantal           |
-      En de persoon heeft een ouder '2' met de volgende gegevens
-      | voornamen (02.10) |
-      | Mark              |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | ouders.ouderAanduiding          |
-      Dan heeft de response 1 persoon
-
-      Voorbeelden:
-      | ad hoc rubrieken              | autorisatie                                            |
-      | 10120 20210 30210             | exact 1 gegeven van ouder 1 en 1 gegeven van ouder 2   |
-      | 10120 20120 20240 30310 30320 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
-  
 
   Rule: Vragen met fields om een veld dat automatisch wordt meegeleverd vereist geen autorisatie voor dat veld
 
