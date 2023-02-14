@@ -16,7 +16,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
+    | detail   | De foutieve parameter(s) zijn: huisnummer, postcode.        |
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
@@ -75,7 +75,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
+    | detail   | De foutieve parameter(s) zijn: huisnummer, postcode.        |
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
@@ -177,7 +177,7 @@ Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 let
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
+    | detail   | De foutieve parameter(s) zijn: huisnummer, postcode.        |
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
