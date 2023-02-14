@@ -160,12 +160,12 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | fields                                                                                            |
-    | adressering                                                                                       |
-    | naam,adressering.adresregel1                                                                      |
-    | naam.voornamen,naam.geslachtsnaam,adressering.land.omschrijving                                   |
-    | adressering.aanhef,adressering.adresregel2                                                        |
-    | adressering.aanschrijfwijze.naam,adressering.adresregel1,adressering.adresregel2,adressering.land |
+    | fields                                                                |
+    | adressering                                                           |
+    | naam,adressering.adresregel1                                          |
+    | naam.voornamen,naam.geslachtsnaam,adressering.land.omschrijving       |
+    | naam,adressering.adresregel2                                          |
+    | naam,adressering.adresregel1,adressering.adresregel2,adressering.land |
     
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor verblijfplaats, maar er worden geen verblijfplaats velden gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
