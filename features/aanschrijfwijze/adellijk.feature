@@ -232,7 +232,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       Voorbeelden:
       | naamgebruik | naam in aanschrijfwijze             |
       | E           | Jonkheer J.A. van den Aedel         |
-      | V           | Jonkheer J.A. de Boer-van den Aedel |
+      | V           | J.A. de Boer-jonkheer van den Aedel |
       | N           | Jonkheer J.A. van den Aedel-de Boer |
 
     Scenario: Jonkheer en naamgebruik "P" voert geen predicaat en geen aanspreekvorm
