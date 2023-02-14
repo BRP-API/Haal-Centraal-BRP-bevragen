@@ -39,7 +39,7 @@ nav:
       - title: Bevragen API (redoc), GBA variant
         path: /redoc-gba-io
       - title: Features
-        path: /features-v2
+        path: /features/index
 
 #  - title: Specificaties v. 1.3
 #    subnav:
