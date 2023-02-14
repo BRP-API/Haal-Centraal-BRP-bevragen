@@ -9,6 +9,6 @@ title: features
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}
 
-- [GBA](./test-report-gba.html)
-- [Autorisatie](./test-report-autorisatie.html)
+- [GBA](./test-report-gba.html){:target="_blank" rel="noopener"}
+- [Autorisatie](./test-report-autorisatie.html){:target="_blank" rel="noopener"}
 - Protocollering
