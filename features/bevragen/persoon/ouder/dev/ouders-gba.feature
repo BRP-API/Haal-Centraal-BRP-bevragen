@@ -327,6 +327,7 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
   Abstract Scenario: '<type>' is in onderzoek en één of meerdere ouder velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als gba personen wordt gezocht met de volgende parameters
@@ -334,23 +335,25 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon met een 'ouder' met de volgende 'inOnderzoek' gegevens
-    | naam                          | waarde                    |
-    | aanduidingGegevensInOnderzoek | <aanduiding in onderzoek> |
-    | datumIngangOnderzoek          | 20020701                  |
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+    | naam                                      | waarde                    |
+    | inOnderzoek.aanduidingGegevensInOnderzoek | <aanduiding in onderzoek> |
+    | inOnderzoek.datumIngangOnderzoek          | 20020701                  |
+    | <naam veld 1>                             | <waarde veld 1>           |
+    | <naam veld 2>                             | <waarde veld 2>           |
 
     Voorbeelden:
-    | ouder aanduiding | aanduiding in onderzoek | fields                                         | type                   |
-    | 1                | 020000                  | ouders                                         | hele categorie ouder 1 |
-    | 1                | 020300                  | ouders.ouderAanduiding                         | hele groep geboorte    |
-    | 1                | 020310                  | ouders.geboorte                                | geboortedatum          |
-    | 1                | 020320                  | ouders.naam                                    | geboorteplaats         |
-    | 1                | 020330                  | ouders.geboorte.datum                          | geboorteland           |
-    | 2                | 030000                  | ouders.naam.geslachtsnaam                      | hele categorie ouder 2 |
-    | 2                | 030300                  | ouders.datumIngangFamilierechtelijkeBetrekking | hele groep geboorte    |
-    | 2                | 030310                  | ouders.naam.voornamen                          | geboortedatum          |
-    | 2                | 030320                  | ouders.geboorte.plaats                         | geboorteplaats         |
-    | 2                | 030330                  | ouders.naam.voorvoegsel                        | geboorteland           |
+    | ouder aanduiding | aanduiding in onderzoek | fields                                         | naam veld 1         | waarde veld 1 | naam veld 2     | waarde veld 2 | type                   |
+    | 1                | 020000                  | ouders                                         | burgerservicenummer | 000000401     | ouderAanduiding | 1             | hele categorie ouder 1 |
+    | 1                | 020300                  | ouders.ouderAanduiding                         | ouderAanduiding     | 1             |                 |               | hele groep geboorte    |
+    | 1                | 020310                  | ouders.geboorte                                |                     |               |                 |               | geboortedatum          |
+    | 1                | 020320                  | ouders.naam                                    |                     |               |                 |               | geboorteplaats         |
+    | 1                | 020330                  | ouders.geboorte.datum                          |                     |               |                 |               | geboorteland           |
+    | 2                | 030000                  | ouders.naam.geslachtsnaam                      |                     |               |                 |               | hele categorie ouder 2 |
+    | 2                | 030300                  | ouders.datumIngangFamilierechtelijkeBetrekking |                     |               |                 |               | hele groep geboorte    |
+    | 2                | 030310                  | ouders.naam.voornamen                          |                     |               |                 |               | geboortedatum          |
+    | 2                | 030320                  | ouders.geboorte.plaats                         |                     |               |                 |               | geboorteplaats         |
+    | 2                | 030330                  | ouders.naam.voorvoegsel                        |                     |               |                 |               | geboorteland           |
 
 Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
       - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
