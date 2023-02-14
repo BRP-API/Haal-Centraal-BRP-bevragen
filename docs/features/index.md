@@ -18,3 +18,7 @@ title: features
 - [Zoeken en raadplegen](./test-report-raadpleeg-en-zoek.html){:target="_blank" rel="noopener"}
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}
+  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}
+  - [verblijfstitel](./test-report-persoon-verblijfstitel.html){:target="_blank" rel="noopener"}
+  - [verificatie](./test-report-persoon-verificatie.html){:target="_blank" rel="noopener"}
+     
