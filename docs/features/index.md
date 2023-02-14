@@ -1,3 +1,8 @@
+---
+layout: page-with-side-nav
+title: features
+---
+
 # Features
 
 - [Zoeken en raadplegen](./test-report-raadpleeg-en-zoek.html){:target="_blank" rel="noopener"}
