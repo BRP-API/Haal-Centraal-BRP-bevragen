@@ -1,5 +1,6 @@
 #language: nl
 
+@gba @protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor verblijfplaats 
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP

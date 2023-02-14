@@ -1,5 +1,6 @@
 #language: nl
 
+@gba @protocollering
 Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezien of gebruikt
   Zoeken en raadplegen van gegevens van burgers worden "geprotocolleerd" (formeel gelogd).
 
