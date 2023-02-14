@@ -34,7 +34,7 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 555550001                       |
+      | burgerservicenummer | 000000139                       |
       | fields              | <fields>                        |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                  | waarde |
@@ -44,7 +44,7 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       | naam                                 | waarde              |
       | voornamen                            | Jan Peter           |
       | adellijkeTitelPredicaat.code         | JH                  |
-      | adellijkeTitelPredicaat.omschrijving | Jonkheer            |
+      | adellijkeTitelPredicaat.omschrijving | jonkheer            |
       | adellijkeTitelPredicaat.soort        | predicaat           |
       | voorvoegsel                          | te                  |
       | geslachtsnaam                        | Hoogh               |
@@ -53,7 +53,7 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       En heeft de response een persoon met een 'partner' met de volgende 'naam' gegevens
       | naam                                 | waarde  |
       | adellijkeTitelPredicaat.code         | BS      |
-      | adellijkeTitelPredicaat.omschrijving | Barones |
+      | adellijkeTitelPredicaat.omschrijving | barones |
       | adellijkeTitelPredicaat.soort        | titel   |
       | voorvoegsel                          | van den |
       | geslachtsnaam                        | Aedel   |
@@ -73,7 +73,7 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                              |
       | type                | RaadpleegMetBurgerservicenummer                     |
-      | burgerservicenummer | 555550001                                           |
+      | burgerservicenummer | 000000139                                           |
       | fields              | adresseringBinnenland.aanschrijfwijze.aanspreekvorm |
       Dan heeft de response een persoon met de volgende gegevens
       | naam                  | waarde |
@@ -82,14 +82,14 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       En heeft de persoon de volgende 'naam' gegevens
       | naam                                 | waarde              |
       | adellijkeTitelPredicaat.code         | JH                  |
-      | adellijkeTitelPredicaat.omschrijving | Jonkheer            |
+      | adellijkeTitelPredicaat.omschrijving | jonkheer            |
       | adellijkeTitelPredicaat.soort        | predicaat           |
       | aanduidingNaamgebruik.code           | E                   |
       | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
       En heeft de response een persoon met een 'partner' met de volgende 'naam' gegevens
       | naam                                 | waarde  |
       | adellijkeTitelPredicaat.code         | BS      |
-      | adellijkeTitelPredicaat.omschrijving | Barones |
+      | adellijkeTitelPredicaat.omschrijving | barones |
       | adellijkeTitelPredicaat.soort        | titel   |
       En heeft de 'partner' de volgende 'aangaanHuwelijkPartnerschap' gegevens
       | naam  | waarde   |
