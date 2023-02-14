@@ -144,7 +144,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | geslachtsnaam | Jansen |
     En heeft de persoon de volgende 'verblijfplaats' gegevens
     | naam              | waarde |
-    | land.c  ode         | 5010   |
+    | land.code         | 5010   |
     | land.omschrijving | België |
     En heeft de persoon een 'rni' met de volgende gegevens
     | naam                   | waarde                                          |
