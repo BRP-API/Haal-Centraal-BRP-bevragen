@@ -1,6 +1,5 @@
 # language: nl
 
-@gba
 Functionaliteit: RNI-deelnemer gegevens leveren (persoon beperkt)
 
   RNI-deelnemer gegevens die horen bij de volgende categoriën worden geleverd wanneer ten minste één gegeven van die categoriën wordt gevraagd
@@ -25,16 +24,18 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | geboortedatum (03.10)        | 19830526                                    |
     | rni-deelnemer (88.10)        | 0101                                        |
     | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
-    Als gba personen wordt gezocht met de volgende parameters
-    | naam                       | waarde                              |
-    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam              | Jansen                              |
-    | geboortedatum              | 1983-05-26                          |
-    | fields                     | <fields>                            |
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Jansen                              |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam          | waarde |
-    | voornamen     | Peter  |
-    | geslachtsnaam | Jansen |
+    | naam          | waarde       |
+    | voornamen     | Peter        |
+    | geslachtsnaam | Jansen       |
+    | voorletters   | P.           |
+    | volledigeNaam | Peter Jansen |
     En heeft de persoon een 'rni' met de volgende gegevens
     | naam                   | waarde                                          |
     | deelnemer.code         | 0101                                            |
@@ -43,32 +44,28 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | categorie              | Persoon                                         |
 
     Voorbeelden:
-    | fields                            |
-    | naam                              |
-    | naam,rni                          |
-    | naam.voornamen,naam.geslachtsnaam |
+    | fields                                                                |
+    | naam                                                                  |
+    | naam,rni                                                              |
+    | naam.voornamen,naam.geslachtsnaam,naam.voorletters,naam.volledigeNaam |
 
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (verblijf buitenland) en er wordt gevraagd om <fields>
+  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (verblijf buitenland) en één of meerdere adressering velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
-    | naam                         | waarde                                      |
-    | geslachtsnaam (02.40)        | Jansen                                      |
-    | geboortedatum (03.10)        | 19830526                                    |
+    | naam                  | waarde   |
+    | geslachtsnaam (02.40) | Jansen   |
+    | geboortedatum (03.10) | 19830526 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                         | waarde                               |
     | land (13.10)                 | 5010                                 |
     | rni-deelnemer (88.10)        | 0201                                 |
     | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
-    Als gba personen wordt gezocht met de volgende parameters
-    | naam                       | waarde                              |
-    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam              | Jansen                              |
-    | geboortedatum              | 1983-05-26                          |
-    | fields                     | <fields>                            |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam              | waarde |
-    | land.code         | 5010   |
-    | land.omschrijving | België |
-    En heeft de persoon een 'rni' met de volgende gegevens
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Jansen                              |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | <fields>                            |
+    Dan heeft de response een persoon met een 'rni' met de volgende gegevens
     | naam                   | waarde                                            |
     | deelnemer.code         | 0201                                              |
     | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
@@ -83,11 +80,11 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | adressering.land                                                                         |
     | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
 
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (<verblijfplaats type>) en er wordt gevraagd om <fields>
+  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (<verblijfplaats type>) en één of meerdere adressering velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
-    | naam                         | waarde                                      |
-    | geslachtsnaam (02.40)        | Jansen                                      |
-    | geboortedatum (03.10)        | 19830526                                    |
+    | naam                  | waarde   |
+    | geslachtsnaam (02.40) | Jansen   |
+    | geboortedatum (03.10) | 19830526 |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
     | naam                         | waarde                               |
     | rni-deelnemer (88.10)        | 0201                                 |
@@ -96,16 +93,13 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | naam                 | waarde   |
     | gemeentecode (92.10) | 0518     |
     | <naam gba veld>      | <waarde> |
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Jansen                              |
     | geboortedatum | 1983-05-26                          |
     | fields        | <fields>                            |
-    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
-    | naam        | waarde   |
-    | <naam veld> | <waarde> |
-    En heeft de persoon een 'rni' met de volgende gegevens
+    Dan heeft de response een persoon met een 'rni' met de volgende gegevens
     | naam                   | waarde                                            |
     | deelnemer.code         | 0201                                              |
     | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
@@ -114,10 +108,8 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
 
     Voorbeelden:
     | verblijfplaats type | naam gba veld               | waarde   | naam veld           | fields                  |
-    | locatie             | locatiebeschrijving (12.10) | woonboot | locatiebeschrijving | adressering.adresregel1 |
-    | locatie             | locatiebeschrijving (12.10) | woonboot | locatiebeschrijving | adressering.adresregel2 |
     | adres               | straatnaam (11.10)          | Spui     | straat              | adressering.adresregel1 |
-    | adres               | straatnaam (11.10)          | Spui     | straat              | adressering.adresregel2 |
+    | locatie             | locatiebeschrijving (12.10) | woonboot | locatiebeschrijving | adressering.adresregel2 |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -132,20 +124,18 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | land (13.10)                 | 5010                                 |
     | rni-deelnemer (88.10)        | 0201                                 |
     | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Jansen                              |
     | geboortedatum | 1983-05-26                          |
     | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam          | waarde |
-    | voornamen     | Peter  |
-    | geslachtsnaam | Jansen |
-    En heeft de persoon de volgende 'verblijfplaats' gegevens
-    | naam              | waarde |
-    | land.code         | 5010   |
-    | land.omschrijving | België |
+    | naam          | waarde       |
+    | voornamen     | Peter        |
+    | geslachtsnaam | Jansen       |
+    | voorletters   | P.           |
+    | volledigeNaam | Peter Jansen |
     En heeft de persoon een 'rni' met de volgende gegevens
     | naam                   | waarde                                          |
     | deelnemer.code         | 0101                                            |
@@ -160,12 +150,11 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | fields                                                                |
-    | adressering                                                           |
-    | naam,adressering.adresregel1                                          |
-    | naam.voornamen,naam.geslachtsnaam,adressering.land.omschrijving       |
-    | naam,adressering.adresregel2                                          |
-    | naam,adressering.adresregel1,adressering.adresregel2,adressering.land |
+    | fields                                                                                              |
+    | naam,adressering.adresregel1                                                                        |
+    | naam.voornamen,naam.geslachtsnaam,naam.voorletters,naam.volledigeNaam,adressering.land.omschrijving |
+    | naam,adressering.adresregel2                                                                        |
+    | naam,adressering.adresregel1,adressering.adresregel2,adressering.land                               |
     
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor verblijfplaats, maar er worden geen verblijfplaats velden gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
@@ -178,16 +167,18 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | land (13.10)                 | 5010                                 |
     | rni-deelnemer (88.10)        | 0201                                 |
     | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Jansen                              |
     | geboortedatum | 1983-05-26                          |
     | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam          | waarde |
-    | voornamen     | Peter  |
-    | geslachtsnaam | Jansen |
+    | naam          | waarde       |
+    | voornamen     | Peter        |
+    | geslachtsnaam | Jansen       |
+    | voorletters   | P.           |
+    | volledigeNaam | Peter Jansen |
 
     Voorbeelden:
     | fields   |
@@ -203,7 +194,7 @@ Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een 
     | geboortedatum (03.10)        | 19830526                                    |
     | rni-deelnemer (88.10)        | 0101                                        |
     | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
-    Als gba personen wordt gezocht met de volgende parameters
+    Als personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Jansen                              |
