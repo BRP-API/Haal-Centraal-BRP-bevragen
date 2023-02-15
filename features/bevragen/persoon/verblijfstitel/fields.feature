@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: verblijfstitel velden vragen met fields
+Functionaliteit: verblijfstitel velden vragen met fields
 
   Abstract Scenario: 'aanduiding verblijfstitel (39.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
@@ -25,6 +25,7 @@ Functionaliteit: Persoon: verblijfstitel velden vragen met fields
   Abstract Scenario: 'datum ingang verblijfstitel (39.30)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
+    | aanduiding verblijfstitel (39.10)   | 09       |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -50,6 +51,7 @@ Functionaliteit: Persoon: verblijfstitel velden vragen met fields
   Abstract Scenario: 'datum ingang verblijfstitel (39.30)' van het type '<type>' wordt gevraagd met field pad 'verblijfstitel.datumIngang'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde     |
+    | aanduiding verblijfstitel (39.10)   | 09         |
     | datum ingang verblijfstitel (39.30) | <GbaDatum> |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
@@ -75,9 +77,11 @@ Functionaliteit: Persoon: verblijfstitel velden vragen met fields
   Abstract Scenario: 'datum einde verblijfstitel (39.20)' met waarde in de toekomst wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
+    | aanduiding verblijfstitel (39.10)   | 09       |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                                | waarde   |
+    | aanduiding verblijfstitel (39.10)   | 09       |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     | datum einde verblijfstitel (39.20)  | 20251231 |
     Als personen wordt gezocht met de volgende parameters
@@ -104,9 +108,11 @@ Functionaliteit: Persoon: verblijfstitel velden vragen met fields
   Abstract Scenario: 'datum einde verblijfstitel (39.20)' met type '<type>' en waarde in de toekomst wordt gevraagd met field pad 'verblijfstitel.datumEinde'
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'verblijfstitel' verkregen met de volgende gegevens
     | naam                                | waarde   |
+    | aanduiding verblijfstitel (39.10)   | 09       |
     | datum ingang verblijfstitel (39.30) | 19980201 |
     En de 'verblijfstitel' is gewijzigd naar de volgende gegevens
     | naam                                | waarde     |
+    | aanduiding verblijfstitel (39.10)   | 09         |
     | datum ingang verblijfstitel (39.30) | 19980201   |
     | datum einde verblijfstitel (39.20)  | <GbaDatum> |
     Als personen wordt gezocht met de volgende parameters

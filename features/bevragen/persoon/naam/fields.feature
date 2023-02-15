@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: naam velden vragen met fields
+Functionaliteit: naam velden vragen met fields
 
   Abstract Scenario: 'voornamen (02.10)' wordt gevraagd met field pad 'naam.voornamen'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -84,9 +84,9 @@ Functionaliteit: Persoon: naam velden vragen met fields
     | burgerservicenummer | 000000152                       |
     | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                               | waarde                        |
-    | aanduidingNaamgebruik.code         | E                             |
-    | aanduidingNaamgebruik.omschrijving | gebruik alleen de eigen naam. |
+    | naam                               | waarde              |
+    | aanduidingNaamgebruik.code         | E                   |
+    | aanduidingNaamgebruik.omschrijving | eigen geslachtsnaam |
 
     Voorbeelden:
     | fields                                  |

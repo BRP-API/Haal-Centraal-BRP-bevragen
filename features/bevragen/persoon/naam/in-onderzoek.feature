@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: naam velden in onderzoek
+Functionaliteit: naam velden in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek en alle naam velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -152,13 +152,13 @@ Functionaliteit: Persoon: naam velden in onderzoek
     | burgerservicenummer | 000000152                       |
     | fields              | naam.aanduidingNaamgebruik      |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam                                         | waarde                                     |
-    | aanduidingNaamgebruik.code                   | V                                          |
-    | aanduidingNaamgebruik.omschrijving           | gebruik de partnernaam voor de eigen naam. |
-    | inOnderzoek.aanduidingNaamgebruik            | true                                       |
-    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                      |
-    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                 |
-    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                |
+    | naam                                         | waarde                                                                  |
+    | aanduidingNaamgebruik.code                   | V                                                                       |
+    | aanduidingNaamgebruik.omschrijving           | geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam |
+    | inOnderzoek.aanduidingNaamgebruik            | true                                                                    |
+    | inOnderzoek.datumIngangOnderzoek.type        | Datum                                                                   |
+    | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01                                                              |
+    | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002                                                             |
 
     Voorbeelden:
     | aanduiding in onderzoek | type                   |

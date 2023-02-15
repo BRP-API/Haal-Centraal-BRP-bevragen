@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: immigratie velden in onderzoek
+Functionaliteit: immigratie velden in onderzoek
 
   Abstract Scenario: '<type>' van een verblijfplaats is in onderzoek en alle immigratie velden worden gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
