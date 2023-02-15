@@ -341,6 +341,18 @@ namespace BrpProxy.Validators
 
         private static bool IsVerblijfadresFieldPart(this string fieldPart) => fieldPart == "verblijfadres";
 
+        private static bool IsAdresregelFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "adresregel1",
+                "adresregel2",
+                "adresregel3",
+                "land"
+            }
+            .Contains(fieldPart);
+        }
+
         public static IEnumerable<string> AddInOnderzoekFields(this IEnumerable<string> fields)
         {
             var retval = new List<string>();
@@ -394,7 +406,15 @@ namespace BrpProxy.Validators
                         else if (fieldParts[0] == "adressering")
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek.{fieldParts[1]}");
-                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
+                            if (fieldParts[1].IsAdresregelFieldPart())
+                            {
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
+                            }
+                            else
+                            {
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekPersoon");
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekPartner");
+                            }
                         }
                         else if (fieldParts[0].IsCollectionFieldFieldPart() &&
                                  fieldParts[1].IsObjectField())
