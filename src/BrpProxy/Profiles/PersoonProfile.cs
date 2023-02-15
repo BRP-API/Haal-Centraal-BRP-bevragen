@@ -13,7 +13,7 @@ public class PersoonProfile : Profile
             .ForMember(dest => dest.Leeftijd, opt =>
             {
                 opt.PreCondition(src => src.OpschortingBijhouding == null ||
-                src.OpschortingBijhouding.Reden.Code != "O");
+                                        src.OpschortingBijhouding.Reden?.Code != "O");
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
             .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
@@ -106,7 +106,8 @@ public class PersoonProfile : Profile
             .ForMember(dest => dest.GeheimhoudingPersoonsgegevens, opt => opt.MapFrom(src => src.Geheimhouding()))
             .ForMember(dest => dest.Leeftijd, opt =>
             {
-                opt.PreCondition(src => src.Overlijden == null);
+                opt.PreCondition(src => src.OpschortingBijhouding == null ||
+                                        src.OpschortingBijhouding.Reden?.Code != "O");
                 opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
             })
             .ForMember(dest => dest.DatumInschrijvingInGemeente, opt => opt.MapFrom(src => src.DatumInschrijvingInGemeente.Map()))

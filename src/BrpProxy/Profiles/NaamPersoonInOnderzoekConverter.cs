@@ -57,6 +57,11 @@ public class NaamPersoonInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Na
                 VolledigeNaam = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
             },
+            "010400" or "010410" => new NaamPersoonInOnderzoek
+            {
+                VolledigeNaam = true,
+                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
+            },
             "016100" or "016110" => new NaamPersoonInOnderzoek
             {
                 AanduidingNaamgebruik = true,

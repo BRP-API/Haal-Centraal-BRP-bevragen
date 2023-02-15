@@ -93,6 +93,10 @@ namespace BrpProxy.Tests
                     new[] { "overlijden.datum",
                             "overlijden.inOnderzoek.datum",
                             "overlijden.inOnderzoek.datumIngangOnderzoek"})]
+        [InlineData(new[] { "overlijden.land" },
+                    new[] { "overlijden.land",
+                            "overlijden.inOnderzoek.land",
+                            "overlijden.inOnderzoek.datumIngangOnderzoek"})]
 
         [InlineData(new[] { "verblijfplaats"},
                     new[] { "verblijfplaats", "verblijfplaats.inOnderzoek"})]
