@@ -60,4 +60,38 @@ Functionaliteit: adressering aanhef veld vragen met fields
       En heeft de 'partner' de volgende 'ontbindingHuwelijkPartnerschap' gegevens
       | naam  | waarde   |
       | datum | 20211109 |
-   
+
+    Scenario: persoon heeft meerdere actuele huwelijken/partnerschappen
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
+      | naam                                 | waarde    |
+      | geslachtsnaam (02.40)                | Maassen   |
+      | geslachtsaanduiding (04.10)          | V         |
+      | aanduiding naamgebruik (61.10)       | E         |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+      | 000000013                   | 20201001                                                           |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+      | 000000014                   | 20220414                                                           |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000012                       |
+      | fields              | adressering.aanhef              |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                  | waarde |
+      | geslacht.code         | V      |
+      | geslacht.omschrijving | vrouw  |
+      En heeft de persoon de volgende 'naam' gegevens
+      | naam                                 | waarde              |
+      | geslachtsnaam                        | Maassen             |
+      | aanduidingNaamgebruik.code           | E                   |
+      | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
+      Dan heeft de response een persoon met een 'partner' met de volgende gegevens
+      | naam                              | waarde    |
+      | burgerservicenummer               | 000000013 |
+      | aangaanHuwelijkPartnerschap.datum | 20201001  |
+      En heeft de persoon een 'partner' met de volgende gegevens
+      | naam                              | waarde    |
+      | burgerservicenummer               | 000000014 |
+      | aangaanHuwelijkPartnerschap.datum | 20220414  |
