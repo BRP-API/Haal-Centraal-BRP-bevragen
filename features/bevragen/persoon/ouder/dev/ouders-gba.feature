@@ -235,6 +235,29 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | geslacht.omschrijving                   | vrouw    |
     | datumIngangFamilierechtelijkeBetrekking | 20190614 |
 
+  Scenario: persoon heeft geen ouders
+    Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
+    | naam                            | waarde          |
+    | voornamen (02.10)               | Daan            |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000061                       |
+    | fields              | ouders                        |
+    Dan heeft de response een persoon zonder 'ouder' gegevens
+
+  Scenario: ouder 1 met alleen gegevens in groepen 81 en 85 en geen ouder 2
+    Gegeven de persoon met burgerservicenummer '000000255' heeft een ouder '1' met de volgende gegevens
+    | aktenummer (81.20) | datum ingang geldigheid (85.10) |
+    | 2•E0001            | 20160518                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000255                       |
+    | fields              | ouders                          |
+    Dan heeft de response een persoon zonder 'ouder' gegevens
+        
+
 Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan wordt er een 'ouders' zonder gegevens geleverd
 
   Scenario: met fields vragen om gegevens zonder waarde

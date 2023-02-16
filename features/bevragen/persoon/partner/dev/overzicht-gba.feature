@@ -68,7 +68,6 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | aangaanHuwelijkPartnerschap.datum    | 19931002 |
     | ontbindingHuwelijkPartnerschap.datum | 20000103 |
 
-
   Scenario: persoon was getrouwd, gescheiden en daarna opnieuw met zelfde persoon getrouwd en daarna weer gescheiden
     Gegeven de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
     | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
@@ -94,3 +93,79 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | geboorte.datum                       | 19601007 |
     | aangaanHuwelijkPartnerschap.datum    | 19931002 |
     | ontbindingHuwelijkPartnerschap.datum | 20000103 |
+
+  Scenario: persoon heeft geen partner
+    Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
+    | naam                            | waarde          |
+    | voornamen (02.10)               | Daan            |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000061                       |
+    | fields              | partners                        |
+    Dan heeft de response een persoon zonder 'partner' gegevens
+
+Rule: Een partner wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02), geboorte (groep 03), aangaan (groep 06), ontbinding (groep 07) of 15 (soort verbintenis) van de partner een waarde heeft.
+
+  Scenario: bestaan partner bekend, veld met onbekend waarde wordt gevraagd met fields
+      Gegeven de persoon met burgerservicenummer '000000036' heeft een 'partner' met de volgende gegevens
+      | geslachtsnaam (02.40) | geboortedatum (03.10) | 
+      | .                     | 00000000              |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000036                       |
+      | fields              | partners.naam                   |
+      Dan heeft de response een persoon met een 'partner' met de volgende 'naam' gegevens
+      | naam          | waarde |
+      | geslachtsnaam | .      |
+	  
+    Abstract Scenario: bestaan partner bekend (<rubriek>), veld wordt niet gevraagd met fields
+      Gegeven de persoon met burgerservicenummer '000000048' heeft een 'partner' met de volgende gegevens
+      | <rubriek> |
+      | <waarde>  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000048                       |
+      | fields              | partners.burgerservicenummer    |
+      Dan heeft de response een persoon met een 'partner' zonder gegevens
+
+      Voorbeelden:
+      | rubriek                                                            | waarde   |
+      | geslachtsnaam (02.40)                                              | Groenen  |
+      | geboortedatum (03.10)                                              | 19780623 |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20230126 |
+      | soort verbintenis (15.10)                                          | H        |
+      | geslachtsnaam (02.40)                                              | .        |
+      | geboortedatum (03.10)                                              | 00000000 |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 00000000 |
+      | soort verbintenis (15.10)                                          | .        |
+
+    Scenario: huwelijk is onjuist
+      Gegeven de persoon met burgerservicenummer '000000061' heeft een 'partner' met de volgende gegevens
+      | naam                                                               | waarde          |
+      | voornamen (02.10)                                                  | Daan            |
+      | voorvoegsel (02.30)                                                | de              |
+      | geslachtsnaam (02.40)                                              | Vries           |
+      | geboortedatum (03.10)                                              | 19830715        |
+      | soort verbintenis (15.10)                                          | H               |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20031107        |
+      | gemeente document (82.10)                                          | 0518            |
+      | datum document (82.20)                                             | 20031109        |
+      | beschrijving document (82.30)                                      | PL gerelateerde |
+      | ingangsdatum geldigheid (85.10)                                    | 20031107        |
+      | datum van opneming (86.10)                                         | 20031109        |
+      En het 'partner' is gecorrigeerd naar de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 0518             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000061                       |
+      | fields              | partners                        |
+      Dan heeft de response een persoon zonder 'partner' gegevens
