@@ -220,13 +220,13 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | 1748250197 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | omschrijving                               | fields                                         | gevraagde rubrieken            |
-      | persoon heeft geen adellijkeTitelPredicaat | naam                                           | 010210, 010220, 010230, 010240 |
-      | persoon heeft geen partner                 | partners.geboorte                              | 050310, 050320, 050330         |
-      | persoon is niet overleden                  | overlijden.datum                               | 060810                         |
-      | persoon heeft geen verblijfstitel          | verblijfstitel.aanduiding                      | 103910                         |
-      | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                         |
-      | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                 |
+      | omschrijving                               | fields                                         | gevraagde rubrieken                    |
+      | persoon heeft geen adellijkeTitelPredicaat | naam                                           | 010210, 010220, 010230, 010240, 016110 |
+      | persoon heeft geen partner                 | partners.geboorte                              | 050310, 050320, 050330                 |
+      | persoon is niet overleden                  | overlijden.datum                               | 060810                                 |
+      | persoon heeft geen verblijfstitel          | verblijfstitel.aanduiding                      | 103910                                 |
+      | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                                 |
+      | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                         |
 
   Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_gevraagde_rubrieken' opgenomen.
     Dit betreft geheimhouding, opschorting, in onderzoek, RNI en verificatie
@@ -275,11 +275,10 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | leeftijd                             | 010310                                                                                 |
       | naam.voorletters                     | 010210                                                                                 |
       | naam.volledigeNaam                   | 010210, 010220, 010230, 010240, 010410                                                 |
-      | verblijfplaats.datumVan              | 081030, 081320                                                                         |
       | adressering.aanschrijfwijze          | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
       | adressering.adresregel1              | 081110, 081120, 081130, 081140, 081150, 081210, 081310, 081330                         |
       | adressering.adresregel2              | 080910, 081110, 081120, 081160, 081170, 081210, 081310, 081340                         |
-      | partners.aangaanHuwelijkPartnerschap | 050610, 550610                                                                         |
+      | partners.aangaanHuwelijkPartnerschap | 050610, 050620, 050630                                                                 |
 
   Rule: Wanneer een veld wordt gevraagd waarbij meerdere velden worden meegeleverd voor het bepalen van het polymorfe type, dan worden alle daarvoor nodige velden in 'request_gevraagde_rubrieken' opgenomen.
 
@@ -297,10 +296,11 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | 5264846450 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                        | gevraagde rubrieken            |
-      | nationaliteiten.nationaliteit | 040510, 046510                 |
-      | nationaliteiten.redenOpname   | 040510, 046310, 046510         |
-      | verblijfplaats.functieAdres   | 081010, 081110, 081210, 081310 |
+      | fields                        | gevraagde rubrieken                    |
+      | nationaliteiten.nationaliteit | 040510, 046510                         |
+      | nationaliteiten.redenOpname   | 040510, 046310, 046510                 |
+      | verblijfplaats.functieAdres   | 081010, 081110, 081210, 081310         |
+      | verblijfplaats.datumVan       | 081030, 081110, 081210, 081310, 081320 |
   
   Rule: Wanneer een gevraagde rubriek nodig is voor meerdere fields velden, wordt de rubriek één keer in 'request_gevraagde_rubrieken' opgenomen.
 
