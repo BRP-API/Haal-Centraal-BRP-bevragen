@@ -347,8 +347,8 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | gemeenteVanInschrijving | 0599                                        |
       | fields                  | burgerservicenummer,naam.voornamen,geslacht |
       Dan heeft de persoon met anummer '2937183560' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken                 | request_gevraagde_rubrieken |
-      | 2937183560 | 010230, 010240, 010310, 010410, 080910 | 010120, 010210, 010410      |
+      | anummer    | request_zoek_rubrieken         | request_gevraagde_rubrieken |
+      | 2937183560 | 010230, 010240, 010310, 080910 | 010120, 010210, 010410      |
       En heeft de persoon met anummer '5069308085' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken                 | request_gevraagde_rubrieken |
-      | 5069308085 | 010230, 010240, 010310, 010410, 080910 | 010120, 010210, 010410      |
+      | anummer    | request_zoek_rubrieken         | request_gevraagde_rubrieken |
+      | 5069308085 | 010230, 010240, 010310, 080910 | 010120, 010210, 010410      |
