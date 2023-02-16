@@ -14,12 +14,14 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       | geslachtsnaam (02.40)                | Hoogh     |
       | aanduiding naamgebruik (61.10)       | E         |
       En de persoon heeft een 'partner' met de volgende gegevens
-      | naam                                                               | waarde         |
-      | voornamen (02.10)                                                  | Anna Catharina |
-      | adellijke titel of predicaat (02.20)                               | BS             |
-      | voorvoegsel (02.30)                                                | van den        |
-      | geslachtsnaam (02.40)                                              | Aedel          |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20010809       |
+      | naam                                                                | waarde         |
+      | voornamen (02.10)                                                   | Anna Catharina |
+      | adellijke titel of predicaat (02.20)                                | BS             |
+      | voorvoegsel (02.30)                                                 | van den        |
+      | geslachtsnaam (02.40)                                               | Aedel          |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)  | 20010809       |
+      | plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20) | 0518           |
+      | land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)   | 6030           |
       En de 'partner' is gewijzigd naar de volgende gegevens
       | naam                                                               | waarde         |
       | voornamen (02.10)                                                  | Anna Catharina |
