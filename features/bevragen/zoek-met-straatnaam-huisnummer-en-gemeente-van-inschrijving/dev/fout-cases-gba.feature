@@ -119,7 +119,7 @@ Rule: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
   Abstract Scenario: Een string met één of meerdere niet-numerieke karakters is opgegeven als huisnummer waarde 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | fields                  | burgerservicenummer                              |
@@ -146,7 +146,7 @@ Rule: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
   Abstract Scenario: Het opgegeven huisnummer valt niet tussen 1 en 99999 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                    | waarde                                           |
     | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
     | fields                  | burgerservicenummer                              |
