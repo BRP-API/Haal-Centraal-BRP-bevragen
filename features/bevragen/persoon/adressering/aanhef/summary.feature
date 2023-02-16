@@ -41,9 +41,9 @@ Rule: De aanhef van een persoon zonder partner wordt samengesteld door geslacht,
 
     Voorbeelden:
     | voorbeeld | geslacht | aanhef                       |
-    | man       | M        | Geachte heer van Puffelen    |
-    | vrouw     | V        | Geachte mevrouw van Puffelen |
-    | onbekend  | O        | Geachte R.M. van Puffelen    |
+    | man       | M        | Geachte heer Van Puffelen    |
+    | vrouw     | V        | Geachte mevrouw Van Puffelen |
+    | onbekend  | O        | Geachte R.M. Van Puffelen    |
 
   Abstract Scenario: Aanhef voor persoon met voorletters en geslachtsnaam bij geslacht <voorbeeld>
     Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
