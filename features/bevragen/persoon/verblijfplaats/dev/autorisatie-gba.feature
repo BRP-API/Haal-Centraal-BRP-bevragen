@@ -288,3 +288,37 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | burgerservicenummer | 000000024                         |
       | fields              | verblijfplaatsBinnenland.datumVan |
       Dan heeft de response 1 persoon
+
+    @fout-case
+    Abstract Scenario: Afnemer vraagt om groep verblijfplaatsBinnenland.verblijfadres en is niet geautoriseerd voor <ontbrekende autorisatie veld> (<missende autorisatie>)
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | <ad hoc rubrieken>              | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0800   |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                                     |
+      | type                | RaadpleegMetBurgerservicenummer                            |
+      | burgerservicenummer | 000000024                                                  |
+      | fields              | burgerservicenummer,verblijfplaatsBinnenland.verblijfadres |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | code     | unauthorizedField                                                       |
+      | instance | /haalcentraal/api/brp/personen                                          |
+
+      Voorbeelden:
+      | ontbrekende autorisatie veld | ad hoc rubrieken                                      | missende autorisatie |
+      | korteStraatnaam              | 10120 81115 81120 81130 81140 81150 81160 81170 81210 | 81110                |
+      | officieleStraatnaam          | 10120 81110 81120 81130 81140 81150 81160 81170 81210 | 81115                |
+      | huisnummer                   | 10120 81110 81115 81130 81140 81150 81160 81170 81210 | 81120                |
+      | huisletter                   | 10120 81110 81115 81120 81140 81150 81160 81170 81210 | 81130                |
+      | huisnummertoevoeging         | 10120 81110 81115 81120 81130 81150 81160 81170 81210 | 81140                |
+      | aanduidingBijHuisnummer      | 10120 81110 81115 81120 81130 81140 81160 81170 81210 | 81150                |
+      | postcode                     | 10120 81110 81115 81120 81130 81140 81150 81170 81210 | 81160                |
+      | woonplaats                   | 10120 81110 81115 81120 81130 81140 81150 81160 81210 | 81170                |
+      | locatiebeschrijving          | 10120 81110 81115 81120 81130 81140 81150 81160 81170 | 81210                |
