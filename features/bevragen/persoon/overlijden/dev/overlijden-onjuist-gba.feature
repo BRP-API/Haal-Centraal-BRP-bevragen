@@ -26,7 +26,6 @@ Functionaliteit: overlijden onjuist (persoon)
     | plaats.code         | 0344                         |
     | plaats.omschrijving | Utrecht                      |
 
-
   Scenario: overlijden is onjuist (persoon is niet overleden)
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
     | naam                            | waarde                    |
@@ -40,6 +39,17 @@ Functionaliteit: overlijden onjuist (persoon)
     | beschrijving document (82.30)   | D27894-2004-A782 |
     | ingangsdatum geldigheid (85.10) | 20031107         |
     | datum van opneming (86.10)      | 20040112         |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | overlijden                      |
+    Dan heeft de response een persoon zonder gegevens
+
+  Scenario: persoon is niet overleden
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | naam                  | waarde |
+    | geslachtsnaam (02.40) | Vries  |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
