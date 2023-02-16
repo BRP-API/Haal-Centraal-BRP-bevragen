@@ -206,6 +206,39 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | verblijfplaatsBinnenland.verblijfadres                                              | huisnummer               | 31            |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer | datumAanvangAdreshouding | 20150808      | huisnummer        | 31            |                           |               |
 
+  Scenario: verblijfsadres van een adres wordt gevraagd en levert alle velden met een waarde
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                               | waarde   |
+    | datum aanvang adreshouding (10.30) | 20150808 |
+    | functie adres (10.10)              | W        |
+    En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+    | naam                              | waarde                    |
+    | gemeentecode (92.10)              | 0519                      |
+    | straatnaam (11.10)                | Spui                      |
+    | naam openbare ruimte (11.15)      | Burgemeester aan het Spui |
+    | huisnummer (11.20)                | 70                        |
+    | huisletter (11.30)                | A                         |
+    | huisnummertoevoeging (11.40)      | 2                         |
+    | aanduiding bij huisnummer (11.50) | to                        |
+    | postcode (11.60)                  | 1234AB                    |
+    | woonplaats (11.70)                | Den Haag                  |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | verblijfplaatsBinnenland.verblijfadres                        |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                                 | waarde                    |
+    | straat                               | Spui                      |
+    | naamOpenbareRuimte                   | Burgemeester aan het Spui |
+    | huisnummer                           | 70                        |
+    | huisletter                           | A                         |
+    | huisnummertoevoeging                 | 2                         |
+    | aanduidingBijHuisnummer.code         | to                        |
+    | aanduidingBijHuisnummer.omschrijving | tegenover                 |
+    | postcode                             | 1234AB                    |
+    | woonplaats                           | Den Haag                  |
+
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
 
   Scenario: alle velden van een locatie wordt gevraagd met field pad 'verblijfplaatsBinnenland'
