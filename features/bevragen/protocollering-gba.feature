@@ -98,7 +98,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geslacht                    | 010410              |
       | geslacht.code               | 010410              |
       | geslacht.omschrijving       | 010410              |
-      | partners.naam.geslachtsnaam | 050140              |
+      | partners.naam.geslachtsnaam | 050240              |
 
   Rule: Gevraagde rubrieken worden oplopend gesorteerd en gescheiden door komma en spatie
 
@@ -152,9 +152,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | 5472698941 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | relatie  | gevraagde rubrieken                                                                                           |
-      | partners | 050120 050210, 050220, 050230, 050240, 050310, 050320, 050330, 050410, 050610, 050620, 050630, 050710, 051510 |
-      | kinderen | 090120 090210, 090220, 090230, 090240, 090310, 090320, 090330                                                 |
+      | relatie  | gevraagde rubrieken                                                                                            |
+      | partners | 050120, 050210, 050220, 050230, 050240, 050310, 050320, 050330, 050410, 050610, 050620, 050630, 050710, 051510 |
+      | kinderen | 090120, 090210, 090220, 090230, 090240, 090310, 090320, 090330                                                 |
 
   Rule: Wanneer met fields een veld van ouders wordt gevraagd, worden de bijbehorende rubrieknummers voor ouder 1 én ouder 2 opgenomen in het veld 'request_gevraagde_rubrieken'.
 
@@ -178,7 +178,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | fields                                         | gevraagde rubrieken                                            |
       | ouders.burgerservicenummer                     | 020120, 030120                                                 |
       | ouders.naam                                    | 020210, 020220, 020230, 020240, 030210, 030220, 030230, 030240 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking | 0206210, 036210                                                |
+      | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                                                 |
 
   Rule: Voor ouders.ouderAanduiding wordt niks opgenomen in veld 'request_gevraagde_rubrieken'
 
@@ -244,8 +244,8 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | datum opschorting bijhouding (67.10) | 20180421      |
       | reden opschorting bijhouding (67.20) | R             |
       | indicatie geheim (70.10)             | 7             |
-      | Datum verificatie (71.10)            | 20211103      |
-      | Omschrijving verificatie (71.20)     | eigen verzoek |
+      | datum verificatie (71.10)            | 20211103      |
+      | omschrijving verificatie (71.20)     | eigen verzoek |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                                 |
       | type                | RaadpleegMetBurgerservicenummer        |
