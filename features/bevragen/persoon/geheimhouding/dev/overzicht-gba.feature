@@ -21,7 +21,7 @@ Rule: indicatie geheim waarde 0 wordt niet geleverd
     | naam                | waarde    |
     | burgerservicenummer | 000000152 |
 
-Rule: indicatie geheim met waarde hoger dan 0 wordt ongevraagd meegeleverd
+Rule: indicatie geheim met waarde hoger dan 0 wordt vertaald naar geheimhoudingPersoonsgegevens waarde true en ongevraagd meegeleverd
 
   Abstract Scenario: persoon met indicatie geheim <waarde>, wordt geraadpleegd met burgerservicenummer
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
@@ -49,21 +49,28 @@ Rule: indicatie geheim met waarde hoger dan 0 wordt ongevraagd meegeleverd
 
 Rule: geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
-   @fout-case
-  Scenario: veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
+  @fout-case
+  Abstract Scenario: veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000024                       |
-    | fields              | geheimhoudingPersoonsgegevens   |
+    | fields              | <fields>                        |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | detail   | De foutieve parameter(s) zijn: fields[<index>].             |
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name      | reason                                        |
-    | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
+    | code   | name            | reason                                        |
+    | fields | fields[<index>] | Parameter bevat een niet toegestane veldnaam. |
+
+    Voorbeelden:
+    | fields                                                                                   | index |
+    | geheimhoudingPersoonsgegevens                                                            | 0     |
+    | burgerservicenummer,geheimhoudingPersoonsgegevens,naam,partners                          | 1     |
+    | geheimhoudingPersoonsgegevens,geboorte,ouders                                            | 0     |
+    | verblijfplaats.verblijfadres,nationaliteiten.nationaliteit,geheimhoudingPersoonsgegevens | 2     |
