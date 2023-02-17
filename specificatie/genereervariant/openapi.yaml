@@ -525,7 +525,7 @@ components:
         naam:
           $ref: '#/components/schemas/NaamPersoonBeperkt'
         opschortingBijhouding:
-          $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+          $ref: '#/components/schemas/OpschortingBijhouding'
         adressering:
           $ref: '#/components/schemas/AdresseringBeperkt'
         rni:
@@ -912,6 +912,15 @@ components:
             type: boolean
           voorletters:
             type: boolean
+    OpschortingBijhouding:
+      allOf:
+      - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+      - type: object
+        properties:
+          datum:
+            $ref: '#/components/schemas/AbstractDatum'
+        description: |
+          * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
     OpschortingBijhoudingBasis:
       type: object
       properties:
@@ -1238,15 +1247,6 @@ components:
             type: boolean
           plaats:
             type: boolean
-    OpschortingBijhouding:
-      allOf:
-      - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
-      - type: object
-        properties:
-          datum:
-            $ref: '#/components/schemas/AbstractDatum'
-        description: |
-          * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
     Overlijden:
       type: object
       properties:

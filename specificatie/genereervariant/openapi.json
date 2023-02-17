@@ -676,7 +676,7 @@
             "$ref" : "#/components/schemas/NaamPersoonBeperkt"
           },
           "opschortingBijhouding" : {
-            "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+            "$ref" : "#/components/schemas/OpschortingBijhouding"
           },
           "adressering" : {
             "$ref" : "#/components/schemas/AdresseringBeperkt"
@@ -1167,6 +1167,19 @@
           }
         } ]
       },
+      "OpschortingBijhouding" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "$ref" : "#/components/schemas/AbstractDatum"
+            }
+          },
+          "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
+        } ]
+      },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
         "properties" : {
@@ -1624,19 +1637,6 @@
               "type" : "boolean"
             }
           }
-        } ]
-      },
-      "OpschortingBijhouding" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
-            }
-          },
-          "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
         } ]
       },
       "Overlijden" : {

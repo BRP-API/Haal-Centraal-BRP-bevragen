@@ -511,7 +511,7 @@ components:
         naam:
           $ref: '#/components/schemas/GbaNaamBasis'
         opschortingBijhouding:
-          $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+          $ref: '#/components/schemas/GbaOpschortingBijhouding'
         gemeenteVanInschrijving:
           $ref: '#/components/schemas/Waardetabel'
         verblijfplaats:
@@ -791,6 +791,15 @@ components:
       description: |
         De achternaam van een persoon.
       example: Vries
+    GbaOpschortingBijhouding:
+      allOf:
+      - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+      - type: object
+        properties:
+          datum:
+            $ref: '#/components/schemas/GbaDatum'
+        description: |
+          * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
     OpschortingBijhoudingBasis:
       type: object
       properties:
@@ -912,15 +921,6 @@ components:
             $ref: '#/components/schemas/Waardetabel'
           plaats:
             $ref: '#/components/schemas/Waardetabel'
-    GbaOpschortingBijhouding:
-      allOf:
-      - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
-      - type: object
-        properties:
-          datum:
-            $ref: '#/components/schemas/GbaDatum'
-        description: |
-          * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
     GbaOverlijden:
       type: object
       properties:
