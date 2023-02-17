@@ -314,12 +314,11 @@ components:
           description: "Hiermee kun je de velden opgeven die je wenst te ontvangen.\n\
             De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv)\
             \ \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv)\
-            \ \n(voor gebruik fields bij zoeken).\nVelden die -indien van toepassing-\
-            \ automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens,\
-            \ opschortingBijhouding, rni en verificatie) hoeven en mogen niet worden\
-            \ opgegeven in fields.\nBij opgave van een pad dat verwijst naar een niet-bestaand\
-            \ veld of naar een automatisch geleverd veld wordt een 400 Bad Request\
-            \ teruggegeven.\n"
+            \ \n(voor gebruik fields bij zoeken).\nVelden die automatisch worden geleverd\
+            \ (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding,\
+            \ rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad\
+            \ dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd\
+            \ veld leidt tot een 400 Bad Request.\n"
           items:
             $ref: '#/components/schemas/Field'
         gemeenteVanInschrijving:
