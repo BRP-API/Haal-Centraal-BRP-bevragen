@@ -1,4 +1,4 @@
-# langage: nl
+# language: nl
 
 Functionaliteit: Bij het opstellen van de aanhef maakt een adellijke titel of een predicaat van de partner onderdeel van uit. 
 

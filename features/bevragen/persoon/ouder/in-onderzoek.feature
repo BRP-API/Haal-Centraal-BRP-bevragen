@@ -5,6 +5,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek en burgerservicenummer, geslacht en datumIngangFamilierechtelijkeBetrekking wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -14,6 +15,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
     | fields              | ouders.burgerservicenummer,ouders.geslacht,ouders.datumIngangFamilierechtelijkeBetrekking |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam                                                | waarde                                          |
+    | burgerservicenummer                                 | 000000401                                       |
     | inOnderzoek.burgerservicenummer                     | <burgerservicenummer io>                        |
     | inOnderzoek.geslacht                                | <geslacht io>                                   |
     | inOnderzoek.datumIngangFamilierechtelijkeBetrekking | <datum ingang familierechtelijke betrekking io> |
@@ -41,6 +43,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek en burgerservicenummer wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -50,6 +53,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
     | fields              | ouders.burgerservicenummer      |
     Dan heeft de response een persoon met een 'ouder' met alleen de volgende gegevens
     | naam                                         | waarde      |
+    | burgerservicenummer                          | 000000401   |
     | inOnderzoek.burgerservicenummer              | true        |
     | inOnderzoek.datumIngangOnderzoek.type        | Datum       |
     | inOnderzoek.datumIngangOnderzoek.datum       | 2002-07-01  |
@@ -67,6 +71,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek en geslacht wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -93,6 +98,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek en datumIngangFamilierechtelijkeBetrekking wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -119,6 +125,7 @@ Functionaliteit: Persoon: ouder velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters

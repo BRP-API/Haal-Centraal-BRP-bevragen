@@ -12,6 +12,10 @@ public class ZoekMetNummeraanduidingIdentificatieQueryValidator : PersonenQueryV
     public ZoekMetNummeraanduidingIdentificatieQueryValidator(FieldsHelper fieldsHelper)
         : base(fieldsHelper)
     {
+        RuleForEach(x => x.AdditionalProperties)
+            .SetValidator(new AdditionalPropertiesValidator())
+            .When(x => x.AdditionalProperties.Count > 0);
+
         RuleFor(x => x.NummeraanduidingIdentificatie)
             .Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage(RequiredErrorMessage)

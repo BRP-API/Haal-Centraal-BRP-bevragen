@@ -33,3 +33,30 @@ public partial class NaamPersoonInOnderzoek
         VolledigeNaam.HasValue
         ;
 }
+
+public partial class NaamPersoonBeperkt
+{
+    public bool ShouldSerialize() =>
+        AdellijkeTitelPredicaat != null ||
+        !string.IsNullOrWhiteSpace(Geslachtsnaam) ||
+        !string.IsNullOrWhiteSpace(Voornamen) ||
+        !string.IsNullOrWhiteSpace(Voorvoegsel) ||
+        !string.IsNullOrWhiteSpace(Voorletters) ||
+        !string.IsNullOrWhiteSpace(VolledigeNaam) ||
+        InOnderzoek != null
+        ;
+
+    public bool ShouldSerializeInOnderzoek() => InOnderzoek != null && InOnderzoek.ShouldSerialize();
+}
+
+public partial class NaamPersoonInOnderzoekBeperkt
+{
+    public new bool ShouldSerialize() =>
+        AdellijkeTitelPredicaat.HasValue ||
+        Geslachtsnaam.HasValue ||
+        Voornamen.HasValue ||
+        Voorvoegsel.HasValue ||
+        Voorletters.HasValue ||
+        VolledigeNaam.HasValue
+        ;
+}

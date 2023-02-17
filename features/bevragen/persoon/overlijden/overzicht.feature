@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Persoon: overlijden
+Functionaliteit: overlijden
 
   Wanneer een consumer van de BRP API gegevens bevraagt van een overleden persoon
   Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens zonder expliciet om overlijden gegevens te vragen met de fields parameter

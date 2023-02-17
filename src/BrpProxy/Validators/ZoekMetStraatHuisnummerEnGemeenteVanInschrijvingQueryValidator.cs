@@ -10,14 +10,16 @@ public class ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingQueryValidator : Pe
     const string HuisletterErrorMessage = $"pattern||Waarde voldoet niet aan patroon {HuisletterPattern}.";
     const string HuisnummertoevoegingPattern = @"^[a-zA-Z0-9 \-]{1,4}$";
     const string HuisnummertoevoegingErrorMessage = $"pattern||Waarde voldoet niet aan patroon {HuisnummertoevoegingPattern}.";
-    const string NumberPattern = @"^[1-9]{1}[0-9]{0,4}$";
-    const string NumberErrorMessage = "integer||Waarde is geen geldig getal.";
     const string StraatPattern = @"^[a-zA-Z0-9À-ž \-\'\.]{1,80}$|^[a-zA-Z0-9À-ž \-\'\.]{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž \-\'\.]{7,79}$";
     const string StraatPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {StraatPattern}.";
 
     public ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingQueryValidator(FieldsHelper fieldsHelper)
         : base(fieldsHelper)
     {
+        RuleForEach(x => x.AdditionalProperties)
+            .SetValidator(new AdditionalPropertiesValidator())
+            .When(x => x.AdditionalProperties.Count > 0);
+
         RuleFor(x => x.GemeenteVanInschrijving)
             .Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage(RequiredErrorMessage)
@@ -31,7 +33,7 @@ public class ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingQueryValidator : Pe
         RuleFor(x => x.Huisnummer)
             .Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage(RequiredErrorMessage)
-            .Matches(NumberPattern).WithMessage(NumberErrorMessage);
+            .SetValidator(new HuisnummerValidator());
 
         RuleFor(x => x.Huisnummertoevoeging)
             .Cascade(CascadeMode.Stop)

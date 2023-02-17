@@ -1,3 +1,5 @@
+# language: nl
+
 Functionaliteit: Bij het opstellen van de aanhef maakt een adellijke titel of een predicaat daar onderdeel van uit. 
 
 # Rule: Als de persoon een adellijke titel of predikaat heeft wordt deze gebruikt in het opstellen van de aanhef.

@@ -104,6 +104,33 @@ def isAutoField(field):
     return not "(A)" in field
 
 
+def aliasExcluded(field, aliasField, aliasExcludedFields):
+    if not field.startswith(aliasField):
+        return False
+
+    for i in range(len(field.split("."))-1, 0, -1):
+        if field.split(".")[i] in aliasExcludedFields:
+            return False
+
+    return True
+
+
+def createAliasFields(filterAutoFields, fields):
+    aliasFields = []
+
+    if filterAutoFields==True:
+        aliasList = SETTINGS.get("aliasesFiltered")
+    else:
+        aliasList = SETTINGS.get("aliases")
+
+    for alias in aliasList:
+        for field in fields:
+            if aliasExcluded(field, alias["field"], alias["excludeFields"]):
+                aliasFields.append(field.replace(alias["field"], alias["alias"]))
+
+    return aliasFields
+
+
 
 
 # read command line arguments
@@ -171,12 +198,15 @@ for schemaComponent in SETTINGS.get("schemaComponents"):
     fields = list(dict.fromkeys(fields)) # remove double fields paths
 
     if filterAutoFields==True:
-        fields = filter(isAutoField, fields)
+        fields = list(filter(isAutoField, fields))
+
+    fields = [ field.replace("(A)", "") for field in fields ] # remove indicator "(A)" for autofields
+
+    fields.extend(createAliasFields(filterAutoFields, fields))
 
     f = open (filePath, "w")
 
     f.write ("pad\n")
     for field in fields:
-        f.write (field.replace("(A)", "") + "\n")
-    
+        f.write (field + "\n")
     f.close()

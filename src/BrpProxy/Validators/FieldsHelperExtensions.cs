@@ -403,10 +403,18 @@ namespace BrpProxy.Validators
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
                             retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
                         }
-                        else if (fieldParts[1].IsAdresregelFieldPart())
+                        else if (fieldParts[0] == "adressering")
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek.{fieldParts[1]}");
-                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
+                            if (fieldParts[1].IsAdresregelFieldPart())
+                            {
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekVerblijfplaats");
+                            }
+                            else
+                            {
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekPersoon");
+                                retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekPartner");
+                            }
                         }
                         else if (fieldParts[0].IsCollectionFieldFieldPart() &&
                                  fieldParts[1].IsObjectField())
@@ -447,7 +455,8 @@ namespace BrpProxy.Validators
             {
                 "geheimhoudingPersoonsgegevens",
                 "opschortingBijhouding",
-                "rni"
+                "rni",
+                "verificatie"
             });
 
             return retval;

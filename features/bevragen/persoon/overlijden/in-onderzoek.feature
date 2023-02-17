@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: overlijden velden in onderzoek
+Functionaliteit: overlijden velden in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek en alle overlijden velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens

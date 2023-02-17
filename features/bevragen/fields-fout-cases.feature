@@ -13,10 +13,10 @@ Rule: De fields parameter is een verplichte parameter
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                  |
@@ -32,10 +32,10 @@ Rule: De fields parameter is een verplichte parameter
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: fields.                      |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name   | reason                  |
@@ -204,10 +204,10 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
   @fout-case
   Scenario: De fields parameter bevat een veld pad met meer dan 200 valide karakters bij het raadplegen van personen
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                                                                                                                                   |
-    | type                | RaadpleegMetBurgerservicenummer                                                                                                                                                                          |
-    | burgerservicenummer | 000000139                                                                                                                                                                                                |
-    | fields              | bestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbest |
+    | naam                | waarde                                                                                                                                                                                                    |
+    | type                | RaadpleegMetBurgerservicenummer                                                                                                                                                                           |
+    | burgerservicenummer | 000000139                                                                                                                                                                                                 |
+    | fields              | bestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbestaatooknietbesta |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
@@ -218,7 +218,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name      | reason                                                   |
-    | pattern | fields[0] | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\._]{1,199}$. |
+    | pattern | fields[0] | Waarde voldoet niet aan patroon ^[a-zA-Z0-9\._]{1,200}$. |
 
   @fout-case
   Scenario: De fields parameter bevat het pad naar een niet bestaand veld (onjuiste case) bij het raadplegen van personen

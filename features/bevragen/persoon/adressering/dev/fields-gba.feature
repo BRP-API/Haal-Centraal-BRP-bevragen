@@ -51,14 +51,26 @@ Rule: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adre
     | naam.geslachtsnaam                        | .                         |
 
     Voorbeelden:
-    | aanduiding in onderzoek | type                                 |
-    | 050000                  | hele categorie partner               |
-    | 050200                  | hele groep naam partner              |
-    | 050210                  | voornamen partner                    |
-    | 050220                  | adellijke titel of predicaat partner |
-    | 050230                  | voorvoegsel geslachtsnaam partner    |
-    | 050240                  | geslachtsnaam partner                |
-    | 050400                  | hele groep geslacht partner          |
-    | 050410                  | geslachtsaanduiding partner          |
-    | 056100                  | hele groep naamgebruik partner       |
-    | 056110                  | aanduiding naamgebruik partner       |
+    | aanduiding in onderzoek | type                                                            |
+    | 050000                  | hele categorie partner                                          |
+    | 050100                  | hele groep identificatinummers partner                          |
+    | 050120                  | burgerservicenummer partner                                     |
+    | 050200                  | hele groep naam partner                                         |
+    | 050210                  | voornamen partner                                               |
+    | 050220                  | adellijke titel of predicaat partner                            |
+    | 050230                  | voorvoegsel geslachtsnaam partner                               |
+    | 050240                  | geslachtsnaam partner                                           |
+    | 050300                  | hele groep geboorte partner                                     |
+    | 050310                  | geboortedatum partner                                           |
+    | 050320                  | geboorteplaats partner                                          |
+    | 050330                  | geboorteland partner                                            |
+    | 050400                  | hele groep geslacht partner                                     |
+    | 050410                  | geslachtsaanduiding partner                                     |
+    | 051500                  | hele groep soort verbintenis                                    |
+    | 051510                  | soort verbintenis                                               |
+    | 050600                  | hele groep huwelijkssluiting/aangaan geregistreerd partnerschap |
+    | 050610                  | datum huwelijkssluiting/aangaan geregistreerd partnerschap      |
+    | 050620                  | plaats huwelijkssluiting/aangaan geregistreerd partnerschap     |
+    | 050630                  | land huwelijkssluiting/aangaan geregistreerd partnerschap       |
+    | 050700                  | hele groep ontbinding huwelijk/geregistreerd partnerschap       |
+    | 050710                  | datum ontbinding huwelijk/geregistreerd partnerschap            |

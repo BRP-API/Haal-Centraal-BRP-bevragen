@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Persoon: partner velden vragen met fields
+Functionaliteit: partner velden vragen met fields
 
   Scenario: persoon heeft een actueel huwelijk
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -80,7 +80,7 @@ Rule: Als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel é
     | fields              | partners                        |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                          | waarde    |
-    | burgerservicenummer           | 123456789 |
+    | burgerservicenummer           | 234567890 |
     | soortVerbintenis.code         | H         |
     | soortVerbintenis.omschrijving | huwelijk  |
     En heeft de 'partner' de volgende 'naam' gegevens

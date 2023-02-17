@@ -5,6 +5,7 @@ Functionaliteit: Persoon: ouder naam velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek en alle 'naam' velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -41,6 +42,7 @@ Functionaliteit: Persoon: ouder naam velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek en <field> wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters
@@ -91,6 +93,7 @@ Functionaliteit: Persoon: ouder naam velden zijn in onderzoek
   Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder aanduiding>' met de volgende gegevens
     | naam                            | waarde                    |
+    | burgerservicenummer (01.20)     | 000000401                 |
     | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als personen wordt gezocht met de volgende parameters

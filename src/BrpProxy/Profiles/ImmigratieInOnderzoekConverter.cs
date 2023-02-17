@@ -23,13 +23,13 @@ namespace BrpProxy.Profiles
                 "081410" => new ImmigratieInOnderzoek
                 {
                     LandVanwaarIngeschreven = true,
-                    IndicatieVestigingVanuitBuitenland = true,
                     VanuitVerblijfplaatsOnbekend = true,
                     DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
                 },
                 "081420" => new ImmigratieInOnderzoek
                 {
                     DatumVestigingInNederland = true,
+                    IndicatieVestigingVanuitBuitenland = true,
                     DatumIngangOnderzoek = source.DatumIngangOnderzoek?.Map()
                 },
                 _ => null,

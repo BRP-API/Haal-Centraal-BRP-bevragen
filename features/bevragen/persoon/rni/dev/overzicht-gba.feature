@@ -1,7 +1,7 @@
 # language: nl
 
 @gba
-Functionaliteit: leveren van RNI-deelnemer gegevens
+Functionaliteit: RNI-deelnemer gegevens leveren
 
   RNI-deelnemer gegevens die horen bij de volgende categoriën worden geleverd wanneer ten minste één gegeven van die categoriën wordt gevraagd
   | categorie | naam           |
@@ -179,18 +179,27 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | fields                                                  |
-    | gemeenteVanInschrijving                                 |
-    | datumInschrijvingInGemeente                             |
-    | datumInschrijvingInGemeente.type                        |
-    | datumInschrijvingInGemeente.datum                       |
-    | datumInschrijvingInGemeente.langFormaat                 |
-    | immigratie                                              |
-    | immigratie.datumVestigingInNederland                    |
-    | immigratie.datumVestigingInNederland.type               |
-    | immigratie.vanuitVerblijfplaatsOnbekend                 |
-    | immigratie.inOnderzoek                                  |
-    | immigratie.inOnderzoek.datumIngangOnderzoek.langFormaat |
+    | fields                                           |
+    | gemeenteVanInschrijving                          |
+    | gemeenteVanInschrijving.code                     |
+    | gemeenteVanInschrijving.omschrijving             |
+    | datumInschrijvingInGemeente                      |
+    | datumInschrijvingInGemeente.type                 |
+    | datumInschrijvingInGemeente.datum                |
+    | datumInschrijvingInGemeente.langFormaat          |
+    | datumInschrijvingInGemeente.jaar                 |
+    | datumInschrijvingInGemeente.maand                |
+    | datumInschrijvingInGemeente.onbekend             |
+    | immigratie                                       |
+    | immigratie.datumVestigingInNederland             |
+    | immigratie.datumVestigingInNederland.type        |
+    | immigratie.datumVestigingInNederland.datum       |
+    | immigratie.datumVestigingInNederland.langFormaat |
+    | immigratie.indicatieVestigingVanuitBuitenland    |
+    | immigratie.landVanwaarIngeschreven               |
+    | immigratie.landVanwaarIngeschreven.code          |
+    | immigratie.landVanwaarIngeschreven.omschrijving  |
+    | immigratie.vanuitVerblijfplaatsOnbekend          |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -303,6 +312,34 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | fields              |
     | nationaliteiten     |
     | nationaliteiten,rni |
+
+  Scenario: persoon heeft een actuele en een beëindigde nationaliteit aangeleverd door RNI deelnemer
+    Gegeven de persoon met burgerservicenummer '000000140' heeft een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) | rni-deelnemer (88.10) |
+    | 0263                  | 301                   | 19620107                        | 201                   |
+    En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
+    | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) | rni-deelnemer (88.10) |
+    | 0052                  | 301                   | 19830326                        | 501                   |
+    En de 'nationaliteit' is gewijzigd naar de volgende gegevens
+    | reden beëindigen (64.10) | datum ingang geldigheid (85.10) | rni-deelnemer (88.10) |
+    | 403                      | 19970715                        | 501                   |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000140                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
+    | naam                       | waarde                                   |
+    | nationaliteit.code         | 0263                                     |
+    | nationaliteit.omschrijving | Surinaamse                               |
+    | redenOpname.code           | 301                                      |
+    | redenOpname.omschrijving   | Vaststelling bezit vreemde nationaliteit |
+    | datumIngangGeldigheid      | 19620107                                 |
+    En heeft de persoon een 'rni' met de volgende gegevens
+    | naam                   | waarde                                            |
+    | deelnemer.code         | 0201                                              |
+    | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+    | categorie              | Nationaliteit                                     |
     
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor verblijfplaats, maar er worden geen verblijfplaats velden gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens

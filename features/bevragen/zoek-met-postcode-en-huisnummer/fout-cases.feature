@@ -13,10 +13,10 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name       | reason                  |
@@ -33,10 +33,10 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: postcode.                    |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name     | reason                  |
@@ -52,10 +52,10 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: huisnummer.                  |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name       | reason                  |
@@ -72,10 +72,10 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: postcode, huisnummer.        |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name       | reason                  |
@@ -93,10 +93,10 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Minimale combinatie van parameters moet worden opgegeven.   |
+    | title    | Een of meerdere parameters zijn niet correct.               |
     | status   | 400                                                         |
     | detail   | De foutieve parameter(s) zijn: <foutieve parameter>.        |
-    | code     | paramsCombination                                           |
+    | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
     | code     | name                 | reason                  |
@@ -110,8 +110,8 @@ Rule: Postcode en huisnummer zijn verplichte parameters
 Rule: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
-  Abstract Scenario: Een ongeldig getal is opgegeven als huisnummer waarde 
-    Als gba personen wordt gezocht met de volgende parameters
+  Abstract Scenario: Een string met één of meerdere niet-numerieke karakters is opgegeven als huisnummer waarde 
+    Als personen wordt gezocht met de volgende parameters
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 2628HJ                      |
@@ -130,10 +130,35 @@ Rule: een huisnummer is een getal tussen 1 en 99999
     | integer | huisnummer | Waarde is geen geldig getal. |
 
     Voorbeelden:
-    | huisnummer |
-    | twee       |
-    | 0          |
-    | 100000     |
+    | huisnummer                            |
+    | twee                                  |
+    | 2e                                    |
+    | <script>alert('hello world')</script> |
+
+  @fout-case
+  Abstract Scenario: Het opgegeven huisnummer valt niet tussen 1 en 99999 
+    Als personen wordt gezocht met de volgende parameters
+    | naam       | waarde                      |
+    | type       | ZoekMetPostcodeEnHuisnummer |
+    | postcode   | 2628HJ                      |
+    | huisnummer | <huisnummer>                |
+    | fields     | burgerservicenummer         |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: huisnummer.                  |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name       | reason   |
+    | <code> | huisnummer | <reason> |
+
+    Voorbeelden:
+    | huisnummer | code    | reason                             |
+    | 0          | minimum | Waarde is lager dan minimum 1.     |
+    | 100000     | maximum | Waarde is hoger dan maximum 99999. |
 
 Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 letters (niet hoofdlettergevoelig)
 
