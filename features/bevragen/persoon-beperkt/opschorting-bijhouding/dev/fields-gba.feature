@@ -1,6 +1,7 @@
 #language: nl
 
-Functionaliteit: Persoon beperkt: opschorting bijhouding velden vragen met fields
+@gba
+Functionaliteit: Gba Persoon beperkt: opschorting bijhouding velden vragen met fields
 
 Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
@@ -13,7 +14,7 @@ Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch word
     | naam                                 | waarde   |
     | reden opschorting bijhouding (67.20) | O        |
     | datum opschorting bijhouding (67.10) | 20220829 |
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                       | waarde                              |
     | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam              | Maassen                             |
