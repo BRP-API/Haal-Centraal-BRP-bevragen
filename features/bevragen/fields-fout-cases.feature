@@ -258,3 +258,90 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     En heeft het object de volgende 'invalidParams' gegevens
     | code   | name      | reason                                       |
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
+
+  @fout-case
+  Abstract Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij raadplegen
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000139                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name      | reason                                        |
+    | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
+
+    Voorbeelden:
+    | fields                                                 |
+    | geheimhoudingPersoonsgegevens                          |
+    | opschortingBijhouding                                  |
+    | opschortingBijhouding.reden                            |
+    | opschortingBijhouding.reden.omschrijving               |
+    | opschortingBijhouding.datum                            |
+    | opschortingBijhouding.datum.type                       |
+    | rni                                                    |
+    | rni.deelnemer                                          |
+    | rni.deelnemer.code                                     |
+    | rni.omschrijvingVerdrag                                |
+    | rni.categorie                                          |
+    | verificatie                                            |
+    | verificatie.datum                                      |
+    | verificatie.datum.datum                                |
+    | verificatie.omschrijving                               |
+    | inOnderzoek                                            |
+    | inOnderzoek.burgerservicenummer                        |
+    | inOnderzoek.datumIngangOnderzoekPersoon                |
+    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat   |
+    | naam.inOnderzoek.voornamen                             |
+    | geboorte.inOnderzoek.datumIngangOnderzoek              |
+    | partners.aangaanHuwelijkPartnerschap.inOnderzoek.datum |
+
+  @fout-case
+  Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij zoeken
+    Als personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Kierkegaard                         |
+    | geboortedatum | 1956-11-15                          |
+    | fields        | <fields>                            |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name      | reason                                        |
+    | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
+
+    Voorbeelden:
+    | fields                                                 |
+    | geheimhoudingPersoonsgegevens                          |
+    | opschortingBijhouding                                  |
+    | opschortingBijhouding.reden                            |
+    | opschortingBijhouding.reden.omschrijving               |
+    | opschortingBijhouding.datum                            |
+    | opschortingBijhouding.datum.type                       |
+    | rni                                                    |
+    | rni.deelnemer                                          |
+    | rni.deelnemer.code                                     |
+    | rni.omschrijvingVerdrag                                |
+    | rni.categorie                                          |
+    | verificatie                                            |
+    | verificatie.datum                                      |
+    | verificatie.datum.datum                                |
+    | verificatie.omschrijving                               |
+    | inOnderzoek                                            |
+    | inOnderzoek.burgerservicenummer                        |
+    | inOnderzoek.datumIngangOnderzoekPersoon                |
+    | naam.inOnderzoek.voornamen                             |
+    | geboorte.inOnderzoek.datumIngangOnderzoek              |
