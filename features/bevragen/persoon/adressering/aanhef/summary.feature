@@ -18,7 +18,7 @@ Rule: De aanhef van een persoon zonder partner wordt samengesteld door geslacht,
     | M        | Geachte heer           |
     | V        | Geachte mevrouw        |
     | O        | Geachte VL             |
-  - VV: Voorvoegsel geslachtsnaam van de persoon en begint met een hoofdletter
+  - VV: Voorvoegsel geslachtsnaam van de persoon en begint met een hoofdletter, behalve wanneer er voorletters aan voorafgaan (geslacht O)
   - GN: de geslachtsnaam van de persoon 
   - Wanneer een naamcomponent geen of een lege waarde heeft, wordt de overbodige spatie niet opgenomen: niet starten met een spatie, niet eindigen met een spatie, geen dubbele spatie, geen spatie na streepje
 
@@ -41,8 +41,8 @@ Rule: De aanhef van een persoon zonder partner wordt samengesteld door geslacht,
 
     Voorbeelden:
     | voorbeeld | geslacht | aanhef                       |
-    | man       | M        | Geachte heer van Puffelen    |
-    | vrouw     | V        | Geachte mevrouw van Puffelen |
+    | man       | M        | Geachte heer Van Puffelen    |
+    | vrouw     | V        | Geachte mevrouw Van Puffelen |
     | onbekend  | O        | Geachte R.M. van Puffelen    |
 
   Abstract Scenario: Aanhef voor persoon met voorletters en geslachtsnaam bij geslacht <voorbeeld>
