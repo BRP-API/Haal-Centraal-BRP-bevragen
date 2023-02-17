@@ -202,8 +202,8 @@ Achtergrond:
     | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
     | 0100                  | 301                   | 20200713                        |
     En de 'nationaliteit' is gecorrigeerd naar de volgende gegevens
-    | onjuist (84.10) | datum ingang geldigheid (85.10) |
-    | O               | 20200727                        |
+    | datum ingang geldigheid (85.10) |
+    | 20200727                        |
     En de persoon heeft nog een 'nationaliteit' met de volgende gegevens
     | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) |
     | 0263                  | 301                   | 20100801                        |
@@ -271,5 +271,16 @@ Achtergrond:
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
+    | fields              | nationaliteiten                 |
+    Dan heeft de response een persoon zonder 'nationaliteit' gegevens
+
+  Scenario: persoon heeft geen nationaliteit
+    Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
+    | naam                            | waarde          |
+    | voornamen (02.10)               | Daan            |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000061                       |
     | fields              | nationaliteiten                 |
     Dan heeft de response een persoon zonder 'nationaliteit' gegevens

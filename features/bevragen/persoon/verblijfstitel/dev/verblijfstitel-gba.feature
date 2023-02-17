@@ -147,3 +147,20 @@ Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt 
     Dan heeft de response een persoon met alleen de volgende 'verblijfstitel' gegevens
     | naam            | waarde |
     | aanduiding.code | 01     |
+
+Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 39, dan wordt de verblijfstitel niet opgenomen
+
+  Scenario: verblijfstitel is onjuist
+    Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfstitel' gegevens
+    | aanduiding verblijfstitel (39.10) |
+    | 01                                |
+    En het 'verblijfstitel' is gecorrigeerd naar de volgende gegevens
+    | naam                            | waarde           |
+    | ingangsdatum geldigheid (85.10) | 20031107         |
+    | datum van opneming (86.10)      | 20040112         |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000243                       |
+    | fields              | verblijfstitel                  |
+    Dan heeft de response een persoon zonder gegevens

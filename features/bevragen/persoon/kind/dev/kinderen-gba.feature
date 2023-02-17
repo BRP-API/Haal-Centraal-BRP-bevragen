@@ -96,6 +96,17 @@ Functionaliteit: kinderen raadplegen
       | fields              | kinderen                        |
       Dan heeft de response een persoon zonder 'kind' gegevens
 
+    Scenario: persoon heeft geen kind
+      Gegeven de persoon met burgerservicenummer '000000061' heeft de volgende gegevens
+      | naam                            | waarde          |
+      | voornamen (02.10)               | Daan            |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000061                       |
+      | fields              | kinderen                        |
+      Dan heeft de response een persoon zonder 'kind' gegevens
+
     Scenario: met fields vragen om een gegeven zonder waarde
       Gegeven de persoon met burgerservicenummer '000000073' heeft een 'kind' met de volgende gegevens
       | voornamen (02.10) | geslachtsnaam (02.40) |
