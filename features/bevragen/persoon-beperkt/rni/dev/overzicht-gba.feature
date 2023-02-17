@@ -43,10 +43,11 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | categorie              | Persoon                                         |
 
     Voorbeelden:
-    | fields                            |
-    | naam                              |
-    | naam,rni                          |
-    | naam.voornamen,naam.geslachtsnaam |
+    | fields                              |
+    | naam                                |
+    | naam.voornamen,naam.geslachtsnaam   |
+    | naam.voorletters,naam.geslachtsnaam |
+    | naam.volledigeNaam                  |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (verblijf buitenland) en er wordt gevraagd om <fields>
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
@@ -190,13 +191,15 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | geslachtsnaam | Jansen |
 
     Voorbeelden:
-    | fields   |
-    | naam     |
-    | naam,rni |
+    | fields             |
+    | naam               |
+    | naam.volledigeNaam |
 
-Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een rni gegevensgroep veld met de fields parameter worden genegeerd
 
-  Abstract Scenario: <sub titel> wordt gevraagd en een RNI-deelnemer heeft de persoonsgegevens aangeleverd
+Rule: rni mag niet worden gevraagd, omdat het automatisch wordt geleverd
+
+   @fout-case
+   Abstract Scenario: rni in <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd
     Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
     | naam                         | waarde                                      |
     | geslachtsnaam (02.40)        | Jansen                                      |
@@ -209,11 +212,26 @@ Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een 
     | geslachtsnaam | Jansen                              |
     | geboortedatum | 1983-05-26                          |
     | fields        | <fields>                            |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[<index>].             |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name            | reason                                        |
+    | fields | fields[<index>] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                      | sub titel               |
-    | rni.deelnemer               | RNI veld deelnemer      |
-    | rni.deelnemer.code          | RNI veld deelnemer.code |
-    | rni.deelnemer,rni.categorie | Meerdere RNI velden     |
-    | rni                         | RNI gegevensgroep veld  |
+    | fields                                      | index |
+    | rni                                         | 0     |
+    | rni.deelnemer                               | 0     |
+    | rni.deelnemer.code                          | 0     |
+    | rni.deelnemer.omschrijving                  | 0     |
+    | rni.omschrijvingVerdrag                     | 0     |
+    | rni.categorie                               | 0     |
+    | rni.omschrijvingVerdrag,burgerservicenummer | 0     |
+    | naam.voorvoegsel,rni,geboorte.datum         | 1     |
+    | geslacht,adressering,rni.deelnemer          | 2     |
