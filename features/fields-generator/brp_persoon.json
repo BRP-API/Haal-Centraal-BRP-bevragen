@@ -29,6 +29,30 @@
         "Waardetabel",
         "AdellijkeTitelPredicaatType"
     ],
+    "aliases": [
+        { 
+            "field": "verblijfplaats", 
+            "alias": "verblijfplaatsBinnenland",
+            "excludeFields": [ "regel1", "regel2", "regel3", "land" ]
+        },
+        { 
+            "field": "adressering", 
+            "alias": "adresseringBinnenland" ,
+            "excludeFields": [ "adresregel3", "land" ]
+        }
+    ],
+    "aliasesFiltered": [
+        { 
+            "field": "verblijfplaats", 
+            "alias": "verblijfplaatsBinnenland",
+            "excludeFields": [ "regel1", "regel2", "regel3", "land" ]
+        },
+        { 
+            "field": "adressering", 
+            "alias": "adresseringBinnenland" ,
+            "excludeFields": [ "adresregel3", "land", "aanhef", "aanschrijfwijze", "gebruikInLopendeTekst" ]
+        }
+    ],
     "sourceYaml": "/specificatie/genereervariant/openapi.yaml",
     "fieldslistFolder": "/features/"
 }
