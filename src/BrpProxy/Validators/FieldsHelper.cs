@@ -12,7 +12,7 @@ public class FieldsHelper
     public ReadOnlyDictionary<string,string> PersoonFieldPaths { get; }
     public ReadOnlyDictionary<string,string> BeperktPersoonFieldPaths { get; }
 
-    private IDictionary<string, string> SetupFieldShortcuts(string persoonFieldsMappingFilePath)
+    private IDictionary<string, string> SetupFieldShortcuts()
     {
         var dictionary = new Dictionary<string, string>();
 
@@ -29,6 +29,15 @@ public class FieldsHelper
             {
                 dictionary.Add(kvp.Key.Replace("verblijfplaats", "verblijfplaatsBinnenland"), kvp.Value);
             }
+            else if(kvp.Key.StartsWith("adressering") &&
+                !new[]
+                {
+                    "adressering.adresregel3",
+                    "adressering.land"
+                }.Contains(kvp.Key))
+            {
+                dictionary.Add(kvp.Key.Replace("adressering", "adresseringBinnenland"), kvp.Value);
+            }
             dictionary.Add(kvp.Key, kvp.Value);
         }
 
@@ -41,17 +50,15 @@ public class FieldsHelper
 
         foreach (var kvp in BeperktPersoonFieldPaths)
         {
-            //if (kvp.Key.StartsWith("verblijfplaats") &&
-            //    !new[]
-            //    {
-            //        "verblijfplaats.verblijfadres.regel1",
-            //        "verblijfplaats.verblijfadres.regel2",
-            //        "verblijfplaats.verblijfadres.regel3",
-            //        "verblijfplaats.verblijfadres.land"
-            //    }.Contains(kvp.Key))
-            //{
-            //    dictionary.Add(kvp.Key.Replace("verblijfplaats", "verblijfplaatsBinnenland"), kvp.Value);
-            //}
+            if (kvp.Key.StartsWith("adressering") &&
+                !new[]
+                {
+                    "adressering.adresregel3",
+                    "adressering.land"
+                }.Contains(kvp.Key))
+            {
+                dictionary.Add(kvp.Key.Replace("adressering", "adresseringBinnenland"), kvp.Value);
+            }
             dictionary.Add(kvp.Key, kvp.Value);
         }
 
@@ -114,7 +121,7 @@ public class FieldsHelper
 
         PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
         BeperktPersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldInOnderzoekMapping());
-        PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts(configuration["PersoonFieldsMapping"]));
+        PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts());
         PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldShortcuts());
     }
 

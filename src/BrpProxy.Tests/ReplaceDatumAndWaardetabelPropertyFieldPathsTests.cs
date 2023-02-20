@@ -8,6 +8,16 @@ namespace BrpProxy.Tests
     public class ReplaceDatumAndWaardetabelPropertyFieldPathsTests
     {
         [Theory]
+        [InlineData(new string[] { "adresseringBinnenland" }, new string[] { "adressering" })]
+        [InlineData(new string[] { "adresseringBinnenland.aanhef" }, new string[] { "adressering.aanhef" })]
+        [InlineData(new string[] { "adresseringBinnenland.aanschrijfwijze" }, new string[] { "adressering.aanschrijfwijze" })]
+        [InlineData(new string[] { "adresseringBinnenland.aanschrijfwijze.naam" }, new string[] { "adressering.aanschrijfwijze.naam" })]
+        public void AdresseringBinnenland(IEnumerable<string> input, IEnumerable<string> expected)
+        {
+            input.ReplaceDatumWaardeTabelVerblijfplaatsBinnenlandPropertyFieldPaths().Should().BeEquivalentTo(expected);
+        }
+
+        [Theory]
         [InlineData(new string[] { "geboorte.datum" }, new string[] { "geboorte.datum" })]
         [InlineData(new string[] { "geboorte.datum.datum" }, new string[] { "geboorte.datum" })]
         public void Geboorte(IEnumerable<string> input, IEnumerable<string> expected)
