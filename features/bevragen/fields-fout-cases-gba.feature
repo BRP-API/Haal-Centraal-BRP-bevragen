@@ -6,7 +6,7 @@ Rule: De fields parameter is een verplichte parameter
 
   @fout-case
   Scenario: De fields parameter ontbreekt bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -19,12 +19,12 @@ Rule: De fields parameter is een verplichte parameter
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code     | name   | reason                  |
-    | required | fields | Parameter is verplicht. |
+    | code     | name   | reason                          |
+    | minItems | fields | Array bevat minder dan 1 items. |
 
   @fout-case
   Scenario: De fields parameter ontbreekt bij het zoeken van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Kierkegaard                         |
@@ -38,14 +38,14 @@ Rule: De fields parameter is een verplichte parameter
     | code     | paramsValidation                                            |
     | instance | /haalcentraal/api/brp/personen                              |
     En heeft het object de volgende 'invalidParams' gegevens
-    | code     | name   | reason                  |
-    | required | fields | Parameter is verplicht. |
+    | code     | name   | reason                          |
+    | minItems | fields | Array bevat minder dan 1 items. |
 
 Rule: De fields parameter bevat een lijst met minimaal één veld pad
 
   @fout-case
   Scenario: De fields parameter bevat een lege lijst bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -64,7 +64,7 @@ Rule: De fields parameter bevat een lijst met minimaal één veld pad
 
   @fout-case
   Scenario: De fields parameter bevat een lege lijst bij het zoeken van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Kierkegaard                         |
@@ -84,7 +84,7 @@ Rule: De fields parameter bevat een lijst met minimaal één veld pad
 
   @fout-case
   Scenario: De fields parameter bevat een string met veld paden gescheiden door een komma bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -103,7 +103,7 @@ Rule: De fields parameter bevat een lijst met minimaal één veld pad
 
   @fout-case
   Scenario: De fields parameter bevat een string met veld paden gescheiden door een komma bij het zoeken van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                              |
     | type                | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam       | Kierkegaard                         |
@@ -125,7 +125,7 @@ Rule: De fields parameter bevat een lijst met maximaal 130 veld paden
 
   @fout-case
   Scenario: De fields parameter bevat meer dan 130 veld paden bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -148,7 +148,7 @@ Rule: De fields parameter bevat een lijst met maximaal 130 veld paden
 
   @fout-case
   Scenario: De fields parameter bevat meer dan 130 veld paden bij het zoeken van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Kierkegaard                         |
@@ -178,7 +178,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
 
   @fout-case
   Abstract Scenario: De fields parameter bevat een veld pad met ongeldige karakters bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -203,7 +203,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     
   @fout-case
   Scenario: De fields parameter bevat een veld pad met meer dan 200 valide karakters bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                                                                                                                                                    |
     | type                | RaadpleegMetBurgerservicenummer                                                                                                                                                                           |
     | burgerservicenummer | 000000139                                                                                                                                                                                                 |
@@ -222,7 +222,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
 
   @fout-case
   Scenario: De fields parameter bevat het pad naar een niet bestaand veld (onjuiste case) bij het raadplegen van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -241,7 +241,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
 
   @fout-case
   Scenario: De fields parameter bevat het pad naar een niet bestaand veld bij het zoeken van personen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Kierkegaard                         |
@@ -261,7 +261,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
 
   @fout-case
   Abstract Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij raadplegen
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000139                       |
@@ -305,7 +305,7 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
 
   @fout-case
   Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij zoeken
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam          | waarde                              |
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Kierkegaard                         |
