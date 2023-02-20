@@ -142,12 +142,13 @@ Rule: leeftijd wordt niet geleverd voor een overleden persoon
     | naam                                 | waarde |
     | reden opschorting bijhouding (67.20) | O      |
     Als personen wordt gezocht met de volgende parameters
-    | naam                    | waarde                               |
-    | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
-    | geslachtsnaam           | Maassen                              |
-    | voornamen               | Pieter                               |
-    | gemeenteVanInschrijving | 0014                                 |
-    | fields                  | leeftijd                             |
+    | naam                       | waarde                               |
+    | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
+    | geslachtsnaam              | Maassen                              |
+    | voornamen                  | Pieter                               |
+    | inclusiefOverledenPersonen | true                                 |
+    | gemeenteVanInschrijving    | 0014                                 |
+    | fields                     | leeftijd                             |
     Dan heeft de response een persoon met alleen de volgende 'opschortingBijhouding' gegevens
     | naam               | waarde     |
     | reden.code         | O          |
