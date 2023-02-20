@@ -192,7 +192,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | fields                      | ad hoc rubrieken              | missende autorisatie        |
       | verblijfplaats.functieAdres | 10120 81010 81030 81210 81310 | straat (81110)              |
       | verblijfplaats.functieAdres | 10120 81010 81030 81110 81310 | locatiebeschrijving (81210) |
-      | verblijfplaats.functieAdres | 10120 81010 81030 81110 81210 | land (81310)                |    
+      | verblijfplaats.functieAdres | 10120 81010 81030 81110 81210 | land (81310)                |
    
   
   Rule: Wanneer met fields gevraagd is voor datumVan en afnemer is niet geautoriseerd voor datumAanvangAdreshouding én datumAanvangAdresBuitenland, wordt een foutmelding gegeven

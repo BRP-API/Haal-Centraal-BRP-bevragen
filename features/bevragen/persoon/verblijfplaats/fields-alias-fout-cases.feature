@@ -5,8 +5,8 @@ Functionaliteit: verblijfplaats - fields alias fout cases
 Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
   @fout-case
-  Abstract Scenario: consumer is niet geautoriseerd voor 'verblijfplaats buitenland' en vraagt zonder de fields alias één of meer verblijfplaats velden
-    Gegeven de consumer is geautoriseerd voor 'verblijfplaats binnenland' gegevens
+  Abstract Scenario: afnemer is niet geautoriseerd voor 'verblijfplaats buitenland' en vraagt zonder de fields alias één of meer verblijfplaats velden
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'verblijfplaats binnenland' gegevens
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -17,8 +17,7 @@ Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een 
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
     | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
     | status   | 403                                                                     |
-    | detail   | De foutieve field waarden zijn: fields[0].                              |
-    | code     | authorization                                                           |
+    | code     | unauthorizedField                                                       |
     | instance | /haalcentraal/api/brp/personen                                          |
 
     Voorbeelden:

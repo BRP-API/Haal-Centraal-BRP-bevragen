@@ -7,9 +7,8 @@ Functionaliteit: Persoon: adressering velden vragen met fields/fields alias
 
 Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consumer die is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats binnenland (adres, locatie) en verblijfplaats buitenland
 
-  Abstract Scenario: consumer is geautoriseerd voor 'adressering buitenland' en vraagt <sub titel>
-    Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
-    En de consumer is geautoriseerd voor 'adressering buitenland' gegevens
+  Abstract Scenario: afnemer is geautoriseerd voor 'adressering buitenland' en vraagt <sub titel>
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
     | land adres buitenland (13.10)    | 6014                        |
@@ -34,9 +33,8 @@ Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consume
     | adressering                                                                              | de adressering gegevensgroep veld           |
     | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land | alle adresregel velden met hun volledig pad |
 
-  Abstract Scenario: consumer is geautoriseerd voor 'adressering buitenland' en vraagt het <field> veld van de adressering gegevensgroep
-    Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
-    En de consumer is geautoriseerd voor 'adressering buitenland' gegevens
+  Abstract Scenario: afnemer is geautoriseerd voor 'adressering buitenland' en vraagt het <field> veld van de adressering gegevensgroep
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
     | land adres buitenland (13.10)    | 6014                        |
@@ -58,9 +56,8 @@ Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consume
     | adresregel2 | Washington, DC 20500        |
     | adresregel3 | Selangor                    |
 
-  Scenario: consumer is geautoriseerd voor 'adressering buitenland' en vraagt het land veld van de adressering gegevensgroep
-    Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
-    En de consumer is geautoriseerd voor 'adressering buitenland' gegevens
+  Scenario: afnemer is geautoriseerd voor 'adressering buitenland' en vraagt het land veld van de adressering gegevensgroep
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
     | land adres buitenland (13.10)    | 6014                        |
@@ -79,8 +76,8 @@ Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consume
 
 Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
 
-  Scenario: consumer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias <sub titel> van een verblijfplaats buitenland
-    Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
+  Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias de adresregel velden van een verblijfplaats buitenland
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering binnenland' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
     | land adres buitenland (13.10)    | 6014                        |
@@ -95,12 +92,11 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
-    | fields                                                                                                | sub titel                                   |
-    | adresseringBinnenland                                                                                 | alle adressering velden                     |
-    | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2,adresseringBinnenland.adresregel3 | alle adresregel velden met hun volledig pad |
+    | fields                                                              |
+    | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2 |
 
-  Scenario: consumer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias <sub titel> van een adres
-    Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
+  Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias de adresregel velden van een adres
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering binnenland' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                  | waarde |
     | functie adres (10.10) | W      |
@@ -122,12 +118,11 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     | adresregel2 | 2497 BV  SCHEVENINGEN |
 
     Voorbeelden:
-    | fields                                                                                                | sub titel                                   |
-    | adresseringBinnenland                                                                                 | alle adressering velden                     |
-    | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2,adresseringBinnenland.adresregel3 | alle adresregel velden met hun volledig pad |
+    | fields                                                              |
+    | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2 |
 
-  Abstract Scenario: consumer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias het <field> veld van adressering gegevensgroep van een verblijfplaats buitenland
-    Gegeven de consumer is geautoriseerd voor 'adressering binnenland' gegevens
+  Abstract Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias een adresregel veld van een verblijfplaats buitenland
+    Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering binnenland' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
     | naam                             | waarde                      |
     | land adres buitenland (13.10)    | 6014                        |
@@ -145,4 +140,3 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     | field       |
     | adresregel1 |
     | adresregel2 |
-    | adresregel3 |
