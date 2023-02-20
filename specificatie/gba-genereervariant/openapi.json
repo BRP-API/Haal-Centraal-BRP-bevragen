@@ -395,7 +395,7 @@
             "maxItems" : 130,
             "minItems" : 1,
             "type" : "array",
-            "description" : "Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een lijst van paden die verwijzen naar de gewenste velden op te nemen ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).\nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) (voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad staat en in de tweede kolom het volledige pad naar het gewenste veld.\n",
+            "description" : "Hiermee kun je de velden opgeven die je wenst te ontvangen.\nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) \n(voor gebruik fields bij zoeken).\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\n",
             "items" : {
               "$ref" : "#/components/schemas/Field"
             }
@@ -667,7 +667,7 @@
             "$ref" : "#/components/schemas/GbaNaamBasis"
           },
           "opschortingBijhouding" : {
-            "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+            "$ref" : "#/components/schemas/GbaOpschortingBijhouding"
           },
           "gemeenteVanInschrijving" : {
             "$ref" : "#/components/schemas/Waardetabel"
@@ -847,7 +847,7 @@
       "Field" : {
         "pattern" : "^[a-zA-Z0-9\\._]{1,200}$",
         "type" : "string",
-        "description" : "Hiermee kun je het pad van het gewenste veld van een resource opgeven \n([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)). \nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) \n(voor gebruik fields bij zoeken) waarbij in de eerste kolom een mogelijk pad naar een gewenste veld staat en in de tweede kolom het volledige pad naar het betreffende veld.\nBij opgave van een pad dat verwijst naar een niet-bestaand veld wordt een 400 Bad Request teruggegeven.\n"
+        "description" : "Het pad naar een gewenst veld in punt-gescheiden formaat. Bijvoorbeeld \"burgerservicenummer\", \"geboorte.datum\", \"partners.naam.voornamen\".\n"
       },
       "GemeenteVanInschrijving" : {
         "pattern" : "^[0-9]{4}$",
@@ -1016,6 +1016,19 @@
         "description" : "De achternaam van een persoon.\n",
         "example" : "Vries"
       },
+      "GbaOpschortingBijhouding" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "datum" : {
+              "$ref" : "#/components/schemas/GbaDatum"
+            }
+          },
+          "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
+        } ]
+      },
       "OpschortingBijhoudingBasis" : {
         "type" : "object",
         "properties" : {
@@ -1179,19 +1192,6 @@
               "$ref" : "#/components/schemas/Waardetabel"
             }
           }
-        } ]
-      },
-      "GbaOpschortingBijhouding" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/OpschortingBijhoudingBasis"
-        }, {
-          "type" : "object",
-          "properties" : {
-            "datum" : {
-              "$ref" : "#/components/schemas/GbaDatum"
-            }
-          },
-          "description" : "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n"
         } ]
       },
       "GbaOverlijden" : {
