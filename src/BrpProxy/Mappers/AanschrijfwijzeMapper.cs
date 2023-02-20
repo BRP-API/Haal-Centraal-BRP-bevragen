@@ -92,28 +92,13 @@ public static class AanschrijfwijzeMapper
 
         var partner = persoon.Partners.ActuelePartner();
 
-        if (persoon.HeeftGeenAdellijkeTitelOfPredicaat() &&
-            partner.HeeftAdellijkeTitel() &&
-            persoon.IsVrouw() &&
-            persoon.GebruiktNaamVanPartner())
+        if (persoon.IsHoffelijkheidstitel(partner))
         {
-            return partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
-                ? partner!.BepaalAanschrijfwijzeVoorHoffelijkheidstitel(persoon)
-                : persoon.BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaat(partner);
+            return partner!.BepaalAanschrijfwijzeVoorHoffelijkheidstitel(persoon);
         }
 
         if (persoon.HeeftAdellijkeTitelOfPredicaat())
         {
-            if (partner.HeeftAdellijkeTitelOfPredicaat() &&
-                persoon.IsVrouw() &&
-                persoon.GebruiktNaamVanPartner()
-                )
-            {
-                return partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
-                    ? partner!.BepaalAanschrijfwijzeVoorHoffelijkheidstitel(persoon)
-                    : persoon.BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaatVanPartner(partner);
-            }
-
             if (partner != null &&
                persoon.HeeftPartnerNaamgebruik()
               ) return persoon.BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaat(partner);
@@ -133,6 +118,15 @@ public static class AanschrijfwijzeMapper
         }
 
         return persoon.BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaat(partner);
+    }
+
+    private static bool IsHoffelijkheidstitel(this NaamPersoon persoon, Partner? partner)
+    {
+        return
+            persoon.IsVrouw() &&
+            persoon.GebruiktNaamVanPartner() &&
+            (persoon.HeeftGeenAdellijkeTitelOfPredicaat() || persoon.HeeftAdellijkeTitel()) &&
+            partner.HeeftHoffelijkheidstitelMetAanspreekvorm();
     }
 
     private static string? Aanspreekvorm(this AdellijkeTitelPredicaatType type, string? geslachtsaanduiding)
@@ -160,18 +154,9 @@ public static class AanschrijfwijzeMapper
         return new Aanschrijfwijze
         {
             Naam = persoon.HeeftAdellijkeTitel()
-                ? persoon.AanschrijfwijzeNaamAdellijkeTitel(partner)
+                ? persoon.AanschrijfwijzeNaamAdellijkeTitel(partner, false)
                 : persoon.AanschrijfwijzeNaamPredicaat(partner),
             Aanspreekvorm = persoon.AdellijkeTitelPredicaat.Aanspreekvorm(persoon.Geslacht?.Code)
-        };
-    }
-
-    private static Aanschrijfwijze? BepaalAanschrijfwijzeZonderAdellijkeTitelOfPredicaatVanPartner(this NaamPersoon persoon, Partner? partner)
-    {
-        return new Aanschrijfwijze
-        {
-            Naam = persoon.AanschrijfwijzeNaamAdellijkeTitel(partner, false),
-            Aanspreekvorm = persoon.AdellijkeTitelPredicaat.Aanspreekvorm(persoon.Geslacht!.Code)
         };
     }
 
@@ -267,7 +252,7 @@ public static class AanschrijfwijzeMapper
             : persoon.AanduidingNaamgebruik.Code switch
                 {
                     "E" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}",
-                    "V" => $"{titel} {persoon.Voorletters} {partner.Achternaam()}-{persoon.Achternaam()}",
+                    "V" => $"{persoon.Voorletters} {partner.Achternaam()}-{titel} {persoon.Achternaam()}",
                     "N" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}-{partner.Achternaam()}",
                     _ => string.Empty
                 };
