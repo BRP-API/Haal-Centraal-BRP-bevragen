@@ -41,7 +41,7 @@ De BrpProxy is geïmplementeerd als een containerized applicatie, zodat het makk
 
 Er is een referentie implementatie van een docker-compose configuratie te vinden in de repository die kan worden gebruikt om de BRP Proxy te draaien op een lokale machine.
 
-Voor test doeleinden is een mock van de RvIG variant van de BRP Persoon Bevragen API (BrpService) geïmplementeerd. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
+Voor test doeleinden is een mock van de RvIG variant van de BRP Persoon Bevragen API (GBA Variant) geïmplementeerd. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
 Ten behoeve van monitoring is Open Telemetry geïntegreerd in de BrpProxy. Met behulp van de docker-compose configuratie bestand wordt ook een [Jaeger](https://www.jaegertracing.io/) Container opgestart om de trace regels van de BrpProxy te visualiseren.
 
