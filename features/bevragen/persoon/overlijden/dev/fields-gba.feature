@@ -85,6 +85,28 @@ Functionaliteit: overlijden velden vragen met fields (persoon)
     | naam  | waarde   |
     | datum | 00000000 |
 
+  Abstract Scenario: '<rubriek>' wordt gevraagd met field pad '<fields>'
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens
+    | naam                      | waarde   |
+    | datum overlijden (08.10)  | 20020701 |
+    | plaats overlijden (08.20) | 0513     |
+    | land overlijden (08.30)   | 6030     |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | overlijden.<fields>             |
+    Dan heeft de response een persoon met de volgende 'overlijden' gegevens
+    | naam                  | waarde         |
+    | <fields>.code         | <code>         |
+    | <fields>.omschrijving | <omschrijving> |
+
+    Voorbeelden:
+    | rubriek                   | fields | code | omschrijving |
+    | plaats overlijden (08.20) | plaats | 0513 | Gouda        |
+    | land overlijden (08.30)   | land   | 6030 | Nederland    |
+    
+    
 Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
   Abstract Scenario: code voor land overlijden (08.30) komt niet voor in de tabel Landen
