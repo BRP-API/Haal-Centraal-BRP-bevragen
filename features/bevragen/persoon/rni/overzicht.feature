@@ -241,8 +241,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | immigratie.datumVestigingInNederland                    |
     | immigratie.datumVestigingInNederland.type               |
     | immigratie.vanuitVerblijfplaatsOnbekend                 |
-    | immigratie.inOnderzoek                                  |
-    | immigratie.inOnderzoek.datumIngangOnderzoek.langFormaat |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens

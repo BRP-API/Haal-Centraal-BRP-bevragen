@@ -33,6 +33,28 @@ Functionaliteit: Persoon: adressering - aanhef, aanschrijfwijze en/of gebruikInL
     | 016100                  | hele groep naamgebruik       |
     | 016110                  | aanduiding naamgebruik       |
 
+  Abstract Scenario: voor gevraagde veld '<veld>' zijn één of meerdere adressering benodigde velden van persoon in onderzoek
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+    | geslachtsnaam (02.40) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | .                     | 010000                          | 20020701                       |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | adressering.<veld>              |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
+    | naam                                                | waarde      |
+    | inOnderzoek.<veld>                                  | true        |
+    | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum       |
+    | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01  |
+    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002 |
+
+    Voorbeelden:
+    | veld                  |
+    | aanschrijfwijze.naam  |
+    | aanhef                |
+    | gebruikInLopendeTekst |
+
   Abstract Scenario: '<type>' is in onderzoek en aanhef, aanschrijfwijze en gebruikInLopendeTekst velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'partner' met de volgende gegevens
     | geslachtsnaam (02.40) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
