@@ -22,9 +22,10 @@ Functionaliteit: Persoon: Raadplegen van afgevoerde persoonslijst
     | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | postcode (11.60) |
     | 0518                 | Spui               | 70                 | 1234AA           |
 
-Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de reden en datum opschorting geleverd en indien gevraagd de aNummer en burgerservicenummer
+Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de reden en datum opschorting geleverd en indien gevraagd de aNummer en/of burgerservicenummer
+  Overige gegevens op de afgevoerde persoonslijst worden niet geleverd
 
-  Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) 
+  Abstract Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om <fields>
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                                   |
     | type                | RaadpleegMetBurgerservicenummer                                                          |
@@ -41,4 +42,46 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | datum.type         | Datum            |
     | datum.datum        | 2022-08-29       |
     | datum.langFormaat  | 29 augustus 2022 |
+
+    Voorbeelden:
+    | fields                                                                                                    |
+    | aNummer,burgerservicenummer                                                                               |
+    | aNummer,burgerservicenummer,naam,geboorte,leeftijd,geslacht                                               |
+    | aNummer,burgerservicenummer,ouders,nationaliteiten,partners                                               |
+    | aNummer,burgerservicenummer,overlijden,datumEersteInschrijvingGBA                                         |
+    | aNummer,burgerservicenummer,verblijfplaats,gemeenteVanInschrijving,datumInschrijvingInGemeente,immigratie |
+    | aNummer,burgerservicenummer,kinderen,indicatieGezagMinderjarige,indicatieCurateleRegister                 |
+    | aNummer,burgerservicenummer,verblijfstitel,europeesKiesrecht,uitsluitingKiesrecht                         |
+    | aNummer,burgerservicenummer,adressering                                                                   |
+    | aNummer,burgerservicenummer,adresseringBinnenland                                                         |
+    | aNummer,burgerservicenummer,verblijfplaatsBinnenland                                                      |
+    | aNummer,burgerservicenummer,verblijfplaats.datumVan.datum,verblijfplaats.verblijfadres.woonplaats         |
+    | naam,aNummer,geboorte,leeftijd,burgerservicenummer,geslacht                                               |
+
+  Abstract Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om <fields>
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                                                   |
+    | type                | RaadpleegMetBurgerservicenummer                                                          |
+    | burgerservicenummer | 000000024                                                                                |
+    | fields              | aNummer,burgerservicenummer,naam,geboorte,geslacht,ouders,nationaliteiten,verblijfplaats |
+    Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
+    | naam               | waarde           |
+    | reden.code         | F                |
+    | reden.omschrijving | fout             |
+    | datum.type         | Datum            |
+    | datum.datum        | 2022-08-29       |
+    | datum.langFormaat  | 29 augustus 2022 |
+
+    Voorbeelden:
+    | fields                                                                        |
+    | naam,geboorte,leeftijd,geslacht                                               |
+    | ouders,nationaliteiten,partners                                               |
+    | overlijden,datumEersteInschrijvingGBA                                         |
+    | verblijfplaats,gemeenteVanInschrijving,datumInschrijvingInGemeente,immigratie |
+    | kinderen,indicatieGezagMinderjarige,indicatieCurateleRegister                 |
+    | verblijfstitel,europeesKiesrecht,uitsluitingKiesrecht                         |
+    | adressering                                                                   |
+    | adresseringBinnenland                                                         |
+    | verblijfplaatsBinnenland                                                      |
+    | verblijfplaats.datumVan.datum,verblijfplaats.verblijfadres.woonplaats         |
     
