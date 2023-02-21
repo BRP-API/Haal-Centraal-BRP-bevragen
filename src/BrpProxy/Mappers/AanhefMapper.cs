@@ -7,7 +7,6 @@ public static class AanhefMapper
 {
     private static string? BepaalAanhefZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, Partner? partner)
     {
-        // Rule 788 en 789
         if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
             persoon.HeeftGeenPartnerNaamgebruik())
         {
@@ -17,11 +16,10 @@ public static class AanhefMapper
         var partnerNaam = partner switch
         {
             Partner p => p.Naam.Achternaam(),
-            _ => ""
+            _ => string.Empty
         };
         var persoonNaam = persoon.Achternaam();
 
-        // Rule 871 (872-873)
         var geslachtsnaam = persoon.AanduidingNaamgebruik?.Code switch
         {
             "E" => persoonNaam,
@@ -31,7 +29,6 @@ public static class AanhefMapper
             _ => persoonNaam
         };
 
-        // Rule 17
         var retval = persoon.Geslacht() switch
         {
             "M" => $"Geachte heer {geslachtsnaam.Capitalize()}",
@@ -51,60 +48,28 @@ public static class AanhefMapper
 
         var partner = persoon.Partners.ActuelePartner();
 
-        // Rule 423 en Rule 871 (874-876)
-        if (persoon.HeeftGeenAdellijkeTitelOfPredicaat() &&
-            partner.HeeftAdellijkeTitel() &&
-            persoon.IsVrouw() &&
-            persoon.GebruiktNaamVanPartner())
+        if (persoon.IsHoffelijkheidstitel(partner))
         {
-            // Rule 427
-            return partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
-                ? partner.BepaalHoffelijkheidstitel()
-                : persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
+            return partner.BepaalHoffelijkheidstitel();
         }
 
         if (persoon.HeeftAdellijkeTitelOfPredicaat())
         {
-            // Rule 786
-            if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
-                persoon.HeeftGeenPartnerNaamgebruik() &&
-                (persoon.HeeftPredicaat() || persoon.HeeftGeenAdellijkeTitelMetAanspreekvorm()) &&
-                persoon.HeeftGeenHoffelijkheidsTitel()
-                )
-            {
-                return null;
-            }
-
-            // Rule 550
-            if (partner.HeeftAdellijkeTitel() &&
-                persoon.IsVrouw() &&
-                partner.IsMan() &&
-                persoon.GebruiktNaamVanPartner() &&
-                partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
-                )
-            {
-                return partner.BepaalHoffelijkheidstitel();
-            }
-
-            // Rule 211
             if (partner != null &&
                 persoon.HeeftPartnerNaamgebruik()
                 ) return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
 
-            // Rule 212
             if (persoon.HeeftPredicaat() &&
                 persoon.IsVrouw() &&
                 partner.IsActueelPartner()
                 ) return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
 
-            // Rule 213
             if (persoon.HeeftPredicaat() &&
                 persoon.IsVrouw() &&
                 partner.IsExPartner() &&
                 persoon.GebruiktNaamVanPartner()
                 ) return persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
 
-            // Rule 210
             return persoon.HeeftAdellijkeTitelMetAanspreekvorm()
                 ? persoon.BepaalAanhefVoorAdellijkeTitelOfPredicaat()
                 : persoon.BepaalAanhefZonderAdellijkeTitelOfPredicaat(partner);
