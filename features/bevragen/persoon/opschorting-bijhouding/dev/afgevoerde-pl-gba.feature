@@ -52,12 +52,10 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | aNummer             | 0123456789 |
     | burgerservicenummer | 000000024  |
     En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde           |
-    | reden.code         | F                |
-    | reden.omschrijving | fout             |
-    | datum.type         | Datum            |
-    | datum.datum        | 2022-08-29       |
-    | datum.langFormaat  | 29 augustus 2022 |
+    | naam               | waarde   |
+    | reden.code         | F        |
+    | reden.omschrijving | fout     |
+    | datum              | 20220829 |
 
     Voorbeelden:
     | fields                                                                                                    |
@@ -84,12 +82,10 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | naam                | waarde     |
     | burgerservicenummer | 000000024  |
     En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde           |
-    | reden.code         | F                |
-    | reden.omschrijving | fout             |
-    | datum.type         | Datum            |
-    | datum.datum        | 2022-08-29       |
-    | datum.langFormaat  | 29 augustus 2022 |
+    | naam               | waarde   |
+    | reden.code         | F        |
+    | reden.omschrijving | fout     |
+    | datum              | 20220829 |
 
   Abstract Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om <fields>
     Als gba personen wordt gezocht met de volgende parameters
@@ -98,12 +94,10 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | burgerservicenummer | 000000024                                                                                |
     | fields              | aNummer,burgerservicenummer,naam,geboorte,geslacht,ouders,nationaliteiten,verblijfplaats |
     Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
-    | naam               | waarde           |
-    | reden.code         | F                |
-    | reden.omschrijving | fout             |
-    | datum.type         | Datum            |
-    | datum.datum        | 2022-08-29       |
-    | datum.langFormaat  | 29 augustus 2022 |
+    | naam               | waarde   |
+    | reden.code         | F        |
+    | reden.omschrijving | fout     |
+    | datum              | 20220829 |
 
     Voorbeelden:
     | fields                                                                        |
