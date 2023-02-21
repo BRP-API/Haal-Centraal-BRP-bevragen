@@ -93,7 +93,7 @@ public static class AdellijkeTitelPredicaatHelpers
             : string.Empty;
 
     public static string AdellijkeTitelPredicaat(this Partner? partner) =>
-        partner?.Naam.AdellijkeTitelPredicaat != null
+        partner?.Naam?.AdellijkeTitelPredicaat != null
             ? partner.Naam.AdellijkeTitelPredicaat.Code
             : String.Empty;
 
@@ -227,5 +227,27 @@ public static class AdellijkeTitelPredicaatHelpers
             "JV" => geslacht.IsMan() ? JONKHEER : JONKVROUW,
             _ => string.Empty,
         };
+    }
+
+    public static string Titel(this Partner? partner, NaamPersoon persoon, IDictionary<string, string> adellijkeTitelsEnPredicaten)
+    {
+        if (partner == null) return string.Empty;
+
+        var keyPartner = partner.HeeftAdellijkeTitelOfPredicaat()
+            ? $"{partner.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}"
+            : null;
+
+        return keyPartner != null && adellijkeTitelsEnPredicaten.ContainsKey(keyPartner)
+            ? adellijkeTitelsEnPredicaten[keyPartner]
+            : string.Empty;
+    }
+
+    public static string Titel(this NaamPersoon persoon, IDictionary<string, string> adellijkeTitelsEnPredicaten)
+    {
+        var key = $"{persoon.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
+
+        return adellijkeTitelsEnPredicaten.ContainsKey(key)
+            ? adellijkeTitelsEnPredicaten[key]
+            : string.Empty;
     }
 }
