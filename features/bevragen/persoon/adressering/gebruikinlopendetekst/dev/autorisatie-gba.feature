@@ -1,5 +1,6 @@
 # language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie voor gebruikInLopendeTekst
 
   Rule: Vragen met fields om gebruikInLopendeTekst, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit gebruikInLopendeTekst wordt afgeleid, geeft een foutmelding
