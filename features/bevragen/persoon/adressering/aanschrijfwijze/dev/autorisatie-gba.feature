@@ -1,5 +1,6 @@
 # language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie voor aanschrijfwijze
 
   Rule: Vragen met fields om aanschrijfwijze, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit aanschrijfwijze wordt afgeleid, geeft een foutmelding
