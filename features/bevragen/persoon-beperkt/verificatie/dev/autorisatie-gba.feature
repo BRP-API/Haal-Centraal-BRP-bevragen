@@ -5,7 +5,7 @@ Functionaliteit: autorisatie verificatie (persoon beperkt)
 
   Rule: Leveren van verificatie vereist geen autorisatie voor dat veld
 
-    Abstract Scenario: Afnemer krijgt verificatie automatisch meegeleverd en heeft geen verificatie in de autorisatie
+    Scenario: Afnemer krijgt verificatie automatisch meegeleverd en heeft geen verificatie in de autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 010240 010310                   | N                        | 20201128                |
@@ -25,6 +25,6 @@ Functionaliteit: autorisatie verificatie (persoon beperkt)
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Vries                               |
       | geboortedatum | 1978-11-03                          |
-      | fields        | burgerservicenummer                 |
+      | fields        | naam.geslachtsnaam                  |
       Dan heeft de response 1 persoon
       
