@@ -33,7 +33,7 @@ Rule: opschortingBijhouding wordt automatisch geleverd indien van toepassing
     | naam               | waarde               |
     | reden.code         | <opschorting reden>  |
     | reden.omschrijving | <reden omschrijving> |
-    | datum.datum        | 20020701             |
+    | datum              | 20020701             |
 
     Voorbeelden:
     | opschorting reden | reden omschrijving        |
