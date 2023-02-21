@@ -94,7 +94,7 @@ Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch word
 
   @fout-case
   Scenario: meerdere velden worden gevraagd van opschortingBijhouding
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                           |
     | type                | RaadpleegMetBurgerservicenummer                                                  |
     | burgerservicenummer | 000000024                                                                        |
