@@ -7,7 +7,7 @@ De gegenereerde lijst bevat alle mogelijke waarden die in de "fields" parameter 
 Er zijn rijen opgenomen voor simple type velden (string, integer, boolean), en ook voor objecten (groepen velden).
 
 Deze lijst bevat ook velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd 
-zullen worden (bijv. geheimhouding, inOnderzoek en type, sub-velden van datum, sub-velden van waardetabel).
+zullen worden: type (van verblijfplaats en nationaliteit), sub-velden van datum (datum, langFormaat, enz.), sub-velden van waardetabel (code en omschrijving).
 Gebruik command line argument --filter om de lijst velden te krijgen zonder de automatisch geleverde velden.
 
 De csv lijst wordt opgeslagen onder de naam "fields-{schemaComponent}.csv", waarbij {schemaComponent} de naam is van de 
@@ -37,6 +37,10 @@ import config
 def writeComponent (path, ref, referer=""):
     if debug==True:
         print ("-- " + ref)
+
+    if ref in SETTINGS.get("forbiddenFields"):
+        return
+
     refList = ref.split("/")
     component =  SWAGGER
     for refPart in refList:
@@ -71,6 +75,9 @@ def writeComponent (path, ref, referer=""):
 
 
 def writeProperty(path, property, propertyDef):
+    if property in SETTINGS.get("forbiddenFields"):
+        return
+
     if property in SETTINGS.get("autoFields"):
         property += '(A)'
 

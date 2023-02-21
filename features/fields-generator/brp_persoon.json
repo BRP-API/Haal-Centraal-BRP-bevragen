@@ -12,13 +12,15 @@
             "fullResource": "Persoon"
         }        
     ],
-    "autoFields": [
-        "type",
+    "forbiddenFields": [
         "inOnderzoek",
         "geheimhoudingPersoonsgegevens",
-        "reden",
+        "opschortingBijhouding",
         "rni",
         "verificatie"
+    ],
+    "autoFields": [
+        "type"
     ],
     "autoComponents": [
         "AbstractDatum",
