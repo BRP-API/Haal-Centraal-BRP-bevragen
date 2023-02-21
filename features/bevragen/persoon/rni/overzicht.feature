@@ -91,7 +91,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (verblijfplaats buitenland) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
     | naam                         | waarde                               |
-    | land (13.10)                 | 500                             |
+    | land (13.10)                 | 5010                                 |
     | rni-deelnemer (88.10)        | 0201                                 |
     | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
     Als personen wordt gezocht met de volgende parameters
@@ -102,8 +102,8 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                   |
     | type                            | VerblijfplaatsBuitenland |
-    | verblijfadres.land.code         | 5010                 |
-    | verblijfadres.land.omschrijving | België           |
+    | verblijfadres.land.code         | 5010                     |
+    | verblijfadres.land.omschrijving | België                   |
     En heeft de persoon een 'rni' met de volgende gegevens
     | naam                   | waarde                                            |
     | deelnemer.code         | 0201                                              |

@@ -76,7 +76,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | 0052               | Belgische                  | 0201               | Sociale Verzekeringsbank (inzake AOW, Anw en AKW)                  | nationaliteiten               |
     | 0263               | Surinaamse                 | 0501               | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) | nationaliteiten.nationaliteit |
 
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 06 (Overlijden) en één of meerdere velden uit die categorie wordt gevraagd
+  Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 06 (Overlijden) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'overlijden' gegevens
     | datum overlijden (08.10) | plaats overlijden (08.20) | land overlijden (08.30) | rni-deelnemer (88.10) |
     | 20020701                 | 0518                      | 6030                    | 0401                  |
@@ -84,7 +84,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | <fields>                        |
+    | fields              | overlijden.datum                |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam  | waarde   |
     | datum | 20020701 |
@@ -93,11 +93,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.code         | 0401                           |
     | deelnemer.omschrijving | CAK (inzake zorgverzekeringen) |
     | categorie              | Overlijden                     |
-
-    Voorbeelden:
-    | fields                        |
-    | overlijden.datum              |
-    | overlijden.indicatieOverleden |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (<verblijfplaats type>) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
