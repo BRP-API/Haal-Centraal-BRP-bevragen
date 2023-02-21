@@ -26,7 +26,7 @@ Rule: indicatie geheim waarde 0 wordt niet geleverd
 
 Rule: indicatie geheim met waarde hoger dan 0 wordt vertaald naar geheimhoudingPersoonsgegevens waarde true en ongevraagd meegeleverd
 
-  Abstract Scenario: persoon met indicatie geheim <waarde>, wordt geraadpleegd met burgerservicenummer
+  Abstract Scenario: persoon met indicatie geheim <waarde> en er wordt gevraagd om burgerservicenummer
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | geslachtsnaam (02.40) | geboortedatum (03.10) |
     | Jansen                | 19630405              |
