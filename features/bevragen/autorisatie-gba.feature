@@ -326,6 +326,40 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | rni                             |
       | verificatie                     |
 
+  Rule: voor het vragen en beoordelen van gegevens is geen autorisatie nodig voor gebruik van indicatie onjuist (84.10)
+
+    Scenario: kindgegevens zijn gecorrigeerd (zijn onjuist) en afnemer is heeft geen autorisatie voor indicatie onjuist (98410) 
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 09210 90310               | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0800   |
+      Gegeven de persoon met burgerservicenummer '000000061' heeft een 'kind' met de volgende gegevens
+      | naam                            | waarde          |
+      | voornamen (02.10)               | Daan            |
+      | voorvoegsel (02.30)             | de              |
+      | geslachtsnaam (02.40)           | Vries           |
+      | geboortedatum (03.10)           | 20031107        |
+      | gemeente document (82.10)       | 0518            |
+      | datum document (82.20)          | 20031109        |
+      | beschrijving document (82.30)   | PL gerelateerde |
+      | ingangsdatum geldigheid (85.10) | 20031107        |
+      | datum van opneming (86.10)      | 20031109        |
+      En het 'kind' is gecorrigeerd naar de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 0518             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                          |
+      | type                | RaadpleegMetBurgerservicenummer                 |
+      | burgerservicenummer | 000000061                                       |
+      | fields              | kinderen.naam.voornamen,kinderen.geboorte.datum |
+      Dan heeft de response een persoon zonder 'kind' gegevens
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
