@@ -1,5 +1,6 @@
 #language: nl
 
+@gba
 Functionaliteit: GbaPersoon: Raadplegen van afgevoerde persoonslijst
 
   Achtergrond:
@@ -72,15 +73,15 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | aNummer,burgerservicenummer,verblijfplaats.datumVan.datum,verblijfplaats.verblijfadres.woonplaats         |
     | naam,aNummer,geboorte,leeftijd,burgerservicenummer,geslacht                                               |
 
-  Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om burgerservicenummer,naam,geboorte
+  Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om burgerservicenummer,naam,geboorte,geslacht,ouders,nationaliteiten,verblijfplaats
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                   |
-    | type                | RaadpleegMetBurgerservicenummer                                                          |
-    | burgerservicenummer | 000000024                                                                                |
-    | fields              | aNummer,burgerservicenummer,naam,geboorte,geslacht,ouders,nationaliteiten,verblijfplaats |
+    | naam                | waarde                                                                           |
+    | type                | RaadpleegMetBurgerservicenummer                                                  |
+    | burgerservicenummer | 000000024                                                                        |
+    | fields              | burgerservicenummer,naam,geboorte,geslacht,ouders,nationaliteiten,verblijfplaats |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                | waarde     |
-    | burgerservicenummer | 000000024  |
+    | naam                | waarde    |
+    | burgerservicenummer | 000000024 |
     En heeft de persoon de volgende 'opschortingBijhouding' gegevens
     | naam               | waarde   |
     | reden.code         | F        |
@@ -89,10 +90,10 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
 
   Abstract Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om <fields>
     Als gba personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                                                                   |
-    | type                | RaadpleegMetBurgerservicenummer                                                          |
-    | burgerservicenummer | 000000024                                                                                |
-    | fields              | aNummer,burgerservicenummer,naam,geboorte,geslacht,ouders,nationaliteiten,verblijfplaats |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000024                       |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
     | naam               | waarde   |
     | reden.code         | F        |

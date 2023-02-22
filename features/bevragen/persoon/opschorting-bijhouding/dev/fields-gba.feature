@@ -1,5 +1,6 @@
 #language: nl
 
+@gba
 Functionaliteit: GbaPersoon: opschorting bijhouding leveren als niet gevraagd met fields
 
 

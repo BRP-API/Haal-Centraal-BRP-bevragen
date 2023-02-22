@@ -13,10 +13,10 @@ Rule: opschortingBijhouding wordt automatisch geleverd indien van toepassing
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
     | 20020701                             | <opschorting reden>                  |
     Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                                          |
-    | type                | RaadpleegMetBurgerservicenummer                 |
-    | burgerservicenummer | 000000152                                       |
-    | fields              | naam,geboorte,geslacht |
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | naam,geboorte,geslacht          |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                  | waarde |
     | geslacht.code         | M      |
@@ -115,3 +115,23 @@ Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch word
     | opschortingBijhouding.datum.maand         |
     | opschortingBijhouding.datum.onbekend      |
     | opschortingBijhouding,burgerservicenummer |
+
+  @fout-case
+  Scenario: meerdere velden worden gevraagd van opschortingBijhouding
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                                                           |
+    | type                | RaadpleegMetBurgerservicenummer                                                  |
+    | burgerservicenummer | 000000024                                                                        |
+    | fields              | burgerservicenummer,opschortingBijhouding.reden,opschortingBijhouding.datum,naam |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[1], fields[2].        |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name      | reason                                        |
+    | fields | fields[1] | Parameter bevat een niet toegestane veldnaam. |
+    | fields | fields[2] | Parameter bevat een niet toegestane veldnaam. |

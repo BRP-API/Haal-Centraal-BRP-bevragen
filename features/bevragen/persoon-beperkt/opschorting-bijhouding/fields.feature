@@ -4,6 +4,7 @@ Functionaliteit: Persoon beperkt: opschorting bijhouding velden vragen met field
 
 Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
+  @fout-case
   Abstract Scenario: veld <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd 
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                  | waarde   |
