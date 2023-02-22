@@ -1,5 +1,6 @@
 # language: nl
 
+@gba @autorisatie
 Functionaliteit: autorisatie voor aanhef
 
   Rule: Vragen met fields om aanhef, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit aanhef wordt afgeleid, geeft een foutmelding
