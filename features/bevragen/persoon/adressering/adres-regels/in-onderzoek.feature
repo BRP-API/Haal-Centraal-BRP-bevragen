@@ -53,7 +53,7 @@ Functionaliteit: Persoon: adresregel velden in onderzoek
     | type                | RaadpleegMetBurgerservicenummer                                                          |
     | burgerservicenummer | 000000152                                                                                |
     | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
     | aanduiding in onderzoek | type                               |
