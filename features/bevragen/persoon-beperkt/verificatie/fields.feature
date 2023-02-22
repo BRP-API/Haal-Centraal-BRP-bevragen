@@ -1,6 +1,7 @@
 #language: nl
 
 Functionaliteit: Persoon: verificatie velden vragen met fields
+
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geslachtsnaam (02.40) | geboortedatum (03.10) |
@@ -48,6 +49,7 @@ Functionaliteit: Persoon: verificatie velden vragen met fields
       | datum.maand       | <maand>       |
       | datum.onbekend    | <onbekend>    |
       | datum.langFormaat | <langFormaat> |
+      En heeft de persoon geen 'naam' gegevens
 
       Voorbeelden:
       | type           | GbaDatum | datum      | jaar | maand | onbekend | langFormaat  |
