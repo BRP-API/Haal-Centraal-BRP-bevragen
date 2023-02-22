@@ -11,6 +11,7 @@ Wil je de API gebruiken? Dit kun je doen:
 1. Bekijk de [functionaliteit en specificaties](#functionaliteit-en-specificaties)
 2. [Implementeer de API Client](#implementeer-de-api-client)
 3. [Probeer en test de API](#probeer-en-test-de-brpproxy)
+4. [download en lees over het onboarding proces](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/230118%20deelname%20experiment%20BRP%20API's%20v1.3.ppsx)
 
 ## Functionaliteit en specificaties
 
