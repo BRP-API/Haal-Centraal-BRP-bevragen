@@ -77,11 +77,11 @@ Rule: geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automati
     | fields | fields[<index>] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                                                                                   | index |
-    | geheimhoudingPersoonsgegevens                                                            | 0     |
-    | burgerservicenummer,geheimhoudingPersoonsgegevens,naam,partners                          | 1     |
-    | geheimhoudingPersoonsgegevens,geboorte,ouders                                            | 0     |
-    | verblijfplaats.verblijfadres,nationaliteiten.nationaliteit,geheimhoudingPersoonsgegevens | 2     |
+    | fields                                                    | index |
+    | geheimhoudingPersoonsgegevens                             | 0     |
+    | burgerservicenummer,geheimhoudingPersoonsgegevens,naam    | 1     |
+    | geheimhoudingPersoonsgegevens,geboorte                    | 0     |
+    | naam.geslachtsnaam,geboorte,geheimhoudingPersoonsgegevens | 2     |
 
 
 

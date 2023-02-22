@@ -43,7 +43,7 @@ Rule: indicatie geheim met waarde hoger dan 0 wordt vertaald naar geheimhoudingP
     Dan heeft de response een persoon met de volgende gegevens
     | naam                          | waarde    |
     | burgerservicenummer           | 000000152 |
-    | geheimhoudingPersoonsgegevens | true      |
+    | geheimhoudingPersoonsgegevens | <waarde>  |
 
     Voorbeelden:
     | waarde |
@@ -78,8 +78,8 @@ Rule: geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automati
     | fields | fields[<index>] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                                                                                   | index |
-    | geheimhoudingPersoonsgegevens                                                            | 0     |
-    | burgerservicenummer,geheimhoudingPersoonsgegevens,naam,partners                          | 1     |
-    | geheimhoudingPersoonsgegevens,geboorte,ouders                                            | 0     |
-    | verblijfplaats.verblijfadres,nationaliteiten.nationaliteit,geheimhoudingPersoonsgegevens | 2     |
+    | fields                                                    | index |
+    | geheimhoudingPersoonsgegevens                             | 0     |
+    | burgerservicenummer,geheimhoudingPersoonsgegevens,naam    | 1     |
+    | geheimhoudingPersoonsgegevens,geboorte                    | 0     |
+    | naam.geslachtsnaam,geboorte,geheimhoudingPersoonsgegevens | 2     |
