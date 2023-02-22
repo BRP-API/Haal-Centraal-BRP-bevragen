@@ -46,7 +46,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | fields                              |
     | naam                                |
     | naam.voornamen,naam.geslachtsnaam   |
-    | volledigeNaam                       |
+    | naam.volledigeNaam                  |
     | naam.voorletters,naam.geslachtsnaam |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 04 (Nationaliteit) en één of meerdere velden uit die categorie wordt gevraagd
@@ -117,14 +117,14 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | verblijfplaats type       | waarde | omschrijving | fields                                    |
-    | verblijfplaats buitenland | 5010   | België       | verblijfplaats                            |
-    | verblijfplaats onbekend   | 0000   | Onbekend     | verblijfplaats.verblijfadres.postcode     |
-    | verblijfplaats buitenland | 5010   | België       | verblijfplaats.verblijfadres              |
-    | verblijfplaats buitenland | 5010   | België       | adressering                               |
-    | verblijfplaats buitenland | 5010   | België       | adressering.adresregel1                   |
-    | verblijfplaats buitenland | 5010   | België       | adressering.land                          |
-    | verblijfplaats buitenland | 5010   | België       | adressering.land.omschrijving             |
+    | verblijfplaats type       | waarde | omschrijving | fields                                |
+    | verblijfplaats buitenland | 5010   | België       | verblijfplaats                        |
+    | verblijfplaats onbekend   | 0000   | Onbekend     | verblijfplaats.verblijfadres.postcode |
+    | verblijfplaats buitenland | 5010   | België       | verblijfplaats.verblijfadres          |
+    | verblijfplaats buitenland | 5010   | België       | adressering.adresregel3               |
+    | verblijfplaats buitenland | 5010   | België       | adressering.adresregel1               |
+    | verblijfplaats buitenland | 5010   | België       | adressering.land                      |
+    | verblijfplaats buitenland | 5010   | België       | adressering.land.omschrijving         |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (<verblijfplaats type>) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
@@ -246,7 +246,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam,verblijfplaats.verblijfadres.postcode                      |
     | naam,adressering.land                                           |
     | naam.voornamen,verblijfplaats.datumIngangGeldigheid.langFormaat |
-    | adressering.aanschrijfwijze,adressering.adresregel1             |
+    | naam,adressering.adresregel1                                    |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor een categorie en een veld uit een andere categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -255,8 +255,8 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | rni-deelnemer (88.10)        | 0101                                        |
     | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
     En de persoon heeft de volgende 'verblijfplaats' gegevens
-    | naam                         | waarde                               |
-    | land (13.10)                 | 5010                                 |
+    | naam         | waarde |
+    | land (13.10) | 5010   |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -315,11 +315,10 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | categorie              | Nationaliteit                                                      |
 
     Voorbeelden:
-    | fields                                                                             |
-    | nationaliteiten                                                                    |
-    | nationaliteiten.nationaliteit                                                      |
-    | nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid                  |
-    | ationaliteiten.redenOpname.omschrijving,nationaliteiten.datumIngangGeldigheid.jaar |
+    | fields                                                                              |
+    | nationaliteiten                                                                     |
+    | nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid                   |
+    | nationaliteiten.redenOpname.omschrijving,nationaliteiten.datumIngangGeldigheid.jaar |
 
   Scenario: persoon heeft een actuele en een beëindigde nationaliteit aangeleverd door RNI deelnemer
     Gegeven de persoon met burgerservicenummer '000000140' heeft een 'nationaliteit' met de volgende gegevens
@@ -370,8 +369,8 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | geslachtsnaam | Jansen |
 
     Voorbeelden:
-    | fields   |
-    | naam     |
+    | fields |
+    | naam   |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor inschrijving en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens

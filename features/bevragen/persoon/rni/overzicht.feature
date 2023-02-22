@@ -162,6 +162,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
     | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
     | categorie              | Verblijfplaats                                    |
+    En heeft de persoon geen 'adressering' gegevens
 
     Voorbeelden:
     | fields                        |
@@ -231,8 +232,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | immigratie.datumVestigingInNederland                    |
     | immigratie.datumVestigingInNederland.type               |
     | immigratie.vanuitVerblijfplaatsOnbekend                 |
-    | immigratie.inOnderzoek                                  |
-    | immigratie.inOnderzoek.datumIngangOnderzoek.langFormaat |
 
   Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -318,7 +317,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000024                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
     | fields                                 |
