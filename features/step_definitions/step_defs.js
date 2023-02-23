@@ -214,6 +214,8 @@ const columnNameMap = new Map([
     ['bijzonder nederlanderschap (65.10)', 'bijzonder_nl_aand'],
     ['bijzonder Nederlanderschap (65.10)', 'bijzonder_nl_aand' ],
 
+    ['Datum ingang blokkering (66.20)', 'pl_blokkering_start_datum'],
+
     ['datum opschorting bijhouding (67.10)', 'bijhouding_opschort_datum' ],
     ['reden opschorting bijhouding (67.20)', 'bijhouding_opschort_reden'],
 
