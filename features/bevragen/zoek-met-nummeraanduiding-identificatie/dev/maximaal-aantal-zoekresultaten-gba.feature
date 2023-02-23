@@ -91,7 +91,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetNummeraanduidingIdentific
 
     @fout-case
     Scenario: Meer dan 10 personen gevonden
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0518200000617228                     |
@@ -106,7 +106,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetNummeraanduidingIdentific
       | instance | /haalcentraal/api/brp/personen                                            |
 
     Scenario: Zoekopdracht vindt exact 10 personen omdat overleden personen en afgevoerde persoonslijsten niet worden geleverd
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0518200000617227                     |
@@ -115,7 +115,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetNummeraanduidingIdentific
 
     @fout-case
     Scenario: Meer dan 10 personen omdat ook overleden personen gezocht is
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0518200000617227                     |

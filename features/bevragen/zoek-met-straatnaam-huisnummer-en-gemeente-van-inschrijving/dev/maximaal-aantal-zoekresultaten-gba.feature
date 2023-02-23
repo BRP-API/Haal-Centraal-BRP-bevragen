@@ -61,7 +61,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetStraatHuisnummerEnGemeent
 
     @fout-case
     Scenario: Meer dan 10 personen gevonden
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                                           |
       | type                    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                             |
@@ -78,7 +78,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetStraatHuisnummerEnGemeent
       | instance | /haalcentraal/api/brp/personen                                            |
 
     Scenario: Verfijnde zoekopdracht vindt exact 10 personen omdat overleden personen en afgevoerde persoonslijsten niet worden geleverd
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                                           |
       | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving    | 0599                                             |
@@ -90,7 +90,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetStraatHuisnummerEnGemeent
 
     @fout-case
     Scenario: Meer dan 10 personen omdat ook overleden personen gezocht is
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                                           |
       | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving    | 0599                                             |

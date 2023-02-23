@@ -61,7 +61,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetPostcodeEnHuisnummer
 
     @fout-case
     Scenario: Meer dan 10 personen gevonden
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                      |
       | type       | ZoekMetPostcodeEnHuisnummer |
       | postcode   | 2628HJ                      |
@@ -77,7 +77,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetPostcodeEnHuisnummer
       | instance | /haalcentraal/api/brp/personen                                            |
 
     Scenario: Verfijnde zoekopdracht vindt exact 10 personen omdat overleden personen en afgevoerde persoonslijsten niet worden geleverd
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                      |
       | type                       | ZoekMetPostcodeEnHuisnummer |
       | postcode                   | 2628HJ                      |
@@ -88,7 +88,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetPostcodeEnHuisnummer
 
     @fout-case
     Scenario: Meer dan 10 personen omdat ook overleden personen gezocht is
-      Als personen wordt gezocht met de volgende parameters
+      Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                      |
       | type                       | ZoekMetPostcodeEnHuisnummer |
       | postcode                   | 2628HJ                      |
