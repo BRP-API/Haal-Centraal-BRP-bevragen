@@ -26,6 +26,7 @@ Functionaliteit: reden opschorting bijhouding (persoon beperkt)
       | burgerservicenummer                      | 000000024                        |
       | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
       | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+      | opschortingBijhouding.datum              | 20220829                         |
 
       Voorbeelden:
       | reden opschorting bijhouding | reden opschorting omschrijving |
