@@ -1,12 +1,13 @@
 #language: nl
 
+@gba
 Functionaliteit: Zoeken
 
 Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Scenario: zoek zonder opgeven van parameters
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam | waarde |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -22,7 +23,7 @@ Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Scenario: zoek zonder opgeven van 'type' parameter
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam     | waarde |
     | postcode | 3077AW |
     Dan heeft de response een object met de volgende gegevens
@@ -39,7 +40,7 @@ Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Scenario: zoek met lege type 
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam | waarde |
     | type |        |
     Dan heeft de response een object met de volgende gegevens
@@ -56,7 +57,7 @@ Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Abstract Scenario: zoek met ongeldige type waarde
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam | waarde |
     | type | <type> |
     Dan heeft de response een object met de volgende gegevens
@@ -78,7 +79,7 @@ Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Scenario: Gevraagde Accept contenttype wordt niet ondersteund
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999999321                       |
@@ -93,7 +94,7 @@ Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Scenario: Lege Accept contenttype wordt niet ondersteund
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 999999321                       |
@@ -107,7 +108,7 @@ Rule: Er moet een valide zoek type worden opgegeven
     | instance | /haalcentraal/api/brp/personen                              |
 
   Abstract Scenario: '<accept media type>' als Accept contenttype wordt ondersteund
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000024                       |
@@ -123,7 +124,7 @@ Rule: Er moet een valide zoek type worden opgegeven
     | application/json;charset=utf-8  |
 
   Abstract Scenario: '<media type>' als Content-Type waarde wordt ondersteund
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                 | waarde                          |
     | type                 | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer  | 000000024                       |
@@ -139,7 +140,7 @@ Rule: Er moet een valide zoek type worden opgegeven
 
   @fout-case
   Abstract Scenario: '<media type>' als Content-Type waarde wordt niet ondersteund
-    Als personen wordt gezocht met de volgende parameters
+    Als gba personen wordt gezocht met de volgende parameters
     | naam                 | waarde                          |
     | type                 | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer  | 999999321                       |
