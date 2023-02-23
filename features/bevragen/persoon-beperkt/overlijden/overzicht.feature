@@ -23,9 +23,8 @@ Functionaliteit: Persoon beperkt: overlijden
       | burgerservicenummer | 000000152 |
 
       Voorbeelden:
-      | sub titel                                         | fields                                    |
-      | opschorting bijhouding velden wordt gevraagd      | burgerservicenummer,opschortingBijhouding |
-      | opschorting bijhouding velden wordt niet gevraagd | burgerservicenummer                       |
+      | sub titel                                         | fields              |
+      | opschorting bijhouding velden wordt niet gevraagd | burgerservicenummer |
 
     Scenario: opschorting bijhouding gegevens wordt niet gevraagd van een overleden persoon
       Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

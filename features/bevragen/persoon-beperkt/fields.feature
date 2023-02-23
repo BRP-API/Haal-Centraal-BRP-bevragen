@@ -42,7 +42,7 @@ Functionaliteit: Persoon beperkt velden vragen met fields
     | geslacht.code         |
     | geslacht.omschrijving |
 
-  Abstract Scenario: 'indicatie geheim (70.10)' wordt gevraagd met '<fields>'
+  Scenario: 'indicatie geheim (70.10)' wordt automatisch geleverd bij waarde groter dan 0
     En de persoon heeft de volgende 'inschrijving' gegevens
     | naam                     | waarde |
     | indicatie geheim (70.10) | 1      |
@@ -51,16 +51,11 @@ Functionaliteit: Persoon beperkt velden vragen met fields
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Maassen                             |
     | geboortedatum | vandaag - 10 jaar                   |
-    | fields        | <fields>                            |
+    | fields        | burgerservicenummer                 |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                          | waarde    |
     | burgerservicenummer           | 000000152 |
     | geheimhoudingPersoonsgegevens | true      |
-
-    Voorbeelden:
-    | fields                                            |
-    | burgerservicenummer                               |
-    | burgerservicenummer,geheimhoudingPersoonsgegevens |
 
   Abstract Scenario: 'leeftijd' vragen met '<fields>'
     Als personen wordt gezocht met de volgende parameters

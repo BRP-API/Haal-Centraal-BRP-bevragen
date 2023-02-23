@@ -104,7 +104,7 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     | geslachtsnaam | Maassen                                                             |
     | geboortedatum | 1983-05-26                                                          |
     | fields        | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2 |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
   Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias alle adresregel velden met hun volledig pad van een adres
     Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering binnenland' gegevens
@@ -151,7 +151,7 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     | geslachtsnaam | Maassen                             |
     | geboortedatum | 1983-05-26                          |
     | fields        | adresseringBinnenland.<field>       |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | field       |

@@ -130,7 +130,7 @@ Functionaliteit: Persoon velden vragen met fields
       | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
       | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
-  Scenario: 'indicatie geheim (70.10)' wordt gevraagd met field pad(en) '<fields>'
+  Scenario: 'indicatie geheim (70.10)' wordt automatisch geleverd bij waarde groter dan 0
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
     | naam                     | waarde |
     | indicatie geheim (70.10) | 1      |
@@ -138,16 +138,11 @@ Functionaliteit: Persoon velden vragen met fields
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | <fields>                        |
+    | fields              | burgerservicenummer             |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                          | waarde    |
     | burgerservicenummer           | 000000152 |
     | geheimhoudingPersoonsgegevens | true      |
-
-    Voorbeelden:
-    | fields                                            |
-    | burgerservicenummer                               |
-    | burgerservicenummer,geheimhoudingPersoonsgegevens |
 
   Abstract Scenario: 'gemeente van inschrijving (09.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
