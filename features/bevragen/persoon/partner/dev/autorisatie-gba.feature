@@ -128,4 +128,40 @@ Functionaliteit: autorisatie partners
       | aangaanHuwelijkPartnerschap.land     | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50710 51510 | 50630                |
       | ontbindingHuwelijkPartnerschap.datum | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50630 51510 | 50710                |
       | soortVerbintenis                     | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50630 50710 | 51510                |
-      
+
+  Rule: voor het vragen en beoordelen van partnergegevens is geen autorisatie nodig voor indicatie onjuist (58410)
+
+    Scenario: huwelijk is onjuist en afnemer heeft geen autorisatie voor indicatie onjuist (58410)
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)     | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 50120 50210 50220 50230 50240 | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode |        |
+      En de persoon met burgerservicenummer '000000061' heeft een 'partner' met de volgende gegevens
+      | naam                                                               | waarde          |
+      | voornamen (02.10)                                                  | Daan            |
+      | voorvoegsel (02.30)                                                | de              |
+      | geslachtsnaam (02.40)                                              | Vries           |
+      | geboortedatum (03.10)                                              | 19830715        |
+      | soort verbintenis (15.10)                                          | H               |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20031107        |
+      | gemeente document (82.10)                                          | 0518            |
+      | datum document (82.20)                                             | 20031109        |
+      | beschrijving document (82.30)                                      | PL gerelateerde |
+      | ingangsdatum geldigheid (85.10)                                    | 20031107        |
+      | datum van opneming (86.10)                                         | 20031109        |
+      En het 'partner' is gecorrigeerd naar de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 0518             |
+      | datum document (82.20)          | 20040105         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                     |
+      | type                | RaadpleegMetBurgerservicenummer            |
+      | burgerservicenummer | 000000061                                  |
+      | fields              | partners.naam,partners.burgerservicenummer |
+      Dan heeft de response een persoon zonder 'partner' gegevens

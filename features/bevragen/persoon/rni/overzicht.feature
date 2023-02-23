@@ -18,10 +18,9 @@ Functionaliteit: RNI-deelnemer gegevens leveren
 
 Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationaliteit), 06 (Overlijden) en/of 08 (Verblijfplaats) worden geleverd wanneer één of meerdere velden uit die categoriën wordt gevraagd
 
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 01 (Persoon) en één of meerdere velden uit die categorie wordt gevraagd
+  Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 01 (Persoon) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
     | naam                         | waarde                                      |
-    | voornamen (02.10)            | Peter                                       |
     | geslachtsnaam (02.40)        | Jansen                                      |
     | rni-deelnemer (88.10)        | 0101                                        |
     | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
@@ -29,24 +28,17 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | <fields>                        |
+    | fields              | naam                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
-    | naam          | waarde       |
-    | voornamen     | Peter        |
-    | geslachtsnaam | Jansen       |
-    | voorletters   | P.           |
-    | volledigeNaam | Peter Jansen |
+    | naam          | waarde |
+    | geslachtsnaam | Jansen |
+    | volledigeNaam | Jansen |
     En heeft de persoon een 'rni' met de volgende gegevens
     | naam                   | waarde                                          |
     | deelnemer.code         | 0101                                            |
     | deelnemer.omschrijving | Belastingdienst (inzake heffingen en toeslagen) |
     | omschrijvingVerdrag    | Belastingverdrag tussen België en Nederland     |
     | categorie              | Persoon                                         |
-
-    Voorbeelden:
-    | fields   |
-    | naam     |
-    | naam,rni |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 04 (Nationaliteit) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -76,7 +68,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | 0052               | Belgische                  | 0201               | Sociale Verzekeringsbank (inzake AOW, Anw en AKW)                  | nationaliteiten               |
     | 0263               | Surinaamse                 | 0501               | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) | nationaliteiten.nationaliteit |
 
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 06 (Overlijden) en één of meerdere velden uit die categorie wordt gevraagd
+  Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 06 (Overlijden) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'overlijden' gegevens
     | datum overlijden (08.10) | plaats overlijden (08.20) | land overlijden (08.30) | rni-deelnemer (88.10) |
     | 20020701                 | 0518                      | 6030                    | 0401                  |
@@ -84,7 +76,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | <fields>                        |
+    | fields              | overlijden.datum                |
     Dan heeft de response een persoon met de volgende 'overlijden' gegevens
     | naam              | waarde      |
     | datum.type        | Datum       |
@@ -96,15 +88,10 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.omschrijving | CAK (inzake zorgverzekeringen) |
     | categorie              | Overlijden                     |
 
-    Voorbeelden:
-    | fields               |
-    | overlijden.datum     |
-    | overlijden.datum,rni |
-
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (<verblijfplaats type>) en één of meerdere velden uit die categorie wordt gevraagd
+  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (verblijfplaats buitenland) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
     | naam                         | waarde                               |
-    | land (13.10)                 | <waarde>                             |
+    | land (13.10)                 | 5010                                 |
     | rni-deelnemer (88.10)        | 0201                                 |
     | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
     Als personen wordt gezocht met de volgende parameters
@@ -115,8 +102,8 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                            | waarde                   |
     | type                            | VerblijfplaatsBuitenland |
-    | verblijfadres.land.code         | <waarde>                 |
-    | verblijfadres.land.omschrijving | <omschrijving>           |
+    | verblijfadres.land.code         | 5010                     |
+    | verblijfadres.land.omschrijving | België                   |
     En heeft de persoon een 'rni' met de volgende gegevens
     | naam                   | waarde                                            |
     | deelnemer.code         | 0201                                              |
@@ -125,9 +112,12 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | categorie              | Verblijfplaats                                    |
 
     Voorbeelden:
-    | verblijfplaats type       | waarde | omschrijving | fields                           |
-    | verblijfplaats buitenland | 5010   | België       | verblijfplaats                   |
-    | verblijfplaats buitenland | 5010   | België       | verblijfplaats.verblijfadres,rni |
+    | fields                                         |
+    | verblijfplaats                                 |
+    | verblijfplaats.verblijfadres                   |
+    | verblijfplaats.verblijfadres.land              |
+    | verblijfplaats.verblijfadres.land.code         |
+    | verblijfplaats.verblijfadres.land.omschrijving |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 08 (verblijfplaats onbekend) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende 'verblijfplaats' gegevens
@@ -172,6 +162,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
     | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
     | categorie              | Verblijfplaats                                    |
+    En heeft de persoon geen 'adressering' gegevens
 
     Voorbeelden:
     | fields                        |
@@ -242,7 +233,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | immigratie.datumVestigingInNederland.type               |
     | immigratie.vanuitVerblijfplaatsOnbekend                 |
 
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
+  Scenario: persoon heeft RNI-deelnemer gegevens voor meerdere categoriën waarvoor RNI-deelnemer gegevens moet worden geleverd en één of meerdere velden uit al die categoriën wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
     | naam                         | waarde                                      |
     | voornamen (02.10)            | Peter                                       |
@@ -257,7 +248,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000024                       |
-    | fields              | <fields>                        |
+    | fields              | naam,verblijfplaats             |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam          | waarde |
     | voornamen     | Peter  |
@@ -282,11 +273,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
     | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
     | categorie              | Verblijfplaats                                    |
-
-    Voorbeelden:
-    | fields                  |
-    | naam,verblijfplaats     |
-    | naam,verblijfplaats,rni |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor een categorie en een veld uit een andere categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -331,14 +317,14 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000024                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
     | fields                                 |
     | adressering.adresregel1                |
     | adressering.land                       |
 
-  Abstract Scenario: persoon heeft meerdere nationaliteiten aangeleverd door RNI deelnemer
+  Scenario: persoon heeft meerdere nationaliteiten aangeleverd door RNI deelnemer
     Gegeven de persoon met burgerservicenummer '000000140' heeft een 'nationaliteit' met de volgende gegevens
     | nationaliteit (05.10) | reden opnemen (63.10) | datum ingang geldigheid (85.10) | rni-deelnemer (88.10) |
     | 0263                  | 301                   | 19620107                        | 201                   |
@@ -349,7 +335,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000140                       |
-    | fields              | <fields>                        |
+    | fields              | nationaliteiten                 |
     Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
     | naam                              | waarde                                   |
     | type                              | Nationaliteit                            |
@@ -380,11 +366,6 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.code         | 0501                                                               |
     | deelnemer.omschrijving | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) |
     | categorie              | Nationaliteit                                                      |
-
-    Voorbeelden:
-    | fields              |
-    | nationaliteiten     |
-    | nationaliteiten,rni |
 
   Scenario: persoon heeft een actuele en een beëindigde nationaliteit aangeleverd door RNI deelnemer
     Gegeven de persoon met burgerservicenummer '000000140' heeft een 'nationaliteit' met de volgende gegevens
@@ -417,7 +398,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
     | categorie              | Nationaliteit                                     |
     
-  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor verblijfplaats, maar er worden geen verblijfplaats velden gevraagd
+  Scenario: persoon heeft RNI-deelnemer gegevens voor verblijfplaats, maar er worden geen verblijfplaats velden gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
     | naam                  | waarde |
     | voornamen (02.10)     | Peter  |
@@ -431,18 +412,13 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000036                       |
-    | fields              | <fields>                        |
+    | fields              | naam                            |
     Dan heeft de response een persoon met de volgende 'naam' gegevens
     | naam          | waarde       |
     | voornamen     | Peter        |
     | geslachtsnaam | Jansen       |
     | voorletters   | P.           |
     | volledigeNaam | Peter Jansen |
-
-    Voorbeelden:
-    | fields   |
-    | naam     |
-    | naam,rni |
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor inschrijving en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'inschrijving' gegevens
@@ -454,7 +430,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000048                       |
-    | fields              | <fields>                        |
+    | fields              | burgerservicenummer             |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                | waarde          |
     | burgerservicenummer | 000000048       |
@@ -462,29 +438,41 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon), 04 (Nationali
     | <naam veld 2>       | <waarde veld 2> |
 
     Voorbeelden:
-    | naam gba veld                        | waarde gba veld | naam veld 1                      | waarde veld 1 | naam veld 2                              | waarde veld 2 | fields                  |
-    | indicatie geheim (70.10)             | 0               |                                  |               |                                          |               | burgerservicenummer     |
-    | indicatie geheim (70.10)             | 1               | geheimhoudingPersoonsgegevens    | true          |                                          |               | burgerservicenummer,rni |
-    | reden opschorting bijhouding (67.20) | O               | opschortingBijhouding.reden.code | O             | opschortingBijhouding.reden.omschrijving | overlijden    | burgerservicenummer     |
+    | naam gba veld                        | waarde gba veld | naam veld 1                      | waarde veld 1 | naam veld 2                              | waarde veld 2 |
+    | indicatie geheim (70.10)             | 0               |                                  |               |                                          |               |
+    | indicatie geheim (70.10)             | 1               | geheimhoudingPersoonsgegevens    | true          |                                          |               |
+    | reden opschorting bijhouding (67.20) | O               | opschortingBijhouding.reden.code | O             | opschortingBijhouding.reden.omschrijving | overlijden    |
 
-Rule: vragen van een rni gegevensgroep veld of één of meerdere velden van een rni gegevensgroep veld met de fields parameter worden genegeerd
 
-  Abstract Scenario: <sub titel> wordt gevraagd en hele categorie persoon is in onderzoek
-    Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
-    | naam                         | waarde                                      |
-    | voornamen (02.10)            | Peter                                       |
-    | geslachtsnaam (02.40)        | Jansen                                      |
-    | rni-deelnemer (88.10)        | 0101                                        |
-    | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 000000012                       |
-    | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder gegevens
+Rule: rni mag niet worden gevraagd, omdat het automatisch wordt geleverd
+
+   @fout-case
+   Abstract Scenario: rni in <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd
+     Als gba personen wordt gezocht met de volgende parameters
+     | naam                | waarde                          |
+     | type                | RaadpleegMetBurgerservicenummer |
+     | burgerservicenummer | 000000024                       |
+     | fields              | <fields>                        |
+     Dan heeft de response een object met de volgende gegevens
+     | naam     | waarde                                                      |
+     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+     | title    | Een of meerdere parameters zijn niet correct.               |
+     | status   | 400                                                         |
+     | detail   | De foutieve parameter(s) zijn: fields[<index>].             |
+     | code     | paramsValidation                                            |
+     | instance | /haalcentraal/api/brp/personen                              |
+     En heeft het object de volgende 'invalidParams' gegevens
+     | code   | name            | reason                                        |
+     | fields | fields[<index>] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                      | sub titel              |
-    | rni.deelnemer               | Eén rni veld           |
-    | rni.deelnemer,rni.categorie | Meerdere rni velden    |
-    | rni                         | rni gegevensgroep veld |
+    | fields                                      | index |
+    | rni                                         | 0     |
+    | rni.deelnemer                               | 0     |
+    | rni.deelnemer.code                          | 0     |
+    | rni.deelnemer.omschrijving                  | 0     |
+    | rni.omschrijvingVerdrag                     | 0     |
+    | rni.categorie                               | 0     |
+    | rni.omschrijvingVerdrag,burgerservicenummer | 0     |
+    | naam.voorvoegsel,rni,europeesKiesrecht      | 1     |
+    | verblijfstitel,overlijden,rni.deelnemer     | 2     |
