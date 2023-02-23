@@ -7,18 +7,18 @@ Deze map bevat Python een script waarmee vanuit de open API specificaties de vol
 - fields-filtered-persoonBeperkt.csv
 
 ## fields-Persoon en fields-PersoonBeperkt
-De bestanden fields-Persoon.csv en fields-PersoonBeperkt.csv bevatten alle mogelijke (toegestane) paden die in de "fields" parameter ingevuld mogen worden.
+De bestanden fields-Persoon.csv en fields-PersoonBeperkt.csv bevatten alle mogelijke (toegestane) paden die in de "fields" parameter ingevuld mogen worden. Vraag je met fields een veld dat niet in deze lijst voorkomt, dan geeft de API een foutmelding.
 
-Deze lijst bevat ook velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd zullen worden (bijv. geheimhouding, inOnderzoek en type). Deze mag je in fields invullen, maar worden genegeerd.
+Deze lijst bevat ook velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd zullen worden: type (van verblijfplaats en nationaliteit).
 
 Deze lijst bevat ook velden van een datum en waardetabel. Die mag je invullen, maar in dat geval worden alle velden van dat datumveld dan wel die waardetabel (code en omschrijving) geleverd.
 
 Er zijn rijen opgenomen voor losse velden (simple type velden zoals string, integer, boolean), en ook voor het vragen van hele groepen (objecten).
 
 ## fields-filtered-Persoon en fields-filtered-PersoonBeperkt
-De bestanden fields-filtered-Persoon.csv en fields-filtered-PersoonBeperkt.csv bevatten alle paden die in de "fields" parameter ingevuld kunnen worden.
+De bestanden fields-filtered-Persoon.csv en fields-filtered-PersoonBeperkt.csv bevatten alle paden die in de "fields" parameter ingevuld kunnen worden. Gebruik deze lijst om gewenste velden uit te kiezen om de fields parameter mee samen te stellen.
 
-Deze lijst bevat geen velden die niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd zullen worden (bijv. geheimhouding, inOnderzoek en type). 
+Deze lijst bevat geen velden die wel in de resource zitten, maar niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd zullen worden.
 Deze lijst bevat ook geen sub-velden van een datum of waardetabel, omdat datum- of waardetabelobjecten altijd in zijn geheel geleverd worden.
 
 Er zijn rijen opgenomen voor losse velden (simple type velden zoals string, integer, boolean), en ook voor het vragen van hele groepen (objecten).
