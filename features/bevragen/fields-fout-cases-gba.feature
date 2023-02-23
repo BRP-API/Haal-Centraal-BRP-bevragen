@@ -279,51 +279,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                                                 |
-    | geheimhoudingPersoonsgegevens                          |
-    | opschortingBijhouding                                  |
-    | opschortingBijhouding.reden                            |
-    | opschortingBijhouding.reden.omschrijving               |
-    | opschortingBijhouding.datum                            |
-    | opschortingBijhouding.datum.type                       |
-    | rni                                                    |
-    | rni.deelnemer                                          |
-    | rni.deelnemer.code                                     |
-    | rni.omschrijvingVerdrag                                |
-    | rni.categorie                                          |
-    | verificatie                                            |
-    | verificatie.datum                                      |
-    | verificatie.datum.datum                                |
-    | verificatie.omschrijving                               |
-    | inOnderzoek                                            |
-    | inOnderzoek.burgerservicenummer                        |
-    | inOnderzoek.datumIngangOnderzoekPersoon                |
-    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat   |
-    | naam.inOnderzoek.voornamen                             |
-    | geboorte.inOnderzoek.datumIngangOnderzoek              |
-    | partners.aangaanHuwelijkPartnerschap.inOnderzoek.datum |
-
-  @fout-case
-  Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij zoeken
-    Als gba personen wordt gezocht met de volgende parameters
-    | naam          | waarde                              |
-    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
-    | geslachtsnaam | Kierkegaard                         |
-    | geboortedatum | 1956-11-15                          |
-    | fields        | <fields>                            |
-    Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
-    | title    | Een of meerdere parameters zijn niet correct.               |
-    | status   | 400                                                         |
-    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
-    | code     | paramsValidation                                            |
-    | instance | /haalcentraal/api/brp/personen                              |
-    En heeft het object de volgende 'invalidParams' gegevens
-    | code   | name      | reason                                        |
-    | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
-
-    Voorbeelden:
     | fields                                                                               |
     | geheimhoudingPersoonsgegevens                                                        |
     | opschortingBijhouding                                                                |
@@ -669,6 +624,129 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | verblijfplaatsBinnenland.verblijfadres.inOnderzoek.postcode                          |
     | verblijfplaatsBinnenland.verblijfadres.inOnderzoek.woonplaats                        |
     | verblijfplaatsBinnenland.verblijfadres.inOnderzoek.locatiebeschrijving               |
+    | adresseringBinnenland.inOnderzoek                                                    |
+    | adresseringBinnenland.inOnderzoek.aanhef                                             |
+    | adresseringBinnenland.inOnderzoek.aanschrijfwijze                                    |
+    | adresseringBinnenland.inOnderzoek.adresregel1                                        |
+    | adresseringBinnenland.inOnderzoek.adresregel2                                        |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner                        |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner.langFormaat            |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner.type                   |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner.datum                  |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner.onbekend               |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner.jaar                   |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPartner.maand                  |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon                        |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon.langFormaat            |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon.type                   |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon.datum                  |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon.onbekend               |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon.jaar                   |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekPersoon.maand                  |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats                 |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat     |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats.type            |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum           |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats.onbekend        |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats.jaar            |
+    | adresseringBinnenland.inOnderzoek.datumIngangOnderzoekVerblijfplaats.maand           |
+    | adresseringBinnenland.inOnderzoek.gebruikInLopendeTekst                              |
+
+  @fout-case
+  Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij zoeken
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Kierkegaard                         |
+    | geboortedatum | 1956-11-15                          |
+    | fields        | <fields>                            |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name      | reason                                        |
+    | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
+
+    Voorbeelden:
+    | fields                                                                               |
+    | geheimhoudingPersoonsgegevens                                                        |
+    | opschortingBijhouding                                                                |
+    | opschortingBijhouding.reden                                                          |
+    | opschortingBijhouding.reden.code                                                     |
+    | opschortingBijhouding.reden.omschrijving                                             |
+    | opschortingBijhouding.datum                                                          |
+    | opschortingBijhouding.datum.langFormaat                                              |
+    | opschortingBijhouding.datum.type                                                     |
+    | opschortingBijhouding.datum.datum                                                    |
+    | opschortingBijhouding.datum.onbekend                                                 |
+    | opschortingBijhouding.datum.jaar                                                     |
+    | opschortingBijhouding.datum.maand                                                    |
+    | rni                                                                                  |
+    | rni.deelnemer                                                                        |
+    | rni.deelnemer.code                                                                   |
+    | rni.omschrijvingVerdrag                                                              |
+    | rni.categorie                                                                        |
+    | verificatie                                                                          |
+    | verificatie.datum                                                                    |
+    | verificatie.datum.langFormaat                                                        |
+    | verificatie.datum.type                                                               |
+    | verificatie.datum.datum                                                              |
+    | verificatie.datum.onbekend                                                           |
+    | verificatie.datum.jaar                                                               |
+    | verificatie.datum.maand                                                              |
+    | verificatie.omschrijving                                                             |
+    | adressering.inOnderzoek                                                              |
+    | adressering.inOnderzoek.adresregel1                                                  |
+    | adressering.inOnderzoek.adresregel2                                                  |
+    | adressering.inOnderzoek.adresregel3                                                  |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats                           |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat               |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.type                      |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum                     |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.onbekend                  |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.jaar                      |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.maand                     |
+    | adressering.inOnderzoek.land                                                         |
+    | geboorte.inOnderzoek                                                                 |
+    | geboorte.inOnderzoek.datumIngangOnderzoek                                            |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.type                                       |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.datum                                      |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.jaar                                       |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.maand                                      |
+    | geboorte.inOnderzoek.datum                                                           |
+    | inOnderzoek                                                                          |
+    | inOnderzoek.burgerservicenummer                                                      |
+    | inOnderzoek.datumIngangOnderzoekPersoon                                              |
+    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat                                  |
+    | inOnderzoek.datumIngangOnderzoekPersoon.type                                         |
+    | inOnderzoek.datumIngangOnderzoekPersoon.datum                                        |
+    | inOnderzoek.datumIngangOnderzoekPersoon.onbekend                                     |
+    | inOnderzoek.datumIngangOnderzoekPersoon.jaar                                         |
+    | inOnderzoek.datumIngangOnderzoekPersoon.maand                                        |
+    | inOnderzoek.geslacht                                                                 |
+    | inOnderzoek.leeftijd                                                                 |
+    | naam.inOnderzoek                                                                     |
+    | naam.inOnderzoek.datumIngangOnderzoek                                                |
+    | naam.inOnderzoek.datumIngangOnderzoek.langFormaat                                    |
+    | naam.inOnderzoek.datumIngangOnderzoek.type                                           |
+    | naam.inOnderzoek.datumIngangOnderzoek.datum                                          |
+    | naam.inOnderzoek.datumIngangOnderzoek.onbekend                                       |
+    | naam.inOnderzoek.datumIngangOnderzoek.jaar                                           |
+    | naam.inOnderzoek.datumIngangOnderzoek.maand                                          |
+    | naam.inOnderzoek.adellijkeTitelPredicaat                                             |
+    | naam.inOnderzoek.geslachtsnaam                                                       |
+    | naam.inOnderzoek.voorletters                                                         |
+    | naam.inOnderzoek.voornamen                                                           |
+    | naam.inOnderzoek.voorvoegsel                                                         |
+    | naam.inOnderzoek.aanduidingNaamgebruik                                               |
+    | naam.inOnderzoek.volledigeNaam                                                       |
     | adresseringBinnenland.inOnderzoek                                                    |
     | adresseringBinnenland.inOnderzoek.aanhef                                             |
     | adresseringBinnenland.inOnderzoek.aanschrijfwijze                                    |
