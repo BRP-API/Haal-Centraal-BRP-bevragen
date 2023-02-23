@@ -20,7 +20,7 @@ Rule: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' o
     | type                | RaadpleegMetBurgerservicenummer                                                          |
     | burgerservicenummer | 000000188                                                                                |
     | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
     | straatnaam               | huisnummer | omschrijving                       |
@@ -38,7 +38,7 @@ Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'l
     | type                | RaadpleegMetBurgerservicenummer                                                          |
     | burgerservicenummer | 000000346                                                                                |
     | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
   Scenario: persoon heeft een verblijfplaats buitenland en 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben geen waarde
     Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
@@ -49,4 +49,4 @@ Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'l
     | type                | RaadpleegMetBurgerservicenummer                                                          |
     | burgerservicenummer | 000000346                                                                                |
     | fields              | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
-    Dan heeft de response een persoon zonder gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens

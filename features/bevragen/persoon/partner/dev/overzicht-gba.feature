@@ -120,55 +120,55 @@ Rule: Een partner wordt alleen teruggegeven als minimaal één gegeven in de ide
       | naam          | waarde |
       | geslachtsnaam | .      |
 	  
-    Abstract Scenario: bestaan partner bekend (<rubriek>), veld wordt niet gevraagd met fields
-      Gegeven de persoon met burgerservicenummer '000000048' heeft een 'partner' met de volgende gegevens
-      | <rubriek> |
-      | <waarde>  |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000048                       |
-      | fields              | partners.burgerservicenummer    |
-      Dan heeft de response een persoon met een 'partner' zonder gegevens
+  Abstract Scenario: bestaan partner bekend (<rubriek>), veld wordt niet gevraagd met fields
+    Gegeven de persoon met burgerservicenummer '000000048' heeft een 'partner' met de volgende gegevens
+    | <rubriek> |
+    | <waarde>  |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000048                       |
+    | fields              | partners.burgerservicenummer    |
+    Dan heeft de response een persoon met een 'partner' zonder gegevens
 
-      Voorbeelden:
-      | rubriek                                                            | waarde   |
-      | geslachtsnaam (02.40)                                              | Groenen  |
-      | geboortedatum (03.10)                                              | 19780623 |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20230126 |
-      | soort verbintenis (15.10)                                          | H        |
-      | geslachtsnaam (02.40)                                              | .        |
-      | geboortedatum (03.10)                                              | 00000000 |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 00000000 |
-      | soort verbintenis (15.10)                                          | .        |
+    Voorbeelden:
+    | rubriek                                                            | waarde   |
+    | geslachtsnaam (02.40)                                              | Groenen  |
+    | geboortedatum (03.10)                                              | 19780623 |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20230126 |
+    | soort verbintenis (15.10)                                          | H        |
+    | geslachtsnaam (02.40)                                              | .        |
+    | geboortedatum (03.10)                                              | 00000000 |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 00000000 |
+    | soort verbintenis (15.10)                                          | .        |
 
-    Scenario: huwelijk is onjuist
-      Gegeven de persoon met burgerservicenummer '000000061' heeft een 'partner' met de volgende gegevens
-      | naam                                                               | waarde          |
-      | voornamen (02.10)                                                  | Daan            |
-      | voorvoegsel (02.30)                                                | de              |
-      | geslachtsnaam (02.40)                                              | Vries           |
-      | geboortedatum (03.10)                                              | 19830715        |
-      | soort verbintenis (15.10)                                          | H               |
-      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20031107        |
-      | gemeente document (82.10)                                          | 0518            |
-      | datum document (82.20)                                             | 20031109        |
-      | beschrijving document (82.30)                                      | PL gerelateerde |
-      | ingangsdatum geldigheid (85.10)                                    | 20031107        |
-      | datum van opneming (86.10)                                         | 20031109        |
-      En het 'partner' is gecorrigeerd naar de volgende gegevens
-      | naam                            | waarde           |
-      | gemeente document (82.10)       | 0518             |
-      | datum document (82.20)          | 20040105         |
-      | beschrijving document (82.30)   | D27894-2004-A782 |
-      | ingangsdatum geldigheid (85.10) | 20031107         |
-      | datum van opneming (86.10)      | 20040112         |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000061                       |
-      | fields              | partners                        |
-      Dan heeft de response een persoon zonder 'partner' gegevens
+  Scenario: huwelijk is onjuist
+    Gegeven de persoon met burgerservicenummer '000000061' heeft een 'partner' met de volgende gegevens
+    | naam                                                               | waarde          |
+    | voornamen (02.10)                                                  | Daan            |
+    | voorvoegsel (02.30)                                                | de              |
+    | geslachtsnaam (02.40)                                              | Vries           |
+    | geboortedatum (03.10)                                              | 19830715        |
+    | soort verbintenis (15.10)                                          | H               |
+    | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20031107        |
+    | gemeente document (82.10)                                          | 0518            |
+    | datum document (82.20)                                             | 20031109        |
+    | beschrijving document (82.30)                                      | PL gerelateerde |
+    | ingangsdatum geldigheid (85.10)                                    | 20031107        |
+    | datum van opneming (86.10)                                         | 20031109        |
+    En het 'partner' is gecorrigeerd naar de volgende gegevens
+    | naam                            | waarde           |
+    | gemeente document (82.10)       | 0518             |
+    | datum document (82.20)          | 20040105         |
+    | beschrijving document (82.30)   | D27894-2004-A782 |
+    | ingangsdatum geldigheid (85.10) | 20031107         |
+    | datum van opneming (86.10)      | 20040112         |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000061                       |
+    | fields              | partners                        |
+    Dan heeft de response een persoon zonder 'partner' gegevens
 
 
 Rule: Wanneer er meerdere actuele (niet-ontbonden) huwelijken/partnerschappen zijn, worden die allemaal geleverd

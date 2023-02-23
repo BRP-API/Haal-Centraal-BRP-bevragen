@@ -12,7 +12,7 @@ Functionaliteit: Leveren van lege waarden
       | naam                | waarde                                            |
       | type                | RaadpleegMetBurgerservicenummer                   |
       | burgerservicenummer | 000000139                                         |
-      | fields              | burgerservicenummer,geheimhoudingPersoonsgegevens |
+      | fields              | burgerservicenummer |
       Dan heeft de response een persoon met alleen de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000139 |

@@ -48,6 +48,15 @@ public static class GebruikInLopendeTekstMapper
         { "R-M", RIDDER },
     };
 
+    private static bool StartsWithAdellijkeTitelOfPredicaat(this string gebruikInLopendeTekst)
+    {
+        return gebruikInLopendeTekst.StartsWith(BARONES) ||
+            gebruikInLopendeTekst.StartsWith(GRAVIN) ||
+            gebruikInLopendeTekst.StartsWith(HERTOGIN) ||
+            gebruikInLopendeTekst.StartsWith(MARKIEZIN) ||
+            gebruikInLopendeTekst.StartsWith(PRINSES);
+    }
+
     private static string? BepaalGebruikInLopendeTekstZonderAdellijkeTitelOfPredicaat(this NaamPersoon persoon, Partner? partner)
     {
         if (persoon.HeeftLeegOfOnbekendGeslachtsnaam() &&
@@ -90,33 +99,22 @@ public static class GebruikInLopendeTekstMapper
 
     private static string? BepaalGebruikInLopendeTekstVoorHoffelijkheidsTitel(this NaamPersoon persoon, Partner partner)
     {
-        var key = $"{partner.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
-        var titel = GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(key)
-            ? GebruikInLopendeTekstAdellijkeTitelPredicaat[key]
-            : string.Empty;
+        var achternaamPartner = $"{partner.Titel(persoon, GebruikInLopendeTekstAdellijkeTitelPredicaat)} {partner.Achternaam()}".Trim();
 
-        var partnerNaam = partner.Achternaam();
-        var persoonNaam = persoon.Achternaam();
+        var achternaam = $"{persoon.Titel(GebruikInLopendeTekstAdellijkeTitelPredicaat)} {persoon.Achternaam()}".Trim();
 
-        var geslachtsnaam = persoon.AanduidingNaamgebruik() switch
-        {
-            "N" => partnerNaam.IsLeegOfOnbekend() ? $"{titel} {persoonNaam}" : $"{persoonNaam}-{titel} {partnerNaam}",
-            "V" => partnerNaam.IsLeegOfOnbekend() ? $"{titel} {persoonNaam}" : $"{titel} {partnerNaam}-{persoonNaam}",
-            "P" => partnerNaam.IsLeegOfOnbekend() ? $"{titel} {persoonNaam}" : $"{titel} {partnerNaam}",
-            _ => $"{titel} {persoonNaam}"
-        };
+        var geslachtsnaam = partner.Achternaam().IsLeegOfOnbekend()
+            ? achternaam
+            : persoon.AanduidingNaamgebruik() switch
+            {
+                "P" => achternaamPartner,
+                "V" => $"{achternaamPartner}-{achternaam}",
+                "N" => $"{achternaam}-{achternaamPartner}",
+                _ => achternaam
+            };
+        var retval = geslachtsnaam.StartsWithAdellijkeTitelOfPredicaat() ? geslachtsnaam : $"mevrouw {geslachtsnaam.Capitalize()}";
 
-        var retval = persoon.Geslacht() switch
-        {
-            "M" => !geslachtsnaam.StartsWith(titel) ? $"de heer {geslachtsnaam.Capitalize()}" : geslachtsnaam,
-            "V" => !geslachtsnaam.StartsWith(titel) ? $"mevrouw {geslachtsnaam.Capitalize()}" : geslachtsnaam,
-            "O" => !string.IsNullOrWhiteSpace(persoon.Voorletters)
-                ? $"{persoon.Voorletters} {geslachtsnaam}"
-                : $"{geslachtsnaam.Capitalize()}",
-            _ => string.Empty
-        };
-
-        return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
+        return retval.RemoveRedundantSpaces().ToNull();
     }
 
     private static string? BepaalGebruikInLopendeTekstVoorAdellijkeTitelOfPredicaat(this NaamPersoon persoon, Partner? partner)
@@ -151,66 +149,17 @@ public static class GebruikInLopendeTekstMapper
         return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
     }
 
-    private static string? BepaalGebruikInLopendeTekstVoorUitHoffelijkheidsTitelVanPartner(this NaamPersoon persoon, Partner? partner)
-    {
-        var keyTitelPersoon = $"{persoon.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
-        var titelPersoon = GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(keyTitelPersoon)
-            ? GebruikInLopendeTekstAdellijkeTitelPredicaat[keyTitelPersoon]
-            : string.Empty;
-
-        var keyTitelPartner = $"{partner.AdellijkeTitelPredicaat()}-{persoon.Geslacht()}";
-        var titelPartner = GebruikInLopendeTekstAdellijkeTitelPredicaat.ContainsKey(keyTitelPartner)
-            ? GebruikInLopendeTekstAdellijkeTitelPredicaat[keyTitelPartner]
-            : string.Empty;
-
-        var partnerNaam = partner.Achternaam();
-        var persoonNaam = persoon.Achternaam();
-
-        var geslachtsnaam = persoon.AanduidingNaamgebruik() switch
-        {
-            "N" => $"{titelPersoon} {persoonNaam}-{titelPartner} {partnerNaam}",
-            "V" => $"{titelPartner} {partnerNaam}-{titelPersoon} {persoonNaam}",
-            "P" => $"{titelPartner} {partnerNaam}",
-            _ => string.Empty
-        };
-
-        var retval = persoon.Geslacht() switch
-        {
-            "V" => !geslachtsnaam.StartsWith(titelPersoon) && !geslachtsnaam.StartsWith(titelPartner)
-                        ? $"mevrouw {geslachtsnaam.Capitalize()}"
-                        : geslachtsnaam,
-            _ => string.Empty
-        };
-
-        return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
-    }
-
     public static string? GebruikInLopendeTekst(this NaamPersoon persoon)
     {
         var partner = persoon.Partners.ActuelePartner();
 
-        if (persoon.HeeftGeenAdellijkeTitelOfPredicaat() &&
-            partner.HeeftAdellijkeTitel() &&
-            persoon.IsVrouw() &&
-            persoon.GebruiktNaamVanPartner())
+        if (persoon.IsHoffelijkheidstitel(partner))
         {
-            return partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
-                ? persoon.BepaalGebruikInLopendeTekstVoorHoffelijkheidsTitel(partner!)
-                : persoon.BepaalGebruikInLopendeTekstZonderAdellijkeTitelOfPredicaat(partner);
+            return persoon.BepaalGebruikInLopendeTekstVoorHoffelijkheidsTitel(partner!);
         }
 
         if (persoon.HeeftAdellijkeTitelOfPredicaat())
         {
-            if (partner.HeeftAdellijkeTitel() &&
-                persoon.IsVrouw() &&
-                partner.IsMan() &&
-                persoon.GebruiktNaamVanPartner() &&
-                partner.HeeftHoffelijkheidstitelMetAanspreekvorm()
-                )
-            {
-                return persoon.BepaalGebruikInLopendeTekstVoorUitHoffelijkheidsTitelVanPartner(partner);
-            }
-
             if (partner != null &&
                 persoon.HeeftPartnerNaamgebruik()
                 ) return persoon.BepaalGebruikInLopendeTekstZonderAdellijkeTitelOfPredicaat(partner);

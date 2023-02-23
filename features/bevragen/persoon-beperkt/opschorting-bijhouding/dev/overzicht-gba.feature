@@ -138,6 +138,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024  |
     | opschortingBijhouding.reden.code         | O          |
     | opschortingBijhouding.reden.omschrijving | overlijden |
+    | opschortingBijhouding.datum              | 20220829   |
 
   Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met geslachtsnaam en geboortedatum <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -155,6 +156,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024                        |
     | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+    | opschortingBijhouding.datum              | 20220829                         |
 
     Voorbeelden:
     | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
@@ -197,6 +199,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024  |
     | opschortingBijhouding.reden.code         | O          |
     | opschortingBijhouding.reden.omschrijving | overlijden |
+    | opschortingBijhouding.datum              | 20220829   |
 
   Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -215,6 +218,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024                        |
     | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+    | opschortingBijhouding.datum              | 20220829                         |
 
     Voorbeelden:
     | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
@@ -253,6 +257,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024  |
     | opschortingBijhouding.reden.code         | O          |
     | opschortingBijhouding.reden.omschrijving | overlijden |
+    | opschortingBijhouding.datum              | 20220829   |
 
   Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met nummeraanduiding identificatie <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -269,6 +274,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024                        |
     | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+    | opschortingBijhouding.datum              | 20220829                         |
 
     Voorbeelden:
     | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
@@ -309,6 +315,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024  |
     | opschortingBijhouding.reden.code         | O          |
     | opschortingBijhouding.reden.omschrijving | overlijden |
+    | opschortingBijhouding.datum              | 20220829   |
 
   Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met postcode en huisnummer <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -326,6 +333,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024                        |
     | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+    | opschortingBijhouding.datum              | 20220829                         |
 
     Voorbeelden:
     | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |
@@ -368,6 +376,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024  |
     | opschortingBijhouding.reden.code         | O          |
     | opschortingBijhouding.reden.omschrijving | overlijden |
+    | opschortingBijhouding.datum              | 20220829   |
 
   Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met straat, huisnummer en gemeente van inschrijving <zoek overleden personen type> overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens
@@ -386,6 +395,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | burgerservicenummer                      | 000000024                        |
     | opschortingBijhouding.reden.code         | <reden opschorting bijhouding>   |
     | opschortingBijhouding.reden.omschrijving | <reden opschorting omschrijving> |
+    | opschortingBijhouding.datum              | 20220829                         |
 
     Voorbeelden:
     | reden opschorting bijhouding | reden opschorting omschrijving | inclusief overleden personen | zoek overleden personen type |

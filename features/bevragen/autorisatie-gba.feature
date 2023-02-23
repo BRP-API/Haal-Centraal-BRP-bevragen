@@ -361,6 +361,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | fields              | kinderen.naam.voornamen,kinderen.geboorte.datum |
       Dan heeft de response een persoon zonder 'kind' gegevens
 
+
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
