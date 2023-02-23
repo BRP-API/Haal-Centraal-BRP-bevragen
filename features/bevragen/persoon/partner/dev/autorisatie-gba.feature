@@ -160,8 +160,8 @@ Functionaliteit: autorisatie partners
       | ingangsdatum geldigheid (85.10) | 20031107         |
       | datum van opneming (86.10)      | 20040112         |
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000061                       |
-      | fields              | partners.naam,partners          |
+      | naam                | waarde                                     |
+      | type                | RaadpleegMetBurgerservicenummer            |
+      | burgerservicenummer | 000000061                                  |
+      | fields              | partners.naam,partners.burgerservicenummer |
       Dan heeft de response een persoon zonder 'partner' gegevens
