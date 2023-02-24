@@ -274,7 +274,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: Afnemer (niet gemeente) vindt geen enkele persoon op de zoekvraag en fields vraagt om geslacht (10410) waarvoor de afnemer niet geautoriseerd is
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 010240 010310            | N                        | 20201128                |
+      | 10120 10240 10310               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -302,7 +302,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: Afnemer heeft onderzoek, geheimhouding, opschorting, rni en verificatie en heeft dat niet in de autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 010120 010240                   | N                        | 20201128                |
+      | 10120 10240                     | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -334,7 +334,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: kindgegevens zijn gecorrigeerd (zijn onjuist) en afnemer is heeft geen autorisatie voor indicatie onjuist (98410) 
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10120 09210 90310               | N                        | 20201128                |
+      | 10120 90210 90310               | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
@@ -492,7 +492,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
     Scenario: Autorisatie voor ad hoc gegevensverstrekking is ingetrokken
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
-      | 010120 010210                   | N                        | 20201128                | 20221201                                |
+      | 10120 10210                     | N                        | 20201128                | 20221201                                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
