@@ -197,6 +197,26 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | geslacht.omschrijving                   | vrouw    |
     | datumIngangFamilierechtelijkeBetrekking | 20190614 |
 
+  Scenario: Geen ouder met ouderaanduiding "2" maar dat wordt wel onderzocht
+    Gegeven de persoon met burgerservicenummer '000000231' heeft een ouder '1' met de volgende gegevens
+    | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+    | 20190614                                           | .                     | V                           |
+    En de persoon heeft een ouder '2' met de volgende gegevens
+    | aktenummer (81.20) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum ingang geldigheid (85.10) |
+    | 2•E0001            | 030000                          | 20230114                       | 20160518                        |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000231                       |
+    | fields              | ouders                          |
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+    | naam                                    | waarde   |
+    | ouderAanduiding                         | 1        |
+    | naam.geslachtsnaam                      | .        |
+    | geslacht.code                           | V        |
+    | geslacht.omschrijving                   | vrouw    |
+    | datumIngangFamilierechtelijkeBetrekking | 20190614 |
+
   Scenario: volledig onbekende ouder
     Gegeven de persoon met burgerservicenummer '000000243' heeft een ouder '1' met de volgende gegevens
     | geslachtsnaam (02.40) | datum ingang familierechtelijke betrekking (62.10) |
