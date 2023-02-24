@@ -4,7 +4,7 @@ title: Getting Started
 ---
 # Getting Started
 
-De '{{site.apiname}}' Web API is gespecificeerd in OpenAPI specifications (OAS).
+De '{{site.apiname}}' Web API is gespecificeerd in OpenAPI specifications (OAS). Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel 38 van het Besluit BRP kunnen zich aanmelden voor deelname aan de pilot BRP.
 
 Wil je de API gebruiken? Dit kun je doen:
 
