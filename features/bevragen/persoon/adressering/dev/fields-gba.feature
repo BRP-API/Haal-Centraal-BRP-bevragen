@@ -19,6 +19,7 @@ Rule: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adre
     | persoonInOnderzoek.aanduidingGegevensInOnderzoek | <aanduiding in onderzoek> |
     | persoonInOnderzoek.datumIngangOnderzoek          | 20020701                  |
     | naam.geslachtsnaam                               | .                         |
+    En heeft de persoon geen 'partner' gegevens
 
     Voorbeelden:
     | aanduiding in onderzoek | type                         |
