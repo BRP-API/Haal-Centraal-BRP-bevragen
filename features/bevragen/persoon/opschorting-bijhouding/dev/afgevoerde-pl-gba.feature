@@ -113,22 +113,31 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | verblijfplaatsBinnenland                                                      |
     | verblijfplaats.datumVan.datum,verblijfplaats.verblijfadres.woonplaats         |
 
-  Scenario: geraadpleegde persoon is opgeschort met andere reden dan "F"
+  Abstract Scenario: geraadpleegde persoon is opgeschort met andere reden dan "F"
     Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
     | voornamen (02.10) |
     | William           |
     En de persoon heeft de volgende 'inschrijving' gegevens
     | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-    | 20220829                             | X                                    |
+    | 20220829                             | <reden>                              |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000048                       |
     | fields              | naam                            |
     Dan heeft de response een persoon met de volgende 'opschortingBijhouding' gegevens
-    | naam       | waarde   |
-    | reden.code | X        |
-    | datum      | 20220829 |
+    | naam               | waarde         |
+    | reden.code         | <reden>        |
+    | reden.omschrijving | <omschrijving> |
+    | datum              | 20220829       |
     En heeft de persoon de volgende 'naam' gegevens
     | naam      | waarde  |
     | voornamen | William |
+
+    Voorbeelden:
+    | reden | omschrijving              |
+    | O     | overlijden                |
+    | E     | emigratie                 |
+    | M     | ministerieel besluit      |
+    | R     | pl is aangelegd in de rni |
+    | X     |                           |
