@@ -42,7 +42,7 @@ public static class AanhefMapper
         return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
     }
 
-    public static string? Aanhef(this NaamPersoon persoon)
+    public static string? Aanhef(this NaamPersoon? persoon)
     {
         if (persoon == null) return null;
 

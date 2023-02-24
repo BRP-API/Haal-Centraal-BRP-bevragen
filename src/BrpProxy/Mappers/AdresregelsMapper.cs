@@ -18,8 +18,10 @@ public static class AdresregelsMapper
         string.IsNullOrWhiteSpace(verblijfplaats.Regel2) &&
         string.IsNullOrWhiteSpace(verblijfplaats.Regel3);
 
-    public static string? Adresregel1(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats)
+    public static string? Adresregel1(this Gba.GbaVerblijfplaatsBeperkt? verblijfplaats)
     {
+        if (verblijfplaats == null) return null;
+
         if (!verblijfplaats.StraatHeeftStandaardWaarde() && !verblijfplaats.HuisnummerHeeftStandaardWaarde())
         {
             return verblijfplaats.AdresToAdresregel1();
@@ -97,8 +99,10 @@ public static class AdresregelsMapper
             ? null
             : adres.Regel1;
 
-    public static string? Adresregel2(this Gba.GbaVerblijfplaatsBeperkt verblijfplaats, IWaardetabel gemeenteVanInschrijving)
+    public static string? Adresregel2(this Gba.GbaVerblijfplaatsBeperkt? verblijfplaats, IWaardetabel gemeenteVanInschrijving)
     {
+        if (verblijfplaats == null) return null;
+
         if (!verblijfplaats.StraatHeeftStandaardWaarde() && !verblijfplaats.HuisnummerHeeftStandaardWaarde())
         {
             return verblijfplaats.AdresToAdresregel2(gemeenteVanInschrijving);
@@ -140,13 +144,15 @@ public static class AdresregelsMapper
             ? null
             : adres.Regel2;
 
-    public static string? Adresregel3(this Gba.GbaVerblijfplaatsBeperkt adres) =>
+    public static string? Adresregel3(this Gba.GbaVerblijfplaatsBeperkt? adres) =>
+        adres == null ||
         adres.LandHeeftStandaardWaarde() ||
         adres.RegelsHebbenStandaardWaarde()
             ? null
             : adres.Regel3;
 
-    public static Waardetabel? Land(this Gba.GbaVerblijfplaatsBeperkt adres) =>
+    public static Waardetabel? Land(this Gba.GbaVerblijfplaatsBeperkt? adres) =>
+        adres == null ||
         adres.LandHeeftStandaardWaarde() ||
         adres.RegelsHebbenStandaardWaarde()
             ? null

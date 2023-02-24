@@ -212,11 +212,20 @@ namespace BrpProxy.Middlewares
             return false;
         }
 
+        private static string RemoveWhitespace(this string str)
+        {
+            return string.Join("", str.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+        }
+
         public static async Task<bool> AcceptIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
         {
             if (context.Request.Headers.Accept.Any() &&
-                (context.Request.Headers.Accept[0].Contains("application/json") ||
-                context.Request.Headers.Accept[0].Contains("*/*")))
+                new[]
+                {
+                    "*/*",
+                    "application/json",
+                    "application/json;charset=utf-8"
+                }.Contains(context.Request.Headers.Accept[0].RemoveWhitespace()))
             {
                 return true;
             }
@@ -236,7 +245,15 @@ namespace BrpProxy.Middlewares
 
         public static async Task<bool> ContentTypeIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
         {
-            if (context.Request.Headers.ContentType[0].Contains("application/json")) return true;
+            if (context.Request.Headers.ContentType.Any() &&
+                new[]
+                {
+                    "application/json",
+                    "application/json;charset=utf-8"
+                }.Contains(context.Request.Headers.ContentType[0].RemoveWhitespace()))
+            {
+                return true;
+            }
 
             logger.LogWarning("Not supported Content-Type values: {@contentTypeHeader}", context.Request.Headers.ContentType);
 

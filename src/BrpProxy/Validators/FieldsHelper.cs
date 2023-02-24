@@ -29,7 +29,7 @@ public class FieldsHelper
             {
                 dictionary.Add(kvp.Key.Replace("verblijfplaats", "verblijfplaatsBinnenland"), kvp.Value);
             }
-            else if(kvp.Key.StartsWith("adressering") &&
+            else if (kvp.Key.StartsWith("adressering") &&
                 !new[]
                 {
                     "adressering.adresregel3",

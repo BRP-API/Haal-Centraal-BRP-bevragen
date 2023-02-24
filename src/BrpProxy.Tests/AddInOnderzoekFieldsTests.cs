@@ -63,6 +63,12 @@ namespace BrpProxy.Tests
                             "adressering.inOnderzoek.datumIngangOnderzoekPersoon",
                             "adressering.inOnderzoek.datumIngangOnderzoekPartner"})]
 
+        [InlineData(new[] { "adressering.aanschrijfwijze.naam" },
+                    new[] { "adressering.aanschrijfwijze.naam",
+                            "adressering.inOnderzoek.aanschrijfwijze",
+                            "adressering.inOnderzoek.datumIngangOnderzoekPersoon",
+                            "adressering.inOnderzoek.datumIngangOnderzoekPartner"})]
+
         [InlineData(new[] { "adressering.adresregel1" },
                     new[] { "adressering.adresregel1",
                             "adressering.inOnderzoek.adresregel1",

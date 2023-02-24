@@ -86,7 +86,7 @@ public static class AanschrijfwijzeMapper
         { "R-M", HOOGWELGEBORENHEER },
     };
 
-    public static Aanschrijfwijze? Aanschrijfwijze(this NaamPersoon persoon)
+    public static Aanschrijfwijze? Aanschrijfwijze(this NaamPersoon? persoon)
     {
         if (persoon == null) return null;
 

@@ -74,19 +74,14 @@ public class PersoonProfile : Profile
             })
             .AfterMap((src, dest) =>
             {
-                if(dest.Naam != null)
+                if(dest.Naam != null || src.Verblijfplaats != null)
                 {
                     dest.Adressering = new Adressering
                     {
                         Aanhef = dest.Naam.Aanhef(),
                         Aanschrijfwijze = dest.Naam.Aanschrijfwijze(),
-                        GebruikInLopendeTekst = dest.Naam.GebruikInLopendeTekst()
-                    };
-                }
-                if(src.Verblijfplaats != null)
-                {
-                    dest.Adressering = new Adressering
-                    {
+                        GebruikInLopendeTekst = dest.Naam.GebruikInLopendeTekst(),
+
                         Adresregel1 = src.Verblijfplaats.Adresregel1(),
                         Adresregel2 = src.Verblijfplaats.Adresregel2(src.GemeenteVanInschrijving),
                         Adresregel3 = src.Verblijfplaats.Adresregel3(),

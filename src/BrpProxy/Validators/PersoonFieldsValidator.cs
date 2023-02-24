@@ -8,6 +8,7 @@ namespace BrpProxy.Validators
         const string FieldPattern = @"^[a-zA-Z0-9\._]{1,200}$";
         const string FieldPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {FieldPattern}.";
         const string FieldExistErrorMessage = "fields||Parameter bevat een niet bestaande veldnaam.";
+        const string FieldAllowedErrorMessage = "fields||Parameter bevat een niet toegestane veldnaam.";
 
         public PersoonFieldsValidator(FieldsHelper fieldsHelper)
         {
@@ -16,7 +17,12 @@ namespace BrpProxy.Validators
                 .Cascade(CascadeMode.Stop)
                 .Must(x => x != null).WithMessage(RequiredErrorMessage)
                 .Matches(FieldPattern).WithMessage(FieldPatternErrorMessage)
-                .Must(x => possibleFields.ContainsKey(x)).WithMessage(FieldExistErrorMessage);
+                .Must(x => possibleFields.ContainsKey(x)).WithMessage(FieldExistErrorMessage)
+                .Must(x => !x.Contains("opschortingBijhouding") &&
+                           !x.Contains("geheimhoudingPersoonsgegevens") &&
+                           !x.Contains("inOnderzoek") &&
+                           !x.Contains("verificatie") &&
+                           !x.Contains("rni")).WithMessage(FieldAllowedErrorMessage);
         }
     }
 }

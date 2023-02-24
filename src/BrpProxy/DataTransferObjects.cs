@@ -272,7 +272,7 @@ namespace HaalCentraal.BrpProxy.Generated
         public NaamPersoonBeperkt Naam { get; set; }
 
         [Newtonsoft.Json.JsonProperty("opschortingBijhouding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public OpschortingBijhoudingBasis OpschortingBijhouding { get; set; }
+        public OpschortingBijhouding OpschortingBijhouding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("adressering", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public AdresseringBeperkt Adressering { get; set; }
@@ -673,6 +673,18 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("voorletters", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Voorletters { get; set; }
+
+    }
+
+    /// <summary>
+    /// * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class OpschortingBijhouding : OpschortingBijhoudingBasis
+    {
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public AbstractDatum Datum { get; set; }
 
     }
 
@@ -1081,18 +1093,6 @@ namespace HaalCentraal.BrpProxy.Generated
 
         [Newtonsoft.Json.JsonProperty("plaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? Plaats { get; set; }
-
-    }
-
-    /// <summary>
-    /// * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
-    /// <br/>
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OpschortingBijhouding : OpschortingBijhoudingBasis
-    {
-        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public AbstractDatum Datum { get; set; }
 
     }
 

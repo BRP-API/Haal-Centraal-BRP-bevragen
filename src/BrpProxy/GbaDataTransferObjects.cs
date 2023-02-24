@@ -100,8 +100,12 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     public partial class PersonenQuery
     {
         /// <summary>
-        /// Hiermee kun je de inhoud van de resource naar behoefte aanpassen door een lijst van paden die verwijzen naar de gewenste velden op te nemen ([zie functionele specificaties 'fields' properties](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields.feature)).
-        /// <br/>De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) (voor gebruik fields bij zoeken) waarbij in de eerste kolom het fields-pad staat en in de tweede kolom het volledige pad naar het gewenste veld.
+        /// Hiermee kun je de velden opgeven die je wenst te ontvangen.
+        /// <br/>De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) 
+        /// <br/>(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) 
+        /// <br/>(voor gebruik fields bij zoeken).
+        /// <br/>Velden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.
+        /// <br/>Opgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.
         /// <br/>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fields", Required = Newtonsoft.Json.Required.Always)]
@@ -352,7 +356,7 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
         public GbaNaamBasis Naam { get; set; }
 
         [Newtonsoft.Json.JsonProperty("opschortingBijhouding", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public OpschortingBijhoudingBasis OpschortingBijhouding { get; set; }
+        public GbaOpschortingBijhouding OpschortingBijhouding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel GemeenteVanInschrijving { get; set; }
@@ -599,6 +603,18 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     }
 
     /// <summary>
+    /// * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GbaOpschortingBijhouding : OpschortingBijhoudingBasis
+    {
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Datum { get; set; }
+
+    }
+
+    /// <summary>
     /// * **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).
     /// <br/>
     /// </summary>
@@ -761,18 +777,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
 
         [Newtonsoft.Json.JsonProperty("plaats", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Waardetabel Plaats { get; set; }
-
-    }
-
-    /// <summary>
-    /// * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
-    /// <br/>
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.18.2.0 (NJsonSchema v10.8.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaOpschortingBijhouding : OpschortingBijhoudingBasis
-    {
-        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Datum { get; set; }
 
     }
 

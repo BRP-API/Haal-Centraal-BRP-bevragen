@@ -330,6 +330,15 @@ namespace BrpProxy.Validators
             .Contains(fieldPart);
         }
 
+        private static bool IsAdresseringFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "adressering"
+            }
+            .Contains(fieldPart);
+        }
+
         private static bool IsVerblijfplaatsFieldPart(this string fieldPart)
         {
             return new[]
@@ -403,7 +412,7 @@ namespace BrpProxy.Validators
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
                             retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek");
                         }
-                        else if (fieldParts[0] == "adressering")
+                        else if (fieldParts[0].IsAdresseringFieldPart())
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek.{fieldParts[1]}");
                             if (fieldParts[1].IsAdresregelFieldPart())
@@ -436,9 +445,20 @@ namespace BrpProxy.Validators
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek.type");
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.{fieldParts[2]}");
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.datumIngangOnderzoek");
                         }
-                        retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.{fieldParts[2]}");
-                        retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.datumIngangOnderzoek");
+                        else if (fieldParts[0].IsAdresseringFieldPart())
+                        {
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.{fieldParts[1]}");
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekPersoon");
+                            retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoekPartner");
+                        }
+                        else
+                        {
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.{fieldParts[2]}");
+                            retval.Add($"{fieldParts[0]}.{fieldParts[1]}.inOnderzoek.datumIngangOnderzoek");
+                        }
                         break;
                     default:
                         break;

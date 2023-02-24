@@ -149,8 +149,10 @@ public static class GebruikInLopendeTekstMapper
         return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
     }
 
-    public static string? GebruikInLopendeTekst(this NaamPersoon persoon)
+    public static string? GebruikInLopendeTekst(this NaamPersoon? persoon)
     {
+        if(persoon == null) return null;
+
         var partner = persoon.Partners.ActuelePartner();
 
         if (persoon.IsHoffelijkheidstitel(partner))
