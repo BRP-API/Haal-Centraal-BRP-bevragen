@@ -503,7 +503,7 @@ Rule: wanneer één of meerdere adresregel velden voor een persoon wordt gevraag
     | 088500                  | hele groep geldigheid              | adressering.adresregel1,adressering.land                                                 |
     | 088510                  | datum ingang geldigheid            | adressering.adresregel1,adressering.adresregel2                                          |
 
-Rule: wanneer groep adressering wordt gevraagd bij zoeken, dan worden de adresgegevens geleverd en iet naam of partner
+Rule: wanneer groep adressering wordt gevraagd bij zoeken, dan worden de adresgegevens geleverd en niet naam of partner
   
   Scenario: adressering is gevraagd 
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
