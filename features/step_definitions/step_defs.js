@@ -330,22 +330,24 @@ After(async function() {
     try {
         client = await pool.connect();
 
-        let adresData;
+        let adresData = [];
 
         for(const sqlData of this.context.sqlData) {
             if (equals(sqlData, ['adres', 'ids'])) {
-                adresData = sqlData;
+                adresData.push(sqlData);
             }
             else {
-                if (adresData !== undefined &&
-                    adresData.ids.adres_id == sqlData.ids.adres_id) {
-                        sqlData.ids.adres_id = undefined;
-                    }
+                if(adresData.find(adrData => adrData.ids.adres_id === sqlData.ids.adres_id)) {
+                    sqlData.ids.adres_id = undefined;
+                }
+
                 await deleteRecords(client, sqlData);
             }
         }
 
-        await deleteAdresRecord(client, adresData);
+        for(const adrData of adresData) {
+            await deleteAdresRecord(client, adrData);
+        }
         await deleteAutorisatieRecords(client);
     }
     catch(ex) {
