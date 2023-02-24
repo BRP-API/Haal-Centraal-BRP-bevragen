@@ -11,7 +11,7 @@ title: features
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}
 - [Autorisatie](./test-report-autorisatie.html){:target="_blank" rel="noopener"}
-- Protocollering
+- [Protocollering](./test-report-protocollering.html){:target="_blank" rel="noopener"}
 
 ## Proxy
 
