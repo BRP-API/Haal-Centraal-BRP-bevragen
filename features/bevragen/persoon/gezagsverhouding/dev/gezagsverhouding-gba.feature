@@ -73,21 +73,50 @@ Functionaliteit: gezagsverhouding
     | naam                      | waarde |
     | indicatieCurateleRegister | true   |
 
-  Abstract Scenario: 'gezagsverhouding' veld(en) van persoon is/zijn in onderzoek
+  Abstract Scenario: 'gezagsverhouding' veld(en) van persoon is/zijn in onderzoek en indicatieGezagMinderjarige is gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | naam                                 | waarde                    |
+    | indicatie gezag minderjarige (32.10) | 12                        |
+    | indicatie curateleregister (33.10)   | 1                         |
+    | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)       | 20020701                  |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | inOnderzoek                     |
+    | fields              | indicatieGezagMinderjarige      |
     Dan heeft de response een persoon met de volgende gegevens
-    | naam                                           | waarde                    |
-    | gezagInOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde> |
-    | gezagInOnderzoek.datumIngangOnderzoek          | 20020701                  |
+    | naam                                           | waarde                            |
+    | indicatieGezagMinderjarige.code                | 12                                |
+    | indicatieGezagMinderjarige.omschrijving        | Ouder1 en ouder2 hebben het gezag |
+    | gezagInOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde>         |
+    | gezagInOnderzoek.datumIngangOnderzoek          | 20020701                          |
 
+    Voorbeelden:
+    | gba in onderzoek waarde |
+    | 110000                  |
+    | 113200                  |
+    | 113210                  |
+    | 113300                  |
+    | 113310                  |
+
+  Abstract Scenario: 'gezagsverhouding' veld(en) van persoon is/zijn in onderzoek en indicatieCurateleRegister is gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
+    | naam                                 | waarde                    |
+    | indicatie gezag minderjarige (32.10) | 12                        |
+    | indicatie curateleregister (33.10)   | 1                         |
+    | aanduiding in onderzoek (83.10)      | <gba in onderzoek waarde> |
+    | datum ingang onderzoek (83.20)       | 20020701                  |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | indicatieCurateleRegister       |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                                           | waarde                            |
+    | indicatieCurateleRegister                      | true                              |
+    | gezagInOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde>         |
+    | gezagInOnderzoek.datumIngangOnderzoek          | 20020701                          |
 
     Voorbeelden:
     | gba in onderzoek waarde |

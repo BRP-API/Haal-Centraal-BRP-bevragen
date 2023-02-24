@@ -25,7 +25,7 @@ Functionaliteit: partner velden vragen met fields (persoon)
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | partners.naam.inOnderzoek       |
+    | fields              | partners.naam                   |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                                      | waarde                    |
     | inOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde> |
@@ -35,7 +35,7 @@ Functionaliteit: partner velden vragen met fields (persoon)
     | gba in onderzoek waarde |
     | 050000                  |
 
-  Abstract Scenario: burgerservicenummer is in onderzoek
+  Scenario: burgerservicenummer is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                            | waarde    |
     | aanduiding in onderzoek (83.10) | 050000    |
@@ -45,17 +45,12 @@ Functionaliteit: partner velden vragen met fields (persoon)
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000012                       |
-    | fields              | <field>                         |
+    | fields              | partners.burgerservicenummer    |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                                      | waarde    |
     | burgerservicenummer                       | 000000013 |
     | inOnderzoek.aanduidingGegevensInOnderzoek | 050000    |
     | inOnderzoek.datumIngangOnderzoek          | 20020701  |
-
-    Voorbeelden:
-    | field                                             |
-    | partners.burgerservicenummer                      |
-    | partners.burgerservicenummer,partners.inOnderzoek |
 
   Abstract Scenario: alleen geboorteplaats is gevuld en bevat standaardwaarde
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
