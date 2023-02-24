@@ -1515,7 +1515,7 @@ async function handleOAuthRequest(oAuth, afnemerId, sqlDatas, endpointUrl, dataT
         oAuthSettings = oAuth.clients[0];
         console.log(`geen afnemer opgegeven voor scenario. oAuthSettings gebruiken van afnemer met ID '${oAuthSettings.afnemerID}'`);
 
-        let sqlData = sqlDatas !== undefined ? sqlDatas.at(-1) : [];
+        let sqlData = sqlDatas.at(-1);
 
         sqlData['autorisatie'] = [
             [
@@ -1557,6 +1557,11 @@ async function handleOAuthRequest(oAuth, afnemerId, sqlDatas, endpointUrl, dataT
 
 When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
     this.context.proxyAanroep = true
+    if(this.context.sqlData === undefined) {
+        this.context.sqlData = [];
+    }
+    this.context.sqlData.push({});
+
     if(this.context.oAuth.enable) {
         this.context.response = await handleOAuthRequest(this.context.oAuth, this.context.afnemerId, this.context.sqlData, this.context.proxyUrl, dataTable);
     } else {
@@ -1568,6 +1573,10 @@ When(/^personen wordt gezocht met de volgende parameters$/, async function (data
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
     this.context.proxyAanroep = false;
+    if(this.context.sqlData === undefined) {
+        this.context.sqlData = [{}];
+    }
+
     if(this.context.oAuth.enable) {
         this.context.response = await handleOAuthRequest(this.context.oAuth, this.context.afnemerId, this.context.sqlData, this.context.gbaUrl, dataTable);
     } else {
@@ -1910,7 +1919,6 @@ Then(/^heeft de response een persoon met ?(?:een)? leeg '(.*)' object$/, createE
 
 Then(/^heeft de persoon GEEN '(\w*)'$/, function (_) {
 });
-
 
 function toCollectionName(gegevensgroep) {
     switch(gegevensgroep) {
