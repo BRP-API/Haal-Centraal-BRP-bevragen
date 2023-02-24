@@ -57,9 +57,15 @@ Functionaliteit: autorisatie oudergegevens Persoon
       Dan heeft de response 1 persoon
 
       Voorbeelden:
-      | ad hoc rubrieken              | autorisatie                                            |
-      | 10120 20210 30210             | exact 1 gegeven van ouder 1 en 1 gegeven van ouder 2   |
-      | 10120 20120 20240 30310 30320 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
+      | ad hoc rubrieken               | autorisatie                                                  |
+      | 10120 20120 30120              | exact 1 gegeven uit groep 01                                 |
+      | 10120 20240 30240              | exact 1 gegeven uit groep 02                                 |
+      | 10120 20310 30310              | exact 1 gegeven uit groep 03                                 |
+      | 10120 20410 30410              | exact 1 gegeven uit groep 04                                 |
+      | 10120 26210 36210              | exact 1 gegeven uit groep 62                                 |
+      | 10120 20110 30110              | A-nummer uit groep 01 dat niet voorkomt in de resource       |
+      | 10120 20310 30210              | exact 1 gegeven van ouder 1 en 1 ander gegeven van ouder 2   |
+      | 10120 20120 20240 30310 306210 | meerdere gegevens van ouder 1 en andere gegevens van ouder 2 |
 
       
   Rule: Vragen met fields om een gegeven van ouders, wanneer de afnemer niet geautoriseerd is voor dan gegeven van ouder 1 én van ouder 2, geeft een foutmelding
