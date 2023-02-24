@@ -13,12 +13,16 @@ Functionaliteit: geboorte in onderzoek
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | geboorte.inOnderzoek            |
+    | fields              | geboorte.datum                  |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                                             | waarde                    |
+    | geboorte.datum                                   | 19630405                  |
     | persoonInOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde> |
     | persoonInOnderzoek.datumIngangOnderzoek          | 20020701                  |
 
     Voorbeelden:
     | gba in onderzoek waarde |
     | 010000                  |
+    | 010200                  |
+    | 010300                  |
+    | 010310                  |
