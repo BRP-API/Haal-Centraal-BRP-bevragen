@@ -9,6 +9,8 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | Lisette           |
 
   Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
+    Voor de gevraagde autorisatie zijn alleen autorisaties voor groepen 01, 02, 03, 04 en 62 relevant.
+    De impliciete autorisatie voor het ontvangen van inOnderzoek op oudergegevens wordt niet meegenomen bij het bepalen of ouderAanduiding gevraagd mag worden.
 
     @fout-case
     Abstract Scenario: Afnemer is <missende autorisatie>
@@ -33,10 +35,11 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | ad hoc rubrieken              | missende autorisatie                  |
-      | 10120 10210 10220 10230 10240 | niet geautoriseerd voor oudergegevens |
-      | 10120 20210 20220 20230 20240 | niet geautoriseerd voor ouder 2       |
-      | 10120 30210 30220 30230 30240 | niet geautoriseerd voor ouder 1       |
+      | ad hoc rubrieken              | missende autorisatie                                            |
+      | 10120 10210 10220 10230 10240 | niet geautoriseerd voor oudergegevens                           |
+      | 10120 20210 20220 20230 20240 | niet geautoriseerd voor ouder 2                                 |
+      | 10120 30210 30220 30230 30240 | niet geautoriseerd voor ouder 1                                 |
+      | 10120 28510 28610 38510 38610 | niet geautoriseerd voor oudergegevens in groep 1, 2, 3, 4 of 62 |
 
     Abstract Scenario: Afnemer is wel geautoriseerd voor <autorisatie>
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
