@@ -306,46 +306,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | verificatie.datum.jaar                                                               |
     | verificatie.datum.maand                                                              |
     | verificatie.omschrijving                                                             |
-    | adressering.inOnderzoek                                                              |
-    | adressering.inOnderzoek.aanhef                                                       |
-    | adressering.inOnderzoek.aanschrijfwijze                                              |
-    | adressering.inOnderzoek.adresregel1                                                  |
-    | adressering.inOnderzoek.adresregel2                                                  |
-    | adressering.inOnderzoek.adresregel3                                                  |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner                                  |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner.langFormaat                      |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner.type                             |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner.datum                            |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner.onbekend                         |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner.jaar                             |
-    | adressering.inOnderzoek.datumIngangOnderzoekPartner.maand                            |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon                                  |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.langFormaat                      |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.type                             |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.datum                            |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.onbekend                         |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.jaar                             |
-    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.maand                            |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats                           |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat               |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.type                      |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum                     |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.onbekend                  |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.jaar                      |
-    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.maand                     |
-    | adressering.inOnderzoek.gebruikInLopendeTekst                                        |
-    | adressering.inOnderzoek.land                                                         |
-    | geboorte.inOnderzoek                                                                 |
-    | geboorte.inOnderzoek.datumIngangOnderzoek                                            |
-    | geboorte.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
-    | geboorte.inOnderzoek.datumIngangOnderzoek.type                                       |
-    | geboorte.inOnderzoek.datumIngangOnderzoek.datum                                      |
-    | geboorte.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
-    | geboorte.inOnderzoek.datumIngangOnderzoek.jaar                                       |
-    | geboorte.inOnderzoek.datumIngangOnderzoek.maand                                      |
-    | geboorte.inOnderzoek.datum                                                           |
-    | geboorte.inOnderzoek.land                                                            |
-    | geboorte.inOnderzoek.plaats                                                          |
     | immigratie.inOnderzoek                                                               |
     | immigratie.inOnderzoek.datumIngangOnderzoek                                          |
     | immigratie.inOnderzoek.datumIngangOnderzoek.langFormaat                              |
@@ -387,6 +347,146 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | inOnderzoek.indicatieCurateleRegister                                                |
     | inOnderzoek.indicatieGezagMinderjarige                                               |
     | inOnderzoek.leeftijd                                                                 |
+    | kinderen.inOnderzoek                                                                 |
+    | kinderen.inOnderzoek.datumIngangOnderzoek                                            |
+    | kinderen.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
+    | kinderen.inOnderzoek.datumIngangOnderzoek.type                                       |
+    | kinderen.inOnderzoek.datumIngangOnderzoek.datum                                      |
+    | kinderen.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
+    | kinderen.inOnderzoek.datumIngangOnderzoek.jaar                                       |
+    | kinderen.inOnderzoek.datumIngangOnderzoek.maand                                      |
+    | kinderen.inOnderzoek.burgerservicenummer                                             |
+    | nationaliteiten.inOnderzoek                                                          |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek                                     |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.langFormaat                         |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.type                                |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.datum                               |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.onbekend                            |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.jaar                                |
+    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.maand                               |
+    | nationaliteiten.inOnderzoek.nationaliteit                                            |
+    | nationaliteiten.inOnderzoek.redenOpname                                              |
+    | nationaliteiten.inOnderzoek.type                                                     |
+    | ouders.inOnderzoek                                                                   |
+    | ouders.inOnderzoek.datumIngangOnderzoek                                              |
+    | ouders.inOnderzoek.datumIngangOnderzoek.langFormaat                                  |
+    | ouders.inOnderzoek.datumIngangOnderzoek.type                                         |
+    | ouders.inOnderzoek.datumIngangOnderzoek.datum                                        |
+    | ouders.inOnderzoek.datumIngangOnderzoek.onbekend                                     |
+    | ouders.inOnderzoek.datumIngangOnderzoek.jaar                                         |
+    | ouders.inOnderzoek.datumIngangOnderzoek.maand                                        |
+    | ouders.inOnderzoek.burgerservicenummer                                               |
+    | ouders.inOnderzoek.datumIngangFamilierechtelijkeBetrekking                           |
+    | ouders.inOnderzoek.geslacht                                                          |
+    | overlijden.inOnderzoek                                                               |
+    | overlijden.inOnderzoek.datumIngangOnderzoek                                          |
+    | overlijden.inOnderzoek.datumIngangOnderzoek.langFormaat                              |
+    | overlijden.inOnderzoek.datumIngangOnderzoek.type                                     |
+    | overlijden.inOnderzoek.datumIngangOnderzoek.datum                                    |
+    | overlijden.inOnderzoek.datumIngangOnderzoek.onbekend                                 |
+    | overlijden.inOnderzoek.datumIngangOnderzoek.jaar                                     |
+    | overlijden.inOnderzoek.datumIngangOnderzoek.maand                                    |
+    | overlijden.inOnderzoek.datum                                                         |
+    | overlijden.inOnderzoek.land                                                          |
+    | overlijden.inOnderzoek.plaats                                                        |
+    | partners.inOnderzoek                                                                 |
+    | partners.inOnderzoek.datumIngangOnderzoek                                            |
+    | partners.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
+    | partners.inOnderzoek.datumIngangOnderzoek.type                                       |
+    | partners.inOnderzoek.datumIngangOnderzoek.datum                                      |
+    | partners.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
+    | partners.inOnderzoek.datumIngangOnderzoek.jaar                                       |
+    | partners.inOnderzoek.datumIngangOnderzoek.maand                                      |
+    | partners.inOnderzoek.burgerservicenummer                                             |
+    | partners.inOnderzoek.geslacht                                                        |
+    | partners.inOnderzoek.soortVerbintenis                                                |
+    | verblijfplaats.inOnderzoek                                                           |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek                                      |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.langFormaat                          |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.type                                 |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.datum                                |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.onbekend                             |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.jaar                                 |
+    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.maand                                |
+    | verblijfplaats.inOnderzoek.datumIngangGeldigheid                                     |
+    | verblijfplaats.inOnderzoek.datumVan                                                  |
+    | verblijfplaats.inOnderzoek.type                                                      |
+    | verblijfplaats.inOnderzoek.adresseerbaarObjectIdentificatie                          |
+    | verblijfplaats.inOnderzoek.functieAdres                                              |
+    | verblijfplaats.inOnderzoek.nummeraanduidingIdentificatie                             |
+    | verblijfstitel.inOnderzoek                                                           |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek                                      |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.langFormaat                          |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.type                                 |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.datum                                |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.onbekend                             |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.jaar                                 |
+    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.maand                                |
+    | verblijfstitel.inOnderzoek.aanduiding                                                |
+    | verblijfstitel.inOnderzoek.datumEinde                                                |
+    | verblijfstitel.inOnderzoek.datumIngang                                               |
+
+  @fout-case
+  Abstract Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij raadplegen
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000139                       |
+    | fields              | <fields>                        |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name      | reason                                       |
+    | fields | fields[0] | Parameter bevat een niet bestaande veldnaam. |
+
+    Voorbeelden:
+    | fields                                                                               |
+    | adressering.inOnderzoek                                                              |
+    | adressering.inOnderzoek.aanhef                                                       |
+    | adressering.inOnderzoek.aanschrijfwijze                                              |
+    | adressering.inOnderzoek.adresregel1                                                  |
+    | adressering.inOnderzoek.adresregel2                                                  |
+    | adressering.inOnderzoek.adresregel3                                                  |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner                                  |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner.langFormaat                      |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner.type                             |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner.datum                            |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner.onbekend                         |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner.jaar                             |
+    | adressering.inOnderzoek.datumIngangOnderzoekPartner.maand                            |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon                                  |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.langFormaat                      |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.type                             |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.datum                            |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.onbekend                         |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.jaar                             |
+    | adressering.inOnderzoek.datumIngangOnderzoekPersoon.maand                            |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats                           |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat               |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.type                      |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum                     |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.onbekend                  |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.jaar                      |
+    | adressering.inOnderzoek.datumIngangOnderzoekVerblijfplaats.maand                     |
+    | adressering.inOnderzoek.gebruikInLopendeTekst                                        |
+    | adressering.inOnderzoek.land                                                         |
+    | geboorte.inOnderzoek                                                                 |
+    | geboorte.inOnderzoek.datumIngangOnderzoek                                            |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.type                                       |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.datum                                      |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.jaar                                       |
+    | geboorte.inOnderzoek.datumIngangOnderzoek.maand                                      |
+    | geboorte.inOnderzoek.datum                                                           |
+    | geboorte.inOnderzoek.land                                                            |
+    | geboorte.inOnderzoek.plaats                                                          |
     | kinderen.geboorte.inOnderzoek                                                        |
     | kinderen.geboorte.inOnderzoek.datumIngangOnderzoek                                   |
     | kinderen.geboorte.inOnderzoek.datumIngangOnderzoek.langFormaat                       |
@@ -398,15 +498,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | kinderen.geboorte.inOnderzoek.datum                                                  |
     | kinderen.geboorte.inOnderzoek.land                                                   |
     | kinderen.geboorte.inOnderzoek.plaats                                                 |
-    | kinderen.inOnderzoek                                                                 |
-    | kinderen.inOnderzoek.datumIngangOnderzoek                                            |
-    | kinderen.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
-    | kinderen.inOnderzoek.datumIngangOnderzoek.type                                       |
-    | kinderen.inOnderzoek.datumIngangOnderzoek.datum                                      |
-    | kinderen.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
-    | kinderen.inOnderzoek.datumIngangOnderzoek.jaar                                       |
-    | kinderen.inOnderzoek.datumIngangOnderzoek.maand                                      |
-    | kinderen.inOnderzoek.burgerservicenummer                                             |
     | kinderen.naam.inOnderzoek                                                            |
     | kinderen.naam.inOnderzoek.datumIngangOnderzoek                                       |
     | kinderen.naam.inOnderzoek.datumIngangOnderzoek.langFormaat                           |
@@ -435,17 +526,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | naam.inOnderzoek.voorvoegsel                                                         |
     | naam.inOnderzoek.aanduidingNaamgebruik                                               |
     | naam.inOnderzoek.volledigeNaam                                                       |
-    | nationaliteiten.inOnderzoek                                                          |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek                                     |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.langFormaat                         |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.type                                |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.datum                               |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.onbekend                            |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.jaar                                |
-    | nationaliteiten.inOnderzoek.datumIngangOnderzoek.maand                               |
-    | nationaliteiten.inOnderzoek.nationaliteit                                            |
-    | nationaliteiten.inOnderzoek.redenOpname                                              |
-    | nationaliteiten.inOnderzoek.type                                                     |
     | ouders.geboorte.inOnderzoek                                                          |
     | ouders.geboorte.inOnderzoek.datumIngangOnderzoek                                     |
     | ouders.geboorte.inOnderzoek.datumIngangOnderzoek.langFormaat                         |
@@ -457,17 +537,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | ouders.geboorte.inOnderzoek.datum                                                    |
     | ouders.geboorte.inOnderzoek.land                                                     |
     | ouders.geboorte.inOnderzoek.plaats                                                   |
-    | ouders.inOnderzoek                                                                   |
-    | ouders.inOnderzoek.datumIngangOnderzoek                                              |
-    | ouders.inOnderzoek.datumIngangOnderzoek.langFormaat                                  |
-    | ouders.inOnderzoek.datumIngangOnderzoek.type                                         |
-    | ouders.inOnderzoek.datumIngangOnderzoek.datum                                        |
-    | ouders.inOnderzoek.datumIngangOnderzoek.onbekend                                     |
-    | ouders.inOnderzoek.datumIngangOnderzoek.jaar                                         |
-    | ouders.inOnderzoek.datumIngangOnderzoek.maand                                        |
-    | ouders.inOnderzoek.burgerservicenummer                                               |
-    | ouders.inOnderzoek.datumIngangFamilierechtelijkeBetrekking                           |
-    | ouders.inOnderzoek.geslacht                                                          |
     | ouders.naam.inOnderzoek                                                              |
     | ouders.naam.inOnderzoek.datumIngangOnderzoek                                         |
     | ouders.naam.inOnderzoek.datumIngangOnderzoek.langFormaat                             |
@@ -481,17 +550,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | ouders.naam.inOnderzoek.voorletters                                                  |
     | ouders.naam.inOnderzoek.voornamen                                                    |
     | ouders.naam.inOnderzoek.voorvoegsel                                                  |
-    | overlijden.inOnderzoek                                                               |
-    | overlijden.inOnderzoek.datumIngangOnderzoek                                          |
-    | overlijden.inOnderzoek.datumIngangOnderzoek.langFormaat                              |
-    | overlijden.inOnderzoek.datumIngangOnderzoek.type                                     |
-    | overlijden.inOnderzoek.datumIngangOnderzoek.datum                                    |
-    | overlijden.inOnderzoek.datumIngangOnderzoek.onbekend                                 |
-    | overlijden.inOnderzoek.datumIngangOnderzoek.jaar                                     |
-    | overlijden.inOnderzoek.datumIngangOnderzoek.maand                                    |
-    | overlijden.inOnderzoek.datum                                                         |
-    | overlijden.inOnderzoek.land                                                          |
-    | overlijden.inOnderzoek.plaats                                                        |
     | partners.aangaanHuwelijkPartnerschap.inOnderzoek                                     |
     | partners.aangaanHuwelijkPartnerschap.inOnderzoek.datumIngangOnderzoek                |
     | partners.aangaanHuwelijkPartnerschap.inOnderzoek.datumIngangOnderzoek.langFormaat    |
@@ -514,17 +572,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | partners.geboorte.inOnderzoek.datum                                                  |
     | partners.geboorte.inOnderzoek.land                                                   |
     | partners.geboorte.inOnderzoek.plaats                                                 |
-    | partners.inOnderzoek                                                                 |
-    | partners.inOnderzoek.datumIngangOnderzoek                                            |
-    | partners.inOnderzoek.datumIngangOnderzoek.langFormaat                                |
-    | partners.inOnderzoek.datumIngangOnderzoek.type                                       |
-    | partners.inOnderzoek.datumIngangOnderzoek.datum                                      |
-    | partners.inOnderzoek.datumIngangOnderzoek.onbekend                                   |
-    | partners.inOnderzoek.datumIngangOnderzoek.jaar                                       |
-    | partners.inOnderzoek.datumIngangOnderzoek.maand                                      |
-    | partners.inOnderzoek.burgerservicenummer                                             |
-    | partners.inOnderzoek.geslacht                                                        |
-    | partners.inOnderzoek.soortVerbintenis                                                |
     | partners.naam.inOnderzoek                                                            |
     | partners.naam.inOnderzoek.datumIngangOnderzoek                                       |
     | partners.naam.inOnderzoek.datumIngangOnderzoek.langFormaat                           |
@@ -547,17 +594,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | partners.ontbindingHuwelijkPartnerschap.inOnderzoek.datumIngangOnderzoek.jaar        |
     | partners.ontbindingHuwelijkPartnerschap.inOnderzoek.datumIngangOnderzoek.maand       |
     | partners.ontbindingHuwelijkPartnerschap.inOnderzoek.datum                            |
-    | verblijfplaats.inOnderzoek                                                           |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek                                      |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.langFormaat                          |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.type                                 |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.datum                                |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.onbekend                             |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.jaar                                 |
-    | verblijfplaats.inOnderzoek.datumIngangOnderzoek.maand                                |
-    | verblijfplaats.inOnderzoek.datumIngangGeldigheid                                     |
-    | verblijfplaats.inOnderzoek.datumVan                                                  |
-    | verblijfplaats.inOnderzoek.type                                                      |
     | verblijfplaats.verblijfadres.inOnderzoek                                             |
     | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek                        |
     | verblijfplaats.verblijfadres.inOnderzoek.datumIngangOnderzoek.langFormaat            |
@@ -570,9 +606,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | verblijfplaats.verblijfadres.inOnderzoek.regel1                                      |
     | verblijfplaats.verblijfadres.inOnderzoek.regel2                                      |
     | verblijfplaats.verblijfadres.inOnderzoek.regel3                                      |
-    | verblijfplaats.inOnderzoek.adresseerbaarObjectIdentificatie                          |
-    | verblijfplaats.inOnderzoek.functieAdres                                              |
-    | verblijfplaats.inOnderzoek.nummeraanduidingIdentificatie                             |
     | verblijfplaats.verblijfadres.inOnderzoek.aanduidingBijHuisnummer                     |
     | verblijfplaats.verblijfadres.inOnderzoek.huisletter                                  |
     | verblijfplaats.verblijfadres.inOnderzoek.huisnummer                                  |
@@ -582,17 +615,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | verblijfplaats.verblijfadres.inOnderzoek.postcode                                    |
     | verblijfplaats.verblijfadres.inOnderzoek.woonplaats                                  |
     | verblijfplaats.verblijfadres.inOnderzoek.locatiebeschrijving                         |
-    | verblijfstitel.inOnderzoek                                                           |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek                                      |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.langFormaat                          |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.type                                 |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.datum                                |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.onbekend                             |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.jaar                                 |
-    | verblijfstitel.inOnderzoek.datumIngangOnderzoek.maand                                |
-    | verblijfstitel.inOnderzoek.aanduiding                                                |
-    | verblijfstitel.inOnderzoek.datumEinde                                                |
-    | verblijfstitel.inOnderzoek.datumIngang                                               |
     | verblijfplaatsBinnenland.inOnderzoek                                                 |
     | verblijfplaatsBinnenland.inOnderzoek.datumIngangOnderzoek                            |
     | verblijfplaatsBinnenland.inOnderzoek.datumIngangOnderzoek.langFormaat                |
@@ -700,6 +722,40 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | verificatie.datum.jaar                                                               |
     | verificatie.datum.maand                                                              |
     | verificatie.omschrijving                                                             |
+    | inOnderzoek                                                                          |
+    | inOnderzoek.burgerservicenummer                                                      |
+    | inOnderzoek.datumIngangOnderzoekPersoon                                              |
+    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat                                  |
+    | inOnderzoek.datumIngangOnderzoekPersoon.type                                         |
+    | inOnderzoek.datumIngangOnderzoekPersoon.datum                                        |
+    | inOnderzoek.datumIngangOnderzoekPersoon.onbekend                                     |
+    | inOnderzoek.datumIngangOnderzoekPersoon.jaar                                         |
+    | inOnderzoek.datumIngangOnderzoekPersoon.maand                                        |
+    | inOnderzoek.geslacht                                                                 |
+    | inOnderzoek.leeftijd                                                                 |
+
+@fout-case
+  Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij zoeken
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Kierkegaard                         |
+    | geboortedatum | 1956-11-15                          |
+    | fields        | <fields>                            |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: fields[0].                   |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code   | name      | reason                                       |
+    | fields | fields[0] | Parameter bevat een niet bestaande veldnaam. |
+
+    Voorbeelden:
+    | fields                                                                               |
     | adressering.inOnderzoek                                                              |
     | adressering.inOnderzoek.adresregel1                                                  |
     | adressering.inOnderzoek.adresregel2                                                  |
@@ -721,17 +777,6 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | geboorte.inOnderzoek.datumIngangOnderzoek.jaar                                       |
     | geboorte.inOnderzoek.datumIngangOnderzoek.maand                                      |
     | geboorte.inOnderzoek.datum                                                           |
-    | inOnderzoek                                                                          |
-    | inOnderzoek.burgerservicenummer                                                      |
-    | inOnderzoek.datumIngangOnderzoekPersoon                                              |
-    | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat                                  |
-    | inOnderzoek.datumIngangOnderzoekPersoon.type                                         |
-    | inOnderzoek.datumIngangOnderzoekPersoon.datum                                        |
-    | inOnderzoek.datumIngangOnderzoekPersoon.onbekend                                     |
-    | inOnderzoek.datumIngangOnderzoekPersoon.jaar                                         |
-    | inOnderzoek.datumIngangOnderzoekPersoon.maand                                        |
-    | inOnderzoek.geslacht                                                                 |
-    | inOnderzoek.leeftijd                                                                 |
     | naam.inOnderzoek                                                                     |
     | naam.inOnderzoek.datumIngangOnderzoek                                                |
     | naam.inOnderzoek.datumIngangOnderzoek.langFormaat                                    |
