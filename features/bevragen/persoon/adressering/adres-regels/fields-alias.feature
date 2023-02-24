@@ -89,7 +89,7 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000097                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | fields                                                              |
@@ -134,7 +134,7 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000097                       |
     | fields              | adresseringBinnenland.<field>   |
-    Dan heeft de response een persoon zonder 'adressering' gegevens
+    Dan heeft de response een persoon zonder gegevens
 
     Voorbeelden:
     | field       |
