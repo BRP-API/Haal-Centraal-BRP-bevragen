@@ -170,6 +170,23 @@ Rule: Een partner wordt alleen teruggegeven als minimaal één gegeven in de ide
     | fields              | partners                        |
     Dan heeft de response een persoon zonder 'partner' gegevens
 
+  Scenario: Geen partner, maar dat wordt wel onderzocht
+    Gegeven de persoon met burgerservicenummer '000000061' heeft een 'partner' met de volgende gegevens
+    | naam                            | waarde           |
+    | gemeente document (82.10)       | 0518             |
+    | datum document (82.20)          | 20040105         |
+    | aanduiding in onderzoek (83.10) | 050000           |
+    | datum ingang onderzoek (83.20)  | 20230114         |
+    | beschrijving document (82.30)   | D27894-2004-A782 |
+    | ingangsdatum geldigheid (85.10) | 20031107         |
+    | datum van opneming (86.10)      | 20040112         |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000061                       |
+    | fields              | partners                        |
+    Dan heeft de response een persoon zonder 'partner' gegevens
+
 
 Rule: Wanneer er meerdere actuele (niet-ontbonden) huwelijken/partnerschappen zijn, worden die allemaal geleverd
 

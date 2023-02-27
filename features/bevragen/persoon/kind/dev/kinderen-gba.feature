@@ -118,6 +118,24 @@ Functionaliteit: kinderen raadplegen
       | fields              | kinderen.burgerservicenummer    |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
+    Scenario: Geen kind, maar dat wordt wel onderzocht
+      Gegeven de persoon met burgerservicenummer '000000061' heeft een 'kind' met de volgende gegevens
+      | naam                            | waarde           |
+      | gemeente document (82.10)       | 0518             |
+      | datum document (82.20)          | 20040105         |
+      | aanduiding in onderzoek (83.10) | 090000           |
+      | datum ingang onderzoek (83.20)  | 20230114         |
+      | beschrijving document (82.30)   | D27894-2004-A782 |
+      | ingangsdatum geldigheid (85.10) | 20031107         |
+      | datum van opneming (86.10)      | 20040112         |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000061                       |
+      | fields              | kinderen                        |
+      Dan heeft de response een persoon zonder 'kind' gegevens
+
+
   Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
 
