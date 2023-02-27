@@ -4,16 +4,16 @@ title: Haal Centraal BRP persoon bevragen
 ---
 # Haal Centraal {{ site.apiname }}
 
-![lint oas](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
-![generate postman collection](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
+![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
+![generate postman collection]({{ site.repoUrl }}/workflows/generate-postman-collection/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). De start van de pilot BRP Bevragen is gepland in maart 2023.
 
 Voor de pilot BRP Bevragen wordt BRP Personen Bevragen versie 2.0 IO (In Ontwikkeling) gebruikt. <!--Lees de [Getting started](./getting-started-v2-proxy) voor informatie over het gebruik van de proxy applicatie voor fase 1 van de pilot.-->
 
 ## Direct uitproberen?
-* Bekijk de specificaties met [Redoc](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/redoc-io)
-* Lees de [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/getting-started-v2)
+* Bekijk de specificaties met [Redoc](./redoc-io)
+* Lees de [Getting started](./getting-started-v2)
 
 ## Heb je meer nodig?
 Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP Bevragen API’s:
@@ -24,7 +24,7 @@ Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP B
 * [Landelijke tabellen bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
 
 
-Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](swagger-ui) of [Redoc](redoc) en download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
+Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](./redoc) en download de [technische specificaties]({{ site.mainBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}
 
 ## Bronnen
 
@@ -44,4 +44,4 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](s
 ## Licentie
 
 Copyright &copy; RvIG 2022
-Licensed under the [EUPL](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md){:target="_blank" rel="noopener"}
+Licensed under the [EUPL]({{ masterBranchUrl }}/LICENCE.md){:target="_blank" rel="noopener"}
