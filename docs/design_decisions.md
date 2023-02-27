@@ -41,7 +41,7 @@ De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de d
 *Ratio*
 
 In het RSGB is de identificatie van BAG-objecten (bijvoorbeeld identificatiecode van een nummeraanduiding) opgenomen als complex datatype. In de BAG-registratie is dit echter één string waarin de deel-elementen uit het complex datatype zijn samengevoegd.
-Zie issue [#1]({{repoUrl}}/issues/1).
+Zie issue [#1]({{ site.repoUrl }}/issues/1).
 
 ## Eén uniform endpoint voor zoeken ingeschreven persoonsgegevens
 Voor ingeschreven personen komt er één endpoint voor het zoeken: /ingeschrevenNatuurlijkPersonen.
