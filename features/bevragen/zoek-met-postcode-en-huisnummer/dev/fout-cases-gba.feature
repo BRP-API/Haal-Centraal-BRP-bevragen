@@ -195,7 +195,7 @@ Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 let
     | naam       | waarde                      |
     | type       | ZoekMetPostcodeEnHuisnummer |
     | postcode   | 0628HJ                      |
-    | huisnummer | twee                        |
+    | huisnummer | 0                           |
     | fields     | burgerservicenummer         |
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
@@ -208,7 +208,7 @@ Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 let
     En heeft het object de volgende 'invalidParams' gegevens
     | code    | name       | reason                                                             |
     | pattern | postcode   | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$. |
-    | integer | huisnummer | Waarde is geen geldig getal.                                       |
+    | minimum | huisnummer | Waarde is lager dan minimum 1.                                     |
 
 Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
 
