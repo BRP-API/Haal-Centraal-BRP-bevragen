@@ -162,11 +162,51 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
 
     Voorbeelden:
     | fields                                                                |
-    | adressering                                                           |
     | naam,adressering.adresregel1                                          |
     | naam.voornamen,naam.geslachtsnaam,adressering.land.omschrijving       |
     | naam,adressering.adresregel2                                          |
     | naam,adressering.adresregel1,adressering.adresregel2,adressering.land |
+
+  Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categoriën persoon en verblijfplaats en adressering wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+    | naam                         | waarde                                      |
+    | voornamen (02.10)            | Peter                                       |
+    | geslachtsnaam (02.40)        | Jansen                                      |
+    | geboortedatum (03.10)        | 19830526                                    |
+    | rni-deelnemer (88.10)        | 0101                                        |
+    | omschrijving verdrag (88.20) | Belastingverdrag tussen België en Nederland |
+    En de persoon heeft de volgende 'verblijfplaats' gegevens
+    | naam                         | waarde                               |
+    | land (13.10)                 | 5010                                 |
+    | rni-deelnemer (88.10)        | 0201                                 |
+    | omschrijving verdrag (88.20) | Artikel 45 EU-Werkingsverdrag (VWEU) |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Jansen                              |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | <fields>                            |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam              | waarde |
+    | land.code         | 5010   |
+    | land.omschrijving | België |
+    En heeft de persoon een 'rni' met de volgende gegevens
+    | naam                   | waarde                                            |
+    | deelnemer.code         | 0201                                              |
+    | deelnemer.omschrijving | Sociale Verzekeringsbank (inzake AOW, Anw en AKW) |
+    | omschrijvingVerdrag    | Artikel 45 EU-Werkingsverdrag (VWEU)              |
+    | categorie              | Verblijfplaats                                    |
+
+    Voorbeelden:
+    | fields                                                           |
+    | adressering.adresregel1                                          |
+    | adressering.adresregel2                                          |
+    | adressering.adresregel3                                          |
+    | adressering.land                                                 |
+    | adressering.land.code                                            |
+    | adressering.land.omschrijving                                    |
+    | adressering.adresregel1,adressering.adresregel2,adressering.land |
+    | adressering                                                      |
     
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor verblijfplaats, maar er worden geen verblijfplaats velden gevraagd
     Gegeven de persoon met burgerservicenummer '000000036' heeft de volgende gegevens

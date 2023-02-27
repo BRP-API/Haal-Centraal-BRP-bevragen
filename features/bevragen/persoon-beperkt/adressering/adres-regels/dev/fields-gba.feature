@@ -502,3 +502,51 @@ Rule: wanneer één of meerdere adresregel velden voor een persoon wordt gevraag
     | 081420                  | datum vestiging in Nederland       | adressering.adresregel3,adressering.land                                                 |
     | 088500                  | hele groep geldigheid              | adressering.adresregel1,adressering.land                                                 |
     | 088510                  | datum ingang geldigheid            | adressering.adresregel1,adressering.adresregel2                                          |
+
+Rule: wanneer groep adressering wordt gevraagd bij zoeken, dan worden de adresgegevens geleverd en niet naam of partner
+  
+  Scenario: adressering is gevraagd 
+      Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
+      | naam                                 | waarde    |
+      | geslachtsaanduiding (04.10)          | M         |
+      | voornamen (02.10)                    | Jan Peter |
+      | adellijke titel of predicaat (02.20) | JH        |
+      | voorvoegsel (02.30)                  | te        |
+      | geslachtsnaam (02.40)                | Hoogh     |
+      | aanduiding naamgebruik (61.10)       | E         |
+      | geboortedatum (03.10)                | 19830526  |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | naam                                                               | waarde         |
+      | voornamen (02.10)                                                  | Anna Catharina |
+      | adellijke titel of predicaat (02.20)                               | BS             |
+      | voorvoegsel (02.30)                                                | van den        |
+      | geslachtsnaam (02.40)                                              | Aedel          |
+      | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) | 20010809       |
+      En de 'partner' is gewijzigd naar de volgende gegevens
+      | naam                                                         | waarde         |
+      | voornamen (02.10)                                            | Anna Catharina |
+      | adellijke titel of predicaat (02.20)                         | BS             |
+      | voorvoegsel (02.30)                                          | van den        |
+      | geslachtsnaam (02.40)                                        | Aedel          |
+      | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | 20211109       |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0518                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | straatnaam (11.10)       | huisnummer (11.20) | postcode (11.60) |
+      | 0518                 | Jonkheer van Riemsdijkln | 88                 | 2583XL           |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam          | waarde                              |
+      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+      | geslachtsnaam | Hoogh                               |
+      | geboortedatum | 1983-05-26                          |
+      | fields        | adressering                         |
+      Dan heeft de response een persoon met de volgende gegevens
+      | naam                                 | waarde        |
+      | gemeenteVanInschrijving.code         | 0518          |
+      | gemeenteVanInschrijving.omschrijving | 's-Gravenhage |
+      En heeft de persoon de volgende 'verblijfplaats' gegevens
+      | naam       | waarde                   |
+      | straat     | Jonkheer van Riemsdijkln |
+      | huisnummer | 88                       |
+      | postcode   | 2583XL                   |
