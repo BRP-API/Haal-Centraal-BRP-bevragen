@@ -4,24 +4,25 @@ title: Getting Started
 ---
 # Getting Started
 
-De '{{site.apiname}}' Web API is gespecificeerd in OpenAPI specifications (OAS).
+De '{{site.apiname}}' Web API is gespecificeerd in OpenAPI specifications (OAS). Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel 38 van het Besluit BRP kunnen zich aanmelden voor deelname aan de pilot BRP.
 
 Wil je de API gebruiken? Dit kun je doen:
 
 1. Bekijk de [functionaliteit en specificaties](#functionaliteit-en-specificaties)
 2. [Implementeer de API Client](#implementeer-de-api-client)
 3. [Probeer en test de API](#probeer-en-test-de-brpproxy)
+4. [Download en lees het onboarding proces]({{ site.mainBranchUrl }}/docs/230118%20deelname%20experiment%20BRP%20API's%20v1.3.ppsx){:target="_blank" rel="noopener"}
 
 ## Functionaliteit en specificaties
 
-Je kunt een visuele representatie van de specificatie genereren met [Redoc]({{ site.baseurl }}/redoc-io).
+Je kunt een visuele representatie van de specificatie genereren met [Redoc](./redoc-io).
 
-De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/develop/specificatie/genereervariant/openapi.yaml).
+De (resolved) OAS3 kun je hier downloaden: [openapi.yaml]({{ site.devBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}.
 
 De [functionele documentatie](./features-v2) vind je in [features](./features-v2).
 
 ## Implementeer de API client
-Client code kun je genereren met de "[genereervariant](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/develop/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}" van de API-specificaties en een code generator. Een overzicht met codegeneratoren kun je vinden op [OpenAPI.Tools](https://openapi.tools/#sdk){:target="_blank" rel="noopener"}.
+Client code kun je genereren met de "[genereervariant]({{ site.devBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}" van de API-specificaties en een code generator. Een overzicht met codegeneratoren kun je vinden op [OpenAPI.Tools](https://openapi.tools/#sdk){:target="_blank" rel="noopener"}.
 
 Deze repo bevat scripts waarmee je met [OpenAPI Generator](https://openapi-generator.tech/){:target="_blank" rel="noopener"} client code kunt genereren in JAVA, .NET (Full Framework & Core) en Python. De makkelijkste manier om de code generatie scripts te gebruiken, is door deze repo te clonen. Na het clonen kun je met `npm install` de benodigde packages installeren en kun je met `npm run <script naam>` één van de volgende scripts uitvoeren:
 - oas:generate-java-client (voor JAVA client code)
@@ -35,13 +36,13 @@ Note. De prerequisite van OpenAPI Generator is JAVA. Je moet een JAVA runtime in
 
 ## Probeer en test de BrpProxy
 
-Door wettelijke restricties kan de BRP bevragen API bepaalde bewerkingen niet uitvoeren. Er wordt op dit moment aan gewerkt om deze restricties weg te halen. Totdat dit is gerealiseerd moet de BrpProxy worden gebruikt om de bewerkte gegevens te kunnen krijgen.
+Door wettelijke restricties kan de BRP bevragen API bepaalde bewerkingen niet uitvoeren. Er wordt op dit moment aan gewerkt om deze restricties weg te halen. Totdat dit is gerealiseerd moet de BrpProxy worden gebruikt om de bewerkte gegevens te kunnen krijgen. De BRP proxy is consumer van de Personen Bevragen GBA variant en levert de Personen Bevragen API v2.0.
 
 De BrpProxy is geïmplementeerd als een containerized applicatie, zodat het makkelijk kan worden getest op een lokale machine en gehost in een productie omgeving.
 
 Er is een referentie implementatie van een docker-compose configuratie te vinden in de repository die kan worden gebruikt om de BRP Proxy te draaien op een lokale machine.
 
-Voor test doeleinden is een mock van de RvIG variant van de BRP Persoon Bevragen API (BrpService) geïmplementeerd. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
+Voor test doeleinden is een mock van de RvIG variant van de BRP Persoon Bevragen API (GBA Variant) geïmplementeerd. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
 Ten behoeve van monitoring is Open Telemetry geïntegreerd in de BrpProxy. Met behulp van de docker-compose configuratie bestand wordt ook een [Jaeger](https://www.jaegertracing.io/) Container opgestart om de trace regels van de BrpProxy te visualiseren.
 
@@ -58,7 +59,7 @@ In de volgende paragrafen is beschreven hoe de BrpProxy  t.b.v. test doeleinden 
 
 - Clone de Haal Centraal BRP Persoon bevragen repository als deze niet eerder al is ge-clone-d<br/><br/>
   ```sh
-  git clone https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen.git
+  git clone {{ site.repoUrl }}.git
   ```
 - Ga naar de aangemaakte folder<br/><br/>
   ```sh
@@ -179,4 +180,4 @@ burgerservicenummer | situatie
 999990421 | meerdere kinderen, wel en niet-ingeschreven
 
 De API gebruikt de GBA-V proefomgeving. Alle testpersonen die daarin voorkomen kun je ook in de API gebruiken. De volledige set testpersonen kan worden gedownload bij de [RvIG](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v){:target="_blank"}.
-Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true){:target="_blank" rel="noopener"}.
+Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping]({{ site.devBranchUrl }}/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true){:target="_blank" rel="noopener"}.

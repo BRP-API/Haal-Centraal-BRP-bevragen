@@ -41,7 +41,7 @@ De identificatie van BAG-objecten wordt geïmplementeerd als string, waarin de d
 *Ratio*
 
 In het RSGB is de identificatie van BAG-objecten (bijvoorbeeld identificatiecode van een nummeraanduiding) opgenomen als complex datatype. In de BAG-registratie is dit echter één string waarin de deel-elementen uit het complex datatype zijn samengevoegd.
-Zie issue [#1](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/1).
+Zie issue [#1]({{ site.repoUrl }}/issues/1){:target="_blank" rel="noopener"}.
 
 ## Eén uniform endpoint voor zoeken persoonsgegevens
 Voor personen komt er één endpoint voor het zoeken: /personen.
@@ -65,7 +65,7 @@ Wanneer het verblijfadres een BAG-adres is, wordt ook een relatie (link) naar de
 Functionele vraag is: ik wil in één vraag een persoon met adres hebben.
 Een groot deel van de vragen om persoonsgegevens is er direct behoefte aan de adresgegevens, zonder geïnteresseerd te zijn in de structuur in BAG (zoals naar nummeraanduiding, woonplaats, ligplaats, adresseerbaar object).
 Zie https://www.rvig.nl/brp/vraag-en-antwoord/mag-een-persoon-worden-ingeschreven-op-een-locatieomschrijving-in-de-gba-als-er-geen-authentiek-bag-adres-is
-Deze oplossing is ook een oplossing voor issue [22](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/22) en [14](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/14).
+Deze oplossing is ook een oplossing voor issue [22]({{ site.repoUrl}}/issues/22){:target="_blank" rel="noopener"} en [14]({{ site.repoUrl }}/issues/14){:target="_blank" rel="noopener"}.
 
 ## Verblijfplaats wordt gevuld met adresgegevens uit het GBA als er geen BAG adres beschikbaar is
 De verblijfplaats toont de adresgegevens zoals die in het GBA staan geregistreerd als er geen BAG nummeraanduiding en openbare ruimtenaam uit de BAG beschikbaar is.
@@ -92,7 +92,7 @@ Deze velden zijn gedefinieerd in ISO8601-typen.
 Als er een volledige geboortedatum is, worden alle 4 velden ingevuld, anders alleen de bekende delen.
 
 *Ratio*
-In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/6).
+In de API moet het mogelijk zijn een persoon met gedeeltelijk onbekende geboortedatum op te nemen, zie issue [6]({{ site.repoUrl }}/issues/6){:target="_blank" rel="noopener"}.
 De gekozen oplossing is het eenvoudigst te implementeren.
 
 ## gemeenteVanInschrijving is een property met gemeentecode

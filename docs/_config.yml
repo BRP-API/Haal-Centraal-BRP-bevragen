@@ -1,6 +1,14 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
-apiname: "BRP Personen Bevragen"
+repoUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
+mainBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
+devBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
+apiname: "BRP Personen bevragen"
 url: "http://localhost:4000"
+# M.b.v. de optionele variabele 'logo' kan een ander logo dan het VNG logo in de rechterbovenhoek geplaatst worden.
+# Het betreffende bestand zal dan wel in de folder '\assets\img' van het remote the 'VNG-Realisatie/jekyll-theme-haal-centraal' moeten worden geplaatst.
+# Met de variabele 'organisation-url' kan de link onder het logo worden bepaald.
+logo: "BZK_RIG_Logo_online_ex_pos_nl.png"
+organisation-url: "http://www.rvig.nl"
 # nav is t.b.v. generatie side-navigation menu.
 # Een 'title' zonder path of url genereert slechts een kopje.
 # 'path' vormt tezamen met de baseurl de url waarmee de 'href' wordt gevuld. 
@@ -13,29 +21,14 @@ nav:
         path: /
       - title: Goals canvas
         path: /goals-canvas
-  - title: Specificaties v. 1.3
-    subnav:
-      - title: Getting started
-        path: /getting-started
-      - title: User stories
-        path: /user-stories-prod
-      - title: User stories (afgeschermd)
-        url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
-        target: blank
-      - title: Bevragen API (swagger-ui)
-        path: /swagger-ui
-      - title: Bevragen API (redoc)
-        path: /redoc
-      - title: Features
-        path: /features
-  - title: Specificaties v. 2.0 beta (API-Lab)
-    subnav:
-      - title: Getting started proefomgeving 
-        path: /getting-started-v2-beta
+#  - title: Specificaties v. 2.0 beta (API-Lab)
+#    subnav:
+#      - title: Getting started proefomgeving 
+#        path: /getting-started-v2-beta
 #      - title: User stories
 #        path: /user-stories-dev
-      - title: Bevragen API (redoc)
-        path: /redoc-beta
+#      - title: Bevragen API (redoc)
+#        path: /redoc-beta
 #      - title: Features v. 2.0 beta
 #        path: /features-v2-beta
   - title: Specificaties v. 2.0 (IO)
@@ -49,15 +42,30 @@ nav:
       - title: Bevragen API (redoc), GBA variant
         path: /redoc-gba-io
       - title: Features
-        path: /features-v2
+        path: /features/index
 
+#  - title: Specificaties v. 1.3
+#    subnav:
+#      - title: Getting started
+#        path: /getting-started
+#      - title: User stories
+#        path: /user-stories-prod
+#      - title: User stories (afgeschermd)
+#        url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
+#        target: blank
+#      - title: Bevragen API (swagger-ui)
+#        path: /swagger-ui
+#      - title: Bevragen API (redoc)
+#        path: /redoc
+#      - title: Features
+#        path: /features
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
 
 remote_theme: VNG-Realisatie/jekyll-theme-haal-centraal
 
-github: VNG-Realisatie/Haal-Centraal-BRP-bevragen
+github: BRP-API/Haal-Centraal-BRP-bevragen
 
 theme: jekyll-theme-time-machine
 

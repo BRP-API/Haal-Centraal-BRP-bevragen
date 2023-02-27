@@ -35,7 +35,7 @@ title: Haal Centraal BRP Personen Bevragen
 - wanneer voor een niet ingezetene (persoon in RNI) de gegevens zijn geverifieerd, worden gegevens daarover opgenomen in groep 'verificatie' 
 
 ## Versie 1.3.1
-- Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/850) )
+- Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850]({{ site.repoUrl }}/issues/850) )
 - Foutief Example BSN aangepast
 
 ## Versie 1.3.0
@@ -78,8 +78,7 @@ title: Haal Centraal BRP Personen Bevragen
 Alhoewel er nog geen eerdere officiële versie van de Haal-Centraal BRP Personen Bevragen API als release is uitgebracht is de specificatie het afgelopen jaar redelijk stabiel geweest.
 Voor het uitbrengen van release v1.0.0 is besloten om de nieuwe inzichten die het afgelopen jaar zijn opgedaan op te nemen. Hier een globaal (en niet limitatief) overzicht van wijzigingen die doorgevoerd zijn voordat v1.0.0 is uitgebracht. Enkele van deze wijzigingen zijn breaking ten opzichte van v0.9.0 .
 
-We bieden nu ook SDK's aan met gegenereerde [plumbing-code](./code).
-Daarnaast bieden we een[postman-collectie](./test) t.b.v. testen aan.
+We bieden een [postman-collectie]({{ site.masterBranchUrl }}/test) t.b.v. testen aan.
 
 ### Openapi.yaml:
 
@@ -131,12 +130,12 @@ In het algemeen is de testdata verwijderd uit de feature-files. De feature files
 - geslachtswijzing.feature is aangepast.
 - historie_links.feature is gewijzigd.
 - links.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
-- nationaliteithistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
+- nationaliteithistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/BRP-API/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
 - onvolledige_datum.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)
 - overleden_personen.feature is gewijzigd.
-- partnerhistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
+- partnerhistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/BRP-API/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
 - parametercombinaties.feature is gewijzigd.
 - parametervalidatie.feature is gewijzigd.
-- verblijfplaatshistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
-- verblijfstitelhistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
+- verblijfplaatshistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/BRP-API/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
+- verblijfstitelhistorie.feature is verplaatst naar [Haal-Centraal-BRP-historie-bevragen](https://github.com/BRP-API/Haal-Centraal-BRP-historie-bevragen/tree/master/features)
 - wildcard.feature is verplaatst naar [Common](https://github.com/VNG-Realisatie/Haal-Centraal-common/tree/v1.2.0/features)

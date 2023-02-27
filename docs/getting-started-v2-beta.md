@@ -21,7 +21,7 @@ De (resolved) OAS3 kun je hier downloaden: [openapi.yaml](https://github.com/VNG
 De [functionele documentatie](./features-v2-beta) vind je in [features](./features-v2-beta).
 
 ## Implementeer de API client
-Client code kun je genereren met de "[genereervariant](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/v2.0.0beta1/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}" van de API-specificaties en een code generator. Een overzicht met codegeneratoren kun je vinden op [OpenAPI.Tools](https://openapi.tools/#sdk){:target="_blank" rel="noopener"}.
+Client code kun je genereren met de "[genereervariant]({{ site.devBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}" van de API-specificaties en een code generator. Een overzicht met codegeneratoren kun je vinden op [OpenAPI.Tools](https://openapi.tools/#sdk){:target="_blank" rel="noopener"}.
 
 Deze repo bevat scripts waarmee je met [OpenAPI Generator](https://openapi-generator.tech/){:target="_blank" rel="noopener"} client code kunt genereren in JAVA, .NET (Full Framework & Core) en Python. De makkelijkste manier om de code generatie scripts te gebruiken, is door deze repo te clonen. Na het clonen kun je met `npm install` de benodigde packages installeren en kun je met npm run <script naam> één van de volgende scripts uitvoeren:
 - oas:generate-java-client (voor JAVA client code)
@@ -43,7 +43,7 @@ __Je kan de Haal Centraal probeeromgeving niet gebruiken vanuit de browser, dus 
 
 ### Importeer de specificaties in Postman
 
-De werking van de '{{site.apiname}}' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection](https://raw.githubusercontent.com/VNG-Realisatie{{ site.baseurl }}/master/test/BRP-Bevragen-v2-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
+De werking van de '{{site.apiname}}' Web API is het makkelijkst te testen met behulp van [Postman](https://www.getpostman.com/){:target="_blank" rel="noopener"}. We hebben al een [Postman collection]({{ site.devBranchUrl }}/test/BRP-Bevragen-v2-postman-collection.json){:target="_blank" rel="noopener"} voor je klaargezet. Deze kun je importeren in Postman.
 
 In Postman kun je de Postman collection importeren en visueel de {{site.apiname}} Personen endpoint aanroepen. Volg deze stappen om de Postman collection te importeren:
 
@@ -56,7 +56,7 @@ In Postman kun je de Postman collection importeren en visueel de {{site.apiname}
 !['Import From Link'](./img/2-select-import-from-link-tab-v2.jpg)  
 
 ``` url
-https://raw.githubusercontent.com/VNG-Realisatie{{ site.baseurl }}/master/test/BRP-Bevragen-v2-postman-collection.json
+{{ site.devBranchUrl }}/test/BRP-Bevragen-v2-postman-collection.json
 ```
 
 3.Klik op de Import button om de Postman collectie te importeren
@@ -107,4 +107,4 @@ burgerservicenummer | situatie
 999990421 | meerdere kinderen, wel en niet-ingeschreven
 
 De API gebruikt de GBA-V proefomgeving. Alle testpersonen die daarin voorkomen kun je ook in de API gebruiken. De volledige set testpersonen kan worden gedownload bij de [RvIG](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v){:target="_blank"}.
-Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping](https://github.com/VNG-Realisatie{{ site.baseurl }}/blob/master/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true){:target="_blank" rel="noopener"}.
+Een vertaling van GBA-V (LO GBA) attributen naar BRP API properties staat beschreven in de [BRP-LO GBA mapping]({{ site.devBranchUrl }}/docs/BRP-LO%20GBA%20mapping.xlsx?raw=true){:target="_blank" rel="noopener"}.
