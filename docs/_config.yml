@@ -1,6 +1,7 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
 repoUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
 mainBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
+devBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
 apiname: "BRP Personen bevragen"
 url: "http://localhost:4000"
 # M.b.v. de optionele variabele 'logo' kan een ander logo dan het VNG logo in de rechterbovenhoek geplaatst worden.
