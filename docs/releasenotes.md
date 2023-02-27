@@ -6,7 +6,7 @@ title: Haal Centraal BRP bevragingen
 # Releasenotes Haal-Centraal-BRP-Bevragen
 
 ## Versie 1.3.1
-- Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/850) )
+- Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850]({{ site.repoUrl }}/issues/850) )
 - Foutief Example BSN aangepast
 
 ## Versie 1.3.0
@@ -49,7 +49,7 @@ title: Haal Centraal BRP bevragingen
 Alhoewel er nog geen eerdere officiële versie van de Haal-Centraal-BRP-bevragen API als release is uitgebracht is de specificatie het afgelopen jaar redelijk stabiel geweest.
 Voor het uitbrengen van release v1.0.0 is besloten om de nieuwe inzichten die het afgelopen jaar zijn opgedaan op te nemen. Hier een globaal (en niet limitatief) overzicht van wijzigingen die doorgevoerd zijn voordat v1.0.0 is uitgebracht. Enkele van deze wijzigingen zijn breaking ten opzichte van v0.9.0 .
 
-We bieden een [postman-collectie](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/tree/master/test) t.b.v. testen aan.
+We bieden een [postman-collectie]({{ site.masterBranchUrl }}/test) t.b.v. testen aan.
 
 ### Openapi.yaml:
 
