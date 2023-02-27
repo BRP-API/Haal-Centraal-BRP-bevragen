@@ -24,6 +24,25 @@ Rule: voorvoegsel is niet hoofdlettergevoelig
     | naam                | waarde    |
     | burgerservicenummer | 000000025 |
 
+  Scenario: Voorvoegsel hoeft geen geldig voorvoegsel in tabel 36 Voorvoegsels te zijn
+    Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+    | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
+    | 19830526              | Maassen               | Pieter            |
+    En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
+    | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+    | 19830526              | Maassen               | Jan Peter         | Iets                |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam | Maassen                             |
+    | voorvoegsel   | iets                                |
+    | geboortedatum | 1983-05-26                          |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response 1 persoon
+    En heeft de response een persoon met de volgende gegevens
+    | naam                | waarde    |
+    | burgerservicenummer | 000000048 |
+
 Rule: geslacht is niet hoofdlettergevoelig
 
   Scenario: Zoek met geslacht in kleine letters
