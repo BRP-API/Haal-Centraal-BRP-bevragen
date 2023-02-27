@@ -8,9 +8,8 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | voornamen (02.10) |
       | Lisette           |
 
-  Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
-    Voor de gevraagde autorisatie zijn alleen autorisaties voor groepen 01, 02, 03, 04 en 62 relevant.
-    De impliciete autorisatie voor het ontvangen van inOnderzoek op oudergegevens wordt niet meegenomen bij het bepalen of ouderAanduiding gevraagd mag worden.
+  Rule: Voor het vragen van ouderaanduiding met fields, moet de afnemer geautoriseerd zijn voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2 uit de groepen 01, 02, 03, 04 en/of 62.
+    De impliciete autorisatie voor het ontvangen van inOnderzoek op oudergegevens wordt voor het ouderAanduiding veld niet meegenomen.
 
     @fout-case
     Abstract Scenario: Afnemer is <missende autorisatie>
