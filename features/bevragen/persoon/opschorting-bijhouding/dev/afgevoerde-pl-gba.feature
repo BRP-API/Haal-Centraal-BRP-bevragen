@@ -140,4 +140,3 @@ Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de r
     | E     | emigratie                 |
     | M     | ministerieel besluit      |
     | R     | pl is aangelegd in de rni |
-    | X     |                           |
