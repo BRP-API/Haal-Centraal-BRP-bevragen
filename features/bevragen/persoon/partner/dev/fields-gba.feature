@@ -19,6 +19,7 @@ Functionaliteit: partner velden vragen met fields (persoon)
   Scenario: naam veld(en) van partner is/zijn in onderzoek
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
     | naam                            | waarde                    |
+    | geslachtsnaam (02.40)           | .                         |
     | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
     | datum ingang onderzoek (83.20)  | 20020701                  |
     Als gba personen wordt gezocht met de volgende parameters
@@ -28,12 +29,17 @@ Functionaliteit: partner velden vragen met fields (persoon)
     | fields              | partners.naam                   |
     Dan heeft de response een persoon met een 'partner' met alleen de volgende gegevens
     | naam                                      | waarde                    |
+    | naam.geslachtsnaam                        | .                         |
     | inOnderzoek.aanduidingGegevensInOnderzoek | <gba in onderzoek waarde> |
     | inOnderzoek.datumIngangOnderzoek          | 20020701                  |
 
     Voorbeelden:
     | gba in onderzoek waarde |
     | 050000                  |
+    | 050200                  |
+    | 050240                  |
+    | 050310                  |
+    | 050600                  |
 
   Scenario: burgerservicenummer is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
