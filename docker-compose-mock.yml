@@ -20,7 +20,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: iswish/haal-centraal-brp-bevragen-proxy:2.0.13
+    image: iswish/haal-centraal-brp-bevragen-proxy:2.0.15
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
@@ -30,7 +30,6 @@ services:
       - "5001:5000"
     volumes:
       - ./src/config/BrpProxy/configuration/ocelot.json:/app/configuration/ocelot.json
-      - ./src/config/BrpProxy/mapping:/app/mapping
       - ./src/config/BrpProxy/appsettings/appsettings.json:/app/appsettings.json
       - ./elastic:/app/elastic
       # - ./src/config/BrpProxy/certificates:/app/certificates

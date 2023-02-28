@@ -115,7 +115,7 @@ public class FieldsHelper
         return dictionary;
     }
 
-    public FieldsHelper(IConfiguration configuration, ILogger<FieldsHelper> logger)
+    public FieldsHelper(ILogger<FieldsHelper> logger)
     {
         _logger = logger;
 

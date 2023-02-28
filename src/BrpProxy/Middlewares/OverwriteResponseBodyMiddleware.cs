@@ -3,7 +3,6 @@ using Gba = HaalCentraal.BrpProxy.Generated.Gba;
 using Newtonsoft.Json;
 using System.IO.Compression;
 using AutoMapper;
-using System.Linq;
 using BrpProxy.Validators;
 using Newtonsoft.Json.Linq;
 
@@ -12,15 +11,13 @@ namespace BrpProxy.Middlewares
     public class OverwriteResponseBodyMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly IConfiguration _configuration;
         private readonly ILogger<OverwriteResponseBodyMiddleware> _logger;
         private readonly IMapper _mapper;
         private readonly FieldsHelper _fieldsHelper;
 
-        public OverwriteResponseBodyMiddleware(RequestDelegate next, IConfiguration configuration, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper, FieldsHelper fieldsHelper)
+        public OverwriteResponseBodyMiddleware(RequestDelegate next, ILogger<OverwriteResponseBodyMiddleware> logger, IMapper mapper, FieldsHelper fieldsHelper)
         {
             _next = next;
-            _configuration = configuration;
             _logger = logger;
             _mapper = mapper;
             _fieldsHelper = fieldsHelper;

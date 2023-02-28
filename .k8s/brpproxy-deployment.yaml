@@ -28,8 +28,6 @@ spec:
           volumeMounts:
             - name: brpproxy-routing-configuration
               mountPath: /app/configuration
-            - name: brpproxy-field-mapping
-              mountPath: /app/mapping
             - name: brpproxy-settings
               mountPath: /app/appsettings.json
               subPath: appsettings.json
@@ -37,9 +35,6 @@ spec:
         - name: brpproxy-routing-configuration
           hostPath:
             path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/configuration
-        - name: brpproxy-field-mapping
-          hostPath:
-            path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/mapping
         - name: brpproxy-settings
           hostPath:
             path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/appsettings
