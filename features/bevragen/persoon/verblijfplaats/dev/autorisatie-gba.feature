@@ -44,22 +44,61 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | gevraagd veld                         | ad hoc rubrieken                                                              | missende autorisatie |
-      | functieAdres                          | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310       | 81010                |
-      | verblijfadres.korteStraatnaam         | 10120 80910 81010 81115 81120 81130 81140 81150 81160 81170 81210 81310       | 81110                |
-      | verblijfadres.officieleStraatnaam     | 10120 80910 81010 81110 81120 81130 81140 81150 81160 81170 81210 81310       | 81115                |
-      | verblijfadres.huisnummer              | 10120 80910 81010 81110 81115 81130 81140 81150 81160 81170 81210 81310       | 81120                |
-      | verblijfadres.huisletter              | 10120 80910 81010 81110 81115 81120 81140 81150 81160 81170 81210 81310       | 81130                |
-      | verblijfadres.huisnummertoevoeging    | 10120 80910 81010 81110 81115 81120 81130 81150 81160 81170 81210 81310       | 81140                |
-      | verblijfadres.aanduidingBijHuisnummer | 10120 80910 81010 81110 81115 81120 81130 81140 81160 81170 81210 81310       | 81150                |
-      | verblijfadres.postcode                | 10120 80910 81010 81110 81115 81120 81130 81140 81150 81170 81210 81310       | 81160                |
-      | verblijfadres.woonplaats              | 10120 80910 81010 81110 81115 81120 81130 81140 81150 81160 81210 81310       | 81170                |
-      | verblijfadres.regel1                  | 10120 80910 81010 81110 81150 81160 81210 81310 81320 81340 81350             | 81330                |
-      | verblijfadres.regel2                  | 10120 80910 81010 81110 81150 81160 81210 81310 81320 81330 81350             | 81340                |
-      | verblijfadres.regel3                  | 10120 80910 81010 81110 81150 81160 81210 81310 81320 81330 81340             | 81350                |
-      | adresseerbaarObjectIdentificatie      | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81190             | 81180                |
-      | nummeraanduidingIdentificatie         | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81180             | 81190                |
-      | datumIngangGeldigheid                 | 10120 80910 81010 81030 81110 81150 81160 81210 81310 81320 81330 81340 81350 | 88510                |
+      | gevraagd veld                         | ad hoc rubrieken                                                              | missende autorisatie        |
+      | functieAdres                          | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310       | 81010                       |
+      | verblijfadres.korteStraatnaam         | 10120 80910 81010 81115 81120 81130 81140 81150 81160 81170 81210 81310       | 81110                       |
+      | verblijfadres.officieleStraatnaam     | 10120 80910 81010 81110 81120 81130 81140 81150 81160 81170 81210 81310       | 81115                       |
+      | verblijfadres.huisnummer              | 10120 80910 81010 81110 81115 81130 81140 81150 81160 81170 81210 81310       | 81120                       |
+      | verblijfadres.huisletter              | 10120 80910 81010 81110 81115 81120 81140 81150 81160 81170 81210 81310       | 81130                       |
+      | verblijfadres.huisnummertoevoeging    | 10120 80910 81010 81110 81115 81120 81130 81150 81160 81170 81210 81310       | 81140                       |
+      | verblijfadres.aanduidingBijHuisnummer | 10120 80910 81010 81110 81115 81120 81130 81140 81160 81170 81210 81310       | 81150                       |
+      | verblijfadres.postcode                | 10120 80910 81010 81110 81115 81120 81130 81140 81150 81170 81210 81310       | 81160                       |
+      | verblijfadres.woonplaats              | 10120 80910 81010 81110 81115 81120 81130 81140 81150 81160 81210 81310       | 81170                       |
+      | verblijfadres.regel1                  | 10120 80910 81010 81110 81150 81160 81210 81310 81320 81340 81350             | 81330                       |
+      | verblijfadres.regel2                  | 10120 80910 81010 81110 81150 81160 81210 81310 81320 81330 81350             | 81340                       |
+      | verblijfadres.regel3                  | 10120 80910 81010 81110 81150 81160 81210 81310 81320 81330 81340             | 81350                       |
+      | adresseerbaarObjectIdentificatie      | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81190             | 81180                       |
+      | nummeraanduidingIdentificatie         | 10120 80910 81110 81115 81120 81130 81140 81150 81160 81170 81180             | 81190                       |
+      | datumIngangGeldigheid                 | 10120 80910 81010 81030 81110 81150 81160 81210 81310 81320 81330 81340 81350 | 88510                       |
+      | type                                  | 10120 81210 81310                                                             | straat (81110)              |
+      | type                                  | 10120 81110 81310                                                             | locatiebeschrijving (81210) |
+      | type                                  | 10120 81110 81210                                                             | land (81310)                |
+
+    Abstract Scenario: Afnemer vraagt <gevraagd veld>, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 <ad hoc rubrieken>        | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0800   |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                             |
+      | type                | RaadpleegMetBurgerservicenummer                    |
+      | burgerservicenummer | 000000024                                          |
+      | fields              | burgerservicenummer,verblijfplaats.<gevraagd veld> |
+      Dan heeft de response 1 persoon
+
+      Voorbeelden:
+      | gevraagd veld                         | ad hoc rubrieken        |
+      | functieAdres                          | 81010 81110 81210 81310 |
+      | verblijfadres.korteStraatnaam         | 81110 81210 81310       |
+      | verblijfadres.officieleStraatnaam     | 81110 81115 81210 81310 |
+      | verblijfadres.huisnummer              | 81110 81120 81210 81310 |
+      | verblijfadres.huisletter              | 81110 81130 81210 81310 |
+      | verblijfadres.huisnummertoevoeging    | 81110 81140 81210 81310 |
+      | verblijfadres.aanduidingBijHuisnummer | 81110 81150 81210 81310 |
+      | verblijfadres.postcode                | 81110 81160 81210 81310 |
+      | verblijfadres.woonplaats              | 81110 81170 81210 81310 |
+      | verblijfadres.locatiebeschrijving     | 81110 81210 81310       |
+      | verblijfadres.land                    | 81110 81210 81310       |
+      | verblijfadres.regel1                  | 81110 81210 81310 81330 |
+      | verblijfadres.regel2                  | 81110 81210 81310 81340 |
+      | verblijfadres.regel3                  | 81110 81210 81310 81350 |
+      | adresseerbaarObjectIdentificatie      | 81110 81180 81210 81310 |
+      | nummeraanduidingIdentificatie         | 81110 81190 81210 81310 |
+      | datumIngangGeldigheid                 | 81110 81210 81310 88510 |
+      | type                                  | 81110 81210 81310       |
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om groep verblijfadres en is niet geautoriseerd voor <ontbrekende autorisatie veld> (<missende autorisatie>)
@@ -193,8 +232,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaats.functieAdres | 10120 81010 81030 81210 81310 | straat (81110)              |
       | verblijfplaats.functieAdres | 10120 81010 81030 81110 81310 | locatiebeschrijving (81210) |
       | verblijfplaats.functieAdres | 10120 81010 81030 81110 81210 | land (81310)                |
-   
-  
+
   Rule: Wanneer met fields gevraagd is voor datumVan en afnemer is niet geautoriseerd voor datumAanvangAdreshouding én datumAanvangAdresBuitenland, wordt een foutmelding gegeven
     # de foutmelding toont het met fields gevraagde veld, in dit geval datumVan, niet het onderliggende veld waaruit deze gevuld wordt
 
@@ -289,6 +327,21 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | fields              | verblijfplaatsBinnenland.datumVan |
       Dan heeft de response 1 persoon
 
+    Scenario: Afnemer vraagt om alleen binnengemeentelijke type en is niet geautoriseerd voor verblijf buitenland
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81110 81210               | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0800   |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                            |
+      | type                | RaadpleegMetBurgerservicenummer   |
+      | burgerservicenummer | 000000024                         |
+      | fields              | verblijfplaatsBinnenland.type     |
+      Dan heeft de response 1 persoon
+
     @fout-case
     Abstract Scenario: Afnemer vraagt om groep verblijfplaatsBinnenland.verblijfadres en is niet geautoriseerd voor <ontbrekende autorisatie veld> (<missende autorisatie>)
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -322,3 +375,35 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | postcode                     | 10120 81110 81115 81120 81130 81140 81150 81170 81210 | 81160                |
       | woonplaats                   | 10120 81110 81115 81120 81130 81140 81150 81160 81210 | 81170                |
       | locatiebeschrijving          | 10120 81110 81115 81120 81130 81140 81150 81160 81170 | 81210                |
+
+    Abstract Scenario: Afnemer vraagt verblijfplaatsBinnenland.<gevraagd veld>, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 <ad hoc rubrieken>        | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      | gemeenteCode | 0800   |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                                                       |
+      | type                | RaadpleegMetBurgerservicenummer                              |
+      | burgerservicenummer | 000000024                                                    |
+      | fields              | burgerservicenummer,verblijfplaatsBinnenland.<gevraagd veld> |
+      Dan heeft de response 1 persoon
+
+      Voorbeelden:
+      | gevraagd veld                         | ad hoc rubrieken  |
+      | functieAdres                          | 81010 81110 81210 |
+      | verblijfadres.korteStraatnaam         | 81110 81210       |
+      | verblijfadres.officieleStraatnaam     | 81110 81115 81210 |
+      | verblijfadres.huisnummer              | 81110 81120 81210 |
+      | verblijfadres.huisletter              | 81110 81130 81210 |
+      | verblijfadres.huisnummertoevoeging    | 81110 81140 81210 |
+      | verblijfadres.aanduidingBijHuisnummer | 81110 81150 81210 |
+      | verblijfadres.postcode                | 81110 81160 81210 |
+      | verblijfadres.woonplaats              | 81110 81170 81210 |
+      | verblijfadres.locatiebeschrijving     | 81110 81210       |
+      | adresseerbaarObjectIdentificatie      | 81110 81180 81210 |
+      | nummeraanduidingIdentificatie         | 81110 81190 81210 |
+      | datumIngangGeldigheid                 | 81110 81210 88510 |
+      | type                                  | 81110 81210       |
