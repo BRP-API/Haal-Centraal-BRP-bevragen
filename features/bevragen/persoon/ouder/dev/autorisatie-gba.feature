@@ -8,7 +8,8 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | voornamen (02.10) |
       | Lisette           |
 
-  Rule: Vragen met fields gevraagd wordt om ouders.ouderAanduiding, wanneer de afnemer niet geautoriseerd is voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2, geeft een foutmelding
+  Rule: Voor het vragen van ouderaanduiding met fields, moet de afnemer geautoriseerd zijn voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2 uit de groepen 01, 02, 03, 04 en/of 62.
+    De impliciete autorisatie voor het ontvangen van inOnderzoek op oudergegevens wordt voor het ouderAanduiding veld niet meegenomen.
 
     @fout-case
     Abstract Scenario: Afnemer is <missende autorisatie>
@@ -33,10 +34,11 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | ad hoc rubrieken              | missende autorisatie                  |
-      | 10120 10210 10220 10230 10240 | niet geautoriseerd voor oudergegevens |
-      | 10120 20210 20220 20230 20240 | niet geautoriseerd voor ouder 2       |
-      | 10120 30210 30220 30230 30240 | niet geautoriseerd voor ouder 1       |
+      | ad hoc rubrieken              | missende autorisatie                                            |
+      | 10120 10210 10220 10230 10240 | niet geautoriseerd voor oudergegevens                           |
+      | 10120 20210 20220 20230 20240 | niet geautoriseerd voor ouder 2                                 |
+      | 10120 30210 30220 30230 30240 | niet geautoriseerd voor ouder 1                                 |
+      | 10120 28510 28610 38510 38610 | niet geautoriseerd voor oudergegevens in groep 1, 2, 3, 4 of 62 |
 
     Abstract Scenario: Afnemer is wel geautoriseerd voor <autorisatie>
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -54,9 +56,15 @@ Functionaliteit: autorisatie oudergegevens Persoon
       Dan heeft de response 1 persoon
 
       Voorbeelden:
-      | ad hoc rubrieken              | autorisatie                                            |
-      | 10120 20210 30210             | exact 1 gegeven van ouder 1 en 1 gegeven van ouder 2   |
-      | 10120 20120 20240 30310 30320 | meerdere gegevens van ouder 1 en 1 gegeven van ouder 2 |
+      | ad hoc rubrieken               | autorisatie                                                  |
+      | 10120 20120 30120              | exact 1 gegeven uit groep 01                                 |
+      | 10120 20240 30240              | exact 1 gegeven uit groep 02                                 |
+      | 10120 20310 30310              | exact 1 gegeven uit groep 03                                 |
+      | 10120 20410 30410              | exact 1 gegeven uit groep 04                                 |
+      | 10120 26210 36210              | exact 1 gegeven uit groep 62                                 |
+      | 10120 20110 30110              | A-nummer uit groep 01 dat niet voorkomt in de resource       |
+      | 10120 20310 30210              | exact 1 gegeven van ouder 1 en 1 ander gegeven van ouder 2   |
+      | 10120 20120 20240 30310 306210 | meerdere gegevens van ouder 1 en andere gegevens van ouder 2 |
 
       
   Rule: Vragen met fields om een gegeven van ouders, wanneer de afnemer niet geautoriseerd is voor dan gegeven van ouder 1 én van ouder 2, geeft een foutmelding
