@@ -119,6 +119,8 @@ Rule: Er moet een valide zoek type worden opgegeven
     Voorbeelden:
     | accept media type               |
     | */*                             |
+    | */*; charset=utf-8              |
+    | */*;charset=utf-8               |
     | application/json                |
     | application/json; charset=utf-8 |
     | application/json;charset=utf-8  |
