@@ -37,6 +37,8 @@ nav:
         path: /getting-started-v2
       - title: User stories
         path: /user-stories-dev
+      - title: Bevragen API (swagger-ui)
+        path: /swagger-ui-io
       - title: Bevragen API (redoc)
         path: /redoc-io
       - title: Bevragen API (redoc), GBA variant
