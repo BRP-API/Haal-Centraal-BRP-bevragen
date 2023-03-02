@@ -106,6 +106,101 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | true                         | inclusief                    |
     | false                        | exclusief                    |
 
+
+Rule: personen op een logisch verwijderde persoonslijst worden niet gevonden bij het zoeken
+
+  Abstract Scenario: persoon opgeschort met reden "W" (wissen) wordt gezocht met geslachtsnaam en geboortedatum <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | W                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                              |
+    | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam              | Vries                               |
+    | geboortedatum              | 2004-05-26                          |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>      |
+    | fields                     | burgerservicenummer                 |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "W" (wissen) wordt gezocht met geslachtsnaam, voornamen en gemeente van inschrijving <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | W                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                               |
+    | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
+    | geslachtsnaam              | Vries                                |
+    | voornamen                  | William                              |
+    | gemeenteVanInschrijving    | 0530                                 |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>       |
+    | fields                     | burgerservicenummer                  |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "W" (wissen) wordt gezocht met nummeraanduiding identificatie <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | W                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                          | waarde                               |
+    | type                          | ZoekMetNummeraanduidingIdentificatie |
+    | nummeraanduidingIdentificatie | 0599200000219679                     |
+    | inclusiefOverledenPersonen    | <inclusief overleden personen>       |
+    | fields                        | burgerservicenummer                  |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "W" (wissen) wordt gezocht met postcode en huisnummer <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | W                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                         |
+    | type                       | ZoekMetPostcodeEnHuisnummer    |
+    | postcode                   | 1628HJ                         |
+    | huisnummer                 | 31                             |
+    | inclusiefOverledenPersonen | <inclusief overleden personen> |
+    | fields                     | burgerservicenummer            |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+  Abstract Scenario: persoon opgeschort met reden "W" (wissen) wordt gezocht met straat, huisnummer en gemeente van inschrijving <zoek overleden personen type> overleden personen
+    En de persoon heeft de volgende 'inschrijving' gegevens
+    | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+    | 20220829                             | W                                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                       | waarde                                           |
+    | type                       | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving |
+    | gemeenteVanInschrijving    | 0530                                             |
+    | straat                     | Haagse Reigerstraat                              |
+    | huisnummer                 | 31                                               |
+    | inclusiefOverledenPersonen | <inclusief overleden personen>                   |
+    | fields                     | burgerservicenummer                              |
+    Dan heeft de response 0 personen
+
+    Voorbeelden:
+    | inclusief overleden personen | zoek overleden personen type |
+    | true                         | inclusief                    |
+    | false                        | exclusief                    |
+
+
 Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
   Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met geslachtsnaam en geboortedatum exclusief overleden personen
