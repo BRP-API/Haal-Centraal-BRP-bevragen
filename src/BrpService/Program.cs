@@ -1,3 +1,4 @@
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using HaalCentraal.BrpService.Extensions;
 using HaalCentraal.BrpService.Repositories;
@@ -31,12 +32,9 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers()
                 .ConfigureInvalidModelStateHandling()
-                .AddFluentValidation(options =>
-                {
-                    options.RegisterValidatorsFromAssemblyContaining<ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator>();
-                    options.DisableDataAnnotationsValidation = true;
-                })
                 .AddNewtonsoftJson();
+builder.Services.AddFluentValidationAutoValidation(options => options.DisableDataAnnotationsValidation = true)
+                .AddValidatorsFromAssemblyContaining<ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

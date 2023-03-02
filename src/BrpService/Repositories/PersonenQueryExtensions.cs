@@ -63,6 +63,7 @@ public static class PersonenQueryExtensions
         {
             specification = specification.And(new VoorvoegselSpecification(query.Voorvoegsel));
         }
+        specification = specification.And(new InclusiefOverledenPersonenSpecification(query.InclusiefOverledenPersonen));
 
         return specification;
     }

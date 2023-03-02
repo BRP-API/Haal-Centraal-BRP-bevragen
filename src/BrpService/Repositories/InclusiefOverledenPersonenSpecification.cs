@@ -16,8 +16,8 @@ public class InclusiefOverledenPersonenSpecification : Specification<GbaPersoonB
         return _inclusiefOverledenPersonen
             ? persoon => persoon != null
             : persoon => persoon != null &&
-              persoon.OpschortingBijhouding != null &&
-              persoon.OpschortingBijhouding.Reden != null &&
-              persoon.OpschortingBijhouding.Reden.Code == "O";
+              (persoon.OpschortingBijhouding == null ||
+              persoon.OpschortingBijhouding.Reden == null ||
+              persoon.OpschortingBijhouding.Reden.Code != "O");
     }
 }
