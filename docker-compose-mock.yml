@@ -20,7 +20,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: iswish/haal-centraal-brp-bevragen-proxy:2.0.15
+    image: iswish/haal-centraal-brp-bevragen-proxy:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
@@ -36,7 +36,7 @@ services:
 
   gbamock:
     container_name: gbamock
-    image: iswish/haal-centraal-brp-bevragen-gba-mock:2.0.2
+    image: iswish/haal-centraal-brp-bevragen-gba-mock:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       #- ASPNETCORE_URLS=https://+:5011;http://+:5010
