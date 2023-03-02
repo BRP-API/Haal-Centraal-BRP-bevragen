@@ -126,37 +126,44 @@ namespace BrpProxy.Middlewares
             };
         }
 
-        private static BadRequestFoutbericht CreateJsonReaderExceptionFoutbericht(this HttpContext context, JsonReaderException ex)
+        private static BadRequestFoutbericht CreateJsonReaderExceptionFoutbericht(this HttpContext context, JsonReaderException? ex)
         {
             var name = string.Empty;
             var code = string.Empty;
             var reason = string.Empty;
 
-            var match = ConvertPropertyValueRegex.Match(ex.Message);
+            var match = ConvertPropertyValueRegex.Match(ex != null ? ex.Message : string.Empty);
             if (match.Success)
             {
                 name = match.Groups["name"].Value;
                 code = match.Groups["code"].Value;
                 reason = $"Waarde is geen {match.Groups["code"].Value}.";
             }
-            return new BadRequestFoutbericht
+
+            var retval = new BadRequestFoutbericht
             {
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
                 Status = StatusCodes.Status400BadRequest,
                 Title = "Een of meerdere parameters zijn niet correct.",
                 Type = new Uri(BadRequestIdentifier),
                 Code = "paramsValidation",
-                Detail = $"De foutieve parameter(s) zijn: {name}.",
-                InvalidParams = new List<InvalidParams>
-                {
-                    new InvalidParams
-                    {
-                        Code = code,
-                        Name = name,
-                        Reason = reason
-                    }
-                }
+                Detail = $"De foutieve parameter(s) zijn: {name}."
             };
+            if (!string.IsNullOrEmpty(name) ||
+                !string.IsNullOrEmpty(code) ||
+                !string.IsNullOrEmpty(reason))
+            {
+                retval.InvalidParams = new List<InvalidParams>
+                    {
+                        new InvalidParams
+                        {
+                            Code = code,
+                            Name = name,
+                            Reason = reason
+                        }
+                    };
+            }
+            return retval;
         }
 
         public static BadRequestFoutbericht CreateBadRequestFoutbericht(this HttpContext context, string titel, string code, IEnumerable<InvalidParams> invalidParams)
@@ -258,6 +265,26 @@ namespace BrpProxy.Middlewares
             logger.LogWarning("Not supported Content-Type values: {@contentTypeHeader}", context.Request.Headers.ContentType);
 
             var foutbericht = context.CreateNotSupportedMediaTypeFoutbericht();
+
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
+
+            context.SetResponseProperties(foutbericht, bodyStream);
+
+            await bodyStream.CopyToAsync(orgResponseBodyStream);
+
+            return false;
+        }
+
+        public static async Task<bool> RequestBodyIsValid(this HttpContext context, string requestBody, Stream orgResponseBodyStream, ILogger logger)
+        {
+            if(!string.IsNullOrWhiteSpace(requestBody))
+            {
+                return true;
+            }
+
+            logger.LogWarning("Not supported requestBody: {@requestBody}", requestBody);
+
+            var foutbericht = context.CreateJsonReaderExceptionFoutbericht(null);
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 

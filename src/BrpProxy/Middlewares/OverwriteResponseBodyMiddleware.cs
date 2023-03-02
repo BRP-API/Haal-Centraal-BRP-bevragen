@@ -47,6 +47,11 @@ namespace BrpProxy.Middlewares
                 }
 
                 requestBody = await context.Request.ReadBodyAsync();
+                if(!await context.RequestBodyIsValid(requestBody, orgBodyStream, _logger))
+                {
+                    return;
+                }
+
                 _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
 
                 PersonenQuery? personenQuery = null;
