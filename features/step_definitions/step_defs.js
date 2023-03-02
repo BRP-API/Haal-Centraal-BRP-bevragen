@@ -246,6 +246,8 @@ const columnNameMap = new Map([
 
     ['rni-deelnemer (88.10)', 'rni_deelnemer'],
     ['omschrijving verdrag (88.20)', 'verdrag_oms'],
+
+    ['registratie betrekking (89.10)', 'registratie_betrekking'],
 	
     ['gemeentecode (92.10)', 'gemeente_code'],
     ['gemeente_code', 'gemeente_code'],

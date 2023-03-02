@@ -165,3 +165,28 @@ Functionaliteit: kinderen raadplegen
       | naam                | waarde    |
       | burgerservicenummer | 000000097 |
       | naam.voornamen      | Karel     |
+
+  Rule: een levenloos geboren kind wordt niet geleverd.
+    Dit is het geval wanneer Registratie betrekking (89.10) een waarde heeft.
+
+    # Leveren van een levenloos geboren kind mag alleen wanneer de afnemer daarvoor geautoriseerd is (autorisatie rubriek 35.95.14).
+    # Op dit moment heeft de API nog geen veld waarin kan worden aangegeven dat een kind levenloos geboren is.
+    # Voorlopig zijn er geen afnemers voor de API die geautoriseerd zijn voor een levenloos kind.
+    # Tot er een afnemer is met autorisatie voor 35.95.14, die autorisatie is gebouwd en er een indicatie levenloos geboren is toegevoegd, mag een levenloos geboren kind niet worden geleverd. 
+    # Zie #855.
+    
+    Scenario: de persoon heeft een levenloos geboren kind en een levend kind
+      Gegeven de persoon met burgerservicenummer '000000073' heeft een 'kind' met de volgende gegevens
+      | voornamen (02.10) |
+      | Bert              |
+      En de persoon heeft nog een 'kind' met de volgende gegevens
+      | voornamen (02.10) | registratie betrekking (89.10) |
+      | Ernie             | L                              |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000073                       |
+      | fields              | kinderen.naam.voornamen         |
+      Dan heeft de response een persoon met een 'kind' met de volgende 'naam' gegevens
+      | naam      | waarde |
+      | voornamen | Bert   |
