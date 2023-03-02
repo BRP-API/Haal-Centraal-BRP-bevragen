@@ -1,5 +1,6 @@
 #language: nl
 
+@gba
 Functionaliteit: RaadpleegMetBurgerservicenummer bij geblokkeerde persoonslijst
 
   Rule: zoeken vindt ook personen waarvan de persoonslijst is geblokkeerd

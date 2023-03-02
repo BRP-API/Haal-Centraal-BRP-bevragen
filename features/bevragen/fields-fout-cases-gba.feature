@@ -1,5 +1,6 @@
 #language: nl
 
+@gba
 Functionaliteit: persoon/persoon beperkt velden vragen met fields - fout cases
 
 Rule: De fields parameter is een verplichte parameter

@@ -26,7 +26,7 @@ Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt d
       - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
       - als de waarde in de geboorteplaats (03.20) niet voorkomt in de landelijke tabel Gemeenten, dan wordt de waarde alleen in de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
 
-  Scenario: Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
+  Scenario: Plaats is buitenlandse plaats of locatie bij code voor kind geboorte
     Gegeven de persoon met burgerservicenummer '000000309' heeft een 'kind' met de volgende gegevens
     | geboorteplaats (03.20) |
     | Brussel                |

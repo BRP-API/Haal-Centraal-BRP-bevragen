@@ -448,7 +448,7 @@ Rule: rni mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
    @fout-case
    Abstract Scenario: rni in <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd
-     Als gba personen wordt gezocht met de volgende parameters
+     Als personen wordt gezocht met de volgende parameters
      | naam                | waarde                          |
      | type                | RaadpleegMetBurgerservicenummer |
      | burgerservicenummer | 000000024                       |
