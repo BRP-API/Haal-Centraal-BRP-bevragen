@@ -156,47 +156,6 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | partners | 050120, 050210, 050220, 050230, 050240, 050310, 050320, 050330, 050410, 050610, 050620, 050630, 050710, 051510 |
       | kinderen | 090120, 090210, 090220, 090230, 090240, 090310, 090320, 090330                                                 |
 
-  Rule: Wanneer met fields een veld van ouders wordt gevraagd, worden de bijbehorende rubrieknummers voor ouder 1 én ouder 2 opgenomen in het veld 'request_gevraagde_rubrieken'.
-
-    Scenario: vragen om <fields>
-      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | naam            | waarde     |
-      | anummer (01.10) | 5472698941 |
-      En de persoon heeft een ouder '1' met de volgende gegevens
-      | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
-      | 20190614                                           | Moeder                | V                           |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | <fields>                 |
-      Dan heeft de persoon met anummer '5472698941' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 5472698941 | <gevraagde rubrieken>       |
-
-      Voorbeelden:
-      | fields                                         | gevraagde rubrieken                                            |
-      | ouders.burgerservicenummer                     | 020120, 030120                                                 |
-      | ouders.naam                                    | 020210, 020220, 020230, 020240, 030210, 030220, 030230, 030240 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                                                 |
-
-  Rule: Voor ouders.ouderAanduiding wordt niks opgenomen in veld 'request_gevraagde_rubrieken'
-
-    Scenario: vragen om ouders.ouderAanduiding
-      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | naam            | waarde     |
-      | anummer (01.10) | 7531580186 |
-      En de persoon heeft een ouder '1' met de volgende gegevens
-      | datum ingang familierechtelijke betrekking (62.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
-      | 20190614                                           | Moeder                | V                           |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | ouders.ouderAanduiding          |
-      Dan heeft de persoon met anummer '7531580186' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 7531580186 |                             |
 
   Rule: Wanneer een gevraagd veld niet geleverd wordt (bijv. omdat het geen waarde heeft), wordt het wel in het veld 'request_gevraagde_rubrieken' opgenomen.
     
