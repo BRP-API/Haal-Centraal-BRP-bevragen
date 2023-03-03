@@ -1,7 +1,7 @@
 #language: nl
 
 @gba @protocollering
-Functionaliteit: protocollering van de gevraagde gegevens voor persoon 
+Functionaliteit: protocollering van leeftijd van de persoon
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
@@ -22,8 +22,5 @@ Functionaliteit: protocollering van de gevraagde gegevens voor persoon
 
       Voorbeelden:
       | fields                                    | gevraagde rubrieken                            |
-      | aNummer                                   | 010110                                         |
-      | burgerservicenummer                       | 010120                                         |
-      | geslacht                                  | 010410                                         |
-      | geslacht.code                             | 010410                                         |
-      | geslacht.omschrijving                     | 010410                                         |
+      | geboorte.datum                            | 010310                                         |
+      | leeftijd                                  | 010310                                         |
