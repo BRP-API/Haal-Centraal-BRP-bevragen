@@ -19,42 +19,42 @@ Functionaliteit: protocollering van de gevraagde gegevens voor ouders
       | 8016043787 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                                     | gevraagde rubrieken                                            |
-      | ouders                                                     |                                                                |
-      | ouders.burgerservicenummer                                 | 020120, 030120                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking             | 022610, 036210                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking.langFormaat | 022610, 036210                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking.type        | 022610, 036210                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking.datum       | 022610, 036210                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking.onbekend    | 022610, 036210                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking.jaar        | 022610, 036210                                                 |
-      | ouders.datumIngangFamilierechtelijkeBetrekking.maand       | 022610, 036210                                                 |
-      | ouders.geboorte                                            | 020310, 020320, 020330, 030310, 030320, 030330                 |
-      | ouders.geboorte.datum                                      | 020310, 030310                                                 |
-      | ouders.geboorte.datum.langFormaat                          | 020310, 030310                                                 |
-      | ouders.geboorte.datum.type                                 | 020310, 030310                                                 |
-      | ouders.geboorte.datum.datum                                | 020310, 030310                                                 |
-      | ouders.geboorte.datum.onbekend                             | 020310, 030310                                                 |
-      | ouders.geboorte.datum.jaar                                 | 020310, 030310                                                 |
-      | ouders.geboorte.datum.maand                                | 020310, 030310                                                 |
-      | ouders.geboorte.land                                       | 020330, 030330                                                 |
-      | ouders.geboorte.land.code                                  | 020330, 030330                                                 |
-      | ouders.geboorte.land.omschrijving                          | 020330, 030330                                                 |
-      | ouders.geboorte.plaats                                     | 020320, 030320                                                 |
-      | ouders.geboorte.plaats.code                                | 020320, 030320                                                 |
-      | ouders.geboorte.plaats.omschrijving                        | 020320, 030320                                                 |
-      | ouders.geslacht                                            | 020410, 030410                                                 |
-      | ouders.geslacht.code                                       | 020410, 030410                                                 |
-      | ouders.geslacht.omschrijving                               | 020410, 030410                                                 |
-      | ouders.naam                                                | 020210, 020220, 020230, 020240, 030210, 030220, 030230, 030240 |
-      | ouders.naam.adellijkeTitelPredicaat                        | 020220, 030220                                                 |
-      | ouders.naam.adellijkeTitelPredicaat.code                   | 020220, 030220                                                 |
-      | ouders.naam.adellijkeTitelPredicaat.omschrijving           | 020220, 030220                                                 |
-      | ouders.naam.adellijkeTitelPredicaat.soort                  | 020220, 030220                                                 |
-      | ouders.naam.geslachtsnaam                                  | 020240, 030240                                                 |
-      | ouders.naam.voorletters                                    | 020210, 030210                                                 |
-      | ouders.naam.voornamen                                      | 020210, 030210                                                 |
-      | ouders.naam.voorvoegsel                                    | 020230, 030230                                                 |
+      | fields                                                     | gevraagde rubrieken                                                                                                                                            |
+      | ouders                                                     | 020120, 020210, 020220, 020230, 020240, 020310, 020320, 020330, 020410, 026210, 030120, 030210, 030220, 030230, 030240, 030310, 030320, 030330, 030410, 036210 |
+      | ouders.burgerservicenummer                                 | 020120, 030120                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking             | 026210, 036210                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking.langFormaat | 026210, 036210                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking.type        | 026210, 036210                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking.datum       | 026210, 036210                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking.onbekend    | 026210, 036210                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking.jaar        | 026210, 036210                                                                                                                                                 |
+      | ouders.datumIngangFamilierechtelijkeBetrekking.maand       | 026210, 036210                                                                                                                                                 |
+      | ouders.geboorte                                            | 020310, 020320, 020330, 030310, 030320, 030330                                                                                                                 |
+      | ouders.geboorte.datum                                      | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.datum.langFormaat                          | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.datum.type                                 | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.datum.datum                                | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.datum.onbekend                             | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.datum.jaar                                 | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.datum.maand                                | 020310, 030310                                                                                                                                                 |
+      | ouders.geboorte.land                                       | 020330, 030330                                                                                                                                                 |
+      | ouders.geboorte.land.code                                  | 020330, 030330                                                                                                                                                 |
+      | ouders.geboorte.land.omschrijving                          | 020330, 030330                                                                                                                                                 |
+      | ouders.geboorte.plaats                                     | 020320, 030320                                                                                                                                                 |
+      | ouders.geboorte.plaats.code                                | 020320, 030320                                                                                                                                                 |
+      | ouders.geboorte.plaats.omschrijving                        | 020320, 030320                                                                                                                                                 |
+      | ouders.geslacht                                            | 020410, 030410                                                                                                                                                 |
+      | ouders.geslacht.code                                       | 020410, 030410                                                                                                                                                 |
+      | ouders.geslacht.omschrijving                               | 020410, 030410                                                                                                                                                 |
+      | ouders.naam                                                | 020210, 020220, 020230, 020240, 030210, 030220, 030230, 030240                                                                                                 |
+      | ouders.naam.adellijkeTitelPredicaat                        | 020220, 030220                                                                                                                                                 |
+      | ouders.naam.adellijkeTitelPredicaat.code                   | 020220, 030220                                                                                                                                                 |
+      | ouders.naam.adellijkeTitelPredicaat.omschrijving           | 020220, 030220                                                                                                                                                 |
+      | ouders.naam.adellijkeTitelPredicaat.soort                  | 020220, 030220                                                                                                                                                 |
+      | ouders.naam.geslachtsnaam                                  | 020240, 030240                                                                                                                                                 |
+      | ouders.naam.voorletters                                    | 020210, 030210                                                                                                                                                 |
+      | ouders.naam.voornamen                                      | 020210, 030210                                                                                                                                                 |
+      | ouders.naam.voorvoegsel                                    | 020230, 030230                                                                                                                                                 |
 
   Rule: Voor ouders.ouderAanduiding wordt niks opgenomen in veld 'request_gevraagde_rubrieken'
 
