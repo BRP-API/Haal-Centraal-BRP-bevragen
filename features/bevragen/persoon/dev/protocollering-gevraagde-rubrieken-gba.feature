@@ -21,9 +21,10 @@ Functionaliteit: protocollering van de gevraagde gegevens voor persoon
       | 8016043787 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                    | gevraagde rubrieken                            |
-      | aNummer                                   | 010110                                         |
-      | burgerservicenummer                       | 010120                                         |
-      | geslacht                                  | 010410                                         |
-      | geslacht.code                             | 010410                                         |
-      | geslacht.omschrijving                     | 010410                                         |
+      | fields                     | gevraagde rubrieken |
+      | aNummer                    | 010110              |
+      | burgerservicenummer        | 010120              |
+      | geslacht                   | 010410              |
+      | geslacht.code              | 010410              |
+      | geslacht.omschrijving      | 010410              |
+      | datumEersteInschrijvingGBA | 076810              |
