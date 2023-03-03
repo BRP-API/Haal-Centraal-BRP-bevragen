@@ -21,7 +21,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor kinderen
       | 8016043787 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                           | gevraagde rubrieken |
+      | fields                                             | gevraagde rubrieken                                            |
       | kinderen                                           | 090120, 090210, 090220, 090230, 090240, 090310, 090320, 090330 |
       | kinderen.burgerservicenummer                       | 090120                                                         |
       | kinderen.geboorte                                  | 090310, 090320, 090330                                         |
