@@ -30,16 +30,6 @@ Functionaliteit: protocollering van de gevraagde gegevens voor verblijfplaats
 
       Voorbeelden:
       | fields                                                    | gevraagde rubrieken                                                                                                                                    |
-      | gemeenteVanInschrijving                                   | 080910                                                                                                                                                 |
-      | gemeenteVanInschrijving.code                              | 080910                                                                                                                                                 |
-      | gemeenteVanInschrijving.omschrijving                      | 080910                                                                                                                                                 |
-      | datumInschrijvingInGemeente                               | 080920                                                                                                                                                 |
-      | datumInschrijvingInGemeente.langFormaat                   | 080920                                                                                                                                                 |
-      | datumInschrijvingInGemeente.type                          | 080920                                                                                                                                                 |
-      | datumInschrijvingInGemeente.datum                         | 080920                                                                                                                                                 |
-      | datumInschrijvingInGemeente.onbekend                      | 080920                                                                                                                                                 |
-      | datumInschrijvingInGemeente.jaar                          | 080920                                                                                                                                                 |
-      | datumInschrijvingInGemeente.maand                         | 080920                                                                                                                                                 |
       | verblijfplaats.functieAdres                               | 081010, 081110, 081210, 081310                                                                                                                         |
       | verblijfplaats.adresseerbaarObjectIdentificatie           | 081110, 081180, 081210, 081310                                                                                                                         |
       | verblijfplaats.nummeraanduidingIdentificatie              | 081110, 081190, 081210, 081310                                                                                                                         |
