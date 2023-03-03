@@ -78,6 +78,10 @@ Rule: voornamen wordt geleverd bij field pad 'naam.voorletters'
     | naam                                 | waarde      |
     | geslachtsaanduiding (04.10)          | M           |
     | voornamen (02.10)                    | Hendrik Jan |
+    | adellijke titel of predicaat (02.20) | B           |
+    | voorvoegsel (02.30)                  | van den     |
+    | geslachtsnaam (02.40)                | Aedel       |
+    | aanduiding naamgebruik (61.10)       | E           |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |

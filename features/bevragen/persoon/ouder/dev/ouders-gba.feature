@@ -414,3 +414,25 @@ Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt d
     Dan heeft de response een persoon met een 'ouder' met de volgende 'geboorte' gegevens
     | naam                | waarde            |
     | plaats.omschrijving | 52°2'43N4°22'39"O |
+
+
+Rule: Wanneer gevraagd wordt om de voorletters van de ouders, worden de voornamen geleverd
+
+  Scenario: Gevraag wordt om de voorletters van de ouders
+    Gegeven de persoon met burgerservicenummer '000000152' heeft een ouder '1' met de volgende gegevens
+    | voornamen (02.10) | geslachtsnaam (02.40) |
+    | Lisette           | Postma                |
+    En de persoon heeft een ouder '2' met de volgende gegevens
+    | voornamen (02.10) | geslachtsnaam (02.40) |
+    | Guîllaumé         | Postma                |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | ouders.naam.voorletters         |
+    Dan heeft de response een persoon met een 'ouder' met de volgende gegevens
+    | naam            | waarde  |
+    | naam.voornamen  | Lisette |
+    En heeft de persoon een 'ouder' met de volgende gegevens
+    | naam            | waarde    |
+    | naam.voornamen  | Guîllaumé |

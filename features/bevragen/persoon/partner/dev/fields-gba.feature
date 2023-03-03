@@ -159,8 +159,11 @@ Rule: voornamen wordt geleverd met field pad 'naam.voorletters'
 
   Scenario: 'voorletters' wordt gevraagd met field pad 'naam.voorletters'
     Gegeven de persoon met burgerservicenummer '000000176' heeft een 'partner' met de volgende gegevens
-    | naam              | waarde   |
-    | voornamen (02.10) | Carolina |
+    | naam                                 | waarde   |
+    | voornamen (02.10)                    | Carolina |
+    | adellijke titel of predicaat (02.20) | R        |
+    | voorvoegsel (02.30)                  | de       |
+    | geslachtsnaam (02.40)                | Groen    |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
