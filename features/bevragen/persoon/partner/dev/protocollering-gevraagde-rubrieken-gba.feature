@@ -1,7 +1,7 @@
 #language: nl
 
 @gba @protocollering
-Functionaliteit: protocollering van de gevraagde gegevens voor nationaliteiten 
+Functionaliteit: protocollering van de gevraagde gegevens voor partner 
 
   Rule: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
