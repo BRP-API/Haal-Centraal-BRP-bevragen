@@ -71,14 +71,15 @@ Functionaliteit: Autorisatie voor naam
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | ad hoc rubrieken              | missende autorisatie |
-      | 10120 10220 10230 10240 16110 | 10210                |
-      | 10120 10210 10230 10240 16110 | 10220                |
-      | 10120 10210 10230 10240 16110 | 10220                |
-      | 10120 10210 10230 10240 16110 | 10220                |
-      | 10120 10210 10220 10240 16110 | 10230                |
-      | 10120 10210 10220 10230 16110 | 10240                |
-      | 10120 10210 10220 10230 10240 | 16110                |
+      | ad hoc rubrieken                    | missende autorisatie |
+      | 10120 10220 10230 10240 10410 16110 | 10210                |
+      | 10120 10210 10230 10240 10410 16110 | 10220                |
+      | 10120 10210 10230 10240 10410 16110 | 10220                |
+      | 10120 10210 10230 10240 10410 16110 | 10220                |
+      | 10120 10210 10220 10240 10410 16110 | 10230                |
+      | 10120 10210 10220 10230 10410 16110 | 10240                |
+      | 10120 10210 10220 10230 10240 16110 | 10410                |
+      | 10120 10210 10220 10230 10240 10410 | 16110                |
 
 
   Rule: Wanneer met fields gevraagd wordt om voorletters en de gebruiker is niet geautoriseerd voor voornamen, wordt een foutmelding gegeven
