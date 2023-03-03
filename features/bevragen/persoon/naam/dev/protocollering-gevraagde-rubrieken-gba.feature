@@ -22,12 +22,11 @@ Functionaliteit: protocollering van naamgegevens van de persoon
 
       Voorbeelden:
       | fields                                    | gevraagde rubrieken                            |
-      | naam                                      | 010210, 010220, 010230, 010240, 016110         |
+      | naam                                      | 010210, 010220, 010230, 010240, 010410, 016110 |
       | naam.adellijkeTitelPredicaat              | 010220                                         |
       | naam.adellijkeTitelPredicaat.code         | 010220                                         |
       | naam.adellijkeTitelPredicaat.omschrijving | 010220                                         |
       | naam.adellijkeTitelPredicaat.soort        | 010220                                         |
-      | naam                                      | 010210, 010220, 010230, 010240, 010410, 016110 |
       | naam.geslachtsnaam                        | 010240                                         |
       | naam.volledigeNaam                        | 010210, 010220, 010230, 010240, 010410         |
       | naam.voorletters                          | 010210                                         |
