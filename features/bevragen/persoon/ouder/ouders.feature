@@ -186,7 +186,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | 20190614                                           | .                     | V                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
     | aktenummer (81.20) | datum ingang geldigheid (85.10) |
-    | 12 AB3456CD        | 20160518                        |
+    | DOC1234            | 20160518                        |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -208,7 +208,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | .                     | 00000000                                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
     | aktenummer (81.20) | datum ingang geldigheid (85.10) |
-    | 12 AB3456CD        | 20160518                        |
+    | DOC1234            | 20160518                        |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -228,7 +228,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     | Jansen                | V                           | 20190614                                           |
     En de persoon heeft een ouder '2' met de volgende gegevens
     | aktenummer (81.20) | datum ingang geldigheid (85.10) |
-    | 12 AB3456CD        | 20160518                        |
+    | DOC1234            | 20160518                        |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
