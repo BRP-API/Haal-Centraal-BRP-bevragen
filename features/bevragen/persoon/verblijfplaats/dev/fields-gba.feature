@@ -206,27 +206,31 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | verblijfplaatsBinnenland.verblijfadres                                              | huisnummer               | 31            |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer | datumAanvangAdreshouding | 20150808      | huisnummer        | 31            |                           |               |
 
-  Scenario: verblijfsadres van een adres wordt gevraagd en levert alle velden met een waarde
+  Abstract Scenario: <fields> wordt gevraagd en levert alle verblijfadres velden met een waarde
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
     | naam                               | waarde   |
     | datum aanvang adreshouding (10.30) | 20150808 |
     | functie adres (10.10)              | W        |
+    | datum ingang geldigheid (85.10)    | 20150808 |
+    | gemeente van inschrijving (09.10)  | 0519     |
     En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-    | naam                              | waarde                    |
-    | gemeentecode (92.10)              | 0519                      |
-    | straatnaam (11.10)                | Spui                      |
-    | naam openbare ruimte (11.15)      | Burgemeester aan het Spui |
-    | huisnummer (11.20)                | 70                        |
-    | huisletter (11.30)                | A                         |
-    | huisnummertoevoeging (11.40)      | 2                         |
-    | aanduiding bij huisnummer (11.50) | to                        |
-    | postcode (11.60)                  | 1234AB                    |
-    | woonplaats (11.70)                | Den Haag                  |
+    | naam                                       | waarde                    |
+    | gemeentecode (92.10)                       | 0519                      |
+    | straatnaam (11.10)                         | Spui                      |
+    | naam openbare ruimte (11.15)               | Burgemeester aan het Spui |
+    | huisnummer (11.20)                         | 70                        |
+    | huisletter (11.30)                         | A                         |
+    | huisnummertoevoeging (11.40)               | 2                         |
+    | aanduiding bij huisnummer (11.50)          | to                        |
+    | postcode (11.60)                           | 1234AB                    |
+    | woonplaats (11.70)                         | Den Haag                  |
+    | identificatiecode verblijfplaats (11.80)   | 0519020000012345          |
+    | identificatiecode nummeraanduiding (11.90) | 0519200000012345          |
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000152                       |
-    | fields              | verblijfplaatsBinnenland.verblijfadres                        |
+    | fields              | <fields>                        |
     Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
     | naam                                 | waarde                    |
     | straat                               | Spui                      |
@@ -238,6 +242,11 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | aanduidingBijHuisnummer.omschrijving | tegenover                 |
     | postcode                             | 1234AB                    |
     | woonplaats                           | Den Haag                  |
+
+    Voorbeelden:
+    | fields                                 |
+    | verblijfplaats.verblijfadres           |
+    | verblijfplaatsBinnenland.verblijfadres |
 
 Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
 
