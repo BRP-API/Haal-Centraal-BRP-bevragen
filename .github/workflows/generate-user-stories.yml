@@ -79,15 +79,10 @@ jobs:
 
       - name: target=_blank toevoegen, move naar ./docs en committen
         run: |
-          sed -i 's/)$/){:target="_blank" rel="noopener"}/' user-stories-dev.md
           sed -i 's/)$/){:target="_blank" rel="noopener"}/' user-stories-prod.md
 
-          mv user-stories-dev.md ./docs/user-stories-dev.md
           mv user-stories-prod.md ./docs/user-stories-prod.md
 
-          if [ -n "$(git status ./docs/user-stories-dev.md --porcelain)" ]; then
-            git add ./docs/user-stories-dev.md
-          fi
           if [ -n "$(git status ./docs/user-stories-prod.md --porcelain)" ]; then
             git add ./docs/user-stories-prod.md
           fi
