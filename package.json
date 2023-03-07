@@ -36,8 +36,7 @@
     "@openapitools/openapi-generator-cli": "^2.4.26",
     "@stoplight/spectral-cli": "^6.3.0",
     "husky": "^4.3.8",
-    "mvn-dl": "^6.0.0",
-    "openapi-to-postmanv2": "^2.14.1"
+    "mvn-dl": "^6.0.0"
   },
   "husky": {
     "hooks": {
