@@ -6,15 +6,15 @@ info:
 
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
-    Zie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/develop/features) voor nadere toelichting.
+    Zie de [Functionele documentatie](https://brp-api.github.io/Haal-Centraal-BRP-bevragen) voor nadere toelichting.
   contact:
-    url: https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen
+    url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
     name: "European Union Public License, version 1.2 (EUPL-1.2)"
     url: https://eupl.eu/1.2/nl/
   version: 2.0.0
 servers:
-- url: https://www.haalcentraal.nl/haalcentraal/api/brp
+- url: https://proefomgeving.haalcentraal.nl/haalcentraal/api/brp
   description: |
     APILAB testserver
 tags:
@@ -41,7 +41,7 @@ paths:
       operationId: Personen
       requestBody:
         content:
-          application/json:
+          application/json; charset=utf-8:
             schema:
               $ref: '#/components/schemas/PersonenQuery'
       responses:
@@ -60,7 +60,7 @@ paths:
             X-Rate-Limit-Reset:
               $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
-            application/json:
+            application/json; charset=utf-8:
               schema:
                 $ref: '#/components/schemas/PersonenQueryResponse'
         "400":
@@ -311,14 +311,10 @@ components:
           maxItems: 130
           minItems: 1
           type: array
-          description: "Hiermee kun je de velden opgeven die je wenst te ontvangen.\n\
-            De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv)\
-            \ \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv)\
-            \ \n(voor gebruik fields bij zoeken).\nVelden die automatisch worden geleverd\
-            \ (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding,\
-            \ rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad\
-            \ dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd\
-            \ veld leidt tot een 400 Bad Request.\n"
+          description: |
+            Hiermee kun je de velden opgeven die je wenst te ontvangen.
+            Velden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.
+            Opgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.
           items:
             $ref: '#/components/schemas/Field'
         gemeenteVanInschrijving:
@@ -345,7 +341,7 @@ components:
           geboortedatum:
             type: string
             description: |
-              Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
+              Je kunt alleen zoeken met een volledig geboortedatum.
             format: date
             example: 1964-09-24
           geslachtsnaam:
@@ -359,7 +355,7 @@ components:
     InclusiefOverledenPersonen:
       type: boolean
       description: |
-        Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)
+        Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.
       example: true
     ZoekMetNaamEnGemeenteVanInschrijving:
       required:
@@ -555,7 +551,7 @@ components:
         leeftijd:
           type: boolean
       description: |
-        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
+        Geeft aan welke gegevens van de persoon in onderzoek zijn.
         * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
     Leeftijd:
       maximum: 150
@@ -695,7 +691,7 @@ components:
         indicatieGezagMinderjarige:
           type: boolean
       description: |
-        Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).
+        Geeft aan welke gegevens van de persoon in onderzoek zijn.
         * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
         * **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente
         * **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige
@@ -896,7 +892,7 @@ components:
             type: boolean
     NaamInOnderzoek:
       description: |
-        Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de naam in onderzoek zijn.
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -977,7 +973,7 @@ components:
         datumIngangOnderzoekVerblijfplaats:
           $ref: '#/components/schemas/AbstractDatum'
       description: |
-        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de adressering in onderzoek zijn.
     AbstractDatum:
       required:
       - langFormaat
@@ -1143,7 +1139,7 @@ components:
             $ref: '#/components/schemas/NationaliteitBekendInOnderzoek'
     NationaliteitBekendInOnderzoek:
       description: |
-        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1265,7 +1261,6 @@ components:
     OverlijdenInOnderzoek:
       description: |
         Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1644,7 +1639,7 @@ components:
         datumIngangOnderzoekVerblijfplaats:
           $ref: '#/components/schemas/AbstractDatum'
       description: |
-        Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de adressering in onderzoek zijn.
     Verblijfstitel:
       type: object
       properties:
@@ -1663,7 +1658,7 @@ components:
         * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de tabel 'Verblijfstitel' (zie Haal-Centraal-BRP-tabellen-bevragen API).
     VerblijfstitelInOnderzoek:
       description: |
-        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn.
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1687,7 +1682,7 @@ components:
           $ref: '#/components/schemas/Geboorte'
     KindInOnderzoek:
       description: |
-        Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
+        Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn.
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1722,7 +1717,6 @@ components:
     OuderInOnderzoek:
       description: |
         Geeft aan welke gegevens van de de ouder in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1755,7 +1749,6 @@ components:
     PartnerInOnderzoek:
       description: |
         Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1785,7 +1778,6 @@ components:
     AangaanHuwelijkPartnerschapInOnderzoek:
       description: |
         Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
@@ -1809,7 +1801,6 @@ components:
     OntbindingHuwelijkPartnerschapInOnderzoek:
       description: |
         Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
-        Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
       - type: object
