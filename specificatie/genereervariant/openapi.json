@@ -84,9 +84,9 @@
                   "code" : "paramsRequired",
                   "invalidParams" : [ {
                     "type" : "https://www.vng.nl/realisatie/api/validaties/integer",
-                    "name" : "verblijfplaats__huisnummer",
+                    "name" : "huisnummer",
                     "code" : "integer",
-                    "reason" : "Waarde is geen geldige integer."
+                    "reason" : "Waarde is geen geldig getal."
                   } ]
                 }
               }
@@ -633,7 +633,7 @@
             "pattern" : "^[a-zA-Z0-9\\.,_]{1,30}$",
             "type" : "string",
             "description" : "Naam van de parameter",
-            "example" : "verblijfplaats__huisnummer"
+            "example" : "huisnummer"
           },
           "code" : {
             "minLength" : 1,
@@ -646,7 +646,7 @@
             "pattern" : "^[a-zA-Z0-9\\.,_ ]{1,80}$",
             "type" : "string",
             "description" : "Beschrijving van de fout op de parameterwaarde",
-            "example" : "Waarde is geen geldige integer."
+            "example" : "Waarde is geen geldig getal."
           }
         },
         "description" : "Details over fouten in opgegeven parameters"
@@ -2468,9 +2468,9 @@
               "code" : "paramsRequired",
               "invalidParams" : [ {
                 "type" : "https://www.vng.nl/realisatie/api/validaties/integer",
-                "name" : "verblijfplaats__huisnummer",
+                "name" : "huisnummer",
                 "code" : "integer",
-                "reason" : "Waarde is geen geldige integer."
+                "reason" : "Waarde is geen geldig getal."
               } ]
             }
           }
