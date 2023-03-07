@@ -13,8 +13,8 @@
     "version" : "2.0.0"
   },
   "servers" : [ {
-    "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
-    "description" : "APILAB testserver\n"
+    "url" : "https://proefomgeving-gba.haalcentraal.nl/haalcentraal/api/brp",
+    "description" : "Proef omgeving\n"
   } ],
   "tags" : [ {
     "name" : "Personen"
@@ -157,6 +157,29 @@
                   "detail" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request",
                   "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
                   "code" : "notAcceptable"
+                }
+              }
+            }
+          },
+          "415" : {
+            "description" : "Unsupported Media Type",
+            "headers" : {
+              "api-version" : {
+                "$ref" : "#/components/headers/api_version"
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Foutbericht"
+                },
+                "example" : {
+                  "type" : "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16",
+                  "title" : "Unsupported Media Type",
+                  "status" : 415,
+                  "detail" : "The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method.",
+                  "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
+                  "code" : "unsupported"
                 }
               }
             }
@@ -428,7 +451,7 @@
             },
             "geboortedatum" : {
               "type" : "string",
-              "description" : "Je kunt alleen zoeken met een volledig geboortedatum.\n",
+              "description" : "Je kunt alleen zoeken met een volledige geboortedatum.\n",
               "format" : "date",
               "example" : "1964-09-24"
             },
@@ -1478,6 +1501,29 @@
               "detail" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request",
               "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
               "code" : "notAcceptable"
+            }
+          }
+        }
+      },
+      "415" : {
+        "description" : "Unsupported Media Type",
+        "headers" : {
+          "api-version" : {
+            "$ref" : "#/components/headers/api_version"
+          }
+        },
+        "content" : {
+          "application/problem+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Foutbericht"
+            },
+            "example" : {
+              "type" : "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16",
+              "title" : "Unsupported Media Type",
+              "status" : 415,
+              "detail" : "The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method.",
+              "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
+              "code" : "unsupported"
             }
           }
         }

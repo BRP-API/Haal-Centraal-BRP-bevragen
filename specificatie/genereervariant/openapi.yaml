@@ -16,7 +16,7 @@ info:
 servers:
 - url: https://proefomgeving.haalcentraal.nl/haalcentraal/api/brp
   description: |
-    APILAB testserver
+    Proef omgeving
 tags:
 - name: Personen
 paths:
@@ -138,6 +138,24 @@ paths:
                   not acceptable according to thr accept headers sent in the request
                 instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
                 code: notAcceptable
+        "415":
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
         "429":
           description: Too Many Requests
           headers:
@@ -341,7 +359,7 @@ components:
           geboortedatum:
             type: string
             description: |
-              Je kunt alleen zoeken met een volledig geboortedatum.
+              Je kunt alleen zoeken met een volledige geboortedatum.
             format: date
             example: 1964-09-24
           geslachtsnaam:
@@ -1903,6 +1921,24 @@ components:
               according to thr accept headers sent in the request
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
             code: notAcceptable
+    "415":
+      description: Unsupported Media Type
+      headers:
+        api-version:
+          $ref: '#/components/headers/api_version'
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+            title: Unsupported Media Type
+            status: 415
+            detail: The server is refusing the request because the entity of the request
+              is in a format not supported by the requested resource for the requested
+              method.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: unsupported
     "429":
       description: Too Many Requests
       headers:
