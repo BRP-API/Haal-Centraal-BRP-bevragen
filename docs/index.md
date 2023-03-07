@@ -11,16 +11,16 @@ API voor het zoeken en raadplegen van actuele personen, partners, ouders en kind
 Voor de pilot {{ site.apiname }} wordt {{ site.apiname }} versie 2.0 gebruikt.
 
 ## Direct uitproberen?
-* Bekijk de specificaties met [Redoc](./v2/redoc-io) of [Swagger](./v2/swagger-ui)
+* Bekijk de specificaties met [Redoc](./v2/redoc)
 * Lees de [Getting started](./v2/getting-started)
 
 ## Heb je meer nodig?
 Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP Bevragen API’s:
 
-* [Historische BRP-gegevens bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
-* [Reisdocumenten bevragen](https://BRP-API.github.io/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
-* [Bewoning en medebewoners bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
-* [Landelijke tabellen bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
+* [Historische BRP-gegevens bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
+* [Reisdocumenten bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
+* [Bewoning en medebewoners bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
+* [Landelijke tabellen bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
 
 
 Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](./v1/swagger-ui) of [Redoc](./v1/redoc) en download de [technische specificaties]({{ site.v1SpecUrl }}){:target="_blank" rel="noopener"}
@@ -34,10 +34,8 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](.
 ## Contact
 
 * Product Owner: Cathy Dingemanse, [{{ site.PO-email }}](mailto:{{ site.PO-email }})
-* Designer: Johan Boer, [johan.boer@vng.nl](mailto:johan.boer@vng.nl)
-* Designer: Robert Melskens, [robert.melskens@vng.nl](mailto:robert.melskens@vng.nl)
-* Customer zero: Melvin Lee, [melvin.lee@iswish.nl](mailto:melvin.lee@iswish.nl)
-* Tester: Frank Samwel, [frank.samwel@rvig.nl](mailto:frank.samwel@rvig.nl)
+* Customer zero: Melvin Lee, [{{ site.CZ-email }}](mailto:{{ site.CZ-email }})
+* Tester: Frank Samwel, [{{ site.Tester-email }}](mailto:{{ site.Tester-email }})
 
 ## Licentie
 

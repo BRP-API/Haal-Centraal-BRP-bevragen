@@ -1,4 +1,5 @@
 baseurl: "/Haal-Centraal-BRP-bevragen"
+pagesBaseUrl: https://BRP-API.github.io
 repoUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
 mainBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
 devBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
@@ -9,6 +10,8 @@ onboardingUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevra
 proefProxyUrl: https://proefomgeving.haalcentraal.nl
 
 PO-email: c.dingemanse@comites.nl
+CZ-email: melvin.lee@iswish.nl
+Tester-email: frank.samwel@rvig.nl
 
 apiname: "BRP Personen bevragen"
 url: "http://localhost:4000"
@@ -45,12 +48,10 @@ nav:
         path: /getting-started-v2
       - title: User stories
         path: /user-stories-prod
-      - title: Bevragen API (swagger-ui)
-        path: /v2/swagger-ui
       - title: Bevragen API (redoc)
         path: /v2/redoc
       - title: Bevragen API, GBA variant (redoc)
-        path: /redoc-gba
+        path: /v2/redoc-gba
       - title: Features
         path: /features/index
 
