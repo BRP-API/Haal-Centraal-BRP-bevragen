@@ -426,3 +426,18 @@ Rule: wanneer één of meerdere adresregel velden voor een persoon wordt gevraag
     | 081420                  | datum vestiging in Nederland       | adressering.adresregel3,adressering.land                                                 |
     | 088500                  | hele groep geldigheid              | adressering.adresregel1,adressering.land                                                 |
     | 088510                  | datum ingang geldigheid            | adressering.adresregel1,adressering.adresregel2                                          |
+
+  Scenario: verblijfplaats is in onderzoek en adressering wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
+    | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 080000                          | 20020701                       |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000346                       |
+    | fields              | adressering                     |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                                      | waarde   |
+    | inOnderzoek.aanduidingGegevensInOnderzoek | 080000   |
+    | inOnderzoek.datumIngangOnderzoek          | 20020701 |
+    En heeft de persoon geen 'partner' gegevens
