@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Create User Stories IO
+      - name: Create User Stories Prod
         run: |
-          echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Ontwikkeling\n---\n' >> user-stories-dev.md
-          echo -e '# User stories\n' >> user-stories-dev.md
+          echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories BRP Personen bevragen\n---\n' >> user-stories-prod.md
+          echo -e '# User stories\n' >> user-stories-prod.md
 
       - name: List 'v2.0' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
@@ -25,13 +25,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: issues-tmp.md
       - run: |
-          cat issues-tmp.md >> user-stories-dev.md
-          echo -e '\n' >> user-stories-dev.md
-        
-      - name: Create User Stories Prod
-        run: |
-          echo -e '---\nlayout: page-with-side-nav\ntitle: User Stories in Productie\n---\n' >> user-stories-prod.md
-          echo -e '# User stories\n' >> user-stories-prod.md
+          echo -e '## Vanaf versie 2.0\n' >> user-stories-prod.md
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
           
       - name: List 'v1.3' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
@@ -83,15 +79,10 @@ jobs:
 
       - name: target=_blank toevoegen, move naar ./docs en committen
         run: |
-          sed -i 's/)$/){:target="_blank" rel="noopener"}/' user-stories-dev.md
           sed -i 's/)$/){:target="_blank" rel="noopener"}/' user-stories-prod.md
 
-          mv user-stories-dev.md ./docs/user-stories-dev.md
           mv user-stories-prod.md ./docs/user-stories-prod.md
 
-          if [ -n "$(git status ./docs/user-stories-dev.md --porcelain)" ]; then
-            git add ./docs/user-stories-dev.md
-          fi
           if [ -n "$(git status ./docs/user-stories-prod.md --porcelain)" ]; then
             git add ./docs/user-stories-prod.md
           fi
