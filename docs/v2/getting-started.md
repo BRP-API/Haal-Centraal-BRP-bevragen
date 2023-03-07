@@ -6,6 +6,10 @@ title: Getting Started
 
 Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel 38 van het Besluit BRP kunnen zich aanmelden voor deelname aan de pilot BRP.
 
+1. Bekijk de [functionaliteit en specificaties](#functionaliteit-en-specificaties)
+2. Probeer en test de API [lokaal](#probeer-en-test-de-api-lokaal) of in de [proef omgeving](#probeer-en-test-de-api-in-de-proef-omgeving)
+3. [Download]({{ site.onboardingUrl }}){:target="_blank" rel="noopener"} en lees het onboardingproces
+
 ## Functionaliteit en specificaties
 
 De '{{ site.apiname }}' Web API is gespecificeerd met behulp van de [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3).
@@ -16,7 +20,14 @@ Download de [OAS3 specificatie]({{ site.devBranchUrl }}/specificatie/genereervar
 
 De [funtionele documentatie](./features-overzicht) van de '{{ site.apiname }}' Web API vindt je in de [features overzicht](./features-overzicht)
 
-## Probeer en test de BrpProxy
+## Probeer en test de API in de proef omgeving
+
+De '{{ site.apiname }}' Web API kan worden geprobeerd via de proef omgeving met de volgende url: [{{ site.proefProxyUrl }}]. Hiervoor heb je een apikey nodig.
+
+- Vraag een apikey aan bij de product owner [{{ site.PO-email }}]](mailto:{{ site.PO-eMail }}). De apikey die is uitgereikt op de API Labs kan ook worden gebruikt.
+- Voeg de apikey toe aan een request met de __X-API-KEY__ header
+
+## Probeer en test de API lokaal
 
 Door wettelijke restricties kan de '{{ site.apiname }}' Web API bepaalde bewerkingen niet uitvoeren. Er wordt op dit moment aan gewerkt om deze restricties weg te halen. Totdat dit is gerealiseerd moet de BrpProxy worden gebruikt om de bewerkte gegevens te kunnen krijgen. De BrpProxy is consumer van de GBA variant van de '{{ site.apiname }}' Web API en levert responses conform de {{ site.apiname }} [OAS3 specificatie]({{ site.devBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"}.
 
@@ -27,7 +38,6 @@ Het [docker compose bestand]({{ site.devBranchUrl }}/blob/develop/docker-compose
 De mock van de '{{ site.apiname }}' Web API GBA variant is bedoeld voor development/test doeleinden. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
 De volgende paragrafen beschrijven het installeren en aanroepen van de BrpProxy op een lokale machine.
-
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) voor het hosten van containers
