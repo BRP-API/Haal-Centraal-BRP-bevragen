@@ -24,8 +24,8 @@ De [funtionele documentatie](./features-overzicht) van de '{{ site.apiname }}' W
 
 De '{{ site.apiname }}' Web API kan worden geprobeerd via de proef omgeving met de volgende url: [{{ site.proefProxyUrl }}]. Hiervoor heb je een apikey nodig.
 
-- Vraag een apikey aan bij de product owner [{{ site.PO-email }}]](mailto:{{ site.PO-eMail }}). De apikey die is uitgereikt op de API Labs kan ook worden gebruikt.
-- Voeg de apikey toe aan een request met de __X-API-KEY__ header
+- Vraag een apikey aan bij de product owner [{{ site.PO-email }}](mailto:{{ site.PO-email }}). De apikey die is uitgereikt op de API Labs kan ook worden gebruikt.
+- Voeg de apikey toe aan een request met de __X-API-KEY__ header.
 
 ## Probeer en test de API lokaal
 

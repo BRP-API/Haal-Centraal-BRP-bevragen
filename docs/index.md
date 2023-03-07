@@ -33,7 +33,7 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](.
 
 ## Contact
 
-* Product Owner: Cathy Dingemanse, [{{ site.PO-eMail }}](mailto:{{ site.PO-eMail }})
+* Product Owner: Cathy Dingemanse, [{{ site.PO-email }}](mailto:{{ site.PO-email }})
 * Designer: Johan Boer, [johan.boer@vng.nl](mailto:johan.boer@vng.nl)
 * Designer: Robert Melskens, [robert.melskens@vng.nl](mailto:robert.melskens@vng.nl)
 * Customer zero: Melvin Lee, [melvin.lee@iswish.nl](mailto:melvin.lee@iswish.nl)
