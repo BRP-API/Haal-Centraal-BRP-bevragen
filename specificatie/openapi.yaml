@@ -1,7 +1,7 @@
 openapi: 3.0.3
 servers:
   - description: |
-      APILAB testserver
+      Proef omgeving
     url: https://proefomgeving.haalcentraal.nl/haalcentraal/api/brp
 info:
   title: BRP Personen Bevragen

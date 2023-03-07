@@ -53,6 +53,8 @@ paths:
           $ref: 'common.yaml#/components/responses/403'
         '406':
           $ref: 'common.yaml#/components/responses/406'
+        '415':
+          $ref: 'common.yaml#/components/responses/415'
         '429':
           $ref: 'common.yaml#/components/responses/429'
         '500':
@@ -126,7 +128,7 @@ components:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             geboortedatum:
               description: |
-                Je kunt alleen zoeken met een volledig geboortedatum.
+                Je kunt alleen zoeken met een volledige geboortedatum.
               type: string
               format: date
               example: "1964-09-24"

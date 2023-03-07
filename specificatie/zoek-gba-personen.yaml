@@ -53,6 +53,8 @@ paths:
           $ref: 'common.yaml#/components/responses/403'
         '406':
           $ref: 'common.yaml#/components/responses/406'
+        '415':
+          $ref: 'common.yaml#/components/responses/415'
         '429':
           $ref: 'common.yaml#/components/responses/429'
         '500':
