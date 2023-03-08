@@ -45,7 +45,7 @@ nav:
   - title: Specificaties v. 2.0
     subnav:
       - title: Getting started
-        path: /getting-started-v2
+        path: /v2/getting-started
       - title: User stories
         path: /user-stories-prod
       - title: Bevragen API (redoc)
@@ -54,6 +54,8 @@ nav:
         path: /v2/redoc-gba
       - title: Features
         path: /features/index
+      - title:   Overzicht
+        path: /v2/features-overzicht
 
 #  - title: Specificaties v. 1.3
 #    subnav:
