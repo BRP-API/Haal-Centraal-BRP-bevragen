@@ -52,10 +52,10 @@ nav:
         path: /v2/redoc
       - title: Bevragen API, GBA variant (redoc)
         path: /v2/redoc-gba
-      - title: Features
-        path: /features/index
-      - title:   Overzicht
+      - title: Features overzicht
         path: /v2/features-overzicht
+      - title: Features test overzicht
+        path: /features/index
 
 #  - title: Specificaties v. 1.3
 #    subnav:
