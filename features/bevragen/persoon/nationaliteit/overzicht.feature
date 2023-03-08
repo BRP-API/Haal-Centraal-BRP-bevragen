@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: nationaliteit
+Functionaliteit: nationaliteit velden vragen met fields
 
 Rule: een nationaliteit heeft de type 'Nationaliteit' wanneer de waarde van 'nationaliteit (05.10)' ongelijk is aan 0000, 0002, 0499, 0500
 

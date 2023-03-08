@@ -4,9 +4,8 @@ Functionaliteit: Persoon: partner velden zijn in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek en de velden burgerservicenummer, soortVerbintenis en geslacht wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                                                   |
     | type                | RaadpleegMetBurgerservicenummer                                          |
@@ -33,9 +32,8 @@ Functionaliteit: Persoon: partner velden zijn in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -44,10 +42,10 @@ Functionaliteit: Persoon: partner velden zijn in onderzoek
     Dan heeft de response een persoon met een 'partner' zonder gegevens
 
     Voorbeelden:
-    | aanduiding in onderzoek | type | veldnaam            | gevraagde fields             |
-    | 050100                  |      | burgerservicenummer | partners.soortVerbintenis    |
-    | 050120                  |      | burgerservicenummer | partners.soortVerbintenis    |
-    | 050400                  |      | geslacht            | partners.burgerservicenummer |
-    | 050410                  |      | geslacht            | partners.burgerservicenummer |
-    | 051500                  |      | soortVerbintenis    | partners.geslacht            |
-    | 051510                  |      | soortVerbintenis    | partners.geslacht            |
+    | aanduiding in onderzoek | type                            | veldnaam            | gevraagde fields             |
+    | 050100                  | hele groep identificatienummers | burgerservicenummer | partners.soortVerbintenis    |
+    | 050120                  | burgerservicenummer             | burgerservicenummer | partners.soortVerbintenis    |
+    | 050400                  | hele groep geslacht             | geslacht            | partners.burgerservicenummer |
+    | 050410                  | geslachtsaanduiding             | geslacht            | partners.burgerservicenummer |
+    | 051500                  | hele groep soort verbintenis    | soortVerbintenis    | partners.geslacht            |
+    | 051510                  | soort verbintenis               | soortVerbintenis    | partners.geslacht            |

@@ -1,6 +1,6 @@
 # language: nl
 
-Functionaliteit: Verblijfstitel
+Functionaliteit: verblijfstitel velden vragen met fields
 
   Achtergrond:
     Gegeven landelijke tabel "Verblijfstitel" heeft de volgende waarden

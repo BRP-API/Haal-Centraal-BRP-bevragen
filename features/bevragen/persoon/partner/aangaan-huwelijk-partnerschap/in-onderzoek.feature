@@ -4,9 +4,8 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
 
   Abstract Scenario: '<type>' is in onderzoek en alle 'aangaan huwelijk/geregistreerd partnerschap' velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
     | type                | RaadpleegMetBurgerservicenummer      |
@@ -31,9 +30,8 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                       |
     | type                | RaadpleegMetBurgerservicenummer              |
@@ -60,9 +58,8 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -71,7 +68,7 @@ Functionaliteit: Persoon: partner aangaan huwelijk/geregistreerd partnerschap ve
     Dan heeft de response een persoon met een 'partner' zonder 'aangaanHuwelijkPartnerschap' gegevens
 
     Voorbeelden:
-    | gba in onderzoek waarde | type                                                       | veld naam                            | gevraagde fields                            |
+    | aanduiding in onderzoek | type                                                       | veld naam                            | gevraagde fields                            |
     | 050610                  | datum huwelijksluiting/aangaan geregistreerd partnerschap  | datum aangaan huwelijk/partnerschap  | partners.aangaanHuwelijkPartnerschap.plaats |
     | 050620                  | plaats huwelijksluiting/aangaan geregistreerd partnerschap | plaats aangaan huwelijk/partnerschap | partners.aangaanHuwelijkPartnerschap.land   |
     | 050630                  | land huwelijksluiting/aangaan geregistreerd partnerschap   | land aangaan huwelijk/partnerschap   | partners.aangaanHuwelijkPartnerschap.datum  |

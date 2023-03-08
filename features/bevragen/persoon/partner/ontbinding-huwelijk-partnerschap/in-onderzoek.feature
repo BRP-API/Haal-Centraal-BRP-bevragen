@@ -4,9 +4,8 @@ Functionaliteit: Persoon: partner ontbinding huwelijk/geregistreerd partnerschap
 
   Abstract Scenario: '<type>' is in onderzoek en alle 'ontbinding huwelijk/geregistreerd partnerschap' velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                  |
     | type                | RaadpleegMetBurgerservicenummer         |
@@ -27,9 +26,8 @@ Functionaliteit: Persoon: partner ontbinding huwelijk/geregistreerd partnerschap
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <gba in onderzoek waarde> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                                          |
     | type                | RaadpleegMetBurgerservicenummer                 |
@@ -43,16 +41,15 @@ Functionaliteit: Persoon: partner ontbinding huwelijk/geregistreerd partnerschap
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
     Voorbeelden:
-    | gba in onderzoek waarde | field | type                                                      |
+    | aanduiding in onderzoek | field | type                                                      |
     | 050000                  | datum | hele categorie huwelijk/geregistreerd partnerschap        |
     | 050700                  | datum | hele groep ontbinding huwelijk/geregistreerd partnerschap |
     | 050710                  | datum | datum ontbinding huwelijk/geregistreerd partnerschap      |
 
   Abstract Scenario: '<type>' is in onderzoek, maar veld '<veld naam>' wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | voornamen (02.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | Merel             | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |

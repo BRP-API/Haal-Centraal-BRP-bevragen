@@ -4,9 +4,8 @@ Functionaliteit: Persoon: kind geboorte velden zijn in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek en alle 'geboorte' velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | burgerservicenummer (01.20) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 123456789                   | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -31,9 +30,8 @@ Functionaliteit: Persoon: kind geboorte velden zijn in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek en '<field>' veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | burgerservicenummer (01.20) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 123456789                   | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -60,9 +58,8 @@ Functionaliteit: Persoon: kind geboorte velden zijn in onderzoek
 
   Abstract Scenario: '<type>' is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
-    | naam                            | waarde                    |
-    | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
-    | datum ingang onderzoek (83.20)  | 20020701                  |
+    | burgerservicenummer (01.20) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+    | 123456789                   | <aanduiding in onderzoek>       | 20020701                       |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
