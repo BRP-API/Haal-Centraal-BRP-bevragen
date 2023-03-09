@@ -4,9 +4,6 @@
 ![generate postman collection](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
-De API wordt nog niet door RvIG aangeboden. Om de migratie naar API's te versnellen besluiten sommige gemeenten de API zelf aan te bieden.
-
-De laatste versie is 1.3.1. Lees de [release notes](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/releasenotes.html) om te zien wat er gewijzigd is.
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Swagger UI](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/redoc)
@@ -33,8 +30,6 @@ Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 ## Contact
 
 * Product Owner: Cathy Dingemanse, [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
-* Designer: Johan Boer, [johan.boer@vng.nl](mailto:johan.boer@vng.nl)
-* Designer: Robert Melskens, [robert.melskens@vng.nl](mailto:robert.melskens@vng.nl)
 * Customer zero: Melvin Lee, [melvin.lee@iswish.nl](mailto:melvin.lee@iswish.nl)
 * Tester: Frank Samwel, [frank.samwel@denhaag.nl](mailto:frank.samwel@rvig.nl)
 
