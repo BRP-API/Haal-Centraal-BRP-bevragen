@@ -6,9 +6,9 @@
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 
 ## Direct uitproberen?
-* Bekijk de specificaties met [Swagger UI](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/swagger-ui) of [Redoc](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen/redoc)
-* Lees de [Getting started](https://BRP-API.github.io/Haal-Centraal-BRP-bevragen//getting-started)
-* Download de [technische specificaties](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml)
+* Bekijk de specificaties met [Redoc](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/redoc)
+* Lees de [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started)
+* Download de [technische specificaties]([https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/specificatie/genereervariant/openapi.yaml)
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
