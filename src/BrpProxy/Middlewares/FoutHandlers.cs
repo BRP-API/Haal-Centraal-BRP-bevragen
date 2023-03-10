@@ -295,11 +295,9 @@ namespace BrpProxy.Middlewares
             return false;
         }
 
-        public static async Task HandleJsonSerializationException(this HttpContext context, JsonSerializationException ex, Stream orgResponseBodyStream, ILogger logger)
+        public static async Task HandleJsonSerializationException(this HttpContext context, string requestBody, JsonSerializationException ex, Stream orgResponseBodyStream, ILogger logger)
         {
-            var requestBody = await context.Request.ReadBodyAsync();
-
-            logger.LogWarning("JsonSerializationException. {@requestBody} {@exception}", requestBody, ex);
+            logger.LogWarning("JsonSerializationException. requestBody: {@requestBody}, exception: {@exception}", requestBody, ex);
 
             var foutbericht = context.CreateJsonSerializationExceptionFoutbericht(ex);
 
@@ -310,11 +308,9 @@ namespace BrpProxy.Middlewares
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
 
-        public static async Task HandleJsonReaderException(this HttpContext context, JsonReaderException ex, Stream orgResponseBodyStream, ILogger logger)
+        public static async Task HandleJsonReaderException(this HttpContext context, string requestBody, JsonReaderException ex, Stream orgResponseBodyStream, ILogger logger)
         {
-            var requestBody = await context.Request.ReadBodyAsync();
-
-            logger.LogWarning("JsonReaderException. {@requestBody} {@exception}", requestBody, ex);
+            logger.LogWarning("JsonReaderException. requestBody: {@requestBody}, exception: {@exception}", requestBody, ex);
 
             var foutbericht = context.CreateJsonReaderExceptionFoutbericht(ex);
 
@@ -325,11 +321,9 @@ namespace BrpProxy.Middlewares
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
 
-        public static async Task HandleValidationErrors(this HttpContext context, BadRequestFoutbericht foutbericht, Stream orgResponseBodyStream, ILogger logger)
+        public static async Task HandleValidationErrors(this HttpContext context, string requestBody, BadRequestFoutbericht foutbericht, Stream orgResponseBodyStream, ILogger logger)
         {
-            var requestBody = await context.Request.ReadBodyAsync();
-
-            logger.LogWarning("Validation errors. {@requestBody}, {@foutbericht}", requestBody, foutbericht);
+            logger.LogWarning("Validation errors. requestBody: {@requestBody}, foutbericht: {@foutbericht}", requestBody, foutbericht);
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
 
@@ -338,8 +332,10 @@ namespace BrpProxy.Middlewares
             await bodyStream.CopyToAsync(orgResponseBodyStream);
         }
 
-        public static async Task HandleUnhandledException(this HttpContext context, Exception ex, Stream orgResponseBodyStream)
+        public static async Task HandleUnhandledException(this HttpContext context, string requestBody, Exception ex, Stream orgResponseBodyStream, ILogger logger)
         {
+            logger.LogError(ex, message: "requestBody: {@requestBody}", requestBody);
+
             var foutbericht = context.CreateInternalServerErrorFoutbericht();
 
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);

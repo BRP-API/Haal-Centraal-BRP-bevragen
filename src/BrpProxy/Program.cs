@@ -28,12 +28,8 @@ builder.Host.UseSerilog((context, config) =>
         .WriteTo.File(new EcsTextFormatter(), context.Configuration["Ecs:Path"])
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
 });
-builder.Services.AddHttpLogging(options =>
-{
-    options.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
-});
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b.AddConsoleExporter()
         .AddSource(builder.Environment.ApplicationName)
@@ -47,7 +43,9 @@ builder.Services.AddOpenTelemetryTracing(b =>
         });
 });
 
-builder.Configuration.AddJsonFile(Path.Combine("configuration", "ocelot.json"));
+builder.Configuration.AddJsonFile(Path.Combine("configuration", "ocelot.json"))
+                     .AddJsonFile(Path.Combine("configuration", $"ocelot.{builder.Environment.EnvironmentName}.json"), true)
+                     .AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddSingleton<FieldsHelper>();
@@ -58,11 +56,6 @@ builder.Services.AddOcelot()
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseHttpLogging();
-
-//app.UseHttpsRedirection();
-
-//app.UseAuthorization();
 
 app.UseMiddleware<OverwriteResponseBodyMiddleware>();
 app.UseOcelot().Wait();

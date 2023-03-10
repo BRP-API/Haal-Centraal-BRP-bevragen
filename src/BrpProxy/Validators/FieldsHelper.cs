@@ -135,7 +135,7 @@ public class FieldsHelper
             .Distinct()
             .ToList();
 
-        _logger.LogDebug("extra persoon fields: {@fields}", retval);
+        _logger.LogInformation("extra persoon fields: {@fields}", retval);
 
         return retval;
     }
@@ -150,7 +150,7 @@ public class FieldsHelper
             .Distinct()
             .ToList();
 
-        _logger.LogDebug("extra persoon beperkt fields: {@fields}", retval);
+        _logger.LogInformation("extra persoon beperkt fields: {@fields}", retval);
 
         return retval;
     }

@@ -52,33 +52,31 @@ namespace BrpProxy.Middlewares
                     return;
                 }
 
-                _logger.LogDebug("original requestBody: {@requestBody}", requestBody);
-
                 PersonenQuery? personenQuery = null;
-
                 try
                 {
                     personenQuery = JsonConvert.DeserializeObject<PersonenQuery>(requestBody);
-
-                    _logger.LogDebug("original deserialized requestBody: {@personenQuery}", personenQuery);
                 }
                 catch (JsonSerializationException ex)
                 {
-                    await context.HandleJsonSerializationException(ex, orgBodyStream, _logger);
+                    await context.HandleJsonSerializationException(requestBody, ex, orgBodyStream, _logger);
                     return;
                 }
                 catch (JsonReaderException ex)
                 {
-                    await context.HandleJsonReaderException(ex, orgBodyStream, _logger);
+                    await context.HandleJsonReaderException(requestBody, ex, orgBodyStream, _logger);
                     return;
                 }
 
                 var result = personenQuery.Validate(context, requestBody, _fieldsHelper);
                 if (!result.IsValid)
                 {
-                    await context.HandleValidationErrors(result.Foutbericht!, orgBodyStream, _logger);
+                    await context.HandleValidationErrors(requestBody, result.Foutbericht!, orgBodyStream, _logger);
                     return;
                 }
+
+                _logger.LogInformation("requestBody: {@personenQuery}",
+                                       _logger.IsEnabled(LogLevel.Debug) ? personenQuery : ((IRedactCloneable)personenQuery!)?.RedactClone());
 
                 using var newBodyStream = new MemoryStream();
                 context.Response.Body = newBodyStream;
@@ -112,9 +110,7 @@ namespace BrpProxy.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, message: "requestBody: {@requestBody}", requestBody);
-
-                await context.HandleUnhandledException(ex, orgBodyStream);
+                await context.HandleUnhandledException(requestBody, ex, orgBodyStream, _logger);
             }
         }
     }
@@ -143,23 +139,12 @@ namespace BrpProxy.Middlewares
         {
             PersonenQueryResponse retval;
             var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
-            logger.LogDebug("Original response: {@response}", response);
+            logger.LogDebug("Original response body: {@response}", response);
 
             switch (response)
             {
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
                     var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
-                    logger.LogDebug("Before fields filtering {@result}", result);
-                    foreach (var persoon in result.Personen)
-                    {
-                        if(persoon.Partners != null &&
-                            persoon.Partners.Any(p => p.OntbindingHuwelijkPartnerschap == null))
-                        {
-                            persoon.Partners = (from partner in persoon.Partners
-                                                where partner.OntbindingHuwelijkPartnerschap == null
-                                                select partner).ToList();
-                        }
-                    }
                     result.Personen = result.Personen.FilterAfgevoerdePersoon().FilterList(fields);
                     retval = result;
                     break;
@@ -175,7 +160,6 @@ namespace BrpProxy.Middlewares
                     break;
                 case Gba.ZoekMetPostcodeEnHuisnummerResponse pb:
                     var result2 = mapper.Map<ZoekMetPostcodeEnHuisnummerResponse>(pb);
-                    logger.LogDebug("Before fields filtering {@result}", result2);
                     result2.Personen = result2.Personen.ExcludeAfgevoerdePersoon().FilterList(fields);
                     retval = result2;
                     break;
