@@ -188,21 +188,60 @@ namespace BrpProxy.Middlewares
 
     public static class HttpResponseHelpers
     {
+        private static async Task<string> ReadCompressedBodyAsync(this HttpRequest request)
+        {
+
+            try
+            {
+                request.Body.Seek(0, SeekOrigin.Begin);
+
+                var gzipStream = new GZipStream(request.Body, CompressionMode.Decompress);
+                StreamReader streamReader = new(gzipStream, leaveOpen: true);
+
+                return await streamReader.ReadToEndAsync();
+            }
+            finally
+            {
+                request.Body.Seek(0, SeekOrigin.Begin);
+            }
+
+        }
+
+        private static async Task<string> ReadUncompressedBodyAsync(this HttpRequest request)
+        {
+            try
+            {
+                request.Body.Seek(0, SeekOrigin.Begin);
+
+                StreamReader streamReader = new StreamReader(request.Body, leaveOpen: true);
+
+                return await streamReader.ReadToEndAsync();
+            }
+            finally
+            {
+                request.Body.Seek(0, SeekOrigin.Begin);
+            }
+        }
+
         public static async Task<string> ReadBodyAsync(this HttpRequest request)
         {
             request.EnableBuffering();
 
-            request.Body.Seek(0, SeekOrigin.Begin);
-
-            //var gzipStream = new GZipStream(response.Body, CompressionMode.Decompress);
-            //var streamReader = new StreamReader(gzipStream);
-            var streamReader = new StreamReader(request.Body, leaveOpen: true);
-
-            var retval = await streamReader.ReadToEndAsync();
-
-            request.Body.Seek(0, SeekOrigin.Begin);
-
-            return retval;
+            try
+            {
+                if (request.Headers.ContentEncoding.Contains("gzip"))
+                {
+                    return await ReadCompressedBodyAsync(request);
+                }
+                else
+                {
+                    return await ReadUncompressedBodyAsync(request);
+                }
+            }
+            catch (InvalidDataException)
+            {
+                return await ReadUncompressedBodyAsync(request);
+            }
         }
 
         public static async Task<string> ReadBodyAsync(this HttpResponse response)
