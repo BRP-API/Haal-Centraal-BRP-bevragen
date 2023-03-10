@@ -266,7 +266,15 @@ namespace BrpProxy.Validators
             return new[]
             {
                 "aNummer",
-                "datumEersteInschrijvingGBA"
+                "datumEersteInschrijvingGBA",
+                "europeesKiesrecht",
+                "geheimhoudingPersoonsgegevens",
+                "nationaliteiten.datumIngangGeldigheid",
+                "opschortingBijhouding",
+                "ouders.ouderAanduiding",
+                "rni",
+                "uitsluitingKiesrecht",
+                "verificatie"
             }
             .Contains(field);
         }
@@ -275,7 +283,10 @@ namespace BrpProxy.Validators
         {
             return new[]
             {
-                "geboorte"
+                "geboorte",
+                "naam",
+                "aangaanHuwelijkPartnerschap",
+                "ontbindingHuwelijkPartnerschap"
             }
             .Contains(field);
         }
@@ -315,7 +326,9 @@ namespace BrpProxy.Validators
             return new[]
             {
                 "kinderen",
-                "ouders"
+                "nationaliteiten",
+                "ouders",
+                "partners"
             }
             .Contains(fieldPart);
         }
@@ -325,7 +338,9 @@ namespace BrpProxy.Validators
             return new[]
             {
                 "adressering",
-                "overlijden"
+                "immigratie",
+                "overlijden",
+                "verblijfstitel"
             }
             .Contains(fieldPart);
         }
@@ -380,7 +395,8 @@ namespace BrpProxy.Validators
                     case 1:
                         if (fieldParts[0].IsVerblijfplaatsFieldPart() ||
                             fieldParts[0].IsCollectionFieldFieldPart() ||
-                            fieldParts[0].IsGegevensgroepFieldPart())
+                            fieldParts[0].IsGegevensgroepFieldPart() ||
+                            fieldParts[0].IsObjectField())
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek");
                         }
@@ -406,7 +422,11 @@ namespace BrpProxy.Validators
                         }
                         break;
                     case 2:
-                        if (fieldParts[1].IsVerblijfadresFieldPart())
+                        if (fieldParts[0].HeeftGeenInOnderzoekField())
+                        {
+                            continue;
+                        }
+                        else if (fieldParts[1].IsVerblijfadresFieldPart())
                         {
                             retval.Add($"{fieldParts[0]}.inOnderzoek.type");
                             retval.Add($"{fieldParts[0]}.inOnderzoek.datumIngangOnderzoek");
