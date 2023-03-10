@@ -63,6 +63,10 @@ public static class PersonenQueryExtensions
         {
             specification = specification.And(new VoorvoegselSpecification(query.Voorvoegsel));
         }
+        if (!string.IsNullOrWhiteSpace(query.Geslachtsaanduiding))
+        {
+            specification = specification.And(new GeslachtSpecification(query.Geslachtsaanduiding));
+        }
         specification = specification.And(new InclusiefOverledenPersonenSpecification(query.InclusiefOverledenPersonen));
 
         return specification;

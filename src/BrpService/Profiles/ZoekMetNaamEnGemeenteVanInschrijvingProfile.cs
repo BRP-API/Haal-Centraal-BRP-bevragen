@@ -8,6 +8,7 @@ public class ZoekMetNaamEnGemeenteVanInschrijvingProfile : Profile
 {
     public ZoekMetNaamEnGemeenteVanInschrijvingProfile()
     {
-        CreateMap<ZoekMetNaamEnGemeenteVanInschrijving, ZoekMetNaamEnGemeenteVanInschrijvingFilter>();
+        CreateMap<ZoekMetNaamEnGemeenteVanInschrijving, ZoekMetNaamEnGemeenteVanInschrijvingFilter>()
+            .ForMember(dest => dest.Geslachtsaanduiding, opt => opt.MapFrom(src => src.Geslacht));
     }
 }
