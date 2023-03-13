@@ -2,9 +2,9 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "BRP Personen Bevragen",
-    "description" : "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Functionele documentatie](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/tree/develop/features) voor nadere toelichting.\n",
+    "description" : "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Functionele documentatie](https://brp-api.github.io/Haal-Centraal-BRP-bevragen) voor nadere toelichting.\n",
     "contact" : {
-      "url" : "https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen"
+      "url" : "https://brp-api.github.io/Haal-Centraal-BRP-bevragen"
     },
     "license" : {
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
@@ -13,8 +13,8 @@
     "version" : "2.0.0"
   },
   "servers" : [ {
-    "url" : "https://www.haalcentraal.nl/haalcentraal/api/brp",
-    "description" : "APILAB testserver\n"
+    "url" : "https://proefomgeving.haalcentraal.nl/haalcentraal/api/brp",
+    "description" : "Proef omgeving\n"
   } ],
   "tags" : [ {
     "name" : "Personen"
@@ -28,7 +28,7 @@
         "operationId" : "Personen",
         "requestBody" : {
           "content" : {
-            "application/json" : {
+            "application/json; charset=utf-8" : {
               "schema" : {
                 "$ref" : "#/components/schemas/PersonenQuery"
               }
@@ -56,7 +56,7 @@
               }
             },
             "content" : {
-              "application/json" : {
+              "application/json; charset=utf-8" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/PersonenQueryResponse"
                 }
@@ -157,6 +157,29 @@
                   "detail" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request",
                   "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
                   "code" : "notAcceptable"
+                }
+              }
+            }
+          },
+          "415" : {
+            "description" : "Unsupported Media Type",
+            "headers" : {
+              "api-version" : {
+                "$ref" : "#/components/headers/api_version"
+              }
+            },
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Foutbericht"
+                },
+                "example" : {
+                  "type" : "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16",
+                  "title" : "Unsupported Media Type",
+                  "status" : 415,
+                  "detail" : "The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method.",
+                  "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
+                  "code" : "unsupported"
                 }
               }
             }
@@ -401,7 +424,7 @@
             "maxItems" : 130,
             "minItems" : 1,
             "type" : "array",
-            "description" : "Hiermee kun je de velden opgeven die je wenst te ontvangen.\nDe te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) \n(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) \n(voor gebruik fields bij zoeken).\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\n",
+            "description" : "Hiermee kun je de velden opgeven die je wenst te ontvangen.\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\n",
             "items" : {
               "$ref" : "#/components/schemas/Field"
             }
@@ -434,7 +457,7 @@
             },
             "geboortedatum" : {
               "type" : "string",
-              "description" : "Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)\n",
+              "description" : "Je kunt alleen zoeken met een volledige geboortedatum.\n",
               "format" : "date",
               "example" : "1964-09-24"
             },
@@ -455,7 +478,7 @@
       },
       "InclusiefOverledenPersonen" : {
         "type" : "boolean",
-        "description" : "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)\n",
+        "description" : "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.\n",
         "example" : true
       },
       "ZoekMetNaamEnGemeenteVanInschrijving" : {
@@ -718,7 +741,7 @@
             "type" : "boolean"
           }
         },
-        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n"
+        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n"
       },
       "Leeftijd" : {
         "maximum" : 150,
@@ -910,7 +933,7 @@
             "type" : "boolean"
           }
         },
-        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v2.0.0/features/in_onderzoek.feature).\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n* **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente\n* **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige\n"
+        "description" : "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n* **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente\n* **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige\n"
       },
       "IndicatieCurateleRegister" : {
         "type" : "boolean",
@@ -1143,7 +1166,7 @@
         } ]
       },
       "NaamInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over de naam in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -1255,7 +1278,7 @@
             "$ref" : "#/components/schemas/AbstractDatum"
           }
         },
-        "description" : "Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over de adressering in onderzoek zijn.\n"
       },
       "AbstractDatum" : {
         "required" : [ "langFormaat", "type" ],
@@ -1478,7 +1501,7 @@
         } ]
       },
       "NationaliteitBekendInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -1658,7 +1681,7 @@
         "description" : "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
       },
       "OverlijdenInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2184,7 +2207,7 @@
             "$ref" : "#/components/schemas/AbstractDatum"
           }
         },
-        "description" : "Geeft aan welke gegevens over de adressering in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n"
+        "description" : "Geeft aan welke gegevens over de adressering in onderzoek zijn.\n"
       },
       "Verblijfstitel" : {
         "type" : "object",
@@ -2205,7 +2228,7 @@
         "description" : "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de tabel 'Verblijfstitel' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n"
       },
       "VerblijfstitelInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2241,7 +2264,7 @@
         }
       },
       "KindInOnderzoek" : {
-        "description" : "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn. Zie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan of de gegevens over het kind van de persoon in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2286,7 +2309,7 @@
         "example" : "1"
       },
       "OuderInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens van de de ouder in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens van de de ouder in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2334,7 +2357,7 @@
         }
       },
       "PartnerInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2371,7 +2394,7 @@
         "description" : "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n"
       },
       "AangaanHuwelijkPartnerschapInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2402,7 +2425,7 @@
         "description" : "Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.\n"
       },
       "OntbindingHuwelijkPartnerschapInOnderzoek" : {
-        "description" : "Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\nZie de [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.1.0/features/in_onderzoek.feature)\n",
+        "description" : "Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
         }, {
@@ -2541,6 +2564,29 @@
               "detail" : "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request",
               "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
               "code" : "notAcceptable"
+            }
+          }
+        }
+      },
+      "415" : {
+        "description" : "Unsupported Media Type",
+        "headers" : {
+          "api-version" : {
+            "$ref" : "#/components/headers/api_version"
+          }
+        },
+        "content" : {
+          "application/problem+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Foutbericht"
+            },
+            "example" : {
+              "type" : "https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16",
+              "title" : "Unsupported Media Type",
+              "status" : 415,
+              "detail" : "The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method.",
+              "instance" : "https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde",
+              "code" : "unsupported"
             }
           }
         }

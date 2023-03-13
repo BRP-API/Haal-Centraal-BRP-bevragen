@@ -23,7 +23,7 @@ paths:
         Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
       requestBody:
         content:
-          application/json:
+          'application/json; charset=utf-8':
             schema:
               $ref: '#/components/schemas/PersonenQuery'
       responses:
@@ -42,7 +42,7 @@ paths:
             X-Rate-Limit-Reset:
               $ref: 'common.yaml#/components/headers/X_Rate_Limit_Reset'
           content:
-            application/json:
+            'application/json; charset=utf-8':
               schema:
                 $ref: '#/components/schemas/PersonenQueryResponse'
         '400':
@@ -53,6 +53,8 @@ paths:
           $ref: 'common.yaml#/components/responses/403'
         '406':
           $ref: 'common.yaml#/components/responses/406'
+        '415':
+          $ref: 'common.yaml#/components/responses/415'
         '429':
           $ref: 'common.yaml#/components/responses/429'
         '500':
@@ -69,7 +71,7 @@ components:
   schemas:
     InclusiefOverledenPersonen:
       description: |
-        Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.  Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/overleden_personen.feature)
+        Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.
       type: boolean
       example: true
     PersonenQuery:
@@ -92,9 +94,6 @@ components:
         fields:
           description: |
             Hiermee kun je de velden opgeven die je wenst te ontvangen.
-            De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) 
-            (voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) 
-            (voor gebruik fields bij zoeken).
             Velden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.
             Opgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.
           type: array
@@ -129,7 +128,7 @@ components:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             geboortedatum:
               description: |
-                Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
+                Je kunt alleen zoeken met een volledige geboortedatum.
               type: string
               format: date
               example: "1964-09-24"
