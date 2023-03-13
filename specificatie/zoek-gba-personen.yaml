@@ -23,7 +23,7 @@ paths:
         Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
       requestBody:
         content:
-          application/json:
+          'application/json; charset=utf-8':
             schema:
               $ref: 'zoek-personen.yaml#/components/schemas/PersonenQuery'
       responses:
@@ -42,7 +42,7 @@ paths:
             X-Rate-Limit-Reset:
               $ref: 'common.yaml#/components/headers/X_Rate_Limit_Reset'
           content:
-            application/json:
+            'application/json; charset=utf-8':
               schema:
                 $ref: '#/components/schemas/PersonenQueryResponse'
         '400':
@@ -53,6 +53,8 @@ paths:
           $ref: 'common.yaml#/components/responses/403'
         '406':
           $ref: 'common.yaml#/components/responses/406'
+        '415':
+          $ref: 'common.yaml#/components/responses/415'
         '429':
           $ref: 'common.yaml#/components/responses/429'
         '500':
