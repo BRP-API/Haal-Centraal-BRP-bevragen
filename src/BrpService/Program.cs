@@ -35,13 +35,40 @@ builder.Services.AddOpenTelemetry().WithTracing(b =>
         .AddSource(builder.Environment.ApplicationName)
         .SetResourceBuilder(ResourceBuilder.CreateDefault()
                                             .AddService(builder.Environment.ApplicationName))
-        .AddHttpClientInstrumentation()
+        .AddHttpClientInstrumentation(options =>
+        {
+            options.EnrichWithHttpResponseMessage = async (activity, httpResponseMessage) =>
+            {
+                var body = await httpResponseMessage.Content.ReadAsStringAsync();
+
+                activity.SetTag("body", body);
+            };
+            options.RecordException = true;
+        })
         .AddAspNetCoreInstrumentation()
         .AddOtlpExporter(opts =>
         {
             opts.Endpoint = new Uri(builder.Configuration["Jaeger:OtlpEndpoint"]);
         });
 });
+
+var idpSection = builder.Configuration.GetSection("idp");
+if (idpSection.Exists())
+{
+    builder.Services.AddAuthentication("Bearer")
+        .AddJwtBearer("Bearer", options =>
+        {
+            options.Authority = builder.Configuration["Idp:Authority"];
+            options.Audience = builder.Configuration["Idp:Audience"];
+        })
+        .AddOAuth2Introspection("introspection", options =>
+        {
+            options.Authority = builder.Configuration["Idp:Authority"];
+            options.ClientId = builder.Configuration["Idp:Introspection:ClientId"];
+            options.ClientSecret = builder.Configuration["Idp:Introspection:ClientSecret"];
+        });
+}
+
 
 // Add services to the container.
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -69,8 +96,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthorization();
+if (idpSection.Exists())
+{
+    app.UseAuthentication();
+    app.UseAuthorization();
 
-app.MapControllers();
+    app.MapControllers().RequireAuthorization();
+}
+else
+{
+    app.MapControllers();
+}
 
 app.Run();

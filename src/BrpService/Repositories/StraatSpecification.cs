@@ -26,7 +26,8 @@ public class StraatSpecification : Specification<GbaPersoonBeperkt>
         {
             return persoon => persoon != null &&
                  persoon.Verblijfplaats != null &&
-                 (persoon.Verblijfplaats.Straat.StartsWith(_straat.Substring(0, _straat.Length - 1), true, CultureInfo.InvariantCulture) ||
+                 (persoon.Verblijfplaats.Straat != null &&
+                  persoon.Verblijfplaats.Straat.StartsWith(_straat.Substring(0, _straat.Length - 1), true, CultureInfo.InvariantCulture) ||
                  (persoon.Verblijfplaats.NaamOpenbareRuimte != null &&
                   persoon.Verblijfplaats.NaamOpenbareRuimte.StartsWith(_straat.Substring(0, _straat.Length - 1), true, CultureInfo.InvariantCulture)));
         }
@@ -34,7 +35,8 @@ public class StraatSpecification : Specification<GbaPersoonBeperkt>
         {
             return persoon => persoon != null &&
                  persoon.Verblijfplaats != null &&
-                 (persoon.Verblijfplaats.Straat.EndsWith(_straat.Substring(1, _straat.Length - 1), true, CultureInfo.InvariantCulture) ||
+                 (persoon.Verblijfplaats.Straat != null &&
+                  persoon.Verblijfplaats.Straat.EndsWith(_straat.Substring(1, _straat.Length - 1), true, CultureInfo.InvariantCulture) ||
                  (persoon.Verblijfplaats.NaamOpenbareRuimte != null &&
                   persoon.Verblijfplaats.NaamOpenbareRuimte.EndsWith(_straat.Substring(1, _straat.Length - 1), true, CultureInfo.InvariantCulture)));
         }
