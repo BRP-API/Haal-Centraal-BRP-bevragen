@@ -472,6 +472,8 @@ Rule: wanneer één of meerdere adresregel velden voor een persoon wordt gevraag
     Voorbeelden:
     | aanduiding in onderzoek | type                               | fields                                                                                   |
     | 080000                  | hele categorie verblijfplaats      | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land |
+    | 080000                  | hele categorie verblijfplaats      | adressering.adresregel1                                                                  |
+    | 080000                  | hele categorie verblijfplaats      | adressering                                                                              |
     | 080900                  | hele groep gemeente                | adressering.adresregel1                                                                  |
     | 080910                  | gemeente van inschrijving          | adressering.adresregel2                                                                  |
     | 080920                  | datum inschrijving                 | adressering.adresregel2                                                                  |
