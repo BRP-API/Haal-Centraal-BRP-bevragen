@@ -13,7 +13,7 @@ De __Downstream__ configuratie van de BrpProxy moet worden aangepast om bevragin
 
 ### Wijzigen van de Downstream configuratie van de BrpProxy
 
-De volgende environment variabelen moet worden opgenomen in de configuratie van de BrpProxy in het [docker compose bestand]({{ site.devBranchUrl }}/blob/develop/docker-compose.yml){:target="_blank" rel="noopener"}:
+De volgende environment variabelen moet worden opgenomen in de configuratie van de BrpProxy in het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}:
 
 - Routes__0__DownstreamScheme. De communicatie protocol die moet worden gebruikt voor het aanroepen van de {{ site.apiname }} Web API GBA variant
 - Routes__0__DownstreamHostAndPorts__0__Host. De host naam van de {{ site.apiname }} Web API GBA variant
@@ -23,7 +23,6 @@ In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te s
 
 ```yaml
 
-  ...
   brpproxy:
     container_name: brpproxy
     image: iswish/haal-centraal-brp-bevragen-proxy:latest
@@ -35,7 +34,6 @@ In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te s
       - Routes__0__DownstreamHostAndPorts__0__Port=443
     ports:
       - "5001:5000"
-  '''
 
 ```
 
@@ -67,7 +65,6 @@ Het configuratie bestand wordt vervolgens met behulp van een volume gemonteerd a
 
 ```yaml
 
-  ...
   brpproxy:
     container_name: brpproxy
     image: iswish/haal-centraal-brp-bevragen-proxy:latest
@@ -78,6 +75,5 @@ Het configuratie bestand wordt vervolgens met behulp van een volume gemonteerd a
       - "5001:5000"
     volumes:
       - ./src/config/BrpProxy/configuration/ocelot.json:/app/configuration/ocelot.json
-  '''
 
 ```
