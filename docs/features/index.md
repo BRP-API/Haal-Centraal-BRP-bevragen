@@ -9,7 +9,7 @@ Totaal: 5270 scenarios (45 failed, 5225 passed)
 ## GBA v2.0.37
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 224 scenarios (11 failed, 213 passed)
-  - [beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 219 scenarios (11 failed, 208 passed)
+- [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 219 scenarios (11 failed, 208 passed)
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 505 scenarios (12 failed, 493 passed)
   - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 21 scenarios (21 passed)
@@ -37,7 +37,7 @@ Totaal: 5270 scenarios (45 failed, 5225 passed)
 ## Proxy v2.0.17
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (1 failed, 207 passed)
-  - [beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
+- [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 208 scenarios (2 failed, 206 passed)
   - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
