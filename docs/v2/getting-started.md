@@ -33,23 +33,27 @@ Door wettelijke restricties kan de '{{ site.apiname }}' Web API bepaalde bewerki
 
 De BrpProxy is geïmplementeerd als een containerized applicatie, zodat het makkelijk kan worden getest op een lokale machine en worden gehost in een productie omgeving.
 
-Het [docker compose bestand]({{ site.devBranchUrl }}/blob/develop/docker-compose.yml){:target="_blank" rel="noopener"} kan worden gebruikt om met behulp van [Docker Desktop](https://www.docker.com/products/docker-desktop) de BrpProxy en de mock van de '{{ site.apiname }}' Web API GBA variant te draaien op een lokale machine.
+Het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"} kan worden gebruikt om met behulp van [Docker Desktop](https://www.docker.com/products/docker-desktop) de BrpProxy en de mock van de '{{ site.apiname }}' Web API GBA variant te draaien op een lokale machine.
+
+In plaats van het docker compose bestand kunnen de [Kubernetes configuratie bestanden]({{ site.devBranchUrl}}/.k8s){:target="_blank" rel="noopener"} worden gebruikt om de BrpProxy en de mock van de '{{ site.apiname }}' Web API GBA variant te draaien op een lokale machine.
 
 De mock van de '{{ site.apiname }}' Web API GBA variant is bedoeld voor development/test doeleinden. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/documenten/richtlijnen/2018/09/20/testdataset-persoonslijsten-proefomgevingen-gba-v) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
 De volgende paragrafen beschrijven het installeren en aanroepen van de BrpProxy op een lokale machine.
+
 ### Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) voor het hosten van containers
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) voor het hosten van containers. Docker Desktop kan ook worden gebruikt om de containers te hosten met behulp van Kubernetes. Na het installeren van Docker Desktop moet Kubernetes ondersteuning worden aangezet in de Settings/Kubernetes configuratie scherm
+![Enable Kubernetes](../img/docker-desktop-enable-k8s.png)
 
 Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
 
 - [git](https://git-scm.com/downloads) voor het clonen van git repositories
 - [Postman](https://www.postman.com/downloads/) voor het aanroepen van Web APIs
 
-### Clone de {{ site.apiname }} git repository of download het docker compose bestand
+### Clone de {{ site.apiname }} git repository of download het docker compose bestand of de kubernetes bestanden
 
-- Download het [docker compose bestand]({{ site.devBranchUrl }}/blob/develop/docker-compose-mock.yml){:target="_blank" rel="noopener"} of clone de {{ site.apiname }} repository als deze niet eerder al is ge-clone-d
+- Download het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}, de [kubernetes configuratie bestanden]({{ site.devBranchUrl }}/.k8s){:target="_blank" rel="noopener"} of clone de {{ site.apiname }} repository als deze niet eerder al is ge-clone-d
   ```sh
 
   git clone {{ site.repoUrl }}.git
@@ -70,10 +74,19 @@ Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
 
 ### Draaien van de BrpProxy en de mock van de '{{ site.apiname }}' Web API GBA variant
 
-- Start de BrpProxy en de mock met behulp van de volgende statement:
+- Start de BrpProxy en de mock met behulp van het docker compose bestand:
   ```sh
 
   docker-compose up -d
+
+  ```
+  of start de BrpProxy en de mock met behulp van de kubernetes configuratie bestanden:
+  ```sh
+
+  kubectl apply -f .k8s/brpproxy-deployment.yaml \
+                -f .k8s/brpproxy-service.yaml \
+                -f .k8s/gbamock-deployment.yaml \
+                -f .k8s/gbamock-service.yaml 
 
   ```
 - De {{ site.apiname }} Web API kan nu worden bevraagd. Gebruik als base url: *http://localhost:5001*. Met behulp van curl kan op een snelle manier worden getest of de BrpProxy en de mock draaien. Start hiervoor een bash shell en voer de volgende curl statement uit in de bash shell:
@@ -93,5 +106,14 @@ Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
   ```sh
 
   docker-compose down
+
+  ```
+  of voer de volgende statement uit als de kubernetes configuratie bestanden werden gebruikt om de BrpProxy en de mock op te starten:
+  ```sh
+
+  kubectl delete -f .k8s/brpproxy-deployment.yaml \
+                 -f .k8s/brpproxy-service.yaml \
+                 -f .k8s/gbamock-deployment.yaml \
+                 -f .k8s/gbamock-service.yaml 
 
   ```
