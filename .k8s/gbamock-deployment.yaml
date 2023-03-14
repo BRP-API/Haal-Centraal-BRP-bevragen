@@ -25,11 +25,3 @@ spec:
           ports:
             - name: http
               containerPort: 5010
-          volumeMounts:
-            - name: gbamock-data
-              mountPath: /app/Data
-      volumes:
-        - name: gbamock-data
-          hostPath:
-            path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpService
-  

@@ -23,18 +23,5 @@ spec:
             - name: ASPNETCORE_URLS
               value: http://+:5000
           ports:
-            - name: http
+            - name: http-brpproxy
               containerPort: 5000
-          volumeMounts:
-            - name: brpproxy-routing-configuration
-              mountPath: /app/configuration
-            - name: brpproxy-settings
-              mountPath: /app/appsettings.json
-              subPath: appsettings.json
-      volumes:
-        - name: brpproxy-routing-configuration
-          hostPath:
-            path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/configuration
-        - name: brpproxy-settings
-          hostPath:
-            path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/appsettings
