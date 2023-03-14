@@ -4,14 +4,14 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5267 scenarios (23 failed, 5244 passed)
+Totaal: 5270 scenarios (45 failed, 5225 passed)
 
-## GBA API v2.0.33
+## GBA v2.0.37
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 224 scenarios (224 passed)
-- [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 217 scenarios (217 passed)
-- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 505 scenarios (10 failed, 495 passed)
-  - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 109 scenarios (109 passed)
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 224 scenarios (11 failed, 213 passed)
+  - [beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 219 scenarios (11 failed, 208 passed)
+- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 505 scenarios (12 failed, 493 passed)
+  - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 21 scenarios (21 passed)
   - [geboorte](./test-report-persoon-geboorte-gba.html){:target="_blank" rel="noopener"}: 9 scenarios (9 passed)
   - [geheimhouding](./test-report-persoon-geheimhouding-gba.html){:target="_blank" rel="noopener"}: 12 scenarios (12 passed)
@@ -30,15 +30,15 @@ Totaal: 5267 scenarios (23 failed, 5244 passed)
   - [verblijfplaats](./test-report-persoon-verblijfplaats-gba.html){:target="_blank" rel="noopener"}: 80 scenarios (80 passed)
   - [verblijfstitel](./test-report-persoon-verblijfstitel-gba.html){:target="_blank" rel="noopener"}: 11 scenarios (11 passed)
   - [verificatie](./test-report-persoon-verificatie-gba.html){:target="_blank" rel="noopener"}: 13 scenarios (13 passed)
-- [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (3 failed, 785 passed)
+- [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (2 failed, 786 passed)
 - [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 373 scenarios (6 failed, 367 passed)
 
 
-## Proxy v2.0.16
+## Proxy v2.0.17
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
-- [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
-- [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 208 scenarios (4 failed, 204 passed)
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (1 failed, 207 passed)
+  - [beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
+- [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 208 scenarios (2 failed, 206 passed)
   - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
   - [geboorte](./test-report-persoon-geboorte.html){:target="_blank" rel="noopener"}: 28 scenarios (28 passed)
