@@ -3,11 +3,11 @@
     {
       "UpstreamPathTemplate": "/haalcentraal/api/brp/personen",
       "DownstreamPathTemplate": "/haalcentraal/api/brp/personen",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "gbamock",
-          "Port": "5010"
+          "Host": "proefomgeving-gba.haalcentraal.nl",
+          "Port": "443"
         }
       ]
     }

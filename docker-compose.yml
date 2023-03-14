@@ -26,8 +26,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
+      # - Routes__0__DownstreamScheme=https
+      # - Routes__0__DownstreamHostAndPorts__0__Host=proefomgeving-gba.haalcentraal.nl
+      # - Routes__0__DownstreamHostAndPorts__0__Port=443
     ports:
       - "5001:5000"
+    # volumes:
+    #   - ./src/config/BrpProxy/configuration:/app/configuration
 
   gbamock:
     container_name: gbamock
