@@ -76,6 +76,9 @@ Rule: Er moet een valide zoek type worden opgegeven
     | ongeldig zoek type         | OnbekendZoekType                    |
     | type voldoet niet aan case | zoekmetgeslachtsnaamengeboortedatum |
 
+
+Rule: als cotenttype voor de response wordt alleen application/json en charset utf-8 ondersteund
+
   @fout-case
   Scenario: Gevraagde Accept contenttype wordt niet ondersteund
     Als personen wordt gezocht met de volgende parameters
@@ -85,11 +88,13 @@ Rule: Er moet een valide zoek type worden opgegeven
     | fields              | burgerservicenummer             |
     | header: Accept      | application/xml                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6 |
-    | title    | Gevraagde contenttype wordt niet ondersteund.               |
-    | status   | 406                                                         |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | naam     | waarde                                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6                 |
+    | title    | Gevraagde contenttype wordt niet ondersteund.                               |
+    | detail   | Ondersteunde content type: */*, application/json. Default: application/json |
+    | code     | notAcceptable                                                               |
+    | status   | 406                                                                         |
+    | instance | /haalcentraal/api/brp/personen                                              |
 
   @fout-case
   Scenario: Lege Accept contenttype wordt niet ondersteund
@@ -100,11 +105,13 @@ Rule: Er moet een valide zoek type worden opgegeven
     | fields              | burgerservicenummer             |
     | header: Accept      |                                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6 |
-    | title    | Gevraagde contenttype wordt niet ondersteund.               |
-    | status   | 406                                                         |
-    | instance | /haalcentraal/api/brp/personen                              |
+    | naam     | waarde                                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6                 |
+    | title    | Gevraagde contenttype wordt niet ondersteund.                               |
+    | detail   | Ondersteunde content type: */*, application/json. Default: application/json |
+    | code     | notAcceptable                                                               |
+    | status   | 406                                                                         |
+    | instance | /haalcentraal/api/brp/personen                                              |
 
   Abstract Scenario: '<accept media type>' als Accept contenttype wordt ondersteund
     Als personen wordt gezocht met de volgende parameters
@@ -123,6 +130,12 @@ Rule: Er moet een valide zoek type worden opgegeven
     | application/json                |
     | application/json; charset=utf-8 |
     | application/json;charset=utf-8  |
+    | */*;charset=UTF-8               |
+    | application/json;charset=Utf-8  |
+    | application/json; charset=UTF-8 |
+
+
+Rule: als cotenttype voor het request wordt alleen application/json en charset utf-8 ondersteund
 
   Abstract Scenario: '<media type>' als Content-Type waarde wordt ondersteund
     Als personen wordt gezocht met de volgende parameters
@@ -138,6 +151,19 @@ Rule: Er moet een valide zoek type worden opgegeven
     | application/json                |
     | application/json;charset=utf-8  |
     | application/json; charset=utf-8 |
+    | application/json;charset=Utf-8  |
+    | application/json; charset=UTF-8 |
+
+  Abstract Scenario: '<media type>' als Content-Type waarde wordt ondersteund bij zoeken
+    Als personen wordt gezocht met de volgende parameters
+    | naam                 | waarde                              |
+    | type                 | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam        | brănduş-dendyuk                     |
+    | geboortedatum        | 1983-05-26                          |
+    | voornamen            | Kuşan                               |
+    | fields               | burgerservicenummer                 |
+    | header: Content-Type | <media type>                        |
+    Dan heeft de response 0 personen
 
   @fout-case
   Abstract Scenario: '<media type>' als Content-Type waarde wordt niet ondersteund
@@ -148,15 +174,53 @@ Rule: Er moet een valide zoek type worden opgegeven
     | fields               | burgerservicenummer             |
     | header: Content-Type | <media type>                    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                       |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13 |
-    | title    | Media Type wordt niet ondersteund.                           |
-    | status   | 415                                                          |
-    | instance | /haalcentraal/api/brp/personen                               |
+    | naam     | waarde                                                                                                                                                       |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13                                                                                                 |
+    | title    | Media Type wordt niet ondersteund.                                                                                                                           |
+    | detail   | Ondersteunde content type: */*, application/json, application/json; charset=utf-8, application/json;charset=utf-8. Default: application/json; charset=utf-8. |
+    | code     | unsupportedMediaType                                                                                                                                         |
+    | status   | 415                                                                                                                                                          |
+    | instance | /haalcentraal/api/brp/personen                                                                                                                               |
 
     Voorbeelden:
     | media type                       |
-    |                                  |
     | application/xml                  |
     | text/csv                         |
     | application/json; charset=cp1252 |
+
+
+Rule: contenttype voor de response is default application/json en charset utf-8
+
+  @fout-case
+  Scenario: Lege Accept contenttype wordt ondersteund
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 999999321                       |
+    | fields              | burgerservicenummer             |
+    | header: Accept      |                                 |
+    Dan heeft de response 0 personen
+
+
+Rule: contenttype voor het request is default application/json en charset utf-8
+
+  @fout-case
+  Scenario: Lege Content-Type wordt ondersteund
+    Als personen wordt gezocht met de volgende parameters
+    | naam                 | waarde                          |
+    | type                 | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer  | 999999321                       |
+    | fields               | burgerservicenummer             |
+    | header: Content-Type |                                 |
+    Dan heeft de response 0 personen
+
+  Scenario: Lege Content-Type wordt ondersteund bij zoeken
+    Als personen wordt gezocht met de volgende parameters
+    | naam                 | waarde                              |
+    | type                 | ZoekMetGeslachtsnaamEnGeboortedatum |
+    | geslachtsnaam        | brănduş-dendyuk                     |
+    | geboortedatum        | 1983-05-26                          |
+    | voornamen            | Kuşan                               |
+    | fields               | burgerservicenummer                 |
+    | header: Content-Type |                                     |
+    Dan heeft de response 0 personen
