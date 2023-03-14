@@ -56,6 +56,8 @@ nav:
         path: /v2/features-overzicht
       - title: Features test overzicht
         path: /features/index
+      - title: BrpProxy configuratie
+        path: /v2/brpproxy-configuratie
 
 #  - title: Specificaties v. 1.3
 #    subnav:
