@@ -38,7 +38,9 @@ def set_field_value(target_object, field_name, value):
 
 def map_dictionary(src_dict, fields_to_map):
     target_object = {}
-    
+
+    target_object['id'] = src_dict.get('id')
+
     for field in fields_to_map.keys():
         value = src_dict.get(field)
         if not value:
@@ -72,11 +74,11 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
     Convert the GBA V test data file to a CSV file.
     """
 
-    gemeenten = import_landelijke_tabel('Tabel33 Gemeententabel.csv')
-    landen = import_landelijke_tabel('Tabel34 Landentabel.csv')
-    nationaliteiten = import_landelijke_tabel('Tabel32 Nationaliteitentabel.csv')
-    reden_opnemen = import_landelijke_tabel('Tabel37 Reden opnemen.csv')
-    gezagsverhoudingen = import_landelijke_tabel('Tabel61 Gezagsverhoudingtabel.csv')
+    gemeenten = import_landelijke_tabel('Tabel33 Gemeententabel (gesorteerd op code).csv', '92.10 Gemeentecode', '92.11 Omschrijving')
+    landen = import_landelijke_tabel('Tabel34 Landentabel (gesorteerd op code).csv', '94.10 Landcode', '94.11 Omschrijving')
+    nationaliteiten = import_landelijke_tabel('Tabel32 Nationaliteitentabel (gesorteerd op code).csv', '05.11 Nationaliteitscode', '05.12 Omschrijving')
+    reden_opnemen = import_landelijke_tabel('Tabel37 Reden opnemen beëindigen nationaliteit.csv', '96.10 Reden opnemen/beëindigen nationaliteit', '96.20 Omschrijving')
+    gezagsverhoudingen = import_landelijke_tabel('Tabel61 Gezagsverhoudingtabel (gesorteerd op code).csv', '32.11 Gezagsverhouding', '32.12 Omschrijving')
 
     target = []
 
@@ -86,7 +88,7 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
         for row in src_reader:
             target_object = map_dictionary(row, fields_to_map)
 
-            if(target_object.get('burgerservicenummer') != None and target_object.get('naam') != None):
+            if(target_object.get('id') != ''):
                 add_gemeente_van_inschrijving_omschrijving(target_object, gemeenten)
                 add_plaats_en_land_omschrijvingen(target_object.get('geboorte'), gemeenten, landen)
                 add_plaats_en_land_omschrijvingen(target_object.get('overlijden'), gemeenten, landen)
@@ -95,21 +97,43 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
                 add_partners_omschrijvingen(target_object, gemeenten, landen)
                 add_nationaliteiten_omschrijvingen(target_object, nationaliteiten, reden_opnemen)
                 add_verblijfplaats_omschrijvingen(target_object, landen)
+                add_immigratie_omschrijvingen(target_object, landen)
 
+                del target_object['id']
                 target.append(target_object)
+            else:
+                last_target_object = target[-1]
+                src_nationaliteiten = target_object.get('nationaliteiten')
+                src_nationaliteit = None
+                
+                if(src_nationaliteiten != None and src_nationaliteiten[0] != None):
+                    src_nationaliteit = src_nationaliteiten[0]
+                
+                if (src_nationaliteit != None):
+                    if (src_nationaliteit.get('nationaliteit') != None or src_nationaliteit.get('aanduidingBijzonderNederlanderschap') != None):
+                        trg_nationaliteiten = last_target_object.get('nationaliteiten')
+                        if (trg_nationaliteiten != None): 
+                            trg_nationaliteiten.append(src_nationaliteit)
+                    else:
+                        if (src_nationaliteit.get('redenEinde') != None):
+                            trg_nationaliteiten = last_target_object.get('nationaliteiten')
+                            if (trg_nationaliteiten != None and len(trg_nationaliteiten) > 0): 
+                                trg_nationaliteiten.pop()
+
+                add_nationaliteiten_omschrijvingen(last_target_object, nationaliteiten, reden_opnemen)
 
     with open(gba_v_testdata_json_file, 'w', encoding='utf-8') as dst:
         dst.write(json.dumps(target, indent=2, ensure_ascii=False))
 
-def import_landelijke_tabel(landelijke_tabel_file):
+def import_landelijke_tabel(landelijke_tabel_file, naam_code, naam_omschrijving):
     target = {}
 
-    with open(landelijke_tabel_file, 'r', encoding='utf-8-sig') as src:
-        src_reader = csv.DictReader(src, delimiter=';')
+    with open(landelijke_tabel_file, 'r', encoding='utf-16') as src:
+        src_reader = csv.DictReader(src, delimiter=',')
 
         for row in src_reader:
-            code = row['code']
-            omschrijving = row['omschrijving']
+            code = row[naam_code]
+            omschrijving = row[naam_omschrijving]
             target[code] = omschrijving
 
     return target
@@ -185,7 +209,15 @@ def add_verblijfplaats_omschrijvingen(target_object, landen_tabel):
     if verblijfplaats == None:
         return
 
-    add_cijfer_code_omschrijving(verblijfplaats.get('landVanwaarIngeschreven'), landen_tabel)
+    add_cijfer_code_omschrijving(verblijfplaats.get('land'), landen_tabel)
+
+def add_immigratie_omschrijvingen(target_object, landen_tabel):
+    immigratie = target_object.get('immigratie')
+
+    if immigratie == None:
+        return
+    
+    add_cijfer_code_omschrijving(immigratie.get('landVanwaarIngeschreven'), landen_tabel)
 
 fields_to_map = {
     '01.01.10': 'aNummer',
@@ -230,6 +262,7 @@ fields_to_map = {
     '03.83.20': 'ouders[2].inOnderzoek.datumIngangOnderzoek',
     '04.05.10': 'nationaliteiten[].nationaliteit.code',
     '04.63.10': 'nationaliteiten[].redenOpname.code',
+    '04.64.10': 'nationaliteiten[].redenEinde.code',
     '04.65.10': 'nationaliteiten[].aanduidingBijzonderNederlanderschap',
     # '04.83.10': 'nationaliteiten[].inOnderzoek.aanduidingGegevensInOnderzoek',
     # '04.83.20': 'nationaliteiten[].inOnderzoek.datumIngangOnderzoek',
@@ -260,6 +293,7 @@ fields_to_map = {
     '08.09.10': 'gemeenteVanInschrijving.code',
     '08.09.20': 'datumInschrijvingInGemeente',
     '08.10.10': 'verblijfplaats.functieAdres.code',
+    '08.10.30': 'verblijfplaats.datumAanvangAdreshouding',
     '08.11.10': 'verblijfplaats.straat',
     '08.11.15': 'verblijfplaats.naamOpenbareRuimte',
     '08.11.20': 'verblijfplaats.huisnummer',
@@ -271,12 +305,14 @@ fields_to_map = {
     '08.11.80': 'verblijfplaats.adresseerbaarObjectIdentificatie',
     '08.11.90': 'verblijfplaats.nummeraanduidingIdentificatie',
     '08.12.10': 'verblijfplaats.locatiebeschrijving',
+    '08.13.10': 'verblijfplaats.land.code',
     '08.13.20': 'verblijfplaats.datumAanvangAdresBuitenland',
-    '08.13.30': 'verblijfplaats.adresregel1',
-    '08.13.40': 'verblijfplaats.adresregel2',
-    '08.13.50': 'verblijfplaats.adresregel3',
-    '08.14.10': 'verblijfplaats.landVanwaarIngeschreven.code',
-    '08.14.20': 'verblijfplaats.datumVestigingInNederland',
+    '08.13.30': 'verblijfplaats.regel1',
+    '08.13.40': 'verblijfplaats.regel2',
+    '08.13.50': 'verblijfplaats.regel3',
+    '08.14.10': 'immigratie.landVanwaarIngeschreven.code',
+    '08.14.20': 'immigratie.datumVestigingInNederland',
+    '08.85.10': 'verblijfplaats.datumIngangGeldigheid',
     '09.01.20': 'kinderen[].burgerservicenummer',
     '09.02.10': 'kinderen[].naam.voornamen',
     '09.02.20': 'kinderen[].naam.adellijkeTitelPredicaat.code',
