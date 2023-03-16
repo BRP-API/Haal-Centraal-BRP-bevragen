@@ -101,9 +101,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     {
         /// <summary>
         /// Hiermee kun je de velden opgeven die je wenst te ontvangen.
-        /// <br/>De te gebruiken paden zijn beschreven in [fields-Persoon.csv](https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/develop/features/fields-Persoon.csv) 
-        /// <br/>(voor gebruik fields bij raadplegen) en [fields-PersoonBeperkt.csv](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/develop/features/fields-PersoonBeperkt.csv) 
-        /// <br/>(voor gebruik fields bij zoeken).
         /// <br/>Velden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.
         /// <br/>Opgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.
         /// <br/>
@@ -132,7 +129,7 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
         public bool InclusiefOverledenPersonen { get; set; }
 
         /// <summary>
-        /// Je kunt alleen zoeken met een volledig geboortedatum. Zie [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/blob/v1.3.0/features/parametervalidatie.feature)
+        /// Je kunt alleen zoeken met een volledige geboortedatum.
         /// <br/>
         /// </summary>
         [Newtonsoft.Json.JsonProperty("geboortedatum", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
