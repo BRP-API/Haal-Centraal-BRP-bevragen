@@ -1,10 +1,10 @@
 const reporter = require('cucumber-html-reporter');
 const apiName = 'Haal Centraal BRP Bevragen API';
-const gbaVersion = 'GBA 2.0.31'
-const proxyVersion = 'Proxy 2.0.16'
+const gbaVersion = 'GBA 2.0.37'
+const proxyVersion = 'Proxy 2.0.17'
 
 const features = new Map([
-    ['raadpleeg-en-zoek', 'raadpleeg & zoek'],
+    ['zoeken-en-raadplegen', 'zoeken & raadplegen'],
     ['persoon-beperkt', 'persoon beperkt'],
     ['persoon', 'persoon'],
     ['persoon-adressering', 'persoon adressering'],
@@ -55,8 +55,8 @@ features.forEach((value, key) => {
 
 reporter.generate({
     theme: 'bootstrap',
-    jsonFile: 'docs/features/test-result-autorisatie.json',
-    output: 'docs/features/test-report-autorisatie.html',
+    jsonFile: 'docs/features/test-result-autorisatie-gba.json',
+    output: 'docs/features/test-report-autorisatie-gba.html',
     noInlineScreenshots: true,
     reportSuiteAsScenarios: true,
     scenarioTimestamp: true,
@@ -67,8 +67,8 @@ reporter.generate({
 
 reporter.generate({
     theme: 'bootstrap',
-    jsonFile: 'docs/features/test-result-protocollering.json',
-    output: 'docs/features/test-report-protocollering.html',
+    jsonFile: 'docs/features/test-result-protocollering-gba.json',
+    output: 'docs/features/test-report-protocollering-gba.html',
     noInlineScreenshots: true,
     reportSuiteAsScenarios: true,
     scenarioTimestamp: true,
