@@ -121,6 +121,44 @@ Het gebruik van de __adresseringBinnenland__ fields alias is beschreven in de vo
 - [adresregels fields alias](./features/persoon/adressering/adres-regels/fields-alias.feature)
 - [adresregels fields alias fout cases](./features/persoon/adressering/adres-regels/fields-alias-fout-cases.feature)
 
+### Filteren van partner velden
+
+Bij het vragen van de partners van een persoon wordt de gevraagde gegevens van actuele partners (= niet ontbonden huwelijk/geregistreerd partnerschap) geleverd. Heeft de betreffende persoon alleen ontbonden huwelijk/geregistreerd partnerschappen, dan wordt alleen de gevraagde gegevens van het meest recente ontbonden huwelijk/geregistreerd partnerschap geleverd.
+
+In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
+
+- [partner velden vragen met fields](./features/persoon/partner/overzicht.feature)
+
+### Filteren van nationaliteit velden
+
+De {{ site.apiname }} Web API kent de volgende nationaliteit types:
+
+- Nationaliteit
+- Staatloos
+- BehandeldAlsNederlander
+- VastgesteldNietNederlander
+- Onbekend
+
+Er wordt alleen gegevens van actuele (= niet beëindigde) nationaliteiten geleverd.
+
+In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
+
+- [nationaliteit velden vragen met fields](./features/persoon/nationaliteit/overzicht.feature)
+
+### Filteren van verblijfstitel velden
+
+Wanneer velden van de verblijfstitel wordt gevraagd, dan wordt de gevraagde gegevens geleverd als de verblijfstitel niet is beëindigd. Gegevens van een verblijfstitel wordt ook niet geleverd als de aanduiding gelijk is aan 'geen verblijfstitel (meer)'.
+
+In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
+
+- [verblijfstitel velden vragen met fields](./features/persoon/verblijfstitel/overzicht.feature)
+
+## Eén of meerdere gevraagde velden zijn in onderzoek
+
+Om een afnemer te notificeren dat één of meerdere gevraagde velden in onderzoek zijn, worden de bijbehorende inOnderzoek en datumIngangOnderzoek velden ook geleverd.
+Wanneer één of meerdere velden waaruit een andere veld wordt afgeleid (bijv. de adressering velden) in onderzoek zijn, dan is het afgeleid veld ook in onderzoek en wordt de inOnderzoek veld van het afgeleid veld ook geleverd.
+In het [in onderzoek](./features/in-onderzoek.feature) feature bestand zijn de regels beschreven wanneer de inOnderzoek velden wel/niet worden geleverd.
+
 ## Geen/null/false waarde, leeg object waarde en standaard waarde
 
 Om de payload van een response klein te houden, is er voor gekozen om velden met de volgende waarden niet te leveren in de response:
