@@ -129,6 +129,7 @@ const columnNameMap = new Map([
     ['burgerservicenummer (01.20)', 'burger_service_nr' ],
 
     ['voornamen (02.10)', 'voor_naam' ],
+    ['voornamen (diakrieten)', 'diak_voor_naam' ],
     ['adellijke titel of predicaat (02.20)', 'titel_predicaat' ],
     ['voorvoegsel (02.30)', 'geslachts_naam_voorvoegsel' ],
     ['geslachtsnaam (02.40)', 'geslachts_naam' ],
@@ -161,7 +162,9 @@ const columnNameMap = new Map([
     ['datum aanvang adreshouding (10.30)', 'adreshouding_start_datum'],
 
     ['straatnaam (11.10)', 'straat_naam'],
+    ['straatnaam (diakrieten)', 'diak_straat_naam'],
     ['naam openbare ruimte (11.15)', 'open_ruimte_naam'],
+    ['naam openbare ruimte (diakrieten)', 'diak_open_ruimte_naam'],
     ['huisnummer (11.20)', 'huis_nr'],
     ['huisletter (11.30)', 'huis_letter'],
     ['huisnummertoevoeging (11.40)', 'huis_nr_toevoeging'],
