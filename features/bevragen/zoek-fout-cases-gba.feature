@@ -78,7 +78,7 @@ Rule: Er moet een valide zoek type worden opgegeven
     | type voldoet niet aan case | zoekmetgeslachtsnaamengeboortedatum |
 
 
-Rule: als cotenttype voor de response wordt alleen application/json en charset utf-8 ondersteund
+Rule: als contenttype voor de response wordt alleen application/json en charset utf-8 ondersteund
 
   @fout-case
   Scenario: Gevraagde Accept contenttype wordt niet ondersteund
@@ -119,7 +119,7 @@ Rule: als cotenttype voor de response wordt alleen application/json en charset u
     | application/json; charset=UTF-8 |
 
 
-Rule: als cotenttype voor het request wordt alleen application/json en charset utf-8 ondersteund
+Rule: als contenttype voor het request wordt alleen application/json en charset utf-8 ondersteund
 
   Abstract Scenario: '<media type>' als Content-Type waarde wordt ondersteund
     Als gba personen wordt gezocht met de volgende parameters
