@@ -1005,7 +1005,7 @@
         "description" : "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n"
       },
       "AdellijkeTitelPredicaatType" : {
-        "description" : "Wordt gevuld met waarden uit de landelijke tabel 'Adellijke_Titel_Predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.\n",
+        "description" : "Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/Waardetabel"
         }, {
