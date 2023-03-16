@@ -34,7 +34,7 @@ components:
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
-        * **geslacht** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
       type: object
       properties:
         burgerservicenummer:

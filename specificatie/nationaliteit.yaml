@@ -9,7 +9,7 @@ components:
     AbstractNationaliteit:
       type: object
       description: |
-        * **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Reden_Nationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld met waarden uit de landelijke tabel 'Reden opnemen/beëindigen nationaliteit'.
       required:
         - type
       properties:
@@ -27,7 +27,7 @@ components:
           NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
     NationaliteitBekend:
       description: |
-        * **nationaliteit** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Nationaliteiten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **nationaliteit** - wordt gevuld met waarden uit de landelijke tabel 'Nationaliteiten'.
       allOf:
         - $ref: '#/components/schemas/AbstractNationaliteit'
         - type: object

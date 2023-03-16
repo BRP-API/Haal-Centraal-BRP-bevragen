@@ -1,0 +1,23 @@
+tabelidentificatie,code,omschrijving
+Aanduiding_Bij_Huisnummer,to,tegenover
+Aanduiding_Bij_Huisnummer,by,bij
+Geslacht,M,man
+Geslacht,V,vrouw
+Geslacht,O,onbekend
+Naamgebruik,E,eigen geslachtsnaam
+Naamgebruik,N,geslachtsnaam echtgenoot/geregistreerd partner na eigen geslachtsnaam
+Naamgebruik,P,geslachtsnaam echtgenoot/geregistreerd partner
+Naamgebruik,V,geslachtsnaam echtgenoot/geregistreerd partner voor eigen geslachtsnaam
+Reden_Opschorting_Bijhouding,O,overlijden
+Reden_Opschorting_Bijhouding,E,emigratie
+Reden_Opschorting_Bijhouding,M,ministerieel besluit
+Reden_Opschorting_Bijhouding,R,pl is aangelegd in de rni
+Reden_Opschorting_Bijhouding,F,fout
+Reden_Opschorting_Bijhouding,.,onbekend
+Soort_Verbintenis,H,huwelijk
+Soort_Verbintenis,P,geregistreerd partnerschap
+Soort_Verbintenis,.,onbekend
+Functie_Adres,W,woonadres
+Functie_Adres,B,briefadres
+Europees_Kiesrecht,1,persoon is uitgesloten
+Europees_Kiesrecht,2,persoon ontvangt oproep
