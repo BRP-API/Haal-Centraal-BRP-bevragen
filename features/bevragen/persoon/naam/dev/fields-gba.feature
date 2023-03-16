@@ -71,6 +71,30 @@ Rule: geslachtsaanduiding, voornamen, adellijke titel/predicaat, voorvoegsel, ge
     | voorvoegsel                          | Van      |
     | geslachtsnaam                        | Naersen  |
 
+  Scenario: groep 'naam' wordt gevraagd en moet alles leveren dat nodig is voor volledigeNaam plus de andere naamvelden
+    Gegeven de persoon met burgerservicenummer '000000619' heeft de volgende gegevens
+    | geslachtsaanduiding (04.10) | voornamen (02.10) | adellijke titel of predicaat (02.20) | voorvoegsel (02.30) | geslachtsnaam (02.40) | aanduiding naamgebruik (61.10) |
+    | V                           | Carolina          | BS                                   | Van                 | Naersen               | E                              |
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000619                       |
+    | fields              | naam                            |
+    Dan heeft de response een persoon met de volgende gegevens
+    | naam                  | waarde |
+    | geslacht.code         | V      |
+    | geslacht.omschrijving | vrouw  |
+    En heeft de persoon de volgende 'naam' gegevens
+    | naam                                 | waarde              |
+    | voornamen                            | Carolina            |
+    | adellijkeTitelPredicaat.code         | BS                  |
+    | adellijkeTitelPredicaat.soort        | titel               |
+    | adellijkeTitelPredicaat.omschrijving | barones             |
+    | voorvoegsel                          | Van                 |
+    | geslachtsnaam                        | Naersen             |
+    | aanduidingNaamgebruik.code           | E                   |
+    | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
+
 Rule: voornamen wordt geleverd bij field pad 'naam.voorletters'
 
   Scenario: 'voorletters' wordt gevraagd met field pad 'naam.voorletters'

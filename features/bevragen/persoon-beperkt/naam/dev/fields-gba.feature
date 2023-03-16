@@ -19,7 +19,7 @@ Functionaliteit: naam velden vragen met fields (persoon beperkt)
     | naam      | waarde     |
     | voornamen | Jan Pieter |
 
-  Scenario: 'volledige naam' wordt gevraagd met field pad 'naam.volledigeNaam'
+  Abstract Scenario: 'volledige naam' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
     | naam                                 | waarde     |
     | geslachtsaanduiding (04.10)          | V          |
@@ -33,7 +33,7 @@ Functionaliteit: naam velden vragen met fields (persoon beperkt)
     | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
     | geslachtsnaam | Maassen                             |
     | geboortedatum | 1983-05-26                          |
-    | fields        | naam.volledigeNaam                  |
+    | fields        | <fields>                            |
     Dan heeft de response een persoon met de volgende gegevens
     | naam                  | waarde |
     | geslacht.code         | V      |
@@ -46,3 +46,8 @@ Functionaliteit: naam velden vragen met fields (persoon beperkt)
     | adellijkeTitelPredicaat.code         | JH         |
     | adellijkeTitelPredicaat.soort        | predicaat  |
     | adellijkeTitelPredicaat.omschrijving | jonkheer   |
+
+    Voorbeelden:
+    | fields             |
+    | naam.volledigeNaam |
+    | naam               |
