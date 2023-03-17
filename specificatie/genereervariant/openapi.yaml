@@ -259,7 +259,7 @@ components:
           personen:
             type: array
             description: |
-              * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/PersoonBeperkt'
     ZoekMetNaamEnGemeenteVanInschrijvingResponse:
@@ -270,7 +270,7 @@ components:
           personen:
             type: array
             description: |
-              * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/PersoonBeperkt'
     RaadpleegMetBurgerservicenummerResponse:
@@ -281,7 +281,7 @@ components:
           personen:
             type: array
             description: |
-              * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/Persoon'
     ZoekMetPostcodeEnHuisnummerResponse:
@@ -292,7 +292,7 @@ components:
           personen:
             type: array
             description: |
-              * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/PersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
@@ -303,7 +303,7 @@ components:
           personen:
             type: array
             description: |
-              * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/PersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
@@ -314,7 +314,7 @@ components:
           personen:
             type: array
             description: |
-              * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/PersoonBeperkt'
     PersonenQuery:
@@ -548,7 +548,7 @@ components:
         verificatie:
           $ref: '#/components/schemas/Verificatie'
       description: |
-        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
     Burgerservicenummer:
       pattern: "^[0-9]{9}$"
       type: string
@@ -679,7 +679,7 @@ components:
         verificatie:
           $ref: '#/components/schemas/Verificatie'
       description: |
-        * **geslachtsaanduiding** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
     ANummer:
       pattern: "^[0-9]{10}$"
       type: string
@@ -833,7 +833,7 @@ components:
     NaamPersoonBeperkt:
       description: |
         Gegevens over de naam van de persoon.
-        * **aanduidingNaamgebruik** - wordt gevuld met waarden uit de tabel 'Naamgebruik' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **aanduidingNaamgebruik** - wordt gevuld met waarden voor 'Naamgebruik' in 'tabelwaarden.csv'.
       allOf:
       - $ref: '#/components/schemas/NaamBasis'
       - properties:
@@ -862,7 +862,7 @@ components:
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
     AdellijkeTitelPredicaatType:
       description: |
-        Wordt gevuld met waarden uit de tabel 'Adellijke_Titel_Predicaat' (zie Haal-Centraal-BRP-tabellen-bevragen API). De property soort geeft aan of het een 'predicaat' of een 'titel' is.
+        Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
       allOf:
       - $ref: '#/components/schemas/Waardetabel'
       - properties:
@@ -940,7 +940,7 @@ components:
         reden:
           $ref: '#/components/schemas/Waardetabel'
       description: |
-        * **reden** - wordt gevuld met waarden uit de tabel 'redenopschortingbijhouding' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **reden** - wordt gevuld met waarden voor 'Reden_Opschorting_Bijhouding' in 'tabelwaarden.csv'.
     AdresseringBeperkt:
       allOf:
       - $ref: '#/components/schemas/AdresseringBasis'
@@ -1102,11 +1102,11 @@ components:
         einddatumUitsluiting:
           $ref: '#/components/schemas/AbstractDatum'
       description: |
-        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden uit de tabel 'Europees_Kiesrecht' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.
     NaamPersoon:
       description: |
         Gegevens over de naam van de persoon.
-        * **aanduidingNaamgebruik** - wordt gevuld met waarden uit de tabel 'Naamgebruik' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **aanduidingNaamgebruik** - wordt gevuld met waarden voor 'Naamgebruik' in 'tabelwaarden.csv'.
       allOf:
       - $ref: '#/components/schemas/NaamBasis'
       - properties:
@@ -1133,7 +1133,7 @@ components:
         redenOpname:
           $ref: '#/components/schemas/Waardetabel'
       description: |
-        * **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Reden_Nationaliteit' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld met waarden uit de landelijke tabel 'Reden opnemen/beëindigen nationaliteit'.
       discriminator:
         propertyName: type
         mapping:
@@ -1144,7 +1144,7 @@ components:
           NationaliteitOnbekend: '#/components/schemas/NationaliteitOnbekend'
     NationaliteitBekend:
       description: |
-        * **nationaliteit** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'Nationaliteiten' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **nationaliteit** - wordt gevuld met waarden uit de landelijke tabel 'Nationaliteiten'.
       allOf:
       - $ref: '#/components/schemas/AbstractNationaliteit'
       - type: object
@@ -1237,8 +1237,8 @@ components:
       description: |
         Gegevens over de geboorte.
         * **datum** - datum waarop de persoon is geboren.
-        * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
-        * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
+        * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+        * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
       - $ref: '#/components/schemas/GeboorteBasis'
       - type: object
@@ -1274,8 +1274,8 @@ components:
       description: |
         Gegevens over het overlijden.
         * **datum** - datum waarop de persoon is overleden.
-        * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+        * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+        * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten".
     OverlijdenInOnderzoek:
       description: |
         Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
@@ -1307,8 +1307,8 @@ components:
           Locatie: '#/components/schemas/Locatie'
     VerblijfplaatsBuitenland:
       description: |
-        * **gemeenteVanInschrijving** - Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
-        * **land** - land waar de persoon is overleden. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
+        * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
@@ -1379,8 +1379,9 @@ components:
     Adres:
       description: |
         Gegevens over het adres van een persoon.
-        * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Functie_Adres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **aanduidingBijHuisnummer** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Aanduiding_Bij_Huisnummer' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
+        * **functieAdres** - wordt gevuld met waarden voor 'Functie_Adres' in 'tabelwaarden.csv'.
+        * **aanduidingBijHuisnummer** - wordt gevuld met waarden voor 'Aanduiding_Bij_Huisnummer' in 'tabelwaarden.csv'.
         * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
         * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
       allOf:
@@ -1507,9 +1508,9 @@ components:
             type: boolean
     Locatie:
       description: |
-        * **functieAdres** - Wordt gevuld op basis van de waarden die voorkomen in de tabel 'soortadres' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **gemeenteVanInschrijving** : de gemeente waar de persoon verblijft en is ingeschreven. De code kan voorloopnullen bevatten. Wordt gevuld op basis van de waarden die voorkomen in de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats
-        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld op basis van de waarden die voorkomen in de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
+        * **functieAdres** - wordt gevuld met waarden voor 'Functie_Adres' in 'tabelwaarden.csv'.
+        * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
       allOf:
       - $ref: '#/components/schemas/AbstractVerblijfplaats'
       - type: object
@@ -1673,7 +1674,7 @@ components:
         Gegevens over de verblijfsrechtelijke status van de persoon.
         * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
         * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
-        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de tabel 'Verblijfstitel' (zie Haal-Centraal-BRP-tabellen-bevragen API).
+        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
     VerblijfstitelInOnderzoek:
       description: |
         Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn.
@@ -1727,7 +1728,7 @@ components:
       description: |
         Gegevens over de ouder van de persoon.
         * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
-        * **geslacht** - wordt gevuld op basis van de waarden die voorkomen in de tabel 'geslacht' uit de Haal-Centraal-BRP-tabellen-bevragen API.
+        * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
     OuderAanduiding:
       pattern: "^[1|2]$"
       type: string
@@ -1791,8 +1792,8 @@ components:
       description: |
         Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
         * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel 'Landen' (zie Haal-Centraal-BRP-tabellen-bevragen API).
-        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
     AangaanHuwelijkPartnerschapInOnderzoek:
       description: |
         Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.

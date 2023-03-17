@@ -21,8 +21,8 @@ components:
       description: |
         Gegevens over het overlijden.
         * **datum** - datum waarop de persoon is overleden.
-        * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de tabel 'Landen' uit de Haal-Centraal-BRP-tabellen-bevragen API.
-        * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+        * **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+        * **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten".
       type: object
       properties:
         datum:
