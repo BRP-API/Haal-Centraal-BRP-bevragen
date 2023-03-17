@@ -199,12 +199,11 @@ Rule: als contenttype voor het request wordt alleen application/json en charset 
 
 Rule: contenttype voor de response is default application/json en charset utf-8
 
-  @fout-case
   Scenario: Lege Accept contenttype wordt ondersteund
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999999321                       |
+    | burgerservicenummer | 000000024                       |
     | fields              | burgerservicenummer             |
     | header: Accept      |                                 |
     Dan heeft de response 0 personen
@@ -212,12 +211,11 @@ Rule: contenttype voor de response is default application/json en charset utf-8
 
 Rule: contenttype voor het request is default application/json en charset utf-8
 
-  @fout-case
   Scenario: Lege Content-Type wordt ondersteund
     Als personen wordt gezocht met de volgende parameters
     | naam                 | waarde                          |
     | type                 | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer  | 999999321                       |
+    | burgerservicenummer  | 000000024                       |
     | fields               | burgerservicenummer             |
     | header: Content-Type |                                 |
     Dan heeft de response 0 personen
