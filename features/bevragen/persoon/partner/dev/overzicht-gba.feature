@@ -5,11 +5,17 @@ Functionaliteit: partner
 
 Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt alleen de ex-partner met de meest recente datum ontbinding geleverd
 
-  Scenario: persoon heeft alleen ontbonden huwelijken/partnerschappen
+  Abstract Scenario: persoon heeft alleen ontbonden huwelijken/partnerschappen met <omschrijving>
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
+    | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+    | 000000013                   | <datum huwelijkssluiting 1>                                        |
+    En de 'partner' is gewijzigd naar de volgende gegevens
     | burgerservicenummer (01.20) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
     | 000000013                   | 20201001                                                     |
     En de persoon heeft een 'partner' met de volgende gegevens
+    | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+    | 000000013                   | <datum huwelijkssluiting 2>                                        |
+    En de 'partner' is gewijzigd naar de volgende gegevens
     | burgerservicenummer (01.20) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
     | 000000014                   | 20220414                                                     |
     Als gba personen wordt gezocht met de volgende parameters
@@ -18,9 +24,21 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | burgerservicenummer | 000000012                       |
     | fields              | partners                        |
     Dan heeft de response een persoon met een 'partner' met de volgende gegevens
-    | naam                                 | waarde    |
-    | burgerservicenummer                  | 000000014 |
-    | ontbindingHuwelijkPartnerschap.datum | 20220414  |
+    | naam                                 | waarde                      |
+    | burgerservicenummer                  | 000000014                   |
+    | ontbindingHuwelijkPartnerschap.datum | 20220414                    |
+    | aangaanHuwelijkPartnerschap.datum    | <datum huwelijkssluiting 2> |
+
+    Voorbeelden:
+    | datum huwelijkssluiting 1 | datum huwelijkssluiting 2 | omschrijving                                                                                                      |
+    | 20080715                  | 20210523                  | twee achtereenvolgende relaties zijn beëindigd                                                                    |
+    | 20100523                  | 20080715                  | twee gelijktijdige (polygame) relaties - eerste relatie laatst beëindigd                                          |
+    | 20080715                  | 20100523                  | twee gelijktijdige (polygame) relaties - eerste relatie eerst beëindigd                                           |
+    | 20100523                  | 00000000                  | laatst beëindigde relatie heeft onbekende begindatum                                                              |
+    | 00000000                  | 20080715                  | eerste beëindigde relatie heeft onbekende begindatum                                                              |
+    | 20100523                  | 20100523                  | twee gelijktijdige (polygame) relaties met gelijke begindatum                                                     |
+    | 20100523                  | 20100000                  | twee gelijktijdige (polygame) relaties - laatst beëindigde relatie in zelfde jaar maar onbekende maand begindatum |
+    | 00000000                  | 00000000                  | twee gelijktijdige (polygame) relaties met onbekende begindatum                                                   |
 
   Scenario: persoon heeft een actuele en een ontbonden huwelijk/partnerschap
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
