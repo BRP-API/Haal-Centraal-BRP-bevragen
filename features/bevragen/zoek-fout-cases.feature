@@ -88,13 +88,13 @@ Rule: als contenttype voor de response wordt alleen application/json en charset 
     | fields              | burgerservicenummer             |
     | header: Accept      | application/xml                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6                 |
-    | title    | Gevraagde contenttype wordt niet ondersteund.                               |
-    | detail   | Ondersteunde content type: */*, application/json. Default: application/json |
-    | code     | notAcceptable                                                               |
-    | status   | 406                                                                         |
-    | instance | /haalcentraal/api/brp/personen                                              |
+    | naam     | waarde                                                                                                                                                                              |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6                                                                                                                         |
+    | title    | Gevraagde contenttype wordt niet ondersteund.                                                                                                                                       |
+    | detail   | Ondersteunde content type: */*, */*;charset=utf-8, */*; charset=utf-8, application/json, application/json; charset=utf-8, application/json;charset=utf-8. Default: application/json |
+    | code     | notAcceptable                                                                                                                                                                       |
+    | status   | 406                                                                                                                                                                                 |
+    | instance | /haalcentraal/api/brp/personen                                                                                                                                                      |
 
   @fout-case
   Scenario: Lege Accept contenttype wordt niet ondersteund
@@ -105,13 +105,13 @@ Rule: als contenttype voor de response wordt alleen application/json en charset 
     | fields              | burgerservicenummer             |
     | header: Accept      |                                 |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6                 |
-    | title    | Gevraagde contenttype wordt niet ondersteund.                               |
-    | detail   | Ondersteunde content type: */*, application/json. Default: application/json |
-    | code     | notAcceptable                                                               |
-    | status   | 406                                                                         |
-    | instance | /haalcentraal/api/brp/personen                                              |
+    | naam     | waarde                                                                                                                                                                              |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6                                                                                                                         |
+    | title    | Gevraagde contenttype wordt niet ondersteund.                                                                                                                                       |
+    | detail   | Ondersteunde content type: */*, */*;charset=utf-8, */*; charset=utf-8, application/json, application/json; charset=utf-8, application/json;charset=utf-8. Default: application/json |
+    | code     | notAcceptable                                                                                                                                                                       |
+    | status   | 406                                                                                                                                                                                 |
+    | instance | /haalcentraal/api/brp/personen                                                                                                                                                      |
 
   Abstract Scenario: '<accept media type>' als Accept contenttype wordt ondersteund
     Als personen wordt gezocht met de volgende parameters
@@ -182,13 +182,13 @@ Rule: als contenttype voor het request wordt alleen application/json en charset 
     | fields               | burgerservicenummer             |
     | header: Content-Type | <media type>                    |
     Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                                                                                                                       |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13                                                                                                 |
-    | title    | Media Type wordt niet ondersteund.                                                                                                                           |
-    | detail   | Ondersteunde content type: */*, application/json, application/json; charset=utf-8, application/json;charset=utf-8. Default: application/json; charset=utf-8. |
-    | code     | unsupportedMediaType                                                                                                                                         |
-    | status   | 415                                                                                                                                                          |
-    | instance | /haalcentraal/api/brp/personen                                                                                                                               |
+    | naam     | waarde                                                                                                                                                                                              |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13                                                                                                                                        |
+    | title    | Media Type wordt niet ondersteund.                                                                                                                                                                  |
+    | detail   | Ondersteunde content type: */*, */*;charset=utf-8, */*; charset=utf-8, application/json, application/json; charset=utf-8, application/json;charset=utf-8. Default: application/json; charset=utf-8. |
+    | code     | unsupportedMediaType                                                                                                                                                                                |
+    | status   | 415                                                                                                                                                                                                 |
+    | instance | /haalcentraal/api/brp/personen                                                                                                                                                                      |
 
     Voorbeelden:
     | media type                       |
