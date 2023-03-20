@@ -30,7 +30,7 @@ public static class NaamMapper
         return naam != null &&
                !string.IsNullOrWhiteSpace(naam.Geslachtsnaam) &&
                naam.Geslachtsnaam != "."
-            ? Regex.Replace($"{naam.Voorvoegsel} {naam.Geslachtsnaam}", @"\s+", " ").Trim()
+            ? $"{naam.Voorvoegsel} {naam.Geslachtsnaam}".RemoveRedundantSpaces()
             : string.Empty;
     }
 

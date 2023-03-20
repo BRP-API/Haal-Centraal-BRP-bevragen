@@ -39,7 +39,7 @@ public static class AanhefMapper
             _ => string.Empty
         };
 
-        return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
+        return retval.RemoveRedundantSpaces().ToNull();
     }
 
     public static string? Aanhef(this NaamPersoon? persoon)

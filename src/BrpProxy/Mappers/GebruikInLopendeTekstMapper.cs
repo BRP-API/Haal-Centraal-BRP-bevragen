@@ -87,7 +87,7 @@ public static class GebruikInLopendeTekstMapper
             _ => string.Empty
         };
 
-        return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
+        return retval.RemoveRedundantSpaces().ToNull();
     }
 
     private static bool HeeftAdellijkeTitelVoorGebruikInLopendeTekst(this NaamPersoon persoon)
@@ -146,7 +146,7 @@ public static class GebruikInLopendeTekstMapper
             _ => string.Empty
         };
 
-        return Regex.Replace(retval, @"\s+", " ").Trim().ToNull();
+        return retval.RemoveRedundantSpaces().ToNull();
     }
 
     public static string? GebruikInLopendeTekst(this NaamPersoon? persoon)

@@ -15,9 +15,9 @@ namespace BrpProxy.Middlewares
         private const string UnsupportedMediaTypeIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13";
         private const string InternalServerErrorIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1";
 
-        private static readonly Regex ConvertPropertyValueRegex = new(@"^Could not convert string to (?<code>.*):(.*). Path '(?<name>.*)'.$");
-        private static readonly Regex RequiredPropertyRegex = new(@"^Required property '(?<name>.*)' expects a non-null value. Path ''.$");
-        private static readonly Regex ConvertValueToCollectionRegex = new(@"^Error converting value ""(.*)"" to type '(.*)'. Path '(?<name>.*)'.$");
+        private static readonly Regex ConvertPropertyValueRegex = new(@"^Could not convert string to (?<code>.*):(.*). Path '(?<name>.*)'.$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
+        private static readonly Regex RequiredPropertyRegex = new(@"^Required property '(?<name>.*)' expects a non-null value. Path ''.$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
+        private static readonly Regex ConvertValueToCollectionRegex = new(@"^Error converting value ""(.*)"" to type '(.*)'. Path '(?<name>.*)'.$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
 
         private static Foutbericht CreateNotFoundFoutbericht(this HttpContext context)
         {

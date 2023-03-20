@@ -37,6 +37,8 @@ public static class AdresregelsMapper
         return null;
     }
 
+    private static bool BegintMetCijfer(this string input) => Regex.Match(input, @"^\d.*$", RegexOptions.None, TimeSpan.FromMilliseconds(100)).Success;
+
     private static string? AdresToAdresregel1(this Gba.GbaVerblijfplaatsBeperkt adres)
     {
         StringBuilder retval = new();
@@ -79,7 +81,7 @@ public static class AdresregelsMapper
             else
             {
                 retval.AppendFormat("{1}{0}", adres.Huisnummertoevoeging,
-                    Regex.Match(adres.Huisnummertoevoeging, @"^\d.*$").Success
+                    adres.Huisnummertoevoeging.BegintMetCijfer()
                         ? "-"
                         : " ");
             }

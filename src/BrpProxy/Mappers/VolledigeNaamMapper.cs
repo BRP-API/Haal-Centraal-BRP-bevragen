@@ -10,7 +10,7 @@ public static class VolledigeNaamMapper
         var adellijkeTitel = naam.AdellijkeTitelPredicaat.MapNaarAdellijkeTitel(geslacht);
         var predikaat = naam.AdellijkeTitelPredicaat.MapNaarPredicaat(geslacht);
 
-        var retval = Regex.Replace($"{predikaat} {naam.Voornamen} {adellijkeTitel} {naam.Voorvoegsel} {naam.Geslachtsnaam}", @"\s+", " ").Trim();
+        var retval = $"{predikaat} {naam.Voornamen} {adellijkeTitel} {naam.Voorvoegsel} {naam.Geslachtsnaam}".RemoveRedundantSpaces();
 
         return !string.IsNullOrWhiteSpace(retval)
             ? retval

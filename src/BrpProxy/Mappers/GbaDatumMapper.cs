@@ -6,7 +6,7 @@ namespace BrpProxy.Mappers;
 
 public static class GbaDatumMapper
 {
-    private static readonly Regex GbaDatumRegex = new("^(?<jaar>[0-9]{4})(?<maand>[0-9]{2})(?<dag>[0-9]{2})$");
+    private static readonly Regex GbaDatumRegex = new("^(?<jaar>[0-9]{4})(?<maand>[0-9]{2})(?<dag>[0-9]{2})$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
 
     public static AbstractDatum Map(this string datum)
     {

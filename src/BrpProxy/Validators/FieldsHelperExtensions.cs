@@ -253,7 +253,7 @@ namespace BrpProxy.Validators
                     default:
                         retval.Add(
                             Regex.Replace(field,
-                                @"(\.type|\.datum|\.langFormaat|\.jaar|\.maand|\.onbekend|\.code|\.soort|\.omschrijving)$|(Binnenland)", ""));
+                                @"(\.type|\.datum|\.langFormaat|\.jaar|\.maand|\.onbekend|\.code|\.soort|\.omschrijving)$|(Binnenland)", "", RegexOptions.None, TimeSpan.FromMilliseconds(100)));
                         break;
                 }
             }
