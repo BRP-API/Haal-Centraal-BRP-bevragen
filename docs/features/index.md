@@ -4,11 +4,11 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5419 scenarios (25 failed, 5394 passed)
+Totaal: 5437 scenarios (23 failed, 5414 passed)
 
 ## GBA v2.0.38
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 332 scenarios (332 passed)
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (344 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 516 scenarios (6 failed, 510 passed)
     - features\bevragen\zoek-fout-cases-gba.feature:84
@@ -30,16 +30,14 @@ Totaal: 5419 scenarios (25 failed, 5394 passed)
   - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding-gba.html){:target="_blank" rel="noopener"}: 45 scenarios (45 passed)
   - [ouder](./test-report-persoon-ouder-gba.html){:target="_blank" rel="noopener"}: 32 scenarios (32 passed)
   - [overlijden](./test-report-persoon-overlijden-gba.html){:target="_blank" rel="noopener"}: 24 scenarios (24 passed)
-  - [partner](./test-report-persoon-partner-gba.html){:target="_blank" rel="noopener"}: 47 scenarios (47 passed)
+  - [partner](./test-report-persoon-partner-gba.html){:target="_blank" rel="noopener"}: 54 scenarios (54 passed)
   - [rni](./test-report-persoon-rni-gba.html){:target="_blank" rel="noopener"}: 71 scenarios (71 passed)
   - [uitsluiting kiesrecht](./test-report-persoon-uitsluiting-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 20 scenarios (20 passed)
   - [verblijfplaats](./test-report-persoon-verblijfplaats-gba.html){:target="_blank" rel="noopener"}: 80 scenarios (80 passed)
   - [verblijfstitel](./test-report-persoon-verblijfstitel-gba.html){:target="_blank" rel="noopener"}: 11 scenarios (11 passed)
   - [verificatie](./test-report-persoon-verificatie-gba.html){:target="_blank" rel="noopener"}: 13 scenarios (13 passed)
 - [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (788 passed)
-- [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 389 scenarios (2 failed, 387 passed)
-    - features\bevragen\protocollering-gba.feature:135
-    - features\bevragen\protocollering-gba.feature:183
+- [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 388 scenarios (388 passed)
 
 
 ## Proxy v2.0.17
