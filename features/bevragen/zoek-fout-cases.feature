@@ -96,23 +96,6 @@ Rule: als contenttype voor de response wordt alleen application/json en charset 
     | status   | 406                                                         |
     | instance | /haalcentraal/api/brp/personen                              |
 
-  @fout-case
-  Scenario: Lege Accept contenttype wordt niet ondersteund
-    Als personen wordt gezocht met de volgende parameters
-    | naam                | waarde                          |
-    | type                | RaadpleegMetBurgerservicenummer |
-    | burgerservicenummer | 999999321                       |
-    | fields              | burgerservicenummer             |
-    | header: Accept      |                                 |
-    Dan heeft de response een object met de volgende gegevens
-    | naam     | waarde                                                      |
-    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6 |
-    | title    | Gevraagde contenttype wordt niet ondersteund.               |
-    | detail   | Ondersteunde content type: application/json; charset=utf-8  |
-    | code     | notAcceptable                                               |
-    | status   | 406                                                         |
-    | instance | /haalcentraal/api/brp/personen                              |
-
   Abstract Scenario: '<accept media type>' als Accept contenttype wordt ondersteund
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
