@@ -14,7 +14,7 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | 000000013                   | 20201001                                                     |
     En de persoon heeft een 'partner' met de volgende gegevens
     | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
-    | 000000013                   | <datum huwelijkssluiting 2>                                        |
+    | 000000014                   | <datum huwelijkssluiting 2>                                        |
     En de 'partner' is gewijzigd naar de volgende gegevens
     | burgerservicenummer (01.20) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) |
     | 000000014                   | 20220414                                                     |
