@@ -132,7 +132,6 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
 
       Voorbeelden:
       | groep             | gevraagde rubrieken                    |
-      | naam              | 010210, 010220, 010230, 010240, 016110 |
       | geboorte          | 010310, 010320, 010330                 |
       | nationaliteiten   | 040510, 046310, 046510, 048510         |
       | overlijden        | 060810, 060820, 060830                 |
@@ -179,13 +178,13 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | 1748250197 | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | omschrijving                               | fields                                         | gevraagde rubrieken                    |
-      | persoon heeft geen adellijkeTitelPredicaat | naam                                           | 010210, 010220, 010230, 010240, 016110 |
-      | persoon heeft geen partner                 | partners.geboorte                              | 050310, 050320, 050330                 |
-      | persoon is niet overleden                  | overlijden.datum                               | 060810                                 |
-      | persoon heeft geen verblijfstitel          | verblijfstitel.aanduiding                      | 103910                                 |
-      | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                                 |
-      | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                         |
+      | omschrijving                               | fields                                         | gevraagde rubrieken                            |
+      | persoon heeft geen adellijkeTitelPredicaat | naam                                           | 010210, 010220, 010230, 010240, 010410, 016110 |
+      | persoon heeft geen partner                 | partners.geboorte                              | 050310, 050320, 050330                         |
+      | persoon is niet overleden                  | overlijden.datum                               | 060810                                         |
+      | persoon heeft geen verblijfstitel          | verblijfstitel.aanduiding                      | 103910                                         |
+      | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                                         |
+      | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                                 |
 
   Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_gevraagde_rubrieken' opgenomen.
     Dit betreft geheimhouding, opschorting, in onderzoek, RNI en verificatie

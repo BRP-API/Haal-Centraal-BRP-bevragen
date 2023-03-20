@@ -1066,7 +1066,7 @@
         }
       },
       "NaamPersoonBeperkt" : {
-        "description" : "Gegevens over de naam van de persoon.\n* **aanduidingNaamgebruik** - wordt gevuld met waarden voor 'Naamgebruik' in 'tabelwaarden.csv'.\n",
+        "description" : "Gegevens over de naam van de persoon.\n",
         "allOf" : [ {
           "$ref" : "#/components/schemas/NaamBasis"
         }, {
