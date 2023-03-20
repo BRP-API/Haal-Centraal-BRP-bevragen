@@ -48,13 +48,12 @@ public static class PartnerHelpers
 
         foreach (var partner in partners)
         {
-            if (partner.OntbindingHuwelijkPartnerschap != null)
+            if (partner.OntbindingHuwelijkPartnerschap != null &&
+                (retval == null ||
+                 partner.OntbindingHuwelijkPartnerschap.Datum > retval.OntbindingHuwelijkPartnerschap.Datum)
+               )
             {
-                if(retval == null ||
-                   partner.OntbindingHuwelijkPartnerschap.Datum > retval.OntbindingHuwelijkPartnerschap.Datum)
-                {
-                    retval = partner;
-                }
+                retval = partner;
             }
         }
 

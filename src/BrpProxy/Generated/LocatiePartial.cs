@@ -39,10 +39,3 @@ public partial class VerblijfadresLocatieInOnderzoek
         Locatiebeschrijving.HasValue
         ;
 }
-
-public partial class LocatieBeperkt
-{
-    public VerblijfadresLocatie? Verblijfadres { get; set; }
-
-    public bool ShouldSerializeVerblijfadres() => false;
-}

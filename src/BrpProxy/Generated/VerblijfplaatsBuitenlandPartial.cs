@@ -42,10 +42,3 @@ public partial class VerblijfadresBuitenlandInOnderzoek
         Land.HasValue
         ;
 }
-
-public partial class VerblijfplaatsBuitenlandBeperkt
-{
-    public VerblijfadresBuitenland? Verblijfadres { get; set; }
-
-    public bool ShouldSerializeVerblijfadres() => false;
-}

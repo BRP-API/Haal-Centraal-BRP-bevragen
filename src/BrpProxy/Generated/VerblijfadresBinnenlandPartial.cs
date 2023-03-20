@@ -57,10 +57,3 @@ public partial class VerblijfadresBinnenlandInOnderzoek
         OfficieleStraatnaam.HasValue ||
         Woonplaats.HasValue;
 }
-
-public partial class AdresBeperkt
-{
-    public VerblijfadresBinnenland? Verblijfadres { get; set; }
-
-    public bool ShouldSerializeVerblijfadres() => false;
-}

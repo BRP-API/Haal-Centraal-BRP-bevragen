@@ -77,39 +77,5 @@ public class VerblijfplaatsProfile : Profile
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
             ;
-
-        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfplaatsBuitenlandBeperkt>()
-            .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
-            ;
-
-        CreateMap<GbaVerblijfplaatsBeperkt, AdresBeperkt>()
-            .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
-            ;
-
-        CreateMap<GbaVerblijfplaatsBeperkt, LocatieBeperkt>()
-            .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
-            ;
-
-        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresBuitenland>()
-            .ForMember(dest => dest.Land, opt =>
-            {
-                opt.PreCondition(src => src.Land?.Code != "0000");
-            })
-            ;
-
-        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresBinnenland>()
-            .ForMember(dest => dest.KorteStraatnaam, opt =>
-            {
-                opt.PreCondition(src => src.Straat != ".");
-                opt.MapFrom(src => src.Straat);
-            })
-            .ForMember(dest => dest.Woonplaats, opt =>
-            {
-                opt.PreCondition(src => src.Woonplaats != ".");
-                opt.MapFrom(src => src.Woonplaats);
-            })
-            ;
-
-        CreateMap<GbaVerblijfplaatsBeperkt, VerblijfadresLocatie>();
     }
 }
