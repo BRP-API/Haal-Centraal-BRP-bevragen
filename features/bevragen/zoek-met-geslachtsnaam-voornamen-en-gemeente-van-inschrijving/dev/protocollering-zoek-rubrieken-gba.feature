@@ -25,7 +25,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijvi
       | geslachtsnaam           | Maassen                              |
       | voornamen               | Pieter                               |
       | fields                  | burgerservicenummer                  |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 010210, 010240, 080910 |
 
@@ -38,7 +38,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijvi
       | voornamen               | Pieter                               |
       | <optionele parameter>   | <waarde>                             |
       | fields                  | burgerservicenummer                  |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | <zoek_rubrieken>       |
 
@@ -58,6 +58,6 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijvi
       | voornamen                  | Pieter                               |
       | fields                     | burgerservicenummer                  |
       | inclusiefOverledenPersonen | true                                 |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 010210, 010240, 080910 |

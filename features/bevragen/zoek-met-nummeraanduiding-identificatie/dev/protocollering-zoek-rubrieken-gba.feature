@@ -22,7 +22,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNummeraanduidingIdentificat
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000219679                     |
       | fields                        | burgerservicenummer                  |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 081190                 |
 
@@ -33,7 +33,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNummeraanduidingIdentificat
       | nummeraanduidingIdentificatie | 0599200000219679                     |
       | gemeenteVanInschrijving       | 0599                                 |
       | fields                        | burgerservicenummer                  |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 080910, 081190         |
 
@@ -47,6 +47,6 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNummeraanduidingIdentificat
       | nummeraanduidingIdentificatie | 0599200000219679                     |
       | fields                        | burgerservicenummer                  |
       | inclusiefOverledenPersonen    | true                                 |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 081190                 |

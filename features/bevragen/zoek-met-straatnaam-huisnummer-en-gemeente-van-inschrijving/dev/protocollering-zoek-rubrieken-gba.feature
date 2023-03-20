@@ -29,7 +29,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetStraatHuisnummerEnGemeenteV
       | straat                  | Borgesiusstraat                                  |
       | huisnummer              | 103                                              |
       | fields                  | burgerservicenummer                              |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 080910, 081110, 081120 |
 
@@ -42,7 +42,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetStraatHuisnummerEnGemeenteV
       | huisnummer              | 103                                              |
       | <optionele parameter>   | <waarde>                                         |
       | fields                  | burgerservicenummer                              |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | <zoek_rubrieken>       |
 
@@ -63,6 +63,6 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetStraatHuisnummerEnGemeenteV
       | huisnummer                 | 103                                              |
       | fields                     | burgerservicenummer                              |
       | inclusiefOverledenPersonen | true                                             |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 080910, 081110, 081120 |
