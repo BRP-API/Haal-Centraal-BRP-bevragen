@@ -10,7 +10,7 @@ public class ZoekMetPostcodeEnHuisnummerProfile : Profile
     public ZoekMetPostcodeEnHuisnummerProfile()
     {
         CreateMap<ZoekMetPostcodeEnHuisnummer, ZoekMetPostcodeEnHuisnummerFilter>()
-            .ForMember(dest => dest.Postcode, opt => opt.MapFrom(src => Regex.Replace(src.Postcode!.ToUpperInvariant(), @"\s+", "")))
+            .ForMember(dest => dest.Postcode, opt => opt.MapFrom(src => Regex.Replace(src.Postcode!.ToUpperInvariant(), @"\s+", "", RegexOptions.None, TimeSpan.FromMilliseconds(100))))
             .ForMember(dest => dest.Huisnummer, opt => opt.MapFrom(src => int.Parse(src.Huisnummer!)));
     }
 }

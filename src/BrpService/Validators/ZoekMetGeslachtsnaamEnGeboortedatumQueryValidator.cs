@@ -8,8 +8,6 @@ public class ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator : AbstractValidat
     const string RequiredErrorMessage = "required||Parameter is verplicht.";
     const string DatePattern = @"\d{4}-\d{2}-\d{2}";
     const string DateErrorMessage = "date||Waarde is geen geldige datum.";
-    const string GeboorteplaatsPattern = @"^[a-zA-Z0-9À-ž \,\.\-\'()]{1,80}$";
-    const string GeboorteplaatsPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {GeboorteplaatsPattern}.";
     const string GeslachtPattern = @"^([Mm]|[Vv]|[Oo])$";
     const string GeslachtPatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {GeslachtPattern}.";
     const string GeslachtsnaamPattern = @"^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$";
