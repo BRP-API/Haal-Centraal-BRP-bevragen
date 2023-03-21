@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.38</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.39</a>
           <div class="project-name visible-md visible-lg">persoon partner features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 54</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Mon Mar 20 2023 12:54:47 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              54
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              54
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -314,7 +415,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_features6b23c297-1e2a-4964-b8da-fd63a7f498ea">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_featuresd11b8037-beb0-423b-9fc0-4219e007ac1b">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>aangaan huwelijk/partnerschap bij actuele of ontbonden relatie
@@ -330,7 +431,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_partner_features6b23c297-1e2a-4964-b8da-fd63a7f498ea" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_partner_featuresd11b8037-beb0-423b-9fc0-4219e007ac1b" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Bij het registreren van het ontbinden van een huwelijk of partnerschap worden alle gegevens over het huwelijk of partnerschap <br/>  en alle gegegevens over de partner overgenomen in het actuele voorkomen, behalve de gegevens over het aangaan van <br/>  het huwelijk of partnerschap.<br/>  Het gevolg is dat bij een ontbonden huwelijk of partnerschap de gegevens over het aangaan van het huwelijk/partnerschap niet <br/>  in het actuele voorkomen in de registratie staan. De gegevens over aangaan van het huwelijk/partnerschap moeten worden gehaald<br/>  uit het eerste historische voorkomen waarin deze voorkomen.</div>
@@ -345,7 +446,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresdeb661bd-6649-4afe-8ea1-75f55165ec6c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features613a0d41-ed96-455b-bacc-62e33b36a1f4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -354,7 +455,8 @@ pre {
                                             <b>Scenario:</b>partnerschap is niet ontbonden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -369,7 +471,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresdeb661bd-6649-4afe-8ea1-75f55165ec6c"
+                        <div id="collapseScenariopersoon_partner_features613a0d41-ed96-455b-bacc-62e33b36a1f4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -492,7 +594,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               248ms
+                               226ms
                               </span>
                             
                          
@@ -816,7 +918,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features745fba87-eabb-42f4-be99-c3c610716800">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9f0e0038-ab18-4130-a34e-1dbcd7bf38a3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -825,7 +927,8 @@ pre {
                                             <b>Scenario:</b>partnerschap is niet ontbonden en gegevens over het aangaan van het huwelijk zijn gewijzigd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -840,7 +943,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features745fba87-eabb-42f4-be99-c3c610716800"
+                        <div id="collapseScenariopersoon_partner_features9f0e0038-ab18-4130-a34e-1dbcd7bf38a3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1063,7 +1166,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               31ms
                               </span>
                             
                          
@@ -1387,7 +1490,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features4b8cc1e6-3546-4bb4-aede-d6ed4b3e3bc8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features24433cc8-ab07-4f9d-8be6-1962108b1005">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1396,7 +1499,8 @@ pre {
                                             <b>Scenario:</b>partnerschap is ontbonden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -1411,7 +1515,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features4b8cc1e6-3546-4bb4-aede-d6ed4b3e3bc8"
+                        <div id="collapseScenariopersoon_partner_features24433cc8-ab07-4f9d-8be6-1962108b1005"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1932,7 +2036,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features57dbb229-161c-441f-aac3-910f8a32cd63">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features7e029b99-c2bd-459e-8df9-4c4e111f5168">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1941,7 +2045,8 @@ pre {
                                             <b>Scenario:</b>partnerschap is ontbonden en gegevens over het aangaan en ontbinden zijn gewijzigd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -1956,7 +2061,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features57dbb229-161c-441f-aac3-910f8a32cd63"
+                        <div id="collapseScenariopersoon_partner_features7e029b99-c2bd-459e-8df9-4c4e111f5168"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2327,7 +2432,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               47ms
+                               34ms
                               </span>
                             
                          
@@ -2663,7 +2768,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_featuresd8e6e78f-30c2-4aee-a1a4-c095dcf1eb5a">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_features6b4742c4-6447-47b3-8ea3-951367f2b1ec">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>partner buitenlandse geboorteplaats of locatie (persoon)
@@ -2679,7 +2784,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_partner_featuresd8e6e78f-30c2-4aee-a1a4-c095dcf1eb5a" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_partner_features6b4742c4-6447-47b3-8ea3-951367f2b1ec" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -2692,7 +2797,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features226ff442-65c2-4967-bf3f-b7d10ab613c2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features70072f2a-3b49-4809-95f5-d877434bee3e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2701,7 +2806,8 @@ pre {
                                             <b>Abstract Scenario:</b>Geboorteplaats is een buitenlandse plaatsnaam
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2716,7 +2822,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features226ff442-65c2-4967-bf3f-b7d10ab613c2"
+                        <div id="collapseScenariopersoon_partner_features70072f2a-3b49-4809-95f5-d877434bee3e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2813,7 +2919,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               27ms
                               </span>
                             
                          
@@ -3088,7 +3194,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresa4c7b205-b09b-4545-a98b-8ce443a18078">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresd7553ab1-a289-49ef-898e-2dd31aa18fbe">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3097,7 +3203,8 @@ pre {
                                             <b>Abstract Scenario:</b>Geboorteplaats is een locatieaanduiding
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3112,7 +3219,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresa4c7b205-b09b-4545-a98b-8ce443a18078"
+                        <div id="collapseScenariopersoon_partner_featuresd7553ab1-a289-49ef-898e-2dd31aa18fbe"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3209,7 +3316,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               63ms
                               </span>
                             
                          
@@ -3484,7 +3591,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0a6f36c0-ee0f-4d8f-b657-d8753e100492">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3cf688c7-76d2-464d-aef6-45b845dea6fc">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3493,7 +3600,8 @@ pre {
                                             <b>Abstract Scenario:</b>Geboorteplaats is een locatie aan boord van een schip
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3508,7 +3616,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features0a6f36c0-ee0f-4d8f-b657-d8753e100492"
+                        <div id="collapseScenariopersoon_partner_features3cf688c7-76d2-464d-aef6-45b845dea6fc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3605,7 +3713,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               29ms
                               </span>
                             
                          
@@ -3880,7 +3988,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features344e2321-198b-4e41-9717-299e3d50f365">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features49497dd7-e141-411d-8cb4-63fbe1b5a77b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3889,7 +3997,8 @@ pre {
                                             <b>Abstract Scenario:</b>Plaats aangaan huwelijk/partnerschap is een buitenlandse plaatsnaam
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3904,7 +4013,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features344e2321-198b-4e41-9717-299e3d50f365"
+                        <div id="collapseScenariopersoon_partner_features49497dd7-e141-411d-8cb4-63fbe1b5a77b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4001,7 +4110,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               24ms
                               </span>
                             
                          
@@ -4276,7 +4385,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features8a9d8f33-601b-4de7-8d49-25b0e5bd68c1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features7138f368-5d80-4266-81dc-33aeaf40430b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4285,7 +4394,8 @@ pre {
                                             <b>Abstract Scenario:</b>Plaats aangaan huwelijk/partnerschap is een locatieaanduiding
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4300,7 +4410,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features8a9d8f33-601b-4de7-8d49-25b0e5bd68c1"
+                        <div id="collapseScenariopersoon_partner_features7138f368-5d80-4266-81dc-33aeaf40430b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4397,7 +4507,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               32ms
                               </span>
                             
                          
@@ -4672,7 +4782,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese6371200-eded-4fa1-8e91-3d4ea88d9798">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3da5e25f-6a54-4ed8-a3a5-801cd5696e21">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4681,7 +4791,8 @@ pre {
                                             <b>Abstract Scenario:</b>Plaats aangaan huwelijk/partnerschap is een locatie aan boord van een schip
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4696,7 +4807,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featurese6371200-eded-4fa1-8e91-3d4ea88d9798"
+                        <div id="collapseScenariopersoon_partner_features3da5e25f-6a54-4ed8-a3a5-801cd5696e21"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4793,7 +4904,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               31ms
                               </span>
                             
                          
@@ -5084,7 +5195,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_features318a5e40-80f5-4c64-9bff-cbf477b5c7aa">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_features12bf47fb-84bc-4b9e-8982-a6a41298887d">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>partner velden vragen met fields (persoon)
@@ -5100,7 +5211,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_partner_features318a5e40-80f5-4c64-9bff-cbf477b5c7aa" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_partner_features12bf47fb-84bc-4b9e-8982-a6a41298887d" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -5113,7 +5224,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features6323f63d-a3f0-4f4d-b02b-56811d81b348">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresd534a0d6-9ca9-4ddd-88ff-3bc1a1646ee8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5122,7 +5233,8 @@ pre {
                                             <b>Abstract Scenario:</b>partner heeft 'ontbindingHuwelijkPartnerschap' datum veld: 'datum ontbinding huwelijk/geregistreerd partnerschap (07.10)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5137,7 +5249,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features6323f63d-a3f0-4f4d-b02b-56811d81b348"
+                        <div id="collapseScenariopersoon_partner_featuresd534a0d6-9ca9-4ddd-88ff-3bc1a1646ee8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5234,7 +5346,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               36ms
                               </span>
                             
                          
@@ -5505,7 +5617,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresdee6c314-9335-4e3b-bcd2-8714a8984db0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresd6884772-f7d1-4a18-bf3f-51c7ba0765f7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5514,7 +5626,8 @@ pre {
                                             <b>Scenario:</b>naam veld(en) van partner is/zijn in onderzoek
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5529,7 +5642,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresdee6c314-9335-4e3b-bcd2-8714a8984db0"
+                        <div id="collapseScenariopersoon_partner_featuresd6884772-f7d1-4a18-bf3f-51c7ba0765f7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5652,7 +5765,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               39ms
                               </span>
                             
                          
@@ -5957,7 +6070,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features4aef4993-7d30-42b0-9aba-ca743798f4cf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3794d6cb-f7fc-4115-ab2a-3ca69b8b250c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5966,7 +6079,8 @@ pre {
                                             <b>Scenario:</b>naam veld(en) van partner is/zijn in onderzoek
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5981,7 +6095,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features4aef4993-7d30-42b0-9aba-ca743798f4cf"
+                        <div id="collapseScenariopersoon_partner_features3794d6cb-f7fc-4115-ab2a-3ca69b8b250c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6104,7 +6218,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               39ms
                               </span>
                             
                          
@@ -6409,7 +6523,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features15bc3de4-74b6-4a61-9a13-daeb91a3a833">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features15549cdc-f622-46c9-8cf9-8d936ab7a9f3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6418,7 +6532,8 @@ pre {
                                             <b>Scenario:</b>naam veld(en) van partner is/zijn in onderzoek
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6433,7 +6548,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features15bc3de4-74b6-4a61-9a13-daeb91a3a833"
+                        <div id="collapseScenariopersoon_partner_features15549cdc-f622-46c9-8cf9-8d936ab7a9f3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6556,7 +6671,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               35ms
                               </span>
                             
                          
@@ -6861,7 +6976,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresc68970da-d633-4d9e-bfc5-ea3816dc20d7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features34731ae6-8709-47db-8c42-cc8ef35ee116">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6870,7 +6985,8 @@ pre {
                                             <b>Scenario:</b>naam veld(en) van partner is/zijn in onderzoek
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6885,7 +7001,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresc68970da-d633-4d9e-bfc5-ea3816dc20d7"
+                        <div id="collapseScenariopersoon_partner_features34731ae6-8709-47db-8c42-cc8ef35ee116"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7008,7 +7124,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               32ms
                               </span>
                             
                          
@@ -7313,7 +7429,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9d79e865-27de-45ba-951d-dfbb1a0b88f9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features8a2cc95f-22ea-4cc9-bef0-c8f39dfb5bb2">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7322,7 +7438,8 @@ pre {
                                             <b>Scenario:</b>naam veld(en) van partner is/zijn in onderzoek
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7337,7 +7454,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features9d79e865-27de-45ba-951d-dfbb1a0b88f9"
+                        <div id="collapseScenariopersoon_partner_features8a2cc95f-22ea-4cc9-bef0-c8f39dfb5bb2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7460,7 +7577,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               36ms
                               </span>
                             
                          
@@ -7765,7 +7882,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features826969a7-13bc-433f-a29b-1700b4ad3b64">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features39491a69-d128-4385-a4b2-b67f5f8fe20c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7774,7 +7891,8 @@ pre {
                                             <b>Scenario:</b>burgerservicenummer is in onderzoek
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7789,7 +7907,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features826969a7-13bc-433f-a29b-1700b4ad3b64"
+                        <div id="collapseScenariopersoon_partner_features39491a69-d128-4385-a4b2-b67f5f8fe20c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7912,7 +8030,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               39ms
                               </span>
                             
                          
@@ -8213,7 +8331,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features94f21b22-9b82-48fc-9961-81a3cfd331e2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features14207e33-5a6c-45c0-acd5-bb6e8163f507">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8222,7 +8340,8 @@ pre {
                                             <b>Abstract Scenario:</b>alleen geboorteplaats is gevuld en bevat standaardwaarde
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8237,7 +8356,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features94f21b22-9b82-48fc-9961-81a3cfd331e2"
+                        <div id="collapseScenariopersoon_partner_features14207e33-5a6c-45c0-acd5-bb6e8163f507"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8624,7 +8743,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features00014300-0177-4147-a764-59f4c2fbc57e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features1a5ef10b-7627-4284-bdd3-0232a053e139">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8633,7 +8752,8 @@ pre {
                                             <b>Abstract Scenario:</b>alleen geboorteplaats is gevuld en bevat standaardwaarde
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8648,7 +8768,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features00014300-0177-4147-a764-59f4c2fbc57e"
+                        <div id="collapseScenariopersoon_partner_features1a5ef10b-7627-4284-bdd3-0232a053e139"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8745,7 +8865,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               31ms
                               </span>
                             
                          
@@ -9035,7 +9155,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features1507a62e-8ae2-4b66-9cc2-c4a572e3e7de">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresd289b297-562b-4a68-9135-686f48863d0c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9044,7 +9164,8 @@ pre {
                                             <b>Abstract Scenario:</b>alleen geboorteplaats is gevuld en bevat standaardwaarde
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9059,7 +9180,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features1507a62e-8ae2-4b66-9cc2-c4a572e3e7de"
+                        <div id="collapseScenariopersoon_partner_featuresd289b297-562b-4a68-9135-686f48863d0c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9156,7 +9277,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               33ms
                               </span>
                             
                          
@@ -9446,7 +9567,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0ec206c5-f922-4267-98eb-5ab27896267a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9367f826-6f24-43fc-9946-d078c1b83c28">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9455,7 +9576,8 @@ pre {
                                             <b>Abstract Scenario:</b>partner heeft 'huwelijkssluiting/aangaan geregistreerd partnerschap' veld met onbekend waarde: 'datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9470,7 +9592,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features0ec206c5-f922-4267-98eb-5ab27896267a"
+                        <div id="collapseScenariopersoon_partner_features9367f826-6f24-43fc-9946-d078c1b83c28"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9567,7 +9689,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               34ms
                               </span>
                             
                          
@@ -9838,7 +9960,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features459654e2-62b0-4b2b-b6ec-b2f7ad0df2dd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3690345f-fad4-4b4d-be0e-3cae26f25841">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9847,7 +9969,8 @@ pre {
                                             <b>Abstract Scenario:</b>partner heeft 'huwelijkssluiting/aangaan geregistreerd partnerschap' veld met onbekend waarde: 'datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9862,7 +9985,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features459654e2-62b0-4b2b-b6ec-b2f7ad0df2dd"
+                        <div id="collapseScenariopersoon_partner_features3690345f-fad4-4b4d-be0e-3cae26f25841"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9885,7 +10008,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               1ms
                               </span>
                             
                          
@@ -9959,7 +10082,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               55ms
                               </span>
                             
                          
@@ -10230,7 +10353,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresda3478bb-ed24-47d5-9ecd-f4bd46f0b0d6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3659c616-a2c0-4746-89d9-eececff1cd62">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10239,7 +10362,8 @@ pre {
                                             <b>Abstract Scenario:</b>partner heeft 'huwelijkssluiting/aangaan geregistreerd partnerschap' veld met onbekend waarde: 'datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10254,7 +10378,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresda3478bb-ed24-47d5-9ecd-f4bd46f0b0d6"
+                        <div id="collapseScenariopersoon_partner_features3659c616-a2c0-4746-89d9-eececff1cd62"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10351,7 +10475,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               33ms
                               </span>
                             
                          
@@ -10622,7 +10746,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features7c074afb-40e0-4adf-ac15-3e6e454da1e1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features72385406-2b32-4b81-ab82-1238d3aef1f1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10631,7 +10755,8 @@ pre {
                                             <b>Scenario:</b>onbekend waarde in een partner voor soortVerbintenis
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10646,7 +10771,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features7c074afb-40e0-4adf-ac15-3e6e454da1e1"
+                        <div id="collapseScenariopersoon_partner_features72385406-2b32-4b81-ab82-1238d3aef1f1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10756,7 +10881,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               40ms
                               </span>
                             
                          
@@ -11057,7 +11182,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features1577992d-dd45-4ca9-9271-20e209d77c32">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features58c39ace-888e-4065-b476-760ae0099d34">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11066,7 +11191,8 @@ pre {
                                             <b>Abstract Scenario:</b>onbekend waarde in een <relatie> voor geboorte plaats
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11081,7 +11207,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features1577992d-dd45-4ca9-9271-20e209d77c32"
+                        <div id="collapseScenariopersoon_partner_features58c39ace-888e-4065-b476-760ae0099d34"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11191,7 +11317,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               42ms
                               </span>
                             
                          
@@ -11481,7 +11607,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features7f454320-6332-4867-8b10-3dc8ec2220a7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features86ff9b8a-a144-4433-97ad-c60a94124677">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11490,7 +11616,8 @@ pre {
                                             <b>Abstract Scenario:</b>onbekend waarde in een <relatie> voor geboorte land
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11505,7 +11632,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features7f454320-6332-4867-8b10-3dc8ec2220a7"
+                        <div id="collapseScenariopersoon_partner_features86ff9b8a-a144-4433-97ad-c60a94124677"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11615,7 +11742,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               46ms
+                               34ms
                               </span>
                             
                          
@@ -11905,7 +12032,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9155c434-d21b-44fc-8f66-bc4b11c9285f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese6d791b8-03be-48a8-b07d-78fe916e480f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11914,7 +12041,8 @@ pre {
                                             <b>Abstract Scenario:</b>onbekend waarde in een <relatie> voor aangaanHuwelijkPartnerschap plaats
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11929,7 +12057,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features9155c434-d21b-44fc-8f66-bc4b11c9285f"
+                        <div id="collapseScenariopersoon_partner_featurese6d791b8-03be-48a8-b07d-78fe916e480f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12039,7 +12167,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               49ms
+                               29ms
                               </span>
                             
                          
@@ -12329,7 +12457,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features2ad59e0e-e96d-4e9e-b4c1-c2e9d964e4c1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0949dac5-c980-4f84-ae86-acd6b55c0626">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12338,7 +12466,8 @@ pre {
                                             <b>Abstract Scenario:</b>onbekend waarde in een <relatie> voor aangaanHuwelijkPartnerschap land
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12353,7 +12482,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features2ad59e0e-e96d-4e9e-b4c1-c2e9d964e4c1"
+                        <div id="collapseScenariopersoon_partner_features0949dac5-c980-4f84-ae86-acd6b55c0626"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12463,7 +12592,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               67ms
+                               30ms
                               </span>
                             
                          
@@ -12753,7 +12882,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features60386df1-ba1a-44c3-af1b-b873f740a54d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresf2d6979f-5928-4b4e-a1bc-78c599aa91b3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12762,7 +12891,8 @@ pre {
                                             <b>Scenario:</b>volledig onbekende geboortedatum en datum aanvang huwelijk bij partner
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -12777,7 +12907,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features60386df1-ba1a-44c3-af1b-b873f740a54d"
+                        <div id="collapseScenariopersoon_partner_featuresf2d6979f-5928-4b4e-a1bc-78c599aa91b3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12900,7 +13030,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               28ms
                               </span>
                             
                          
@@ -13281,7 +13411,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese110fec9-a7e9-4fdc-9a01-ab420571f1b9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese8b0ae54-23d3-41d0-9721-ea16cc6f296d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13290,7 +13420,8 @@ pre {
                                             <b>Scenario:</b>'voorletters' wordt gevraagd met field pad 'naam.voorletters'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13305,7 +13436,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featurese110fec9-a7e9-4fdc-9a01-ab420571f1b9"
+                        <div id="collapseScenariopersoon_partner_featurese8b0ae54-23d3-41d0-9721-ea16cc6f296d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13441,7 +13572,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               29ms
                               </span>
                             
                          
@@ -13724,7 +13855,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_features1f2de9df-9226-4774-be99-b0119dbd037e">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_partner_featuresba2ad033-2abf-46b8-ae22-5b5536dcaf72">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>partner
@@ -13740,7 +13871,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_partner_features1f2de9df-9226-4774-be99-b0119dbd037e" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_partner_featuresba2ad033-2abf-46b8-ae22-5b5536dcaf72" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -13753,7 +13884,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurescf03be88-4381-46bd-ac89-d4240c5e5b3b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features2831e2ff-011f-4525-adaa-c48d31c0e4a0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13762,7 +13893,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met twee achtereenvolgende relaties zijn beëindigd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -13777,7 +13909,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featurescf03be88-4381-46bd-ac89-d4240c5e5b3b"
+                        <div id="collapseScenariopersoon_partner_features2831e2ff-011f-4525-adaa-c48d31c0e4a0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14096,7 +14228,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               40ms
                               </span>
                             
                          
@@ -14401,7 +14533,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9e903631-4cd3-4676-b397-f4be37dbdeb1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features856801a9-658d-4b0a-be22-d68657c2b4ed">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14410,7 +14542,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met twee gelijktijdige (polygame) relaties - eerste relatie laatst beëindigd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -14425,7 +14558,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features9e903631-4cd3-4676-b397-f4be37dbdeb1"
+                        <div id="collapseScenariopersoon_partner_features856801a9-658d-4b0a-be22-d68657c2b4ed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14744,7 +14877,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               53ms
+                               41ms
                               </span>
                             
                          
@@ -15049,7 +15182,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese83bbb4b-5195-4817-b894-4c1d8e50f4b3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features8154c5f5-63da-4b4b-b60b-e3353c209e0e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15058,7 +15191,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met twee gelijktijdige (polygame) relaties - eerste relatie eerst beëindigd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -15073,7 +15207,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featurese83bbb4b-5195-4817-b894-4c1d8e50f4b3"
+                        <div id="collapseScenariopersoon_partner_features8154c5f5-63da-4b4b-b60b-e3353c209e0e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15392,7 +15526,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               51ms
+                               30ms
                               </span>
                             
                          
@@ -15697,7 +15831,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features2fbbdf68-0f12-40b8-9d86-cc8f967f01a7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresdf819998-1ee4-4821-a59a-ab5543b4820c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15706,7 +15840,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met laatst beëindigde relatie heeft onbekende begindatum
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -15721,7 +15856,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features2fbbdf68-0f12-40b8-9d86-cc8f967f01a7"
+                        <div id="collapseScenariopersoon_partner_featuresdf819998-1ee4-4821-a59a-ab5543b4820c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16040,7 +16175,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               44ms
+                               32ms
                               </span>
                             
                          
@@ -16345,7 +16480,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresa87a1709-27a8-41d6-8df4-b32ae86d47b4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresb9cce434-3309-4636-8312-f9b47789f5fb">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -16354,7 +16489,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met eerste beëindigde relatie heeft onbekende begindatum
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -16369,7 +16505,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresa87a1709-27a8-41d6-8df4-b32ae86d47b4"
+                        <div id="collapseScenariopersoon_partner_featuresb9cce434-3309-4636-8312-f9b47789f5fb"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16688,7 +16824,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               30ms
                               </span>
                             
                          
@@ -16993,7 +17129,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features83e37ffc-fe71-4911-86ce-39faccbc746a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0f418c3c-ac5d-43f1-a9e2-45a1d71cae91">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -17002,7 +17138,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met twee gelijktijdige (polygame) relaties met gelijke begindatum
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -17017,7 +17154,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features83e37ffc-fe71-4911-86ce-39faccbc746a"
+                        <div id="collapseScenariopersoon_partner_features0f418c3c-ac5d-43f1-a9e2-45a1d71cae91"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17336,7 +17473,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               41ms
+                               30ms
                               </span>
                             
                          
@@ -17641,7 +17778,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features6b244dba-ff1b-4063-8546-bd56eb681c1b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features2e0c218a-68ec-4f7a-82f9-66a4f6b15483">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -17650,7 +17787,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met twee gelijktijdige (polygame) relaties - laatst beëindigde relatie in zelfde jaar maar onbekende maand begindatum
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -17665,7 +17803,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features6b244dba-ff1b-4063-8546-bd56eb681c1b"
+                        <div id="collapseScenariopersoon_partner_features2e0c218a-68ec-4f7a-82f9-66a4f6b15483"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17984,7 +18122,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               50ms
+                               32ms
                               </span>
                             
                          
@@ -18289,7 +18427,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features2becc3df-2c46-44cb-881e-97b9d93fbf6c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features385cf0e4-a992-4fbe-aa3e-657835c93292">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18298,7 +18436,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft alleen ontbonden huwelijken/partnerschappen met twee gelijktijdige (polygame) relaties met onbekende begindatum
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -18313,7 +18452,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features2becc3df-2c46-44cb-881e-97b9d93fbf6c"
+                        <div id="collapseScenariopersoon_partner_features385cf0e4-a992-4fbe-aa3e-657835c93292"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -18632,7 +18771,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               45ms
+                               31ms
                               </span>
                             
                          
@@ -18937,7 +19076,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresaa265016-80cd-4c11-be24-26cbc5b14419">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features2cf06a3a-5ed8-433b-a8e3-29659b00b223">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18946,7 +19085,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft een actuele en een ontbonden huwelijk/partnerschap
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -18961,7 +19101,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresaa265016-80cd-4c11-be24-26cbc5b14419"
+                        <div id="collapseScenariopersoon_partner_features2cf06a3a-5ed8-433b-a8e3-29659b00b223"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19206,7 +19346,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               46ms
+                               30ms
                               </span>
                             
                          
@@ -19492,7 +19632,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9f02b2f7-acdf-49c0-8b42-ff4f50880099">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresad42612d-386b-409f-876d-2f479f2282b9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -19501,7 +19641,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft meerdere ontbonden huwelijk/partnerschappen
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -19516,7 +19657,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features9f02b2f7-acdf-49c0-8b42-ff4f50880099"
+                        <div id="collapseScenariopersoon_partner_featuresad42612d-386b-409f-876d-2f479f2282b9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19899,7 +20040,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               34ms
                               </span>
                             
                          
@@ -20242,7 +20383,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0504f29f-3991-4012-b1e7-61906f8c3803">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features930aacd6-ca5e-4303-a811-6cc69363af89">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -20251,7 +20392,8 @@ pre {
                                             <b>Scenario:</b>persoon was getrouwd, gescheiden en daarna opnieuw met zelfde persoon getrouwd en daarna weer gescheiden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -20266,7 +20408,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features0504f29f-3991-4012-b1e7-61906f8c3803"
+                        <div id="collapseScenariopersoon_partner_features930aacd6-ca5e-4303-a811-6cc69363af89"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -20649,7 +20791,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               37ms
+                               38ms
                               </span>
                             
                          
@@ -20992,7 +21134,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features99e74e6a-cb3a-4ca8-a7a7-54e680ea4808">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese6323e25-5786-4d0a-a5b6-67d5207c0545">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -21001,7 +21143,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft geen partner
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -21016,7 +21159,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features99e74e6a-cb3a-4ca8-a7a7-54e680ea4808"
+                        <div id="collapseScenariopersoon_partner_featurese6323e25-5786-4d0a-a5b6-67d5207c0545"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -21113,7 +21256,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               39ms
+                               26ms
                               </span>
                             
                          
@@ -21336,7 +21479,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresaea6d245-cfdf-41bd-af74-eb27052e7660">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese65c7817-2d47-442e-b4d2-eab55a5469f0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -21345,7 +21488,8 @@ pre {
                                             <b>Scenario:</b>bestaan partner bekend, veld met onbekend waarde wordt gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -21360,7 +21504,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featuresaea6d245-cfdf-41bd-af74-eb27052e7660"
+                        <div id="collapseScenariopersoon_partner_featurese65c7817-2d47-442e-b4d2-eab55a5469f0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -21457,7 +21601,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               44ms
+                               32ms
                               </span>
                             
                          
@@ -21728,7 +21872,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9230404f-e515-4ca6-9abf-bc1d1dde0bd0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features4144c4be-9f0e-4241-b914-1291568cb0ca">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -21737,7 +21881,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (geslachtsnaam (02.40)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -21752,7 +21897,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features9230404f-e515-4ca6-9abf-bc1d1dde0bd0"
+                        <div id="collapseScenariopersoon_partner_features4144c4be-9f0e-4241-b914-1291568cb0ca"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -21841,7 +21986,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               47ms
+                               26ms
                               </span>
                             
                          
@@ -22068,7 +22213,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features847d13d2-b726-41c9-9fcf-3d119edfad11">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0ff6d375-fbc6-4b0e-9d36-3faa9e159504">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -22077,7 +22222,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (geboortedatum (03.10)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -22092,7 +22238,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features847d13d2-b726-41c9-9fcf-3d119edfad11"
+                        <div id="collapseScenariopersoon_partner_features0ff6d375-fbc6-4b0e-9d36-3faa9e159504"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -22181,7 +22327,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               27ms
                               </span>
                             
                          
@@ -22408,7 +22554,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features1c5a7e02-26d3-4b5b-b545-fcf1c0306375">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3d55321b-61fb-4c3a-8185-6f1c57cfa4be">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -22417,7 +22563,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -22432,7 +22579,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features1c5a7e02-26d3-4b5b-b545-fcf1c0306375"
+                        <div id="collapseScenariopersoon_partner_features3d55321b-61fb-4c3a-8185-6f1c57cfa4be"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -22748,7 +22895,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features7467fb4f-0384-47ac-a603-1b6d4802c2ab">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features4646f366-cc6a-44bf-ac47-6d0db136bcf8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -22757,7 +22904,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (soort verbintenis (15.10)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -22772,7 +22920,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features7467fb4f-0384-47ac-a603-1b6d4802c2ab"
+                        <div id="collapseScenariopersoon_partner_features4646f366-cc6a-44bf-ac47-6d0db136bcf8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -23088,7 +23236,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese0c8a9c3-d2c0-45f1-ba59-c26d5a8e05a5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features072600c4-9fc4-4c07-a935-27edc5f82296">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -23097,7 +23245,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (geslachtsnaam (02.40)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -23112,7 +23261,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_featurese0c8a9c3-d2c0-45f1-ba59-c26d5a8e05a5"
+                        <div id="collapseScenariopersoon_partner_features072600c4-9fc4-4c07-a935-27edc5f82296"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -23201,7 +23350,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               26ms
                               </span>
                             
                          
@@ -23428,7 +23577,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features7d697213-6749-4b0f-877d-ac809f7ce7c4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features9e55d0f8-6f59-45e6-9c34-cd308621b4ab">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -23437,7 +23586,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (geboortedatum (03.10)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -23452,7 +23602,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features7d697213-6749-4b0f-877d-ac809f7ce7c4"
+                        <div id="collapseScenariopersoon_partner_features9e55d0f8-6f59-45e6-9c34-cd308621b4ab"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -23541,7 +23691,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               23ms
                               </span>
                             
                          
@@ -23768,7 +23918,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features750f20af-e934-4121-b29d-3f351f5320ea">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features778683e3-36b2-4903-a68b-256f6f4fc992">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -23777,7 +23927,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -23792,7 +23943,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features750f20af-e934-4121-b29d-3f351f5320ea"
+                        <div id="collapseScenariopersoon_partner_features778683e3-36b2-4903-a68b-256f6f4fc992"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -24108,7 +24259,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features3dfdd54a-c052-4feb-9d83-bac34e5a8450">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresa2bc43c6-cbd1-4521-b4f2-eb007ee0ab1b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -24117,7 +24268,8 @@ pre {
                                             <b>Abstract Scenario:</b>bestaan partner bekend (soort verbintenis (15.10)), veld wordt niet gevraagd met fields
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -24132,7 +24284,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features3dfdd54a-c052-4feb-9d83-bac34e5a8450"
+                        <div id="collapseScenariopersoon_partner_featuresa2bc43c6-cbd1-4521-b4f2-eb007ee0ab1b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -24221,7 +24373,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               29ms
                               </span>
                             
                          
@@ -24448,7 +24600,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features0cba6c61-e7ce-44e0-bdb7-684aa16feefe">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features13093041-4af0-41ec-8074-b6ee2f0dcccb">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -24457,7 +24609,8 @@ pre {
                                             <b>Scenario:</b>huwelijk is onjuist
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -24472,7 +24625,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features0cba6c61-e7ce-44e0-bdb7-684aa16feefe"
+                        <div id="collapseScenariopersoon_partner_features13093041-4af0-41ec-8074-b6ee2f0dcccb"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -24825,7 +24978,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               64ms
+                               29ms
                               </span>
                             
                          
@@ -25048,7 +25201,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features4269ae03-65c4-4ea1-abca-1685c9cc2db3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featuresec9ea90e-a789-4e8f-968c-e7c0ae969b25">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -25057,7 +25210,8 @@ pre {
                                             <b>Scenario:</b>Geen partner, maar dat wordt wel onderzocht
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -25072,7 +25226,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features4269ae03-65c4-4ea1-abca-1685c9cc2db3"
+                        <div id="collapseScenariopersoon_partner_featuresec9ea90e-a789-4e8f-968c-e7c0ae969b25"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -25247,7 +25401,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               28ms
                               </span>
                             
                          
@@ -25470,7 +25624,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_features25d79841-cd8b-4ccf-b5c6-64198f62313f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_partner_featurese2bb2d9a-0afc-41a0-be18-95e91eb56f3c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -25479,7 +25633,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft meerdere actuele huwelijken/partnerschappen
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -25494,7 +25649,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_partner_features25d79841-cd8b-4ccf-b5c6-64198f62313f"
+                        <div id="collapseScenariopersoon_partner_featurese2bb2d9a-0afc-41a0-be18-95e91eb56f3c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -25665,7 +25820,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               28ms
                               </span>
                             
                          
@@ -26054,17 +26209,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -26086,6 +26230,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 54,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -26094,23 +26239,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -26118,88 +26267,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

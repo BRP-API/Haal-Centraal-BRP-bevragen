@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.17</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.19</a>
           <div class="project-name visible-md visible-lg">persoon geheimhouding features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 12</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Mon Mar 20 2023 12:54:46 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              12
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              12
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -313,7 +414,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geheimhouding_featuresea8ca70a-407a-49f5-bbbc-2ec2fc654852">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geheimhouding_features9b97b21d-e576-49d5-9d87-e930a570e495">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>geheimhouding: niet verstrekken van gegevens van een persoon aan derden
@@ -329,7 +430,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geheimhouding_featuresea8ca70a-407a-49f5-bbbc-2ec2fc654852" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geheimhouding_features9b97b21d-e576-49d5-9d87-e930a570e495" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Wanneer een consumer van de BRP API gegevens bevraagt van een persoon die geen toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden<br/>  Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens</div>
@@ -344,7 +445,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresa9868754-90c6-43fc-9e5d-e5114c120a7b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features9af4afbc-d13e-4097-8ed8-f96222a20cc7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -353,7 +454,8 @@ pre {
                                             <b>Scenario:</b>persoon die toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -368,7 +470,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresa9868754-90c6-43fc-9e5d-e5114c120a7b"
+                        <div id="collapseScenariopersoon_geheimhouding_features9af4afbc-d13e-4097-8ed8-f96222a20cc7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -465,7 +567,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               278ms
+                               267ms
                               </span>
                             
                          
@@ -724,7 +826,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features44d1a869-6534-4409-9cac-409923734b8e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features2737d636-c2ab-4523-8667-33e2def81414">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -733,7 +835,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 1, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -748,7 +851,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features44d1a869-6534-4409-9cac-409923734b8e"
+                        <div id="collapseScenariopersoon_geheimhouding_features2737d636-c2ab-4523-8667-33e2def81414"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -845,7 +948,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               29ms
                               </span>
                             
                          
@@ -1119,7 +1222,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresd27b8f58-36e5-48f7-be58-f92fb81c3b91">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features3d6f6e61-40d6-486d-abdd-961220ff7284">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1128,7 +1231,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 2, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1143,7 +1247,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresd27b8f58-36e5-48f7-be58-f92fb81c3b91"
+                        <div id="collapseScenariopersoon_geheimhouding_features3d6f6e61-40d6-486d-abdd-961220ff7284"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1240,7 +1344,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               36ms
                               </span>
                             
                          
@@ -1514,7 +1618,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features5a007a7d-e260-428e-8daa-98e37b07f976">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features3c78abda-a667-4223-a100-164fd56f5be9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1523,7 +1627,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 3, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1538,7 +1643,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features5a007a7d-e260-428e-8daa-98e37b07f976"
+                        <div id="collapseScenariopersoon_geheimhouding_features3c78abda-a667-4223-a100-164fd56f5be9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1635,7 +1740,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               37ms
                               </span>
                             
                          
@@ -1909,7 +2014,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresfe83265f-8bfe-436e-a00c-6a77c5f8c31d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresc0190a29-4009-4ae9-9377-c3e427e0dd59">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1918,7 +2023,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 4, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1933,7 +2039,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresfe83265f-8bfe-436e-a00c-6a77c5f8c31d"
+                        <div id="collapseScenariopersoon_geheimhouding_featuresc0190a29-4009-4ae9-9377-c3e427e0dd59"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2030,7 +2136,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               34ms
                               </span>
                             
                          
@@ -2304,7 +2410,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features30c49fff-a3fd-4256-8f50-4fb8487eef32">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features21626031-d598-4bc1-9d16-271e68a079bf">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2313,7 +2419,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 5, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2328,7 +2435,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features30c49fff-a3fd-4256-8f50-4fb8487eef32"
+                        <div id="collapseScenariopersoon_geheimhouding_features21626031-d598-4bc1-9d16-271e68a079bf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2425,7 +2532,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               34ms
                               </span>
                             
                          
@@ -2699,7 +2806,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresd42ba66d-8bfb-4be8-b267-cf7827a46d0d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features40f30f6d-577b-4b75-858f-1bf5a3b77a3b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2708,7 +2815,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 6, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2723,7 +2831,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresd42ba66d-8bfb-4be8-b267-cf7827a46d0d"
+                        <div id="collapseScenariopersoon_geheimhouding_features40f30f6d-577b-4b75-858f-1bf5a3b77a3b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2820,7 +2928,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               38ms
                               </span>
                             
                          
@@ -3094,7 +3202,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresfb388c30-f1c4-40f8-ac2c-0401aef059d2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features585d87bf-2ebe-4861-afed-145062e141ea">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3103,7 +3211,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon met indicatie geheim 7, wordt geraadpleegd met burgerservicenummer
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3118,7 +3227,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresfb388c30-f1c4-40f8-ac2c-0401aef059d2"
+                        <div id="collapseScenariopersoon_geheimhouding_features585d87bf-2ebe-4861-afed-145062e141ea"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3215,7 +3324,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               32ms
                               </span>
                             
                          
@@ -3490,7 +3599,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features6448bdd3-37c5-4664-92f5-97d24825579c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features8073475f-1f1c-4677-896c-5f994982acaf">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3499,7 +3608,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3514,7 +3624,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features6448bdd3-37c5-4664-92f5-97d24825579c"
+                        <div id="collapseScenariopersoon_geheimhouding_features8073475f-1f1c-4677-896c-5f994982acaf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3537,7 +3647,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               15ms
                               </span>
                             
                          
@@ -3860,7 +3970,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               1ms
                               </span>
                             
                          
@@ -3964,7 +4074,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features3fcee719-308d-4bed-aa43-0f9f3f51cc9a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresf92e47cf-247b-4199-8e20-e7c194a86f1d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3973,7 +4083,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3988,7 +4099,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features3fcee719-308d-4bed-aa43-0f9f3f51cc9a"
+                        <div id="collapseScenariopersoon_geheimhouding_featuresf92e47cf-247b-4199-8e20-e7c194a86f1d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4011,7 +4122,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               14ms
                               </span>
                             
                          
@@ -4438,7 +4549,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresa2b3ec80-0c32-4ff3-8000-caec3b051b28">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features77d0c6e9-e4ab-4702-b83a-8821a2b96ed6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4447,7 +4558,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4462,7 +4574,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresa2b3ec80-0c32-4ff3-8000-caec3b051b28"
+                        <div id="collapseScenariopersoon_geheimhouding_features77d0c6e9-e4ab-4702-b83a-8821a2b96ed6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4485,7 +4597,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -4912,7 +5024,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresf850d66a-c22e-4878-aafc-5d5ee770c70b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features7bf831d6-80a2-4d82-b52f-bfbe8d5ad93d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4921,7 +5033,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4936,7 +5049,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresf850d66a-c22e-4878-aafc-5d5ee770c70b"
+                        <div id="collapseScenariopersoon_geheimhouding_features7bf831d6-80a2-4d82-b52f-bfbe8d5ad93d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4959,7 +5072,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               10ms
                               </span>
                             
                          
@@ -5282,7 +5395,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               1ms
                               </span>
                             
                          
@@ -5389,17 +5502,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -5421,6 +5523,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 12,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -5429,23 +5532,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -5453,88 +5560,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

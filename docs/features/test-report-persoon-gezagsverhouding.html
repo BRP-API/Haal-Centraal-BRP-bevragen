@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.17</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.19</a>
           <div class="project-name visible-md visible-lg">persoon gezagsverhouding features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 19</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Mon Mar 20 2023 12:54:46 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              19
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              19
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -313,7 +414,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_features3d06a78c-72a1-41ac-975d-53f858c4a17a">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_features066a2c51-9150-47ae-835f-838c31aee1af">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: gezagsverhouding velden vragen met fields
@@ -329,7 +430,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_gezagsverhouding_features3d06a78c-72a1-41ac-975d-53f858c4a17a" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_gezagsverhouding_features066a2c51-9150-47ae-835f-838c31aee1af" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -342,7 +443,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features7e335a1a-42c0-4cbc-b85e-cd3bb5a98010">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features4d110b11-6449-4f7b-be2d-c1bac6c8a95e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -351,7 +452,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie gezag minderjarige (32.10)' wordt gevraagd met field pad 'indicatieGezagMinderjarige'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -366,7 +468,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features7e335a1a-42c0-4cbc-b85e-cd3bb5a98010"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features4d110b11-6449-4f7b-be2d-c1bac6c8a95e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -463,7 +565,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               238ms
+                               271ms
                               </span>
                             
                          
@@ -741,7 +843,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features21f26769-1edf-4cbe-bc0c-910844c7987d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features250f462e-b3f7-4b6f-a07f-748307b835b8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -750,7 +852,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie gezag minderjarige (32.10)' wordt gevraagd met field pad 'indicatieGezagMinderjarige.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -765,7 +868,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features21f26769-1edf-4cbe-bc0c-910844c7987d"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features250f462e-b3f7-4b6f-a07f-748307b835b8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -862,7 +965,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               31ms
                               </span>
                             
                          
@@ -1140,7 +1243,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features33cfca08-e6c8-413b-a0e3-b412c959b1a9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features3d02242e-2876-4864-9df5-452d190fea5e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1149,7 +1252,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie gezag minderjarige (32.10)' wordt gevraagd met field pad 'indicatieGezagMinderjarige.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1164,7 +1268,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features33cfca08-e6c8-413b-a0e3-b412c959b1a9"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features3d02242e-2876-4864-9df5-452d190fea5e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1539,7 +1643,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresad5f40c0-05c9-4697-b288-3b1e48ac522c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features4c00ed10-8cbe-464c-a245-a0c97cca2edb">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1548,7 +1652,8 @@ pre {
                                             <b>Scenario:</b>'indicatie curateleregister (33.10)' wordt gevraagd met field pad 'indicatieCurateleRegister'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1563,7 +1668,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresad5f40c0-05c9-4697-b288-3b1e48ac522c"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features4c00ed10-8cbe-464c-a245-a0c97cca2edb"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1660,7 +1765,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               32ms
                               </span>
                             
                          
@@ -1930,7 +2035,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_features861d73fa-8d14-4ba7-833c-97d4b9913435">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_featuresa977bcc3-b6b5-4fa2-a94a-b2bdbbabb6c3">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: gezagsverhouding velden in onderzoek
@@ -1946,7 +2051,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_gezagsverhouding_features861d73fa-8d14-4ba7-833c-97d4b9913435" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_gezagsverhouding_featuresa977bcc3-b6b5-4fa2-a94a-b2bdbbabb6c3" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -1959,7 +2064,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresa31161e2-86a8-4faa-8c97-2f70a85832b9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features30c13aca-e302-469f-838d-d5da95e2e6d9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1968,7 +2073,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie gezagsverhouding' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1983,7 +2089,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresa31161e2-86a8-4faa-8c97-2f70a85832b9"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features30c13aca-e302-469f-838d-d5da95e2e6d9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2093,7 +2199,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               34ms
                               </span>
                             
                          
@@ -2420,7 +2526,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresb146df48-d9d0-4ecd-9644-ec49f139804c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features333adc17-aa60-4ce3-815e-4c00f0272213">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2429,7 +2535,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep gezag minderjarige' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2444,7 +2551,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresb146df48-d9d0-4ecd-9644-ec49f139804c"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features333adc17-aa60-4ce3-815e-4c00f0272213"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2554,7 +2661,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               31ms
                               </span>
                             
                          
@@ -2879,7 +2986,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features7fa12f52-fe34-4841-8a9c-b08d117c039f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresb357eef6-cc98-420c-8dd3-4b249e8f85be">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2888,7 +2995,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie gezag minderjarige' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2903,7 +3011,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features7fa12f52-fe34-4841-8a9c-b08d117c039f"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresb357eef6-cc98-420c-8dd3-4b249e8f85be"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3013,7 +3121,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               35ms
                               </span>
                             
                          
@@ -3338,7 +3446,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featurescd2009f9-a806-4516-a40e-d1493d78ea2a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features2e66cab0-36f5-4e83-9990-29d121c0261e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3347,7 +3455,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep curatele' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3362,7 +3471,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featurescd2009f9-a806-4516-a40e-d1493d78ea2a"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features2e66cab0-36f5-4e83-9990-29d121c0261e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3472,7 +3581,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               31ms
                               </span>
                             
                          
@@ -3797,7 +3906,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features61f0bbf9-b864-401e-8879-75e0865f816c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features252a6255-c367-45eb-8b80-5aecff933d37">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3806,7 +3915,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie curateleregister' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3821,7 +3931,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features61f0bbf9-b864-401e-8879-75e0865f816c"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features252a6255-c367-45eb-8b80-5aecff933d37"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3931,7 +4041,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               32ms
                               </span>
                             
                          
@@ -4256,7 +4366,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresa56ad380-4030-4e55-863e-6c3797d01cc1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features111a47a8-ae0e-4c49-912f-af73f7af5711">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4265,7 +4375,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie gezagsverhouding' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4280,7 +4391,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresa56ad380-4030-4e55-863e-6c3797d01cc1"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features111a47a8-ae0e-4c49-912f-af73f7af5711"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4390,7 +4501,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               33ms
                               </span>
                             
                          
@@ -4702,7 +4813,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features89f9ffed-f4f2-4486-a88d-f67b91c5c824">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features657d5882-823a-4276-9dae-8f31c7471b6b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4711,7 +4822,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep gezag minderjarige' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4726,7 +4838,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features89f9ffed-f4f2-4486-a88d-f67b91c5c824"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features657d5882-823a-4276-9dae-8f31c7471b6b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4836,7 +4948,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               41ms
+                               28ms
                               </span>
                             
                          
@@ -5148,7 +5260,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features51f673b2-9313-4d2f-adbf-1873b19d2ba6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresd37a662d-6975-4bc1-bf3a-5f13d638f0b8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5157,7 +5269,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie gezag minderjarige' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5172,7 +5285,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features51f673b2-9313-4d2f-adbf-1873b19d2ba6"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresd37a662d-6975-4bc1-bf3a-5f13d638f0b8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5282,7 +5395,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               39ms
+                               31ms
                               </span>
                             
                          
@@ -5594,7 +5707,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features4ea0d9ee-3b38-4a3e-9c50-675182ba6e39">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresb8ebed33-4f2f-4bdf-9d6c-5f3b10c9b79d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5603,7 +5716,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie gezagsverhouding' is in onderzoek en indicatieCurateleRegister wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5618,7 +5732,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features4ea0d9ee-3b38-4a3e-9c50-675182ba6e39"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresb8ebed33-4f2f-4bdf-9d6c-5f3b10c9b79d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5728,7 +5842,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               82ms
+                               41ms
                               </span>
                             
                          
@@ -6040,7 +6154,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features2be4b154-3290-4199-861b-3e0a5cc79f64">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresd2368913-3bf7-42d8-b027-f417dd835d81">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6049,7 +6163,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep curatele' is in onderzoek en indicatieCurateleRegister wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6064,7 +6179,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features2be4b154-3290-4199-861b-3e0a5cc79f64"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresd2368913-3bf7-42d8-b027-f417dd835d81"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6174,7 +6289,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               31ms
                               </span>
                             
                          
@@ -6486,7 +6601,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features5274d4c5-ef9b-4a9a-b711-8af56a6053ac">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features0da1050c-3a65-4178-b662-f7d3a77bbea9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6495,7 +6610,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie curateleregister' is in onderzoek en indicatieCurateleRegister wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6510,7 +6626,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features5274d4c5-ef9b-4a9a-b711-8af56a6053ac"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features0da1050c-3a65-4178-b662-f7d3a77bbea9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6932,7 +7048,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features1b8d72ed-3332-41cb-8ac0-253863ca2451">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features11146919-6a22-44bd-b92f-7ae1fdec76ac">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6941,7 +7057,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep gezag minderjarige' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6956,7 +7073,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features1b8d72ed-3332-41cb-8ac0-253863ca2451"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features11146919-6a22-44bd-b92f-7ae1fdec76ac"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7066,7 +7183,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               27ms
                               </span>
                             
                          
@@ -7285,7 +7402,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresc372d4cd-1811-4801-88cb-ee03bf8f8b43">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features5aa67239-c6fd-4e54-8afc-59855d715e5a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7294,7 +7411,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatieGezagMinderjarige' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7309,7 +7427,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresc372d4cd-1811-4801-88cb-ee03bf8f8b43"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features5aa67239-c6fd-4e54-8afc-59855d715e5a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7419,7 +7537,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               32ms
                               </span>
                             
                          
@@ -7638,7 +7756,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features663d2e70-b3ca-4c2d-8743-4e5efe1d2fa6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features103e1971-85e8-4ead-a12b-6e6758e03e97">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7647,7 +7765,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep curatele' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7662,7 +7781,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features663d2e70-b3ca-4c2d-8743-4e5efe1d2fa6"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features103e1971-85e8-4ead-a12b-6e6758e03e97"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7772,7 +7891,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               26ms
                               </span>
                             
                          
@@ -7991,7 +8110,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresffbb877a-6cd1-4ea4-8c3c-ee410d0cc86b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresa79b1327-5105-4f44-89b1-ccf905f8aae4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8000,7 +8119,8 @@ pre {
                                             <b>Abstract Scenario:</b>'indicatie curateleregister' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8015,7 +8135,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresffbb877a-6cd1-4ea4-8c3c-ee410d0cc86b"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresa79b1327-5105-4f44-89b1-ccf905f8aae4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8125,7 +8245,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               29ms
                               </span>
                             
                          
@@ -8348,17 +8468,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -8380,6 +8489,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 19,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -8388,23 +8498,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -8412,88 +8526,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

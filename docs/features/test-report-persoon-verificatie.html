@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.17</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.19</a>
           <div class="project-name visible-md visible-lg">persoon verificatie features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 17</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Mon Mar 20 2023 12:54:47 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              17
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              17
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -313,7 +414,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verificatie_features51149d16-a16f-4c2d-b3d0-8a1eca4be4ae">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verificatie_featuresf3742a20-c82c-40d9-bd65-bf6e4efe1bca">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: verificatie leveren als niet gevraagd met fields
@@ -329,7 +430,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_verificatie_features51149d16-a16f-4c2d-b3d0-8a1eca4be4ae" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_verificatie_featuresf3742a20-c82c-40d9-bd65-bf6e4efe1bca" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -342,7 +443,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featurese387aad3-cdc0-42b1-94e2-4bb53adc7a40">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features51684608-a3f6-412e-805c-60a03fc2c795">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -351,7 +452,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoonsgegevens zijn geverifieerd en verificatie wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -366,7 +468,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_featurese387aad3-cdc0-42b1-94e2-4bb53adc7a40"
+                        <div id="collapseScenariopersoon_verificatie_features51684608-a3f6-412e-805c-60a03fc2c795"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -476,7 +578,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               242ms
+                               238ms
                               </span>
                             
                          
@@ -788,7 +890,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features40738cc2-af18-4a87-b22f-532307f9090b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features2bffd40d-6cc8-47c5-a669-0ce4177af9f7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -797,7 +899,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoonsgegevens zijn geverifieerd en verificatie wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -812,7 +915,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features40738cc2-af18-4a87-b22f-532307f9090b"
+                        <div id="collapseScenariopersoon_verificatie_features2bffd40d-6cc8-47c5-a669-0ce4177af9f7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1234,7 +1337,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features5e10b91a-28a7-4c33-9956-16fc34b0b28e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features3d1ae4ca-1569-45ec-81a3-3f632db94f53">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1243,7 +1346,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoonsgegevens zijn geverifieerd en verificatie wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1258,7 +1362,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features5e10b91a-28a7-4c33-9956-16fc34b0b28e"
+                        <div id="collapseScenariopersoon_verificatie_features3d1ae4ca-1569-45ec-81a3-3f632db94f53"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1680,7 +1784,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresa819be2e-2a70-4c5b-84f5-ef1e7d638b90">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresef32b83c-e1ee-44ec-886c-37936894b95e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1689,7 +1793,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoonsgegevens zijn geverifieerd en verificatie wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1704,7 +1809,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_featuresa819be2e-2a70-4c5b-84f5-ef1e7d638b90"
+                        <div id="collapseScenariopersoon_verificatie_featuresef32b83c-e1ee-44ec-886c-37936894b95e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1814,7 +1919,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               36ms
                               </span>
                             
                          
@@ -2126,7 +2231,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features9f87d901-0ed3-496b-b386-15b25f13a8cf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features36493f49-63b8-4b46-b380-dbfbc246d713">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2135,7 +2240,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum verificatie (71.10)' van het type 'Datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -2150,7 +2256,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features9f87d901-0ed3-496b-b386-15b25f13a8cf"
+                        <div id="collapseScenariopersoon_verificatie_features36493f49-63b8-4b46-b380-dbfbc246d713"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2334,7 +2440,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               40ms
                               </span>
                             
                          
@@ -2670,7 +2776,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresda7609f0-679a-4c9c-8569-d265e29af575">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresc3562aa0-18fd-47c0-a0ea-e82e0acd72f5">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2679,7 +2785,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum verificatie (71.10)' van het type 'DatumOnbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -2694,7 +2801,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_featuresda7609f0-679a-4c9c-8569-d265e29af575"
+                        <div id="collapseScenariopersoon_verificatie_featuresc3562aa0-18fd-47c0-a0ea-e82e0acd72f5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2878,7 +2985,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               34ms
                               </span>
                             
                          
@@ -3214,7 +3321,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features6b73b19a-1b2d-49ec-8939-de9bfc35c1c1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features651e813f-c2b6-4f3f-93ca-66b259c078f8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3223,7 +3330,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum verificatie (71.10)' van het type 'JaarDatum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -3238,7 +3346,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features6b73b19a-1b2d-49ec-8939-de9bfc35c1c1"
+                        <div id="collapseScenariopersoon_verificatie_features651e813f-c2b6-4f3f-93ca-66b259c078f8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3422,7 +3530,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               33ms
                               </span>
                             
                          
@@ -3758,7 +3866,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features23a56f42-d8bb-42b9-8914-db7b564ac474">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features80af2c16-0c2b-4eb6-a31a-c78056a79957">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3767,7 +3875,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum verificatie (71.10)' van het type 'JaarMaandDatum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -3782,7 +3891,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features23a56f42-d8bb-42b9-8914-db7b564ac474"
+                        <div id="collapseScenariopersoon_verificatie_features80af2c16-0c2b-4eb6-a31a-c78056a79957"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3966,7 +4075,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               49ms
+                               36ms
                               </span>
                             
                          
@@ -4305,7 +4414,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features4235714f-4667-4f94-91ab-49f05ae9abdd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featurese592f47d-2491-458c-bac5-0d8a2b6dfd71">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4314,7 +4423,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -4329,7 +4439,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features4235714f-4667-4f94-91ab-49f05ae9abdd"
+                        <div id="collapseScenariopersoon_verificatie_featurese592f47d-2491-458c-bac5-0d8a2b6dfd71"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4439,7 +4549,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               13ms
                               </span>
                             
                          
@@ -4866,7 +4976,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features14fd50cb-8466-4fca-aa38-72ba87858d85">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresd34029be-9278-4a85-a8a1-7339d7602fe4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4875,7 +4985,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -4890,7 +5001,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features14fd50cb-8466-4fca-aa38-72ba87858d85"
+                        <div id="collapseScenariopersoon_verificatie_featuresd34029be-9278-4a85-a8a1-7339d7602fe4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5000,7 +5111,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               15ms
                               </span>
                             
                          
@@ -5427,7 +5538,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features3755ef11-4c0c-48a7-92a5-48905db22c9f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features7dd9a6cf-7edb-4117-8514-a6706e62517f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5436,7 +5547,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum.type mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -5451,7 +5563,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features3755ef11-4c0c-48a7-92a5-48905db22c9f"
+                        <div id="collapseScenariopersoon_verificatie_features7dd9a6cf-7edb-4117-8514-a6706e62517f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5561,7 +5673,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               17ms
                               </span>
                             
                          
@@ -5988,7 +6100,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featurescde5a197-ce92-48cc-a19f-a96d61c9d967">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features20ac934b-27c7-44c3-9116-f54a9f6a6ef5">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5997,7 +6109,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum.datum mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -6012,7 +6125,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_featurescde5a197-ce92-48cc-a19f-a96d61c9d967"
+                        <div id="collapseScenariopersoon_verificatie_features20ac934b-27c7-44c3-9116-f54a9f6a6ef5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6122,7 +6235,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               15ms
                               </span>
                             
                          
@@ -6549,7 +6662,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features795fdf04-a0ec-4dfc-a0a1-9ef3bfb714af">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresfca10363-052c-4162-a8e4-6f454349a40b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6558,7 +6671,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum.jaar mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -6573,7 +6687,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features795fdf04-a0ec-4dfc-a0a1-9ef3bfb714af"
+                        <div id="collapseScenariopersoon_verificatie_featuresfca10363-052c-4162-a8e4-6f454349a40b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6683,7 +6797,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               16ms
                               </span>
                             
                          
@@ -7110,7 +7224,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresef12a9c9-9595-458c-93f9-819ee9c4e82a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features1e98bddd-f4e1-412e-b328-604e70ece0ec">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7119,7 +7233,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum.maand mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -7134,7 +7249,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_featuresef12a9c9-9595-458c-93f9-819ee9c4e82a"
+                        <div id="collapseScenariopersoon_verificatie_features1e98bddd-f4e1-412e-b328-604e70ece0ec"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7244,7 +7359,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               16ms
                               </span>
                             
                          
@@ -7671,7 +7786,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features17b435c9-1a68-4721-987e-1fdf8ded2f7c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresb5430c3f-e10e-4346-b282-19802e86c01e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7680,7 +7795,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum.onbekend mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -7695,7 +7811,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features17b435c9-1a68-4721-987e-1fdf8ded2f7c"
+                        <div id="collapseScenariopersoon_verificatie_featuresb5430c3f-e10e-4346-b282-19802e86c01e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8232,7 +8348,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features60f5e735-8df7-439b-9df0-d5bff5278c35">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features0c9f9806-db6c-4169-bdc0-10f7bcef9b9c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8241,7 +8357,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.datum.langFormaat mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -8256,7 +8373,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_features60f5e735-8df7-439b-9df0-d5bff5278c35"
+                        <div id="collapseScenariopersoon_verificatie_features0c9f9806-db6c-4169-bdc0-10f7bcef9b9c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8366,7 +8483,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               15ms
                               </span>
                             
                          
@@ -8793,7 +8910,7 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_featuresac99fa52-97dc-4793-a8b4-8c1ecedf28b1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verificatie_features1d4c5150-6bb4-4096-a098-6924d449f0ee">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8802,7 +8919,8 @@ pre {
                                             <b>Abstract Scenario:</b>veld verificatie.omschrijving mag niet worden gevraagd, omdat het automatisch wordt geleverd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -8817,7 +8935,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verificatie_featuresac99fa52-97dc-4793-a8b4-8c1ecedf28b1"
+                        <div id="collapseScenariopersoon_verificatie_features1d4c5150-6bb4-4096-a098-6924d449f0ee"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8927,7 +9045,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               16ms
                               </span>
                             
                          
@@ -9357,17 +9475,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -9389,6 +9496,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 17,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -9397,23 +9505,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -9421,88 +9533,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

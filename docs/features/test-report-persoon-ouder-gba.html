@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.38</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.39</a>
           <div class="project-name visible-md visible-lg">persoon ouder features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 32</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Mon Mar 20 2023 12:54:46 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              32
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              32
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -314,7 +415,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_ouder_features6dc3cb3c-36bd-4197-889b-cec61a45a2fe">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_ouder_features22b40985-0442-4bfb-bc1c-ba49c631a9ab">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>ouder (persoon)
@@ -330,7 +431,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_ouder_features6dc3cb3c-36bd-4197-889b-cec61a45a2fe" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_ouder_features22b40985-0442-4bfb-bc1c-ba49c631a9ab" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Van een persoon kunnen ouders worden geleverd.<br/>  Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.</div>
@@ -345,7 +446,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features85d1fb0f-51d9-46c8-8eb7-bbf2fec74b41">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features6e1ab82d-050d-4859-b2d5-9bde3f422933">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -354,7 +455,8 @@ pre {
                                             <b>Scenario:</b>Persoon heeft twee ouders
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -369,7 +471,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features85d1fb0f-51d9-46c8-8eb7-bbf2fec74b41"
+                        <div id="collapseScenariopersoon_ouder_features6e1ab82d-050d-4859-b2d5-9bde3f422933"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -524,7 +626,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               262ms
+                               260ms
                               </span>
                             
                          
@@ -800,7 +902,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               3ms
+                               1ms
                               </span>
                             
                          
@@ -909,7 +1011,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresedc0e4d7-6323-4c6c-ad86-971d1d30f897">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featurescf091266-37fa-43ea-a0c6-ddce70dd3c41">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -918,7 +1020,8 @@ pre {
                                             <b>Scenario:</b>oudergegevens gecorrigeerd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -933,7 +1036,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresedc0e4d7-6323-4c6c-ad86-971d1d30f897"
+                        <div id="collapseScenariopersoon_ouder_featurescf091266-37fa-43ea-a0c6-ddce70dd3c41"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1154,7 +1257,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               31ms
                               </span>
                             
                          
@@ -1430,7 +1533,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               1ms
+                               < 1ms
                               </span>
                             
                          
@@ -1539,7 +1642,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featurese2d8fc01-7dce-4c13-8b5d-6b227b1222d6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features4aaa95a2-ad86-4ffa-8a18-366ee1f863ec">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1548,7 +1651,8 @@ pre {
                                             <b>Scenario:</b>geslachtswijziging ouder
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -1563,7 +1667,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featurese2d8fc01-7dce-4c13-8b5d-6b227b1222d6"
+                        <div id="collapseScenariopersoon_ouder_features4aaa95a2-ad86-4ffa-8a18-366ee1f863ec"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1808,7 +1912,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               31ms
                               </span>
                             
                          
@@ -2261,7 +2365,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features40d99817-7acc-42c2-a226-e05ecc478cb3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features95d88e29-bfc2-4b0d-8547-ef8aebf346b0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2270,7 +2374,8 @@ pre {
                                             <b>Scenario:</b>adoptie
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -2285,7 +2390,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features40d99817-7acc-42c2-a226-e05ecc478cb3"
+                        <div id="collapseScenariopersoon_ouder_features95d88e29-bfc2-4b0d-8547-ef8aebf346b0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2596,7 +2701,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               35ms
                               </span>
                             
                          
@@ -3011,7 +3116,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresf2ae0a31-07bb-415c-b8ba-3f862542dafb">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features0705d61f-2000-4486-8535-62a4c5a12f25">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3020,7 +3125,8 @@ pre {
                                             <b>Scenario:</b>ontkenning gevolgd door erkenning
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -3035,7 +3141,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresf2ae0a31-07bb-415c-b8ba-3f862542dafb"
+                        <div id="collapseScenariopersoon_ouder_features0705d61f-2000-4486-8535-62a4c5a12f25"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3322,7 +3428,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               35ms
+                               30ms
                               </span>
                             
                          
@@ -3707,7 +3813,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresa34e512a-e593-4d0c-962f-c05d2d3e263d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresc98f6393-14a0-40d8-a661-78001493ce8b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3716,7 +3822,8 @@ pre {
                                             <b>Scenario:</b>De ouder heeft geslachtswijziging ondergaan, maar de gevraagde persoon erkent dit niet
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -3731,7 +3838,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresa34e512a-e593-4d0c-962f-c05d2d3e263d"
+                        <div id="collapseScenariopersoon_ouder_featuresc98f6393-14a0-40d8-a661-78001493ce8b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4082,7 +4189,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               37ms
+                               32ms
                               </span>
                             
                          
@@ -4565,7 +4672,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features0fcefca3-e2c1-4d89-bed5-70d0bdd0427e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featurescdd2986a-1027-4a76-96cc-192dfb1b3d7d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4574,7 +4681,8 @@ pre {
                                             <b>Scenario:</b>vondeling (onbekende ouder met ouderaanduiding "1" en geen ouder met ouderaanduiding "2")
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -4589,7 +4697,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features0fcefca3-e2c1-4d89-bed5-70d0bdd0427e"
+                        <div id="collapseScenariopersoon_ouder_featurescdd2986a-1027-4a76-96cc-192dfb1b3d7d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4768,7 +4876,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               30ms
                               </span>
                             
                          
@@ -5103,7 +5211,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features03b9b96e-d009-4b8b-895c-88db4eafbfef">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features7ca13762-f85e-4cf8-8882-4498a16f9580">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5112,7 +5220,8 @@ pre {
                                             <b>Scenario:</b>Geen ouder met ouderaanduiding "2" maar dat wordt wel onderzocht
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -5127,7 +5236,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features03b9b96e-d009-4b8b-895c-88db4eafbfef"
+                        <div id="collapseScenariopersoon_ouder_features7ca13762-f85e-4cf8-8882-4498a16f9580"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5322,7 +5431,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               25ms
                               </span>
                             
                          
@@ -5657,7 +5766,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features580d98aa-755e-48af-ae42-0645e2767e81">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featurese7fc4262-1fb2-4b1a-8f17-b87ccc7d05cc">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5666,7 +5775,8 @@ pre {
                                             <b>Scenario:</b>volledig onbekende ouder
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -5681,7 +5791,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features580d98aa-755e-48af-ae42-0645e2767e81"
+                        <div id="collapseScenariopersoon_ouder_featurese7fc4262-1fb2-4b1a-8f17-b87ccc7d05cc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5852,7 +5962,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               33ms
                               </span>
                             
                          
@@ -6153,7 +6263,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresdced1434-1ff8-4f58-8dc4-f4768a127034">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features50c12150-cab0-47dd-a2ea-6f70ada1b79d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6162,7 +6272,8 @@ pre {
                                             <b>Scenario:</b>ouder met alleen gegevens in groepen 81 en 85
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -6177,7 +6288,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresdced1434-1ff8-4f58-8dc4-f4768a127034"
+                        <div id="collapseScenariopersoon_ouder_features50c12150-cab0-47dd-a2ea-6f70ada1b79d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6356,7 +6467,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               34ms
                               </span>
                             
                          
@@ -6691,7 +6802,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresdf526f19-9564-4bd8-9552-3977aff1a72f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features7f5a2bcb-1198-4d45-89bc-16e860f3ee5d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6700,7 +6811,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft geen ouders
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6715,7 +6827,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresdf526f19-9564-4bd8-9552-3977aff1a72f"
+                        <div id="collapseScenariopersoon_ouder_features7f5a2bcb-1198-4d45-89bc-16e860f3ee5d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6812,7 +6924,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               26ms
                               </span>
                             
                          
@@ -7035,7 +7147,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features431c9d53-e00d-4898-899c-362388d671f1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features522b6db2-e30e-416d-ae6d-cd5a18a03595">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7044,7 +7156,8 @@ pre {
                                             <b>Scenario:</b>ouder 1 met alleen gegevens in groepen 81 en 85 en geen ouder 2
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7059,7 +7172,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features431c9d53-e00d-4898-899c-362388d671f1"
+                        <div id="collapseScenariopersoon_ouder_features522b6db2-e30e-416d-ae6d-cd5a18a03595"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7156,7 +7269,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               24ms
                               </span>
                             
                          
@@ -7379,7 +7492,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features2e7364de-7638-4e65-bceb-74674aca10ac">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features6d5093b7-8f6a-42f9-ab26-3df8fe42003a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7388,7 +7501,8 @@ pre {
                                             <b>Scenario:</b>met fields vragen om gegevens zonder waarde
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7403,7 +7517,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features2e7364de-7638-4e65-bceb-74674aca10ac"
+                        <div id="collapseScenariopersoon_ouder_features6d5093b7-8f6a-42f9-ab26-3df8fe42003a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7508,7 +7622,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               25ms
                               </span>
                             
                          
@@ -7739,7 +7853,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features5e05e5a9-3ac8-41c6-966b-b0c564c4ee0e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features991502c0-0653-4890-b815-1ae1d99af461">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7748,7 +7862,8 @@ pre {
                                             <b>Abstract Scenario:</b>ouder heeft datum veld: 'datum ingang familierechtelijke betrekking (62.10)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7763,7 +7878,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features5e05e5a9-3ac8-41c6-966b-b0c564c4ee0e"
+                        <div id="collapseScenariopersoon_ouder_features991502c0-0653-4890-b815-1ae1d99af461"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7860,7 +7975,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               25ms
                               </span>
                             
                          
@@ -8142,7 +8257,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features4af651c6-039b-48e9-9237-5c164f773865">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features41bd0d03-8341-4952-a3f9-a3295107b976">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8151,7 +8266,8 @@ pre {
                                             <b>Abstract Scenario:</b>ouder heeft datum veld: 'datum ingang familierechtelijke betrekking (62.10)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8166,7 +8282,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features4af651c6-039b-48e9-9237-5c164f773865"
+                        <div id="collapseScenariopersoon_ouder_features41bd0d03-8341-4952-a3f9-a3295107b976"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8263,7 +8379,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               25ms
                               </span>
                             
                          
@@ -8545,7 +8661,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features2c4c3a46-5ffd-4978-9dd2-fa99a6f2e1b9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features0c4eb944-cf75-49e1-9068-86da068659c1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8554,7 +8670,8 @@ pre {
                                             <b>Abstract Scenario:</b>ouder heeft veld: 'burgerservicenummer (01.20)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8569,7 +8686,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features2c4c3a46-5ffd-4978-9dd2-fa99a6f2e1b9"
+                        <div id="collapseScenariopersoon_ouder_features0c4eb944-cf75-49e1-9068-86da068659c1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8666,7 +8783,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               25ms
                               </span>
                             
                          
@@ -8948,7 +9065,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featurese8c9384f-d9b2-4d65-8571-12db0c2122df">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features10568ec3-56f1-4bec-900a-11f810474329">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8957,7 +9074,8 @@ pre {
                                             <b>Abstract Scenario:</b>ouder heeft veld: 'burgerservicenummer (01.20)'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8972,7 +9090,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featurese8c9384f-d9b2-4d65-8571-12db0c2122df"
+                        <div id="collapseScenariopersoon_ouder_features10568ec3-56f1-4bec-900a-11f810474329"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9351,7 +9469,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features05b7677d-a4c5-4c6e-98a4-84c77da262ba">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features32645da5-3f52-421c-bb94-3a38044ca9bf">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9360,7 +9478,8 @@ pre {
                                             <b>Abstract Scenario:</b>onbekend waarde in voor een <groep>.plaats bij ouders
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9375,7 +9494,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features05b7677d-a4c5-4c6e-98a4-84c77da262ba"
+                        <div id="collapseScenariopersoon_ouder_features32645da5-3f52-421c-bb94-3a38044ca9bf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9485,7 +9604,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               25ms
                               </span>
                             
                          
@@ -9775,7 +9894,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresc1577a9d-6a71-4147-a965-fc93e1a4b730">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresaa499a7c-6318-4767-af9a-5b9f875a6bf4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9784,7 +9903,8 @@ pre {
                                             <b>Abstract Scenario:</b>onbekend waarde in voor een <groep>.land bij ouders
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9799,7 +9919,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresc1577a9d-6a71-4147-a965-fc93e1a4b730"
+                        <div id="collapseScenariopersoon_ouder_featuresaa499a7c-6318-4767-af9a-5b9f875a6bf4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9909,7 +10029,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               28ms
                               </span>
                             
                          
@@ -10199,7 +10319,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresb3ea9149-272f-4360-8a98-8a05df0dc555">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features1ffe8a62-7a8f-47a3-8c83-8337fa9096e1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10208,7 +10328,8 @@ pre {
                                             <b>Scenario:</b>volledig onbekende geboortedatum bij ouder
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -10223,7 +10344,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresb3ea9149-272f-4360-8a98-8a05df0dc555"
+                        <div id="collapseScenariopersoon_ouder_features1ffe8a62-7a8f-47a3-8c83-8337fa9096e1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10333,7 +10454,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               30ms
                               </span>
                             
                          
@@ -10695,7 +10816,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features60712a3d-6235-4c61-ad8b-5861cd15e605">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featurese7d2d1b5-4253-42c2-874b-4d80c0d3c56d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10704,7 +10825,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie ouder 1' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10719,7 +10841,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features60712a3d-6235-4c61-ad8b-5861cd15e605"
+                        <div id="collapseScenariopersoon_ouder_featurese7d2d1b5-4253-42c2-874b-4d80c0d3c56d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10842,7 +10964,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               24ms
                               </span>
                             
                          
@@ -11158,7 +11280,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features0dc9b330-1716-4a26-a03b-6f757fddeffb">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features8e3401a6-bc49-454c-ba6e-56568d774f64">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11167,7 +11289,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep geboorte' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11182,7 +11305,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features0dc9b330-1716-4a26-a03b-6f757fddeffb"
+                        <div id="collapseScenariopersoon_ouder_features8e3401a6-bc49-454c-ba6e-56568d774f64"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11305,7 +11428,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               25ms
                               </span>
                             
                          
@@ -11619,7 +11742,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features86b0fd1f-b1f6-4479-b851-847de475e4ae">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features2b65ceae-e742-4abc-bffb-9cab29b5c326">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11628,7 +11751,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11643,7 +11767,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features86b0fd1f-b1f6-4479-b851-847de475e4ae"
+                        <div id="collapseScenariopersoon_ouder_features2b65ceae-e742-4abc-bffb-9cab29b5c326"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11766,7 +11890,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               25ms
                               </span>
                             
                          
@@ -12078,7 +12202,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features9926b1a7-843d-41a9-8315-1d410667fe30">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features6c52e188-66af-4227-8e39-2cef4e701bac">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12087,7 +12211,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12102,7 +12227,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features9926b1a7-843d-41a9-8315-1d410667fe30"
+                        <div id="collapseScenariopersoon_ouder_features6c52e188-66af-4227-8e39-2cef4e701bac"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12225,7 +12350,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               26ms
                               </span>
                             
                          
@@ -12537,7 +12662,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features4fe23733-68f4-448e-8454-87cbb8a07874">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features86ce1e22-da30-4d9f-823a-0b372dc3f309">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12546,7 +12671,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12561,7 +12687,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features4fe23733-68f4-448e-8454-87cbb8a07874"
+                        <div id="collapseScenariopersoon_ouder_features86ce1e22-da30-4d9f-823a-0b372dc3f309"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12996,7 +13122,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features5d2e7d33-f608-4564-bc62-48111201f615">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features2c6940e1-05e4-4f49-9d72-984513fb40d1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13005,7 +13131,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie ouder 2' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13020,7 +13147,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features5d2e7d33-f608-4564-bc62-48111201f615"
+                        <div id="collapseScenariopersoon_ouder_features2c6940e1-05e4-4f49-9d72-984513fb40d1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13143,7 +13270,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               29ms
                               </span>
                             
                          
@@ -13455,7 +13582,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features1ec0f463-519c-4b00-8777-d59b563ecdc7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresb10a3ac1-24fa-45c3-a4f4-d1d623fd6179">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13464,7 +13591,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep geboorte' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13479,7 +13607,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features1ec0f463-519c-4b00-8777-d59b563ecdc7"
+                        <div id="collapseScenariopersoon_ouder_featuresb10a3ac1-24fa-45c3-a4f4-d1d623fd6179"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13602,7 +13730,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               26ms
                               </span>
                             
                          
@@ -13914,7 +14042,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresf6fb327d-6169-4133-b3ef-a9f5d98a53ee">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features90f6aa8b-a8ae-436f-b781-83f221c9436f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13923,7 +14051,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13938,7 +14067,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresf6fb327d-6169-4133-b3ef-a9f5d98a53ee"
+                        <div id="collapseScenariopersoon_ouder_features90f6aa8b-a8ae-436f-b781-83f221c9436f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14061,7 +14190,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               30ms
                               </span>
                             
                          
@@ -14373,7 +14502,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresd6ec30ab-6cfd-46f9-87df-063c4cf1c74a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features87acc5f1-d1bc-4894-b79c-05e6b6925e00">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14382,7 +14511,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -14397,7 +14527,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresd6ec30ab-6cfd-46f9-87df-063c4cf1c74a"
+                        <div id="collapseScenariopersoon_ouder_features87acc5f1-d1bc-4894-b79c-05e6b6925e00"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14520,7 +14650,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               30ms
                               </span>
                             
                          
@@ -14832,7 +14962,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features8571f568-961b-4393-9760-4f917b09f3df">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresa99b5864-bc94-4023-97c9-3f8ba7f53fb1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14841,7 +14971,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland' is in onderzoek en één of meerdere ouder velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -14856,7 +14987,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features8571f568-961b-4393-9760-4f917b09f3df"
+                        <div id="collapseScenariopersoon_ouder_featuresa99b5864-bc94-4023-97c9-3f8ba7f53fb1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14979,7 +15110,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               26ms
                               </span>
                             
                          
@@ -15291,7 +15422,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresd15689c7-b5e0-4c69-8438-8397408db557">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features99e5dbcd-f526-4e71-b5d6-049b4b96e7c2">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15300,7 +15431,8 @@ pre {
                                             <b>Scenario:</b>Plaats is buitenlandse plaats of locatie bij code voor <relatie> <element>
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -15315,7 +15447,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_featuresd15689c7-b5e0-4c69-8438-8397408db557"
+                        <div id="collapseScenariopersoon_ouder_features99e5dbcd-f526-4e71-b5d6-049b4b96e7c2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15679,7 +15811,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_features86ec88cc-7312-4294-be72-47d1959f3ede">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_ouder_featuresc73a49b9-e756-4612-9e5d-45c82050fb29">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15688,7 +15820,8 @@ pre {
                                             <b>Scenario:</b>Gevraag wordt om de voorletters van de ouders
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -15703,7 +15836,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_ouder_features86ec88cc-7312-4294-be72-47d1959f3ede"
+                        <div id="collapseScenariopersoon_ouder_featuresc73a49b9-e756-4612-9e5d-45c82050fb29"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15874,7 +16007,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               28ms
                               </span>
                             
                          
@@ -16233,17 +16366,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -16265,6 +16387,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 32,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -16273,23 +16396,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -16297,88 +16424,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

@@ -4,19 +4,13 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5437 scenarios (23 failed, 5414 passed)
+Totaal: 5442 scenarios (0 failed, 5442 passed)
 
-## GBA v2.0.38
+## GBA v2.0.39
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (344 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
-- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 516 scenarios (6 failed, 510 passed)
-    - features\bevragen\zoek-fout-cases-gba.feature:84
-    - features\bevragen\zoek-fout-cases-gba.feature:179
-    - features\bevragen\zoek-fout-cases-gba.feature:180
-    - features\bevragen\zoek-fout-cases-gba.feature:181
-    - features\bevragen\zoek-fout-cases-gba.feature:187
-    - features\bevragen\zoek-fout-cases-gba.feature:200
+- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 519 scenarios (519 passed)
   - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 21 scenarios (21 passed)
   - [geboorte](./test-report-persoon-geboorte-gba.html){:target="_blank" rel="noopener"}: 9 scenarios (9 passed)
@@ -40,28 +34,11 @@ Totaal: 5437 scenarios (23 failed, 5414 passed)
 - [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 388 scenarios (388 passed)
 
 
-## Proxy v2.0.17
+## Proxy v2.0.19
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
-- [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 220 scenarios (17 failed, 203 passed)
-    - features\bevragen\zoek-fout-cases.feature:83
-    - features\bevragen\zoek-fout-cases.feature:100
-    - features\bevragen\zoek-fout-cases.feature:128
-    - features\bevragen\zoek-fout-cases.feature:129
-    - features\bevragen\zoek-fout-cases.feature:133
-    - features\bevragen\zoek-fout-cases.feature:134
-    - features\bevragen\zoek-fout-cases.feature:135
-    - features\bevragen\zoek-fout-cases.feature:154
-    - features\bevragen\zoek-fout-cases.feature:155
-    - features\bevragen\zoek-fout-cases.feature:173
-    - features\bevragen\zoek-fout-cases.feature:174
-    - features\bevragen\zoek-fout-cases.feature:195
-    - features\bevragen\zoek-fout-cases.feature:196
-    - features\bevragen\zoek-fout-cases.feature:197
-    - features\bevragen\zoek-fout-cases.feature:203
-    - features\bevragen\zoek-fout-cases.feature:216
-    - features\bevragen\zoek-fout-cases.feature:225
+- [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 222 scenarios (222 passed)
   - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
   - [geboorte](./test-report-persoon-geboorte.html){:target="_blank" rel="noopener"}: 28 scenarios (28 passed)
