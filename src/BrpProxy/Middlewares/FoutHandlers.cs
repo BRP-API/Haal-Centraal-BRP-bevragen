@@ -45,6 +45,8 @@ namespace BrpProxy.Middlewares
         {
             return new Foutbericht
             {
+                Code = "notAcceptable",
+                Detail = "Ondersteunde content type: application/json; charset=utf-8",
                 Status = StatusCodes.Status406NotAcceptable,
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
                 Title = "Gevraagde contenttype wordt niet ondersteund.",
@@ -56,6 +58,8 @@ namespace BrpProxy.Middlewares
         {
             return new Foutbericht
             {
+                Code = "unsupportedMediaType",
+                Detail = "Ondersteunde content type: application/json; charset=utf-8",
                 Status = StatusCodes.Status415UnsupportedMediaType,
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
                 Title = "Media Type wordt niet ondersteund.",
@@ -226,53 +230,58 @@ namespace BrpProxy.Middlewares
 
         public static async Task<bool> AcceptIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
         {
-            if (context.Request.Headers.Accept.Any() &&
-                new[]
-                {
-                    "*/*",
-                    "application/json",
-                    "application/json;charset=utf-8"
-                }.Contains(context.Request.Headers.Accept[0].RemoveWhitespace()))
+            foreach(var acceptValue in context.Request.Headers.Accept)
             {
-                return true;
+                if (!string.IsNullOrWhiteSpace(acceptValue) &&
+                    !new[]
+                    {
+                        "*/*",
+                        "*/*;charset=utf-8",
+                        "application/json",
+                        "application/json;charset=utf-8"
+                    }.Contains(acceptValue.ToLowerInvariant().RemoveWhitespace()))
+                {
+                    logger.LogWarning("Not supported Accept values: {@acceptHeader}", context.Request.Headers.Accept);
+
+                    var foutbericht = context.CreateNotAcceptableFoutbericht();
+
+                    using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
+
+                    context.SetResponseProperties(foutbericht, bodyStream);
+
+                    await bodyStream.CopyToAsync(orgResponseBodyStream);
+
+                    return false;
+                }
             }
-
-            logger.LogWarning("Not supported Accept values: {@acceptHeader}", context.Request.Headers.Accept);
-
-            var foutbericht = context.CreateNotAcceptableFoutbericht();
-
-            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
-
-            context.SetResponseProperties(foutbericht, bodyStream);
-
-            await bodyStream.CopyToAsync(orgResponseBodyStream);
-
-            return false;
+            return true;
         }
 
         public static async Task<bool> ContentTypeIsAllowed(this HttpContext context, Stream orgResponseBodyStream, ILogger logger)
         {
-            if (context.Request.Headers.ContentType.Any() &&
-                new[]
-                {
-                    "application/json",
-                    "application/json;charset=utf-8"
-                }.Contains(context.Request.Headers.ContentType[0].RemoveWhitespace()))
+            foreach(var contentType in context.Request.Headers.ContentType)
             {
-                return true;
+                if (!string.IsNullOrWhiteSpace(contentType) &&
+                    !new[]
+                    {
+                        "application/json",
+                        "application/json;charset=utf-8"
+                    }.Contains(contentType.ToLowerInvariant().RemoveWhitespace()))
+                {
+                    logger.LogWarning("Not supported Content-Type values: {@contentTypeHeader}", context.Request.Headers.ContentType);
+
+                    var foutbericht = context.CreateNotSupportedMediaTypeFoutbericht();
+
+                    using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
+
+                    context.SetResponseProperties(foutbericht, bodyStream);
+
+                    await bodyStream.CopyToAsync(orgResponseBodyStream);
+
+                    return false;
+                }
             }
-
-            logger.LogWarning("Not supported Content-Type values: {@contentTypeHeader}", context.Request.Headers.ContentType);
-
-            var foutbericht = context.CreateNotSupportedMediaTypeFoutbericht();
-
-            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response);
-
-            context.SetResponseProperties(foutbericht, bodyStream);
-
-            await bodyStream.CopyToAsync(orgResponseBodyStream);
-
-            return false;
+            return true;
         }
 
         public static async Task<bool> RequestBodyIsValid(this HttpContext context, string requestBody, Stream orgResponseBodyStream, ILogger logger)
