@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.37</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.39</a>
           <div class="project-name visible-md visible-lg">persoon uitsluiting kiesrecht features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 20</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Thu Mar 16 2023 13:49:17 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              20
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              20
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -314,7 +415,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_uitsluiting_kiesrecht_features09d036b1-0ad5-42dd-b474-39ce154d5080">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_uitsluiting_kiesrecht_features5ec96483-6640-4f87-abbc-d7490e057ad3">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>uitsluiting kiesrecht velden vragen met fields (persoon)
@@ -330,7 +431,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_uitsluiting_kiesrecht_features09d036b1-0ad5-42dd-b474-39ce154d5080" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_uitsluiting_kiesrecht_features5ec96483-6640-4f87-abbc-d7490e057ad3" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -343,7 +444,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features91ab9353-4c56-42b2-a588-8f069969552a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features4abbf6e5-3bc2-4e84-97c4-7cb1a7cb0fbf">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -352,7 +453,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft geen uitsluiting kiesrecht gegevens
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -367,7 +469,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features91ab9353-4c56-42b2-a588-8f069969552a"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features4abbf6e5-3bc2-4e84-97c4-7cb1a7cb0fbf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -390,7 +492,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               1ms
+                               < 1ms
                               </span>
                             
                          
@@ -456,7 +558,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               257ms
+                               269ms
                               </span>
                             
                          
@@ -675,7 +777,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features1ef89278-9dcd-4d9a-9c6c-60e5462012f8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features4d32167b-bdfd-4633-aa56-54b9d2ee2e34">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -684,7 +786,8 @@ pre {
                                             <b>Scenario:</b>'aanduiding uitgesloten kiesrecht (38.10)' heeft geen waarde
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -699,7 +802,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features1ef89278-9dcd-4d9a-9c6c-60e5462012f8"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features4d32167b-bdfd-4633-aa56-54b9d2ee2e34"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -788,7 +891,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               28ms
                               </span>
                             
                          
@@ -1007,7 +1110,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features1fcd9e64-1c9b-4903-83a0-25b432b36517">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features9242ca71-6d70-49a6-ba00-34a25da318c9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1016,7 +1119,8 @@ pre {
                                             <b>Scenario:</b>einddatum uitsluiting kiesrecht (38.20) heeft geen waarde
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1031,7 +1135,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features1fcd9e64-1c9b-4903-83a0-25b432b36517"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features9242ca71-6d70-49a6-ba00-34a25da318c9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1383,7 +1487,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresefade645-512b-44bf-9d15-f9790ba13e07">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features176ca77e-f4b4-4112-832f-1f0640ba2501">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1392,7 +1496,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1407,7 +1512,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresefade645-512b-44bf-9d15-f9790ba13e07"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features176ca77e-f4b4-4112-832f-1f0640ba2501"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1517,7 +1622,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               30ms
                               </span>
                             
                          
@@ -1780,7 +1885,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresb581afaf-b704-4837-a0cb-82c0de977d5c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresba25bd99-e263-42d5-8a9a-edcb8c866314">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1789,7 +1894,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1804,7 +1910,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresb581afaf-b704-4837-a0cb-82c0de977d5c"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresba25bd99-e263-42d5-8a9a-edcb8c866314"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1914,7 +2020,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               21ms
                               </span>
                             
                          
@@ -2177,7 +2283,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features846a009b-030a-4ccd-b8fb-9940493f1d5e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features19dae92f-ab51-4e44-bb10-14accf5b3e55">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2186,7 +2292,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2201,7 +2308,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features846a009b-030a-4ccd-b8fb-9940493f1d5e"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features19dae92f-ab51-4e44-bb10-14accf5b3e55"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2574,7 +2681,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features6e10aff4-e714-4410-b41b-d08110a96709">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresc0aaaaed-cd98-4c05-bf96-4f3766022b7c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2583,7 +2690,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.langFormaat'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2598,7 +2706,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features6e10aff4-e714-4410-b41b-d08110a96709"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresc0aaaaed-cd98-4c05-bf96-4f3766022b7c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2708,7 +2816,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               25ms
                               </span>
                             
                          
@@ -2971,7 +3079,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featurescab35737-e077-4c92-81c5-d0352a8ffdde">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features14f62013-7257-41df-8f7b-f60c8dc4ede1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2980,7 +3088,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.jaar'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2995,7 +3104,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featurescab35737-e077-4c92-81c5-d0352a8ffdde"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features14f62013-7257-41df-8f7b-f60c8dc4ede1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3105,7 +3214,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               37ms
+                               27ms
                               </span>
                             
                          
@@ -3368,7 +3477,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features5dd0b797-9378-4f25-8762-248da96d7a19">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresa33a2429-ed57-4784-8d78-d14380004a31">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3377,7 +3486,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.maand'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3392,7 +3502,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features5dd0b797-9378-4f25-8762-248da96d7a19"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresa33a2429-ed57-4784-8d78-d14380004a31"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3502,7 +3612,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               26ms
                               </span>
                             
                          
@@ -3765,7 +3875,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features25dab6a7-d774-4625-b830-b5933efd7b23">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresdbc4d61e-eb1c-4ee6-9d57-329558b0e1c8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3774,7 +3884,8 @@ pre {
                                             <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.onbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3789,7 +3900,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features25dab6a7-d774-4625-b830-b5933efd7b23"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresdbc4d61e-eb1c-4ee6-9d57-329558b0e1c8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3899,7 +4010,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               27ms
                               </span>
                             
                          
@@ -4162,7 +4273,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features8647528a-8fc7-4236-a9ab-addc96e38a16">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresce5a6c96-8349-4ab2-a7c6-7aa28da568f1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4171,7 +4282,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) is vandaag of ligt in het verleden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4186,7 +4298,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features8647528a-8fc7-4236-a9ab-addc96e38a16"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresce5a6c96-8349-4ab2-a7c6-7aa28da568f1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4283,7 +4395,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               35ms
+                               24ms
                               </span>
                             
                          
@@ -4502,7 +4614,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf8a81b7a-a529-4549-a6c3-fd0e3208f824">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresef0d8f3b-17fb-427c-b2ee-591085cd24f3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4511,7 +4623,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) is vandaag of ligt in het verleden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4526,7 +4639,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf8a81b7a-a529-4549-a6c3-fd0e3208f824"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresef0d8f3b-17fb-427c-b2ee-591085cd24f3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4623,7 +4736,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               25ms
                               </span>
                             
                          
@@ -4842,7 +4955,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features67eba1e6-4d5b-4a43-8351-ef94201d4d8b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features0f59e81e-f71b-4147-8458-cc4d9a695f82">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4851,7 +4964,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) is vandaag of ligt in het verleden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4866,7 +4980,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features67eba1e6-4d5b-4a43-8351-ef94201d4d8b"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features0f59e81e-f71b-4147-8458-cc4d9a695f82"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4963,7 +5077,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               26ms
                               </span>
                             
                          
@@ -5182,7 +5296,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features75daf4b4-57f0-44f7-b877-6428422802a8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features1f34dfeb-41d2-441b-92c3-c1799fa421f5">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5191,7 +5305,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) is vandaag of ligt in het verleden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5206,7 +5321,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features75daf4b4-57f0-44f7-b877-6428422802a8"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features1f34dfeb-41d2-441b-92c3-c1799fa421f5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5303,7 +5418,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               24ms
+                               25ms
                               </span>
                             
                          
@@ -5522,7 +5637,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresda47f997-d195-43f0-8dc3-430c2eb3bff5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features7ed1d964-e1fe-442a-8c2d-2868d46a4d3f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5531,7 +5646,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) ligt in de toekomst
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5546,7 +5662,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresda47f997-d195-43f0-8dc3-430c2eb3bff5"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features7ed1d964-e1fe-442a-8c2d-2868d46a4d3f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5643,7 +5759,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               22ms
                               </span>
                             
                          
@@ -5856,7 +5972,7 @@ pre {
   {
     "uitsluitingKiesrecht": {
       "uitgeslotenVanKiesrecht": "true",
-      "einddatum": "20230317"
+      "einddatum": "20230322"
     }
   }
 ]</pre>
@@ -5880,7 +5996,7 @@ pre {
   {
     "uitsluitingKiesrecht": {
       "uitgeslotenVanKiesrecht": "true",
-      "einddatum": "20230317"
+      "einddatum": "20230322"
     }
   }
 ]</pre>
@@ -5921,7 +6037,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features0074c699-27be-41e1-8568-b69f85e889fa">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresc09bbb64-b453-494a-9233-fdbe8fa12999">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5930,7 +6046,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) ligt in de toekomst
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5945,7 +6062,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features0074c699-27be-41e1-8568-b69f85e889fa"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresc09bbb64-b453-494a-9233-fdbe8fa12999"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6042,7 +6159,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               22ms
                               </span>
                             
                          
@@ -6320,7 +6437,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features6b6bb8bf-7b7a-481c-a2d1-911c8abc3802">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresdf19d9df-7d9d-46e9-8920-05bcc1e5425c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6329,7 +6446,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) ligt in de toekomst
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6344,7 +6462,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features6b6bb8bf-7b7a-481c-a2d1-911c8abc3802"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresdf19d9df-7d9d-46e9-8920-05bcc1e5425c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6441,7 +6559,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               26ms
                               </span>
                             
                          
@@ -6719,7 +6837,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features628b5854-981a-4ac1-8e2b-eac00baf5e52">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features057b52c3-5c15-41f8-a8f0-f87b73583865">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6728,7 +6846,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) ligt in de toekomst
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6743,7 +6862,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features628b5854-981a-4ac1-8e2b-eac00baf5e52"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features057b52c3-5c15-41f8-a8f0-f87b73583865"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7118,7 +7237,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresc0457fff-7169-4ebb-9899-0bc390a0ea66">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features9e42aaff-75f1-48d6-8784-5cc7ab61864c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7127,7 +7246,8 @@ pre {
                                             <b>Abstract Scenario:</b>einddatum uitsluiting kiesrecht (38.20) ligt in de toekomst
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7142,7 +7262,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresc0457fff-7169-4ebb-9899-0bc390a0ea66"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features9e42aaff-75f1-48d6-8784-5cc7ab61864c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7239,7 +7359,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               24ms
                               </span>
                             
                          
@@ -7517,7 +7637,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features146bbfc5-b46a-4e26-adb5-2efb34fd3f8d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features590adb51-4de6-48ea-8d31-f63a159fda32">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7526,7 +7646,8 @@ pre {
                                             <b>Scenario:</b>einddatum uitsluiting kiesrecht (38.20) is onbekend
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7541,7 +7662,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features146bbfc5-b46a-4e26-adb5-2efb34fd3f8d"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features590adb51-4de6-48ea-8d31-f63a159fda32"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7638,7 +7759,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               24ms
+                               26ms
                               </span>
                             
                          
@@ -7920,17 +8041,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -7952,6 +8062,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 20,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -7960,23 +8071,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -7984,88 +8099,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

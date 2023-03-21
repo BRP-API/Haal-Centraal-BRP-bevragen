@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.37</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.39</a>
           <div class="project-name visible-md visible-lg">persoon immigratie features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 18</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Thu Mar 16 2023 13:49:16 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              18
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              18
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -314,7 +415,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_immigratie_featurese138fff0-c8cd-46ed-b382-cbfa56c36b2f">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_immigratie_featuresb6d38eca-4410-4b64-962a-53bfa6c4baa0">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>immigratie velden vragen met fields
@@ -330,7 +431,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_immigratie_featurese138fff0-c8cd-46ed-b382-cbfa56c36b2f" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_immigratie_featuresb6d38eca-4410-4b64-962a-53bfa6c4baa0" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -343,7 +444,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features2a156f23-e389-458c-b1ff-93d02b2e7c5d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features79eadac5-2f10-40ce-8b44-3be30fb82801">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -352,7 +453,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad 'immigratie.landVanwaarIngeschreven'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -367,7 +469,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features2a156f23-e389-458c-b1ff-93d02b2e7c5d"
+                        <div id="collapseScenariopersoon_immigratie_features79eadac5-2f10-40ce-8b44-3be30fb82801"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -390,7 +492,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               1ms
+                               < 1ms
                               </span>
                             
                          
@@ -477,7 +579,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               217ms
+                               219ms
                               </span>
                             
                          
@@ -759,7 +861,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresbd0b47df-ce61-456f-9496-dcfe34798e26">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresfcd5447d-2416-4cb8-b429-de83e0607dc7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -768,7 +870,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad 'immigratie.landVanwaarIngeschreven.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -783,7 +886,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresbd0b47df-ce61-456f-9496-dcfe34798e26"
+                        <div id="collapseScenariopersoon_immigratie_featuresfcd5447d-2416-4cb8-b429-de83e0607dc7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -893,7 +996,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               27ms
                               </span>
                             
                          
@@ -1175,7 +1278,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featurescc18ba2b-2127-4a91-9369-59f29fa42766">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features448b8492-f79a-4421-a1f6-c5edee6a784a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1184,7 +1287,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad 'immigratie.landVanwaarIngeschreven.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1199,7 +1303,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featurescc18ba2b-2127-4a91-9369-59f29fa42766"
+                        <div id="collapseScenariopersoon_immigratie_features448b8492-f79a-4421-a1f6-c5edee6a784a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1309,7 +1413,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               26ms
                               </span>
                             
                          
@@ -1591,7 +1695,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresba329515-996f-44ad-8f01-898b70e9a924">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features0f616e80-e259-4e07-86a7-0c9776e22097">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1600,7 +1704,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad 'immigratie.vanuitVerblijfplaatsOnbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1615,7 +1720,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresba329515-996f-44ad-8f01-898b70e9a924"
+                        <div id="collapseScenariopersoon_immigratie_features0f616e80-e259-4e07-86a7-0c9776e22097"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1725,7 +1830,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               31ms
                               </span>
                             
                          
@@ -2007,7 +2112,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features8fc6ea8d-397c-4102-aa58-56cab886d9dc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features911ebb37-ff32-4064-91d4-b1c2585154c6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2016,7 +2121,8 @@ pre {
                                             <b>Scenario:</b>onbekend waarde voor immigratie: land vanwaar ingeschreven (14.10)
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2031,7 +2137,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features8fc6ea8d-397c-4102-aa58-56cab886d9dc"
+                        <div id="collapseScenariopersoon_immigratie_features911ebb37-ff32-4064-91d4-b1c2585154c6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2128,7 +2234,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               22ms
                               </span>
                             
                          
@@ -2425,7 +2531,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features630f9e1a-228e-4fa7-8d46-c7460d990abf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf82a5f6e-0d18-41b8-a1ea-2863b5d9465d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2434,7 +2540,8 @@ pre {
                                             <b>Scenario:</b>code voor land vanwaar ingeschreven (14.10) komt niet voor in de tabel Landen
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2449,7 +2556,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features630f9e1a-228e-4fa7-8d46-c7460d990abf"
+                        <div id="collapseScenariopersoon_immigratie_featuresf82a5f6e-0d18-41b8-a1ea-2863b5d9465d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2538,7 +2645,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               24ms
                               </span>
                             
                          
@@ -2805,7 +2912,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features8374fe88-7c58-45cc-b403-73775e39d987">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features9821e429-1f1d-4ed1-a16c-8250f6411ba8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2814,7 +2921,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2829,7 +2937,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features8374fe88-7c58-45cc-b403-73775e39d987"
+                        <div id="collapseScenariopersoon_immigratie_features9821e429-1f1d-4ed1-a16c-8250f6411ba8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2939,7 +3047,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               25ms
                               </span>
                             
                          
@@ -3202,7 +3310,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features30e1c871-c020-45bc-9954-52834c3807cf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresa5a92006-e039-4f64-8a79-6a7cc87f1a39">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3211,7 +3319,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3226,7 +3335,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features30e1c871-c020-45bc-9954-52834c3807cf"
+                        <div id="collapseScenariopersoon_immigratie_featuresa5a92006-e039-4f64-8a79-6a7cc87f1a39"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3336,7 +3445,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               30ms
                               </span>
                             
                          
@@ -3599,7 +3708,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features8bc432e0-4ecf-4eec-a43b-677166abb92e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features04cdae3c-c44c-4811-8928-fa0c9d68c06a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3608,7 +3717,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3623,7 +3733,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features8bc432e0-4ecf-4eec-a43b-677166abb92e"
+                        <div id="collapseScenariopersoon_immigratie_features04cdae3c-c44c-4811-8928-fa0c9d68c06a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3733,7 +3843,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               26ms
                               </span>
                             
                          
@@ -3996,7 +4106,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresfe064079-8879-447d-ad64-2c9149f89873">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features00bb75cd-eac1-4156-976e-48e953ef2bf7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4005,7 +4115,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland.langFormaat'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4020,7 +4131,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresfe064079-8879-447d-ad64-2c9149f89873"
+                        <div id="collapseScenariopersoon_immigratie_features00bb75cd-eac1-4156-976e-48e953ef2bf7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4130,7 +4241,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               27ms
                               </span>
                             
                          
@@ -4393,7 +4504,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features1f031af7-5e84-4314-883e-bada3292f1ed">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featureseadf41a1-3d26-46c3-8b43-5dd52a75e116">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4402,7 +4513,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland.jaar'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4417,7 +4529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features1f031af7-5e84-4314-883e-bada3292f1ed"
+                        <div id="collapseScenariopersoon_immigratie_featureseadf41a1-3d26-46c3-8b43-5dd52a75e116"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4527,7 +4639,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               32ms
                               </span>
                             
                          
@@ -4790,7 +4902,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features6a79641a-cdc2-4598-9a54-8c83a0f3c813">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features2a368f9c-e78b-4a99-abd9-ab42153a90d9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4799,7 +4911,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland.maand'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4814,7 +4927,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features6a79641a-cdc2-4598-9a54-8c83a0f3c813"
+                        <div id="collapseScenariopersoon_immigratie_features2a368f9c-e78b-4a99-abd9-ab42153a90d9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4924,7 +5037,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               29ms
                               </span>
                             
                          
@@ -5187,7 +5300,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresa7325cf9-f2f9-4189-94ff-b47b318ddd18">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features074a15c4-fa7e-4725-95d6-bc1d61bbe2c1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5196,7 +5309,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.datumVestigingInNederland.onbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5211,7 +5325,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresa7325cf9-f2f9-4189-94ff-b47b318ddd18"
+                        <div id="collapseScenariopersoon_immigratie_features074a15c4-fa7e-4725-95d6-bc1d61bbe2c1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5321,7 +5435,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               26ms
                               </span>
                             
                          
@@ -5584,7 +5698,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features27b3b7b0-c8d1-4668-8c65-bbb17501dadc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresd92a166c-84ee-4dd1-be96-4dcbdb5442b9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5593,7 +5707,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in nederland (14.20)' wordt gevraagd met field pad 'immigratie.indicatieVestigingVanuitBuitenland'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5608,7 +5723,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features27b3b7b0-c8d1-4668-8c65-bbb17501dadc"
+                        <div id="collapseScenariopersoon_immigratie_featuresd92a166c-84ee-4dd1-be96-4dcbdb5442b9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5981,7 +6096,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features94cecd05-18f0-4153-8427-b0bd2abcd147">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf21d1760-809d-496e-ae31-97ec247f640c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5990,7 +6105,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie verblijfplaats' is in onderzoek en één of meerdere 'immigratie' velden wordt gevraagd met field pad 'immigratie'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6005,7 +6121,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features94cecd05-18f0-4153-8427-b0bd2abcd147"
+                        <div id="collapseScenariopersoon_immigratie_featuresf21d1760-809d-496e-ae31-97ec247f640c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6115,7 +6231,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               28ms
                               </span>
                             
                          
@@ -6397,7 +6513,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features841265fe-be19-4545-a85e-1113ea7645ba">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features686aeac1-f885-433a-b63b-d5d39a3874f6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6406,7 +6522,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep immigratie' is in onderzoek en één of meerdere 'immigratie' velden wordt gevraagd met field pad 'immigratie.landVanwaarIngeschreven'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6421,7 +6538,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features841265fe-be19-4545-a85e-1113ea7645ba"
+                        <div id="collapseScenariopersoon_immigratie_features686aeac1-f885-433a-b63b-d5d39a3874f6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6531,7 +6648,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               33ms
                               </span>
                             
                          
@@ -6813,7 +6930,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features64c97594-bf93-4351-82c8-84f45bd4c922">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features5076d2e7-f2c7-41c3-a723-e7769611dd19">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6822,7 +6939,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land vanwaar ingeschreven' is in onderzoek en één of meerdere 'immigratie' velden wordt gevraagd met field pad 'immigratie.datumVestigingInNederland'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6837,7 +6955,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features64c97594-bf93-4351-82c8-84f45bd4c922"
+                        <div id="collapseScenariopersoon_immigratie_features5076d2e7-f2c7-41c3-a723-e7769611dd19"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6947,7 +7065,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               32ms
                               </span>
                             
                          
@@ -7229,7 +7347,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features50628899-060a-4623-84e9-8b25e568417b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featurese1250bf2-6726-4a70-ae75-bed413037968">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7238,7 +7356,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum vestiging in Nederland' is in onderzoek en één of meerdere 'immigratie' velden wordt gevraagd met field pad 'immigratie.indicatieVestigingVanuitBuitenland'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7253,7 +7372,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features50628899-060a-4623-84e9-8b25e568417b"
+                        <div id="collapseScenariopersoon_immigratie_featurese1250bf2-6726-4a70-ae75-bed413037968"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7363,7 +7482,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               31ms
                               </span>
                             
                          
@@ -7649,17 +7768,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -7681,6 +7789,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 18,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -7689,23 +7798,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -7713,88 +7826,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

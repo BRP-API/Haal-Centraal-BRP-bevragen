@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.37</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.39</a>
           <div class="project-name visible-md visible-lg">persoon naam features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 14</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 1</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Thu Mar 16 2023 13:49:16 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              15
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              15
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -314,7 +415,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_naam_features454d9bb9-af59-44ae-9e33-649959f6a00b">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_naam_featuresf869f1da-704b-4859-93b3-257e43ae9d3a">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Aanduiding naamgebruik
@@ -330,7 +431,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_naam_features454d9bb9-af59-44ae-9e33-649959f6a00b" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_naam_featuresf869f1da-704b-4859-93b3-257e43ae9d3a" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -343,7 +444,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features9c5c8d5a-7f26-4849-93f5-0d7b4d1e9ddf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresedc17b96-6b58-42da-9218-3ae46954dae8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -352,7 +453,8 @@ pre {
                                             <b>Abstract Scenario:</b>Persoon heeft aanduiding naamgebruik 'E'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -367,7 +469,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features9c5c8d5a-7f26-4849-93f5-0d7b4d1e9ddf"
+                        <div id="collapseScenariopersoon_naam_featuresedc17b96-6b58-42da-9218-3ae46954dae8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -464,7 +566,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               261ms
+                               231ms
                               </span>
                             
                          
@@ -746,7 +848,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresb1016567-44f7-4943-8702-91b64867be8c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features346daef3-feac-4474-b074-64835bbf80ea">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -755,7 +857,8 @@ pre {
                                             <b>Abstract Scenario:</b>Persoon heeft aanduiding naamgebruik 'N'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -770,7 +873,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featuresb1016567-44f7-4943-8702-91b64867be8c"
+                        <div id="collapseScenariopersoon_naam_features346daef3-feac-4474-b074-64835bbf80ea"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -867,7 +970,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               22ms
                               </span>
                             
                          
@@ -1149,7 +1252,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresce330ea8-affd-48bc-8967-b2dffbd7bb21">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresb948aa54-a293-4833-bb7f-f07fb5f762e5">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1158,7 +1261,8 @@ pre {
                                             <b>Abstract Scenario:</b>Persoon heeft aanduiding naamgebruik 'P'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1173,7 +1277,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featuresce330ea8-affd-48bc-8967-b2dffbd7bb21"
+                        <div id="collapseScenariopersoon_naam_featuresb948aa54-a293-4833-bb7f-f07fb5f762e5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1270,7 +1374,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               23ms
                               </span>
                             
                          
@@ -1552,7 +1656,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features0cc10d3a-13e8-4f5f-961e-ea3ab8f6dab8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features4c8e34c2-b4ed-439e-8181-06a9df12563d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1561,7 +1665,8 @@ pre {
                                             <b>Abstract Scenario:</b>Persoon heeft aanduiding naamgebruik 'V'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1576,7 +1681,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features0cc10d3a-13e8-4f5f-961e-ea3ab8f6dab8"
+                        <div id="collapseScenariopersoon_naam_features4c8e34c2-b4ed-439e-8181-06a9df12563d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1673,7 +1778,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               25ms
                               </span>
                             
                          
@@ -1956,7 +2061,7 @@ pre {
 
 
 
-<div class="feature-failed">
+<div class="feature-passed">
 
     <div class="col-lg-6 col-md-6">
         <div class="panel panel-default">
@@ -1967,15 +2072,14 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_naam_features425174e2-0fe1-42ad-8991-56ecea029f30">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_naam_featuresd9ff6eb9-b674-4c52-913d-57c8b30fa4a5">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>naam velden vragen met fields (persoon)
                         <span class="label-container">
               <span class="label label-success"
-                                                         title="10 Scenarios Passed">10</span>
-              <span class="label label-danger"
-                                                         title="1 Scenarios Failed">1</span>
+                                                         title="11 Scenarios Passed">11</span>
+              
               
               
               
@@ -1984,7 +2088,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_naam_features425174e2-0fe1-42ad-8991-56ecea029f30" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_naam_featuresd9ff6eb9-b674-4c52-913d-57c8b30fa4a5" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -1997,7 +2101,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresf4a9041b-cc49-4263-9b8b-54b212aa483c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresfce37100-f8c2-4720-ba0c-c88ef4df69ed">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2006,7 +2110,8 @@ pre {
                                             <b>Abstract Scenario:</b>voorvoegsel naam is leeg
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2021,7 +2126,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featuresf4a9041b-cc49-4263-9b8b-54b212aa483c"
+                        <div id="collapseScenariopersoon_naam_featuresfce37100-f8c2-4720-ba0c-c88ef4df69ed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2144,7 +2249,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               24ms
+                               33ms
                               </span>
                             
                          
@@ -2422,7 +2527,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features7ba93070-97e2-4405-bbb8-acc02412986b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresd8a95ff0-d069-40f7-8340-a1c6ac511b93">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2431,7 +2536,8 @@ pre {
                                             <b>Abstract Scenario:</b>voorvoegsel naam is leeg
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2446,7 +2552,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features7ba93070-97e2-4405-bbb8-acc02412986b"
+                        <div id="collapseScenariopersoon_naam_featuresd8a95ff0-d069-40f7-8340-a1c6ac511b93"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2569,7 +2675,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               22ms
                               </span>
                             
                          
@@ -2847,7 +2953,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresb86acde0-5922-497b-98bc-535760b84c01">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresd1bd6dc3-0ef8-4799-9689-87650c65e835">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2856,7 +2962,8 @@ pre {
                                             <b>Abstract Scenario:</b>voorvoegsel naam is leeg
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2871,7 +2978,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featuresb86acde0-5922-497b-98bc-535760b84c01"
+                        <div id="collapseScenariopersoon_naam_featuresd1bd6dc3-0ef8-4799-9689-87650c65e835"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2994,7 +3101,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               24ms
+                               28ms
                               </span>
                             
                          
@@ -3272,7 +3379,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features59dc0761-6425-4cb2-ad5e-cf1457777306">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features7e5576b5-9b25-4429-abcb-ac2bd1f79547">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3281,7 +3388,8 @@ pre {
                                             <b>Abstract Scenario:</b>filteren van 'adellijke titel of predicaat (02.20)' met fields=naam.adellijkeTitelPredicaat geeft altijd alle velden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3296,7 +3404,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features59dc0761-6425-4cb2-ad5e-cf1457777306"
+                        <div id="collapseScenariopersoon_naam_features7e5576b5-9b25-4429-abcb-ac2bd1f79547"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3690,7 +3798,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features74710e37-27ea-45b7-9471-6b557a2114e5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features33998ca4-954e-4c2b-9634-991db72126dc">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3699,7 +3807,8 @@ pre {
                                             <b>Abstract Scenario:</b>filteren van 'adellijke titel of predicaat (02.20)' met fields=naam.adellijkeTitelPredicaat.code geeft altijd alle velden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3714,7 +3823,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features74710e37-27ea-45b7-9471-6b557a2114e5"
+                        <div id="collapseScenariopersoon_naam_features33998ca4-954e-4c2b-9634-991db72126dc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4108,7 +4217,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featureseabca28a-22d9-4178-bc3c-b861f73294e9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresf4c73a8b-8a1f-4344-ab4f-9a3ccc23c60b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4117,7 +4226,8 @@ pre {
                                             <b>Abstract Scenario:</b>filteren van 'adellijke titel of predicaat (02.20)' met fields=naam.adellijkeTitelPredicaat.omschrijving geeft altijd alle velden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4132,7 +4242,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featureseabca28a-22d9-4178-bc3c-b861f73294e9"
+                        <div id="collapseScenariopersoon_naam_featuresf4c73a8b-8a1f-4344-ab4f-9a3ccc23c60b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4229,7 +4339,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               25ms
                               </span>
                             
                          
@@ -4526,7 +4636,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresb693b0e9-a883-4b05-b7ca-0bc3ab2fee2e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features66bf7ff7-3f7f-42a2-966f-2d277a8c493e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4535,7 +4645,8 @@ pre {
                                             <b>Abstract Scenario:</b>filteren van 'adellijke titel of predicaat (02.20)' met fields=naam.adellijkeTitelPredicaat.soort geeft altijd alle velden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4550,7 +4661,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featuresb693b0e9-a883-4b05-b7ca-0bc3ab2fee2e"
+                        <div id="collapseScenariopersoon_naam_features66bf7ff7-3f7f-42a2-966f-2d277a8c493e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4647,7 +4758,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               25ms
                               </span>
                             
                          
@@ -4944,7 +5055,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features16a607a3-e886-468e-b537-45ec40a53ca3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresd2e9dffd-d37d-47bf-927c-6465a4bef75b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4953,7 +5064,8 @@ pre {
                                             <b>Scenario:</b>'volledige naam' wordt gevraagd met field pad 'naam.volledigeNaam'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -4968,7 +5080,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features16a607a3-e886-468e-b537-45ec40a53ca3"
+                        <div id="collapseScenariopersoon_naam_featuresd2e9dffd-d37d-47bf-927c-6465a4bef75b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5097,7 +5209,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               26ms
                               </span>
                             
                          
@@ -5534,23 +5646,23 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featurese0d73780-9a04-4518-9f0e-604256e4c86b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresfd085b6f-ff5a-449e-a868-e0038d8030ab">
                                     <div>
 
-                                        <div style="padding-right: 50px">
+                                        <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
                                             <b>Scenario:</b>groep 'naam' wordt gevraagd en moet alles leveren dat nodig is voor volledigeNaam plus de andere naamvelden
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
-                                                               title="4 Steps Passed">4</span>
+                                                               title="5 Steps Passed">5</span>
                               
                               
                               
-                              <span class="label label-danger"
-                                                               title="1 Steps Failed">1</span>
+                              
                               
                             </span>
                                         </div>
@@ -5559,7 +5671,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_featurese0d73780-9a04-4518-9f0e-604256e4c86b"
+                        <div id="collapseScenariopersoon_naam_featuresfd085b6f-ff5a-449e-a868-e0038d8030ab"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5688,7 +5800,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               25ms
                               </span>
                             
                          
@@ -6032,8 +6144,8 @@ pre {
                                 <div class="row steps">
                                     
                                     
-                                    <span class="label label-danger" title="Failed"><i
-                                            class="glyphicon glyphicon-remove"></i></span>
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
                                     
                                     
                                     <span class="text">
@@ -6042,7 +6154,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               1ms
+                               < 1ms
                               </span>
                             
                          
@@ -6051,112 +6163,6 @@ pre {
                       </span>
                                 
                                 
-
-                                    
-                                    <a href="#error1_86"
-                                       data-toggle="collapse" class="toggle">Show Error +</a>
-                                    <div id="error1_86"
-                                         class="collapse">
-                                        <pre class="info show-modal"
-                                             data-toggle="modal"
-                                             style="cursor: pointer"
-                                             data-target="#error-modal-1_86">
-                                            <br> AssertionError: actual: [
-	{
-		"naam": {
-			"aanduidingNaamgebruik": {
-				"code": "E",
-				"omschrijving": "eigen geslachtsnaam"
-			},
-			"voornamen": "Carolina",
-			"adellijkeTitelPredicaat": {
-				"soort": "titel",
-				"code": "BS",
-				"omschrijving": "barones"
-			},
-			"voorvoegsel": "Van",
-			"geslachtsnaam": "Naersen"
-		}
-	}
-]: expected [ { naam: { …(5) } } ] to deeply equal [ { …(2) } ]
-    + expected - actual
-
-     [
-       {
-    +    "geslacht": {
-    +      "code": "V"
-    +      "omschrijving": "vrouw"
-    +    }
-         "naam": {
-           "aanduidingNaamgebruik": {
-             "code": "E"
-             "omschrijving": "eigen geslachtsnaam"
-
-    at Proxy.equalInAnyOrder (C:\Projects\haal-centraal\nieuw\Haal-Centraal-BRP-bevragen\node_modules\deep-equal-in-any-order\build\index.js:33:10)
-    at Proxy.methodWrapper (C:\Projects\haal-centraal\nieuw\Haal-Centraal-BRP-bevragen\node_modules\chai\lib\chai\utils\addMethod.js:57:25)
-    at World.(anonymous) (C:\Projects\haal-centraal\nieuw\Haal-Centraal-BRP-bevragen\features\step_definitions\step_defs.js:1240:24)</pre>
-                                    </div>
-
-                                <div class="modal fade" id="error-modal-1_86" tabindex="-1" role="dialog"
-                                     aria-labelledby="stacktraceModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h4 class="modal-title" id="error-modal-title">
-                                                    Error
-                                                </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h5>
-                                                    <pre><br>AssertionError: actual: [
-	{
-		"naam": {
-			"aanduidingNaamgebruik": {
-				"code": "E",
-				"omschrijving": "eigen geslachtsnaam"
-			},
-			"voornamen": "Carolina",
-			"adellijkeTitelPredicaat": {
-				"soort": "titel",
-				"code": "BS",
-				"omschrijving": "barones"
-			},
-			"voorvoegsel": "Van",
-			"geslachtsnaam": "Naersen"
-		}
-	}
-]: expected [ { naam: { …(5) } } ] to deeply equal [ { …(2) } ]
-    + expected - actual
-
-     [
-       {
-    +    "geslacht": {
-    +      "code": "V"
-    +      "omschrijving": "vrouw"
-    +    }
-         "naam": {
-           "aanduidingNaamgebruik": {
-             "code": "E"
-             "omschrijving": "eigen geslachtsnaam"
-
-    at Proxy.equalInAnyOrder (C:\Projects\haal-centraal\nieuw\Haal-Centraal-BRP-bevragen\node_modules\deep-equal-in-any-order\build\index.js:33:10)
-    at Proxy.methodWrapper (C:\Projects\haal-centraal\nieuw\Haal-Centraal-BRP-bevragen\node_modules\chai\lib\chai\utils\addMethod.js:57:25)
-    at World.(anonymous) (C:\Projects\haal-centraal\nieuw\Haal-Centraal-BRP-bevragen\features\step_definitions\step_defs.js:1240:24)</pre>
-                                                </h5>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
 
                                     
 
@@ -6265,7 +6271,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features881282a7-0070-4454-9e53-0bc1d86a4960">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features884c04e6-32e0-4105-be72-ffd2806e1667">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6274,7 +6280,8 @@ pre {
                                             <b>Scenario:</b>'voorletters' wordt gevraagd met field pad 'naam.voorletters'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6289,7 +6296,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features881282a7-0070-4454-9e53-0bc1d86a4960"
+                        <div id="collapseScenariopersoon_naam_features884c04e6-32e0-4105-be72-ffd2806e1667"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6451,7 +6458,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               24ms
                               </span>
                             
                          
@@ -6714,7 +6721,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_features6f49ebea-15c7-4971-b4c6-9a2659c9de96">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_naam_featuresef416604-452e-4fa9-aa6e-5f559cc5df11">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6723,7 +6730,8 @@ pre {
                                             <b>Scenario:</b>onbekend waarde "." voor geslachtsnaam
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6738,7 +6746,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_naam_features6f49ebea-15c7-4971-b4c6-9a2659c9de96"
+                        <div id="collapseScenariopersoon_naam_featuresef416604-452e-4fa9-aa6e-5f559cc5df11"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6835,7 +6843,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               29ms
                               </span>
                             
                          
@@ -7117,17 +7125,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -7137,8 +7134,8 @@ pre {
         google.load("visualization", "1", {packages: ["corechart"]});
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Features",
-                                                            "failed" : 1,
-                                                            "passed" : 1,
+                                                            "failed" : 0,
+                                                            "passed" : 2,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -7147,8 +7144,9 @@ pre {
                                             });
         google.setOnLoadCallback(function() {drawChart({
                                                             "title" : "Scenarios",
-                                                            "failed" : 1,
-                                                            "passed" : 14,
+                                                            "failed" : 0,
+                                                            "passed" : 15,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -7157,23 +7155,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -7181,88 +7183,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

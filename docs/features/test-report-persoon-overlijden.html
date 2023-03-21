@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.17</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.19</a>
           <div class="project-name visible-md visible-lg">persoon overlijden features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 43</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Thu Mar 16 2023 13:49:17 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              43
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              43
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -313,7 +414,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_overlijden_featuresd94d10ec-cfa6-4c2e-960f-feae20f63deb">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_overlijden_features8aec4ba3-c752-40b2-a9c5-b4b4620652d6">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: overlijden velden vragen met fields
@@ -329,7 +430,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_overlijden_featuresd94d10ec-cfa6-4c2e-960f-feae20f63deb" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_overlijden_features8aec4ba3-c752-40b2-a9c5-b4b4620652d6" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -342,7 +443,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features0d7b7785-2e87-4a99-91a2-1733bf64ca05">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features07f7eb18-7c5d-484c-b1f9-c0347106055d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -351,7 +452,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -366,7 +468,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features0d7b7785-2e87-4a99-91a2-1733bf64ca05"
+                        <div id="collapseScenariopersoon_overlijden_features07f7eb18-7c5d-484c-b1f9-c0347106055d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -389,7 +491,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               1ms
                               </span>
                             
                          
@@ -463,7 +565,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               238ms
+                               236ms
                               </span>
                             
                          
@@ -760,7 +862,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresbb671864-ee25-4003-bd41-8261f80e85b2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features92691ffb-de5c-4388-8d31-aad8feeec546">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -769,7 +871,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -784,7 +887,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresbb671864-ee25-4003-bd41-8261f80e85b2"
+                        <div id="collapseScenariopersoon_overlijden_features92691ffb-de5c-4388-8d31-aad8feeec546"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -881,7 +984,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               37ms
                               </span>
                             
                          
@@ -1178,7 +1281,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features428f4b50-8820-414c-8eca-12ae43e3aeca">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features5073e451-1e3b-4dcb-be1e-21267d2a3c4a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1187,7 +1290,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1202,7 +1306,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features428f4b50-8820-414c-8eca-12ae43e3aeca"
+                        <div id="collapseScenariopersoon_overlijden_features5073e451-1e3b-4dcb-be1e-21267d2a3c4a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1299,7 +1403,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               40ms
                               </span>
                             
                          
@@ -1596,7 +1700,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features86151314-2523-4bfe-a6b2-4cbba0476062">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features6f529ca3-3a40-4e21-a4fb-879422bb34a7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1605,7 +1709,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum.langFormaat'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1620,7 +1725,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features86151314-2523-4bfe-a6b2-4cbba0476062"
+                        <div id="collapseScenariopersoon_overlijden_features6f529ca3-3a40-4e21-a4fb-879422bb34a7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1717,7 +1822,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               37ms
                               </span>
                             
                          
@@ -2014,7 +2119,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features0c8f7640-ce39-447d-bb53-ea91ac91b490">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features4cb91b98-1453-4c15-82c9-37023fd26597">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2023,7 +2128,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum.jaar'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2038,7 +2144,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features0c8f7640-ce39-447d-bb53-ea91ac91b490"
+                        <div id="collapseScenariopersoon_overlijden_features4cb91b98-1453-4c15-82c9-37023fd26597"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2135,7 +2241,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               36ms
                               </span>
                             
                          
@@ -2432,7 +2538,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features5906b7fe-0491-4805-bdf1-159dd4b55f15">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features98422d42-1172-4d87-be30-cea758a9016a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2441,7 +2547,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum.maand'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2456,7 +2563,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features5906b7fe-0491-4805-bdf1-159dd4b55f15"
+                        <div id="collapseScenariopersoon_overlijden_features98422d42-1172-4d87-be30-cea758a9016a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2850,7 +2957,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features9d6acdb3-4b95-4e4b-9a1a-4bbf830cc7a8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features447e564a-26d4-47bd-8079-45b5404a998f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2859,7 +2966,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' wordt gevraagd met field pad 'overlijden.datum.onbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2874,7 +2982,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features9d6acdb3-4b95-4e4b-9a1a-4bbf830cc7a8"
+                        <div id="collapseScenariopersoon_overlijden_features447e564a-26d4-47bd-8079-45b5404a998f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2971,7 +3079,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               39ms
                               </span>
                             
                          
@@ -3268,7 +3376,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features66254319-3859-43f9-ad02-1393ed91ce6a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresba4a0a73-b586-4c6e-91f9-125a5b8ad7f3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3277,7 +3385,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' van het type 'Datum' wordt gevraagd met field pad 'overlijden.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3292,7 +3401,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features66254319-3859-43f9-ad02-1393ed91ce6a"
+                        <div id="collapseScenariopersoon_overlijden_featuresba4a0a73-b586-4c6e-91f9-125a5b8ad7f3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3381,7 +3490,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               39ms
+                               35ms
                               </span>
                             
                          
@@ -3717,7 +3826,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresb2c603ed-8f15-4d22-a42b-65587c79fdaf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features1472c89f-742c-45b5-8a41-4722d55cf3d6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3726,7 +3835,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' van het type 'DatumOnbekend' wordt gevraagd met field pad 'overlijden.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3741,7 +3851,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresb2c603ed-8f15-4d22-a42b-65587c79fdaf"
+                        <div id="collapseScenariopersoon_overlijden_features1472c89f-742c-45b5-8a41-4722d55cf3d6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3830,7 +3940,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               40ms
+                               39ms
                               </span>
                             
                          
@@ -4166,7 +4276,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresaf0f70f2-cd1f-4d5d-86aa-814e6569bec1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features888e33ef-74c2-4898-b197-8ed47150365b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4175,7 +4285,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' van het type 'JaarDatum' wordt gevraagd met field pad 'overlijden.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4190,7 +4301,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresaf0f70f2-cd1f-4d5d-86aa-814e6569bec1"
+                        <div id="collapseScenariopersoon_overlijden_features888e33ef-74c2-4898-b197-8ed47150365b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4279,7 +4390,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               38ms
+                               36ms
                               </span>
                             
                          
@@ -4615,7 +4726,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresd6253796-9797-4862-bdcc-985f1e39e7a8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features4e5fb877-5a9c-4a12-9dbe-37f2b453bf25">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4624,7 +4735,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden (08.10)' van het type 'JaarMaandDatum' wordt gevraagd met field pad 'overlijden.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4639,7 +4751,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresd6253796-9797-4862-bdcc-985f1e39e7a8"
+                        <div id="collapseScenariopersoon_overlijden_features4e5fb877-5a9c-4a12-9dbe-37f2b453bf25"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4728,7 +4840,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               38ms
+                               39ms
                               </span>
                             
                          
@@ -5066,7 +5178,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features6a5fe0e4-c297-4650-afb2-b3aa0dee0ed2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurese03a4290-a449-4f5a-ae28-ccf72d174522">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5075,7 +5187,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden (08.20)' wordt gevraagd met field pad 'overlijden.plaats'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5090,7 +5203,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features6a5fe0e4-c297-4650-afb2-b3aa0dee0ed2"
+                        <div id="collapseScenariopersoon_overlijden_featurese03a4290-a449-4f5a-ae28-ccf72d174522"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5187,7 +5300,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               35ms
                               </span>
                             
                          
@@ -5469,7 +5582,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresb113af34-6678-4fce-8d9b-d1eb98fa12e1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurescc8ebb3c-2c1e-45b0-97ee-d2bd0f57ec03">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5478,7 +5591,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden (08.20)' wordt gevraagd met field pad 'overlijden.plaats.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5493,7 +5607,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresb113af34-6678-4fce-8d9b-d1eb98fa12e1"
+                        <div id="collapseScenariopersoon_overlijden_featurescc8ebb3c-2c1e-45b0-97ee-d2bd0f57ec03"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5590,7 +5704,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               33ms
                               </span>
                             
                          
@@ -5872,7 +5986,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features84cfad42-7eba-41a6-8418-597dd88eab4b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresfa536d5c-d9b0-4d6b-b0b2-c7ea68d2f148">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5881,7 +5995,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden (08.20)' wordt gevraagd met field pad 'overlijden.plaats.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5896,7 +6011,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features84cfad42-7eba-41a6-8418-597dd88eab4b"
+                        <div id="collapseScenariopersoon_overlijden_featuresfa536d5c-d9b0-4d6b-b0b2-c7ea68d2f148"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5993,7 +6108,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               33ms
                               </span>
                             
                          
@@ -6275,7 +6390,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features67829cec-2914-49f5-8cb2-e334f6180c88">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresd0fa7c75-e015-4d2f-96ac-2c7a5194676d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6284,7 +6399,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden (08.20)' met standaardwaarde wordt gevraagd met field pad 'overlijden.plaats'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6299,7 +6415,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features67829cec-2914-49f5-8cb2-e334f6180c88"
+                        <div id="collapseScenariopersoon_overlijden_featuresd0fa7c75-e015-4d2f-96ac-2c7a5194676d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6396,7 +6512,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               30ms
                               </span>
                             
                          
@@ -6619,7 +6735,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featureseafab9ea-af11-4743-a18f-20e200eb1aa6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresa44b1bee-bde2-4f2b-8111-d45fafebbe5f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6628,7 +6744,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden (08.30)' wordt gevraagd met field pad 'overlijden.land'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6643,7 +6760,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featureseafab9ea-af11-4743-a18f-20e200eb1aa6"
+                        <div id="collapseScenariopersoon_overlijden_featuresa44b1bee-bde2-4f2b-8111-d45fafebbe5f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6740,7 +6857,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               32ms
                               </span>
                             
                          
@@ -7022,7 +7139,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features17900f16-b1d2-436d-b112-33ac243890a0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurese3d56aa8-f2b7-4838-9350-57c57fd8303a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7031,7 +7148,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden (08.30)' wordt gevraagd met field pad 'overlijden.land.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7046,7 +7164,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features17900f16-b1d2-436d-b112-33ac243890a0"
+                        <div id="collapseScenariopersoon_overlijden_featurese3d56aa8-f2b7-4838-9350-57c57fd8303a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7143,7 +7261,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               38ms
+                               30ms
                               </span>
                             
                          
@@ -7425,7 +7543,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features686778db-fd93-4e77-8f9a-a177c4a105e3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurescabe5589-4ae4-428b-abbb-a17bfd1f3a62">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7434,7 +7552,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden (08.30)' wordt gevraagd met field pad 'overlijden.land.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7449,7 +7568,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features686778db-fd93-4e77-8f9a-a177c4a105e3"
+                        <div id="collapseScenariopersoon_overlijden_featurescabe5589-4ae4-428b-abbb-a17bfd1f3a62"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7546,7 +7665,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               40ms
+                               30ms
                               </span>
                             
                          
@@ -7828,7 +7947,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresf7bebc8b-76d6-4c3a-9e2e-0d19038d3062">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features6c5d83aa-2e31-4260-af9a-3fd32081593c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7837,7 +7956,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden (08.30)' met standaardwaarde wordt gevraagd met field pad 'overlijden.land'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7852,7 +7972,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresf7bebc8b-76d6-4c3a-9e2e-0d19038d3062"
+                        <div id="collapseScenariopersoon_overlijden_features6c5d83aa-2e31-4260-af9a-3fd32081593c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7949,7 +8069,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               43ms
+                               30ms
                               </span>
                             
                          
@@ -8183,7 +8303,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_overlijden_features5f531840-221c-475b-bd80-eab8ad20e45d">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_overlijden_features448af9f4-8c51-4c9c-8ae7-cf4e1a800ef0">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>overlijden velden in onderzoek
@@ -8199,7 +8319,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_overlijden_features5f531840-221c-475b-bd80-eab8ad20e45d" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_overlijden_features448af9f4-8c51-4c9c-8ae7-cf4e1a800ef0" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -8212,7 +8332,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features8f823bb6-163c-4ce7-a352-9040a92cbe1c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features02558eb4-17e7-4d25-9804-fa1906efa420">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8221,7 +8341,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie overlijden' is in onderzoek en alle overlijden velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8236,7 +8357,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features8f823bb6-163c-4ce7-a352-9040a92cbe1c"
+                        <div id="collapseScenariopersoon_overlijden_features02558eb4-17e7-4d25-9804-fa1906efa420"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8359,7 +8480,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               42ms
+                               34ms
                               </span>
                             
                          
@@ -8754,7 +8875,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresafa5d924-ff96-4d2a-a5be-a2c12c04b4b4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features2f32704d-add9-4d8c-874b-d2a447f33a53">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8763,7 +8884,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep overlijden' is in onderzoek en alle overlijden velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8778,7 +8900,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresafa5d924-ff96-4d2a-a5be-a2c12c04b4b4"
+                        <div id="collapseScenariopersoon_overlijden_features2f32704d-add9-4d8c-874b-d2a447f33a53"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8901,7 +9023,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               29ms
                               </span>
                             
                          
@@ -9296,7 +9418,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features2333e066-2e0f-4e1f-b4b4-9bd44c683333">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresef9a9337-3f2e-4571-87d9-cc058a75d8a5">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9305,7 +9427,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden' is in onderzoek en alle overlijden velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9320,7 +9443,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features2333e066-2e0f-4e1f-b4b4-9bd44c683333"
+                        <div id="collapseScenariopersoon_overlijden_featuresef9a9337-3f2e-4571-87d9-cc058a75d8a5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9443,7 +9566,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               30ms
                               </span>
                             
                          
@@ -9834,7 +9957,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresfd817af1-363a-4aca-b4b0-eeb2135ecdbf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features30455be7-bfbb-4aa8-8f82-2ff97454924f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9843,7 +9966,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden' is in onderzoek en alle overlijden velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9858,7 +9982,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresfd817af1-363a-4aca-b4b0-eeb2135ecdbf"
+                        <div id="collapseScenariopersoon_overlijden_features30455be7-bfbb-4aa8-8f82-2ff97454924f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9981,7 +10105,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               30ms
                               </span>
                             
                          
@@ -10372,7 +10496,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresa55a8fb2-3173-4bb7-9234-83847a905fc3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresacc0fae7-d16e-4854-b2d1-e709f9e77bd5">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10381,7 +10505,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden' is in onderzoek en alle overlijden velden wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10396,7 +10521,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresa55a8fb2-3173-4bb7-9234-83847a905fc3"
+                        <div id="collapseScenariopersoon_overlijden_featuresacc0fae7-d16e-4854-b2d1-e709f9e77bd5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10519,7 +10644,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               30ms
                               </span>
                             
                          
@@ -10910,7 +11035,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features1a9ad3e4-12c2-471f-83c2-0e6e1d53bfbc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresf4126ac8-6e44-45a7-bd6c-ebe41ceeb976">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10919,7 +11044,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie overlijden' is in onderzoek en 'datum' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10934,7 +11060,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features1a9ad3e4-12c2-471f-83c2-0e6e1d53bfbc"
+                        <div id="collapseScenariopersoon_overlijden_featuresf4126ac8-6e44-45a7-bd6c-ebe41ceeb976"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11057,7 +11183,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               68ms
                               </span>
                             
                          
@@ -11422,7 +11548,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresc15e6042-3e8f-43d7-8be9-e07b70d84f9f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresb6267ef1-7f6c-4331-b568-e821f69dc779">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11431,7 +11557,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep overlijden' is in onderzoek en 'datum' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11446,7 +11573,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresc15e6042-3e8f-43d7-8be9-e07b70d84f9f"
+                        <div id="collapseScenariopersoon_overlijden_featuresb6267ef1-7f6c-4331-b568-e821f69dc779"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11934,7 +12061,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features14285878-2e82-4e52-a357-d1ed3c5dcb9b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresf015d62b-1c98-403a-95e5-e5ce2befedfe">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11943,7 +12070,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden' is in onderzoek en 'datum' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11958,7 +12086,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features14285878-2e82-4e52-a357-d1ed3c5dcb9b"
+                        <div id="collapseScenariopersoon_overlijden_featuresf015d62b-1c98-403a-95e5-e5ce2befedfe"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12081,7 +12209,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               35ms
                               </span>
                             
                          
@@ -12446,7 +12574,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features48ae9d20-d1b7-4247-a29f-a99b318548a0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features56042a1e-833f-4909-80a6-b32dde80bb7b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12455,7 +12583,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie overlijden' is in onderzoek en 'plaats' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12470,7 +12599,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features48ae9d20-d1b7-4247-a29f-a99b318548a0"
+                        <div id="collapseScenariopersoon_overlijden_features56042a1e-833f-4909-80a6-b32dde80bb7b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12593,7 +12722,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               33ms
                               </span>
                             
                          
@@ -12909,7 +13038,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features57f0c236-166a-4efa-bf02-43e20cb749dc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features5c541979-8404-4c42-b8cc-5a0fd198e377">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12918,7 +13047,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep overlijden' is in onderzoek en 'plaats' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12933,7 +13063,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features57f0c236-166a-4efa-bf02-43e20cb749dc"
+                        <div id="collapseScenariopersoon_overlijden_features5c541979-8404-4c42-b8cc-5a0fd198e377"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13056,7 +13186,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               35ms
                               </span>
                             
                          
@@ -13372,7 +13502,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features016a4505-e819-41ff-b7ab-64e9e6eca66a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features0f40734a-14e6-44a0-bc58-3175ed8d74cd">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13381,7 +13511,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden' is in onderzoek en 'plaats' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13396,7 +13527,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features016a4505-e819-41ff-b7ab-64e9e6eca66a"
+                        <div id="collapseScenariopersoon_overlijden_features0f40734a-14e6-44a0-bc58-3175ed8d74cd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13519,7 +13650,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               39ms
                               </span>
                             
                          
@@ -13835,7 +13966,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features1cccb2b8-f764-4130-a853-a8980ff52d72">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurescd32b399-4893-45ef-a248-73173d358b48">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13844,7 +13975,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie overlijden' is in onderzoek en 'land' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13859,7 +13991,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features1cccb2b8-f764-4130-a853-a8980ff52d72"
+                        <div id="collapseScenariopersoon_overlijden_featurescd32b399-4893-45ef-a248-73173d358b48"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13982,7 +14114,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               34ms
+                               35ms
                               </span>
                             
                          
@@ -14298,7 +14430,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresae7fb25a-e999-414b-a34d-7d0946bcc298">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features3c7bb64b-8c06-4621-9bac-f02a0a0aac04">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14307,7 +14439,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep overlijden' is in onderzoek en 'land' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -14322,7 +14455,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresae7fb25a-e999-414b-a34d-7d0946bcc298"
+                        <div id="collapseScenariopersoon_overlijden_features3c7bb64b-8c06-4621-9bac-f02a0a0aac04"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14445,7 +14578,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               39ms
+                               32ms
                               </span>
                             
                          
@@ -14761,7 +14894,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features69bede65-d680-4825-9245-41ff5012fbf0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features0d88d258-801d-4fb5-ade7-5419e6382c86">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14770,7 +14903,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden' is in onderzoek en 'land' veld wordt gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -14785,7 +14919,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features69bede65-d680-4825-9245-41ff5012fbf0"
+                        <div id="collapseScenariopersoon_overlijden_features0d88d258-801d-4fb5-ade7-5419e6382c86"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14908,7 +15042,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               38ms
+                               30ms
                               </span>
                             
                          
@@ -15224,7 +15358,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresecd80a24-7e5c-4101-820c-3a7e9dbe844b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresccb641c2-c159-452c-8137-ed4105302cb9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15233,7 +15367,8 @@ pre {
                                             <b>Abstract Scenario:</b>'datum overlijden' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -15248,7 +15383,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresecd80a24-7e5c-4101-820c-3a7e9dbe844b"
+                        <div id="collapseScenariopersoon_overlijden_featuresccb641c2-c159-452c-8137-ed4105302cb9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15358,7 +15493,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               37ms
+                               32ms
                               </span>
                             
                          
@@ -15581,7 +15716,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features1d5f73c0-5204-47e7-98ea-6a3e17882f9a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresaa26db13-36d3-43f8-b71d-c5f5bb025112">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15590,7 +15725,8 @@ pre {
                                             <b>Abstract Scenario:</b>'plaats overlijden' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -15605,7 +15741,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features1d5f73c0-5204-47e7-98ea-6a3e17882f9a"
+                        <div id="collapseScenariopersoon_overlijden_featuresaa26db13-36d3-43f8-b71d-c5f5bb025112"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15715,7 +15851,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               39ms
+                               31ms
                               </span>
                             
                          
@@ -15938,7 +16074,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresa37aeeb5-ff2a-4853-b305-a11dee3747d8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features2b31d122-c4a1-4233-990b-25f3c5b7116b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15947,7 +16083,8 @@ pre {
                                             <b>Abstract Scenario:</b>'land overlijden' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -15962,7 +16099,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresa37aeeb5-ff2a-4853-b305-a11dee3747d8"
+                        <div id="collapseScenariopersoon_overlijden_features2b31d122-c4a1-4233-990b-25f3c5b7116b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16072,7 +16209,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               42ms
+                               28ms
                               </span>
                             
                          
@@ -16310,7 +16447,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_overlijden_featuresc89c132e-6c17-4517-b748-a46dc908f372">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_overlijden_featuresf4492cd5-258a-43f5-917f-0fe4e843dd4b">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>overlijden
@@ -16326,7 +16463,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_overlijden_featuresc89c132e-6c17-4517-b748-a46dc908f372" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_overlijden_featuresf4492cd5-258a-43f5-917f-0fe4e843dd4b" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Wanneer een consumer van de BRP API gegevens bevraagt van een overleden persoon<br/>  Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens zonder expliciet om overlijden gegevens te vragen met de fields parameter</div>
@@ -16341,7 +16478,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresaf2f5a6e-e38f-4c79-8a2f-9f4614014752">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features00d20c61-2146-43e5-906f-f3fedd9f4172">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -16350,7 +16487,8 @@ pre {
                                             <b>Abstract Scenario:</b>overlijden velden wordt gevraagd van een niet-overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -16365,7 +16503,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresaf2f5a6e-e38f-4c79-8a2f-9f4614014752"
+                        <div id="collapseScenariopersoon_overlijden_features00d20c61-2146-43e5-906f-f3fedd9f4172"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16462,7 +16600,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               37ms
+                               31ms
                               </span>
                             
                          
@@ -16721,7 +16859,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featuresaa1df1b7-5573-4774-9431-711862672f2b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features3a0fddd4-7b68-41a3-9142-8f9ffc0cbd64">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -16730,7 +16868,8 @@ pre {
                                             <b>Abstract Scenario:</b>overlijden velden wordt niet gevraagd van een niet-overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -16745,7 +16884,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featuresaa1df1b7-5573-4774-9431-711862672f2b"
+                        <div id="collapseScenariopersoon_overlijden_features3a0fddd4-7b68-41a3-9142-8f9ffc0cbd64"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16842,7 +16981,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               40ms
+                               29ms
                               </span>
                             
                          
@@ -17101,7 +17240,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features78c6c60f-e5e1-4ffd-ba67-015cd143a0f7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurese1d1ad01-826d-45cd-8aa3-aca4e3c8e6cc">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -17110,7 +17249,8 @@ pre {
                                             <b>Scenario:</b>overlijden gegevens wordt niet gevraagd van een overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -17125,7 +17265,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features78c6c60f-e5e1-4ffd-ba67-015cd143a0f7"
+                        <div id="collapseScenariopersoon_overlijden_featurese1d1ad01-826d-45cd-8aa3-aca4e3c8e6cc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17222,7 +17362,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               32ms
                               </span>
                             
                          
@@ -17580,7 +17720,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_featurese273145c-d6ba-4724-8bf2-4c92cb008cce">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features15ed360a-d0b5-4053-b210-2d6ab69cb9ab">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -17589,7 +17729,8 @@ pre {
                                             <b>Scenario:</b>datum overlijden wordt gevraagd van een overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -17604,7 +17745,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_featurese273145c-d6ba-4724-8bf2-4c92cb008cce"
+                        <div id="collapseScenariopersoon_overlijden_features15ed360a-d0b5-4053-b210-2d6ab69cb9ab"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17783,7 +17924,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               29ms
                               </span>
                             
                          
@@ -18255,7 +18396,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features97314e50-18af-4abc-a46f-9b2fc543803a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features10e65f48-d999-4a87-8c7d-573107cbe680">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18264,7 +18405,8 @@ pre {
                                             <b>Abstract Scenario:</b>plaats overlijden met waarde onbekend wordt gevraagd van een overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -18279,7 +18421,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features97314e50-18af-4abc-a46f-9b2fc543803a"
+                        <div id="collapseScenariopersoon_overlijden_features10e65f48-d999-4a87-8c7d-573107cbe680"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -18463,7 +18605,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               27ms
                               </span>
                             
                          
@@ -18861,7 +19003,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features8b084c10-d5c4-415d-981d-d423deea6486">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features4b735a9b-d161-443f-9da8-5678a2f0aa34">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18870,7 +19012,8 @@ pre {
                                             <b>Abstract Scenario:</b>land overlijden met waarde onbekend wordt gevraagd van een overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -18885,7 +19028,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features8b084c10-d5c4-415d-981d-d423deea6486"
+                        <div id="collapseScenariopersoon_overlijden_features4b735a9b-d161-443f-9da8-5678a2f0aa34"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19467,7 +19610,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features4d0ff0b8-9ae9-48c1-9ec1-8dd457fa05bf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_overlijden_features9af68023-8b97-4ea9-a9c1-7122663211d6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -19476,7 +19619,8 @@ pre {
                                             <b>Scenario:</b>leeftijd wordt gevraagd van een overleden persoon
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -19491,7 +19635,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_overlijden_features4d0ff0b8-9ae9-48c1-9ec1-8dd457fa05bf"
+                        <div id="collapseScenariopersoon_overlijden_features9af68023-8b97-4ea9-a9c1-7122663211d6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19736,7 +19880,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               35ms
+                               33ms
                               </span>
                             
                          
@@ -20022,17 +20166,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -20054,6 +20187,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 43,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -20062,23 +20196,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -20086,88 +20224,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

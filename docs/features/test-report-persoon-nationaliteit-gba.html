@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.37</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.39</a>
           <div class="project-name visible-md visible-lg">persoon nationaliteit features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 58</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Thu Mar 16 2023 13:49:16 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              58
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              58
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -314,7 +415,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_featuresf2806faa-9b9a-4a80-bb0a-ea80b29fdc96">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_featuresc5a107f8-5c96-4c75-8117-67fe25bb0610">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Nationaliteit (persoon)
@@ -330,7 +431,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_nationaliteit_featuresf2806faa-9b9a-4a80-bb0a-ea80b29fdc96" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_nationaliteit_featuresc5a107f8-5c96-4c75-8117-67fe25bb0610" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -343,7 +444,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5c0d7e2f-4702-4f46-842d-d1450aa5e18d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurescbe752ac-2925-4372-90fa-0c68f7c9dea6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -352,7 +453,8 @@ pre {
                                             <b>Abstract Scenario:</b>alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -367,7 +469,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features5c0d7e2f-4702-4f46-842d-d1450aa5e18d"
+                        <div id="collapseScenariopersoon_nationaliteit_featurescbe752ac-2925-4372-90fa-0c68f7c9dea6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -477,7 +579,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               226ms
+                               264ms
                               </span>
                             
                          
@@ -797,7 +899,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6ab475f2-46b0-4dac-bb6a-3e22c9bd0ab1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features30435e61-1c68-457b-96c4-dcb9956562ea">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -806,7 +908,8 @@ pre {
                                             <b>Abstract Scenario:</b>alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -821,7 +924,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features6ab475f2-46b0-4dac-bb6a-3e22c9bd0ab1"
+                        <div id="collapseScenariopersoon_nationaliteit_features30435e61-1c68-457b-96c4-dcb9956562ea"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1251,7 +1354,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb10479a9-0894-4501-b60f-a0e528dbd9e4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb126ae77-880c-4075-97f5-e6317fa20bae">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1260,7 +1363,8 @@ pre {
                                             <b>Abstract Scenario:</b>alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1275,7 +1379,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresb10479a9-0894-4501-b60f-a0e528dbd9e4"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresb126ae77-880c-4075-97f5-e6317fa20bae"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1385,7 +1489,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               42ms
                               </span>
                             
                          
@@ -1705,7 +1809,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd1b06ef9-6f58-40dd-914c-7f2eb6748b85">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7ae9d718-466e-41a3-a4c9-fbc6d53629be">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1714,7 +1818,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1729,7 +1834,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresd1b06ef9-6f58-40dd-914c-7f2eb6748b85"
+                        <div id="collapseScenariopersoon_nationaliteit_features7ae9d718-466e-41a3-a4c9-fbc6d53629be"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1852,7 +1957,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               38ms
                               </span>
                             
                          
@@ -2164,7 +2269,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features05c3776e-c702-4826-ab89-e91ccc9161b2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0300feee-5a1e-4c9b-bc27-6a30bf06ae64">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2173,7 +2278,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2188,7 +2294,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features05c3776e-c702-4826-ab89-e91ccc9161b2"
+                        <div id="collapseScenariopersoon_nationaliteit_features0300feee-5a1e-4c9b-bc27-6a30bf06ae64"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2311,7 +2417,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               35ms
                               </span>
                             
                          
@@ -2631,7 +2737,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features82475b7e-000f-4052-b209-0125a0b6b5b2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features80c4bc54-f187-42ea-9d37-977ab60cd3d4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2640,7 +2746,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2655,7 +2762,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features82475b7e-000f-4052-b209-0125a0b6b5b2"
+                        <div id="collapseScenariopersoon_nationaliteit_features80c4bc54-f187-42ea-9d37-977ab60cd3d4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2778,7 +2885,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               33ms
                               </span>
                             
                          
@@ -3098,7 +3205,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3b97bc09-dbce-4705-b8ac-4586df911394">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features4abe0940-cd10-4508-9b77-944fda6da5a9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3107,7 +3214,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3122,7 +3230,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features3b97bc09-dbce-4705-b8ac-4586df911394"
+                        <div id="collapseScenariopersoon_nationaliteit_features4abe0940-cd10-4508-9b77-944fda6da5a9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3245,7 +3353,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               31ms
                               </span>
                             
                          
@@ -3565,7 +3673,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features834f0f58-746d-4d36-8c58-93f2a5e80417">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features168b9a40-1a05-4db1-959f-4d202ff5de35">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3574,7 +3682,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3589,7 +3698,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features834f0f58-746d-4d36-8c58-93f2a5e80417"
+                        <div id="collapseScenariopersoon_nationaliteit_features168b9a40-1a05-4db1-959f-4d202ff5de35"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3712,7 +3821,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               32ms
                               </span>
                             
                          
@@ -4026,7 +4135,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresfac88733-a267-4b6a-bd8a-91f96b64ccc8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresea310175-bc5c-44d6-8d07-6d197cfcdd27">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4035,7 +4144,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4050,7 +4160,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresfac88733-a267-4b6a-bd8a-91f96b64ccc8"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresea310175-bc5c-44d6-8d07-6d197cfcdd27"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4173,7 +4283,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               31ms
                               </span>
                             
                          
@@ -4487,7 +4597,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features31a89515-52de-48c2-9d4d-c8bb87b11fbc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5e095080-f017-4bd2-9b5e-56b4de0355af">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4496,7 +4606,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.langFormaat'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4511,7 +4622,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features31a89515-52de-48c2-9d4d-c8bb87b11fbc"
+                        <div id="collapseScenariopersoon_nationaliteit_features5e095080-f017-4bd2-9b5e-56b4de0355af"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4634,7 +4745,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               37ms
                               </span>
                             
                          
@@ -4948,7 +5059,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese4289536-7001-4d38-8bb9-c87f2677dd2c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa4f444b7-5672-43fe-ab0b-9c7a1cdee49b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4957,7 +5068,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.jaar'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4972,7 +5084,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese4289536-7001-4d38-8bb9-c87f2677dd2c"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresa4f444b7-5672-43fe-ab0b-9c7a1cdee49b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5095,7 +5207,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               79ms
                               </span>
                             
                          
@@ -5409,7 +5521,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features78122c59-e9d6-488d-8357-3fa4fb2aed35">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresc1f0484e-c6fc-4af5-864a-a6c54dae3dc3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5418,7 +5530,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.maand'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5433,7 +5546,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features78122c59-e9d6-488d-8357-3fa4fb2aed35"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresc1f0484e-c6fc-4af5-864a-a6c54dae3dc3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5556,7 +5669,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               32ms
                               </span>
                             
                          
@@ -5870,7 +5983,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featureseaf083e1-404a-4eb2-8721-8ee42017c521">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features4bb2ebb0-4536-4720-bc61-a151896e51c9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5879,7 +5992,8 @@ pre {
                                             <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.onbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5894,7 +6008,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featureseaf083e1-404a-4eb2-8721-8ee42017c521"
+                        <div id="collapseScenariopersoon_nationaliteit_features4bb2ebb0-4536-4720-bc61-a151896e51c9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6017,7 +6131,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               36ms
                               </span>
                             
                          
@@ -6331,7 +6445,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features194d4c5c-f50f-4a0b-a84c-15cfe287dbc4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features93885e8d-18e3-4dc4-979e-e0d0023b2636">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6340,7 +6454,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6355,7 +6470,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features194d4c5c-f50f-4a0b-a84c-15cfe287dbc4"
+                        <div id="collapseScenariopersoon_nationaliteit_features93885e8d-18e3-4dc4-979e-e0d0023b2636"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6465,7 +6580,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               33ms
                               </span>
                             
                          
@@ -6766,7 +6881,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features4469252c-e1a1-4f98-8e05-6cc889ae567e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featureseb18bc32-d444-45b9-9a6b-8497b2717efa">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6775,7 +6890,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6790,7 +6906,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features4469252c-e1a1-4f98-8e05-6cc889ae567e"
+                        <div id="collapseScenariopersoon_nationaliteit_featureseb18bc32-d444-45b9-9a6b-8497b2717efa"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6900,7 +7016,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               32ms
                               </span>
                             
                          
@@ -7201,7 +7317,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features910374c6-9c5f-4b4c-a9c0-c54cb2818309">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf432fbd2-aa52-43ef-8864-f20ded0188c6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7210,7 +7326,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7225,7 +7342,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features910374c6-9c5f-4b4c-a9c0-c54cb2818309"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresf432fbd2-aa52-43ef-8864-f20ded0188c6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7348,7 +7465,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               34ms
                               </span>
                             
                          
@@ -7641,7 +7758,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features56b3c898-9436-496d-8058-b1e884931d83">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3d3124b7-8788-4536-86c8-52c449bcf044">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7650,7 +7767,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7665,7 +7783,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features56b3c898-9436-496d-8058-b1e884931d83"
+                        <div id="collapseScenariopersoon_nationaliteit_features3d3124b7-8788-4536-86c8-52c449bcf044"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7788,7 +7906,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               34ms
                               </span>
                             
                          
@@ -8081,7 +8199,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd3537619-9cb2-4c8d-877c-018fb5ebfb54">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5804bb51-a448-450e-94e8-f860491a27ba">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8090,7 +8208,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8105,7 +8224,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresd3537619-9cb2-4c8d-877c-018fb5ebfb54"
+                        <div id="collapseScenariopersoon_nationaliteit_features5804bb51-a448-450e-94e8-f860491a27ba"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8228,7 +8347,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               33ms
                               </span>
                             
                          
@@ -8521,7 +8640,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresfc376657-6fe0-4a9f-9dfb-cc6a6589d985">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features46001b32-56e7-4415-be48-7581aea5e830">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8530,7 +8649,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8545,7 +8665,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresfc376657-6fe0-4a9f-9dfb-cc6a6589d985"
+                        <div id="collapseScenariopersoon_nationaliteit_features46001b32-56e7-4415-be48-7581aea5e830"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8668,7 +8788,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               30ms
                               </span>
                             
                          
@@ -8961,7 +9081,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurescf5ee083-a403-42fd-8f13-ac355d8090f3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features2925c10a-635a-4a5d-880a-3a77d67395c3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8970,7 +9090,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8985,7 +9106,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurescf5ee083-a403-42fd-8f13-ac355d8090f3"
+                        <div id="collapseScenariopersoon_nationaliteit_features2925c10a-635a-4a5d-880a-3a77d67395c3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9108,7 +9229,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               32ms
                               </span>
                             
                          
@@ -9409,7 +9530,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresc811d46e-975b-449a-84f1-bb323ba67c79">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresdf8deb75-9ec9-4b10-b0ae-fbbd47ae6cf4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9418,7 +9539,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9433,7 +9555,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresc811d46e-975b-449a-84f1-bb323ba67c79"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresdf8deb75-9ec9-4b10-b0ae-fbbd47ae6cf4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9556,7 +9678,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               35ms
                               </span>
                             
                          
@@ -9857,7 +9979,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features10a5c05c-a575-4fab-8cb7-4ca14c1d1eef">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features9f1d9f5c-d3c9-4de4-8b79-747c0c52a535">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9866,7 +9988,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9881,7 +10004,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features10a5c05c-a575-4fab-8cb7-4ca14c1d1eef"
+                        <div id="collapseScenariopersoon_nationaliteit_features9f1d9f5c-d3c9-4de4-8b79-747c0c52a535"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9904,7 +10027,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               1ms
                               </span>
                             
                          
@@ -10004,7 +10127,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               42ms
                               </span>
                             
                          
@@ -10305,7 +10428,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features677703da-3106-46b5-bb62-7c0c31bb4840">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features66274013-ab4f-412c-9eb6-3b32d136ba17">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10314,7 +10437,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10329,7 +10453,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features677703da-3106-46b5-bb62-7c0c31bb4840"
+                        <div id="collapseScenariopersoon_nationaliteit_features66274013-ab4f-412c-9eb6-3b32d136ba17"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10452,7 +10576,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               31ms
                               </span>
                             
                          
@@ -10747,7 +10871,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese6079ab6-a21c-4fa5-82ea-66f201573740">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7515036c-960c-4c9c-8285-552e1378e4f2">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10756,7 +10880,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10771,7 +10896,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese6079ab6-a21c-4fa5-82ea-66f201573740"
+                        <div id="collapseScenariopersoon_nationaliteit_features7515036c-960c-4c9c-8285-552e1378e4f2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10894,7 +11019,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               38ms
                               </span>
                             
                          
@@ -11189,7 +11314,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese354cbc8-8678-4942-b06e-9a6e90993e19">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features771fac65-0c6b-4348-a47d-a3e89c446612">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11198,7 +11323,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.langFormaat'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11213,7 +11339,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese354cbc8-8678-4942-b06e-9a6e90993e19"
+                        <div id="collapseScenariopersoon_nationaliteit_features771fac65-0c6b-4348-a47d-a3e89c446612"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11336,7 +11462,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               40ms
                               </span>
                             
                          
@@ -11631,7 +11757,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features382c7433-a019-4814-9dca-35e253c09dad">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features67f9c31c-108e-44df-b7b7-65a942d93aed">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11640,7 +11766,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.jaar'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11655,7 +11782,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features382c7433-a019-4814-9dca-35e253c09dad"
+                        <div id="collapseScenariopersoon_nationaliteit_features67f9c31c-108e-44df-b7b7-65a942d93aed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11778,7 +11905,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               31ms
                               </span>
                             
                          
@@ -12073,7 +12200,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresae258ae9-4da8-4f45-9d48-607465783281">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6accea40-aa3f-495c-bf92-f9ea49a05bf1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12082,7 +12209,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.maand'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12097,7 +12225,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresae258ae9-4da8-4f45-9d48-607465783281"
+                        <div id="collapseScenariopersoon_nationaliteit_features6accea40-aa3f-495c-bf92-f9ea49a05bf1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12515,7 +12643,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresbdb5a6a5-a246-4f63-aa8a-c1408d01b800">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features69857f33-3720-424a-8083-e262ed7fc4d0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12524,7 +12652,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.onbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12539,7 +12668,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresbdb5a6a5-a246-4f63-aa8a-c1408d01b800"
+                        <div id="collapseScenariopersoon_nationaliteit_features69857f33-3720-424a-8083-e262ed7fc4d0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12662,7 +12791,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               34ms
                               </span>
                             
                          
@@ -12957,7 +13086,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features60fac82b-9395-4870-be2d-39448d27294f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features867e515c-a5f0-4b5c-80ac-deaccefc9ba0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12966,7 +13095,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12981,7 +13111,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features60fac82b-9395-4870-be2d-39448d27294f"
+                        <div id="collapseScenariopersoon_nationaliteit_features867e515c-a5f0-4b5c-80ac-deaccefc9ba0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13104,7 +13234,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               35ms
                               </span>
                             
                          
@@ -13424,7 +13554,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3425ad73-5236-4c27-99ed-66ee00015ef0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf0b7ba29-47b5-47ce-b060-b8161f446dbf">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13433,7 +13563,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13448,7 +13579,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features3425ad73-5236-4c27-99ed-66ee00015ef0"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresf0b7ba29-47b5-47ce-b060-b8161f446dbf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13571,7 +13702,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               34ms
                               </span>
                             
                          
@@ -13891,7 +14022,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features891c250f-0626-4954-89e4-e7c992cfae71">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb15d9bf2-d526-424b-8747-38997e36915e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -13900,7 +14031,8 @@ pre {
                                             <b>Abstract Scenario:</b>'nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -13915,7 +14047,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features891c250f-0626-4954-89e4-e7c992cfae71"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresb15d9bf2-d526-424b-8747-38997e36915e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14038,7 +14170,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               38ms
                               </span>
                             
                          
@@ -14358,7 +14490,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features867a5403-02bd-47eb-abcf-1e663505c5c6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb32138d7-fb08-4987-b067-79a60686ac98">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14367,7 +14499,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep opnemen nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -14382,7 +14515,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features867a5403-02bd-47eb-abcf-1e663505c5c6"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresb32138d7-fb08-4987-b067-79a60686ac98"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14505,7 +14638,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               36ms
                               </span>
                             
                          
@@ -14825,7 +14958,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd5abfb80-c8a9-4182-9cb5-b95f7efb2dda">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features84b0c8ce-9673-4530-83b2-308ad61fee7b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -14834,7 +14967,8 @@ pre {
                                             <b>Abstract Scenario:</b>'reden opname nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -14849,7 +14983,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresd5abfb80-c8a9-4182-9cb5-b95f7efb2dda"
+                        <div id="collapseScenariopersoon_nationaliteit_features84b0c8ce-9673-4530-83b2-308ad61fee7b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14972,7 +15106,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               34ms
                               </span>
                             
                          
@@ -15292,7 +15426,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features92d60bde-99d7-448b-a8e3-1a4dcc78f0d0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features488c483e-3c73-4c55-a80d-a2c89aeda4ef">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15301,7 +15435,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep bijzonder Nederlanderschap' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -15316,7 +15451,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features92d60bde-99d7-448b-a8e3-1a4dcc78f0d0"
+                        <div id="collapseScenariopersoon_nationaliteit_features488c483e-3c73-4c55-a80d-a2c89aeda4ef"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15439,7 +15574,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               38ms
                               </span>
                             
                          
@@ -15759,7 +15894,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa63440a3-f69a-4ee7-9ae7-51d717c895f3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features77bb7a14-54cd-4169-8114-8786c4a849f0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -15768,7 +15903,8 @@ pre {
                                             <b>Abstract Scenario:</b>'aanduiding bijzonder Nederlanderschap' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -15783,7 +15919,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresa63440a3-f69a-4ee7-9ae7-51d717c895f3"
+                        <div id="collapseScenariopersoon_nationaliteit_features77bb7a14-54cd-4169-8114-8786c4a849f0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15906,7 +16042,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               37ms
                               </span>
                             
                          
@@ -16226,7 +16362,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb258f6b0-c221-4a18-96cd-1e885ca7c756">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresdf5929a0-09ef-4939-8cfd-c6493b5ec951">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -16235,7 +16371,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele categorie nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -16250,7 +16387,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresb258f6b0-c221-4a18-96cd-1e885ca7c756"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresdf5929a0-09ef-4939-8cfd-c6493b5ec951"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16373,7 +16510,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               45ms
                               </span>
                             
                          
@@ -16674,7 +16811,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features40feb889-a5e9-4065-a115-35f040b63467">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresff856bdc-61b0-40c4-9303-8854baa6403a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -16683,7 +16820,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -16698,7 +16836,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features40feb889-a5e9-4065-a115-35f040b63467"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresff856bdc-61b0-40c4-9303-8854baa6403a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16821,7 +16959,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               43ms
                               </span>
                             
                          
@@ -17122,7 +17260,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features644d6b68-68e8-4a24-996a-edc18bd43203">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features9cbfa482-6870-4752-b9bc-3d0596fbbf5c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -17131,7 +17269,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -17146,7 +17285,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features644d6b68-68e8-4a24-996a-edc18bd43203"
+                        <div id="collapseScenariopersoon_nationaliteit_features9cbfa482-6870-4752-b9bc-3d0596fbbf5c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17269,7 +17408,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               42ms
                               </span>
                             
                          
@@ -17570,7 +17709,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb627712d-23a5-491c-b29c-a8bcf7f180c7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features88a1531d-b540-4961-84e6-3516cef72e35">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -17579,7 +17718,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep opnemen nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -17594,7 +17734,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresb627712d-23a5-491c-b29c-a8bcf7f180c7"
+                        <div id="collapseScenariopersoon_nationaliteit_features88a1531d-b540-4961-84e6-3516cef72e35"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17717,7 +17857,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               44ms
                               </span>
                             
                          
@@ -18018,7 +18158,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresbf5a54f5-5b37-4eba-a953-1f55a829b3fd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features079c7e07-6436-4740-9506-29077f4ae56c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18027,7 +18167,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'reden opname nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -18042,7 +18183,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresbf5a54f5-5b37-4eba-a953-1f55a829b3fd"
+                        <div id="collapseScenariopersoon_nationaliteit_features079c7e07-6436-4740-9506-29077f4ae56c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -18165,7 +18306,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               42ms
                               </span>
                             
                          
@@ -18466,7 +18607,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features8ba3ccf2-d626-46b4-95c8-1451b29b8d84">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features1abfdb66-c328-4ae6-b021-4f912c400440">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18475,7 +18616,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep bijzonder Nederlanderschap' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -18490,7 +18632,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features8ba3ccf2-d626-46b4-95c8-1451b29b8d84"
+                        <div id="collapseScenariopersoon_nationaliteit_features1abfdb66-c328-4ae6-b021-4f912c400440"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -18613,7 +18755,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               38ms
                               </span>
                             
                          
@@ -18914,7 +19056,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresfd763b8a-c9a8-4656-b20b-045f531a2f73">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features33f7b655-0999-41cc-b3c7-25a68a71a0ef">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -18923,7 +19065,8 @@ pre {
                                             <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'aanduiding bijzonder Nederlanderschap' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -18938,7 +19081,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresfd763b8a-c9a8-4656-b20b-045f531a2f73"
+                        <div id="collapseScenariopersoon_nationaliteit_features33f7b655-0999-41cc-b3c7-25a68a71a0ef"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19061,7 +19204,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               38ms
                               </span>
                             
                          
@@ -19362,7 +19505,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features1efc8b38-146b-46b6-8c08-28575048999a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features59350ebc-9a5f-45db-9962-17080acb2629">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -19371,7 +19514,8 @@ pre {
                                             <b>Scenario:</b>onbekend waarde voor nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -19386,7 +19530,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features1efc8b38-146b-46b6-8c08-28575048999a"
+                        <div id="collapseScenariopersoon_nationaliteit_features59350ebc-9a5f-45db-9962-17080acb2629"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19509,7 +19653,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               39ms
                               </span>
                             
                          
@@ -19920,7 +20064,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features52fbfa1c-bafe-48f3-9ffa-83433f40adcc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresee6f4670-a660-41a5-80c9-9934bed574ab">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -19929,7 +20073,8 @@ pre {
                                             <b>Scenario:</b>onbekend waarde voor reden opname nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="5 Steps Passed">5</span>
                               
@@ -19944,7 +20089,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features52fbfa1c-bafe-48f3-9ffa-83433f40adcc"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresee6f4670-a660-41a5-80c9-9934bed574ab"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -20067,7 +20212,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               35ms
                               </span>
                             
                          
@@ -20490,7 +20635,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_features288b51ce-6e57-4933-8673-8444f36c8aa7">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_features62772dbc-4b15-473f-bef6-f1e0c8095a5e">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Nationaliteit
@@ -20506,7 +20651,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_nationaliteit_features288b51ce-6e57-4933-8673-8444f36c8aa7" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_nationaliteit_features62772dbc-4b15-473f-bef6-f1e0c8095a5e" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -20519,7 +20664,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese9d4a496-f0fc-4434-89e6-1129996bcdc2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features48b37951-7957-460f-9532-2c76c91c792b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -20528,7 +20673,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft een nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -20543,7 +20689,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese9d4a496-f0fc-4434-89e6-1129996bcdc2"
+                        <div id="collapseScenariopersoon_nationaliteit_features48b37951-7957-460f-9532-2c76c91c792b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -20939,7 +21085,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               25ms
+                               30ms
                               </span>
                             
                          
@@ -21274,7 +21420,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0ae231ea-aead-4711-a04f-a00130b44fdb">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa50a2c65-26d7-4003-b968-2ed57aac0b42">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -21283,7 +21429,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft meerdere nationaliteiten
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -21298,7 +21445,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features0ae231ea-aead-4711-a04f-a00130b44fdb"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresa50a2c65-26d7-4003-b968-2ed57aac0b42"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -21776,7 +21923,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               24ms
+                               30ms
                               </span>
                             
                          
@@ -22130,7 +22277,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               1ms
+                               < 1ms
                               </span>
                             
                          
@@ -22259,7 +22406,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresadda180d-c611-46d1-8262-1d58e5198b25">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features14cc15c1-876a-4ade-8e55-307e7794bf6e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -22268,7 +22415,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft een nationaliteit met reden opname = onbekend
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -22283,7 +22431,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresadda180d-c611-46d1-8262-1d58e5198b25"
+                        <div id="collapseScenariopersoon_nationaliteit_features14cc15c1-876a-4ade-8e55-307e7794bf6e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -22679,7 +22827,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               33ms
                               </span>
                             
                          
@@ -23014,7 +23162,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3f208069-c73b-4ce1-8f51-5cc51c41812e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features015b4389-6a54-4574-ad8d-8bdd348fa3bd">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -23023,7 +23171,8 @@ pre {
                                             <b>Scenario:</b>de persoon is Staatloos
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -23038,7 +23187,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features3f208069-c73b-4ce1-8f51-5cc51c41812e"
+                        <div id="collapseScenariopersoon_nationaliteit_features015b4389-6a54-4574-ad8d-8bdd348fa3bd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -23434,7 +23583,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               33ms
                               </span>
                             
                          
@@ -23769,7 +23918,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features50b66437-430e-48bc-ac31-e52254cebfe6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features50a8d1ad-be89-4cfa-8b6b-f317f297fc1e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -23778,7 +23927,8 @@ pre {
                                             <b>Scenario:</b>de persoon wordt behandeld als Nederlander, bijzonder Nederlanderschap heeft waarde "B"
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -23793,7 +23943,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features50b66437-430e-48bc-ac31-e52254cebfe6"
+                        <div id="collapseScenariopersoon_nationaliteit_features50a8d1ad-be89-4cfa-8b6b-f317f297fc1e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -24189,7 +24339,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               32ms
                               </span>
                             
                          
@@ -24505,7 +24655,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features995a7a7c-29ce-4564-aac1-b16ae03c3dbd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features29d90b34-946e-4a05-b282-01d7abbe8285">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -24514,7 +24664,8 @@ pre {
                                             <b>Scenario:</b>de persoon wordt behandeld als Nederlander, nationaliteit heeft code 0002
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -24529,7 +24680,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features995a7a7c-29ce-4564-aac1-b16ae03c3dbd"
+                        <div id="collapseScenariopersoon_nationaliteit_features29d90b34-946e-4a05-b282-01d7abbe8285"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -24925,7 +25076,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               37ms
                               </span>
                             
                          
@@ -25260,7 +25411,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features375dd379-f003-4c86-aec3-4450fd8a9348">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresadb613ff-12c2-499f-bb69-f2b498227222">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -25269,7 +25420,8 @@ pre {
                                             <b>Scenario:</b>de persoon heeft een onbekende nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -25284,7 +25436,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features375dd379-f003-4c86-aec3-4450fd8a9348"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresadb613ff-12c2-499f-bb69-f2b498227222"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -25680,7 +25832,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               27ms
                               </span>
                             
                          
@@ -26015,7 +26167,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresba0478c4-1769-46fb-ba7a-412981db4bf0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd0e0a9cb-7018-4e13-a113-e2b56776eeb8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -26024,7 +26176,8 @@ pre {
                                             <b>Scenario:</b>beëindigde registratie van vreemde nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -26039,7 +26192,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresba0478c4-1769-46fb-ba7a-412981db4bf0"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresd0e0a9cb-7018-4e13-a113-e2b56776eeb8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -26591,7 +26744,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               33ms
                               </span>
                             
                          
@@ -26926,7 +27079,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features02c19d2a-387f-430c-b5a5-9ed7cb1b9b82">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features2083306e-3b8e-42c0-bf80-cb115de9d626">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -26935,7 +27088,8 @@ pre {
                                             <b>Scenario:</b>verlies bijzonder Nederlanderschap
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -26950,7 +27104,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features02c19d2a-387f-430c-b5a5-9ed7cb1b9b82"
+                        <div id="collapseScenariopersoon_nationaliteit_features2083306e-3b8e-42c0-bf80-cb115de9d626"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -27502,7 +27656,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               39ms
                               </span>
                             
                          
@@ -27837,7 +27991,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6ed0db75-e6f0-4078-9c28-81f49bf61adc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7a9f765d-1eab-4fd2-bac8-b4570b8fecd7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -27846,7 +28000,8 @@ pre {
                                             <b>Scenario:</b>nationaliteit is onjuist
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="8 Steps Passed">8</span>
                               
@@ -27861,7 +28016,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features6ed0db75-e6f0-4078-9c28-81f49bf61adc"
+                        <div id="collapseScenariopersoon_nationaliteit_features7a9f765d-1eab-4fd2-bac8-b4570b8fecd7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -28405,7 +28560,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               42ms
                               </span>
                             
                          
@@ -28740,7 +28895,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features67a1e596-60f7-4a97-a0ec-52e7802351a6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5406e145-0eef-4268-bfe7-b81eae46e172">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -28749,7 +28904,8 @@ pre {
                                             <b>Scenario:</b>geactualiseerde ingangsdatum geldigheid
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -28764,7 +28920,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features67a1e596-60f7-4a97-a0ec-52e7802351a6"
+                        <div id="collapseScenariopersoon_nationaliteit_features5406e145-0eef-4268-bfe7-b81eae46e172"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -29250,7 +29406,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               38ms
                               </span>
                             
                          
@@ -29585,7 +29741,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features9dc906e1-12e9-4775-8368-89b6ed49aba7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3a243242-d174-4345-bbe4-f23643f96fc3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -29594,7 +29750,8 @@ pre {
                                             <b>Scenario:</b>nationaliteit gewijzigd naar bijzonder Nederlanderschap
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -29609,7 +29766,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features9dc906e1-12e9-4775-8368-89b6ed49aba7"
+                        <div id="collapseScenariopersoon_nationaliteit_features3a243242-d174-4345-bbe4-f23643f96fc3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -30087,7 +30244,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               39ms
                               </span>
                             
                          
@@ -30403,7 +30560,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresc4b535a8-b2c0-4746-a88f-00f5fdea7659">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6510c0b2-5d15-473d-82ba-b4fa33679e9d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -30412,7 +30569,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft alleen een beëindigde nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="7 Steps Passed">7</span>
                               
@@ -30427,7 +30585,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresc4b535a8-b2c0-4746-a88f-00f5fdea7659"
+                        <div id="collapseScenariopersoon_nationaliteit_features6510c0b2-5d15-473d-82ba-b4fa33679e9d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -30902,7 +31060,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               44ms
                               </span>
                             
                          
@@ -31125,7 +31283,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features860b4066-b418-4dd1-b3c5-928d153c3b5a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese15ffece-125d-4fbc-95d0-b5d4c8104f0a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -31134,7 +31292,8 @@ pre {
                                             <b>Scenario:</b>persoon heeft geen nationaliteit
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="6 Steps Passed">6</span>
                               
@@ -31149,7 +31308,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features860b4066-b418-4dd1-b3c5-928d153c3b5a"
+                        <div id="collapseScenariopersoon_nationaliteit_featurese15ffece-125d-4fbc-95d0-b5d4c8104f0a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -31537,7 +31696,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               33ms
                               </span>
                             
                          
@@ -31764,17 +31923,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -31796,6 +31944,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 58,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -31804,23 +31953,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -31828,88 +31981,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>

@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Cucumber Feature Report</title>
+    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
     <style type="text/css">
       .panel-heading {
@@ -267,6 +268,70 @@ pre {
     display: block;
 }
 
+.label-saffron{
+    background-color: #ff9933;
+}
+
+.label-retries {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90px;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.label-retries > span:first-child {
+    min-width: 100%;
+}
+
+
+/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+.google-visualization-tooltip { pointer-events:none; }
+      
+.count-wrapper{
+  display: flex;
+  gap: 15px;
+}
+.card{
+  border: 1px solid #f5f5f5;
+  padding: 15px;
+  color: #fff;
+  border-radius: 5px;
+  flex: 1;
+}
+.generated-on{
+  margin-right: 10px;
+}
+.card h4{
+  font-size: 15px;
+}
+.red-box{
+  background: #d9534e;
+}
+.blue-box{
+  background: #0074ff;
+}
+.yellow-box{
+  background: #f0ad4e;
+}
+.saffron-box{
+  background: #ff9933;
+}
+.green-box{
+  background: #5cb85b;
+}
+.gray-box{
+  background: #999;
+}
+.amb-box{
+  background: #218bcf;
+}
+.undefined-box{
+  background: #22c2e2;
+}
+.mb-20px{
+  margin-bottom: 20px;
+}
     </style>
     <meta charset="UTF-8">
   </head>
@@ -276,11 +341,12 @@ pre {
       <div class="container">
         <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.17</a>
+          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.19</a>
           <div class="project-name visible-md visible-lg">persoon geboorte features</div>
           <div class="label-container">
-            <span class="label label-success" onclick="toggle('.feature-passed')" title=scenarios>Passed: 28</span>
-            <span class="label label-danger" onclick="toggle('.feature-failed')" title=scenarios>Failed: 0</span>
+                <div class="generated-on">
+                  Tue Mar 21 2023 12:23:44 GMT+0100 (Central European Standard Time)
+                </div>
           </div>
         </div>
       </div>
@@ -288,8 +354,43 @@ pre {
 
     <div class="container">
 
-      <div class="generated-on">Thu Mar 16 2023 13:49:16 GMT+0100 (Central European Standard Time)</div>
-
+      <div class="count-wrapper mb-20px">
+        <div class="card blue-box">
+          <div class="feature-title">
+            <h4>All Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              28
+            </h5>
+          </div>
+        </div>
+        <div class="card green-box">
+          <div class="feature-title">
+            <h4>Passed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              28
+            </h5>
+          </div>
+        </div>
+        <div class="card red-box">
+          <div class="feature-title">
+            <h4>Failed Scenarios</h2>
+          </div>
+          <div class="feature-value">
+            <h5>
+              0
+            </h5>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+      </div>
       <div class="row">
         <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
         <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
@@ -313,7 +414,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features614a6340-2468-4fd3-9464-10ead31ff07c">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features4ffa837b-1df5-4a30-b1f2-64f4a9fb45f2">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: geboorte velden vragen met fields
@@ -329,7 +430,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geboorte_features614a6340-2468-4fd3-9464-10ead31ff07c" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geboorte_features4ffa837b-1df5-4a30-b1f2-64f4a9fb45f2" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -342,7 +443,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features28723558-d78e-476a-a19a-3d65df5478fa">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features98ba427e-56a5-45d8-8ce1-4887a1a92e4a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -351,7 +452,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -366,7 +468,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features28723558-d78e-476a-a19a-3d65df5478fa"
+                        <div id="collapseScenariopersoon_geboorte_features98ba427e-56a5-45d8-8ce1-4887a1a92e4a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -463,7 +565,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               248ms
+                               269ms
                               </span>
                             
                          
@@ -760,7 +862,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7096c487-0b6f-4935-b527-8689a3360287">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features55d9af77-ad0d-4c36-a1fc-74316ae8d7d9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -769,7 +871,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.type'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -784,7 +887,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features7096c487-0b6f-4935-b527-8689a3360287"
+                        <div id="collapseScenariopersoon_geboorte_features55d9af77-ad0d-4c36-a1fc-74316ae8d7d9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -881,7 +984,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               34ms
                               </span>
                             
                          
@@ -1083,7 +1186,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               1ms
                               </span>
                             
                          
@@ -1178,7 +1281,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features2764439a-9386-401d-b453-f683144a0c4a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurescae21616-d34a-4c16-a57f-9aff51a30033">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1187,7 +1290,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1202,7 +1306,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features2764439a-9386-401d-b453-f683144a0c4a"
+                        <div id="collapseScenariopersoon_geboorte_featurescae21616-d34a-4c16-a57f-9aff51a30033"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1299,7 +1403,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               30ms
+                               37ms
                               </span>
                             
                          
@@ -1596,7 +1700,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresdef0478b-63e7-4b36-8f33-375e322ce9c6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features26bd7827-33f6-4155-99cf-8edfc13f3de6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1605,7 +1709,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.langFormaat'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -1620,7 +1725,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresdef0478b-63e7-4b36-8f33-375e322ce9c6"
+                        <div id="collapseScenariopersoon_geboorte_features26bd7827-33f6-4155-99cf-8edfc13f3de6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1717,7 +1822,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               35ms
                               </span>
                             
                          
@@ -2014,7 +2119,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features99ba1876-9ce1-47ee-9f68-1f95cef15f23">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features758c6946-f1c8-46d3-aab7-96fd4b65aee1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2023,7 +2128,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.jaar'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2038,7 +2144,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features99ba1876-9ce1-47ee-9f68-1f95cef15f23"
+                        <div id="collapseScenariopersoon_geboorte_features758c6946-f1c8-46d3-aab7-96fd4b65aee1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2135,7 +2241,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               32ms
                               </span>
                             
                          
@@ -2432,7 +2538,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4997cfda-16dd-4ccb-bf44-c9695d7b0a46">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0de0edaf-0bfd-42b7-96c6-fdf025388545">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2441,7 +2547,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.maand'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2456,7 +2563,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features4997cfda-16dd-4ccb-bf44-c9695d7b0a46"
+                        <div id="collapseScenariopersoon_geboorte_features0de0edaf-0bfd-42b7-96c6-fdf025388545"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2553,7 +2660,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               32ms
                               </span>
                             
                          
@@ -2850,7 +2957,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features9f93a645-a553-45b1-8750-646b6f7e6733">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features2dde6191-bf73-4d54-96c4-0b351a8573ee">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2859,7 +2966,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.onbekend'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -2874,7 +2982,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features9f93a645-a553-45b1-8750-646b6f7e6733"
+                        <div id="collapseScenariopersoon_geboorte_features2dde6191-bf73-4d54-96c4-0b351a8573ee"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2971,7 +3079,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               29ms
+                               25ms
                               </span>
                             
                          
@@ -3268,7 +3376,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresff16cbb5-4c84-4b77-bb04-96a384820b4b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf925bc56-2343-40ef-aea1-3f0649047dfb">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3277,7 +3385,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'Datum' wordt gevraagd met field pad 'geboorte.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3292,7 +3401,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresff16cbb5-4c84-4b77-bb04-96a384820b4b"
+                        <div id="collapseScenariopersoon_geboorte_featuresf925bc56-2343-40ef-aea1-3f0649047dfb"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3389,7 +3498,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               29ms
                               </span>
                             
                          
@@ -3725,7 +3834,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4654cb1a-04b0-4593-8bf6-8f165f63b88e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0ccd4ae6-da49-4608-87c0-f799c955ff23">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3734,7 +3843,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'DatumOnbekend' wordt gevraagd met field pad 'geboorte.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -3749,7 +3859,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features4654cb1a-04b0-4593-8bf6-8f165f63b88e"
+                        <div id="collapseScenariopersoon_geboorte_features0ccd4ae6-da49-4608-87c0-f799c955ff23"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3846,7 +3956,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               32ms
                               </span>
                             
                          
@@ -4182,7 +4292,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresba31e90f-7823-4223-a169-6ce22e9c06bf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresfd22f7d5-5de5-49cd-8a60-7572d3e3f8e8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4191,7 +4301,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'JaarDatum' wordt gevraagd met field pad 'geboorte.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4206,7 +4317,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresba31e90f-7823-4223-a169-6ce22e9c06bf"
+                        <div id="collapseScenariopersoon_geboorte_featuresfd22f7d5-5de5-49cd-8a60-7572d3e3f8e8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4303,7 +4414,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               49ms
+                               40ms
                               </span>
                             
                          
@@ -4639,7 +4750,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7e348a3d-7dea-4150-bb55-286bee6d6b61">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresfca96a05-88b5-4c78-b098-1050c9176798">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4648,7 +4759,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'JaarMaandDatum' wordt gevraagd met field pad 'geboorte.datum'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -4663,7 +4775,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features7e348a3d-7dea-4150-bb55-286bee6d6b61"
+                        <div id="collapseScenariopersoon_geboorte_featuresfca96a05-88b5-4c78-b098-1050c9176798"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4760,7 +4872,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               28ms
+                               27ms
                               </span>
                             
                          
@@ -5098,7 +5210,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1825df66-c9f7-409a-b00a-4b313fb97445">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features41f8f062-1d20-4b84-80b3-6844c31bec7f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5107,7 +5219,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5122,7 +5235,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features1825df66-c9f7-409a-b00a-4b313fb97445"
+                        <div id="collapseScenariopersoon_geboorte_features41f8f062-1d20-4b84-80b3-6844c31bec7f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5219,7 +5332,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               33ms
                               </span>
                             
                          
@@ -5501,7 +5614,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurese0736982-7789-4fec-a3c6-5d1a428011ee">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresc64c0975-4cb0-4533-bbd6-8354b5d9b65f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5510,7 +5623,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5525,7 +5639,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featurese0736982-7789-4fec-a3c6-5d1a428011ee"
+                        <div id="collapseScenariopersoon_geboorte_featuresc64c0975-4cb0-4533-bbd6-8354b5d9b65f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5622,7 +5736,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               30ms
                               </span>
                             
                          
@@ -5904,7 +6018,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features21e2faa6-70d4-4a47-b2d6-16f7670bb604">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features67c9df60-9b2b-44c1-90bd-343623dc9b92">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5913,7 +6027,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -5928,7 +6043,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features21e2faa6-70d4-4a47-b2d6-16f7670bb604"
+                        <div id="collapseScenariopersoon_geboorte_features67c9df60-9b2b-44c1-90bd-343623dc9b92"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6025,7 +6140,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               42ms
+                               31ms
                               </span>
                             
                          
@@ -6307,7 +6422,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd13910f4-09ba-4603-bea7-d2cb07bc439f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresab4b364e-1037-477d-8346-c5265a47a7de">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6316,7 +6431,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats (03.20)' met standaardwaarde wordt gevraagd met field pad 'geboorte.plaats'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6331,7 +6447,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresd13910f4-09ba-4603-bea7-d2cb07bc439f"
+                        <div id="collapseScenariopersoon_geboorte_featuresab4b364e-1037-477d-8346-c5265a47a7de"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6428,7 +6544,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               40ms
+                               30ms
                               </span>
                             
                          
@@ -6651,7 +6767,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features99ac44af-a65f-4ee4-b4dd-11c6c9e46225">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresdedb506b-0e5c-4e24-9f78-8512d490e009">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6660,7 +6776,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -6675,7 +6792,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features99ac44af-a65f-4ee4-b4dd-11c6c9e46225"
+                        <div id="collapseScenariopersoon_geboorte_featuresdedb506b-0e5c-4e24-9f78-8512d490e009"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6772,7 +6889,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               36ms
+                               27ms
                               </span>
                             
                          
@@ -7054,7 +7171,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features5d1f3153-7383-4cc2-8757-9d8b545f6655">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3ee13d44-93c2-4093-881b-11a032dc5056">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7063,7 +7180,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land.code'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7078,7 +7196,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features5d1f3153-7383-4cc2-8757-9d8b545f6655"
+                        <div id="collapseScenariopersoon_geboorte_features3ee13d44-93c2-4093-881b-11a032dc5056"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7175,7 +7293,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               28ms
                               </span>
                             
                          
@@ -7457,7 +7575,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features36f22b95-21b2-4025-a47e-d47c9edfcbcf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features565ad797-0b33-48cd-9629-6c6687849c00">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7466,7 +7584,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land.omschrijving'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7481,7 +7600,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features36f22b95-21b2-4025-a47e-d47c9edfcbcf"
+                        <div id="collapseScenariopersoon_geboorte_features565ad797-0b33-48cd-9629-6c6687849c00"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7578,7 +7697,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               31ms
+                               24ms
                               </span>
                             
                          
@@ -7860,7 +7979,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7b848b25-9fba-4c77-9d80-c886b52c62c5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0ef2f0d3-86c1-426b-a2be-e422b8534759">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -7869,7 +7988,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland (03.30)' met standaardwaarde wordt gevraagd met field pad 'geboorte.land'
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -7884,7 +8004,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features7b848b25-9fba-4c77-9d80-c886b52c62c5"
+                        <div id="collapseScenariopersoon_geboorte_features0ef2f0d3-86c1-426b-a2be-e422b8534759"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7981,7 +8101,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               28ms
                               </span>
                             
                          
@@ -8215,7 +8335,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features6283829b-3b8d-4054-8a21-723f9530d96b">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features949da1dd-938e-4d25-aa56-0b931377cbac">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: geboorte velden in onderzoek
@@ -8231,7 +8351,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geboorte_features6283829b-3b8d-4054-8a21-723f9530d96b" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geboorte_features949da1dd-938e-4d25-aa56-0b931377cbac" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -8244,7 +8364,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresec073759-1318-4347-a159-85c55e8bcc59">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4a5491c6-48a6-4547-beff-c492127b0190">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8253,7 +8373,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele categorie persoon' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8268,7 +8389,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresec073759-1318-4347-a159-85c55e8bcc59"
+                        <div id="collapseScenariopersoon_geboorte_features4a5491c6-48a6-4547-beff-c492127b0190"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8391,7 +8512,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               39ms
+                               33ms
                               </span>
                             
                          
@@ -8786,7 +8907,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1ffa1b17-6a04-456d-8edd-24051fa9bc1c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features52d9852f-d10c-461b-9de9-177b279a71f8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8795,7 +8916,8 @@ pre {
                                             <b>Abstract Scenario:</b>'hele groep geboorte' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -8810,7 +8932,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features1ffa1b17-6a04-456d-8edd-24051fa9bc1c"
+                        <div id="collapseScenariopersoon_geboorte_features52d9852f-d10c-461b-9de9-177b279a71f8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8933,7 +9055,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               33ms
+                               29ms
                               </span>
                             
                          
@@ -9328,7 +9450,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresbe3f9d0f-41e8-4efa-ab34-001a0a2ceb3c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresba0ad2d6-c5eb-4501-9da9-f1702afbb7ba">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9337,7 +9459,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboortedatum' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9352,7 +9475,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresbe3f9d0f-41e8-4efa-ab34-001a0a2ceb3c"
+                        <div id="collapseScenariopersoon_geboorte_featuresba0ad2d6-c5eb-4501-9da9-f1702afbb7ba"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9475,7 +9598,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               30ms
                               </span>
                             
                          
@@ -9866,7 +9989,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresed356a0f-a49a-4908-a18b-0112ae9f0760">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7da02efa-6f2d-42c0-ac48-f376860c1639">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9875,7 +9998,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteplaats' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -9890,7 +10014,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresed356a0f-a49a-4908-a18b-0112ae9f0760"
+                        <div id="collapseScenariopersoon_geboorte_features7da02efa-6f2d-42c0-ac48-f376860c1639"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10013,7 +10137,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               32ms
+                               30ms
                               </span>
                             
                          
@@ -10404,7 +10528,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features59524f2b-18a4-4a3d-bba5-ffd066ef67f4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features42bb523c-87fd-4593-915c-ea7e3c2dd306">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10413,7 +10537,8 @@ pre {
                                             <b>Abstract Scenario:</b>'geboorteland' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10428,7 +10553,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features59524f2b-18a4-4a3d-bba5-ffd066ef67f4"
+                        <div id="collapseScenariopersoon_geboorte_features42bb523c-87fd-4593-915c-ea7e3c2dd306"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10551,7 +10676,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               37ms
+                               29ms
                               </span>
                             
                          
@@ -10942,7 +11067,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf542b232-248e-413d-a4bc-cb31c498176d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresfd10cd96-e40b-4fef-8c81-0401ec64ac48">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -10951,7 +11076,8 @@ pre {
                                             <b>Scenario:</b>'geboortedatum' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -10966,7 +11092,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresf542b232-248e-413d-a4bc-cb31c498176d"
+                        <div id="collapseScenariopersoon_geboorte_featuresfd10cd96-e40b-4fef-8c81-0401ec64ac48"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11089,7 +11215,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               35ms
+                               31ms
                               </span>
                             
                          
@@ -11312,7 +11438,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresfac8ecc7-6a95-4088-bacc-4b4355e7eb70">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4ed66dda-21f8-4114-b90f-9ac026d4fb04">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11321,7 +11447,8 @@ pre {
                                             <b>Scenario:</b>'geboorteplaats' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11336,7 +11463,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresfac8ecc7-6a95-4088-bacc-4b4355e7eb70"
+                        <div id="collapseScenariopersoon_geboorte_features4ed66dda-21f8-4114-b90f-9ac026d4fb04"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11459,7 +11586,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               40ms
+                               29ms
                               </span>
                             
                          
@@ -11682,7 +11809,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd179c615-6d49-4740-b890-20e97e362c9d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresb788fbb2-74cc-4ad3-9756-a15e4d83bff7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -11691,7 +11818,8 @@ pre {
                                             <b>Scenario:</b>'geboorteland' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -11706,7 +11834,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresd179c615-6d49-4740-b890-20e97e362c9d"
+                        <div id="collapseScenariopersoon_geboorte_featuresb788fbb2-74cc-4ad3-9756-a15e4d83bff7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11829,7 +11957,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               40ms
+                               30ms
                               </span>
                             
                          
@@ -12052,7 +12180,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurese4433d8c-0fe6-46fd-a663-d550abc08c23">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresbdc70b04-0a99-4632-ba47-90108ca72310">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -12061,7 +12189,8 @@ pre {
                                             <b>Scenario:</b>hele groep 'geboorte' is in onderzoek, maar wordt niet gevraagd
                                         </div>
                                         <div>
-                            <span class="label-container">
+                            <span class="label-container ">
+                              
                               <span class="label label-success"
                                                                title="4 Steps Passed">4</span>
                               
@@ -12076,7 +12205,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featurese4433d8c-0fe6-46fd-a663-d550abc08c23"
+                        <div id="collapseScenariopersoon_geboorte_featuresbdc70b04-0a99-4632-ba47-90108ca72310"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12199,7 +12328,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               35ms
+                               29ms
                               </span>
                             
                          
@@ -12462,17 +12591,6 @@ pre {
 
     </div>
 
-    <div class="navbar-fixed-bottom row-fluid footer-div ">
-      <div class="navbar-inner">
-        <div class="footer-container">
-          <a  target="_blank" href="https://www.npmjs.com/package/cucumber-html-reporter">
-            <div class="text-muted footer-link">
-              generated by @cucumber-html-reporter
-            </div>
-             </a>
-        </div>
-      </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
@@ -12494,6 +12612,7 @@ pre {
                                                             "title" : "Scenarios",
                                                             "failed" : 0,
                                                             "passed" : 28,
+                                                            "rerun" : 0,
                                                             "notdefined" : 0,
                                                             "pending" : 0,
                                                             "skipped" : 0,
@@ -12502,23 +12621,27 @@ pre {
                                             });
     </script>
     <script>
-      $(document).ready(function() {
-    $('.collapse').on('hide.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().removeClass('open');
-    }).on('show.bs.collapse', function(e) {
-        e.stopPropagation();
-        $(this).prev().addClass('open');
+      $(document).ready(function () {
+  $('.collapse')
+    .on('hide.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().removeClass('open');
+    })
+    .on('show.bs.collapse', function (e) {
+      e.stopPropagation();
+      $(this).prev().addClass('open');
     });
 
-    var $generated = $('.generated-on');
+  let $generated = $('.generated-on');
 
-    $generated.text('Generated ' + moment($generated.text()).fromNow());
+  let timestamp = $generated.text();
+  $generated.text('Report generated ' + moment(timestamp).fromNow());
+  $generated.prop('title', new Date(timestamp).toISOString());
 });
 
 function toggle(className) {
-  var x = $(className);
-  if ( x.css('display') === "none") {
+  let x = $(className);
+  if (x.css('display') === 'none') {
     x.css('display', 'block');
   } else {
     x.css('display', 'none');
@@ -12526,88 +12649,80 @@ function toggle(className) {
 }
 
       function drawChart(chartData) {
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Cucumber Results'],
-        ['Passed', chartData.passed],
-        ['Failed', chartData.failed],
-        ['Pending', chartData.pending],
-        ['Undefined', chartData.notdefined],
-        ['Ambiguous', chartData.ambiguous],
-        ['Skipped', chartData.skipped]        
-    ]);
+  let data = google.visualization.arrayToDataTable([
+    ['Task', 'Cucumber Results'],
+    ['Passed', chartData.passed],
+    ['Failed', chartData.failed],
+    ['Pending', chartData.pending],
+    ['Undefined', chartData.notdefined],
+    ['Ambiguous', chartData.ambiguous],
+    ['Skipped', chartData.skipped],
+    ['Re-run', chartData.rerun],
+  ]);
 
-    var total = chartData.passed + chartData.failed + (chartData.pending || 0) + (chartData.notdefined || 0) + (chartData.ambiguous || 0) + (chartData.skipped || 0);
-    var title;
+  let total =
+    chartData.passed +
+      chartData.failed +
+      (chartData.pending || 0) +
+      (chartData.notdefined || 0) +
+      (chartData.ambiguous || 0) +
+      (chartData.skipped || 0) ||
+    chartData.rerun ||
+    0;
+  let title;
 
-    if (total === 1) {
-        title = total + ' ' + chartData.title.slice(0, -1)
-    } else {
-        title = total + ' ' + chartData.title;
-    }
+  if (total === 1) {
+    title = total + ' ' + chartData.title.slice(0, -1);
+  } else {
+    title = total + ' ' + chartData.title;
+  }
 
-    var options = {
-        width: '100%',
-        height: 240,
-        title: title,
-        is3D: true,
-        colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e'],
-        fontSize: '13',
-        fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
-        slices: {
-            1: {offset: 0.4},
-            2: {offset: 0.4},
-            3: {offset: 0.4},
-            4: {offset: 0.4},
-            5: {offset: 0.4},
-            6: {offset: 0.4}
-        },
-        titleTextStyle: {
-            fontSize: '13',
-            color: '#5e5e5e'
-        }
-    };
+  let options = {
+    width: '100%',
+    height: 240,
+    title: title,
+    is3D: true,
+    colors: ['#5cb85c', '#d9534f', '#999', '#5bc0de', '#428bca', '#f0ad4e', '#ff9933'],
+    fontSize: '13',
+    fontName: '"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif',
+    slices: {
+      1: { offset: 0.4 },
+      2: { offset: 0.4 },
+      3: { offset: 0.4 },
+      4: { offset: 0.4 },
+      5: { offset: 0.4 },
+      6: { offset: 0.4 },
+      7: { offset: 0.4 },
+    },
+    titleTextStyle: {
+      fontSize: '13',
+      color: '#5e5e5e',
+    },
+  };
 
-    var chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
+  let chart = new google.visualization.PieChart(document.getElementById('piechart_' + chartData.title.toLowerCase()));
 
-    function selectHandler() {
-      var selectedItem = chart.getSelection()[0];
-      if (selectedItem) {
-        var featureStatus = data.getValue(selectedItem.row, 0);
-        if (featureStatus === 'Passed'){
-            var x = $('.feature-passed');
-        }else{
-            var x = $('.feature-failed');
-        }
-        if (x && x.css('display') === "none") {
-          x.css('display', 'block');
-        } else {
-          x.css('display', 'none');
-        }
-      }
-    }
-    google.visualization.events.addListener(chart, 'select', selectHandler);
-
-    chart.draw(data, options);
+  chart.draw(data, options);
 }
 
-      $('a.toggle').on('click', function(e) {
-    e.preventDefault();
+      $('a.toggle').on('click', function (e) {
+  e.preventDefault();
 
-    if (!$(this).hasClass('collapse')) {
-        if ($(this).text() === 'Screenshot -') {
-            // $(this).text('Screenshot +');
-            $(this).next('a.screenshot').find('img').hide();
-        } else if($(this).text() === 'Screenshot +') {
-            // $(this).text('Screenshot -');
-            $(this).next('a.screenshot').find('img').show();
-        }
+  if (!$(this).hasClass('collapse')) {
+    if ($(this).text() === 'Screenshot -') {
+      // $(this).text('Screenshot +');
+      $(this).next('a.screenshot').find('img').hide();
+    } else if ($(this).text() === 'Screenshot +') {
+      // $(this).text('Screenshot -');
+      $(this).next('a.screenshot').find('img').show();
     }
+  }
 
-    if ($(this).text().includes(' -')) {
-        $(this).text($(this).text().replace(' -', ' +'));
-    } else {
-        $(this).text($(this).text().replace(' +', ' -'));
-    }
+  if ($(this).text().includes(' -')) {
+    $(this).text($(this).text().replace(' -', ' +'));
+  } else {
+    $(this).text($(this).text().replace(' +', ' -'));
+  }
 });
 
     </script>
