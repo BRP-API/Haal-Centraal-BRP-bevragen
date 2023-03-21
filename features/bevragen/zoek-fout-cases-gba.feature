@@ -78,10 +78,10 @@ Rule: Er moet een valide zoek type worden opgegeven
     | type voldoet niet aan case | zoekmetgeslachtsnaamengeboortedatum |
 
 
-Rule: als contenttype voor de response wordt alleen application/json en charset utf-8 ondersteund
+Rule: als content type voor de response wordt alleen application/json en charset utf-8 ondersteund
 
   @fout-case
-  Scenario: Gevraagde Accept contenttype wordt niet ondersteund
+  Scenario: Gevraagde Accept content type wordt niet ondersteund
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -91,13 +91,13 @@ Rule: als contenttype voor de response wordt alleen application/json en charset 
     Dan heeft de response een object met de volgende gegevens
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6 |
-    | title    | Gevraagde contenttype wordt niet ondersteund.               |
+    | title    | Gevraagde content type wordt niet ondersteund.               |
     | detail   | Ondersteunde content type: application/json; charset=utf-8  |
     | code     | notAcceptable                                               |
     | status   | 406                                                         |
     | instance | /haalcentraal/api/brp/personen                              |
 
-  Abstract Scenario: '<accept media type>' als Accept contenttype wordt ondersteund
+  Abstract Scenario: '<accept media type>' als Accept content type wordt ondersteund
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -119,7 +119,7 @@ Rule: als contenttype voor de response wordt alleen application/json en charset 
     | application/json; charset=UTF-8 |
 
 
-Rule: als contenttype voor het request wordt alleen application/json en charset utf-8 ondersteund
+Rule: als content type voor het request wordt alleen application/json en charset utf-8 ondersteund
 
   Abstract Scenario: '<media type>' als Content-Type waarde wordt ondersteund
     Als gba personen wordt gezocht met de volgende parameters
@@ -184,9 +184,9 @@ Rule: als contenttype voor het request wordt alleen application/json en charset 
     | */*;charset=utf-8                |
 
 
-Rule: contenttype voor de response is default application/json en charset utf-8
+Rule: content type voor de response is default application/json en charset utf-8
 
-  Scenario: Lege Accept contenttype wordt ondersteund
+  Scenario: Lege Accept content type wordt ondersteund
     Als gba personen wordt gezocht met de volgende parameters
     | naam                | waarde                          |
     | type                | RaadpleegMetBurgerservicenummer |
@@ -196,7 +196,7 @@ Rule: contenttype voor de response is default application/json en charset utf-8
     Dan heeft de response 0 personen
 
 
-Rule: contenttype voor het request is default application/json en charset utf-8
+Rule: content type voor het request is default application/json en charset utf-8
 
   Scenario: Lege Content-Type wordt ondersteund
     Als gba personen wordt gezocht met de volgende parameters
