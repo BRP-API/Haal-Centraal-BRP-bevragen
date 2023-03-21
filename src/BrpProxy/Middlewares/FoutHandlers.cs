@@ -46,10 +46,10 @@ namespace BrpProxy.Middlewares
             return new Foutbericht
             {
                 Code = "notAcceptable",
-                Detail = "Ondersteunde content type: application/json; charset=utf-8",
+                Detail = "Ondersteunde content type: application/json; charset=utf-8.",
                 Status = StatusCodes.Status406NotAcceptable,
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
-                Title = "Gevraagde contenttype wordt niet ondersteund.",
+                Title = "Gevraagde content type wordt niet ondersteund.",
                 Type = new Uri(NotAcceptableIdentifier)
             };
         }
@@ -59,7 +59,7 @@ namespace BrpProxy.Middlewares
             return new Foutbericht
             {
                 Code = "unsupportedMediaType",
-                Detail = "Ondersteunde content type: application/json; charset=utf-8",
+                Detail = "Ondersteunde content type: application/json; charset=utf-8.",
                 Status = StatusCodes.Status415UnsupportedMediaType,
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
                 Title = "Media Type wordt niet ondersteund.",
