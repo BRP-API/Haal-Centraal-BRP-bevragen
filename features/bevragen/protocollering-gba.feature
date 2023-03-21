@@ -32,16 +32,16 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | naam                            |
-      Dan heeft de persoon met anummer '1219379318' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 1219379318 | 010120                 |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010120                 |
 
   Rule: Zoekrubrieken worden oplopend gesorteerd op rubrieknummer en gescheiden door komma en spatie
 
     Scenario: Zoek persoon met alleen de verplichte parameters
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | anummer (01.10) | voornamen (02.10) |  geslachtsnaam (02.40) | geboortedatum (03.10) |
-      | 3965962492      | Jan Peter         |  Maassen               | 19830526              |
+      | voornamen (02.10) |  geslachtsnaam (02.40) | geboortedatum (03.10) |
+      | Jan Peter         |  Maassen               | 19830526              |
       Als gba personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -49,16 +49,16 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geboortedatum | 1983-05-26                          |
       | voornamen     | Jan Peter                           |
       | fields        | burgerservicenummer                 |
-      Dan heeft de persoon met anummer '3965962492' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 3965962492 | 010210, 010240, 010310 |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010210, 010240, 010310 |
 
   Rule: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met inclusiefOverledenPersonen
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | anummer (01.10) | geslachtsnaam (02.40) | geboortedatum (03.10) |
-      | 6761521367      | Maassen               | 19830526              |
+      | geslachtsnaam (02.40) | geboortedatum (03.10) |
+      | Maassen               | 19830526              |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                       | waarde                              |
       | type                       | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -66,9 +66,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geboortedatum              | 1983-05-26                          |
       | inclusiefOverledenPersonen | true                                |
       | fields                     | burgerservicenummer,naam.voornamen  |
-      Dan heeft de persoon met anummer '6761521367' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 6761521367 | 010240, 010310         |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010240, 010310         |
 
   Rule: Gevraagde velden in fields worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_gevraagde_rubrieken'.
 
@@ -81,9 +81,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon met anummer '1346071371' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 1346071371 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | fields                      | gevraagde rubrieken |
@@ -111,9 +111,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer                           |
       | burgerservicenummer | 000000024                                                 |
       | fields              | geboorte.datum,partners.naam.voornamen,naam.geslachtsnaam |
-      Dan heeft de persoon met anummer '4363741376' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 4363741376 | 010240, 010310, 050210      |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | 010240, 010310, 050210      |
 
   Rule: Wanneer met fields een hele groep wordt gevraagd, worden alle velden in die groep opgenomen in het veld 'request_gevraagde_rubrieken'.
 
@@ -126,9 +126,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <groep>                         |
-      Dan heeft de persoon met anummer '5472698941' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 5472698941 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | groep             | gevraagde rubrieken                    |
@@ -146,9 +146,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <relatie>                       |
-      Dan heeft de persoon met anummer '5472698941' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 5472698941 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | relatie  | gevraagde rubrieken                                                                                            |
@@ -173,9 +173,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon met anummer '1748250197' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 1748250197 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | omschrijving                               | fields                                         | gevraagde rubrieken                            |
@@ -209,9 +209,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer        |
       | burgerservicenummer | 000000024                              |
       | fields              | burgerservicenummer,naam.geslachtsnaam |
-      Dan heeft de persoon met anummer '1748250197' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 1748250197 | 010120, 010240              |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | 010120, 010240              |
 
   Rule: Wanneer een veld wordt gevraagd dat wordt bepaald uit een of meerdere andere velden, dan worden alle daarvoor nodige velden in 'request_gevraagde_rubrieken' opgenomen.
 
@@ -224,9 +224,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon met anummer '5264846450' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 5264846450 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | fields                               | gevraagde rubrieken                                                                    |
@@ -249,9 +249,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon met anummer '5264846450' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 5264846450 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | fields                        | gevraagde rubrieken                    |
@@ -271,9 +271,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon met anummer '5264846450' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 5264846450 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | fields                                                                   | gevraagde rubrieken                                                                    |
@@ -285,14 +285,14 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
 
     Scenario: Zoek persoon met alle mogelijke parameters
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | anummer (01.10) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
-      | 2937183560      | Jan Peter         | van                 | Maassen               | 19830526              | M                           |
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
+      | Jan Peter         | van                 | Maassen               | 19830526              | M                           |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
       En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
-      | anummer (01.10) | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
-      | 5069308085      | Caroline          | van                 | Maassen               | 19830526              | V                           |
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
+      | Caroline          | van                 | Maassen               | 19830526              | V                           |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
@@ -304,9 +304,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | voorvoegsel             | van                                         |
       | gemeenteVanInschrijving | 0599                                        |
       | fields                  | burgerservicenummer,naam.voornamen,geslacht |
-      Dan heeft de persoon met anummer '2937183560' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken         | request_gevraagde_rubrieken |
-      | 2937183560 | 010230, 010240, 010310, 080910 | 010120, 010210, 010410      |
-      En heeft de persoon met anummer '5069308085' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken         | request_gevraagde_rubrieken |
-      | 5069308085 | 010230, 010240, 010310, 080910 | 010120, 010210, 010410      |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken         | request_gevraagde_rubrieken |
+      | 010230, 010240, 010310, 080910 | 010120, 010210, 010410      |
+      En heeft de persoon met burgerservicenummer '000000048' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken         | request_gevraagde_rubrieken |
+      | 010230, 010240, 010310, 080910 | 010120, 010210, 010410      |

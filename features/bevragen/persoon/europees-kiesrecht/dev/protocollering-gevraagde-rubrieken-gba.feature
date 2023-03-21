@@ -15,9 +15,9 @@ Functionaliteit: protocollering van de gevraagde gegevens voor Europees kiesrech
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
       | fields              | <fields>                        |
-      Dan heeft de persoon met anummer '8016043787' de volgende 'protocollering' gegevens
-      | anummer    | request_gevraagde_rubrieken |
-      | 8016043787 | <gevraagde rubrieken>       |
+      Dan heeft de persoon met burgerservicenummer '000000012' de volgende 'protocollering' gegevens
+      | request_gevraagde_rubrieken |
+      | <gevraagde rubrieken>       |
 
       Voorbeelden:
       | fields                                             | gevraagde rubrieken |

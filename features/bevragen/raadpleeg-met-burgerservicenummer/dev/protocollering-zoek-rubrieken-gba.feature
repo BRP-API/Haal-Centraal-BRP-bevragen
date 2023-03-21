@@ -14,9 +14,9 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | naam                            |
-      Dan heeft de persoon met anummer '1219379318' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 1219379318 | 010120                 |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010120                 |
 
     Scenario: Raadpleeg meerdere personen op burgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -30,12 +30,12 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024,000000048             |
       | fields              | naam                            |
-      Dan heeft de persoon met anummer '3840489314' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 3840489314 | 010120                 |
-      En heeft de persoon met anummer '9607152635' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 9607152635 | 010120                 |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010120                 |
+      En heeft de persoon met burgerservicenummer '000000048' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010120                 |
 
     Scenario: Raadpleeg een persoon op burgerservicenummer en gemeenteVanInschrijving
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -53,6 +53,6 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | burgerservicenummer     | 000000024                       |
       | gemeenteVanInschrijving | 0599                            |
       | fields                  | naam                            |
-      Dan heeft de persoon met anummer '9756070217' de volgende 'protocollering' gegevens
-      | anummer    | request_zoek_rubrieken |
-      | 9756070217 | 010120, 080910         |
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
+      | request_zoek_rubrieken |
+      | 010120, 080910         |

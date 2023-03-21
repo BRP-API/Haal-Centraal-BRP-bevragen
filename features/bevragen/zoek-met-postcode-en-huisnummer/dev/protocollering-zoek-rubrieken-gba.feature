@@ -28,7 +28,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetPostcodeEnHuisnummer
       | postcode                | 2497BV                      |
       | huisnummer              | 103                         |
       | fields                  | burgerservicenummer         |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 081120, 081160         |
 
@@ -40,7 +40,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetPostcodeEnHuisnummer
       | huisnummer            | 103                         |
       | <optionele parameter> | <waarde>                    |
       | fields                | burgerservicenummer         |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | <zoek_rubrieken>       |
 
@@ -61,6 +61,6 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetPostcodeEnHuisnummer
       | huisnummer                 | 103                         |
       | fields                     | burgerservicenummer         |
       | inclusiefOverledenPersonen | true                        |
-      Dan heeft de persoon met anummer '2683754153' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_zoek_rubrieken |
       | 081120, 081160         |

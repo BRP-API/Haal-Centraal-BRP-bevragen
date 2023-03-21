@@ -802,9 +802,14 @@ async function executeSqlStatements(sqlData) {
     }
 }
 
-Then(/^heeft de persoon met anummer '(.*)' de volgende '(.*)' gegevens$/, async function (anummer, tabelNaam, dataTable) {
+Then(/^heeft de persoon met burgerservicenummer '(.*)' de volgende '(.*)' gegevens$/, async function (burgerservicenummer, tabelNaam, dataTable) {
     this.context.verifyResponse = false;
     const sqlData = dataTable.hashes()[0];
+
+    const persoonSqlData = this.context.sqlData.find(s => s.persoon[0].find(a => a[0] == 'burger_service_nr' && a[1] == burgerservicenummer));
+    should.exist(persoonSqlData);
+    const pl_id = persoonSqlData.ids.pl_id;
+    should.exist(pl_id);
 
     if (sqlData !== undefined && pool !== undefined) {
         let res;
@@ -814,7 +819,7 @@ Then(/^heeft de persoon met anummer '(.*)' de volgende '(.*)' gegevens$/, async 
             if(tableName === undefined) {
                 tableName = tabelNaam;
             }
-            const sql = `SELECT * FROM public.${tableName} WHERE pl_id=${this.context.sqlData[0].ids.pl_id} ORDER BY request_datum DESC LIMIT 1`;
+            const sql = `SELECT * FROM public.${tableName} WHERE pl_id=${pl_id} ORDER BY request_datum DESC LIMIT 1`;
 
             client = await pool.connect();
             res = await client.query(sql);
@@ -829,13 +834,11 @@ Then(/^heeft de persoon met anummer '(.*)' de volgende '(.*)' gegevens$/, async 
         }
 
         should.exist(res);
-        res.rows.length.should.equal(1, `Geen ${tabelNaam} gegevens gevonden voor persoon met anummer ${anummer}`);
+        res.rows.length.should.equal(1, `Geen ${tabelNaam} gegevens gevonden voor persoon met burgerservicenummer ${burgerservicenummer}`);
 
         const actual = res.rows[0];
         Object.keys(sqlData).forEach(function(key) {
-            if(key !== 'anummer') {
-                actual[key].split(' ').should.have.members(sqlData[key].split(' '), `${actual[key]} !== ${sqlData[key]}`);
-            }
+            actual[key].split(' ').should.have.members(sqlData[key].split(' '), `${actual[key]} !== ${sqlData[key]}`);
         });
     }
 });
