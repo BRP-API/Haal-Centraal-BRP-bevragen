@@ -91,7 +91,7 @@ Rule: als content type voor de response wordt alleen application/json en charset
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.6 |
     | title    | Gevraagde content type wordt niet ondersteund.               |
-    | detail   | Ondersteunde content type: application/json; charset=utf-8  |
+    | detail   | Ondersteunde content type: application/json; charset=utf-8.  |
     | code     | notAcceptable                                               |
     | status   | 406                                                         |
     | instance | /haalcentraal/api/brp/personen                              |
@@ -168,7 +168,7 @@ Rule: als content type voor het request wordt alleen application/json en charset
     | naam     | waarde                                                       |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.13 |
     | title    | Media Type wordt niet ondersteund.                           |
-    | detail   | Ondersteunde content type: application/json; charset=utf-8   |
+    | detail   | Ondersteunde content type: application/json; charset=utf-8.   |
     | code     | unsupportedMediaType                                         |
     | status   | 415                                                          |
     | instance | /haalcentraal/api/brp/personen                               |
