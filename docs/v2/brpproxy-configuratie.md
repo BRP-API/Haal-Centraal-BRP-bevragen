@@ -5,19 +5,25 @@ title: Configureren van de BrpProxy
 
 # BrpProxy configuratie
 
+De volgende settings van de BrpProxy kunnen worden aangepast:
+
+- [Routering](#routering)
+- [Logging](#logging)
+- [Tracing](#tracing)
+
 ## Routering
 
 Standaard is de BrpProxy geconfigureerd om bevragingen door te sturen naar de mock van de {{ site.apiname }} Web API GBA variant.
 
-De __Downstream__ configuratie van de BrpProxy moet worden aangepast om bevragingen door te sturen naar een instantie van de {{ site.apiname }} Web API GBA variant.
+De __Downstream__ configuratie van de BrpProxy moet worden aangepast om bevragingen door te sturen naar een andere instantie van de {{ site.apiname }} Web API GBA variant.
 
 ### Wijzigen van de Downstream configuratie van de BrpProxy (Docker Compose variant)
 
 De volgende environment variabelen moet worden opgenomen in de configuratie van de BrpProxy in het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}:
 
 - Routes__0__DownstreamScheme. De communicatie protocol die moet worden gebruikt voor het aanroepen van de {{ site.apiname }} Web API GBA variant
-- Routes__0__DownstreamHostAndPorts__0__Host. De host naam van de {{ site.apiname }} Web API GBA variant
-- Routes__0__DownstreamHostAndPorts__0__Port. De port nummer van de {{ site.apiname }} Web API GBA variant
+- Routes__0__DownstreamHostAndPorts__0__Host. De host naam van de aan te roepen {{ site.apiname }} Web API GBA variant
+- Routes__0__DownstreamHostAndPorts__0__Port. De port nummer van de aan te roepen  {{ site.apiname }} Web API GBA variant
 
 In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te sturen naar de proef omgeving van de {{ site.apiname }} Web API GBA variant
 
@@ -39,7 +45,7 @@ In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te s
 
 Een andere mogelijkheid is om de routering configuratie te definieren in een json bestand en met behulp van een Volume te monteren aan een container instantie.
 
-In het volgende voorbeeld is de configuratie van de routering naar de proef omgeving van de {{ site.apiname }} Web API GBA variant gespecificeerd. Dit [configuratie bestand] is ook te vinden in de {{ site.apiname }} GitHub repository. in het [ocelot.json]({{ site.devBranchUrl }}/src/config/BrpProxy/configuration/ocelot.json){:target="_blank" rel="noopener"}.
+In het volgende voorbeeld is de configuratie van de routering naar de proef omgeving van de {{ site.apiname }} Web API GBA variant gespecificeerd. Dit [configuratie bestand]({{ site.devBranchUrl }}/src/config/BrpProxy/configuration/ocelot.json){:target="_blank" rel="noopener"} is ook te vinden in de {{ site.apiname }} GitHub repository.
 
 ```json
 
@@ -83,8 +89,8 @@ Het configuratie bestand wordt vervolgens met behulp van een volume gemonteerd a
 De volgende environment variabelen moet worden opgenomen in de configuratie van de BrpProxy in het [brpproxy deployment bestand]({{ site.devBranchUrl }}/.k8s/brpproxy-deployment.yml){:target="_blank" rel="noopener"}:
 
 - Routes__0__DownstreamScheme. De communicatie protocol die moet worden gebruikt voor het aanroepen van de {{ site.apiname }} Web API GBA variant
-- Routes__0__DownstreamHostAndPorts__0__Host. De host naam van de {{ site.apiname }} Web API GBA variant
-- Routes__0__DownstreamHostAndPorts__0__Port. De port nummer van de {{ site.apiname }} Web API GBA variant
+- Routes__0__DownstreamHostAndPorts__0__Host. De host naam van de aan te roepen {{ site.apiname }} Web API GBA variant
+- Routes__0__DownstreamHostAndPorts__0__Port. De port nummer van de aan te roepen {{ site.apiname }} Web API GBA variant
 
 In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te sturen naar de proef omgeving van de {{ site.apiname }} Web API GBA variant
 
@@ -110,9 +116,9 @@ In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te s
 
 ```
 
-Een andere mogelijkheid is om de routering configuratie te definieren in een json bestand en met behulp van een Volume te monteren aan een container instantie.
+Een andere mogelijkheid is om de routering configuratie te definieren in een json bestand en met behulp van een volume mount te monteren aan een container instantie.
 
-In het volgende voorbeeld is de configuratie van de routering naar de proef omgeving van de {{ site.apiname }} Web API GBA variant gespecificeerd. Dit [configuratie bestand] is ook te vinden in de {{ site.apiname }} GitHub repository. in het [ocelot.json]({{ site.devBranchUrl }}/src/config/BrpProxy/configuration/ocelot.json){:target="_blank" rel="noopener"}.
+In het volgende voorbeeld is de configuratie van de routering naar de proef omgeving van de {{ site.apiname }} Web API GBA variant gespecificeerd. Dit [configuratie bestand]({{ site.devBranchUrl }}/src/config/BrpProxy/configuration/ocelot.json){:target="_blank" rel="noopener"} is ook te vinden in de {{ site.apiname }} GitHub repository.
 
 ```json
 
@@ -138,22 +144,6 @@ Het configuratie bestand wordt vervolgens met behulp van een volume mount gemont
 
 ```yaml
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: brpproxy
-  labels:
-    app: haal-centraal-brp-bevragen-api
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: brpproxy
-  template:
-    metadata:
-      labels:
-        name: brpproxy
-    spec:
       containers:
         - name: brpproxy
           image: iswish/haal-centraal-brp-bevragen-proxy:latest
@@ -185,7 +175,9 @@ Standaard is de BrpProxy geconfigureerd met Log level `Warning`. Bij deze Log le
 
 Om alle bevragingen (inclusief de request body) te loggen moet de Log level op `Information` worden gezet. Dit wordt gedaan met behulp van de *Serilog__MinimumLevel__Override__BrpProxy* environment variabele.
 
-In het volgend voorbeeld is de BrpProxy geconfigureerd met Log level op `Information`
+In de volgend voorbeelden is de Log level gezet op `Information`
+
+Docker Compose variant:
 
 ```yaml
 
@@ -201,6 +193,38 @@ In het volgend voorbeeld is de BrpProxy geconfigureerd met Log level op `Informa
 
 ```
 
-Bij Log level `Information` worden de waarden van gevoelige parameters in de request body gemaskeerd gelogd. Voor debug doeleinden kan de Log level op `Debug` worden gezet. Bij de `Debug` Log level worden parameter waarden niet gemaskeerd.
+Kubernetes variant
 
-De logs zijn te vinden in de Logs tab blad van de BrpProxy container of kunnen worden bekeken met behulp van Seq. Een Seq container instantie wordt ook opgestart wanneer het het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"} wordt gebruikt om de BrpProxy op te starten.
+```yaml
+
+      containers:
+        - name: brpproxy
+          image: iswish/haal-centraal-brp-bevragen-proxy:latest
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Release
+            - name: ASPNETCORE_URLS
+              value: http://+:5000
+            - name: Serilog__MinimumLevel__Override__BrpProxy
+              value: Information
+          ports:
+            - name: http-brpproxy
+              containerPort: 5000
+
+```
+
+Bij Log level `Information` worden de waarden van gevoelige parameters in de request body gemaskeerd gelogd. Voor debug doeleinden kan het nodig zijn om de waarden van gevoelige parameters niet gemaskeerd te loggen. Dit kan worden gedaan door de Log level op `Debug` te zetten.
+
+De logs zijn standaard te vinden in de Logs tab blad van de BrpProxy container. Optioneel kunnen de logs ook worden weggeschreven naar een Seq server en/of naar een log bestand volgens de Elastic Common Schema specificatie.
+
+De *Seq__ServerUrl* environment variabele moeten worden gebruikt om log regels weg te schrijven naar een Seq server. Met het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"} in de {{ site.apiname }} repository wordt standaard ook een Seq server opgestart waar de BrpProxy zijn log regels wegschrijft.
+
+Met behulp van de *Ecs__Path* environment variabele wordt het volledig pad van het log bestand opgegeven waar log regels volgens de Elastic Common Schema specificatie worden weggeschreven.  
+
+## Tracing
+
+De BrpProxy maakt gebruik van OpenTelemetry om de start en eind tijden van aanroepen weg te schrijven. De BrpProxy gebruikt de standaard configuratie settings van Jaeger om traces te schrijven naar een Jaeger server met behulp van de OpenTelemetry Protocol (OTLP).
+
+Een Jaeger server wordt standaard opgestart wanneer het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"} in de {{ site.apiname }} repository wordt gebruikt om de BrpProxy te draaien. De traces kunnen dan worden bekeken via de Jaeger UI die is te benaderen op `http://localhost:16686`.
+
+De *Jaeger__OtlpEndpoint* environment variabele kan worden gebruikt om de OTLP endpoint waar de BrpProxy naar schrijft te wijzigen.
