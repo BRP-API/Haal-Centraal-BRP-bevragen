@@ -183,19 +183,6 @@ components:
             detail: The server encountered an unexpected condition which prevented it from fulfilling the request.
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
             code: serverError
-    '501':
-      description: Not Implemented
-      content:
-        application/problem+json:
-          schema:
-            $ref: "#/components/schemas/Foutbericht"
-          example:
-            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
-            title: Not Implemented
-            status: 501
-            detail: The server does not support the functionality required to fulfill the request.
-            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-            code: notImplemented
     '503':
       description: Service Unavailable
       content:
