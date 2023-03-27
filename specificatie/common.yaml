@@ -144,19 +144,6 @@ components:
             detail: The server is refusing the request because the entity of the request is in a format not supported by the requested resource for the requested method.
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
             code: unsupported
-    '422':
-      description: Unprocessable entity
-      content:
-        application/problem+json:
-          schema:
-            $ref: "#/components/schemas/Foutbericht"
-          example:
-            type: https://tools.ietf.org/html/rfc4918#section-11.2
-            title: Aanvraag kan niet verwerkt worden
-            status: 422
-            detail: The server understands the content type of the request entity and the syntax of the request entity is correct but was unable to process the contained instructions.
-            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
-            code: unprocessableEntity
     '429':
       description: Too Many Requests
       content:
