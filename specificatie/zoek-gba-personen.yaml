@@ -31,8 +31,6 @@ paths:
           description: |
                         Zoekactie geslaagd
           headers:
-            api-version:
-              $ref: 'common.yaml#/components/headers/api_version'
             warning:
               $ref: 'common.yaml#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -59,8 +57,6 @@ paths:
           $ref: 'common.yaml#/components/responses/429'
         '500':
           $ref: 'common.yaml#/components/responses/500'
-        '501':
-          $ref: 'common.yaml#/components/responses/501'
         '503':
           $ref: 'common.yaml#/components/responses/503'
         'default':
