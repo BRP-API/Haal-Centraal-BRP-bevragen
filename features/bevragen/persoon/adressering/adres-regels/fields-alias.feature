@@ -33,6 +33,27 @@ Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consume
     | adressering                                                                              | de adressering gegevensgroep veld           |
     | adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land | alle adresregel velden met hun volledig pad |
 
+  Scenario: afnemer vraagt adresseringBinnenland én verblijfplaats en de persoon heeft buitenlandse verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
+    | naam                             | waarde                      |
+    | land adres buitenland (13.10)    | 6014                        |
+    | regel 1 adres buitenland (13.30) | 1600 Pennsylvania Avenue NW |
+    | regel 2 adres buitenland (13.40) | Washington, DC 20500        |
+    | regel 3 adres buitenland (13.50) | Selangor                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                             |
+    | type                | RaadpleegMetBurgerservicenummer                    |
+    | burgerservicenummer | 000000097                                          |
+    | fields              | adresseringBinnenland,verblijfplaats.verblijfadres |
+    Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde                       |
+    | type                            | VerblijfplaatsBuitenland     |
+    | verblijfadres.regel1            | 1600 Pennsylvania Avenue NW  |
+    | verblijfadres.regel2            | Washington, DC 20500         |
+    | verblijfadres.regel3            | Selangor                     |
+    | verblijfadres.land.code         | 6014                         |
+    | verblijfadres.land.omschrijving | Verenigde Staten van Amerika |
+
   Abstract Scenario: afnemer is geautoriseerd voor 'adressering buitenland' en vraagt het <field> veld van de adressering gegevensgroep
     Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering' gegevens
     En de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
