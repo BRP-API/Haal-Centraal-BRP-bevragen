@@ -124,3 +124,24 @@ Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een co
     | fields                                 | omschrijving              |
     | verblijfplaatsBinnenland               | alle velden               |
     | verblijfplaatsBinnenland.verblijfadres | alle verblijfadres velden |
+  
+  Scenario: afnemer vraagt verblijfplaatsBinnenland én adressering en de persoon heeft buitenlandse verblijfplaats
+    Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
+    | naam                             | waarde                      |
+    | land adres buitenland (13.10)    | 6014                        |
+    | regel 1 adres buitenland (13.30) | 1600 Pennsylvania Avenue NW |
+    | regel 2 adres buitenland (13.40) | Washington, DC 20500        |
+    | regel 3 adres buitenland (13.50) | Selangor                    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                                             |
+    | type                | RaadpleegMetBurgerservicenummer                    |
+    | burgerservicenummer | 000000097                                          |
+    | fields              | adressering,verblijfplaatsBinnenland.verblijfadres |
+    Dan heeft de response een persoon met de volgende 'adressering' gegevens
+    | naam              | waarde                       |
+    | type              | VerblijfplaatsBuitenland     |
+    | adresregel1       | 1600 Pennsylvania Avenue NW  |
+    | adresregel2       | Washington, DC 20500         |
+    | adresregel3       | Selangor                     |
+    | land.code         | 6014                         |
+    | land.omschrijving | Verenigde Staten van Amerika |
