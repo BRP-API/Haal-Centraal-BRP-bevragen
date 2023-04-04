@@ -35,7 +35,10 @@ public static class GbaDatumMapper
             return retval;
 
         }
-        return new DatumOnbekend();
+        return new DatumOnbekend
+        {
+            LangFormaat = "onbekend"
+        };
     }
 
     public static int? Leeftijd(this AbstractDatum datum)
