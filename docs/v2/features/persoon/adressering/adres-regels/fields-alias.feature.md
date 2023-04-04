@@ -1,6 +1,6 @@
 ---
 layout: page-with-side-nav
-title: Persoon: adressering velden vragen met fields/fields alias
+title: adressering velden vragen met fields/fields alias
 ---
 #language: nl  
 
