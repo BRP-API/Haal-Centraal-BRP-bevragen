@@ -1,6 +1,8 @@
-﻿namespace HaalCentraal.BrpProxy.Generated;
+﻿using static BrpProxy.Mappers.PersoonMapper;
 
-public partial class PersoonInOnderzoekBeperkt
+namespace HaalCentraal.BrpProxy.Generated;
+
+public partial class PersoonInOnderzoekBeperkt : IPersoonInOnderzoek
 {
     public bool ShouldSerialize() =>
         Burgerservicenummer.HasValue ||

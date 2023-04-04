@@ -16,7 +16,7 @@ public partial class Adressering
         ;
 }
 
-public partial class AdresseringInOnderzoek
+public partial class AdresseringInOnderzoek : IAdresregelsInOnderzoek
 {
     public bool ShouldSerialize() =>
         Aanhef.HasValue ||
@@ -42,7 +42,7 @@ public partial class AdresseringBeperkt
         ;
 }
 
-public partial class AdresseringInOnderzoekBeperkt
+public partial class AdresseringInOnderzoekBeperkt : IAdresregelsInOnderzoek
 {
     public bool ShouldSerialize() =>
         Adresregel1.HasValue ||

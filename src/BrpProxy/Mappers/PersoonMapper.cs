@@ -10,6 +10,39 @@ public static class PersoonMapper
         return persoon.GeheimhoudingPersoonsgegevens > 0;
     }
 
+    private static void InitializePersoonInOnderzoek(this IPersoonInOnderzoek retval, GbaInOnderzoek? gbaInOnderzoek)
+    {
+        if (gbaInOnderzoek != null)
+        {
+            switch (gbaInOnderzoek.AanduidingGegevensInOnderzoek)
+            {
+                case "010000":
+                    retval.Burgerservicenummer = true;
+                    retval.Geslacht = true;
+                    retval.Leeftijd = true;
+                    retval.DatumIngangOnderzoekPersoon = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
+                    break;
+                case "010100":
+                case "010120":
+                    retval.Burgerservicenummer = true;
+                    retval.DatumIngangOnderzoekPersoon = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
+                    break;
+                case "010300":
+                case "010310":
+                    retval.Leeftijd = true;
+                    retval.DatumIngangOnderzoekPersoon = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
+                    break;
+                case "010400":
+                case "010410":
+                    retval.Geslacht = true;
+                    retval.DatumIngangOnderzoekPersoon = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     public static PersoonInOnderzoek? InOnderzoek(this GbaPersoon persoon)
     {
         if(persoon.PersoonInOnderzoek == null &&
@@ -21,35 +54,7 @@ public static class PersoonMapper
 
         PersoonInOnderzoek retval = new();
 
-        if(persoon.PersoonInOnderzoek != null)
-        {
-            switch (persoon.PersoonInOnderzoek.AanduidingGegevensInOnderzoek)
-            {
-                case "010000":
-                    retval.Burgerservicenummer = true;
-                    retval.Geslacht = true;
-                    retval.Leeftijd = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "010100":
-                case "010120":
-                    retval.Burgerservicenummer = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "010300":
-                case "010310":
-                    retval.Leeftijd = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "010400":
-                case "010410":
-                    retval.Geslacht = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                default:
-                    break;
-            }
-        }
+        retval.InitializePersoonInOnderzoek(persoon.PersoonInOnderzoek);
 
         if(persoon.GezagInOnderzoek != null)
         {
@@ -110,53 +115,16 @@ public static class PersoonMapper
 
         PersoonInOnderzoekBeperkt retval = new();
 
-        if (persoon.PersoonInOnderzoek != null)
-        {
-            switch (persoon.PersoonInOnderzoek.AanduidingGegevensInOnderzoek)
-            {
-                case "010000":
-                    retval.Burgerservicenummer = true;
-                    retval.Geslacht = true;
-                    retval.Leeftijd = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "010100":
-                case "010120":
-                    retval.Burgerservicenummer = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "010300":
-                case "010310":
-                    retval.Leeftijd = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "010400":
-                case "010410":
-                    retval.Geslacht = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                default:
-                    break;
-            }
-        }
+        retval.InitializePersoonInOnderzoek(persoon.PersoonInOnderzoek);
 
         return retval;
     }
 
-    public static AdresseringInOnderzoek? AdresseringInOnderzoek(this GbaPersoon persoon)
+    private static void InitializeAdresseringMetPersoonInOnderzoek(this AdresseringInOnderzoek retval, GbaInOnderzoek? gbaInOnderzoek)
     {
-        if(persoon.PersoonInOnderzoek == null &&
-            (persoon.Partners == null || persoon.Partners.All(p => p.InOnderzoek == null)) &&
-            persoon.Verblijfplaats?.InOnderzoek == null)
+        if (gbaInOnderzoek != null)
         {
-            return null;
-        }
-
-        AdresseringInOnderzoek? retval = null;
-
-        if(persoon.PersoonInOnderzoek != null)
-        {
-            switch (persoon.PersoonInOnderzoek.AanduidingGegevensInOnderzoek)
+            switch (gbaInOnderzoek.AanduidingGegevensInOnderzoek)
             {
                 case "010000":
                 case "010200":
@@ -168,71 +136,65 @@ public static class PersoonMapper
                 case "010410":
                 case "016100":
                 case "016110":
-                    retval ??= new();
                     retval.Aanhef = true;
                     retval.Aanschrijfwijze = true;
                     retval.GebruikInLopendeTekst = true;
-                    retval.DatumIngangOnderzoekPersoon = persoon.PersoonInOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekPersoon = gbaInOnderzoek.DatumIngangOnderzoek?.Map();
                     break;
                 default:
-                    retval = null;
                     break;
             }
         }
+    }
 
-        var partner = persoon.Partners?.OrderBy(p => p.AangaanHuwelijkPartnerschap?.Datum).FirstOrDefault();
-
-        if (partner != null &&
-            partner.InOnderzoek != null &&
-            persoon?.Naam?.AanduidingNaamgebruik?.Code != "E")
+    private static void InitializeAdresseringMetPartnerInOnderzoek(this AdresseringInOnderzoek retval, GbaInOnderzoek? gbaInOnderzoek)
+    {
+        if(gbaInOnderzoek != null)
         {
-            var inOnderzoek = partner.InOnderzoek;
-            switch (inOnderzoek.AanduidingGegevensInOnderzoek)
+            switch (gbaInOnderzoek.AanduidingGegevensInOnderzoek)
             {
                 case "050000":
                 case "050200":
                 case "050220":
                 case "050230":
                 case "050240":
-                    retval ??= new();
                     retval.Aanhef = true;
                     retval.Aanschrijfwijze = true;
                     retval.GebruikInLopendeTekst = true;
-                    retval.DatumIngangOnderzoekPartner= inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekPartner = gbaInOnderzoek.DatumIngangOnderzoek?.Map();
                     break;
                 default:
                     break;
             }
         }
+    }
 
-        if(persoon?.Verblijfplaats != null && persoon.Verblijfplaats.InOnderzoek != null)
+    private static void InitializeAdresseringMetVerblijfplaatsInOnderzoek(this IAdresregelsInOnderzoek retval, GbaInOnderzoek? gbaInOnderzoek)
+    {
+        if (gbaInOnderzoek != null)
         {
-            var inOnderzoek = persoon.Verblijfplaats.InOnderzoek;
-            switch (inOnderzoek.AanduidingGegevensInOnderzoek)
+            switch (gbaInOnderzoek.AanduidingGegevensInOnderzoek)
             {
                 case "080000":
                 case "081300":
-                    retval ??= new();
                     retval.Adresregel1 = true;
                     retval.Adresregel2 = true;
                     retval.Adresregel3 = true;
                     retval.Land = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekVerblijfplaats = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
                     break;
                 case "080900":
                 case "080910":
                 case "081160":
                 case "081170":
                 case "081340":
-                    retval ??= new();
                     retval.Adresregel2 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekVerblijfplaats = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
                     break;
                 case "081100":
-                    retval ??= new();
                     retval.Adresregel1 = true;
                     retval.Adresregel2 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekVerblijfplaats = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
                     break;
                 case "081110":
                 case "081120":
@@ -242,24 +204,46 @@ public static class PersoonMapper
                 case "081200":
                 case "081210":
                 case "081330":
-                    retval ??= new();
                     retval.Adresregel1 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekVerblijfplaats = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
                     break;
                 case "081310":
-                    retval ??= new();
                     retval.Land = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekVerblijfplaats = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
                     break;
                 case "081350":
-                    retval ??= new();
                     retval.Adresregel3 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
+                    retval.DatumIngangOnderzoekVerblijfplaats = gbaInOnderzoek.DatumIngangOnderzoek!.Map();
                     break;
                 default:
                     break;
             }
         }
+    }
+
+    public static AdresseringInOnderzoek? AdresseringInOnderzoek(this GbaPersoon persoon)
+    {
+        if(persoon.PersoonInOnderzoek == null &&
+            (persoon.Partners == null || persoon.Partners.All(p => p.InOnderzoek == null)) &&
+            persoon.Verblijfplaats?.InOnderzoek == null)
+        {
+            return null;
+        }
+
+        AdresseringInOnderzoek retval = new();
+
+        retval.InitializeAdresseringMetPersoonInOnderzoek(persoon.PersoonInOnderzoek);
+
+        var partner = persoon.Partners?.OrderBy(p => p.AangaanHuwelijkPartnerschap?.Datum).FirstOrDefault();
+
+        if (partner != null &&
+            partner.InOnderzoek != null &&
+            persoon?.Naam?.AanduidingNaamgebruik?.Code != "E")
+        {
+            retval.InitializeAdresseringMetPartnerInOnderzoek(partner.InOnderzoek);
+        }
+
+        retval.InitializeAdresseringMetVerblijfplaatsInOnderzoek(persoon?.Verblijfplaats?.InOnderzoek);
 
         return retval;
     }
@@ -271,64 +255,10 @@ public static class PersoonMapper
             return null;
         }
 
-        AdresseringInOnderzoekBeperkt? retval = null;
+        AdresseringInOnderzoekBeperkt? retval = new();
 
-        if (persoon?.Verblijfplaats != null && persoon.Verblijfplaats.InOnderzoek != null)
-        {
-            var inOnderzoek = persoon.Verblijfplaats.InOnderzoek;
-            switch (inOnderzoek.AanduidingGegevensInOnderzoek)
-            {
-                case "080000":
-                case "081300":
-                    retval ??= new();
-                    retval.Adresregel1 = true;
-                    retval.Adresregel2 = true;
-                    retval.Adresregel3 = true;
-                    retval.Land = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "080900":
-                case "080910":
-                case "081160":
-                case "081170":
-                case "081340":
-                    retval ??= new();
-                    retval.Adresregel2 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "081100":
-                    retval ??= new();
-                    retval.Adresregel1 = true;
-                    retval.Adresregel2 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "081110":
-                case "081120":
-                case "081130":
-                case "081140":
-                case "081150":
-                case "081200":
-                case "081210":
-                case "081330":
-                    retval ??= new();
-                    retval.Adresregel1 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "081310":
-                    retval ??= new();
-                    retval.Land = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                case "081350":
-                    retval ??= new();
-                    retval.Adresregel3 = true;
-                    retval.DatumIngangOnderzoekVerblijfplaats = inOnderzoek.DatumIngangOnderzoek?.Map();
-                    break;
-                default:
-                    break;
-            }
-        }
+        retval.InitializeAdresseringMetVerblijfplaatsInOnderzoek(persoon?.Verblijfplaats?.InOnderzoek);
 
-        return retval;
+        return retval.ShouldSerialize() ? retval : null;
     }
 }
