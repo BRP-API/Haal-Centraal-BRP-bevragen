@@ -98,7 +98,7 @@ namespace BrpProxy.Middlewares
                             : _fieldsHelper.AddExtraPersoonBeperktFields(result.Fields!);
 
                 var modifiedBody = context.Response.StatusCode == StatusCodes.Status200OK
-                    ? body.Transform(_mapper, resultFields, _logger)
+                    ? body.Transform(_mapper, resultFields, result.Fields!, _logger)
                     : body;
 
                 _logger.LogDebug("transformed responseBody: {@modifiedBody}", modifiedBody);
@@ -135,7 +135,7 @@ namespace BrpProxy.Middlewares
                 : ValidatePersonenQueryResult.CreateFrom(new PersonenQueryRequestBodyValidator().Validate(JObject.Parse(requestBody)), context);
         }
 
-        public static string Transform(this string payload, IMapper mapper, ICollection<string> fields, ILogger logger)
+        public static string Transform(this string payload, IMapper mapper, ICollection<string> fields, ICollection<string> originalFields, ILogger logger)
         {
             PersonenQueryResponse retval;
             var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
@@ -145,7 +145,7 @@ namespace BrpProxy.Middlewares
             {
                 case Gba.RaadpleegMetBurgerservicenummerResponse p:
                     var result = mapper.Map<RaadpleegMetBurgerservicenummerResponse>(p);
-                    result.Personen = result.Personen.FilterAfgevoerdePersoon().FilterList(fields);
+                    result.Personen = result.Personen.FilterAfgevoerdePersoon().ExcludeAdresregelsEnVerblijfplaatsBuitenland(originalFields).FilterList(fields);
                     retval = result;
                     break;
                 case Gba.ZoekMetGeslachtsnaamEnGeboortedatumResponse pb:
