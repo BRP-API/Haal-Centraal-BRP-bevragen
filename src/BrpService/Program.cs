@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using HaalCentraal.BrpService.Extensions;
 using HaalCentraal.BrpService.Repositories;
 using HaalCentraal.BrpService.Validators;
+using HealthChecks.UI.Client;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Serilog;
@@ -23,10 +24,6 @@ builder.Host.UseSerilog((context, config) =>
         .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
                          theme: AnsiConsoleTheme.Code)
         .WriteTo.Seq(context.Configuration["Seq:ServerUrl"]);
-});
-builder.Services.AddHttpLogging(options =>
-{
-    options.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
 });
 
 builder.Services.AddOpenTelemetry().WithTracing(b =>
@@ -85,16 +82,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<PersoonRepository>();
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseHttpLogging();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 if (idpSection.Exists())
 {
