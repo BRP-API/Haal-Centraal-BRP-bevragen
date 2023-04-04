@@ -8,217 +8,245 @@ title: in onderzoek
 # Functionaliteit: in onderzoek
 
 
-### Abstract Scenario: '\<type\>' is in onderzoek en burgerservicenummer, geslacht en leeftijd worden gevraagd
+## Rule: als een gevraagde veld in onderzoek is, dan wordt het bijbehorend inOnderzoek veld en datumIngangOnderzoek ook geleverd
 
-* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
 
-  | naam                            | waarde                    |
-  |---------------------------------|---------------------------|
-  | geslachtsaanduiding (04.10)     | M                         |
-  | geboortedatum (03.10)           | gisteren - 20 jaar        |
-  | aanduiding in onderzoek (83.10) | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)  | 20020701                  |
+### Abstract Scenario: burgerservicenummer wordt gevraagd en \<type\> is in onderzoek
+
+* __Gegeven__ de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+
+  | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+  |---------------------------------|--------------------------------|
+  | \<aanduiding in onderzoek\>       | 20120920                       |
 * __Als__ personen wordt gezocht met de volgende parameters
 
-  | naam                | waarde                                |
-  |---------------------|---------------------------------------|
-  | type                | RaadpleegMetBurgerservicenummer       |
-  | burgerservicenummer | 000000152                             |
-  | fields              | burgerservicenummer,geslacht,leeftijd |
+  | naam                | waarde                          |
+  |---------------------|---------------------------------|
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000097                       |
+  | fields              | burgerservicenummer             |
 * __Dan__ heeft de response een persoon met de volgende gegevens
 
-  | naam                                                | waarde                   |
-  |-----------------------------------------------------|--------------------------|
-  | burgerservicenummer                                 | 000000152                |
-  | leeftijd                                            | 20                       |
-  | geslacht.code                                       | M                        |
-  | geslacht.omschrijving                               | man                      |
-  | inOnderzoek.burgerservicenummer                     | \<burgerservicenummer io\> |
-  | inOnderzoek.geslacht                                | \<geslacht io\>            |
-  | inOnderzoek.leeftijd                                | \<leeftijd io\>            |
-  | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum                    |
-  | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01               |
-  | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002              |
+  | naam                | waarde    |
+  |---------------------|-----------|
+  | burgerservicenummer | 000000097 |
+* __En__ heeft de persoon de volgende 'inOnderzoek' gegevens
+
+  | naam                                    | waarde            |
+  |-----------------------------------------|-------------------|
+  | burgerservicenummer                     | true              |
+  | datumIngangOnderzoekPersoon.type        | Datum             |
+  | datumIngangOnderzoekPersoon.datum       | 2012-09-20        |
+  | datumIngangOnderzoekPersoon.langFormaat | 20 september 2012 |
 
 #### Voorbeelden:
 
 
-  | aanduiding in onderzoek | burgerservicenummer io | geslacht io | leeftijd io | type                   |
-  |-------------------------|------------------------|-------------|-------------|------------------------|
-  | 010000                  | true                   | true        | true        | hele categorie persoon |
-  | 010100                  | true                   |             |             | hele groep persoon     |
-  | 010120                  | true                   |             |             | burgerservicenummer    |
-  | 010300                  |                        |             | true        | hele groep geboorte    |
-  | 010310                  |                        |             | true        | geboortedatum          |
-  | 010400                  |                        | true        |             | hele groep geslacht    |
-  | 010410                  |                        | true        |             | geslachtsaanduiding    |
+  | aanduiding in onderzoek | type                     |
+  |-------------------------|--------------------------|
+  | 010000                  | hele categorie persoon   |
+  | 010100                  | hele groep persoon       |
+  | 010120                  | burgerservicenummer veld |
 
-### Abstract Scenario: '\<type\>' is in onderzoek en gemeenteVanInschrijving en datumInschrijvingInGemeente worden gevraagd
+### Abstract Scenario: indicatieCurateleRegister wordt gevraagd en \<type\> is in onderzoek
 
-* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+* __Gegeven__ de persoon met burgerservicenummer '000000097' heeft de volgende 'gezagsverhouding' gegevens
 
-  | naam                                      | waarde                    |
-  |-------------------------------------------|---------------------------|
-  | datum inschrijving in de gemeente (09.20) | 20020701                  |
-  | gemeente van inschrijving (09.10)         | 0518                      |
-  | aanduiding in onderzoek (83.10)           | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)            | 20020701                  |
+  | indicatie curateleregister (33.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+  |------------------------------------|---------------------------------|--------------------------------|
+  | 1                                  | \<aanduiding in onderzoek\>       | 20101205                       |
 * __Als__ personen wordt gezocht met de volgende parameters
 
-  | naam                | waarde                                              |
-  |---------------------|-----------------------------------------------------|
-  | type                | RaadpleegMetBurgerservicenummer                     |
-  | burgerservicenummer | 000000152                                           |
-  | fields              | gemeenteVanInschrijving,datumInschrijvingInGemeente |
+  | naam                | waarde                          |
+  |---------------------|---------------------------------|
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000097                       |
+  | fields              | indicatieCurateleRegister       |
 * __Dan__ heeft de response een persoon met de volgende gegevens
 
-  | naam                                                 | waarde                           |
-  |------------------------------------------------------|----------------------------------|
-  | datumInschrijvingInGemeente.type                     | Datum                            |
-  | datumInschrijvingInGemeente.datum                    | 2002-07-01                       |
-  | datumInschrijvingInGemeente.langFormaat              | 1 juli 2002                      |
-  | gemeenteVanInschrijving.code                         | 0518                             |
-  | gemeenteVanInschrijving.omschrijving                 | 's-Gravenhage                    |
-  | inOnderzoek.gemeenteVanInschrijving                  | \<gemeenteVanInschrijving io\>     |
-  | inOnderzoek.datumInschrijvingInGemeente              | \<datumInschrijvingInGemeente io\> |
-  | inOnderzoek.datumIngangOnderzoekGemeente.type        | Datum                            |
-  | inOnderzoek.datumIngangOnderzoekGemeente.datum       | 2002-07-01                       |
-  | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat | 1 juli 2002                      |
+  | naam                                              | waarde          |
+  |---------------------------------------------------|-----------------|
+  | indicatieCurateleRegister                         | true            |
+  | inOnderzoek.datumIngangOnderzoekGezag.type        | Datum           |
+  | inOnderzoek.datumIngangOnderzoekGezag.datum       | 2010-12-05      |
+  | inOnderzoek.datumIngangOnderzoekGezag.langFormaat | 5 december 2010 |
+  | inOnderzoek.indicatieCurateleRegister             | true            |
 
 #### Voorbeelden:
 
 
-  | aanduiding in onderzoek | gemeenteVanInschrijving io | datumInschrijvingInGemeente io | type                              |
-  |-------------------------|----------------------------|--------------------------------|-----------------------------------|
-  | 080000                  | true                       | true                           | hele categorie verblijfplaats     |
-  | 080900                  | true                       | true                           |                                   |
-  | 080910                  | true                       |                                | gemeente van inschrijving         |
-  | 080920                  |                            | true                           | datum inschrijving in de gemeente |
+  | aanduiding in onderzoek | type                            |
+  |-------------------------|---------------------------------|
+  | 110000                  | hele categorie gezagsverhouding |
+  | 113300                  | hele groep curatele             |
+  | 113310                  | indicatie curateleregister      |
 
-### Scenario: '\<type\>' is in onderzoek, maar 'burgerservicenummer' wordt niet gevraagd
+## Rule: als één of meerdere velden van een gevraagde groep in onderzoek zijn, dan worden de bijbehorende inOnderzoek velden en datumIngangOnderzoek ook geleverd
 
-* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+
+### Scenario: alle velden van de groep 'naam' wordt gevraagd en \<type\> is in onderzoek
+
+* __Gegeven__ de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
 
   | naam                            | waarde                    |
   |---------------------------------|---------------------------|
+  | voornamen (02.10)               | Arnitta                   |
+  | geslachtsnaam (02.40)           | Jansen                    |
   | aanduiding in onderzoek (83.10) | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)  | 20020701                  |
+  | datum ingang onderzoek (83.20)  | 20120920                  |
+* __Als__ personen wordt gezocht met de volgende parameters
+
+  | naam                | waarde                          |
+  |---------------------|---------------------------------|
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000097                       |
+  | fields              | naam                            |
+* __Dan__ heeft de response een persoon met de volgende 'naam' gegevens
+
+  | naam                                         | waarde               |
+  |----------------------------------------------|----------------------|
+  | geslachtsnaam                                | Jansen               |
+  | voornamen                                    | Arnitta              |
+  | volledigeNaam                                | Arnitta Jansen       |
+  | voorletters                                  | A.                   |
+  | inOnderzoek.voornamen                        | \<voornamen io\>       |
+  | inOnderzoek.adellijkeTitelPredicaat          | \<titel/predicaat io\> |
+  | inOnderzoek.voorvoegsel                      | \<voorvoegsel io\>     |
+  | inOnderzoek.geslachtsnaam                    | \<geslachtsnaam io\>   |
+  | inOnderzoek.aanduidingNaamgebruik            | \<naamgebruik io\>     |
+  | inOnderzoek.voorletters                      | \<voorletters io\>     |
+  | inOnderzoek.volledigeNaam                    | \<volledige naam io\>  |
+  | inOnderzoek.datumIngangOnderzoek.type        | Datum                |
+  | inOnderzoek.datumIngangOnderzoek.datum       | 2012-09-20           |
+  | inOnderzoek.datumIngangOnderzoek.langFormaat | 20 september 2012    |
+
+#### Voorbeelden:
+
+
+  | aanduiding in onderzoek | type                   | voornamen io | titel/predicaat io | voorvoegsel io | geslachtsnaam io | naamgebruik io | voorletters io | volledige naam io |
+  |-------------------------|------------------------|--------------|------/-------------|----------------|------------------|----------------|----------------|-------------------|
+  | 010000                  | hele categorie persoon | true         | true               | true           | true             | true           | true           | true              |
+  | 010200                  | hele groep naam        | true         | true               | true           | true             |                | true           | true              |
+  | 010240                  | geslachtsnaam veld     |              |                    |                | true             |                |                | true              |
+
+## Rule: als een veld in een groep in onderzoek is en er wordt een ander veld in dezelfde/andere groep gevraagd, dan wordt de inOnderzoek veld van de groep niet geleverd
+
+
+### Scenario: burgerservicenummer is in onderzoek, maar wordt niet gevraagd
+
+* __Gegeven__ de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
+
+  | geslachtsaanduiding (04.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+  |-----------------------------|---------------------------------|--------------------------------|
+  | M                           | 010120                          | 20120920                       |
+* __Als__ personen wordt gezocht met de volgende parameters
+
+  | naam                | waarde                          |
+  |---------------------|---------------------------------|
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000097                       |
+  | fields              | geslacht                        |
+* __Dan__ heeft de response een persoon met de volgende gegevens
+
+  | naam                  | waarde |
+  |-----------------------|--------|
+  | geslacht.code         | M      |
+  | geslacht.omschrijving | man    |
+
+
+## Rule: in onderzoek wordt niet geleverd wanneer het onderzoek is beëindigd
+
+
+### Scenario: 'hele categorie persoon' in onderzoek is beëindigd
+
+* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+
+  | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) | datum einde onderzoek (83.30) |
+  |---------------------------------|--------------------------------|-------------------------------|
+  | 010000                          | 20120920                       | 20120922                      |
 * __Als__ personen wordt gezocht met de volgende parameters
 
   | naam                | waarde                          |
   |---------------------|---------------------------------|
   | type                | RaadpleegMetBurgerservicenummer |
   | burgerservicenummer | 000000152                       |
-  | fields              | aNummer                         |
-* __Dan__ heeft de response een persoon zonder gegevens
+  | fields              | burgerservicenummer             |
+* __Dan__ heeft de response een persoon met de volgende gegevens
 
-#### Voorbeelden:
+  | naam                | waarde    |
+  |---------------------|-----------|
+  | burgerservicenummer | 000000152 |
 
-
-  | aanduiding in onderzoek | type                |
-  |-------------------------|---------------------|
-  | 010100                  | hele groep persoon  |
-  | 010120                  | burgerservicenummer |
-
-### Abstract Scenario: '\<type\>' is in onderzoek, maar 'geslacht' wordt niet gevraagd
-
-* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
-
-  | naam                            | waarde                    |
-  |---------------------------------|---------------------------|
-  | aanduiding in onderzoek (83.10) | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)  | 20020701                  |
-  | geslachtsaanduiding (04.10)     | M                         |
-* __Als__ personen wordt gezocht met de volgende parameters
-
-  | naam                | waarde                          |
-  |---------------------|---------------------------------|
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 000000152                       |
-  | fields              | aNummer                         |
-* __Dan__ heeft de response een persoon zonder gegevens
-
-#### Voorbeelden:
+## Rule: voor een afgeleid gegeven wordt in onderzoek geleverd wanneer tenminste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
 
 
-  | aanduiding in onderzoek | type                |
-  |-------------------------|---------------------|
-  | 010400                  | hele groep geslacht |
-  | 010410                  | geslachtsaanduiding |
-
-### Abstract Scenario: '\<type\>' is in onderzoek, maar 'leeftijd' wordt niet gevraagd
-
-* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
-
-  | naam                            | waarde                    |
-  |---------------------------------|---------------------------|
-  | aanduiding in onderzoek (83.10) | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)  | 20020701                  |
-  | geboortedatum (03.10)           | gisteren - 20 jaar        |
-* __Als__ personen wordt gezocht met de volgende parameters
-
-  | naam                | waarde                          |
-  |---------------------|---------------------------------|
-  | type                | RaadpleegMetBurgerservicenummer |
-  | burgerservicenummer | 000000152                       |
-  | fields              | aNummer                         |
-* __Dan__ heeft de response een persoon zonder gegevens
-
-#### Voorbeelden:
-
-
-  | aanduiding in onderzoek | type                |
-  |-------------------------|---------------------|
-  | 010300                  | hele groep geboorte |
-  | 010310                  | geboortedatum       |
-
-### Abstract Scenario: '\<type\>' is in onderzoek, maar 'gemeenteVanInschrijving' wordt niet gevraagd
+### Scenario: 'hele categorie verblijfplaats' is in onderzoek en adresregel1 word gevraagd
 
 * __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
 
-  | naam                            | waarde                    |
-  |---------------------------------|---------------------------|
-  | aanduiding in onderzoek (83.10) | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)  | 20020701                  |
+  | naam                            | waarde   |
+  |---------------------------------|----------|
+  | aanduiding in onderzoek (83.10) | 080000   |
+  | datum ingang onderzoek (83.20)  | 20020701 |
 * __Als__ personen wordt gezocht met de volgende parameters
 
   | naam                | waarde                          |
   |---------------------|---------------------------------|
   | type                | RaadpleegMetBurgerservicenummer |
   | burgerservicenummer | 000000152                       |
-  | fields              | aNummer                         |
-* __Dan__ heeft de response een persoon zonder gegevens
+  | fields              | adressering.adresregel1         |
+* __Dan__ heeft de response een persoon met de volgende 'adressering' gegevens
 
-#### Voorbeelden:
+  | naam                                                       | waarde      |
+  |------------------------------------------------------------|-------------|
+  | inOnderzoek.adresregel1                                    | true        |
+  | inOnderzoek.datumIngangOnderzoekVerblijfplaats.type        | Datum       |
+  | inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum       | 2002-07-01  |
+  | inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat | 1 juli 2002 |
 
+### Scenario: 'hele categorie persoon' is in onderzoek en aanhef wordt gevraagd
 
-  | aanduiding in onderzoek | type                      |
-  |-------------------------|---------------------------|
-  | 080900                  | hele groep gemeente       |
-  | 080910                  | gemeente van inschrijving |
+* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
 
-### Abstract Scenario: '\<type\>' is in onderzoek, maar 'datumInschrijvingInGemeente' wordt niet gevraagd
-
-* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
-
-  | naam                            | waarde                    |
-  |---------------------------------|---------------------------|
-  | aanduiding in onderzoek (83.10) | \<aanduiding in onderzoek\> |
-  | datum ingang onderzoek (83.20)  | 20020701                  |
+  | geslachtsnaam (02.40) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+  |-----------------------|---------------------------------|--------------------------------|
+  | .                     | 010000                          | 20020701                       |
 * __Als__ personen wordt gezocht met de volgende parameters
 
   | naam                | waarde                          |
   |---------------------|---------------------------------|
   | type                | RaadpleegMetBurgerservicenummer |
   | burgerservicenummer | 000000152                       |
-  | fields              | aNummer                         |
-* __Dan__ heeft de response een persoon zonder gegevens
+  | fields              | adressering.aanhef              |
+* __Dan__ heeft de response een persoon met de volgende 'adressering' gegevens
 
-#### Voorbeelden:
+  | naam                                                | waarde      |
+  |-----------------------------------------------------|-------------|
+  | inOnderzoek.aanhef                                  | true        |
+  | inOnderzoek.datumIngangOnderzoekPersoon.type        | Datum       |
+  | inOnderzoek.datumIngangOnderzoekPersoon.datum       | 2002-07-01  |
+  | inOnderzoek.datumIngangOnderzoekPersoon.langFormaat | 1 juli 2002 |
 
+### Scenario: 'hele categorie partner' is in onderzoek en aanschrijfwijze wordt gevraagd
 
-  | aanduiding in onderzoek | type                              |
-  |-------------------------|-----------------------------------|
-  | 080900                  | hele groep gemeente               |
-  | 080920                  | datum inschrijving in de gemeente |
+* __Gegeven__ de persoon met burgerservicenummer '000000152' heeft een 'partner' met de volgende gegevens
+
+  | geslachtsnaam (02.40) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+  |-----------------------|---------------------------------|--------------------------------|
+  | .                     | 050000                          | 20020701                       |
+* __Als__ personen wordt gezocht met de volgende parameters
+
+  | naam                | waarde                          |
+  |---------------------|---------------------------------|
+  | type                | RaadpleegMetBurgerservicenummer |
+  | burgerservicenummer | 000000152                       |
+  | fields              | adressering.aanschrijfwijze     |
+* __Dan__ heeft de response een persoon met de volgende 'adressering' gegevens
+
+  | naam                                                | waarde      |
+  |-----------------------------------------------------|-------------|
+  | inOnderzoek.aanschrijfwijze                         | true        |
+  | inOnderzoek.datumIngangOnderzoekPartner.type        | Datum       |
+  | inOnderzoek.datumIngangOnderzoekPartner.datum       | 2002-07-01  |
+  | inOnderzoek.datumIngangOnderzoekPartner.langFormaat | 1 juli 2002 |
 
