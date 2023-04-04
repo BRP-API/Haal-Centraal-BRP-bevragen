@@ -2,86 +2,44 @@
 
 public partial class AbstractDatum
 {
+    private static DateTime? ToDateTime(AbstractDatum datum)
+    {
+        return datum switch
+        {
+            VolledigeDatum v => v.Datum!.Value.DateTime,
+            JaarDatum v => new DateTime(v.Jaar, 1, 1).AddYears(1),
+            JaarMaandDatum v => new DateTime(v.Jaar, v.Maand, 1).AddMonths(1),
+            _ => null
+        };
+    }
+
     public static bool operator <= (AbstractDatum d, DateTime e)
     {
-        if(d is VolledigeDatum datum)
-        {
-            return datum.Datum <= e;
-        }
-        else if(d is JaarDatum jaarDatum)
-        {
-            var peildatum = new DateTime(jaarDatum.Jaar, 1, 1).AddYears(1);
-            return peildatum <= e;
-        }
-        else if(d is JaarMaandDatum jaarMaandDatum)
-        {
-            var peildatum = new DateTime(jaarMaandDatum.Jaar, jaarMaandDatum.Maand, 1).AddMonths(1);
-            return peildatum <= e;
-        }
-        return false;
+        var peildatum = ToDateTime(d);
+        return peildatum != null && peildatum <= e;
     }
     
     public static bool operator >=(AbstractDatum d, DateTime e)
     {
-        if (d is VolledigeDatum datum)
+        var peildatum = ToDateTime(d);
+        return peildatum != null && peildatum >= e;
+    }
+
+    private static (int year, int month, int day) ToYearMonthDay(AbstractDatum datum)
+    {
+        return datum switch
         {
-            return datum.Datum >= e;
-        }
-        else if (d is JaarDatum jaarDatum)
-        {
-            var peildatum = new DateTime(jaarDatum.Jaar, 1, 1).AddYears(1);
-            return peildatum >= e;
-        }
-        else if (d is JaarMaandDatum jaarMaandDatum)
-        {
-            var peildatum = new DateTime(jaarMaandDatum.Jaar, jaarMaandDatum.Maand, 1).AddMonths(1);
-            return peildatum >= e;
-        }
-        return false;
+            VolledigeDatum v => (v.Datum!.Value.Year, v.Datum!.Value.Month, v.Datum!.Value.Day),
+            JaarMaandDatum v => (v.Jaar, v.Maand, 0),
+            JaarDatum v => (v.Jaar, 0, 0),
+            _ => (0, 0, 0),
+        };
     }
 
     public static bool operator <(AbstractDatum left, AbstractDatum right)
     {
-        var leftYear = 0;
-        var leftMonth = 0;
-        var leftDay = 0;
-        var rightYear = 0;
-        var rightMonth = 0;
-        var rightDay = 0;
-        switch (left)
-        {
-            case VolledigeDatum l:
-                leftYear = l.Datum!.Value.Year;
-                leftMonth = l.Datum!.Value.Month;
-                leftDay = l.Datum!.Value.Day;
-                break;
-            case JaarMaandDatum l:
-                leftYear = l.Jaar;
-                leftMonth = l.Maand;
-                break;
-            case JaarDatum l:
-                leftYear = l.Jaar;
-                break;
-            default:
-                break;
-        }
-        switch (right)
-        {
-            case VolledigeDatum r:
-                rightYear = r.Datum!.Value.Year;
-                rightMonth = r.Datum!.Value.Month;
-                rightDay = r.Datum!.Value.Day;
-                break;
-            case JaarMaandDatum r:
-                rightYear = r.Jaar;
-                rightMonth = r.Maand;
-                break;
-            case JaarDatum r:
-                rightYear = r.Jaar;
-                break;
-            default:
-                break;
-        }
+        (var leftYear, var leftMonth, var leftDay) = ToYearMonthDay(left);
+        (var rightYear, var rightMonth, var rightDay) = ToYearMonthDay(right);
 
         return leftYear < rightYear ||
             (leftYear == rightYear && leftMonth < rightMonth) ||
@@ -90,46 +48,8 @@ public partial class AbstractDatum
 
     public static bool operator >(AbstractDatum left, AbstractDatum right)
     {
-        var leftYear = 0;
-        var leftMonth = 0;
-        var leftDay = 0;
-        var rightYear = 0;
-        var rightMonth = 0;
-        var rightDay = 0;
-        switch (left)
-        {
-            case VolledigeDatum l:
-                leftYear = l.Datum!.Value.Year;
-                leftMonth = l.Datum!.Value.Month;
-                leftDay = l.Datum!.Value.Day;
-                break;
-            case JaarMaandDatum l:
-                leftYear = l.Jaar;
-                leftMonth = l.Maand;
-                break;
-            case JaarDatum l:
-                leftYear = l.Jaar;
-                break;
-            default:
-                break;
-        }
-        switch (right)
-        {
-            case VolledigeDatum r:
-                rightYear = r.Datum!.Value.Year;
-                rightMonth = r.Datum!.Value.Month;
-                rightDay = r.Datum!.Value.Day;
-                break;
-            case JaarMaandDatum r:
-                rightYear = r.Jaar;
-                rightMonth = r.Maand;
-                break;
-            case JaarDatum r:
-                rightYear = r.Jaar;
-                break;
-            default:
-                break;
-        }
+        (var leftYear, var leftMonth, var leftDay) = ToYearMonthDay(left);
+        (var rightYear, var rightMonth, var rightDay) = ToYearMonthDay(right);
 
         return leftYear > rightYear ||
             (leftYear == rightYear && leftMonth > rightMonth) ||
