@@ -7,6 +7,7 @@ title: User Stories BRP Personen bevragen
 
 ## Vanaf versie 2.0
 
+- [Als tester wil ik dat relaties altijd in dezelfde volgorde geleverd worden](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1702){:target="_blank" rel="noopener"}
 - [Als gebruiker wil ik bij zoeken een afgevoerde PL niet vinden](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1233){:target="_blank" rel="noopener"}
 - [Als PO wil ik metagegevens opnemen bij een zoekvraag](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1214){:target="_blank" rel="noopener"}
 - [Als PO wil ik verplicht leveren dat een RNI gegeven is verstrekt door een bestuursorgaan of is geverifieerd door een ABO, inclusief verificatiedatum](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/1213){:target="_blank" rel="noopener"}

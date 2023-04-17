@@ -4,9 +4,9 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5442 scenarios (0 failed, 5442 passed)
+Totaal: 5448 scenarios (0 failed, 5448 passed)
 
-## GBA v2.0.39
+## GBA v2.0.41
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (344 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
@@ -34,12 +34,12 @@ Totaal: 5442 scenarios (0 failed, 5442 passed)
 - [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 388 scenarios (388 passed)
 
 
-## Proxy v2.0.19
+## Proxy v2.0.20
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 222 scenarios (222 passed)
-  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
+  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 531 scenarios (531 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
   - [geboorte](./test-report-persoon-geboorte.html){:target="_blank" rel="noopener"}: 28 scenarios (28 passed)
   - [geheimhouding](./test-report-persoon-geheimhouding.html){:target="_blank" rel="noopener"}: 12 scenarios (12 passed)
@@ -55,6 +55,6 @@ Totaal: 5442 scenarios (0 failed, 5442 passed)
   - [partner](./test-report-persoon-partner.html){:target="_blank" rel="noopener"}: 150 scenarios (150 passed)
   - [rni](./test-report-persoon-rni.html){:target="_blank" rel="noopener"}: 48 scenarios (48 passed)
   - [uitsluiting kiesrecht](./test-report-persoon-uitsluiting-kiesrecht.html){:target="_blank" rel="noopener"}: 26 scenarios (26 passed)
-  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}: 201 scenarios (201 passed)
+  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}: 206 scenarios (206 passed)
   - [verblijfstitel](./test-report-persoon-verblijfstitel.html){:target="_blank" rel="noopener"}: 50 scenarios (50 passed)
   - [verificatie](./test-report-persoon-verificatie.html){:target="_blank" rel="noopener"}: 17 scenarios (17 passed)
