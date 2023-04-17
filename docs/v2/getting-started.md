@@ -14,11 +14,11 @@ Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel
 
 De '{{ site.apiname }}' Web API is gespecificeerd met behulp van de [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3).
 
-De OAS3 specificatie van de '{{ site.apiname }}' Web API kan worden bekeken met behulp van [Redoc](./redoc) of [Swagger](./swagger-ui)
+De OAS3 specificatie van de '{{ site.apiname }}' Web API kan worden bekeken met behulp van [Redoc](./redoc).
 
 Download de [OAS3 specificatie]({{ site.devBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"} van de '{{ site.apiname }}' Web API om hiermee consumer code te genereren.
 
-De [funtionele documentatie](./features-overzicht) van de '{{ site.apiname }}' Web API vindt je in de [features overzicht](./features-overzicht)
+De [funtionele documentatie](./features-overzicht) van de '{{ site.apiname }}' Web API vindt je in de [features overzicht](./features-overzicht).
 
 ## Probeer en test de API in de proef omgeving
 
@@ -43,53 +43,27 @@ De volgende paragrafen beschrijven het installeren en aanroepen van de BrpProxy 
 
 ### Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) voor het hosten van containers. Docker Desktop kan ook worden gebruikt om de containers te hosten met behulp van Kubernetes. Na het installeren van Docker Desktop moet Kubernetes ondersteuning worden aangezet in de Settings/Kubernetes configuratie scherm
-![Enable Kubernetes](../img/docker-desktop-enable-k8s.png)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) voor het hosten van containers
+- Docker Desktop kan ook worden gebruikt om de containers te hosten met behulp van Kubernetes engine. Hiervoor moet in Docker Desktop Kubernetes ondersteuning worden aangezet in de Settings/Kubernetes configuratie scherm ![Enable Kubernetes](../img/docker-desktop-enable-k8s.png)
 
 Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
 
 - [git](https://git-scm.com/downloads) voor het clonen van git repositories
 - [Postman](https://www.postman.com/downloads/) voor het aanroepen van Web APIs
 
-### Clone de {{ site.apiname }} git repository of download het docker compose bestand of de kubernetes bestanden
 
-- Download het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}, de [kubernetes configuratie bestanden]({{ site.devBranchUrl }}/.k8s){:target="_blank" rel="noopener"} of clone de {{ site.apiname }} repository als deze niet eerder al is ge-clone-d
-  ```sh
+### Gebruik Docker als container engine
 
-  git clone {{ site.repoUrl }}.git
-
-  ```
-- Ga naar de folder waar het [docker compose bestand]({{ site.devBranchUrl }}/blob/develop/docker-compose-mock.yml){:target="_blank" rel="noopener"} is gedownload of ga naar de door git aangemaakte folder
-  ```sh
-
-  cd Haal-Centraal-BRP-bevragen
-
-  ```
-- Haal de laatste wijzigingen/toevoegingen op als de {{ site.apiname }} git repository op een eerder moment is ge-clone-d
-  ```sh
-
-  git pull
- 
-  ```
-
-### Draaien van de BrpProxy en de mock van de '{{ site.apiname }}' Web API GBA variant
-
-- Start de BrpProxy en de mock met behulp van het docker compose bestand:
+- Download het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}
+- Start een command prompt window voor de map met het docker-compose.yaml bestand
+- Start de BrpProxy en de mock met behulp van de volgende statement:
   ```sh
 
   docker-compose up -d
 
   ```
-  of start de BrpProxy en de mock met behulp van de kubernetes configuratie bestanden:
-  ```sh
-
-  kubectl apply -f .k8s/brpproxy-deployment.yaml \
-                -f .k8s/brpproxy-service.yaml \
-                -f .k8s/gbamock-deployment.yaml \
-                -f .k8s/gbamock-service.yaml 
-
-  ```
-- De {{ site.apiname }} Web API kan nu worden bevraagd. Gebruik als base url: *http://localhost:5001*. Met behulp van curl kan op een snelle manier worden getest of de BrpProxy en de mock draaien. Start hiervoor een bash shell en voer de volgende curl statement uit in de bash shell:
+  De BrpProxy is nu te benaderen via de url: *http://localhost:5001/haalcentraal/api/brp/personen*
+- Valideer dat de BrpProxy en de mock draaien met behulp van de volgende curl statement:
   ```sh
 
   curl --location --request POST 'http://localhost:5001/haalcentraal/api/brp/personen' \
@@ -101,14 +75,40 @@ Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
   }'
 
   ```
-- Bevraag de {{ site.apiname }} Web API met behulp van Postman. Download en importeer hiervoor de {{ site.apiname }} [OAS3 specificatie]({{ site.devBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"} of de [Postman collection met aanroep voorbeelden]({{ site.devBranchUrl }}/test/BRP-Bevragen-v2-postman-collection.json).
-- Voor het stoppen van de BrpProxy en de mock kan de volgende statement worden uitgevoerd:
+- Om de BrpProxy en de mock containers te stoppen moet de volgende statement worden uitgevoerd:
   ```sh
 
   docker-compose down
 
   ```
-  of voer de volgende statement uit als de kubernetes configuratie bestanden werden gebruikt om de BrpProxy en de mock op te starten:
+
+### Gebruik Kubernetes als container engine
+
+- Download de [kubernetes configuratie bestanden]({{ site.devBranchUrl }}/.k8s){:target="_blank" rel="noopener"}
+- Start een command prompt window voor de map met de kubernetes manifest bestanden
+- Start de BrpProxy en de mock met behulp van de volgende statement:
+  ```sh
+
+  kubectl apply -f .k8s/brpproxy-deployment.yaml \
+                -f .k8s/brpproxy-service.yaml \
+                -f .k8s/gbamock-deployment.yaml \
+                -f .k8s/gbamock-service.yaml 
+
+  ```
+  De BrpProxy is nu te benaderen via de url: *http://localhost:5001/haalcentraal/api/brp/personen*
+- Valideer dat de BrpProxy en de mock draaien met behulp van de volgende curl statement:
+  ```sh
+
+  curl --location --request POST 'http://localhost:5001/haalcentraal/api/brp/personen' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "type": "RaadpleegMetBurgerservicenummer",
+      "burgerservicenummer": ["999993653"],
+      "fields": ["burgerservicenummer"]
+  }'
+
+  ```
+- Om de BrpProxy en de mock containers te stoppen moet de volgende statement worden uitgevoerd:
   ```sh
 
   kubectl delete -f .k8s/brpproxy-deployment.yaml \
