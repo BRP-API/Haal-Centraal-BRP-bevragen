@@ -8,6 +8,8 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - 5341:80
+    networks:
+      - brp-api-network
 
   jaeger:
     container_name: jaeger
@@ -16,6 +18,8 @@ services:
       - 13133:13133
       - 16686:16686
       - 4317:55680
+    networks:
+      - brp-api-network
 
   brpproxy:
     container_name: brpproxy
@@ -31,6 +35,8 @@ services:
       # - Routes__0__DownstreamHostAndPorts__0__Port=443
     ports:
       - "5001:5000"
+    networks:
+      - brp-api-network
     # volumes:
     #   - ./src/config/BrpProxy/configuration:/app/configuration
 
@@ -45,3 +51,9 @@ services:
       - ASPNETCORE_URLS=http://+:5010
     ports:
       - "5010:5010"
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network
