@@ -29,6 +29,11 @@ Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
 
 ## Contact
 
+* Bug Melden
+  [Maak een bug issue aan >>](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
+* Verbeteringen doorgeven
+  [Maak een verbeter issue aan >>](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=enhancement&template=enhancement.md&title=)
+
 * Product Owner: Cathy Dingemanse, [c.dingemanse@comites.nl](mailto:c.dingemanse@comites.nl)
 * Customer zero: Melvin Lee, [melvin.lee@iswish.nl](mailto:melvin.lee@iswish.nl)
 * Tester: Frank Samwel, [frank.samwel@denhaag.nl](mailto:frank.samwel@rvig.nl)
