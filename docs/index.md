@@ -34,9 +34,9 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](.
 ## Contact
 
 * Bug Melden
-  [Maak een bug issue aan >>](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
+  [Maak een bug issue aan >>](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 * Verbeteringen doorgeven
-  [Maak een verbeter issue aan >>](https://github.com/VNG-Realisatie/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=enhancement&template=enhancement.md&title=)
+  [Maak een verbeter issue aan >>](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=enhancement&template=enhancement.md&title=)
 
 * Product Owner: Cathy Dingemanse, [{{ site.PO-email }}](mailto:{{ site.PO-email }})
 * Customer zero: Melvin Lee, [{{ site.CZ-email }}](mailto:{{ site.CZ-email }})
