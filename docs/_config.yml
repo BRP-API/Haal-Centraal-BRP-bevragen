@@ -9,8 +9,8 @@ v2GbaSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevrag
 onboardingUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/docs/230328%20deelname%20experiment%20BRP%20API's%20v1.7.ppsx
 proefProxyUrl: https://proefomgeving.haalcentraal.nl
 
-PO-email: c.dingemanse@comites.nl
-CZ-email: melvin.lee@iswish.nl
+PO-email: cathy.dingemanse@rvig.nl
+CZ-email: melvin.lee@rvig.nl
 Tester-email: frank.samwel@rvig.nl
 
 apiname: "BRP Personen bevragen"
