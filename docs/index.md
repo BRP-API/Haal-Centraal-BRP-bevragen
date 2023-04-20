@@ -33,6 +33,7 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](.
 
 ## Contact
 
+* Heb je een vraag? Neem contact op met Cathy Dingemanse, [{{ site.PO-email }}](mailto:{{ site.PO-email }}) 
 * Bug Melden
   [Maak een bug issue aan >>](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 * Verbeteringen doorgeven
