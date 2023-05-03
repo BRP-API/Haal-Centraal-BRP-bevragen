@@ -35,8 +35,8 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0",
     "@stoplight/spectral-cli": "^6.6.0",
-    "husky": "^4.3.8",
-    "mvn-dl": "^2.0.1"
+    "husky": "^8.0.3",
+    "mvn-dl": "^6.0.0"
   },
   "husky": {
     "hooks": {
