@@ -1,4 +1,4 @@
-# Haal Centraal BRP Persoon bevragen
+# Haal Centraal BRP Personen Bevragen
 
 ![lint oas](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
 ![generate postman collection](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/generate-postman-collection/badge.svg)
@@ -12,7 +12,7 @@ API voor het zoeken en raadplegen van actuele personen, partners, ouders en kind
 * Vraag een API-key voor toegang tot de Haal Centraal probeeromgeving aan bij de product owner [c.dingemanse@comites.nl](c.dingemanse@comites.nl)
 
 ## Heb je meer nodig?
-Gebruik de BRP bevragen API in combinatie met (een van de) andere BRP API’s:
+Gebruik de BRP Personen Bevragen API in combinatie met (een van de) andere BRP API’s:
 
 * [Historische BRP-gegevens bevragen](https://BRP-API.github.io/Haal-Centraal-BRP-historie-bevragen)
 * [Reisdocumenten bevragen](https://BRP-API.github.io/Haal-Centraal-Reisdocumenten-bevragen)

@@ -1,9 +1,38 @@
 ---
 layout: page-with-side-nav
-title: Haal Centraal BRP bevragingen
+title: Haal Centraal BRP Personen Bevragen
 ---
 
-# Releasenotes Haal-Centraal-BRP-Bevragen
+# Releasenotes Haal-Centraal BRP Personen Bevragen
+
+## Versie 2.0.0
+
+- de raadpleeg- en zoeken-endpoints zijn nu samengevoegd in 1 endpoint
+- het request is gewijzigd van GET naar POST, waarbij alle parameters verplaatst zijn van de querystring in de url naar de requestbody
+- requestbody is polymorf gedefinieerd, waarbij in parameter 'type' bepaalt welke parameters gebruikt mogen en moeten worden
+- parameter 'fields' is verplicht (required)
+- beperkingen voor string-parameters in de request body en string-velden in de response zijn aangescherpt met een reguliere expressie (pattern)
+- in het antwoord zitten geen json-HAL elementen \_links en \_embedded
+- in het antwoord is veld 'ingeschrevenPersonen' hernoemd naar 'personen'
+- het antwoord op elke zoekvraag (elk request anders dan raadplegen op burgerservicenummer) bevat maximaal een beperkte set gegevens van de persoon
+- veld 'reisdocumenten' is verwijderd
+- alle datums zijn polymorf gedefinieerd: nieuw veld 'type' geeft aan welke velden voor de datum verwacht kunnen worden
+- alle datums hebben nieuw veld 'langFormaat', waarmee de datum in volledig uitgeschreven formaat wordt geleverd, die direct aan eindgebruikers gepresenteerd kan worden
+- alle enumeraties zijn omgezet naar Waardetabel type, met 'code' plus 'omschrijving'. Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen/blob/master/docs/tabelwaarden.csv voor mogelijke waarden
+- veld 'geslachtsaanduiding' is hernoemd naar 'geslacht'
+- groep 'kiesrecht' is gesplitst in 'uitsluitingKiesrecht' en 'europeesKiesrecht'
+- ook afgeleide gegevens (zoals aanschrijfwijze en leeftijd) zijn opgenomen in 'inOnderzoek'
+- naamvelden 'aanschrijfwijze', 'aanhef' en 'gebruikInLopendeTekst' zijn verplaatst naar groep 'adressering'
+- adresregels zijn verplaatst van groep 'verblijfplaats' naar groep 'adressering'
+- velden 'gemeenteVanInschrijving' en 'datumInschrijvingInGemeente' zijn verplaatst van groep 'verblijfplaats' naar het hoogste niveau ('personen')
+- velden van de immigratie zijn verplaatst van groep 'verblijfplaats' naar groep 'immigratie'
+- velden 'indicatieCurateleRegister' en 'indicatieGezagMinderjarige' zijn verplaatst van groep 'gezagsverhouding' naar het hoogste niveau ('personen')
+- de adresvelden van een verblijfplaats zijn gegroepeerd in verblijfplaats groep 'verblijfadres'
+- groep 'verblijfplaats' is polymorf gedefinieerd, waarbij nieuw veld 'type' aangeeft of het een binnenlands adres, locatie, buitenlands adres of onbekende verblijfplaats is
+- groep 'nationaliteiten' is polymorf gedefinieerd, waarbij nieuw veld 'type' aangeeft of het een nationaliteit, bijzonder Nederlanderschap, staatloosheid of onbekende nationaliteit betreft
+- wanneer er geen actuele partner is (zonder ontbinding van het huwelijk of partnerschap), wordt indien van toepassing het laatst ontbonden huwelijk of partnerschap geleverd, inclusief de datum van de ontbinding
+- wanneer de persoonsgegevens zijn geregistreerd door een RNI deelnemer, worden gegevens daarover opgenomen in groep 'rni'
+- wanneer voor een niet ingezetene (persoon in RNI) de gegevens zijn geverifieerd, worden gegevens daarover opgenomen in groep 'verificatie' 
 
 ## Versie 1.3.1
 - Naambasis (exclusief in InOnderzoek) toegevoegd  i.v.m. specificatie issue m.b.t. dubbel gedefinieerde InOnderzoek. (Zie [850]({{ site.repoUrl }}/issues/850) )
@@ -46,7 +75,7 @@ title: Haal Centraal BRP bevragingen
 
 ## Versie 1.0.0
 
-Alhoewel er nog geen eerdere officiële versie van de Haal-Centraal-BRP-bevragen API als release is uitgebracht is de specificatie het afgelopen jaar redelijk stabiel geweest.
+Alhoewel er nog geen eerdere officiële versie van de Haal-Centraal BRP Personen Bevragen API als release is uitgebracht is de specificatie het afgelopen jaar redelijk stabiel geweest.
 Voor het uitbrengen van release v1.0.0 is besloten om de nieuwe inzichten die het afgelopen jaar zijn opgedaan op te nemen. Hier een globaal (en niet limitatief) overzicht van wijzigingen die doorgevoerd zijn voordat v1.0.0 is uitgebracht. Enkele van deze wijzigingen zijn breaking ten opzichte van v0.9.0 .
 
 We bieden een [postman-collectie]({{ site.masterBranchUrl }}/test) t.b.v. testen aan.

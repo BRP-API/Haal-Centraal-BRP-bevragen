@@ -1,0 +1,126 @@
+openapi: 3.0.3
+info:
+  title: Ouder definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GbaPartner:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        geslacht:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        soortVerbintenis:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+        aangaanHuwelijkPartnerschap:
+          $ref: '#/components/schemas/GbaAangaanHuwelijkPartnerschap'
+        ontbindingHuwelijkPartnerschap:
+          $ref: "#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
+    Partner:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+        geslacht:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        soortVerbintenis:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        naam:
+          $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
+        geboorte:
+          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+        inOnderzoek:
+          $ref: '#/components/schemas/PartnerInOnderzoek'
+        aangaanHuwelijkPartnerschap:
+          $ref: '#/components/schemas/AangaanHuwelijkPartnerschap'
+        ontbindingHuwelijkPartnerschap:
+          $ref: "#/components/schemas/OntbindingHuwelijkPartnerschap"
+    PartnerInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            geslacht:
+              type: boolean
+            soortVerbintenis:
+              type: boolean
+    GbaAangaanHuwelijkPartnerschap:
+      type: object
+      description: |
+        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
+        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        plaats:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+    AangaanHuwelijkPartnerschap:
+      type: object
+      description: |
+        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
+        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        land:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        plaats:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
+    AangaanHuwelijkPartnerschapInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean
+    GbaOntbindingHuwelijkPartnerschap:
+      type: object
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    OntbindingHuwelijkPartnerschap:
+      type: object
+      description: |
+        Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.
+        * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
+      properties:
+        datum:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapInOnderzoek'
+    OntbindingHuwelijkPartnerschapInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean

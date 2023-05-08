@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Filter definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    Field:
+      description: |
+        Het pad naar een gewenst veld in punt-gescheiden formaat. Bijvoorbeeld "burgerservicenummer", "geboorte.datum", "partners.naam.voornamen".
+      type: string
+      pattern: ^[a-zA-Z0-9\._]{1,200}$
+    GeslachtFilter:
+      description: |
+        Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
+      type: string
+      pattern: ^([Mm]|[Vv]|[Oo])$
+      example: "V"
+    GeslachtsnaamFilter:
+      description: |
+        De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
+      example: "Vries"
+    StraatFilter:
+      description: |
+        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** 
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \-\'\.]{1,80}$|^[a-zA-Z0-9À-ž \-\'\.]{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž \-\'\.]{7,79}$
+      example: "Tulpstraat"
+    VoornamenOptioneelFilter:
+      description: |
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
+      example: "Dirk"
+    VoornamenVerplichtFilter:
+      description: |
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
+      example: "Dirk"
+    VoorvoegselFilter:
+      description: |
+        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z \']{1,10}$
+      example: "de"

@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Verblijfstitel definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GbaVerblijfstitel:
+      type: object
+      description: |
+        Gegevens over de verblijfsrechtelijke status van de persoon.
+        * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+        * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
+      properties:
+        aanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumEinde:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        datumIngang:
+          $ref: 'datum.yaml#/components/schemas/GbaDatum'
+        inOnderzoek:
+          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
+    Verblijfstitel:
+      type: object
+      description: |
+        Gegevens over de verblijfsrechtelijke status van de persoon.
+        * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+        * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
+      properties:
+        aanduiding:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+        datumEinde:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        datumIngang:
+          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
+    VerblijfstitelInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn.
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanduiding:
+              type: boolean
+            datumEinde:
+              type: boolean
+            datumIngang:
+              type: boolean

@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: OpschortingBijhouding definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    OpschortingBijhoudingBasis:
+      type: object
+      description: |
+        * **reden** - wordt gevuld met waarden voor 'Reden_Opschorting_Bijhouding' in 'tabelwaarden.csv'.
+      properties:
+        reden:
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+    GbaOpschortingBijhouding:
+      allOf:
+        - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+        - type: object
+          description: |
+            * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+          properties:
+            datum:
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+    OpschortingBijhouding:
+      allOf:
+        - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+        - type: object
+          description: |
+            * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+          properties:
+            datum:
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'

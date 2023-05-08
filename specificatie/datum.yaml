@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Datum definities
+  description: |
+    Definities voor de volgende datum types:
+    - datum conform LO GBA
+    - onbekend datum
+    - 'volledig' datum conform ISO-8601
+    - datum waarvan de dag onbekend is
+    - datum waarvan de maand en dag onbekend is
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    AbstractDatum:
+      type: object
+      required:
+        - type
+        - langFormaat
+      properties:
+        type:
+          type: string
+        langFormaat:
+          type: string
+          pattern: ^[a-z0-9 ]{1,17}$
+      discriminator:
+        propertyName: type
+        mapping:
+          Datum: '#/components/schemas/VolledigeDatum'
+          DatumOnbekend: '#/components/schemas/DatumOnbekend'
+          JaarDatum: '#/components/schemas/JaarDatum'
+          JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
+    GbaDatum:
+      type: string
+      pattern: ^[0-9]{8}$
+      example: "20180700"
+    VolledigeDatum:
+      description: Datum conform iso8601
+      allOf:
+        - $ref: '#/components/schemas/AbstractDatum'
+        - type: object
+          properties:
+            datum:
+              type: string
+              format: date
+      required:
+        - datum
+      example:
+        value:
+          type: Datum
+          datum: "2018-07-01"
+          langFormaat: "1 juli 2018"
+    DatumOnbekend:
+      description: representatie voor een volledig onbekend datum
+      allOf:
+        - $ref: '#/components/schemas/AbstractDatum'
+        - type: object
+          properties:
+            onbekend:
+              type: boolean
+              default: true
+      required:
+        - onbekend
+      example:
+        value:
+          type: DatumOnbekend
+          onbekend: true
+          langFormaat: "onbekend"
+    JaarDatum:
+      description: representatie voor een datum waarvan maand en dag onbekend zijn
+      allOf:
+        - $ref: '#/components/schemas/AbstractDatum'
+        - type: object
+          properties:
+            jaar:
+              $ref: '#/components/schemas/Jaar'
+      required:
+        - jaar
+      example:
+        value:
+          type: JaarDatum
+          jaar: 2018
+          langFormaat: 2018
+    JaarMaandDatum:
+      description: representatie voor een datum waarvan de dag onbekend is
+      allOf:
+        - $ref: '#/components/schemas/AbstractDatum'
+        - type: object
+          properties:
+            jaar:
+              $ref: '#/components/schemas/Jaar'
+            maand:
+              $ref: '#/components/schemas/Maand'
+      required:
+        - jaar
+        - maand
+      example:
+        value:
+          type: JaarMaandDatum
+          jaar: 2018
+          maand: 7
+          langFormaat: "juli 2018"
+    Jaar:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 9999
+    Maand:
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 12

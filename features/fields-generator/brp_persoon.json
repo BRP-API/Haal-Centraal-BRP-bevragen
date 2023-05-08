@@ -1,0 +1,60 @@
+{
+    "projectFolder": "{{vul hier het complete pad naar de GitHub repository}}/Haal-Centraal-BRP-bevragen",
+    "csvSeperator": ",",
+    "ignoreList": [
+    ],
+    "schemaComponents": [
+        {
+            "name": "Persoon"
+        },
+        {
+            "name": "PersoonBeperkt",
+            "fullResource": "Persoon"
+        }        
+    ],
+    "forbiddenFields": [
+        "inOnderzoek",
+        "geheimhoudingPersoonsgegevens",
+        "opschortingBijhouding",
+        "rni",
+        "verificatie"
+    ],
+    "autoFields": [
+        "type"
+    ],
+    "autoComponents": [
+        "AbstractDatum",
+        "VolledigeDatum",
+        "DatumOnbekend",
+        "JaarDatum",
+        "JaarMaandDatum",
+        "Waardetabel",
+        "AdellijkeTitelPredicaatType"
+    ],
+    "aliases": [
+        { 
+            "field": "verblijfplaats", 
+            "alias": "verblijfplaatsBinnenland",
+            "excludeFields": [ "regel1", "regel2", "regel3", "land" ]
+        },
+        { 
+            "field": "adressering", 
+            "alias": "adresseringBinnenland" ,
+            "excludeFields": [ "adresregel3", "land" ]
+        }
+    ],
+    "aliasesFiltered": [
+        { 
+            "field": "verblijfplaats", 
+            "alias": "verblijfplaatsBinnenland",
+            "excludeFields": [ "regel1", "regel2", "regel3", "land" ]
+        },
+        { 
+            "field": "adressering", 
+            "alias": "adresseringBinnenland" ,
+            "excludeFields": [ "adresregel3", "land", "aanhef", "aanschrijfwijze", "gebruikInLopendeTekst" ]
+        }
+    ],
+    "sourceYaml": "/specificatie/genereervariant/openapi.yaml",
+    "fieldslistFolder": "/features/"
+}

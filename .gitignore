@@ -5,3 +5,20 @@ node_modules
 # swagger-codegen-cli
 .swagger-codegen
 .swagger-codegen-ignore
+specificatie/**/README.md
+
+*.suo
+*.user
+
+[Bb]in/
+[Oo]bj/
+
+.vs
+
+Data/
+
+src/config/Database
+
+docs/features/test-result*.*
+
+elastic
