@@ -12,6 +12,7 @@ on:
     tags:
       - v*-proxy
       - v*-mock
+  workflow_dispatch:
 
 env:
   SOLUTION_FILE: BRP.sln
