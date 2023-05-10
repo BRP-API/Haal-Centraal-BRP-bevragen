@@ -4,9 +4,9 @@ on:
   push:
     paths:
       - src/**
-      - feature/**
+      - features/**
       - .github/workflows/ci.yml
-      - .docker/reisdocumenten-api.yml
+      - .docker/brp-api.yml
     branches:
       - master
     tags:
@@ -40,6 +40,8 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js
