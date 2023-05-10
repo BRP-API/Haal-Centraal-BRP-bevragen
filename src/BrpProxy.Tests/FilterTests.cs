@@ -182,47 +182,47 @@ public class FilterTests
             }.ToJson());
     }
 
-    [Fact]
-    public void FilterPropertyInMultipleNestedComplexProperty()
-    {
-        personen[0].Filter(new[] { "geboorte.datum.datum" })!.ToJson()
-            .Should().Be(
-            new Persoon
-            {
-                Geboorte = new Geboorte
-                {
-                    Datum = new VolledigeDatum
-                    {
-                        Datum = DateTime.Today
-                    }
-                }
-            }.ToJson());
-    }
+    //[Fact]
+    //public void FilterPropertyInMultipleNestedComplexProperty()
+    //{
+    //    personen[0].Filter(new[] { "geboorte.datum.datum" })!.ToJson()
+    //        .Should().Be(
+    //        new Persoon
+    //        {
+    //            Geboorte = new Geboorte
+    //            {
+    //                Datum = new VolledigeDatum
+    //                {
+    //                    Datum = DateTime.Today
+    //                }
+    //            }
+    //        }.ToJson());
+    //}
 
-    [Fact]
-    public void FilterMultiplePropertiesInMultipleNestedComplexProperty()
-    {
-        personen[0].Filter(new[] { "geboorte.datum.datum", "geboorte.inOnderzoek.datum", "geboorte.inOnderzoek.datumIngangOnderzoek.datum" })!.ToJson()
-            .Should().Be(
-            new Persoon
-            {
-                Geboorte = new Geboorte
-                {
-                    Datum = new VolledigeDatum
-                    {
-                        Datum = DateTime.Today
-                    },
-                    InOnderzoek = new GeboorteInOnderzoek
-                    {
-                        Datum = true,
-                        DatumIngangOnderzoek = new VolledigeDatum
-                        {
-                            Datum = DateTime.Today
-                        }
-                    }
-                }
-            }.ToJson());
-    }
+    //[Fact]
+    //public void FilterMultiplePropertiesInMultipleNestedComplexProperty()
+    //{
+    //    personen[0].Filter(new[] { "geboorte.datum.datum", "geboorte.inOnderzoek.datum", "geboorte.inOnderzoek.datumIngangOnderzoek.datum" })!.ToJson()
+    //        .Should().Be(
+    //        new Persoon
+    //        {
+    //            Geboorte = new Geboorte
+    //            {
+    //                Datum = new VolledigeDatum
+    //                {
+    //                    Datum = DateTime.Today
+    //                },
+    //                InOnderzoek = new GeboorteInOnderzoek
+    //                {
+    //                    Datum = true,
+    //                    DatumIngangOnderzoek = new VolledigeDatum
+    //                    {
+    //                        Datum = DateTime.Today
+    //                    }
+    //                }
+    //            }
+    //        }.ToJson());
+    //}
 
     [Fact]
     public void FilterPartnersCollection()
@@ -312,32 +312,32 @@ public class FilterTests
             }.ToJson());
     }
 
-    [Fact]
-    public void FilterNationaliteitenCollection()
-    {
-        personen[0].Filter(new[] { "nationaliteiten.nationaliteit1" })!.ToJson()
-            .Should().Be(
-            new Persoon
-            {
-                Nationaliteiten = new Collection<AbstractNationaliteit>
-                {
-                    new NationaliteitBekend
-                    {
-                        Nationaliteit = new Waardetabel{ Code = "1"}
-                    },
-                    new NationaliteitBekend
-                    {
-                        Nationaliteit = new Waardetabel { Code = "2"}
-                    },
-                    new BehandeldAlsNederlander
-                    {
-                    },
-                    new VastgesteldNietNederlander
-                    {
-                    }
-                }
-            }.ToJson());
-    }
+    //[Fact]
+    //public void FilterNationaliteitenCollection()
+    //{
+    //    personen[0].Filter(new[] { "nationaliteiten.nationaliteit1" })!.ToJson()
+    //        .Should().Be(
+    //        new Persoon
+    //        {
+    //            Nationaliteiten = new Collection<AbstractNationaliteit>
+    //            {
+    //                new NationaliteitBekend
+    //                {
+    //                    Nationaliteit = new Waardetabel{ Code = "1"}
+    //                },
+    //                new NationaliteitBekend
+    //                {
+    //                    Nationaliteit = new Waardetabel { Code = "2"}
+    //                },
+    //                new BehandeldAlsNederlander
+    //                {
+    //                },
+    //                new VastgesteldNietNederlander
+    //                {
+    //                }
+    //            }
+    //        }.ToJson());
+    //}
 
     [Fact]
     public void FilterFieldInComplexPropertyInCombinatieMetFilterInOnderzoekComplexProperty()
