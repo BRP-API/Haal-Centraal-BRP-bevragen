@@ -40,7 +40,7 @@ function toDate(dateInText) {
         maand = 0,
         dag = 0;
 
-    var matches = dateInText.match(dagRegex)
+    let matches = dateInText.match(dagRegex)
     if(matches){
         dag = toDay(matches.groups["dag"]);
 
@@ -97,6 +97,20 @@ function toHcDate(dateInText) {
     return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
+// converteer een datum representatie naar een GBA datum (8 cijfers representatie) of een ISO datum of een jaar of een maand
+// of de waarde als deze geen datum representatie is 
+function toDateOrString(value, dateAsDate) {
+    if (value.match(dagRegex) ||
+        value.match(maandRegex) ||
+        value.match(jaarRegex)) {
+        return dateAsDate
+            ? toHcDate(value)
+            : toGbaDate(value);
+    }
+
+    return String(value);
+}
+
 // let dateText = [
 //     "vandaag",
 //     "gisteren",
@@ -118,4 +132,4 @@ function toHcDate(dateInText) {
 //     "volgend jaar - 9 jaar"
 // ].forEach(d => console.log(`${d}: ${toGbaDate(d)} ${toHcDate(d)}`));
 
-module.exports = {dagRegex, maandRegex, jaarRegex, toGbaDate, toHcDate }
+module.exports = {dagRegex, maandRegex, jaarRegex, toGbaDate, toHcDate, toDateOrString }
