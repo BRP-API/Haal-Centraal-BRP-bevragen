@@ -139,7 +139,6 @@ Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een co
     | fields              | adressering,verblijfplaatsBinnenland.verblijfadres |
     Dan heeft de response een persoon met de volgende 'adressering' gegevens
     | naam              | waarde                       |
-    | type              | VerblijfplaatsBuitenland     |
     | adresregel1       | 1600 Pennsylvania Avenue NW  |
     | adresregel2       | Washington, DC 20500         |
     | adresregel3       | Selangor                     |

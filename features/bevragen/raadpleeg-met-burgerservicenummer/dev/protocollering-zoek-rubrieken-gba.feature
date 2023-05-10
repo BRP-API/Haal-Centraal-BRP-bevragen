@@ -42,11 +42,11 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       | anummer (01.10) |
       | 9756070217      |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | naam                               | waarde   |
-      | gemeente van inschrijving (09.10)  | 0599     |
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 0599   |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | naam          | waarde |
-      | gemeente_code | 0599   |
+      | naam                 | waarde |
+      | gemeentecode (92.10) | 0599   |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
