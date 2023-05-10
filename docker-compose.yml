@@ -23,7 +23,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: iswish/haal-centraal-brp-bevragen-proxy:latest
+    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy:latest
     build:
       context: .
       dockerfile: src/BrpProxy/Dockerfile
@@ -42,7 +42,7 @@ services:
 
   gbamock:
     container_name: gbamock
-    image: iswish/haal-centraal-brp-bevragen-gba-mock:latest
+    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock:latest
     build:
       context: .
       dockerfile: src/BrpService/Dockerfile

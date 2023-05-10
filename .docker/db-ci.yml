@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: db
+    image: db-ci
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+   name: brp-api-network

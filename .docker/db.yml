@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: db
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    volumes:
+      # - ../src/config/Database:/var/lib/postgresql/data
+      - ./scripts/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - brp-api-network
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@haalcentraal.nl
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 5433:80
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+   name: brp-api-network
