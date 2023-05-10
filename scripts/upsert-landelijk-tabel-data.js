@@ -3,10 +3,10 @@ const { parse } = require('csv-parse');
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: "root",
-  host: "localhost",
+  user: "",
+  host: "",
   database: "rvig_haalcentraal_testdata",
-  password: "root",
+  password: "",
   port: 5432,
   max: 150
 });
@@ -18,7 +18,8 @@ const tableNameMap = new Map([
   ['Tabel33 Gemeententabel (gesorteerd op code)', 'lo3_gemeente'],
   ['Tabel34 Landentabel (gesorteerd op code)', 'lo3_land'],
   ['Tabel37 Reden opnemen beëindigen nationaliteit', 'lo3_nl_nat_verkrijg_verlies_reden'],
-  ['Tabel38 Adellijke titel predicaat','lo3_titel_predikaat'],
+  ['Tabel38 Adellijke titel predicaat','lo3_titel_predicaat'],
+  ['Tabel56 Verblijfstiteltabel', 'lo3_verblijfstitel_aand'],
   ['Tabel60 RNI-deelnemerstabel (gesorteerd op code)', 'lo3_rni_deelnemer' ],
   ['Tabel61 Gezagsverhoudingtabel (gesorteerd op code)', 'lo3_gezagsverhouding'],
 
@@ -27,15 +28,18 @@ const tableNameMap = new Map([
 // De lijst met kolom namen uit de tabelwaarden bestanden met bijbehorende kolom naam in de database tabel
 const columnNameMap = new Map([
 
-  ['02.21 Adellijke titel/predicaat', 'titel_predikaat'],
-  ['02.02 Omschrijving', 'titel_predikaat_oms'],
-  ['02.23 Soort', 'titel_predikaat_soort'],
+  ['02.21 Adellijke titel/predicaat', 'titel_predicaat'],
+  ['02.02 Omschrijving', 'titel_predicaat_oms'],
+  ['02.23 Soort', 'titel_predicaat_soort'],
 
   ['05.11 Nationaliteitscode', 'nationaliteit_code'],
   ['05.12 Omschrijving', 'nationaliteit_oms'],
 
   ['32.11 Gezagsverhouding', 'gezagsverhouding_code'],
   ['32.12 Omschrijving', 'gezagsverhouding_oms'],
+
+  ['39.11 Verblijfstitel', 'verblijfstitel_aand'],
+  ['39.12 Omschrijving', 'verblijfstitel_aand_oms'],
 
   ['88.11 Code RNI-deelnemer', 'deelnemer_code'],
   ['88.12 Omschrijving', 'deelnemer_oms'],
@@ -62,6 +66,7 @@ function main() {
   upsertLandelijkTabel('Tabel34 Landentabel (gesorteerd op code)');
   upsertLandelijkTabel('Tabel37 Reden opnemen beëindigen nationaliteit');
   upsertLandelijkTabel('Tabel38 Adellijke titel predicaat');
+  upsertLandelijkTabel('Tabel56 Verblijfstiteltabel');
   upsertLandelijkTabel('Tabel60 RNI-deelnemerstabel (gesorteerd op code)');
   upsertLandelijkTabel('Tabel61 Gezagsverhoudingtabel (gesorteerd op code)');
 }
