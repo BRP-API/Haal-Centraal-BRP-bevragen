@@ -4,33 +4,102 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5448 scenarios (0 failed, 5448 passed)
+Totaal: 5444 scenarios (95 failed, 5349 passed)
 
-## GBA v2.0.41
+## GBA v2.0.43
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (344 passed)
-- [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
+- [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (1 failed, 219 passed)
+    - features/bevragen/persoon-beperkt/adressering/adres-regels/dev/fields-gba.feature:510
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 519 scenarios (519 passed)
-  - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
+  - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (6 failed, 104 passed)
+    - features/bevragen/persoon/adressering/aanhef/dev/fields-gba.feature:8
+    - features/bevragen/persoon/adressering/aanschrijfwijze/dev/fields-gba.feature:71
+    - features/bevragen/persoon/adressering/aanschrijfwijze/dev/fields-gba.feature:72
+    - features/bevragen/persoon/adressering/aanschrijfwijze/dev/fields-gba.feature:74
+    - features/bevragen/persoon/adressering/aanschrijfwijze/dev/fields-gba.feature:103
+    - features/bevragen/persoon/adressering/gebruikinlopendetekst/dev/fields-gba.feature:8
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 21 scenarios (21 passed)
   - [geboorte](./test-report-persoon-geboorte-gba.html){:target="_blank" rel="noopener"}: 9 scenarios (9 passed)
   - [geheimhouding](./test-report-persoon-geheimhouding-gba.html){:target="_blank" rel="noopener"}: 12 scenarios (12 passed)
-  - [gezagsverhouding](./test-report-persoon-gezagsverhouding-gba.html){:target="_blank" rel="noopener"}: 34 scenarios (34 passed)
+  - [gezagsverhouding](./test-report-persoon-gezagsverhouding-gba.html){:target="_blank" rel="noopener"}: 34 scenarios (2 failed, 32 passed)
+    - features/bevragen/persoon/gezagsverhouding/dev/gezagsverhouding-gba.feature:223
+    - features/bevragen/persoon/gezagsverhouding/dev/gezagsverhouding-gba.feature:239
   - [immigratie](./test-report-persoon-immigratie-gba.html){:target="_blank" rel="noopener"}: 18 scenarios (18 passed)
-  - [kind](./test-report-persoon-kind-gba.html){:target="_blank" rel="noopener"}: 16 scenarios (16 passed)
+  - [kind](./test-report-persoon-kind-gba.html){:target="_blank" rel="noopener"}: 16 scenarios (4 failed, 12 passed)
+    - features/bevragen/persoon/kind/dev/kinderen-gba.feature:10
+    - features/bevragen/persoon/kind/dev/kinderen-gba.feature:28
+    - features/bevragen/persoon/kind/dev/kinderen-gba.feature:73
+    - features/bevragen/persoon/kind/dev/kinderen-gba.feature:142
   - [leeftijd](./test-report-persoon-leeftijd-gba.html){:target="_blank" rel="noopener"}: 2 scenarios (2 passed)
   - [naam](./test-report-persoon-naam-gba.html){:target="_blank" rel="noopener"}: 15 scenarios (15 passed)
-  - [nationaliteit](./test-report-persoon-nationaliteit-gba.html){:target="_blank" rel="noopener"}: 58 scenarios (58 passed)
+  - [nationaliteit](./test-report-persoon-nationaliteit-gba.html){:target="_blank" rel="noopener"}: 58 scenarios (6 failed, 52 passed)
+    - features/bevragen/persoon/nationaliteit/dev/nationaliteit-gba.feature:154
+    - features/bevragen/persoon/nationaliteit/dev/nationaliteit-gba.feature:177
+    - features/bevragen/persoon/nationaliteit/dev/nationaliteit-gba.feature:200
+    - features/bevragen/persoon/nationaliteit/dev/nationaliteit-gba.feature:223
+    - features/bevragen/persoon/nationaliteit/dev/nationaliteit-gba.feature:243
+    - features/bevragen/persoon/nationaliteit/dev/nationaliteit-gba.feature:262
   - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding-gba.html){:target="_blank" rel="noopener"}: 45 scenarios (45 passed)
   - [ouder](./test-report-persoon-ouder-gba.html){:target="_blank" rel="noopener"}: 32 scenarios (32 passed)
-  - [overlijden](./test-report-persoon-overlijden-gba.html){:target="_blank" rel="noopener"}: 24 scenarios (24 passed)
-  - [partner](./test-report-persoon-partner-gba.html){:target="_blank" rel="noopener"}: 54 scenarios (54 passed)
-  - [rni](./test-report-persoon-rni-gba.html){:target="_blank" rel="noopener"}: 71 scenarios (71 passed)
+  - [overlijden](./test-report-persoon-overlijden-gba.html){:target="_blank" rel="noopener"}: 24 scenarios (2 failed, 22 passed)
+    - features/bevragen/persoon/overlijden/dev/overlijden-onjuist-gba.feature:8
+    - features/bevragen/persoon/overlijden/dev/overlijden-onjuist-gba.feature:29
+  - [partner](./test-report-persoon-partner-gba.html){:target="_blank" rel="noopener"}: 54 scenarios (15 failed, 39 passed)
+    - features/bevragen/persoon/partner/aangaan-huwelijk-partnerschap/dev/aangaanHuwelijkPartnerschap-gba.feature:33
+    - features/bevragen/persoon/partner/aangaan-huwelijk-partnerschap/dev/aangaanHuwelijkPartnerschap-gba.feature:58
+    - features/bevragen/persoon/partner/aangaan-huwelijk-partnerschap/dev/aangaanHuwelijkPartnerschap-gba.feature:79
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:34
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:35
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:36
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:37
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:38
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:39
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:40
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:41
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:43
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:63
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:89
+    - features/bevragen/persoon/partner/dev/overzicht-gba.feature:163
+  - [rni](./test-report-persoon-rni-gba.html){:target="_blank" rel="noopener"}: 71 scenarios (1 failed, 70 passed)
+    - features/bevragen/persoon/rni/dev/overzicht-gba.feature:323
   - [uitsluiting kiesrecht](./test-report-persoon-uitsluiting-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 20 scenarios (20 passed)
   - [verblijfplaats](./test-report-persoon-verblijfplaats-gba.html){:target="_blank" rel="noopener"}: 80 scenarios (80 passed)
-  - [verblijfstitel](./test-report-persoon-verblijfstitel-gba.html){:target="_blank" rel="noopener"}: 11 scenarios (11 passed)
+  - [verblijfstitel](./test-report-persoon-verblijfstitel-gba.html){:target="_blank" rel="noopener"}: 11 scenarios (1 failed, 10 passed)
+    - features/bevragen/persoon/verblijfstitel/dev/verblijfstitel-gba.feature:153
   - [verificatie](./test-report-persoon-verificatie-gba.html){:target="_blank" rel="noopener"}: 13 scenarios (13 passed)
-- [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (788 passed)
+- [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (31 failed, 757 passed)
+    - features/bevragen/autorisatie-gba.feature:334
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:39
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:78
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:79
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:80
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:81
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:82
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:83
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:84
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:85
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:86
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:87
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:88
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:89
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:90
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:91
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:117
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:118
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:119
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:120
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:121
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:122
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:123
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:124
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:125
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:126
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:127
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:128
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:129
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:130
+    - features/bevragen/persoon/partner/dev/autorisatie-gba.feature:134
 - [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 388 scenarios (388 passed)
 
 
@@ -39,22 +108,48 @@ Totaal: 5448 scenarios (0 failed, 5448 passed)
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 357 scenarios (357 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 222 scenarios (222 passed)
-  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 531 scenarios (531 passed)
+  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 531 scenarios (9 failed, 522 passed)
+    - features/bevragen/persoon/adressering/aanschrijfwijze/adellijk.feature:318
+    - features/bevragen/persoon/adressering/aanschrijfwijze/adellijk.feature:319
+    - features/bevragen/persoon/adressering/aanschrijfwijze/adellijk.feature:320
+    - features/bevragen/persoon/adressering/aanschrijfwijze/adellijk.feature:322
+    - features/bevragen/persoon/adressering/in-onderzoek.feature:239
+    - features/bevragen/persoon/adressering/in-onderzoek.feature:240
+    - features/bevragen/persoon/adressering/in-onderzoek.feature:241
+    - features/bevragen/persoon/adressering/in-onderzoek.feature:242
+    - features/bevragen/persoon/adressering/in-onderzoek.feature:243
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
   - [geboorte](./test-report-persoon-geboorte.html){:target="_blank" rel="noopener"}: 28 scenarios (28 passed)
   - [geheimhouding](./test-report-persoon-geheimhouding.html){:target="_blank" rel="noopener"}: 12 scenarios (12 passed)
   - [gezagsverhouding](./test-report-persoon-gezagsverhouding.html){:target="_blank" rel="noopener"}: 19 scenarios (19 passed)
   - [immigratie](./test-report-persoon-immigratie.html){:target="_blank" rel="noopener"}: 36 scenarios (36 passed)
-  - [kind](./test-report-persoon-kind.html){:target="_blank" rel="noopener"}: 85 scenarios (85 passed)
+  - [kind](./test-report-persoon-kind.html){:target="_blank" rel="noopener"}: 85 scenarios (4 failed, 81 passed)
+    - features/bevragen/persoon/kind/kinderen.feature:9
+    - features/bevragen/persoon/kind/kinderen.feature:28
+    - features/bevragen/persoon/kind/kinderen.feature:71
+    - features/bevragen/persoon/kind/kinderen.feature:111
   - [leeftijd](./test-report-persoon-leeftijd.html){:target="_blank" rel="noopener"}: 17 scenarios (17 passed)
   - [naam](./test-report-persoon-naam.html){:target="_blank" rel="noopener"}: 111 scenarios (111 passed)
-  - [nationaliteit](./test-report-persoon-nationaliteit.html){:target="_blank" rel="noopener"}: 120 scenarios (120 passed)
+  - [nationaliteit](./test-report-persoon-nationaliteit.html){:target="_blank" rel="noopener"}: 120 scenarios (1 failed, 119 passed)
+    - features/bevragen/persoon/nationaliteit/overzicht.feature:124
   - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding.html){:target="_blank" rel="noopener"}: 45 scenarios (45 passed)
   - [ouder](./test-report-persoon-ouder.html){:target="_blank" rel="noopener"}: 183 scenarios (183 passed)
   - [overlijden](./test-report-persoon-overlijden.html){:target="_blank" rel="noopener"}: 43 scenarios (43 passed)
   - [partner](./test-report-persoon-partner.html){:target="_blank" rel="noopener"}: 150 scenarios (150 passed)
-  - [rni](./test-report-persoon-rni.html){:target="_blank" rel="noopener"}: 48 scenarios (48 passed)
+  - [rni](./test-report-persoon-rni.html){:target="_blank" rel="noopener"}: 48 scenarios (1 failed, 47 passed)
+    - features/bevragen/persoon/rni/overzicht.feature:370
   - [uitsluiting kiesrecht](./test-report-persoon-uitsluiting-kiesrecht.html){:target="_blank" rel="noopener"}: 26 scenarios (26 passed)
-  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}: 206 scenarios (206 passed)
-  - [verblijfstitel](./test-report-persoon-verblijfstitel.html){:target="_blank" rel="noopener"}: 50 scenarios (50 passed)
+  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}: 202 scenarios (202 passed)
+  - [verblijfstitel](./test-report-persoon-verblijfstitel.html){:target="_blank" rel="noopener"}: 50 scenarios (11 failed, 39 passed)
+    - features/bevragen/persoon/verblijfstitel/fields.feature:100
+    - features/bevragen/persoon/verblijfstitel/fields.feature:101
+    - features/bevragen/persoon/verblijfstitel/fields.feature:102
+    - features/bevragen/persoon/verblijfstitel/fields.feature:103
+    - features/bevragen/persoon/verblijfstitel/fields.feature:104
+    - features/bevragen/persoon/verblijfstitel/fields.feature:105
+    - features/bevragen/persoon/verblijfstitel/fields.feature:106
+    - features/bevragen/persoon/verblijfstitel/fields.feature:134
+    - features/bevragen/persoon/verblijfstitel/fields.feature:135
+    - features/bevragen/persoon/verblijfstitel/fields.feature:136
+    - features/bevragen/persoon/verblijfstitel/fields.feature:137
   - [verificatie](./test-report-persoon-verificatie.html){:target="_blank" rel="noopener"}: 17 scenarios (17 passed)
