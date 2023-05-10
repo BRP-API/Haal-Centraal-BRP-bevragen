@@ -1,7 +1,7 @@
 const reporter = require('cucumber-html-reporter');
 const apiName = 'Haal Centraal BRP Bevragen API';
-const gbaVersion = 'GBA 2.0.37'
-const proxyVersion = 'Proxy 2.0.17'
+const gbaVersion = `GBA ${process.argv[2]}`
+const proxyVersion = `Proxy ${process.argv[3]}`
 
 const features = new Map([
     ['zoeken-en-raadplegen', 'zoeken & raadplegen'],

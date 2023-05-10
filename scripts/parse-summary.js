@@ -185,4 +185,4 @@ function parseFailedScenariosFromSummaryFile(file) {
     return retval;
 }
 
-writeSummaryToMarkdown('./docs/features', './docs/features/index.md', '2.0.37', '2.0.17');
+writeSummaryToMarkdown('./docs/features', './docs/features/index.md', process.argv[2], process.argv[3]);
