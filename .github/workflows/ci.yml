@@ -19,7 +19,7 @@ env:
   API_COMPOSE_FILE: .docker/brp-api.yml
   PROXY_COMPOSE_FILE: .docker/brp-proxy.yml
   PROXY_IMAGE_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy
-  MOCK_IMAGE_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen-mock
+  MOCK_IMAGE_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock
 
 jobs:
   build:
