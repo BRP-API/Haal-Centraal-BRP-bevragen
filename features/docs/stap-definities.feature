@@ -19,7 +19,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Jansen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                      |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)       | 9999,0,0,P,000000012,Jansen |
 
     Scenario: Persoon
@@ -31,7 +31,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Pietersen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                      |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)       | 9999,0,0,P,000000012,Jansen |
 
   Rule: En de persoon is gewijzigd naar de volgende gegevens
@@ -45,7 +45,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Pietersen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                      |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)       | 9999,0,1,P,000000012,Jansen |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,P,Pietersen        |
 
@@ -60,7 +60,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Janssen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                              | values                        |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *          | 0                             |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *          | 0                             |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam,onjuist_ind) VALUES($1,$2,$3,$4,$5,$6,$7) | 9999,0,1,P,000000012,Jansen,O |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                                     | 9999,0,0,P,Janssen            |
 
@@ -72,7 +72,7 @@ Functionaliteit: Stap definities
       | A                                        |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                                 | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,kiesrecht_uitgesl_aand) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | A                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,kiesrecht_uitgesl_aand) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | A                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                     | 9999,0,0,P,000000012 |
 
     Scenario: Persoon heeft 'kiesrecht' gegevens
@@ -81,7 +81,7 @@ Functionaliteit: Stap definities
       | A                                        |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                                               | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind,kiesrecht_uitgesl_aand) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1,$2) RETURNING * | 0,A                  |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind,kiesrecht_uitgesl_aand) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1,$2) RETURNING * | 0,A                  |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                                   | 9999,0,0,P,000000012 |
 
   Rule: En de persoon heeft de volgende '<naam-pl-tabel>' gegevens
@@ -95,7 +95,7 @@ Functionaliteit: Stap definities
       | 1                                  |
       Dan zijn de gegenereerde SQL statements
       | key              | text                                                                                                                                     | values                      |
-      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
       | persoon          | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)       | 9999,0,0,P,000000012,Jansen |
       | gezagsverhouding | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,curatele_register_ind) VALUES($1,$2,$3)                                         | 9999,0,1                    |
 
@@ -110,7 +110,7 @@ Functionaliteit: Stap definities
       | 38                                |
       Dan zijn de gegenereerde SQL statements
       | key            | text                                                                                                                                     | values               |
-      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,1,37            |
       |                | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,0,38            |
@@ -126,7 +126,7 @@ Functionaliteit: Stap definities
       | 1D                                   |
       Dan zijn de gegenereerde SQL statements
       | key              | text                                                                                                                                     | values               |
-      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving     | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon          | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | gezagsverhouding | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,minderjarig_gezag_ind,onjuist_ind) VALUES($1,$2,$3,$4)                          | 9999,1,12,O          |
       |                  | INSERT INTO public.lo3_pl_gezagsverhouding(pl_id,volg_nr,minderjarig_gezag_ind) VALUES($1,$2,$3)                                         | 9999,0,1D            |
@@ -139,7 +139,7 @@ Functionaliteit: Stap definities
       | 37                                |
       Dan zijn de gegenereerde SQL statements
       | key            | text                                                                                                                                     | values               |
-      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,0,37            |
 
@@ -154,7 +154,7 @@ Functionaliteit: Stap definities
       | 38                                |
       Dan zijn de gegenereerde SQL statements
       | key            | text                                                                                                                                     | values               |
-      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | verblijfstitel | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,1,37            |
       |                | INSERT INTO public.lo3_pl_verblijfstitel(pl_id,volg_nr,verblijfstitel_aand) VALUES($1,$2,$3)                                             | 9999,0,38            |
@@ -167,7 +167,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Jansen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | kind-1       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,K,Jansen    |
 
@@ -177,7 +177,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Jansen |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | partner-1    | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,R,Jansen    |
 
@@ -187,7 +187,7 @@ Functionaliteit: Stap definities
       | 0001                  | 001                   | 19750707                        |
       Dan zijn de gegenereerde SQL statements
       | key             | text                                                                                                                                                       | values                     |
-      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                   | 0                          |
+      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                   | 0                          |
       | persoon         | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                           | 9999,0,0,P,000000012       |
       | nationaliteit-1 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nationaliteit_code,nl_nat_verkrijg_reden,geldigheid_start_datum) VALUES($1,$2,$3,$4,$5,$6) | 9999,0,0,0001,001,19750707 |
 
@@ -205,7 +205,7 @@ Functionaliteit: Stap definities
       | William           | Postma                |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                      |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                           |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012        |
       | kind-1       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,K,Jansen           |
       | kind-2       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam,geslachts_naam) VALUES($1,$2,$3,$4,$5,$6)               | 9999,1,0,K,Walter,Messeritz |
@@ -220,7 +220,7 @@ Functionaliteit: Stap definities
       | Aedel                 |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | partner-1    | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,R,Jansen    |
       | partner-2    | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,1,0,R,Aedel     |
@@ -234,7 +234,7 @@ Functionaliteit: Stap definities
       | nationaliteit (05.10) | 0002   |
       Dan zijn de gegenereerde SQL statements
       | key             | text                                                                                                                                                       | values                     |
-      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                   | 0                          |
+      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                   | 0                          |
       | persoon         | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                           | 9999,0,0,P,000000012       |
       | nationaliteit-1 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nationaliteit_code,nl_nat_verkrijg_reden,geldigheid_start_datum) VALUES($1,$2,$3,$4,$5,$6) | 9999,0,0,0001,001,19750707 |
       | nationaliteit-2 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nationaliteit_code) VALUES($1,$2,$3,$4)                                                    | 9999,1,0,0002              |
@@ -250,7 +250,7 @@ Functionaliteit: Stap definities
       | Vica              |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                     |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                          |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                          |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012       |
       | kind-1       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,1,K,Celeke Lodivica |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,0,K,Vica            |
@@ -261,16 +261,16 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Boer   |
       En de persoon heeft nog een 'kind' met de volgende gegevens
       | geslachtsnaam (02.40) |
-      | Boer                  |
+      | Boerin                |
       En het 'kind' is gewijzigd naar de volgende gegevens
       | naam                  | waarde |
       | geslachtsnaam (02.40) | Vries  |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | kind-1       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,K,Boer      |
-      | kind-2       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,1,1,K,Boer      |
+      | kind-2       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,1,1,K,Boerin      |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,1,0,K,Vries     |
 
     Scenario: Persoon heeft een gewijzigd nationaliteit
@@ -282,7 +282,7 @@ Functionaliteit: Stap definities
       | 404                      | 20150131                        |
       Dan zijn de gegenereerde SQL statements
       | key             | text                                                                                                                                                       | values                     |
-      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                   | 0                          |
+      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                   | 0                          |
       | persoon         | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                           | 9999,0,0,P,000000012       |
       | nationaliteit-1 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nationaliteit_code,nl_nat_verkrijg_reden,geldigheid_start_datum) VALUES($1,$2,$3,$4,$5,$6) | 9999,0,1,0001,001,19750707 |
       |                 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nl_nat_verlies_reden,geldigheid_start_datum) VALUES($1,$2,$3,$4,$5)                        | 9999,0,0,404,20150131      |
@@ -298,7 +298,7 @@ Functionaliteit: Stap definities
       | Vries                 |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | kind-1       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam,onjuist_ind) VALUES($1,$2,$3,$4,$5,$6)             | 9999,0,1,K,Boer,O    |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,K,Vries     |
@@ -315,7 +315,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Vries  |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | kind-1       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,K,Boer      |
       | kind-2       | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam,onjuist_ind) VALUES($1,$2,$3,$4,$5,$6)             | 9999,1,1,K,Boer,O    |
@@ -330,7 +330,7 @@ Functionaliteit: Stap definities
       | 0001                  | 301                   | 19760101                        |
       Dan zijn de gegenereerde SQL statements
       | key             | text                                                                                                                                                                      | values                       |
-      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                                  | 0                            |
+      | inschrijving    | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING *                                  | 0                            |
       | persoon         | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                                                          | 9999,0,0,P,000000012         |
       | nationaliteit-1 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nationaliteit_code,nl_nat_verkrijg_reden,geldigheid_start_datum,onjuist_ind) VALUES($1,$2,$3,$4,$5,$6,$7) | 9999,0,1,0001,001,19750707,O |
       |                 | INSERT INTO public.lo3_pl_nationaliteit(pl_id,stapel_nr,volg_nr,nationaliteit_code,nl_nat_verkrijg_reden,geldigheid_start_datum) VALUES($1,$2,$3,$4,$5,$6)                | 9999,0,0,0001,301,19760101   |
@@ -343,7 +343,7 @@ Functionaliteit: Stap definities
       | geslachtsnaam (02.40) | Jansen |
       Dan zijn de gegenereerde SQL statements
       | key                | text                                                                                                                                     | values                       |
-      | inschrijving       | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                            |
+      | inschrijving       | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                            |
       | persoon            | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012         |
       | ouder-<ouder-type> | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,<ouder-type>,Jansen |
 
@@ -363,7 +363,7 @@ Functionaliteit: Stap definities
       | Aedel                 |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values               |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | ouder-1      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,1,Jansen    |
       | ouder-2      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,geslachts_naam) VALUES($1,$2,$3,$4,$5)                            | 9999,0,0,2,Aedel     |
@@ -379,7 +379,7 @@ Functionaliteit: Stap definities
       | voornamen (02.10) | Mark   |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                  |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                       |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                       |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012    |
       | ouder-1      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam,onjuist_ind) VALUES($1,$2,$3,$4,$5,$6)                  | 9999,0,1,1,Christiaan,O |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,0,1,Mark         |
@@ -395,7 +395,7 @@ Functionaliteit: Stap definities
       | voornamen (02.10) | Mark   |
       Dan zijn de gegenereerde SQL statements
       | key          | text                                                                                                                                     | values                |
-      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      | inschrijving | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
       | persoon      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012  |
       | ouder-2      | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,1,2,Christiaan |
       |              | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,voor_naam) VALUES($1,$2,$3,$4,$5)                                 | 9999,0,0,2,Mark       |
@@ -411,10 +411,10 @@ Functionaliteit: Stap definities
         | straatnaam (11.10) | Boterdiep |
       Dan zijn de gegenereerde SQL statements
       | key            | text                                                                                                                                     | values               |
-      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
+      | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                    |
       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 9999,0,0,P,000000012 |
       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,adreshouding_start_datum) VALUES($1,$2,$3,$4)                            | 9999,4999,0,20150808 |
-      | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep            |
+      | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep            |
 
   Rule: Gegeven een adres heeft de volgende gegevens
 
@@ -424,7 +424,7 @@ Functionaliteit: Stap definities
       | straatnaam (11.10) | Boterdiep |
       Dan zijn de gegenereerde SQL statements
       | key   | text                                                                                                                     | values    |
-      | adres | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING * | Boterdiep |
+      | adres | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres),$1) RETURNING * | Boterdiep |
 
   Rule: En de persoon met burgerservicenummer '<bsn>' is ingeschreven op het adres met de volgende gegevens
 
@@ -437,8 +437,8 @@ Functionaliteit: Stap definities
       | 0518                              |
       Dan zijn de gegenereerde SQL statements
       | index | key            | text                                                                                                                                     | values                |
-      | 1     | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep             |
-      | 2     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      | 1     | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep             |
+      | 2     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
       |       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 10000,0,0,P,000000012 |
       |       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,inschrijving_gemeente_code) VALUES($1,$2,$3,$4)                          | 10000,4999,0,0518     |
 
@@ -454,10 +454,10 @@ Functionaliteit: Stap definities
       | 0599                              |
       Dan zijn de gegenereerde SQL statements
       | index | key            | text                                                                                                                                     | values                |
-      | 1     | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT MAX(adres_id)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep             |
-      | 2     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      | 1     | adres          | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep             |
+      | 2     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
       |       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 10000,0,0,P,000000012 |
       |       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,inschrijving_gemeente_code) VALUES($1,$2,$3,$4)                          | 10000,4999,0,0518     |
-      | 3     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT MAX(pl_id)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
+      | 3     | inschrijving   | INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp,$1) RETURNING * | 0                     |
       |       | persoon        | INSERT INTO public.lo3_pl_persoon(pl_id,stapel_nr,volg_nr,persoon_type,burger_service_nr) VALUES($1,$2,$3,$4,$5)                         | 10001,0,0,P,000000013 |
       |       | verblijfplaats | INSERT INTO public.lo3_pl_verblijfplaats(pl_id,adres_id,volg_nr,inschrijving_gemeente_code) VALUES($1,$2,$3,$4)                          | 10001,4999,0,0599     |
