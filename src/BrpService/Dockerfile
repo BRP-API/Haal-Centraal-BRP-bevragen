@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["src/BrpService/BrpService.csproj", "src/BrpService/"]
 RUN dotnet restore "src/BrpService/BrpService.csproj"
 COPY . .
+COPY src/config/BrpService/test-data.json src/BrpService/Data/test-data.json
 WORKDIR "/src/src/BrpService"
 RUN dotnet build "BrpService.csproj" -c Release -o /app/build
 
