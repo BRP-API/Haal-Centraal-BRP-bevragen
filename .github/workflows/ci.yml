@@ -71,6 +71,8 @@ jobs:
         shell: bash
       - name: Validate functional specs
         run: |
+          echo ${{ github.ref_name }}
+          
           ./scripts/specs-verify.sh ${{ secrets.DBHOST }} ${{ secrets.DBUSER }} ${{ secrets.DBPASSWORD }} ${{ secrets.CLIENTID }} ${{ secrets.CLIENTSECRET }}
 
           node ./scripts/generate-cucumber-report.js ${{ vars.API_VERSION }} ${{ vars.PROXY_VERSION }}
