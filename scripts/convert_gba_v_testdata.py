@@ -79,6 +79,8 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
     nationaliteiten = import_landelijke_tabel('Tabel32 Nationaliteitentabel (gesorteerd op code).csv', '05.11 Nationaliteitscode', '05.12 Omschrijving')
     reden_opnemen = import_landelijke_tabel('Tabel37 Reden opnemen beëindigen nationaliteit.csv', '96.10 Reden opnemen/beëindigen nationaliteit', '96.20 Omschrijving')
     gezagsverhoudingen = import_landelijke_tabel('Tabel61 Gezagsverhoudingtabel (gesorteerd op code).csv', '32.11 Gezagsverhouding', '32.12 Omschrijving')
+    titels_predicaten = import_landelijke_tabel('Tabel38 Adellijke titel predicaat.csv', '02.21 Adellijke titel/predicaat', '02.02 Omschrijving')
+    verblijftitels = import_landelijke_tabel('Tabel56 Verblijfstiteltabel.csv', '39.11 Verblijfstitel', '39.12 Omschrijving')
 
     target = []
 
@@ -90,14 +92,17 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
 
             if(target_object.get('id') != ''):
                 add_gemeente_van_inschrijving_omschrijving(target_object, gemeenten)
+                add_kinderen_omschrijvingen(target_object, gemeenten, landen, titels_predicaten)
                 add_plaats_en_land_omschrijvingen(target_object.get('geboorte'), gemeenten, landen)
                 add_plaats_en_land_omschrijvingen(target_object.get('overlijden'), gemeenten, landen)
                 add_omschrijving(target_object.get('indicatieGezagMinderjarige'), gezagsverhoudingen)
-                add_ouders_omschrijvingen(target_object, gemeenten, landen)
-                add_partners_omschrijvingen(target_object, gemeenten, landen)
+                add_ouders_omschrijvingen(target_object, gemeenten, landen, titels_predicaten)
+                add_partners_omschrijvingen(target_object, gemeenten, landen, titels_predicaten)
                 add_nationaliteiten_omschrijvingen(target_object, nationaliteiten, reden_opnemen)
                 add_verblijfplaats_omschrijvingen(target_object, landen)
                 add_immigratie_omschrijvingen(target_object, landen)
+                add_titel_predicaat_omschrijvingen(target_object, titels_predicaten)
+                add_verblijfstitel_omschrijvingen(target_object, verblijftitels)
 
                 del target_object['id']
                 target.append(target_object)
@@ -174,7 +179,21 @@ def add_plaats_en_land_omschrijvingen(target_object, gemeenten_tabel, landen_tab
     add_cijfer_code_omschrijving(target_object.get('plaats'), gemeenten_tabel)    
     add_cijfer_code_omschrijving(target_object.get('land'), landen_tabel)
 
-def add_ouders_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
+def add_kinderen_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, titel_tabel):
+    kinderen = target_object.get('kinderen')
+
+    if kinderen == None:
+        return
+
+    for kind in kinderen:
+        add_plaats_en_land_omschrijvingen(kind.get('geboorte'), gemeenten_tabel, landen_tabel)
+
+        naam = kind.get('naam')
+
+        if naam != None:
+            add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
+
+def add_ouders_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, titel_tabel):
     ouders = target_object.get('ouders')
 
     if ouders == None:
@@ -183,7 +202,12 @@ def add_ouders_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
     for ouder in ouders:
         add_plaats_en_land_omschrijvingen(ouder.get('geboorte'), gemeenten_tabel, landen_tabel)
 
-def add_partners_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
+        naam = ouder.get('naam')
+
+        if naam != None:
+            add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
+
+def add_partners_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, titel_tabel):
     partners = target_object.get('partners')
 
     if partners == None:
@@ -192,6 +216,11 @@ def add_partners_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
     for partner in partners:
         add_plaats_en_land_omschrijvingen(partner.get('geboorte'), gemeenten_tabel, landen_tabel)
         add_plaats_en_land_omschrijvingen(partner.get('aangaanHuwelijkPartnerschap'), gemeenten_tabel, landen_tabel)
+
+        naam = partner.get('naam')
+
+        if naam != None:
+            add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
 
 def add_nationaliteiten_omschrijvingen(target_object, nationaliteiten_tabel, reden_opnemen_tabel):
     nationaliteiten = target_object.get('nationaliteiten')
@@ -218,6 +247,22 @@ def add_immigratie_omschrijvingen(target_object, landen_tabel):
         return
     
     add_cijfer_code_omschrijving(immigratie.get('landVanwaarIngeschreven'), landen_tabel)
+
+def add_titel_predicaat_omschrijvingen(target_object, titel_tabel):
+    naam = target_object.get('naam')
+
+    if naam == None:
+        return
+    
+    add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
+
+def add_verblijfstitel_omschrijvingen(target_object, verblijfstitel_tabel):
+    verblijfstitel = target_object.get('verblijfstitel')
+
+    if verblijfstitel == None:
+        return
+    
+    add_omschrijving(verblijfstitel.get('aanduiding'), verblijfstitel_tabel)
 
 fields_to_map = {
     '01.01.10': 'aNummer',

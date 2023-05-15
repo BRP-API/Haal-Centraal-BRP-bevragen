@@ -294,10 +294,12 @@
         "geboorte": {
           "datum": "19501111",
           "plaats": {
-            "code": "0762"
+            "code": "0762",
+            "omschrijving": "Deurne"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -760,7 +762,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150530",
       "datumIngang": "20100530"
@@ -1009,10 +1012,12 @@
         "geboorte": {
           "datum": "20181114",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -1169,10 +1174,12 @@
         "geboorte": {
           "datum": "19561115",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -1538,10 +1545,12 @@
         "geboorte": {
           "datum": "19931008",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -1692,7 +1701,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20130630",
       "datumIngang": "20080630"
@@ -1953,10 +1963,12 @@
         "geboorte": {
           "datum": "19860208",
           "plaats": {
-            "code": "0909"
+            "code": "0909",
+            "omschrijving": "Grathem"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -2140,10 +2152,12 @@
         "geboorte": {
           "datum": "20010123",
           "plaats": {
-            "code": "0530"
+            "code": "0530",
+            "omschrijving": "Hellevoetsluis"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -2303,10 +2317,12 @@
         "geboorte": {
           "datum": "19780612",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -2483,10 +2499,12 @@
         "geboorte": {
           "datum": "20181114",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -2942,10 +2960,12 @@
         "geboorte": {
           "datum": "19600912",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -3647,7 +3667,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "27"
+        "code": "27",
+        "omschrijving": "Vw 2000 art. 8, sub d, verg. asiel onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20010901"
     }
@@ -4158,10 +4179,12 @@
         "geboorte": {
           "datum": "19941129",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -4677,10 +4700,12 @@
         "geboorte": {
           "datum": "19991208",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -4837,10 +4862,12 @@
         "geboorte": {
           "datum": "19310612",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -5105,10 +5132,12 @@
         "geboorte": {
           "datum": "19501111",
           "plaats": {
-            "code": "0762"
+            "code": "0762",
+            "omschrijving": "Deurne"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -5449,10 +5478,12 @@
         "geboorte": {
           "datum": "19860208",
           "plaats": {
-            "code": "0909"
+            "code": "0909",
+            "omschrijving": "Grathem"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -5679,10 +5710,12 @@
         "geboorte": {
           "datum": "19850317",
           "plaats": {
-            "code": "0200"
+            "code": "0200",
+            "omschrijving": "Apeldoorn"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -5831,10 +5864,12 @@
         "geboorte": {
           "datum": "19650101",
           "plaats": {
-            "code": "0595"
+            "code": "0595",
+            "omschrijving": "Reeuwijk"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -5988,10 +6023,12 @@
         "geboorte": {
           "datum": "19820908",
           "plaats": {
-            "code": "0310"
+            "code": "0310",
+            "omschrijving": "De Bilt"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -6257,10 +6294,12 @@
         "geboorte": {
           "datum": "19800526",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -6762,10 +6801,12 @@
         "geboorte": {
           "datum": "19811219",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -6869,10 +6910,12 @@
         "geboorte": {
           "datum": "20190401",
           "plaats": {
-            "code": "0109"
+            "code": "0109",
+            "omschrijving": "Coevorden"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -7133,10 +7176,12 @@
         "geboorte": {
           "datum": "19800517",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -7572,10 +7617,11 @@
         "geboorte": {
           "datum": "19990909",
           "plaats": {
-            "code": "a.b. KLM Antonie Fokker 7.00 NB 50.00 WL"
+            "omschrijving": "a.b. KLM Antonie Fokker 7.00 NB 50.00 WL"
           },
           "land": {
-            "code": "9999"
+            "code": "9999",
+            "omschrijving": "Internationaal gebied"
           }
         }
       }
@@ -7735,10 +7781,12 @@
         "geboorte": {
           "datum": "19491012",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -7959,7 +8007,8 @@
     "naam": {
       "voornamen": "Jacoba Magdalena",
       "adellijkeTitelPredicaat": {
-        "code": "GI"
+        "code": "GI",
+        "omschrijving": "gravin"
       },
       "voorvoegsel": "te",
       "geslachtsnaam": "Schaars",
@@ -8076,10 +8125,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -8446,10 +8497,12 @@
         "geboorte": {
           "datum": "20061225",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -8562,7 +8615,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20100807"
     }
@@ -9140,10 +9194,12 @@
         "geboorte": {
           "datum": "19970203",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -9734,10 +9790,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -9749,7 +9807,8 @@
     "naam": {
       "voornamen": "Marcelius Gerardus Franciscus Michaelis Vincentius",
       "adellijkeTitelPredicaat": {
-        "code": "B"
+        "code": "B",
+        "omschrijving": "baron"
       },
       "voorvoegsel": "van",
       "geslachtsnaam": "Brest naar Kempen",
@@ -9777,7 +9836,8 @@
         "naam": {
           "voornamen": "Wilhelmina",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "von",
           "geslachtsnaam": "Schonhof"
@@ -9803,7 +9863,8 @@
         "naam": {
           "voornamen": "Marcelius Gerardus Franciscus Michaelis Vincentius",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "van",
           "geslachtsnaam": "Brest naar Kempen"
@@ -9844,7 +9905,8 @@
         "naam": {
           "voornamen": "Carolina",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "van der",
           "geslachtsnaam": "Hom"
@@ -9909,7 +9971,8 @@
         "naam": {
           "voornamen": "Petronella",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "van",
           "geslachtsnaam": "Brest naar Kempen"
@@ -9917,10 +9980,12 @@
         "geboorte": {
           "datum": "19880425",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -10537,10 +10602,12 @@
         "geboorte": {
           "datum": "20190817",
           "plaats": {
-            "code": "0014"
+            "code": "0014",
+            "omschrijving": "Groningen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -10907,17 +10974,19 @@
         "geboorte": {
           "datum": "19590113",
           "plaats": {
-            "code": "Belgrado"
+            "omschrijving": "Belgrado"
           },
           "land": {
-            "code": "6045"
+            "code": "6045",
+            "omschrijving": "Joegoslavië"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20050105"
     }
@@ -11176,17 +11245,20 @@
         "geboorte": {
           "datum": "19950412",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20110321"
     }
@@ -11343,10 +11415,12 @@
         "geboorte": {
           "datum": "19310706",
           "plaats": {
-            "code": "0835"
+            "code": "0835",
+            "omschrijving": "Ravenstein"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -11438,7 +11512,8 @@
     "naam": {
       "voornamen": "John Y B C D",
       "adellijkeTitelPredicaat": {
-        "code": "H"
+        "code": "H",
+        "omschrijving": "hertog"
       },
       "geslachtsnaam": "Bloëmsma",
       "aanduidingNaamgebruik": {
@@ -11465,7 +11540,8 @@
         "naam": {
           "voornamen": "Beatrice Hillegonda Marguerita ",
           "adellijkeTitelPredicaat": {
-            "code": "HI"
+            "code": "HI",
+            "omschrijving": "hertogin"
           },
           "geslachtsnaam": "Bloëmsma"
         },
@@ -11510,7 +11586,8 @@
         "naam": {
           "voornamen": "Johanna",
           "adellijkeTitelPredicaat": {
-            "code": "JV"
+            "code": "JV",
+            "omschrijving": "jonkvrouw"
           },
           "voorvoegsel": "de",
           "geslachtsnaam": "Pruyssenare de la Woestijne"
@@ -11769,10 +11846,12 @@
         "geboorte": {
           "datum": "19850817",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -11930,10 +12009,12 @@
         "geboorte": {
           "datum": "19820410",
           "plaats": {
-            "code": "0545"
+            "code": "0545",
+            "omschrijving": "Leerdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -12222,10 +12303,12 @@
         "geboorte": {
           "datum": "19931008",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -12749,10 +12832,12 @@
         "geboorte": {
           "datum": "19820410",
           "plaats": {
-            "code": "0545"
+            "code": "0545",
+            "omschrijving": "Leerdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -12899,10 +12984,12 @@
         "geboorte": {
           "datum": "19731022",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -13238,7 +13325,8 @@
         "naam": {
           "voornamen": "Karel Maria ",
           "adellijkeTitelPredicaat": {
-            "code": "G"
+            "code": "G",
+            "omschrijving": "graaf"
           },
           "voorvoegsel": "De",
           "geslachtsnaam": "Marchant et d'Ansembourg"
@@ -13308,10 +13396,12 @@
         "geboorte": {
           "datum": "20091202",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -13455,7 +13545,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150530",
       "datumIngang": "20100530"
@@ -14153,10 +14244,12 @@
         "geboorte": {
           "datum": "19900607",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -14310,10 +14403,12 @@
         "geboorte": {
           "datum": "19800517",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -14540,10 +14635,12 @@
         "geboorte": {
           "datum": "20191001",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -14718,10 +14815,12 @@
         "geboorte": {
           "datum": "19870208",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -15029,7 +15128,8 @@
     "naam": {
       "voornamen": "Żáïŀëñøŕ Åłéèç Ðëļŧå",
       "adellijkeTitelPredicaat": {
-        "code": "JV"
+        "code": "JV",
+        "omschrijving": "jonkvrouw"
       },
       "voorvoegsel": "'S",
       "geslachtsnaam": "Streeveld",
@@ -15081,7 +15181,8 @@
         "naam": {
           "voornamen": "Gerke",
           "adellijkeTitelPredicaat": {
-            "code": "JH"
+            "code": "JH",
+            "omschrijving": "jonkheer"
           },
           "voorvoegsel": "'S",
           "geslachtsnaam": "Streeveld"
@@ -15121,7 +15222,8 @@
         "naam": {
           "voornamen": "Jacoba Magdalena",
           "adellijkeTitelPredicaat": {
-            "code": "GI"
+            "code": "GI",
+            "omschrijving": "gravin"
           },
           "voorvoegsel": "te",
           "geslachtsnaam": "Schaars"
@@ -15195,10 +15297,12 @@
         "geboorte": {
           "datum": "19971125",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -15329,10 +15433,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -15628,10 +15734,12 @@
         "geboorte": {
           "datum": "19770716",
           "plaats": {
-            "code": "0687"
+            "code": "0687",
+            "omschrijving": "Middelburg"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -15756,10 +15864,12 @@
         "geboorte": {
           "datum": "20100101",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -15912,10 +16022,12 @@
         "geboorte": {
           "datum": "19850317",
           "plaats": {
-            "code": "0200"
+            "code": "0200",
+            "omschrijving": "Apeldoorn"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -16006,7 +16118,8 @@
         "naam": {
           "voornamen": "Michał Jarosław",
           "adellijkeTitelPredicaat": {
-            "code": "G"
+            "code": "G",
+            "omschrijving": "graaf"
           },
           "geslachtsnaam": "Wałęsa"
         },
@@ -16068,7 +16181,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "40"
+        "code": "40",
+        "omschrijving": "Vw 2000 art. 8, onder e, gemeenschapsonderdaan duurzaam verblijf, arbeid vrij"
       },
       "datumIngang": "20100701"
     }
@@ -16226,10 +16340,12 @@
         "geboorte": {
           "datum": "19220925",
           "plaats": {
-            "code": "1111"
+            "code": "1111",
+            "omschrijving": "Meeuwen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -16680,10 +16796,12 @@
         "geboorte": {
           "datum": "19970503",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -17221,10 +17339,12 @@
         "geboorte": {
           "datum": "19691205",
           "plaats": {
-            "code": "0077"
+            "code": "0077",
+            "omschrijving": "Hindeloopen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -17390,7 +17510,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20130630",
       "datumIngang": "20120910"
@@ -17760,10 +17881,12 @@
         "geboorte": {
           "datum": "19840201",
           "plaats": {
-            "code": "0243"
+            "code": "0243",
+            "omschrijving": "Harderwijk"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -18382,10 +18505,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -18744,10 +18869,12 @@
         "geboorte": {
           "datum": "19681113",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -19284,10 +19411,12 @@
         "geboorte": {
           "datum": "19650612",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -19456,10 +19585,12 @@
         "geboorte": {
           "datum": "19520510",
           "plaats": {
-            "code": "0632"
+            "code": "0632",
+            "omschrijving": "Woerden"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -19578,7 +19709,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150630",
       "datumIngang": "20100630"
@@ -19950,10 +20082,12 @@
         "geboorte": {
           "datum": "19900607",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -20113,10 +20247,12 @@
         "geboorte": {
           "datum": "20190304",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -20614,10 +20750,12 @@
         "geboorte": {
           "datum": "19310612",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -20774,10 +20912,12 @@
         "geboorte": {
           "datum": "19880705",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -21355,10 +21495,12 @@
         "geboorte": {
           "datum": "19491012",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -21618,10 +21760,12 @@
         "geboorte": {
           "datum": "19510223",
           "plaats": {
-            "code": "0796"
+            "code": "0796",
+            "omschrijving": "'s-Hertogenbosch"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -21739,10 +21883,11 @@
         "geboorte": {
           "datum": "20000831",
           "plaats": {
-            "code": "Dendernmonde"
+            "omschrijving": "Dendernmonde"
           },
           "land": {
-            "code": "5010"
+            "code": "5010",
+            "omschrijving": "België"
           }
         }
       }
@@ -22025,10 +22170,12 @@
         "geboorte": {
           "datum": "19650612",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -22183,10 +22330,12 @@
         "geboorte": {
           "datum": "19550909",
           "plaats": {
-            "code": "0835"
+            "code": "0835",
+            "omschrijving": "Ravenstein"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -22343,10 +22492,12 @@
         "geboorte": {
           "datum": "19561115",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -22358,7 +22509,8 @@
     "naam": {
       "voornamen": "Petronella",
       "adellijkeTitelPredicaat": {
-        "code": "BS"
+        "code": "BS",
+        "omschrijving": "barones"
       },
       "voorvoegsel": "van",
       "geslachtsnaam": "Brest naar Kempen",
@@ -22387,7 +22539,8 @@
         "naam": {
           "voornamen": "Carolina",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "van der",
           "geslachtsnaam": "Hom"
@@ -22414,7 +22567,8 @@
         "naam": {
           "voornamen": "Marcelius Gerardus Franciscus Michaelis Vincentius",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "van",
           "geslachtsnaam": "Brest naar Kempen"
@@ -22624,10 +22778,12 @@
         "geboorte": {
           "datum": "20060320",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -22786,10 +22942,12 @@
         "geboorte": {
           "datum": "20060320",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -22945,10 +23103,12 @@
         "geboorte": {
           "datum": "20011201",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -23107,10 +23267,11 @@
         "geboorte": {
           "datum": "20010705",
           "plaats": {
-            "code": "FacatativÆ"
+            "omschrijving": "FacatativÆ"
           },
           "land": {
-            "code": "5033"
+            "code": "5033",
+            "omschrijving": "Colombia"
           }
         }
       }
@@ -23235,10 +23396,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -23387,10 +23550,12 @@
         "geboorte": {
           "datum": "19870208",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -23549,10 +23714,12 @@
         "geboorte": {
           "datum": "19220925",
           "plaats": {
-            "code": "1111"
+            "code": "1111",
+            "omschrijving": "Meeuwen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -23711,10 +23878,12 @@
         "geboorte": {
           "datum": "20020202",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -23826,7 +23995,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20110401",
       "datumIngang": "20060401"
@@ -23838,7 +24008,8 @@
     "naam": {
       "voornamen": "Catherine",
       "adellijkeTitelPredicaat": {
-        "code": "BS"
+        "code": "BS",
+        "omschrijving": "barones"
       },
       "voorvoegsel": "Van",
       "geslachtsnaam": "Nassau la Lecq",
@@ -23866,7 +24037,8 @@
         "naam": {
           "voornamen": "Carolina",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "Van",
           "geslachtsnaam": "Naersen"
@@ -23892,7 +24064,8 @@
         "naam": {
           "voornamen": "Marcelius Gerardus Franciscus Michaelis Vincentius",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "Van",
           "geslachtsnaam": "Nassau la Lecq"
@@ -24462,10 +24635,11 @@
         "geboorte": {
           "datum": "19990909",
           "plaats": {
-            "code": "a.b. KLM Antonie Fokker 7.00 NB 50.00 WL"
+            "omschrijving": "a.b. KLM Antonie Fokker 7.00 NB 50.00 WL"
           },
           "land": {
-            "code": "9999"
+            "code": "9999",
+            "omschrijving": "Internationaal gebied"
           }
         }
       }
@@ -24796,10 +24970,11 @@
         "geboorte": {
           "datum": "19780723",
           "plaats": {
-            "code": "Narbonne"
+            "omschrijving": "Narbonne"
           },
           "land": {
-            "code": "5002"
+            "code": "5002",
+            "omschrijving": "Frankrijk"
           }
         }
       }
@@ -24909,7 +25084,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150801",
       "datumIngang": "20100727"
@@ -25313,10 +25489,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -25552,10 +25730,12 @@
         "geboorte": {
           "datum": "19880705",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -25567,7 +25747,8 @@
     "naam": {
       "voornamen": "Żáïŀëñøŕ Åłéèç Ðëļŧå",
       "adellijkeTitelPredicaat": {
-        "code": "JV"
+        "code": "JV",
+        "omschrijving": "jonkvrouw"
       },
       "voorvoegsel": "S",
       "geslachtsnaam": "Slechte",
@@ -25596,7 +25777,8 @@
         "naam": {
           "voornamen": "Angelique",
           "adellijkeTitelPredicaat": {
-            "code": "JV"
+            "code": "JV",
+            "omschrijving": "jonkvrouw"
           },
           "geslachtsnaam": "Grootenhof"
         },
@@ -25812,10 +25994,12 @@
         "geboorte": {
           "datum": "20030505",
           "plaats": {
-            "code": "0530"
+            "code": "0530",
+            "omschrijving": "Hellevoetsluis"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -25980,10 +26164,12 @@
         "geboorte": {
           "datum": "19960604",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -26391,10 +26577,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -26868,10 +27056,12 @@
         "geboorte": {
           "datum": "19941229",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -27337,7 +27527,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "09"
+        "code": "09",
+        "omschrijving": "Art. 9 van de Vreemdelingenwet"
       },
       "datumIngang": "00000000"
     },
@@ -27679,10 +27870,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -27812,10 +28005,12 @@
         "geboorte": {
           "datum": "20050101",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -28029,10 +28224,12 @@
         "geboorte": {
           "datum": "20181201",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -28202,10 +28399,11 @@
         "geboorte": {
           "datum": "19500723",
           "plaats": {
-            "code": "Narbonne"
+            "omschrijving": "Narbonne"
           },
           "land": {
-            "code": "5002"
+            "code": "5002",
+            "omschrijving": "Frankrijk"
           }
         }
       }
@@ -28365,7 +28563,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "29"
+        "code": "29",
+        "omschrijving": "Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid vrij"
       },
       "datumIngang": "20010425"
     }
@@ -28376,7 +28575,8 @@
     "naam": {
       "voornamen": "Willem",
       "adellijkeTitelPredicaat": {
-        "code": "B"
+        "code": "B",
+        "omschrijving": "baron"
       },
       "voorvoegsel": "van",
       "geslachtsnaam": "Serooskerke",
@@ -28424,7 +28624,8 @@
         "naam": {
           "voornamen": "Jan Willem",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "van",
           "geslachtsnaam": "Serooskerke"
@@ -28592,7 +28793,8 @@
     "naam": {
       "voornamen": "Hendrik Jan",
       "adellijkeTitelPredicaat": {
-        "code": "R"
+        "code": "R",
+        "omschrijving": "ridder"
       },
       "voorvoegsel": "de",
       "geslachtsnaam": "Brink",
@@ -28621,7 +28823,8 @@
         "naam": {
           "voornamen": "Inge",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "de",
           "geslachtsnaam": "Brink"
@@ -28648,7 +28851,8 @@
         "naam": {
           "voornamen": "Piet Hein",
           "adellijkeTitelPredicaat": {
-            "code": "R"
+            "code": "R",
+            "omschrijving": "ridder"
           },
           "voorvoegsel": "de",
           "geslachtsnaam": "Brink"
@@ -28708,7 +28912,8 @@
         "naam": {
           "voornamen": "Carolina",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "van der",
           "geslachtsnaam": "Horn"
@@ -28779,7 +28984,8 @@
         "naam": {
           "voornamen": "Piet",
           "adellijkeTitelPredicaat": {
-            "code": "R"
+            "code": "R",
+            "omschrijving": "ridder"
           },
           "voorvoegsel": "de",
           "geslachtsnaam": "Brink"
@@ -28787,10 +28993,12 @@
         "geboorte": {
           "datum": "19901213",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -29056,10 +29264,12 @@
         "geboorte": {
           "datum": "19800526",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -29179,10 +29389,12 @@
         "geboorte": {
           "datum": "20190526",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -29605,10 +29817,12 @@
         "geboorte": {
           "datum": "19790607",
           "plaats": {
-            "code": "0548"
+            "code": "0548",
+            "omschrijving": "Leidschendam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -30225,10 +30439,12 @@
         "geboorte": {
           "datum": "19231205",
           "plaats": {
-            "code": "1033"
+            "code": "1033",
+            "omschrijving": "Buggenum"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -30690,10 +30906,12 @@
         "geboorte": {
           "datum": "19941229",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -30841,10 +31059,12 @@
         "geboorte": {
           "datum": "19920909",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -30856,7 +31076,8 @@
     "naam": {
       "voornamen": "Żáïŀëñøŕse Åłéèçs ",
       "adellijkeTitelPredicaat": {
-        "code": "JV"
+        "code": "JV",
+        "omschrijving": "jonkvrouw"
       },
       "voorvoegsel": "'S",
       "geslachtsnaam": "Streefhoek"
@@ -31353,10 +31574,12 @@
         "geboorte": {
           "datum": "19611208",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -31479,10 +31702,12 @@
         "geboorte": {
           "datum": "19980227",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -31606,10 +31831,12 @@
         "geboorte": {
           "datum": "20200215",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -32073,10 +32300,12 @@
         "geboorte": {
           "datum": "19681113",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -32554,10 +32783,12 @@
         "geboorte": {
           "datum": "20190901",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -32710,17 +32941,20 @@
         "geboorte": {
           "datum": "20100801",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20040525"
     }
@@ -32872,10 +33106,12 @@
         "geboorte": {
           "datum": "19600805",
           "plaats": {
-            "code": "0268"
+            "code": "0268",
+            "omschrijving": "Nijmegen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -33034,10 +33270,12 @@
         "geboorte": {
           "datum": "19631207",
           "plaats": {
-            "code": "0243"
+            "code": "0243",
+            "omschrijving": "Harderwijk"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -33196,10 +33434,12 @@
         "geboorte": {
           "datum": "19811219",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -33648,7 +33888,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20101001"
     }
@@ -33758,7 +33999,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150801",
       "datumIngang": "20100727"
@@ -33866,7 +34108,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20110412",
       "datumIngang": "20100812"
@@ -34066,10 +34309,12 @@
         "geboorte": {
           "datum": "20200215",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -34160,7 +34405,8 @@
     "naam": {
       "voornamen": "Robert Johannes",
       "adellijkeTitelPredicaat": {
-        "code": "G"
+        "code": "G",
+        "omschrijving": "graaf"
       },
       "voorvoegsel": "van der",
       "geslachtsnaam": "Leijenhorst",
@@ -34212,7 +34458,8 @@
         "naam": {
           "voornamen": "Jan",
           "adellijkeTitelPredicaat": {
-            "code": "G"
+            "code": "G",
+            "omschrijving": "graaf"
           },
           "voorvoegsel": "van der",
           "geslachtsnaam": "Leijenhorst"
@@ -34387,10 +34634,12 @@
         "geboorte": {
           "datum": "20190223",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -34514,10 +34763,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -34749,10 +35000,12 @@
         "geboorte": {
           "datum": "20090101",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -34909,10 +35162,12 @@
         "geboorte": {
           "datum": "19561115",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -35415,7 +35670,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "09"
+        "code": "09",
+        "omschrijving": "Art. 9 van de Vreemdelingenwet"
       },
       "datumIngang": "00000000"
     },
@@ -35655,10 +35911,12 @@
         "geboorte": {
           "datum": "20001012",
           "plaats": {
-            "code": "0415"
+            "code": "0415",
+            "omschrijving": "Landsmeer"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -35817,17 +36075,19 @@
         "geboorte": {
           "datum": "19590113",
           "plaats": {
-            "code": "Belgrado"
+            "omschrijving": "Belgrado"
           },
           "land": {
-            "code": "6045"
+            "code": "6045",
+            "omschrijving": "Joegoslavië"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20050105"
     }
@@ -35983,10 +36243,12 @@
         "geboorte": {
           "datum": "19310706",
           "plaats": {
-            "code": "0835"
+            "code": "0835",
+            "omschrijving": "Ravenstein"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -36606,10 +36868,12 @@
         "geboorte": {
           "datum": "19820908",
           "plaats": {
-            "code": "0310"
+            "code": "0310",
+            "omschrijving": "De Bilt"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -36744,10 +37008,12 @@
         "geboorte": {
           "datum": "20030505",
           "plaats": {
-            "code": "0530"
+            "code": "0530",
+            "omschrijving": "Hellevoetsluis"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -36904,10 +37170,12 @@
         "geboorte": {
           "datum": "19880705",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -37015,10 +37283,12 @@
         "geboorte": {
           "datum": "19850817",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -37175,10 +37445,12 @@
         "geboorte": {
           "datum": "19231205",
           "plaats": {
-            "code": "1033"
+            "code": "1033",
+            "omschrijving": "Buggenum"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -37294,10 +37566,12 @@
         "geboorte": {
           "datum": "19841219",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -37761,10 +38035,12 @@
         "geboorte": {
           "datum": "20010123",
           "plaats": {
-            "code": "0530"
+            "code": "0530",
+            "omschrijving": "Hellevoetsluis"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -38307,10 +38583,11 @@
         "geboorte": {
           "datum": "19500723",
           "plaats": {
-            "code": "Narbonne"
+            "omschrijving": "Narbonne"
           },
           "land": {
-            "code": "5002"
+            "code": "5002",
+            "omschrijving": "Frankrijk"
           }
         }
       }
@@ -38458,10 +38735,12 @@
         "geboorte": {
           "datum": "19691205",
           "plaats": {
-            "code": "0077"
+            "code": "0077",
+            "omschrijving": "Hindeloopen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -38588,10 +38867,12 @@
         "geboorte": {
           "datum": "19990727",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -39064,10 +39345,12 @@
         "geboorte": {
           "datum": "20190727",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -39079,7 +39362,8 @@
     "naam": {
       "voornamen": "Ramon",
       "adellijkeTitelPredicaat": {
-        "code": "M"
+        "code": "M",
+        "omschrijving": "markies"
       },
       "voorvoegsel": "de la",
       "geslachtsnaam": "Aafjörð",
@@ -39442,7 +39726,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150630",
       "datumIngang": "20100630"
@@ -39598,10 +39883,12 @@
         "geboorte": {
           "datum": "19550909",
           "plaats": {
-            "code": "0835"
+            "code": "0835",
+            "omschrijving": "Ravenstein"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -39715,7 +40002,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20110321"
     }
@@ -39873,10 +40161,12 @@
         "geboorte": {
           "datum": "20020202",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -40032,10 +40322,12 @@
         "geboorte": {
           "datum": "19941129",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -40188,17 +40480,19 @@
         "geboorte": {
           "datum": "19870410",
           "plaats": {
-            "code": "Toulouse"
+            "omschrijving": "Toulouse"
           },
           "land": {
-            "code": "5002"
+            "code": "5002",
+            "omschrijving": "Frankrijk"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "29"
+        "code": "29",
+        "omschrijving": "Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid vrij"
       },
       "datumIngang": "20010426"
     },
@@ -40678,10 +40972,11 @@
         "geboorte": {
           "datum": "19720220",
           "plaats": {
-            "code": "Pretoria"
+            "omschrijving": "Pretoria"
           },
           "land": {
-            "code": "5014"
+            "code": "5014",
+            "omschrijving": "Zuid-Afrika"
           }
         }
       }
@@ -40836,10 +41131,12 @@
         "geboorte": {
           "datum": "19840201",
           "plaats": {
-            "code": "0243"
+            "code": "0243",
+            "omschrijving": "Harderwijk"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -41109,10 +41406,12 @@
         "geboorte": {
           "datum": "19590319",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -41496,10 +41795,12 @@
         "geboorte": {
           "datum": "19970503",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -41618,7 +41919,8 @@
     "naam": {
       "voornamen": "Żáïŀëñøŕ Åłéèç Ðëļŧå",
       "adellijkeTitelPredicaat": {
-        "code": "JV"
+        "code": "JV",
+        "omschrijving": "jonkvrouw"
       },
       "voorvoegsel": "'S",
       "geslachtsnaam": "Streeveld",
@@ -41669,7 +41971,8 @@
         "naam": {
           "voornamen": "Gerke",
           "adellijkeTitelPredicaat": {
-            "code": "JH"
+            "code": "JH",
+            "omschrijving": "jonkheer"
           },
           "voorvoegsel": "'S",
           "geslachtsnaam": "Streeveld"
@@ -41720,7 +42023,8 @@
         "naam": {
           "voornamen": "Jacoba Magdalena",
           "adellijkeTitelPredicaat": {
-            "code": "GI"
+            "code": "GI",
+            "omschrijving": "gravin"
           },
           "voorvoegsel": "te",
           "geslachtsnaam": "Schaars"
@@ -41799,10 +42103,12 @@
         "geboorte": {
           "datum": "19971125",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -42256,10 +42562,12 @@
         "geboorte": {
           "datum": "19650612",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -42527,10 +42835,12 @@
         "geboorte": {
           "datum": "19590319",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -42942,10 +43252,12 @@
         "geboorte": {
           "datum": "19790607",
           "plaats": {
-            "code": "0548"
+            "code": "0548",
+            "omschrijving": "Leidschendam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -43104,10 +43416,12 @@
         "geboorte": {
           "datum": "20031107",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -43221,7 +43535,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20150630",
       "datumIngang": "20100630"
@@ -43380,10 +43695,12 @@
         "geboorte": {
           "datum": "19780612",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -43653,10 +43970,12 @@
         "geboorte": {
           "datum": "20030303",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -43668,7 +43987,8 @@
     "naam": {
       "voornamen": "Arnitta",
       "adellijkeTitelPredicaat": {
-        "code": "BS"
+        "code": "BS",
+        "omschrijving": "barones"
       },
       "voorvoegsel": "van",
       "geslachtsnaam": "Brabo"
@@ -43897,10 +44217,12 @@
         "geboorte": {
           "datum": "19600805",
           "plaats": {
-            "code": "0268"
+            "code": "0268",
+            "omschrijving": "Nijmegen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -44162,10 +44484,12 @@
         "geboorte": {
           "datum": "19941129",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -44426,10 +44750,12 @@
         "geboorte": {
           "datum": "19840623",
           "plaats": {
-            "code": "0796"
+            "code": "0796",
+            "omschrijving": "'s-Hertogenbosch"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -44791,10 +45117,12 @@
         "geboorte": {
           "datum": "20061225",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -44930,7 +45258,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "09"
+        "code": "09",
+        "omschrijving": "Art. 9 van de Vreemdelingenwet"
       },
       "datumIngang": "00000000"
     },
@@ -45203,10 +45532,12 @@
         "geboorte": {
           "datum": "19810427",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -45341,10 +45672,12 @@
         "geboorte": {
           "datum": "20050123",
           "plaats": {
-            "code": "0530"
+            "code": "0530",
+            "omschrijving": "Hellevoetsluis"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -45501,10 +45834,12 @@
         "geboorte": {
           "datum": "20100801",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -45659,10 +45994,12 @@
         "geboorte": {
           "datum": "20010101",
           "plaats": {
-            "code": "0548"
+            "code": "0548",
+            "omschrijving": "Leidschendam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -45782,7 +46119,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "29"
+        "code": "29",
+        "omschrijving": "Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid vrij"
       },
       "datumIngang": "20010425"
     }
@@ -46070,10 +46408,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -46324,10 +46664,12 @@
         "geboorte": {
           "datum": "19840912",
           "plaats": {
-            "code": "0289"
+            "code": "0289",
+            "omschrijving": "Wageningen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -46589,10 +46931,12 @@
         "geboorte": {
           "datum": "19880705",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -46813,10 +47157,12 @@
         "geboorte": {
           "datum": "19991208",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -46931,7 +47277,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "29"
+        "code": "29",
+        "omschrijving": "Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid vrij"
       },
       "datumIngang": "20010401"
     }
@@ -47080,7 +47427,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "98"
+        "code": "98",
+        "omschrijving": "geen verblijfstitel (meer)"
       },
       "datumIngang": "20040520"
     }
@@ -47244,10 +47592,12 @@
         "geboorte": {
           "datum": "19770716",
           "plaats": {
-            "code": "0687"
+            "code": "0687",
+            "omschrijving": "Middelburg"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -47999,10 +48349,12 @@
         "geboorte": {
           "datum": "19510223",
           "plaats": {
-            "code": "0796"
+            "code": "0796",
+            "omschrijving": "'s-Hertogenbosch"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -48723,10 +49075,12 @@
         "geboorte": {
           "datum": "20100101",
           "plaats": {
-            "code": "0653"
+            "code": "0653",
+            "omschrijving": "Gaasterlân-Sleat"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -49095,10 +49449,12 @@
         "geboorte": {
           "datum": "19810427",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -49333,10 +49689,12 @@
         "geboorte": {
           "datum": "19990727",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -49806,10 +50164,12 @@
         "geboorte": {
           "datum": "19941229",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -50078,17 +50438,19 @@
         "geboorte": {
           "datum": "19940704",
           "plaats": {
-            "code": "Valleta"
+            "omschrijving": "Valleta"
           },
           "land": {
-            "code": "7003"
+            "code": "7003",
+            "omschrijving": "Malta"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20130228",
       "datumIngang": "20080229"
@@ -50247,10 +50609,12 @@
         "geboorte": {
           "datum": "20031107",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -50558,10 +50922,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -50696,10 +51062,12 @@
         "geboorte": {
           "datum": "20050123",
           "plaats": {
-            "code": "0530"
+            "code": "0530",
+            "omschrijving": "Hellevoetsluis"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -50869,10 +51237,12 @@
         "geboorte": {
           "datum": "19650101",
           "plaats": {
-            "code": "0595"
+            "code": "0595",
+            "omschrijving": "Reeuwijk"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -51001,10 +51371,12 @@
         "geboorte": {
           "datum": "20050101",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -51322,7 +51694,8 @@
     "naam": {
       "voornamen": "Prince-Fritz-Cruene-August-Willem-Jan-Hendrik-Dick Dicky Bondjol-S Baydr-al-Fay Muhammed Jhompo-A-Loktoe Kolokoe-Jiji",
       "adellijkeTitelPredicaat": {
-        "code": "B"
+        "code": "B",
+        "omschrijving": "baron"
       },
       "voorvoegsel": "Van Der",
       "geslachtsnaam": "B",
@@ -51539,10 +51912,12 @@
         "geboorte": {
           "datum": "19970203",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -51687,7 +52062,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20100630"
     }
@@ -51842,10 +52218,12 @@
         "geboorte": {
           "datum": "19791208",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -52128,10 +52506,12 @@
         "geboorte": {
           "datum": "20011201",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -52251,10 +52631,12 @@
         "geboorte": {
           "datum": "19931226",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -52376,10 +52758,12 @@
         "geboorte": {
           "datum": "20181201",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -52538,10 +52922,12 @@
         "geboorte": {
           "datum": "19600912",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -52764,7 +53150,8 @@
     "naam": {
       "voornamen": "Carolina",
       "adellijkeTitelPredicaat": {
-        "code": "BS"
+        "code": "BS",
+        "omschrijving": "barones"
       },
       "voorvoegsel": "Van",
       "geslachtsnaam": "Naersen",
@@ -52791,7 +53178,8 @@
         "naam": {
           "voornamen": "Andrea",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "geslachtsnaam": "Gram"
         },
@@ -52815,7 +53203,8 @@
         "naam": {
           "voornamen": "Christoffel",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "Van",
           "geslachtsnaam": "Naersen"
@@ -52855,7 +53244,8 @@
         "naam": {
           "voornamen": "Marcelius Gerardus Franciscus Michaelis Vincentius",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "Van",
           "geslachtsnaam": "Nassau la Lecq"
@@ -52916,7 +53306,8 @@
         "naam": {
           "voornamen": "Catherine",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "Van",
           "geslachtsnaam": "Nassau la Lecq"
@@ -52924,10 +53315,11 @@
         "geboorte": {
           "datum": "19880425",
           "plaats": {
-            "code": "Valleta"
+            "omschrijving": "Valleta"
           },
           "land": {
-            "code": "7003"
+            "code": "7003",
+            "omschrijving": "Malta"
           }
         }
       }
@@ -53059,10 +53451,12 @@
         "geboorte": {
           "datum": "19941129",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -53287,7 +53681,8 @@
     "naam": {
       "voornamen": "Theodoor-Christiaan R. Philip ",
       "adellijkeTitelPredicaat": {
-        "code": "G"
+        "code": "G",
+        "omschrijving": "graaf"
       },
       "voorvoegsel": "van der",
       "geslachtsnaam": "Ven-Van Roedelrode tot Broekzucht",
@@ -53315,7 +53710,8 @@
         "naam": {
           "voornamen": "Pieternella Marina",
           "adellijkeTitelPredicaat": {
-            "code": "GI"
+            "code": "GI",
+            "omschrijving": "gravin"
           },
           "voorvoegsel": "van der",
           "geslachtsnaam": "Ven-Van Roedelrode tot Broekzucht"
@@ -53521,10 +53917,12 @@
         "geboorte": {
           "datum": "19631207",
           "plaats": {
-            "code": "0243"
+            "code": "0243",
+            "omschrijving": "Harderwijk"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -53681,10 +54079,12 @@
         "geboorte": {
           "datum": "19561115",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -54135,10 +54535,11 @@
         "geboorte": {
           "datum": "20010705",
           "plaats": {
-            "code": "FacatativÆ"
+            "omschrijving": "FacatativÆ"
           },
           "land": {
-            "code": "5033"
+            "code": "5033",
+            "omschrijving": "Colombia"
           }
         }
       }
@@ -54600,7 +55001,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20080229"
     }
@@ -54753,10 +55155,12 @@
         "geboorte": {
           "datum": "19650612",
           "plaats": {
-            "code": "0218"
+            "code": "0218",
+            "omschrijving": "Didam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -54915,10 +55319,12 @@
         "geboorte": {
           "datum": "20030303",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -55074,10 +55480,12 @@
         "geboorte": {
           "datum": "19941130",
           "plaats": {
-            "code": "0299"
+            "code": "0299",
+            "omschrijving": "Zevenaar"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -55438,17 +55846,20 @@
         "geboorte": {
           "datum": "19940704",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "21"
+        "code": "21",
+        "omschrijving": "Vw 2000 art. 8, onder a, vergunning regulier bepaalde tijd, arbeid vrij"
       },
       "datumEinde": "20130228",
       "datumIngang": "20080229"
@@ -55753,10 +56164,12 @@
         "geboorte": {
           "datum": "20010101",
           "plaats": {
-            "code": "0548"
+            "code": "0548",
+            "omschrijving": "Leidschendam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -55768,7 +56181,8 @@
     "naam": {
       "voornamen": "Carolina",
       "adellijkeTitelPredicaat": {
-        "code": "BS"
+        "code": "BS",
+        "omschrijving": "barones"
       },
       "voorvoegsel": "van der",
       "geslachtsnaam": "Hom",
@@ -55796,7 +56210,8 @@
         "naam": {
           "voornamen": "Andrea",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "geslachtsnaam": "Gram"
         },
@@ -55821,7 +56236,8 @@
         "naam": {
           "voornamen": "Christoffel",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "van der",
           "geslachtsnaam": "Hom"
@@ -55862,7 +56278,8 @@
         "naam": {
           "voornamen": "Marcelius Gerardus Franciscus Michaelis Vincentius",
           "adellijkeTitelPredicaat": {
-            "code": "B"
+            "code": "B",
+            "omschrijving": "baron"
           },
           "voorvoegsel": "van",
           "geslachtsnaam": "Brest naar Kempen"
@@ -55924,7 +56341,8 @@
         "naam": {
           "voornamen": "Petronella",
           "adellijkeTitelPredicaat": {
-            "code": "BS"
+            "code": "BS",
+            "omschrijving": "barones"
           },
           "voorvoegsel": "van",
           "geslachtsnaam": "Brest naar Kempen"
@@ -55932,10 +56350,12 @@
         "geboorte": {
           "datum": "19880425",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -58175,7 +58595,8 @@
             "code": "1810"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -58332,7 +58753,8 @@
             "code": "1810"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -58825,10 +59247,11 @@
         "geboorte": {
           "datum": "19870410",
           "plaats": {
-            "code": "Toulouse"
+            "omschrijving": "Toulouse"
           },
           "land": {
-            "code": "5002"
+            "code": "5002",
+            "omschrijving": "Frankrijk"
           }
         }
       }
@@ -59005,10 +59428,11 @@
         "geboorte": {
           "datum": "19500723",
           "plaats": {
-            "code": "Narbonne"
+            "omschrijving": "Narbonne"
           },
           "land": {
-            "code": "5002"
+            "code": "5002",
+            "omschrijving": "Frankrijk"
           }
         }
       }
@@ -59517,10 +59941,11 @@
         "geboorte": {
           "datum": "19720220",
           "plaats": {
-            "code": "Pretoria"
+            "omschrijving": "Pretoria"
           },
           "land": {
-            "code": "5014"
+            "code": "5014",
+            "omschrijving": "Zuid-Afrika"
           }
         }
       }
@@ -61168,10 +61593,12 @@
         "geboorte": {
           "datum": "20021201",
           "plaats": {
-            "code": "1731"
+            "code": "1731",
+            "omschrijving": "Midden-Drenthe"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -61425,10 +61852,11 @@
         "geboorte": {
           "datum": "19981101",
           "plaats": {
-            "code": "Shaumyan"
+            "omschrijving": "Shaumyan"
           },
           "land": {
-            "code": "9049"
+            "code": "9049",
+            "omschrijving": "Sovjet-Unie"
           }
         }
       }
@@ -63231,10 +63659,12 @@
         "geboorte": {
           "datum": "20190901",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -63573,10 +64003,12 @@
         "geboorte": {
           "datum": "20190223",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -63910,10 +64342,12 @@
         "geboorte": {
           "datum": "20190727",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -64083,10 +64517,12 @@
         "geboorte": {
           "datum": "19951116",
           "plaats": {
-            "code": "0014"
+            "code": "0014",
+            "omschrijving": "Groningen"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -64248,10 +64684,11 @@
         "geboorte": {
           "datum": "20190613",
           "plaats": {
-            "code": "Bangkok"
+            "omschrijving": "Bangkok"
           },
           "land": {
-            "code": "7042"
+            "code": "7042",
+            "omschrijving": "Thailand"
           }
         }
       }
@@ -64425,10 +64862,12 @@
         "geboorte": {
           "datum": "20120609",
           "plaats": {
-            "code": "0935"
+            "code": "0935",
+            "omschrijving": "Maastricht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -64825,10 +65264,12 @@
         "geboorte": {
           "datum": "20120609",
           "plaats": {
-            "code": "0935"
+            "code": "0935",
+            "omschrijving": "Maastricht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -64988,10 +65429,12 @@
         "geboorte": {
           "datum": "19891112",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -65151,10 +65594,12 @@
         "geboorte": {
           "datum": "19891112",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -65316,10 +65761,12 @@
         "geboorte": {
           "datum": "20190203",
           "plaats": {
-            "code": "0228"
+            "code": "0228",
+            "omschrijving": "Ede"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -65480,10 +65927,12 @@
         "geboorte": {
           "datum": "20190203",
           "plaats": {
-            "code": "0228"
+            "code": "0228",
+            "omschrijving": "Ede"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -65823,10 +66272,12 @@
         "geboorte": {
           "datum": "20190808",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -66119,10 +66570,12 @@
         "geboorte": {
           "datum": "20190527",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -66224,10 +66677,12 @@
         "geboorte": {
           "datum": "20190527",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -66740,10 +67195,12 @@
         "geboorte": {
           "datum": "20190220",
           "plaats": {
-            "code": "0281"
+            "code": "0281",
+            "omschrijving": "Tiel"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -67232,10 +67689,11 @@
         "geboorte": {
           "datum": "20170106",
           "plaats": {
-            "code": "Chicago"
+            "omschrijving": "Chicago"
           },
           "land": {
-            "code": "6014"
+            "code": "6014",
+            "omschrijving": "Verenigde Staten van Amerika"
           }
         }
       }
@@ -67395,10 +67853,11 @@
         "geboorte": {
           "datum": "20170106",
           "plaats": {
-            "code": "Chicago"
+            "omschrijving": "Chicago"
           },
           "land": {
-            "code": "6014"
+            "code": "6014",
+            "omschrijving": "Verenigde Staten van Amerika"
           }
         }
       }
@@ -67672,10 +68131,12 @@
         "geboorte": {
           "datum": "20190725",
           "plaats": {
-            "code": "0228"
+            "code": "0228",
+            "omschrijving": "Ede"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -67826,10 +68287,12 @@
         "geboorte": {
           "datum": "20191112",
           "plaats": {
-            "code": "0228"
+            "code": "0228",
+            "omschrijving": "Ede"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -67951,10 +68414,12 @@
         "geboorte": {
           "datum": "20190304",
           "plaats": {
-            "code": "0228"
+            "code": "0228",
+            "omschrijving": "Ede"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -68213,10 +68678,12 @@
         "geboorte": {
           "datum": "20190725",
           "plaats": {
-            "code": "0228"
+            "code": "0228",
+            "omschrijving": "Ede"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -68717,10 +69184,12 @@
         "geboorte": {
           "datum": "20190220",
           "plaats": {
-            "code": "0281"
+            "code": "0281",
+            "omschrijving": "Tiel"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -68877,10 +69346,12 @@
         "geboorte": {
           "datum": "20191105",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -69038,10 +69509,12 @@
         "geboorte": {
           "datum": "20191105",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -73106,10 +73579,12 @@
         "geboorte": {
           "datum": "20050201",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -73247,10 +73722,12 @@
         "geboorte": {
           "datum": "20121201",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -73423,10 +73900,12 @@
         "geboorte": {
           "datum": "20121210",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -75777,10 +76256,12 @@
         "geboorte": {
           "datum": "20000606",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -75986,10 +76467,12 @@
         "geboorte": {
           "datum": "20000606",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -76215,10 +76698,12 @@
         "geboorte": {
           "datum": "20001008",
           "plaats": {
-            "code": "0363"
+            "code": "0363",
+            "omschrijving": "Amsterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -76338,10 +76823,12 @@
         "geboorte": {
           "datum": "20030702",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -76549,10 +77036,11 @@
         "geboorte": {
           "datum": "20030802",
           "plaats": {
-            "code": "Bonaire"
+            "omschrijving": "Bonaire"
           },
           "land": {
-            "code": "7011"
+            "code": "7011",
+            "omschrijving": "Nederlandse Antillen"
           }
         }
       }
@@ -76744,10 +77232,11 @@
         "geboorte": {
           "datum": "20030902",
           "plaats": {
-            "code": "Sint Eustatius"
+            "omschrijving": "Sint Eustatius"
           },
           "land": {
-            "code": "7011"
+            "code": "7011",
+            "omschrijving": "Nederlandse Antillen"
           }
         }
       }
@@ -76939,10 +77428,11 @@
         "geboorte": {
           "datum": "20031002",
           "plaats": {
-            "code": "Saba"
+            "omschrijving": "Saba"
           },
           "land": {
-            "code": "7011"
+            "code": "7011",
+            "omschrijving": "Nederlandse Antillen"
           }
         }
       }
@@ -77134,10 +77624,11 @@
         "geboorte": {
           "datum": "20031102",
           "plaats": {
-            "code": "Bonaire"
+            "omschrijving": "Bonaire"
           },
           "land": {
-            "code": "7011"
+            "code": "7011",
+            "omschrijving": "Nederlandse Antillen"
           }
         }
       }
@@ -77329,10 +77820,11 @@
         "geboorte": {
           "datum": "20031202",
           "plaats": {
-            "code": "Sint Eustatius"
+            "omschrijving": "Sint Eustatius"
           },
           "land": {
-            "code": "7011"
+            "code": "7011",
+            "omschrijving": "Nederlandse Antillen"
           }
         }
       }
@@ -77546,10 +78038,12 @@
         "geboorte": {
           "datum": "19951028",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -77682,10 +78176,12 @@
         "geboorte": {
           "datum": "19951028",
           "plaats": {
-            "code": "0518"
+            "code": "0518",
+            "omschrijving": "'s-Gravenhage"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -78762,10 +79258,12 @@
         "geboorte": {
           "datum": "20150820",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -78887,10 +79385,12 @@
         "geboorte": {
           "datum": "20150820",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -79121,10 +79621,12 @@
         "geboorte": {
           "datum": "20121230",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -80074,10 +80576,12 @@
         "geboorte": {
           "datum": "19890521",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -80236,17 +80740,19 @@
         "geboorte": {
           "datum": "20150901",
           "plaats": {
-            "code": "Lagos"
+            "omschrijving": "Lagos"
           },
           "land": {
-            "code": "6005"
+            "code": "6005",
+            "omschrijving": "Nigeria"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20151010"
     }
@@ -80404,17 +80910,19 @@
         "geboorte": {
           "datum": "20150901",
           "plaats": {
-            "code": "Lagos"
+            "omschrijving": "Lagos"
           },
           "land": {
-            "code": "6005"
+            "code": "6005",
+            "omschrijving": "Nigeria"
           }
         }
       }
     ],
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20151010"
     }
@@ -80540,7 +81048,8 @@
     },
     "verblijfstitel": {
       "aanduiding": {
-        "code": "25"
+        "code": "25",
+        "omschrijving": "Vw 2000 art. 8, sub b, verg. reg. onbep. tijd of langdurig ingez., arbeid vrij"
       },
       "datumIngang": "20151010"
     }
@@ -80696,10 +81205,12 @@
         "geboorte": {
           "datum": "20200120",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -80856,10 +81367,12 @@
         "geboorte": {
           "datum": "20200120",
           "plaats": {
-            "code": "0599"
+            "code": "0599",
+            "omschrijving": "Rotterdam"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
@@ -81522,7 +82035,8 @@
       "datumIngangGeldigheid": "20200110"
     },
     "indicatieGezagMinderjarige": {
-      "code": "3D"
+      "code": "3D",
+      "omschrijving": "ouder1 + ouder2 + een of meer derden hebben het gezag"
     }
   },
   {
@@ -81939,10 +82453,12 @@
         "geboorte": {
           "datum": "20080229",
           "plaats": {
-            "code": "0344"
+            "code": "0344",
+            "omschrijving": "Utrecht"
           },
           "land": {
-            "code": "6030"
+            "code": "6030",
+            "omschrijving": "Nederland"
           }
         }
       }
