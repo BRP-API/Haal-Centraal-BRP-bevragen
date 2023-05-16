@@ -45,11 +45,11 @@
     "axios": "^1.4.0",
     "chai": "^4.3.7",
     "csv-parse": "^5.3.10",
-    "cucumber-html-reporter": "^6.0.0",
+    "cucumber-html-reporter": "^7.1.0",
     "deep-equal-in-any-order": "^2.0.6",
     "husky": "^8.0.3",
     "mvn-dl": "^6.0.0",
     "nswag": "^13.19.0",
-    "pg": "^8.10.0"
+    "pg": "^8.11.0"
   }
 }
