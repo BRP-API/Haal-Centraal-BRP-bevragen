@@ -1166,6 +1166,9 @@
           },
           "land" : {
             "$ref" : "#/components/schemas/Waardetabel"
+          },
+          "indicatieVastgesteldVerblijftNietOpAdres" : {
+            "$ref" : "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
           }
         },
         "description" : ""
@@ -1771,6 +1774,9 @@
             "datumIngangGeldigheid" : {
               "$ref" : "#/components/schemas/AbstractDatum"
             },
+            "indicatieVastgesteldVerblijftNietOpAdres" : {
+              "$ref" : "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
+            },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/AdresInOnderzoek"
             }
@@ -1865,6 +1871,9 @@
         "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
         "example" : "0226010000038820"
       },
+      "IndicatieVastgesteldVerblijftNietOpAdres" : {
+        "description" : "Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.\ntype: boolean\n"
+      },
       "AdresInOnderzoek" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InOnderzoek"
@@ -1946,6 +1955,9 @@
             },
             "datumIngangGeldigheid" : {
               "$ref" : "#/components/schemas/AbstractDatum"
+            },
+            "indicatieVastgesteldVerblijftNietOpAdres" : {
+              "$ref" : "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/LocatieInOnderzoek"

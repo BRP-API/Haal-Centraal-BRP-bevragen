@@ -911,6 +911,8 @@ components:
           $ref: '#/components/schemas/Adresregel3'
         land:
           $ref: '#/components/schemas/Waardetabel'
+        indicatieVastgesteldVerblijftNietOpAdres:
+          $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
       description: ""
     Adresregel1:
       maxLength: 40
@@ -1353,6 +1355,8 @@ components:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
+          indicatieVastgesteldVerblijftNietOpAdres:
+            $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
           inOnderzoek:
             $ref: '#/components/schemas/AdresInOnderzoek'
     VerblijfadresBinnenland:
@@ -1420,6 +1424,10 @@ components:
       description: |
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
+    IndicatieVastgesteldVerblijftNietOpAdres:
+      description: |
+        Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.
+        type: boolean
     AdresInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
@@ -1476,6 +1484,8 @@ components:
             $ref: '#/components/schemas/VerblijfadresLocatie'
           datumIngangGeldigheid:
             $ref: '#/components/schemas/AbstractDatum'
+          indicatieVastgesteldVerblijftNietOpAdres:
+            $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
           inOnderzoek:
             $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfadresLocatie:
