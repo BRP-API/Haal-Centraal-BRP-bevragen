@@ -18,7 +18,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                          |
       | type                | RaadpleegMetBurgerservicenummer                 |
-      | burgerservicenummer | 000000188                                       |
+      | burgerservicenummer | 000000152                                       |
       | fields              | adressering.adresregel1,adressering.adresregel2 |
       Dan heeft de response een persoon met alleen de volgende 'adressering' gegevens
       | naam                                                       | waarde                      |
