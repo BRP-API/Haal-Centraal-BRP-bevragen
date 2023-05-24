@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cucumber Feature Report</title>
-    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
-    <style type="text/css">
-      .panel-heading {
+
+<head>
+  <title>Cucumber Feature Report</title>
+  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .panel-heading {
     padding: 0;
 }
 
@@ -285,120 +286,147 @@ pre {
 }
 
 
-/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-.google-visualization-tooltip { pointer-events:none; }
-      
-.count-wrapper{
-  display: flex;
-  gap: 15px;
-}
-.card{
-  border: 1px solid #f5f5f5;
-  padding: 15px;
-  color: #fff;
-  border-radius: 5px;
-  flex: 1;
-}
-.generated-on{
-  margin-right: 10px;
-}
-.card h4{
-  font-size: 15px;
-}
-.red-box{
-  background: #d9534e;
-}
-.blue-box{
-  background: #0074ff;
-}
-.yellow-box{
-  background: #f0ad4e;
-}
-.saffron-box{
-  background: #ff9933;
-}
-.green-box{
-  background: #5cb85b;
-}
-.gray-box{
-  background: #999;
-}
-.amb-box{
-  background: #218bcf;
-}
-.undefined-box{
-  background: #22c2e2;
-}
-.mb-20px{
-  margin-bottom: 20px;
-}
-    </style>
-    <meta charset="UTF-8">
-  </head>
-  <body>
+    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+    .google-visualization-tooltip {
+      pointer-events: none;
+    }
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    .count-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid #f5f5f5;
+      padding: 15px;
+      color: #fff;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .generated-on {
+      margin-right: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+    }
+
+    .red-box {
+      background: #d9534e;
+    }
+
+    .blue-box {
+      background: #0074ff;
+    }
+
+    .yellow-box {
+      background: #f0ad4e;
+    }
+
+    .saffron-box {
+      background: #ff9933;
+    }
+
+    .green-box {
+      background: #5cb85b;
+    }
+
+    .gray-box {
+      background: #999;
+    }
+
+    .amb-box {
+      background: #218bcf;
+    }
+
+    .undefined-box {
+      background: #22c2e2;
+    }
+
+    .mb-20px {
+      margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.43</a>
-          <div class="project-name visible-md visible-lg">persoon europees kiesrecht features</div>
-          <div class="label-container">
-                <div class="generated-on">
-                  Mon May 15 2023 14:04:07 GMT+0000 (Coordinated Universal Time)
-                </div>
+          <a class="navbar-brand">
+            Haal Centraal BRP Bevragen API - GBA 2.0.43
+          </a>
+          <div class="project-name visible-md visible-lg">
+            persoon europees kiesrecht features
           </div>
-        </div>
+          <div class="label-container">
+            <div class="generated-on">
+              Wed May 24 2023 08:20:14 GMT+0000 (Coordinated Universal Time)
+            </div>
+          </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="count-wrapper mb-20px">
-        <div class="card blue-box">
-          <div class="feature-title">
-            <h4>All Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              21
-            </h5>
-          </div>
+    <div class="count-wrapper mb-20px">
+      <div class="card blue-box">
+        <div class="feature-title">
+          <h4>All Scenarios</h2>
         </div>
-        <div class="card green-box">
-          <div class="feature-title">
-            <h4>Passed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              21
-            </h5>
-          </div>
+        <div class="feature-value">
+          <h5>
+            21
+          </h5>
         </div>
-        <div class="card red-box">
-          <div class="feature-title">
-            <h4>Failed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        
-        
-        
-        
-        
       </div>
-      <div class="row">
-        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      <div class="card green-box">
+        <div class="feature-title">
+          <h4>Passed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            21
+          </h5>
+        </div>
       </div>
-
+      <div class="card red-box">
+        <div class="feature-title">
+          <h4>Failed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            0
+          </h5>
+        </div>
+      </div>
       
+          
+              
+                  
+                      
+    </div>
+    <div class="row">
+      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+    </div>
 
-      
+    <div>
+      <p class="text-right">
+        <a id="expand_all">Expand All</a>
+        <span> | </span>
+        <a id="collapse_all">Collapse All</a>
+      </p>
+    </div>
+
+    
+
+        
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -415,7 +443,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_europees_kiesrecht_features1f4e5515-b6e0-4d74-a6d7-9343f91ba458">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_europees_kiesrecht_features1818b1fc-701c-4c24-9fe9-1afd3bb8fdd1">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Europees kiesrecht velden vragen met fields
@@ -431,7 +459,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_europees_kiesrecht_features1f4e5515-b6e0-4d74-a6d7-9343f91ba458" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_europees_kiesrecht_features1818b1fc-701c-4c24-9fe9-1afd3bb8fdd1" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -444,7 +472,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features4f02510d-0fad-4969-bf69-ad11081130f4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresd4145fd8-4251-45ce-9c30-986f4e092f08">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -469,7 +497,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features4f02510d-0fad-4969-bf69-ad11081130f4"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresd4145fd8-4251-45ce-9c30-986f4e092f08"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -558,7 +586,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               59ms
+                               62ms
                               </span>
                             
                          
@@ -698,7 +726,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresb3a6dbdc-e0ad-4559-9b2a-ea71fcbcf182">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features337e2145-a5a3-43e9-a09f-85986df96e38">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -723,7 +751,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresb3a6dbdc-e0ad-4559-9b2a-ea71fcbcf182"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features337e2145-a5a3-43e9-a09f-85986df96e38"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -812,7 +840,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               12ms
                               </span>
                             
                          
@@ -952,7 +980,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features5d91e4c6-72a5-4939-8bce-6c33c1af43b1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresf1b96bc9-3a75-4b52-bbe5-2141a4f818bd">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -977,7 +1005,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features5d91e4c6-72a5-4939-8bce-6c33c1af43b1"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresf1b96bc9-3a75-4b52-bbe5-2141a4f818bd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1066,7 +1094,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               14ms
                               </span>
                             
                          
@@ -1255,7 +1283,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features6b37bfd1-c325-4a65-9019-a1c8fc6169a6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresed6e4563-edf0-4614-b456-bc0709b129c9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1280,7 +1308,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features6b37bfd1-c325-4a65-9019-a1c8fc6169a6"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresed6e4563-edf0-4614-b456-bc0709b129c9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1369,7 +1397,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -1558,7 +1586,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features6b3cdca5-5cfa-42ae-9914-5696557ac871">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features199d12ab-0574-4fe0-93d4-469f6d2cbf2c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1583,7 +1611,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features6b3cdca5-5cfa-42ae-9914-5696557ac871"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features199d12ab-0574-4fe0-93d4-469f6d2cbf2c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1693,7 +1721,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -1869,7 +1897,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features0cb1e8eb-4e15-4ba6-8318-3cc2f2a46a68">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa1649a2f-f06f-49d2-a493-720a7aa2601d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1894,7 +1922,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features0cb1e8eb-4e15-4ba6-8318-3cc2f2a46a68"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa1649a2f-f06f-49d2-a493-720a7aa2601d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2004,7 +2032,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               10ms
                               </span>
                             
                          
@@ -2180,7 +2208,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featurese97354a4-3712-4853-b1c2-2b8aac64351b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features004dec95-7a38-4e39-972b-2d2cfe82c754">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2205,7 +2233,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featurese97354a4-3712-4853-b1c2-2b8aac64351b"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features004dec95-7a38-4e39-972b-2d2cfe82c754"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2315,7 +2343,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -2491,7 +2519,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresdbd2fca6-9050-4fd2-ab31-ab15f8100067">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresd8aa1639-2cb5-48ae-925b-b8bd9b65be0c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2516,7 +2544,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresdbd2fca6-9050-4fd2-ab31-ab15f8100067"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresd8aa1639-2cb5-48ae-925b-b8bd9b65be0c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2626,7 +2654,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -2802,7 +2830,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features207d3839-c7e0-4499-b5a2-706e5fda37c1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features8b124273-7691-444f-ab60-bc89e05c7622">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2827,7 +2855,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features207d3839-c7e0-4499-b5a2-706e5fda37c1"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features8b124273-7691-444f-ab60-bc89e05c7622"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2937,7 +2965,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -3113,7 +3141,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresfad81341-ec34-4c5b-9c5c-dd9a73549c02">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresecd560e9-d679-4dcc-b4d4-70a501e28b48">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3138,7 +3166,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresfad81341-ec34-4c5b-9c5c-dd9a73549c02"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresecd560e9-d679-4dcc-b4d4-70a501e28b48"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3424,7 +3452,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresfd08ed99-1c94-4af7-a9c4-701e2e3c48fd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresade2bd7f-d0a8-4779-b059-ac6308039f5c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3449,7 +3477,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresfd08ed99-1c94-4af7-a9c4-701e2e3c48fd"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresade2bd7f-d0a8-4779-b059-ac6308039f5c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3735,7 +3763,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features0af6e7af-f613-42db-ba8b-0e1a53619b7d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features4beaae04-ea5b-443d-af1c-4d3bdd90dd5d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3760,7 +3788,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features0af6e7af-f613-42db-ba8b-0e1a53619b7d"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features4beaae04-ea5b-443d-af1c-4d3bdd90dd5d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3997,7 +4025,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features9f7b6b1e-87c9-4ae3-955a-56982cdfbd0f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features3f8eb528-0e59-456d-a5c8-03c39c27534a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4022,7 +4050,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features9f7b6b1e-87c9-4ae3-955a-56982cdfbd0f"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features3f8eb528-0e59-456d-a5c8-03c39c27534a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4259,7 +4287,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features3610ea43-43e9-4027-9730-1bf393b880c8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features010b327f-bafa-41a7-a47f-3401b891fd33">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4284,7 +4312,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features3610ea43-43e9-4027-9730-1bf393b880c8"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features010b327f-bafa-41a7-a47f-3401b891fd33"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4338,1826 +4366,6 @@ pre {
                                       
                                         <td>
                                           vorige maand
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> gba personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               12ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          europeesKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon zonder gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa3ea7c8c-8d68-42fb-8372-281c214f47e0">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa3ea7c8c-8d68-42fb-8372-281c214f47e0"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          europees kiesrecht (31.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting europees kiesrecht (31.30)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                        <td>
-                                          vorig jaar
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> gba personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               13ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          europeesKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon zonder gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features24d60efa-38ec-4041-9f6d-26d0c6bcf761">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features24d60efa-38ec-4041-9f6d-26d0c6bcf761"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          europees kiesrecht (31.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting europees kiesrecht (31.30)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                        <td>
-                                          morgen
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> gba personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               12ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          europeesKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.code
-                                        </td>
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.omschrijving
-                                        </td>
-                                      
-                                        <td>
-                                          persoon is uitgesloten
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.einddatumUitsluiting
-                                        </td>
-                                      
-                                        <td>
-                                          morgen
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresccbe9660-c78f-40ef-b530-8009ece7dbb0">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresccbe9660-c78f-40ef-b530-8009ece7dbb0"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          europees kiesrecht (31.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting europees kiesrecht (31.30)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                        <td>
-                                          deze maand
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> gba personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               12ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          europeesKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.code
-                                        </td>
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.omschrijving
-                                        </td>
-                                      
-                                        <td>
-                                          persoon is uitgesloten
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.einddatumUitsluiting
-                                        </td>
-                                      
-                                        <td>
-                                          deze maand
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features8c8bed36-d635-482b-98b2-7b4b25ee8409">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features8c8bed36-d635-482b-98b2-7b4b25ee8409"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          europees kiesrecht (31.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting europees kiesrecht (31.30)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                        <td>
-                                          dit jaar
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> gba personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               12ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          europeesKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.code
-                                        </td>
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.omschrijving
-                                        </td>
-                                      
-                                        <td>
-                                          persoon is uitgesloten
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.einddatumUitsluiting
-                                        </td>
-                                      
-                                        <td>
-                                          dit jaar
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features5409c2a1-70ed-41e7-8fa9-ba6f1a6e95e0">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features5409c2a1-70ed-41e7-8fa9-ba6f1a6e95e0"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          europees kiesrecht (31.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting europees kiesrecht (31.30)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                        <td>
-                                          volgende maand
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> gba personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               13ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          europeesKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.code
-                                        </td>
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.aanduiding.omschrijving
-                                        </td>
-                                      
-                                        <td>
-                                          persoon is uitgesloten
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          europeesKiesrecht.einddatumUitsluiting
-                                        </td>
-                                      
-                                        <td>
-                                          volgende maand
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features13d76a9b-89bc-4c60-8267-694fb1fa0077">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features13d76a9b-89bc-4c60-8267-694fb1fa0077"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          europees kiesrecht (31.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting europees kiesrecht (31.30)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          1
-                                        </td>
-                                      
-                                        <td>
-                                          volgend jaar
                                         </td>
                                       
                                       </tr>
@@ -6297,6 +4505,1826 @@ pre {
                                     
                                     <span class="text">
                         <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon zonder gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresfe52c66f-3795-4837-884b-fafa8b0a9ada">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresfe52c66f-3795-4837-884b-fafa8b0a9ada"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          europees kiesrecht (31.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting europees kiesrecht (31.30)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          vorig jaar
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> gba personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               10ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          europeesKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon zonder gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features5b5f6602-a709-48bd-9f75-0dd172a8da64">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features5b5f6602-a709-48bd-9f75-0dd172a8da64"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          europees kiesrecht (31.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting europees kiesrecht (31.30)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          morgen
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> gba personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               10ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          europeesKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.code
+                                        </td>
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.omschrijving
+                                        </td>
+                                      
+                                        <td>
+                                          persoon is uitgesloten
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.einddatumUitsluiting
+                                        </td>
+                                      
+                                        <td>
+                                          morgen
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features67493953-c8a6-4e47-8231-9cbba60c60ff">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features67493953-c8a6-4e47-8231-9cbba60c60ff"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          europees kiesrecht (31.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting europees kiesrecht (31.30)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          deze maand
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> gba personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               10ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          europeesKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.code
+                                        </td>
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.omschrijving
+                                        </td>
+                                      
+                                        <td>
+                                          persoon is uitgesloten
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.einddatumUitsluiting
+                                        </td>
+                                      
+                                        <td>
+                                          deze maand
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featurese7777c4e-1158-43b7-972a-4ccab0b91452">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featurese7777c4e-1158-43b7-972a-4ccab0b91452"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          europees kiesrecht (31.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting europees kiesrecht (31.30)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          dit jaar
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> gba personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               10ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          europeesKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.code
+                                        </td>
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.omschrijving
+                                        </td>
+                                      
+                                        <td>
+                                          persoon is uitgesloten
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.einddatumUitsluiting
+                                        </td>
+                                      
+                                        <td>
+                                          dit jaar
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresf094303b-a752-429d-9a3a-f3da495ad33a">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresf094303b-a752-429d-9a3a-f3da495ad33a"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          europees kiesrecht (31.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting europees kiesrecht (31.30)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          volgende maand
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> gba personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               12ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          europeesKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.code
+                                        </td>
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.aanduiding.omschrijving
+                                        </td>
+                                      
+                                        <td>
+                                          persoon is uitgesloten
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          europeesKiesrecht.einddatumUitsluiting
+                                        </td>
+                                      
+                                        <td>
+                                          volgende maand
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features2f23303a-b9c8-4eab-b84e-f48e620c9ed6">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features2f23303a-b9c8-4eab-b84e-f48e620c9ed6"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          europees kiesrecht (31.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting europees kiesrecht (31.30)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          1
+                                        </td>
+                                      
+                                        <td>
+                                          volgend jaar
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> gba personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               10ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          europeesKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
                           <span> heeft de response een persoon met de volgende gegevens</span>
                             
                           
@@ -6403,7 +6431,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresf2d8ead7-24a9-4c4b-86ab-dc419150514f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features9c4136ea-d615-42c9-ac92-e5ce81a702ed">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6428,7 +6456,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresf2d8ead7-24a9-4c4b-86ab-dc419150514f"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features9c4136ea-d615-42c9-ac92-e5ce81a702ed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6525,7 +6553,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               10ms
                               </span>
                             
                          
@@ -6729,38 +6757,46 @@ pre {
 
 
 
-    </div>
+          
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {packages: ["corechart"]});
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Features",
-                                                            "failed" : 0,
-                                                            "passed" : 1,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Features",
+        "failed": 0,
+        "passed": 1,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Scenarios",
-                                                            "failed" : 0,
-                                                            "passed" : 21,
-                                                            "rerun" : 0,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+    });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Scenarios",
+        "failed": 0,
+        "passed": 21,
+        "rerun": 0,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-    </script>
-    <script>
+    });
+  </script>
+  <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -6777,6 +6813,28 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
+});
+
+$(document).ready(function () {
+  const $collapsibleItems = $('[data-toggle="collapse"]');
+  const $collapseAllBtn = $('#collapse_all');
+  const $expandAllBtn = $('#expand_all');
+
+  const collapseAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('hide');
+    });
+  };
+
+  const expandAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('show');
+    });
+  };
+
+  $collapseAllBtn.on('click', collapseAll);
+  $expandAllBtn.on('click', expandAll);
+
 });
 
 function toggle(className) {
@@ -6865,6 +6923,7 @@ function toggle(className) {
   }
 });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

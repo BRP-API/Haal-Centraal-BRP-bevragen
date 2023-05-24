@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cucumber Feature Report</title>
-    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
-    <style type="text/css">
-      .panel-heading {
+
+<head>
+  <title>Cucumber Feature Report</title>
+  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .panel-heading {
     padding: 0;
 }
 
@@ -285,120 +286,147 @@ pre {
 }
 
 
-/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-.google-visualization-tooltip { pointer-events:none; }
-      
-.count-wrapper{
-  display: flex;
-  gap: 15px;
-}
-.card{
-  border: 1px solid #f5f5f5;
-  padding: 15px;
-  color: #fff;
-  border-radius: 5px;
-  flex: 1;
-}
-.generated-on{
-  margin-right: 10px;
-}
-.card h4{
-  font-size: 15px;
-}
-.red-box{
-  background: #d9534e;
-}
-.blue-box{
-  background: #0074ff;
-}
-.yellow-box{
-  background: #f0ad4e;
-}
-.saffron-box{
-  background: #ff9933;
-}
-.green-box{
-  background: #5cb85b;
-}
-.gray-box{
-  background: #999;
-}
-.amb-box{
-  background: #218bcf;
-}
-.undefined-box{
-  background: #22c2e2;
-}
-.mb-20px{
-  margin-bottom: 20px;
-}
-    </style>
-    <meta charset="UTF-8">
-  </head>
-  <body>
+    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+    .google-visualization-tooltip {
+      pointer-events: none;
+    }
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    .count-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid #f5f5f5;
+      padding: 15px;
+      color: #fff;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .generated-on {
+      margin-right: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+    }
+
+    .red-box {
+      background: #d9534e;
+    }
+
+    .blue-box {
+      background: #0074ff;
+    }
+
+    .yellow-box {
+      background: #f0ad4e;
+    }
+
+    .saffron-box {
+      background: #ff9933;
+    }
+
+    .green-box {
+      background: #5cb85b;
+    }
+
+    .gray-box {
+      background: #999;
+    }
+
+    .amb-box {
+      background: #218bcf;
+    }
+
+    .undefined-box {
+      background: #22c2e2;
+    }
+
+    .mb-20px {
+      margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.43</a>
-          <div class="project-name visible-md visible-lg">persoon verblijfstitel features</div>
-          <div class="label-container">
-                <div class="generated-on">
-                  Mon May 15 2023 14:04:07 GMT+0000 (Coordinated Universal Time)
-                </div>
+          <a class="navbar-brand">
+            Haal Centraal BRP Bevragen API - GBA 2.0.43
+          </a>
+          <div class="project-name visible-md visible-lg">
+            persoon verblijfstitel features
           </div>
-        </div>
+          <div class="label-container">
+            <div class="generated-on">
+              Wed May 24 2023 08:20:14 GMT+0000 (Coordinated Universal Time)
+            </div>
+          </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="count-wrapper mb-20px">
-        <div class="card blue-box">
-          <div class="feature-title">
-            <h4>All Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              11
-            </h5>
-          </div>
+    <div class="count-wrapper mb-20px">
+      <div class="card blue-box">
+        <div class="feature-title">
+          <h4>All Scenarios</h2>
         </div>
-        <div class="card green-box">
-          <div class="feature-title">
-            <h4>Passed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              11
-            </h5>
-          </div>
+        <div class="feature-value">
+          <h5>
+            11
+          </h5>
         </div>
-        <div class="card red-box">
-          <div class="feature-title">
-            <h4>Failed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        
-        
-        
-        
-        
       </div>
-      <div class="row">
-        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      <div class="card green-box">
+        <div class="feature-title">
+          <h4>Passed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            11
+          </h5>
+        </div>
       </div>
-
+      <div class="card red-box">
+        <div class="feature-title">
+          <h4>Failed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            0
+          </h5>
+        </div>
+      </div>
       
+          
+              
+                  
+                      
+    </div>
+    <div class="row">
+      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+    </div>
 
-      
+    <div>
+      <p class="text-right">
+        <a id="expand_all">Expand All</a>
+        <span> | </span>
+        <a id="collapse_all">Collapse All</a>
+      </p>
+    </div>
+
+    
+
+        
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -415,7 +443,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verblijfstitel_featurese9da1c1e-fe69-4f37-9721-27a565a95f65">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verblijfstitel_features08cc6184-71d8-4422-8051-93d3d9adc4af">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>verblijfstitel (persoon)
@@ -431,7 +459,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_verblijfstitel_featurese9da1c1e-fe69-4f37-9721-27a565a95f65" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_verblijfstitel_features08cc6184-71d8-4422-8051-93d3d9adc4af" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -444,7 +472,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features8c6a98db-443f-499e-9e3b-da0a8119e09f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresdf8e773d-7af6-4180-a3e4-2f8f8e0166e0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -469,7 +497,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features8c6a98db-443f-499e-9e3b-da0a8119e09f"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresdf8e773d-7af6-4180-a3e4-2f8f8e0166e0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -666,7 +694,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               67ms
+                               54ms
                               </span>
                             
                          
@@ -806,7 +834,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features52364f01-a22d-48a6-b19f-12f71ec5be9d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features1112f977-4887-43c1-a3b0-8df2c2a586d7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -831,7 +859,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features52364f01-a22d-48a6-b19f-12f71ec5be9d"
+                        <div id="collapseScenariopersoon_verblijfstitel_features1112f977-4887-43c1-a3b0-8df2c2a586d7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1028,7 +1056,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               14ms
                               </span>
                             
                          
@@ -1217,7 +1245,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features40b86730-045f-44d0-9f97-ac065c921120">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features17902ba9-622c-4f32-a2fe-b36da33ea6af">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1242,7 +1270,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features40b86730-045f-44d0-9f97-ac065c921120"
+                        <div id="collapseScenariopersoon_verblijfstitel_features17902ba9-622c-4f32-a2fe-b36da33ea6af"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1463,7 +1491,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               11ms
                               </span>
                             
                          
@@ -1603,7 +1631,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featurescf4bbefa-e515-4891-8418-997e19ce188f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresf516ead0-7acb-4723-a906-f8bffa1b8b5d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1628,7 +1656,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featurescf4bbefa-e515-4891-8418-997e19ce188f"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresf516ead0-7acb-4723-a906-f8bffa1b8b5d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1849,7 +1877,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -1989,7 +2017,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features3a985895-a1ae-4ab3-bfa5-09fbf822e470">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features8358dbe8-8aa9-4bb7-bb9b-b4768e128e44">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2014,7 +2042,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features3a985895-a1ae-4ab3-bfa5-09fbf822e470"
+                        <div id="collapseScenariopersoon_verblijfstitel_features8358dbe8-8aa9-4bb7-bb9b-b4768e128e44"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2219,7 +2247,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               11ms
                               </span>
                             
                          
@@ -2434,7 +2462,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featurese89da872-fbaa-4695-8411-302d813190d7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features56b41f30-0d03-491b-b305-9ad128620759">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2459,7 +2487,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featurese89da872-fbaa-4695-8411-302d813190d7"
+                        <div id="collapseScenariopersoon_verblijfstitel_features56b41f30-0d03-491b-b305-9ad128620759"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2680,7 +2708,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -2882,7 +2910,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresd71f7425-b5b1-4de1-8b1a-0cedeea91771">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresc7bbb1e4-18b7-475e-9100-97a6aeb670d9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2907,7 +2935,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresd71f7425-b5b1-4de1-8b1a-0cedeea91771"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresc7bbb1e4-18b7-475e-9100-97a6aeb670d9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3120,7 +3148,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               11ms
                               </span>
                             
                          
@@ -3348,7 +3376,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features5b8ecad6-ad95-4fdf-b7c0-223b6b4813de">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features52f62168-d206-4251-b44c-d6aa15c2429c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3373,7 +3401,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features5b8ecad6-ad95-4fdf-b7c0-223b6b4813de"
+                        <div id="collapseScenariopersoon_verblijfstitel_features52f62168-d206-4251-b44c-d6aa15c2429c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3578,7 +3606,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               11ms
                               </span>
                             
                          
@@ -3793,7 +3821,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features8bc88f65-ff4d-45cd-9bdd-43f53353799f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features89b93948-5aff-4b77-af41-19c232c3e432">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3818,7 +3846,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features8bc88f65-ff4d-45cd-9bdd-43f53353799f"
+                        <div id="collapseScenariopersoon_verblijfstitel_features89b93948-5aff-4b77-af41-19c232c3e432"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4039,7 +4067,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               12ms
                               </span>
                             
                          
@@ -4179,7 +4207,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features61e8604d-8571-4d42-a499-2948fb4b8245">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features933d0e90-8ce0-415c-b303-377eae7dfbb8">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4204,7 +4232,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features61e8604d-8571-4d42-a499-2948fb4b8245"
+                        <div id="collapseScenariopersoon_verblijfstitel_features933d0e90-8ce0-415c-b303-377eae7dfbb8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4393,7 +4421,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -4569,7 +4597,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresa6ce2228-f609-431c-818f-dc9f2135fc2b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features092af788-22f5-4591-9c05-ca88fa348588">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4594,7 +4622,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresa6ce2228-f609-431c-818f-dc9f2135fc2b"
+                        <div id="collapseScenariopersoon_verblijfstitel_features092af788-22f5-4591-9c05-ca88fa348588"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4870,7 +4898,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -5012,38 +5040,46 @@ pre {
 
 
 
-    </div>
+          
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {packages: ["corechart"]});
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Features",
-                                                            "failed" : 0,
-                                                            "passed" : 1,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Features",
+        "failed": 0,
+        "passed": 1,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Scenarios",
-                                                            "failed" : 0,
-                                                            "passed" : 11,
-                                                            "rerun" : 0,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+    });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Scenarios",
+        "failed": 0,
+        "passed": 11,
+        "rerun": 0,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-    </script>
-    <script>
+    });
+  </script>
+  <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -5060,6 +5096,28 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
+});
+
+$(document).ready(function () {
+  const $collapsibleItems = $('[data-toggle="collapse"]');
+  const $collapseAllBtn = $('#collapse_all');
+  const $expandAllBtn = $('#expand_all');
+
+  const collapseAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('hide');
+    });
+  };
+
+  const expandAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('show');
+    });
+  };
+
+  $collapseAllBtn.on('click', collapseAll);
+  $expandAllBtn.on('click', expandAll);
+
 });
 
 function toggle(className) {
@@ -5148,6 +5206,7 @@ function toggle(className) {
   }
 });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cucumber Feature Report</title>
-    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
-    <style type="text/css">
-      .panel-heading {
+
+<head>
+  <title>Cucumber Feature Report</title>
+  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .panel-heading {
     padding: 0;
 }
 
@@ -285,120 +286,147 @@ pre {
 }
 
 
-/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-.google-visualization-tooltip { pointer-events:none; }
-      
-.count-wrapper{
-  display: flex;
-  gap: 15px;
-}
-.card{
-  border: 1px solid #f5f5f5;
-  padding: 15px;
-  color: #fff;
-  border-radius: 5px;
-  flex: 1;
-}
-.generated-on{
-  margin-right: 10px;
-}
-.card h4{
-  font-size: 15px;
-}
-.red-box{
-  background: #d9534e;
-}
-.blue-box{
-  background: #0074ff;
-}
-.yellow-box{
-  background: #f0ad4e;
-}
-.saffron-box{
-  background: #ff9933;
-}
-.green-box{
-  background: #5cb85b;
-}
-.gray-box{
-  background: #999;
-}
-.amb-box{
-  background: #218bcf;
-}
-.undefined-box{
-  background: #22c2e2;
-}
-.mb-20px{
-  margin-bottom: 20px;
-}
-    </style>
-    <meta charset="UTF-8">
-  </head>
-  <body>
+    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+    .google-visualization-tooltip {
+      pointer-events: none;
+    }
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    .count-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid #f5f5f5;
+      padding: 15px;
+      color: #fff;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .generated-on {
+      margin-right: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+    }
+
+    .red-box {
+      background: #d9534e;
+    }
+
+    .blue-box {
+      background: #0074ff;
+    }
+
+    .yellow-box {
+      background: #f0ad4e;
+    }
+
+    .saffron-box {
+      background: #ff9933;
+    }
+
+    .green-box {
+      background: #5cb85b;
+    }
+
+    .gray-box {
+      background: #999;
+    }
+
+    .amb-box {
+      background: #218bcf;
+    }
+
+    .undefined-box {
+      background: #22c2e2;
+    }
+
+    .mb-20px {
+      margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.43</a>
-          <div class="project-name visible-md visible-lg">persoon kind features</div>
-          <div class="label-container">
-                <div class="generated-on">
-                  Mon May 15 2023 14:04:07 GMT+0000 (Coordinated Universal Time)
-                </div>
+          <a class="navbar-brand">
+            Haal Centraal BRP Bevragen API - GBA 2.0.43
+          </a>
+          <div class="project-name visible-md visible-lg">
+            persoon kind features
           </div>
-        </div>
+          <div class="label-container">
+            <div class="generated-on">
+              Wed May 24 2023 08:20:14 GMT+0000 (Coordinated Universal Time)
+            </div>
+          </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="count-wrapper mb-20px">
-        <div class="card blue-box">
-          <div class="feature-title">
-            <h4>All Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              16
-            </h5>
-          </div>
+    <div class="count-wrapper mb-20px">
+      <div class="card blue-box">
+        <div class="feature-title">
+          <h4>All Scenarios</h2>
         </div>
-        <div class="card green-box">
-          <div class="feature-title">
-            <h4>Passed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              16
-            </h5>
-          </div>
+        <div class="feature-value">
+          <h5>
+            16
+          </h5>
         </div>
-        <div class="card red-box">
-          <div class="feature-title">
-            <h4>Failed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        
-        
-        
-        
-        
       </div>
-      <div class="row">
-        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      <div class="card green-box">
+        <div class="feature-title">
+          <h4>Passed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            16
+          </h5>
+        </div>
       </div>
-
+      <div class="card red-box">
+        <div class="feature-title">
+          <h4>Failed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            0
+          </h5>
+        </div>
+      </div>
       
+          
+              
+                  
+                      
+    </div>
+    <div class="row">
+      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+    </div>
 
-      
+    <div>
+      <p class="text-right">
+        <a id="expand_all">Expand All</a>
+        <span> | </span>
+        <a id="collapse_all">Collapse All</a>
+      </p>
+    </div>
+
+    
+
+        
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -415,7 +443,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_features818563df-681c-4895-aeab-ce80910e1d54">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_features5dbec433-a2fc-4d97-a9bf-cd9479d157cc">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>kind - geboorte
@@ -431,7 +459,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_kind_features818563df-681c-4895-aeab-ce80910e1d54" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_kind_features5dbec433-a2fc-4d97-a9bf-cd9479d157cc" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -444,7 +472,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featurese953d5a3-13fd-4294-b7b2-0bc6fb5e7809">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features35fedbc2-58ae-4892-9fd9-73383b52365e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -469,7 +497,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featurese953d5a3-13fd-4294-b7b2-0bc6fb5e7809"
+                        <div id="collapseScenariopersoon_kind_features35fedbc2-58ae-4892-9fd9-73383b52365e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -820,7 +848,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features09dc1bae-12dd-4b19-98d8-4e9ef8a2a0bb">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features84bea112-7d53-455f-9c0c-e9424ea7d42d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -845,7 +873,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features09dc1bae-12dd-4b19-98d8-4e9ef8a2a0bb"
+                        <div id="collapseScenariopersoon_kind_features84bea112-7d53-455f-9c0c-e9424ea7d42d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -934,7 +962,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               14ms
                               </span>
                             
                          
@@ -1122,7 +1150,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_featuresa8a05aa6-15e3-4f1a-83f3-bf966f81e91f">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_features766f51ab-064c-4994-819d-52ddf508c2dc">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>kind - naam
@@ -1138,7 +1166,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_kind_featuresa8a05aa6-15e3-4f1a-83f3-bf966f81e91f" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_kind_features766f51ab-064c-4994-819d-52ddf508c2dc" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -1151,7 +1179,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresdd2ab61c-beaf-4421-91cf-2bae4eba5064">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features8d323407-d9b4-484b-8210-435b588d0f2c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1176,7 +1204,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresdd2ab61c-beaf-4421-91cf-2bae4eba5064"
+                        <div id="collapseScenariopersoon_kind_features8d323407-d9b4-484b-8210-435b588d0f2c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1286,7 +1314,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               13ms
                               </span>
                             
                          
@@ -1475,7 +1503,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresa2ad5731-1b0f-4d0b-97f9-6b1d6f285aa2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featurese98dfa02-e8d2-4aa9-9ee9-0a86d0629792">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1500,7 +1528,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresa2ad5731-1b0f-4d0b-97f9-6b1d6f285aa2"
+                        <div id="collapseScenariopersoon_kind_featurese98dfa02-e8d2-4aa9-9ee9-0a86d0629792"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1610,7 +1638,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               13ms
                               </span>
                             
                          
@@ -1799,7 +1827,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresbb44bd28-f6f8-4293-9014-83f6db47d3fa">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresb070a87a-e32d-4088-a64a-0fa679e1ae3d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1824,7 +1852,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresbb44bd28-f6f8-4293-9014-83f6db47d3fa"
+                        <div id="collapseScenariopersoon_kind_featuresb070a87a-e32d-4088-a64a-0fa679e1ae3d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1934,7 +1962,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               13ms
                               </span>
                             
                          
@@ -2123,7 +2151,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresfbac0f55-9c65-46d0-98d1-58bd3a1742e5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features0043b572-b879-4b20-8750-575e2ba5dd44">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2148,7 +2176,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresfbac0f55-9c65-46d0-98d1-58bd3a1742e5"
+                        <div id="collapseScenariopersoon_kind_features0043b572-b879-4b20-8750-575e2ba5dd44"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2258,7 +2286,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               18ms
                               </span>
                             
                          
@@ -2450,7 +2478,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_featuresbb7c3ee3-a5e8-45f7-9a37-dede6fc7712f">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_features886929a1-d2e7-47c6-a619-da217ba62ba2">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>kinderen raadplegen
@@ -2466,7 +2494,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_kind_featuresbb7c3ee3-a5e8-45f7-9a37-dede6fc7712f" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_kind_features886929a1-d2e7-47c6-a619-da217ba62ba2" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.<br/>  Dit bevat enkele identificerende eigenschappen van de kinderen.</div>
@@ -2481,7 +2509,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features4579f651-cf72-4bf0-97ec-78b3be95d865">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features71971fab-d3bd-4e1c-8541-286b78483635">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2506,7 +2534,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features4579f651-cf72-4bf0-97ec-78b3be95d865"
+                        <div id="collapseScenariopersoon_kind_features71971fab-d3bd-4e1c-8541-286b78483635"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2693,7 +2721,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               13ms
                               </span>
                             
                          
@@ -2895,7 +2923,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features89485f59-5373-4fd9-b35f-2e8e58f0fad5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features62bde62c-d9ec-49d3-afaa-cde690c4466d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2920,7 +2948,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features89485f59-5373-4fd9-b35f-2e8e58f0fad5"
+                        <div id="collapseScenariopersoon_kind_features62bde62c-d9ec-49d3-afaa-cde690c4466d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3075,7 +3103,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               13ms
                               </span>
                             
                          
@@ -3251,7 +3279,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features4d6bdb1a-9cee-4670-af55-be82f3e13dbc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresf3924949-7cad-4409-b119-a5013438a66d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3276,7 +3304,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features4d6bdb1a-9cee-4670-af55-be82f3e13dbc"
+                        <div id="collapseScenariopersoon_kind_featuresf3924949-7cad-4409-b119-a5013438a66d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3373,7 +3401,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               13ms
                               </span>
                             
                          
@@ -3549,7 +3577,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features09e35284-b2f5-4630-b837-47946be710da">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresf9bdba06-6288-431e-90bf-1c966f2650cc">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3574,7 +3602,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features09e35284-b2f5-4630-b837-47946be710da"
+                        <div id="collapseScenariopersoon_kind_featuresf9bdba06-6288-431e-90bf-1c966f2650cc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3671,7 +3699,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               12ms
                               </span>
                             
                          
@@ -3811,7 +3839,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features319a8fc6-9e84-4665-b317-2463fd04fa61">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features2eec5ba9-e59b-4145-8e3f-a24975d02a64">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3836,7 +3864,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features319a8fc6-9e84-4665-b317-2463fd04fa61"
+                        <div id="collapseScenariopersoon_kind_features2eec5ba9-e59b-4145-8e3f-a24975d02a64"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4163,7 +4191,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               14ms
                               </span>
                             
                          
@@ -4303,7 +4331,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features712f36b8-c5e9-45d6-896f-d880af29c780">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresbdbc716a-9616-4059-84b3-4936d1106515">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4328,7 +4356,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features712f36b8-c5e9-45d6-896f-d880af29c780"
+                        <div id="collapseScenariopersoon_kind_featuresbdbc716a-9616-4059-84b3-4936d1106515"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4425,7 +4453,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               12ms
                               </span>
                             
                          
@@ -4565,7 +4593,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features46ab758c-4e33-4677-9fe2-9090bdaca4da">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featurese810f95f-7c1a-4243-97b7-34b9ea072a78">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4590,7 +4618,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features46ab758c-4e33-4677-9fe2-9090bdaca4da"
+                        <div id="collapseScenariopersoon_kind_featurese810f95f-7c1a-4243-97b7-34b9ea072a78"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4687,7 +4715,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               12ms
                               </span>
                             
                          
@@ -4827,7 +4855,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features929e6ace-b004-45ce-9f8b-ee7cc4cba6e5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features55465cee-5120-4ec9-abbb-f11d3005eab9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4852,7 +4880,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features929e6ace-b004-45ce-9f8b-ee7cc4cba6e5"
+                        <div id="collapseScenariopersoon_kind_features55465cee-5120-4ec9-abbb-f11d3005eab9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5027,7 +5055,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               12ms
                               </span>
                             
                          
@@ -5167,7 +5195,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features14bc3ba8-ddca-4551-b328-18d176e220b2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features459535b1-4be5-4af5-9356-b0600b14775d">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5192,7 +5220,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features14bc3ba8-ddca-4551-b328-18d176e220b2"
+                        <div id="collapseScenariopersoon_kind_features459535b1-4be5-4af5-9356-b0600b14775d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5461,7 +5489,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               14ms
                               </span>
                             
                          
@@ -5650,7 +5678,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresa13beabe-c766-4dfd-88af-4cfa1cbf2d7d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features70125f89-827d-49b4-b0f6-62611f077cd4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5675,7 +5703,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresa13beabe-c766-4dfd-88af-4cfa1cbf2d7d"
+                        <div id="collapseScenariopersoon_kind_features70125f89-827d-49b4-b0f6-62611f077cd4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6016,38 +6044,46 @@ pre {
 
 
 
-    </div>
+          
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {packages: ["corechart"]});
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Features",
-                                                            "failed" : 0,
-                                                            "passed" : 3,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Features",
+        "failed": 0,
+        "passed": 3,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Scenarios",
-                                                            "failed" : 0,
-                                                            "passed" : 16,
-                                                            "rerun" : 0,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+    });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Scenarios",
+        "failed": 0,
+        "passed": 16,
+        "rerun": 0,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-    </script>
-    <script>
+    });
+  </script>
+  <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -6064,6 +6100,28 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
+});
+
+$(document).ready(function () {
+  const $collapsibleItems = $('[data-toggle="collapse"]');
+  const $collapseAllBtn = $('#collapse_all');
+  const $expandAllBtn = $('#expand_all');
+
+  const collapseAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('hide');
+    });
+  };
+
+  const expandAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('show');
+    });
+  };
+
+  $collapseAllBtn.on('click', collapseAll);
+  $expandAllBtn.on('click', expandAll);
+
 });
 
 function toggle(className) {
@@ -6152,6 +6210,7 @@ function toggle(className) {
   }
 });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

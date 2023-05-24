@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cucumber Feature Report</title>
-    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
-    <style type="text/css">
-      .panel-heading {
+
+<head>
+  <title>Cucumber Feature Report</title>
+  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .panel-heading {
     padding: 0;
 }
 
@@ -285,120 +286,147 @@ pre {
 }
 
 
-/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-.google-visualization-tooltip { pointer-events:none; }
-      
-.count-wrapper{
-  display: flex;
-  gap: 15px;
-}
-.card{
-  border: 1px solid #f5f5f5;
-  padding: 15px;
-  color: #fff;
-  border-radius: 5px;
-  flex: 1;
-}
-.generated-on{
-  margin-right: 10px;
-}
-.card h4{
-  font-size: 15px;
-}
-.red-box{
-  background: #d9534e;
-}
-.blue-box{
-  background: #0074ff;
-}
-.yellow-box{
-  background: #f0ad4e;
-}
-.saffron-box{
-  background: #ff9933;
-}
-.green-box{
-  background: #5cb85b;
-}
-.gray-box{
-  background: #999;
-}
-.amb-box{
-  background: #218bcf;
-}
-.undefined-box{
-  background: #22c2e2;
-}
-.mb-20px{
-  margin-bottom: 20px;
-}
-    </style>
-    <meta charset="UTF-8">
-  </head>
-  <body>
+    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+    .google-visualization-tooltip {
+      pointer-events: none;
+    }
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    .count-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid #f5f5f5;
+      padding: 15px;
+      color: #fff;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .generated-on {
+      margin-right: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+    }
+
+    .red-box {
+      background: #d9534e;
+    }
+
+    .blue-box {
+      background: #0074ff;
+    }
+
+    .yellow-box {
+      background: #f0ad4e;
+    }
+
+    .saffron-box {
+      background: #ff9933;
+    }
+
+    .green-box {
+      background: #5cb85b;
+    }
+
+    .gray-box {
+      background: #999;
+    }
+
+    .amb-box {
+      background: #218bcf;
+    }
+
+    .undefined-box {
+      background: #22c2e2;
+    }
+
+    .mb-20px {
+      margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.20</a>
-          <div class="project-name visible-md visible-lg">persoon gezagsverhouding features</div>
-          <div class="label-container">
-                <div class="generated-on">
-                  Mon May 15 2023 14:04:07 GMT+0000 (Coordinated Universal Time)
-                </div>
+          <a class="navbar-brand">
+            Haal Centraal BRP Bevragen API - Proxy 2.0.20
+          </a>
+          <div class="project-name visible-md visible-lg">
+            persoon gezagsverhouding features
           </div>
-        </div>
+          <div class="label-container">
+            <div class="generated-on">
+              Wed May 24 2023 08:20:14 GMT+0000 (Coordinated Universal Time)
+            </div>
+          </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="count-wrapper mb-20px">
-        <div class="card blue-box">
-          <div class="feature-title">
-            <h4>All Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              19
-            </h5>
-          </div>
+    <div class="count-wrapper mb-20px">
+      <div class="card blue-box">
+        <div class="feature-title">
+          <h4>All Scenarios</h2>
         </div>
-        <div class="card green-box">
-          <div class="feature-title">
-            <h4>Passed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              19
-            </h5>
-          </div>
+        <div class="feature-value">
+          <h5>
+            19
+          </h5>
         </div>
-        <div class="card red-box">
-          <div class="feature-title">
-            <h4>Failed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        
-        
-        
-        
-        
       </div>
-      <div class="row">
-        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      <div class="card green-box">
+        <div class="feature-title">
+          <h4>Passed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            19
+          </h5>
+        </div>
       </div>
-
+      <div class="card red-box">
+        <div class="feature-title">
+          <h4>Failed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            0
+          </h5>
+        </div>
+      </div>
       
+          
+              
+                  
+                      
+    </div>
+    <div class="row">
+      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+    </div>
 
-      
+    <div>
+      <p class="text-right">
+        <a id="expand_all">Expand All</a>
+        <span> | </span>
+        <a id="collapse_all">Collapse All</a>
+      </p>
+    </div>
+
+    
+
+        
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -414,7 +442,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_featuresc8fde44c-e739-4e90-9149-712cebfb2d16">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_featuresa2b97e5f-0e7b-45d6-afec-1b565a8c4ea0">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: gezagsverhouding velden vragen met fields
@@ -430,7 +458,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_gezagsverhouding_featuresc8fde44c-e739-4e90-9149-712cebfb2d16" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_gezagsverhouding_featuresa2b97e5f-0e7b-45d6-afec-1b565a8c4ea0" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -443,7 +471,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features331f498d-6ff9-4e17-8a27-8c668f42df9c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features33a760a7-92ec-4f6f-8a05-b213fe0c2412">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -468,7 +496,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features331f498d-6ff9-4e17-8a27-8c668f42df9c"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features33a760a7-92ec-4f6f-8a05-b213fe0c2412"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -565,7 +593,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               64ms
+                               63ms
                               </span>
                             
                          
@@ -754,7 +782,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featurese1ed75dc-9fe9-41fd-9362-a7294b8e16e5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features7af42d3b-13f2-41e3-ae6e-df92ceeb11e4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -779,7 +807,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featurese1ed75dc-9fe9-41fd-9362-a7294b8e16e5"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features7af42d3b-13f2-41e3-ae6e-df92ceeb11e4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -876,7 +904,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               20ms
                               </span>
                             
                          
@@ -1065,7 +1093,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresc8c880ff-0531-404f-9c75-abd408d65290">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featureseced0b0d-f2a1-43bf-bec2-591cb304f5b2">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1090,7 +1118,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresc8c880ff-0531-404f-9c75-abd408d65290"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featureseced0b0d-f2a1-43bf-bec2-591cb304f5b2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1187,7 +1215,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -1376,7 +1404,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featurescea0de9c-cc09-4374-a351-1cd8c910b8d6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresd54005b0-effd-42ac-b1b1-b8fb52172bc7">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1401,7 +1429,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featurescea0de9c-cc09-4374-a351-1cd8c910b8d6"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresd54005b0-effd-42ac-b1b1-b8fb52172bc7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1498,7 +1526,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -1685,7 +1713,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_features1d0133b5-00cb-4c91-b62a-f1464f84e342">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_gezagsverhouding_featuresb93bb898-80d7-44fd-8529-7c714deeb6cd">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: gezagsverhouding velden in onderzoek
@@ -1701,7 +1729,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_gezagsverhouding_features1d0133b5-00cb-4c91-b62a-f1464f84e342" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_gezagsverhouding_featuresb93bb898-80d7-44fd-8529-7c714deeb6cd" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -1714,7 +1742,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features739bfe56-3d54-4ad4-848c-bc0df93f7e57">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresbdd2a465-48f6-4f5d-9564-2e3b343c500e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1739,7 +1767,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features739bfe56-3d54-4ad4-848c-bc0df93f7e57"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresbdd2a465-48f6-4f5d-9564-2e3b343c500e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1849,7 +1877,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               26ms
+                               20ms
                               </span>
                             
                          
@@ -2077,7 +2105,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features9281de0e-6e68-4983-87ef-cb4ad6ec5812">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featurescc51cefc-414f-405f-828a-e21735a004f9">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2102,7 +2130,1809 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features9281de0e-6e68-4983-87ef-cb4ad6ec5812"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featurescc51cefc-414f-405f-828a-e21735a004f9"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          113200
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               18ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          indicatieCurateleRegister,indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieCurateleRegister
+                                        </td>
+                                      
+                                        <td>
+                                          
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features1f50bc9e-d354-4312-b660-2d3a87556969">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'indicatie gezag minderjarige' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_gezagsverhouding_features1f50bc9e-d354-4312-b660-2d3a87556969"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          113210
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               18ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          indicatieCurateleRegister,indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieCurateleRegister
+                                        </td>
+                                      
+                                        <td>
+                                          
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features33e415a7-c7a7-43b9-a93b-f769d063f3e2">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'hele groep curatele' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_gezagsverhouding_features33e415a7-c7a7-43b9-a93b-f769d063f3e2"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          113300
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               18ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          indicatieCurateleRegister,indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieCurateleRegister
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                        <td>
+                                          
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features360f0a4e-7dc8-4b72-a254-cb6e189183a3">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'indicatie curateleregister' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_gezagsverhouding_features360f0a4e-7dc8-4b72-a254-cb6e189183a3"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          113310
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               19ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          indicatieCurateleRegister,indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieCurateleRegister
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                        <td>
+                                          
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features32f27962-db0a-47b0-86e9-dd0cf7d3c9c7">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'hele categorie gezagsverhouding' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_gezagsverhouding_features32f27962-db0a-47b0-86e9-dd0cf7d3c9c7"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          110000
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               18ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.indicatieGezagMinderjarige
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features69e8a983-2449-4ade-a51e-9c722844b7e5">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'hele groep gezag minderjarige' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_gezagsverhouding_features69e8a983-2449-4ade-a51e-9c722844b7e5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2268,1458 +4098,6 @@ pre {
                                         </td>
                                       
                                         <td>
-                                          indicatieCurateleRegister,indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieCurateleRegister
-                                        </td>
-                                      
-                                        <td>
-                                          
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features8e978303-b9f9-492f-b81a-65d0a074bb16">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'indicatie gezag minderjarige' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features8e978303-b9f9-492f-b81a-65d0a074bb16"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          113210
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               22ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          indicatieCurateleRegister,indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieCurateleRegister
-                                        </td>
-                                      
-                                        <td>
-                                          
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features820a4915-2640-47fc-9a8d-d9047e7342ff">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep curatele' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features820a4915-2640-47fc-9a8d-d9047e7342ff"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          113300
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               21ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          indicatieCurateleRegister,indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieCurateleRegister
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                        <td>
-                                          
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features978c9f3a-a2a0-4d75-a755-92bbadbed34f">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'indicatie curateleregister' is in onderzoek en indicatieCurateleRegister en indicatieGezagMinderjarige worden gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features978c9f3a-a2a0-4d75-a755-92bbadbed34f"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          113310
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               22ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          indicatieCurateleRegister,indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieCurateleRegister
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                        <td>
-                                          
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features564d6f3b-14cd-4d2e-b48f-46dcbff40381">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele categorie gezagsverhouding' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features564d6f3b-14cd-4d2e-b48f-46dcbff40381"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          110000
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               21ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
                                           indicatieGezagMinderjarige
                                         </td>
                                       
@@ -3879,357 +4257,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresf8f51f67-fa2f-4a3d-971d-a40d9f42f2ec">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep gezag minderjarige' is in onderzoek en indicatieGezagMinderjarige wordt gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresf8f51f67-fa2f-4a3d-971d-a40d9f42f2ec"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;gezagsverhouding&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          113200
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               21ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.indicatieGezagMinderjarige
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoekGezag.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features540eca49-3956-4bb6-81b0-81383ec09232">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features28d974e5-e4d6-4e6f-8030-57dc2db28ce3">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4254,7 +4282,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features540eca49-3956-4bb6-81b0-81383ec09232"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features28d974e5-e4d6-4e6f-8030-57dc2db28ce3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4364,7 +4392,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -4579,7 +4607,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features5cabe225-958d-48b6-9098-b940397df884">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features200aab2d-7694-4cf8-8e5e-bc1302958f6a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4604,7 +4632,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features5cabe225-958d-48b6-9098-b940397df884"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features200aab2d-7694-4cf8-8e5e-bc1302958f6a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4929,7 +4957,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features47d615df-c60a-4a0d-a416-69b6a1c74b3e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features73241004-827f-441e-a864-7c97f70c584b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4954,7 +4982,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features47d615df-c60a-4a0d-a416-69b6a1c74b3e"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features73241004-827f-441e-a864-7c97f70c584b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5279,7 +5307,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresa5a09c19-9269-4040-8ca0-9157f155f516">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresf66e9011-b3c7-48d6-a088-ed4e92a550ed">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5304,7 +5332,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresa5a09c19-9269-4040-8ca0-9157f155f516"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featuresf66e9011-b3c7-48d6-a088-ed4e92a550ed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5414,7 +5442,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -5629,7 +5657,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features4a5c6ce4-38e0-4caf-81ce-bb0308d66ea3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features89aee360-07ff-4955-936b-9024f6fd713b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5654,7 +5682,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features4a5c6ce4-38e0-4caf-81ce-bb0308d66ea3"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features89aee360-07ff-4955-936b-9024f6fd713b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5764,7 +5792,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               18ms
                               </span>
                             
                          
@@ -5904,7 +5932,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresdaa726af-0aa0-4890-be26-12b9fb374f56">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features867ff9c1-d8cd-41f1-b5d1-ad42ad06e863">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5929,7 +5957,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresdaa726af-0aa0-4890-be26-12b9fb374f56"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features867ff9c1-d8cd-41f1-b5d1-ad42ad06e863"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6039,7 +6067,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -6179,7 +6207,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featuresd3088aa5-becb-4de0-94d0-cd38ad0fbcb1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features20e1ab09-9382-4905-a1cf-0a7322d8e5fe">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6204,7 +6232,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_featuresd3088aa5-becb-4de0-94d0-cd38ad0fbcb1"
+                        <div id="collapseScenariopersoon_gezagsverhouding_features20e1ab09-9382-4905-a1cf-0a7322d8e5fe"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6314,7 +6342,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               27ms
+                               18ms
                               </span>
                             
                          
@@ -6454,7 +6482,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_features637bbc73-3865-486e-be2b-fd0bb9b79c92">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_gezagsverhouding_featurese2f7c204-2ea8-4627-898e-7ce4d2d9eee4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6479,7 +6507,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_gezagsverhouding_features637bbc73-3865-486e-be2b-fd0bb9b79c92"
+                        <div id="collapseScenariopersoon_gezagsverhouding_featurese2f7c204-2ea8-4627-898e-7ce4d2d9eee4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6589,7 +6617,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               19ms
                               </span>
                             
                          
@@ -6731,38 +6759,46 @@ pre {
 
 
 
-    </div>
+          
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {packages: ["corechart"]});
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Features",
-                                                            "failed" : 0,
-                                                            "passed" : 2,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Features",
+        "failed": 0,
+        "passed": 2,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Scenarios",
-                                                            "failed" : 0,
-                                                            "passed" : 19,
-                                                            "rerun" : 0,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+    });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Scenarios",
+        "failed": 0,
+        "passed": 19,
+        "rerun": 0,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-    </script>
-    <script>
+    });
+  </script>
+  <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -6779,6 +6815,28 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
+});
+
+$(document).ready(function () {
+  const $collapsibleItems = $('[data-toggle="collapse"]');
+  const $collapseAllBtn = $('#collapse_all');
+  const $expandAllBtn = $('#expand_all');
+
+  const collapseAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('hide');
+    });
+  };
+
+  const expandAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('show');
+    });
+  };
+
+  $collapseAllBtn.on('click', collapseAll);
+  $expandAllBtn.on('click', expandAll);
+
 });
 
 function toggle(className) {
@@ -6867,6 +6925,7 @@ function toggle(className) {
   }
 });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

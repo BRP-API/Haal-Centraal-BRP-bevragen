@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cucumber Feature Report</title>
-    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
-    <style type="text/css">
-      .panel-heading {
+
+<head>
+  <title>Cucumber Feature Report</title>
+  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .panel-heading {
     padding: 0;
 }
 
@@ -285,120 +286,147 @@ pre {
 }
 
 
-/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-.google-visualization-tooltip { pointer-events:none; }
-      
-.count-wrapper{
-  display: flex;
-  gap: 15px;
-}
-.card{
-  border: 1px solid #f5f5f5;
-  padding: 15px;
-  color: #fff;
-  border-radius: 5px;
-  flex: 1;
-}
-.generated-on{
-  margin-right: 10px;
-}
-.card h4{
-  font-size: 15px;
-}
-.red-box{
-  background: #d9534e;
-}
-.blue-box{
-  background: #0074ff;
-}
-.yellow-box{
-  background: #f0ad4e;
-}
-.saffron-box{
-  background: #ff9933;
-}
-.green-box{
-  background: #5cb85b;
-}
-.gray-box{
-  background: #999;
-}
-.amb-box{
-  background: #218bcf;
-}
-.undefined-box{
-  background: #22c2e2;
-}
-.mb-20px{
-  margin-bottom: 20px;
-}
-    </style>
-    <meta charset="UTF-8">
-  </head>
-  <body>
+    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+    .google-visualization-tooltip {
+      pointer-events: none;
+    }
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    .count-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid #f5f5f5;
+      padding: 15px;
+      color: #fff;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .generated-on {
+      margin-right: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+    }
+
+    .red-box {
+      background: #d9534e;
+    }
+
+    .blue-box {
+      background: #0074ff;
+    }
+
+    .yellow-box {
+      background: #f0ad4e;
+    }
+
+    .saffron-box {
+      background: #ff9933;
+    }
+
+    .green-box {
+      background: #5cb85b;
+    }
+
+    .gray-box {
+      background: #999;
+    }
+
+    .amb-box {
+      background: #218bcf;
+    }
+
+    .undefined-box {
+      background: #22c2e2;
+    }
+
+    .mb-20px {
+      margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - GBA 2.0.43</a>
-          <div class="project-name visible-md visible-lg">persoon immigratie features</div>
-          <div class="label-container">
-                <div class="generated-on">
-                  Mon May 15 2023 14:04:07 GMT+0000 (Coordinated Universal Time)
-                </div>
+          <a class="navbar-brand">
+            Haal Centraal BRP Bevragen API - GBA 2.0.43
+          </a>
+          <div class="project-name visible-md visible-lg">
+            persoon immigratie features
           </div>
-        </div>
+          <div class="label-container">
+            <div class="generated-on">
+              Wed May 24 2023 08:20:14 GMT+0000 (Coordinated Universal Time)
+            </div>
+          </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="count-wrapper mb-20px">
-        <div class="card blue-box">
-          <div class="feature-title">
-            <h4>All Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              18
-            </h5>
-          </div>
+    <div class="count-wrapper mb-20px">
+      <div class="card blue-box">
+        <div class="feature-title">
+          <h4>All Scenarios</h2>
         </div>
-        <div class="card green-box">
-          <div class="feature-title">
-            <h4>Passed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              18
-            </h5>
-          </div>
+        <div class="feature-value">
+          <h5>
+            18
+          </h5>
         </div>
-        <div class="card red-box">
-          <div class="feature-title">
-            <h4>Failed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        
-        
-        
-        
-        
       </div>
-      <div class="row">
-        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      <div class="card green-box">
+        <div class="feature-title">
+          <h4>Passed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            18
+          </h5>
+        </div>
       </div>
-
+      <div class="card red-box">
+        <div class="feature-title">
+          <h4>Failed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            0
+          </h5>
+        </div>
+      </div>
       
+          
+              
+                  
+                      
+    </div>
+    <div class="row">
+      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+    </div>
 
-      
+    <div>
+      <p class="text-right">
+        <a id="expand_all">Expand All</a>
+        <span> | </span>
+        <a id="collapse_all">Collapse All</a>
+      </p>
+    </div>
+
+    
+
+        
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -415,7 +443,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_immigratie_features026f6dee-edc1-4671-a2e1-9d74f7c7321a">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_immigratie_features77bfb6dd-435d-408e-bfbf-5445daafdc26">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>immigratie velden vragen met fields
@@ -431,7 +459,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_immigratie_features026f6dee-edc1-4671-a2e1-9d74f7c7321a" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_immigratie_features77bfb6dd-435d-408e-bfbf-5445daafdc26" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -444,7 +472,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf631db9c-f52c-44d0-88e3-f26c3437173f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features924cccb6-47ff-4510-854d-acab47772a57">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -469,7 +497,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresf631db9c-f52c-44d0-88e3-f26c3437173f"
+                        <div id="collapseScenariopersoon_immigratie_features924cccb6-47ff-4510-854d-acab47772a57"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -579,7 +607,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               56ms
+                               54ms
                               </span>
                             
                          
@@ -768,7 +796,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features6f79047d-e7c4-4fb3-b17e-5a04962a9b72">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features3f16246d-0871-400a-bbf4-063a1ddeac78">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -793,7 +821,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features6f79047d-e7c4-4fb3-b17e-5a04962a9b72"
+                        <div id="collapseScenariopersoon_immigratie_features3f16246d-0871-400a-bbf4-063a1ddeac78"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -903,7 +931,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               13ms
                               </span>
                             
                          
@@ -1092,7 +1120,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features195841b7-89a6-40e4-a0dc-3725c26657c8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresa82d8f7b-fad7-44cf-9c41-19e3eb4bd673">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1117,7 +1145,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features195841b7-89a6-40e4-a0dc-3725c26657c8"
+                        <div id="collapseScenariopersoon_immigratie_featuresa82d8f7b-fad7-44cf-9c41-19e3eb4bd673"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1227,7 +1255,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               11ms
                               </span>
                             
                          
@@ -1416,7 +1444,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresbd23bed9-64c0-4870-be56-0638de7e0f8e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresda38720a-489e-4def-8407-2ca19b2801ad">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1441,7 +1469,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresbd23bed9-64c0-4870-be56-0638de7e0f8e"
+                        <div id="collapseScenariopersoon_immigratie_featuresda38720a-489e-4def-8407-2ca19b2801ad"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1551,7 +1579,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               11ms
                               </span>
                             
                          
@@ -1740,7 +1768,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features200941bd-d465-4899-b763-591dbee82187">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featurese04f0266-29f0-438b-9ec4-02105a7d4f61">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1765,7 +1793,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features200941bd-d465-4899-b763-591dbee82187"
+                        <div id="collapseScenariopersoon_immigratie_featurese04f0266-29f0-438b-9ec4-02105a7d4f61"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1862,7 +1890,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               11ms
                               </span>
                             
                          
@@ -2064,7 +2092,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features0b386aa9-692d-41f7-8b97-8f2659673a89">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features1be8fe69-30c5-4e48-88d0-af88e0f02d88">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2089,7 +2117,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features0b386aa9-692d-41f7-8b97-8f2659673a89"
+                        <div id="collapseScenariopersoon_immigratie_features1be8fe69-30c5-4e48-88d0-af88e0f02d88"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2354,7 +2382,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features74dde730-dd78-4750-9b48-8271f0418db1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features4d430acd-3f37-45c6-be15-93b69d0f86ec">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2379,7 +2407,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features74dde730-dd78-4750-9b48-8271f0418db1"
+                        <div id="collapseScenariopersoon_immigratie_features4d430acd-3f37-45c6-be15-93b69d0f86ec"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2489,7 +2517,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -2665,7 +2693,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features64a5dad7-6c26-4828-875e-0a0f2ee45bbd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features8f54ea5f-b821-4d7f-b529-2c6c6b6a8b9c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2690,7 +2718,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features64a5dad7-6c26-4828-875e-0a0f2ee45bbd"
+                        <div id="collapseScenariopersoon_immigratie_features8f54ea5f-b821-4d7f-b529-2c6c6b6a8b9c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2800,7 +2828,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -2976,7 +3004,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresec876437-1456-4be8-8dcc-3b985f93c5f2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features4a886798-aeae-4933-830d-181e019df196">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3001,7 +3029,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresec876437-1456-4be8-8dcc-3b985f93c5f2"
+                        <div id="collapseScenariopersoon_immigratie_features4a886798-aeae-4933-830d-181e019df196"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3111,7 +3139,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -3287,7 +3315,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf240ad89-d2dd-4810-a0fc-1d3ccdd32d46">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresd7cfbe35-e50e-4903-ac4c-91937d4d4886">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3312,7 +3340,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresf240ad89-d2dd-4810-a0fc-1d3ccdd32d46"
+                        <div id="collapseScenariopersoon_immigratie_featuresd7cfbe35-e50e-4903-ac4c-91937d4d4886"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3422,7 +3450,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -3598,7 +3626,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features3416b789-e49e-48c9-a556-9a7ab714786e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf98bb395-98be-498d-8f1b-b92b21aa9836">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3623,7 +3651,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features3416b789-e49e-48c9-a556-9a7ab714786e"
+                        <div id="collapseScenariopersoon_immigratie_featuresf98bb395-98be-498d-8f1b-b92b21aa9836"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3733,7 +3761,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               13ms
                               </span>
                             
                          
@@ -3909,7 +3937,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features8d5e5b58-fefb-43a5-8f63-589d3a1b45b9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features81140cc8-756e-4d27-9811-7a649de657ae">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3934,7 +3962,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features8d5e5b58-fefb-43a5-8f63-589d3a1b45b9"
+                        <div id="collapseScenariopersoon_immigratie_features81140cc8-756e-4d27-9811-7a649de657ae"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4044,7 +4072,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -4220,7 +4248,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf3934751-da33-40b3-8ad9-a7d77861fa7b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresf435ac05-8b6e-4a39-ac8c-4d0b2cd705b1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4245,7 +4273,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresf3934751-da33-40b3-8ad9-a7d77861fa7b"
+                        <div id="collapseScenariopersoon_immigratie_featuresf435ac05-8b6e-4a39-ac8c-4d0b2cd705b1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4355,7 +4383,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -4531,7 +4559,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresaa2eb703-4116-44a0-b029-ea8b16113cba">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features4aa812e0-61b6-4a46-a72f-90c8c4e4ec7a">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4556,7 +4584,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresaa2eb703-4116-44a0-b029-ea8b16113cba"
+                        <div id="collapseScenariopersoon_immigratie_features4aa812e0-61b6-4a46-a72f-90c8c4e4ec7a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4842,7 +4870,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features8ba0f154-6cc3-45e9-bd02-293d5185d6fc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresce9eefec-4217-4c6d-9fb2-a3f59a84c98f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4867,7 +4895,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features8ba0f154-6cc3-45e9-bd02-293d5185d6fc"
+                        <div id="collapseScenariopersoon_immigratie_featuresce9eefec-4217-4c6d-9fb2-a3f59a84c98f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4977,7 +5005,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -5166,7 +5194,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_featuresa9d723af-1f7f-460d-a5c9-d67b0632908b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features0a3d7ec8-24d2-46d1-aafb-0dcc86d82368">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5191,7 +5219,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_featuresa9d723af-1f7f-460d-a5c9-d67b0632908b"
+                        <div id="collapseScenariopersoon_immigratie_features0a3d7ec8-24d2-46d1-aafb-0dcc86d82368"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5301,7 +5329,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               12ms
                               </span>
                             
                          
@@ -5490,7 +5518,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features0ca8012a-d86f-4fab-90ae-7e26a03e09f4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features4b321c9d-c214-49a2-bc34-daf2d6c26696">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5515,7 +5543,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features0ca8012a-d86f-4fab-90ae-7e26a03e09f4"
+                        <div id="collapseScenariopersoon_immigratie_features4b321c9d-c214-49a2-bc34-daf2d6c26696"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5625,7 +5653,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -5814,7 +5842,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features417b2610-6f51-4fe1-a696-090384a1955c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_immigratie_features5a61cd99-1b63-49b0-a08a-2c10903293a0">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5839,7 +5867,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_immigratie_features417b2610-6f51-4fe1-a696-090384a1955c"
+                        <div id="collapseScenariopersoon_immigratie_features5a61cd99-1b63-49b0-a08a-2c10903293a0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5949,7 +5977,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               11ms
                               </span>
                             
                          
@@ -6140,38 +6168,46 @@ pre {
 
 
 
-    </div>
+          
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {packages: ["corechart"]});
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Features",
-                                                            "failed" : 0,
-                                                            "passed" : 1,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Features",
+        "failed": 0,
+        "passed": 1,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Scenarios",
-                                                            "failed" : 0,
-                                                            "passed" : 18,
-                                                            "rerun" : 0,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+    });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Scenarios",
+        "failed": 0,
+        "passed": 18,
+        "rerun": 0,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-    </script>
-    <script>
+    });
+  </script>
+  <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -6188,6 +6224,28 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
+});
+
+$(document).ready(function () {
+  const $collapsibleItems = $('[data-toggle="collapse"]');
+  const $collapseAllBtn = $('#collapse_all');
+  const $expandAllBtn = $('#expand_all');
+
+  const collapseAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('hide');
+    });
+  };
+
+  const expandAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('show');
+    });
+  };
+
+  $collapseAllBtn.on('click', collapseAll);
+  $expandAllBtn.on('click', expandAll);
+
 });
 
 function toggle(className) {
@@ -6276,6 +6334,7 @@ function toggle(className) {
   }
 });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

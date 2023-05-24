@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cucumber Feature Report</title>
-    <link rel="icon" href="https://www.lambdatest.com/favicon.ico" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
-    <style type="text/css">
-      .panel-heading {
+
+<head>
+  <title>Cucumber Feature Report</title>
+  <link rel="icon" href="https://www.lambdatest.com/favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style type="text/css">
+    .panel-heading {
     padding: 0;
 }
 
@@ -285,120 +286,147 @@ pre {
 }
 
 
-/** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
-.google-visualization-tooltip { pointer-events:none; }
-      
-.count-wrapper{
-  display: flex;
-  gap: 15px;
-}
-.card{
-  border: 1px solid #f5f5f5;
-  padding: 15px;
-  color: #fff;
-  border-radius: 5px;
-  flex: 1;
-}
-.generated-on{
-  margin-right: 10px;
-}
-.card h4{
-  font-size: 15px;
-}
-.red-box{
-  background: #d9534e;
-}
-.blue-box{
-  background: #0074ff;
-}
-.yellow-box{
-  background: #f0ad4e;
-}
-.saffron-box{
-  background: #ff9933;
-}
-.green-box{
-  background: #5cb85b;
-}
-.gray-box{
-  background: #999;
-}
-.amb-box{
-  background: #218bcf;
-}
-.undefined-box{
-  background: #22c2e2;
-}
-.mb-20px{
-  margin-bottom: 20px;
-}
-    </style>
-    <meta charset="UTF-8">
-  </head>
-  <body>
+    /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
+    .google-visualization-tooltip {
+      pointer-events: none;
+    }
 
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
+    .count-wrapper {
+      display: flex;
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid #f5f5f5;
+      padding: 15px;
+      color: #fff;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    .generated-on {
+      margin-right: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+    }
+
+    .red-box {
+      background: #d9534e;
+    }
+
+    .blue-box {
+      background: #0074ff;
+    }
+
+    .yellow-box {
+      background: #f0ad4e;
+    }
+
+    .saffron-box {
+      background: #ff9933;
+    }
+
+    .green-box {
+      background: #5cb85b;
+    }
+
+    .gray-box {
+      background: #999;
+    }
+
+    .amb-box {
+      background: #218bcf;
+    }
+
+    .undefined-box {
+      background: #22c2e2;
+    }
+
+    .mb-20px {
+      margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
         
-          <a class="navbar-brand">Haal Centraal BRP Bevragen API - Proxy 2.0.20</a>
-          <div class="project-name visible-md visible-lg">persoon geboorte features</div>
-          <div class="label-container">
-                <div class="generated-on">
-                  Mon May 15 2023 14:04:07 GMT+0000 (Coordinated Universal Time)
-                </div>
+          <a class="navbar-brand">
+            Haal Centraal BRP Bevragen API - Proxy 2.0.20
+          </a>
+          <div class="project-name visible-md visible-lg">
+            persoon geboorte features
           </div>
-        </div>
+          <div class="label-container">
+            <div class="generated-on">
+              Wed May 24 2023 08:20:14 GMT+0000 (Coordinated Universal Time)
+            </div>
+          </div>
       </div>
     </div>
+  </div>
 
-    <div class="container">
+  <div class="container">
 
-      <div class="count-wrapper mb-20px">
-        <div class="card blue-box">
-          <div class="feature-title">
-            <h4>All Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              28
-            </h5>
-          </div>
+    <div class="count-wrapper mb-20px">
+      <div class="card blue-box">
+        <div class="feature-title">
+          <h4>All Scenarios</h2>
         </div>
-        <div class="card green-box">
-          <div class="feature-title">
-            <h4>Passed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              28
-            </h5>
-          </div>
+        <div class="feature-value">
+          <h5>
+            28
+          </h5>
         </div>
-        <div class="card red-box">
-          <div class="feature-title">
-            <h4>Failed Scenarios</h2>
-          </div>
-          <div class="feature-value">
-            <h5>
-              0
-            </h5>
-          </div>
-        </div>
-        
-        
-        
-        
-        
       </div>
-      <div class="row">
-        <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
-        <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+      <div class="card green-box">
+        <div class="feature-title">
+          <h4>Passed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            28
+          </h5>
+        </div>
       </div>
-
+      <div class="card red-box">
+        <div class="feature-title">
+          <h4>Failed Scenarios</h2>
+        </div>
+        <div class="feature-value">
+          <h5>
+            0
+          </h5>
+        </div>
+      </div>
       
+          
+              
+                  
+                      
+    </div>
+    <div class="row">
+      <div class="chart col-lg-6 col-md-6" id="piechart_features"></div>
+      <div class="chart col-lg-6 col-md-6" id="piechart_scenarios"></div>
+    </div>
 
-      
+    <div>
+      <p class="text-right">
+        <a id="expand_all">Expand All</a>
+        <span> | </span>
+        <a id="collapse_all">Collapse All</a>
+      </p>
+    </div>
+
+    
+
+        
 
 
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -414,7 +442,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features85352983-bf21-44f6-85cb-f2ca8860ca78">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features57537a54-3500-479e-bdce-48f3d4f2e974">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: geboorte velden vragen met fields
@@ -430,7 +458,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geboorte_features85352983-bf21-44f6-85cb-f2ca8860ca78" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geboorte_features57537a54-3500-479e-bdce-48f3d4f2e974" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -443,7 +471,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresafffa4d1-f6cc-4f43-8fb2-2215c8d604a2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd4ad14d1-7fcd-4d54-a39d-bec27b928f13">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -468,7 +496,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresafffa4d1-f6cc-4f43-8fb2-2215c8d604a2"
+                        <div id="collapseScenariopersoon_geboorte_featuresd4ad14d1-7fcd-4d54-a39d-bec27b928f13"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -565,7 +593,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               64ms
+                               67ms
                               </span>
                             
                          
@@ -767,7 +795,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurescf1df1bb-548c-479d-add0-92a127646f76">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresbabf55ef-c064-4b91-943d-ca3bd1a97061">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -792,7 +820,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featurescf1df1bb-548c-479d-add0-92a127646f76"
+                        <div id="collapseScenariopersoon_geboorte_featuresbabf55ef-c064-4b91-943d-ca3bd1a97061"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -889,7 +917,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               21ms
                               </span>
                             
                          
@@ -1091,7 +1119,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features6e3bb21f-d818-473a-b53e-2b17e4bb2cfd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf18633b5-eb11-41e9-b6b6-502f203f6d0c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1116,7 +1144,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features6e3bb21f-d818-473a-b53e-2b17e4bb2cfd"
+                        <div id="collapseScenariopersoon_geboorte_featuresf18633b5-eb11-41e9-b6b6-502f203f6d0c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1213,7 +1241,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -1415,7 +1443,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3f0b8f5d-c05a-4ef4-818c-39874a8caa10">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresa9fea1b2-5bb9-4238-a7a8-2251ffefba43">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1440,7 +1468,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features3f0b8f5d-c05a-4ef4-818c-39874a8caa10"
+                        <div id="collapseScenariopersoon_geboorte_featuresa9fea1b2-5bb9-4238-a7a8-2251ffefba43"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1537,7 +1565,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               19ms
                               </span>
                             
                          
@@ -1739,7 +1767,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresa8f24f97-c641-4644-b09a-6000f16c5bce">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresedae53bc-cf45-4cd4-aece-1942ceb0df7c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1764,7 +1792,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresa8f24f97-c641-4644-b09a-6000f16c5bce"
+                        <div id="collapseScenariopersoon_geboorte_featuresedae53bc-cf45-4cd4-aece-1942ceb0df7c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1861,7 +1889,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               19ms
                               </span>
                             
                          
@@ -2063,7 +2091,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features25d9380d-7bad-4128-a58e-3f6854a8c9fa">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresb2c346fe-fd5c-4b37-b926-f5a885111a3f">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2088,7 +2116,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features25d9380d-7bad-4128-a58e-3f6854a8c9fa"
+                        <div id="collapseScenariopersoon_geboorte_featuresb2c346fe-fd5c-4b37-b926-f5a885111a3f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2185,7 +2213,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               19ms
                               </span>
                             
                          
@@ -2387,7 +2415,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features56cbeed0-a382-4cd1-aa10-f52e3adc3f2d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresb9812288-f758-48f6-bcaf-4005b0265a88">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2412,7 +2440,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features56cbeed0-a382-4cd1-aa10-f52e3adc3f2d"
+                        <div id="collapseScenariopersoon_geboorte_featuresb9812288-f758-48f6-bcaf-4005b0265a88"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2509,7 +2537,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               19ms
                               </span>
                             
                          
@@ -2711,7 +2739,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurese92606fe-8c90-43f6-bf32-2729f39a1096">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features5d48987c-3a62-480a-bc02-3c1c635c6f90">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2736,7 +2764,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featurese92606fe-8c90-43f6-bf32-2729f39a1096"
+                        <div id="collapseScenariopersoon_geboorte_features5d48987c-3a62-480a-bc02-3c1c635c6f90"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2833,7 +2861,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               18ms
                               </span>
                             
                          
@@ -3074,7 +3102,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0c728b2d-042f-4a45-a9d1-81c11f82e357">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4907aac0-3bcb-443e-a2ea-0352d4549176">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3099,7 +3127,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features0c728b2d-042f-4a45-a9d1-81c11f82e357"
+                        <div id="collapseScenariopersoon_geboorte_features4907aac0-3bcb-443e-a2ea-0352d4549176"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3196,7 +3224,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               18ms
                               </span>
                             
                          
@@ -3437,7 +3465,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features114742c0-d245-47b9-9165-f4551d05fee4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresaa6ef176-252f-4a5f-8733-a7228be99119">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3462,7 +3490,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features114742c0-d245-47b9-9165-f4551d05fee4"
+                        <div id="collapseScenariopersoon_geboorte_featuresaa6ef176-252f-4a5f-8733-a7228be99119"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3559,7 +3587,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               19ms
                               </span>
                             
                          
@@ -3800,7 +3828,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features25ee575f-ce50-4b4f-a332-72723b973fcd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd5593a20-542e-479c-8a76-6ebaa071c5bb">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3825,7 +3853,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features25ee575f-ce50-4b4f-a332-72723b973fcd"
+                        <div id="collapseScenariopersoon_geboorte_featuresd5593a20-542e-479c-8a76-6ebaa071c5bb"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3922,7 +3950,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               18ms
                               </span>
                             
                          
@@ -4163,7 +4191,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features70e34db3-4ede-4e2d-8de1-72c4ddc37f44">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1dd96177-fa5a-44fe-bb60-125925f30f44">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4188,7 +4216,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features70e34db3-4ede-4e2d-8de1-72c4ddc37f44"
+                        <div id="collapseScenariopersoon_geboorte_features1dd96177-fa5a-44fe-bb60-125925f30f44"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4285,7 +4313,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -4474,7 +4502,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresec47b525-bdf6-413d-aada-aaf89fbabedf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3a13eca5-65f3-4a3a-a3a7-8d68d56166ee">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4499,7 +4527,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresec47b525-bdf6-413d-aada-aaf89fbabedf"
+                        <div id="collapseScenariopersoon_geboorte_features3a13eca5-65f3-4a3a-a3a7-8d68d56166ee"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4596,7 +4624,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               18ms
                               </span>
                             
                          
@@ -4785,7 +4813,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features447faa21-0fc7-4718-a097-87dfd1d36883">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7f74a608-4d96-46c7-abf6-ef10fc271519">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4810,7 +4838,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features447faa21-0fc7-4718-a097-87dfd1d36883"
+                        <div id="collapseScenariopersoon_geboorte_features7f74a608-4d96-46c7-abf6-ef10fc271519"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4907,7 +4935,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               18ms
                               </span>
                             
                          
@@ -5096,7 +5124,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features8f837da5-9385-4c97-8ec7-4c7a309522ba">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features8b85325b-e0c3-4cc0-a793-2d3feb4f3070">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5121,7 +5149,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features8f837da5-9385-4c97-8ec7-4c7a309522ba"
+                        <div id="collapseScenariopersoon_geboorte_features8b85325b-e0c3-4cc0-a793-2d3feb4f3070"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5218,7 +5246,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               22ms
                               </span>
                             
                          
@@ -5358,7 +5386,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features2cf8953e-edc0-4ab2-bef6-227018992e7c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features61db9d69-7686-4aa6-ade2-7812cab201ca">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5383,7 +5411,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features2cf8953e-edc0-4ab2-bef6-227018992e7c"
+                        <div id="collapseScenariopersoon_geboorte_features61db9d69-7686-4aa6-ade2-7812cab201ca"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5480,7 +5508,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               18ms
                               </span>
                             
                          
@@ -5669,7 +5697,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresff5dab68-a7d2-4a93-8a34-2467447e7c15">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd743f22c-d35a-463a-891e-20ae93a2cd0c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5694,7 +5722,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresff5dab68-a7d2-4a93-8a34-2467447e7c15"
+                        <div id="collapseScenariopersoon_geboorte_featuresd743f22c-d35a-463a-891e-20ae93a2cd0c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5791,7 +5819,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               18ms
                               </span>
                             
                          
@@ -5980,7 +6008,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf5f17e19-3382-40f9-b132-86a21f2a5c34">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0c5c0b4d-4b05-43b2-b9d7-e13209439ea4">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6005,7 +6033,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresf5f17e19-3382-40f9-b132-86a21f2a5c34"
+                        <div id="collapseScenariopersoon_geboorte_features0c5c0b4d-4b05-43b2-b9d7-e13209439ea4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6102,7 +6130,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               16ms
                               </span>
                             
                          
@@ -6291,7 +6319,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features64face1f-0182-4b81-98a8-fd0d4970d225">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features81f9ca21-54f4-46d9-853b-104adbe9ac3c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6316,7 +6344,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features64face1f-0182-4b81-98a8-fd0d4970d225"
+                        <div id="collapseScenariopersoon_geboorte_features81f9ca21-54f4-46d9-853b-104adbe9ac3c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6413,7 +6441,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               19ms
                               </span>
                             
                          
@@ -6564,7 +6592,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features1420805b-ed2c-46e6-bc8e-6ac654a3d764">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features72db574a-de6e-4161-8a7e-cd3e96d791cd">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: geboorte velden in onderzoek
@@ -6580,7 +6608,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geboorte_features1420805b-ed2c-46e6-bc8e-6ac654a3d764" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geboorte_features72db574a-de6e-4161-8a7e-cd3e96d791cd" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -6593,7 +6621,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1c8a3d86-2894-488d-977a-6c29d701ddea">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features39b062bd-48d3-4b91-839d-7657fdbccb38">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -6618,7 +6646,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features1c8a3d86-2894-488d-977a-6c29d701ddea"
+                        <div id="collapseScenariopersoon_geboorte_features39b062bd-48d3-4b91-839d-7657fdbccb38"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6672,862 +6700,6 @@ pre {
                                       
                                         <td>
                                           010000
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          geboortedatum (03.10)
-                                        </td>
-                                      
-                                        <td>
-                                          19630405
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               23ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          geboorte.datum,geboorte.plaats,geboorte.land
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende &#39;geboorte&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum.datum
-                                        </td>
-                                      
-                                        <td>
-                                          1963-04-05
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          5 april 1963
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datum
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.plaats
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.land
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoek.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoek.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoek.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features9ef330c3-f2d9-4aa9-8468-f0489bb8c23c">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep geboorte' is in onderzoek en geboortedatum, plaats en land worden gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_geboorte_features9ef330c3-f2d9-4aa9-8468-f0489bb8c23c"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          010300
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum ingang onderzoek (83.20)
-                                        </td>
-                                      
-                                        <td>
-                                          20020701
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          geboortedatum (03.10)
-                                        </td>
-                                      
-                                        <td>
-                                          19630405
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               22ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          geboorte.datum,geboorte.plaats,geboorte.land
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende &#39;geboorte&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum.datum
-                                        </td>
-                                      
-                                        <td>
-                                          1963-04-05
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          datum.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          5 april 1963
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datum
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.plaats
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.land
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoek.type
-                                        </td>
-                                      
-                                        <td>
-                                          Datum
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoek.datum
-                                        </td>
-                                      
-                                        <td>
-                                          2002-07-01
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          inOnderzoek.datumIngangOnderzoek.langFormaat
-                                        </td>
-                                      
-                                        <td>
-                                          1 juli 2002
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf6becb31-5c1d-4423-8d79-fedfa2ecc8c0">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum' is in onderzoek en geboortedatum, plaats en land worden gevraagd
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresf6becb31-5c1d-4423-8d79-fedfa2ecc8c0"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          aanduiding in onderzoek (83.10)
-                                        </td>
-                                      
-                                        <td>
-                                          010310
                                         </td>
                                       
                                       </tr>
@@ -7779,7 +6951,7 @@ pre {
                                         </td>
                                       
                                         <td>
-                                          
+                                          true
                                         </td>
                                       
                                       </tr>
@@ -7792,7 +6964,7 @@ pre {
                                         </td>
                                       
                                         <td>
-                                          
+                                          true
                                         </td>
                                       
                                       </tr>
@@ -7877,13 +7049,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features94e7c556-0553-4039-a0c0-0ebe065cd221">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features9555bcb7-0618-4792-b31f-3e60261a8841">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteplaats' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b>'hele groep geboorte' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7902,7 +7074,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features94e7c556-0553-4039-a0c0-0ebe065cd221"
+                        <div id="collapseScenariopersoon_geboorte_features9555bcb7-0618-4792-b31f-3e60261a8841"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7955,7 +7127,7 @@ pre {
                                         </td>
                                       
                                         <td>
-                                          010320
+                                          010300
                                         </td>
                                       
                                       </tr>
@@ -8025,7 +7197,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               19ms
                               </span>
                             
                          
@@ -8194,7 +7366,7 @@ pre {
                                         </td>
                                       
                                         <td>
-                                          
+                                          true
                                         </td>
                                       
                                       </tr>
@@ -8208,6 +7380,434 @@ pre {
                                       
                                         <td>
                                           true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.land
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoek.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoek.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoek.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7d39c21c-dab2-4423-b458-7afe5dd15178">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'geboortedatum' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_geboorte_features7d39c21c-dab2-4423-b458-7afe5dd15178"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          010310
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          geboortedatum (03.10)
+                                        </td>
+                                      
+                                        <td>
+                                          19630405
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               19ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          geboorte.datum,geboorte.plaats,geboorte.land
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende &#39;geboorte&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum.datum
+                                        </td>
+                                      
+                                        <td>
+                                          1963-04-05
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          5 april 1963
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datum
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.plaats
+                                        </td>
+                                      
+                                        <td>
+                                          
                                         </td>
                                       
                                       </tr>
@@ -8305,13 +7905,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features590d0d27-9b41-4b01-826b-c612fc9b77c6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features872ad656-bd86-414a-9e78-a9a492aefe75">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteland' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b>'geboorteplaats' is in onderzoek en geboortedatum, plaats en land worden gevraagd
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8330,7 +7930,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features590d0d27-9b41-4b01-826b-c612fc9b77c6"
+                        <div id="collapseScenariopersoon_geboorte_features872ad656-bd86-414a-9e78-a9a492aefe75"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8383,7 +7983,7 @@ pre {
                                         </td>
                                       
                                         <td>
-                                          010330
+                                          010320
                                         </td>
                                       
                                       </tr>
@@ -8635,6 +8235,434 @@ pre {
                                         </td>
                                       
                                         <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.land
+                                        </td>
+                                      
+                                        <td>
+                                          
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoek.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoek.datum
+                                        </td>
+                                      
+                                        <td>
+                                          2002-07-01
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datumIngangOnderzoek.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          1 juli 2002
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurese96e4757-17a6-448c-9652-aa6552ee7bc1">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b>'geboorteland' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_geboorte_featurese96e4757-17a6-448c-9652-aa6552ee7bc1"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          aanduiding in onderzoek (83.10)
+                                        </td>
+                                      
+                                        <td>
+                                          010330
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum ingang onderzoek (83.20)
+                                        </td>
+                                      
+                                        <td>
+                                          20020701
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          geboortedatum (03.10)
+                                        </td>
+                                      
+                                        <td>
+                                          19630405
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               22ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          geboorte.datum,geboorte.plaats,geboorte.land
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende &#39;geboorte&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum.type
+                                        </td>
+                                      
+                                        <td>
+                                          Datum
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum.datum
+                                        </td>
+                                      
+                                        <td>
+                                          1963-04-05
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          datum.langFormaat
+                                        </td>
+                                      
+                                        <td>
+                                          5 april 1963
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.datum
+                                        </td>
+                                      
+                                        <td>
+                                          
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          inOnderzoek.plaats
+                                        </td>
+                                      
+                                        <td>
                                           
                                         </td>
                                       
@@ -8733,7 +8761,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features8c6c80ba-ac16-48ed-8bf9-9e1cf04ddfb5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1bb730c0-1316-4d00-b8a5-2fdf9b1433ce">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -8758,7 +8786,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features8c6c80ba-ac16-48ed-8bf9-9e1cf04ddfb5"
+                        <div id="collapseScenariopersoon_geboorte_features1bb730c0-1316-4d00-b8a5-2fdf9b1433ce"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8881,7 +8909,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               18ms
                               </span>
                             
                          
@@ -9021,7 +9049,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features8bfded22-13de-4478-b103-f5dd33e803e9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features6da969a6-05eb-4c56-9038-c23fea4a7f09">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9046,7 +9074,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features8bfded22-13de-4478-b103-f5dd33e803e9"
+                        <div id="collapseScenariopersoon_geboorte_features6da969a6-05eb-4c56-9038-c23fea4a7f09"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9169,7 +9197,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -9309,7 +9337,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features29c2d575-6620-4420-a06a-0a77a3ce0150">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features89e1bfe6-bc4d-4687-864e-74fc50c9b457">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9334,7 +9362,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features29c2d575-6620-4420-a06a-0a77a3ce0150"
+                        <div id="collapseScenariopersoon_geboorte_features89e1bfe6-bc4d-4687-864e-74fc50c9b457"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9457,7 +9485,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -9597,7 +9625,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf5a6d599-1467-4f7e-bd8b-58a257a6d129">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd6327546-1c57-49d4-9674-be749eefbf0b">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -9622,7 +9650,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresf5a6d599-1467-4f7e-bd8b-58a257a6d129"
+                        <div id="collapseScenariopersoon_geboorte_featuresd6327546-1c57-49d4-9674-be749eefbf0b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9745,7 +9773,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               18ms
                               </span>
                             
                          
@@ -9923,38 +9951,46 @@ pre {
 
 
 
-    </div>
+          
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-        google.load("visualization", "1", {packages: ["corechart"]});
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Features",
-                                                            "failed" : 0,
-                                                            "passed" : 2,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Features",
+        "failed": 0,
+        "passed": 2,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-        google.setOnLoadCallback(function() {drawChart({
-                                                            "title" : "Scenarios",
-                                                            "failed" : 0,
-                                                            "passed" : 28,
-                                                            "rerun" : 0,
-                                                            "notdefined" : 0,
-                                                            "pending" : 0,
-                                                            "skipped" : 0,
-                                                            "ambiguous" : 0
+    });
+    google.setOnLoadCallback(function () {
+      drawChart({
+        "title": "Scenarios",
+        "failed": 0,
+        "passed": 28,
+        "rerun": 0,
+        "notdefined": 0,
+        "pending": 0,
+        "skipped": 0,
+        "ambiguous": 0
                                                         })
-                                            });
-    </script>
-    <script>
+    });
+  </script>
+  <script>
       $(document).ready(function () {
   $('.collapse')
     .on('hide.bs.collapse', function (e) {
@@ -9971,6 +10007,28 @@ pre {
   let timestamp = $generated.text();
   $generated.text('Report generated ' + moment(timestamp).fromNow());
   $generated.prop('title', new Date(timestamp).toISOString());
+});
+
+$(document).ready(function () {
+  const $collapsibleItems = $('[data-toggle="collapse"]');
+  const $collapseAllBtn = $('#collapse_all');
+  const $expandAllBtn = $('#expand_all');
+
+  const collapseAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('hide');
+    });
+  };
+
+  const expandAll = function () {
+    $collapsibleItems.each(function () {
+      $($(this).attr('href')).collapse('show');
+    });
+  };
+
+  $collapseAllBtn.on('click', collapseAll);
+  $expandAllBtn.on('click', expandAll);
+
 });
 
 function toggle(className) {
@@ -10059,6 +10117,7 @@ function toggle(className) {
   }
 });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
