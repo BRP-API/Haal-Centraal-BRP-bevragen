@@ -71,8 +71,6 @@ jobs:
         shell: bash
       - name: Validate functional specs
         run: |
-          echo ${{ github.ref_name }}
-          
           ./scripts/specs-verify.sh ${{ secrets.DBHOST }} ${{ secrets.DBUSER }} ${{ secrets.DBPASSWORD }} ${{ secrets.CLIENTID }} ${{ secrets.CLIENTSECRET }}
 
           node ./scripts/generate-cucumber-report.js ${{ vars.API_VERSION }} ${{ vars.PROXY_VERSION }}
@@ -91,7 +89,7 @@ jobs:
             doCommit=true
           fi
 
-          if [ $doCommit = true ]; then
+          if [ $doCommit = true ] && [ ${{ github.ref_type }} != 'tag' ]; then
             git config user.name "$GITHUB_ACTOR"
             git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
             git pull --ff-only
