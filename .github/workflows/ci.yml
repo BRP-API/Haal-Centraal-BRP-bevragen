@@ -80,6 +80,10 @@ jobs:
           doCommit=false
 
           if [ -n "$(git status docs/features/*.html --porcelain)" ]; then
+            search_string='2.5.1\/moment.min.js"'
+            replace_string='2.5.1\/moment.min.js" integrity="sha512-r8lfwD+xE5L0FjDLicb4ZiF32sJqCAOnLN0nxQq5VW0t0nFEEiNIvTZ\/I9Su4ulGpDCfYjXsSFZsT9FpILp2+A==" crossorigin="anonymous" referrerpolicy="no-referrer"'
+            sed -i "s/$search_string/$replace_string/" docs/features/*.html
+
             git add docs/features/*.html
             doCommit=true
           fi
