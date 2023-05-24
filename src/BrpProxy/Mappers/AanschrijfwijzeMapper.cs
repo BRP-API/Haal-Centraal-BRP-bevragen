@@ -190,7 +190,7 @@ public static class AanschrijfwijzeMapper
 
         var retval = partner.Achternaam().IsLeegOfOnbekend()
             ? $"{persoon.Voorletters} {achternaam}"
-            : persoon.AanduidingNaamgebruik.Code switch
+            : persoon.AanduidingNaamgebruik() switch
         {
             "P" => $"{persoon.Voorletters} {achternaamPartner}",
             "V" => $"{persoon.Voorletters} {achternaamPartner}-{achternaam}",
@@ -210,7 +210,7 @@ public static class AanschrijfwijzeMapper
 
         var retval = partner.Achternaam().IsLeegOfOnbekend()
             ? $"{persoon.Voorletters} {achternaam}"
-            : persoon.AanduidingNaamgebruik.Code switch
+            : persoon.AanduidingNaamgebruik() switch
                 {
                     "E" => $"{persoon.Voorletters} {achternaam}",
                     "V" => $"{persoon.Voorletters} {achternaamPartner}-{achternaam}",
@@ -227,7 +227,7 @@ public static class AanschrijfwijzeMapper
 
         var retval = partner.Achternaam().IsLeegOfOnbekend()
             ? $"{titel} {persoon.Voorletters} {persoon.Achternaam()}"
-            : persoon.AanduidingNaamgebruik.Code switch
+            : persoon.AanduidingNaamgebruik() switch
                 {
                     "E" => $"{titel} {persoon.Voorletters} {persoon.Achternaam()}",
                     "V" => $"{persoon.Voorletters} {partner.Achternaam()}-{titel} {persoon.Achternaam()}",
@@ -242,7 +242,7 @@ public static class AanschrijfwijzeMapper
     {
         var retval = partner.Achternaam().IsLeegOfOnbekend()
             ? $"{persoon.Voorletters} {persoon.Achternaam()}"
-            : persoon.AanduidingNaamgebruik.Code switch
+            : persoon.AanduidingNaamgebruik() switch
                 {
                     "E" => $"{persoon.Voorletters} {persoon.Achternaam()}",
                     "P" => $"{persoon.Voorletters} {partner.Achternaam()}",
