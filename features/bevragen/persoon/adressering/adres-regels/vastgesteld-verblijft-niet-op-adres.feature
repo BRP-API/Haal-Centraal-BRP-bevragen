@@ -31,7 +31,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
     | inOnderzoek.datumIngangOnderzoekVerblijfplaats.datum       | 2002-07-01                  |
     | inOnderzoek.datumIngangOnderzoekVerblijfplaats.langFormaat | 1 juli 2002                 |
 
-  Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locate en één of meerdere adresregel velden wordt gevraagd
+  Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locatie en één of meerdere adresregel velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000309' heeft de volgende 'verblijfplaats' gegevens
     | gemeente van inschrijving (09.10) | functie adres (10.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
     | 0518                              | W                     | 089999                          | 20020701                       |
