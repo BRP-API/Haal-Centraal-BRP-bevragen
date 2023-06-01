@@ -94,7 +94,7 @@ components:
     IndicatieVastgesteldVerblijftNietOpAdres:
       description: |
         Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.
-        type: boolean
+      type: boolean
     VerblijfadresBinnenland:
       type: object
       properties:
