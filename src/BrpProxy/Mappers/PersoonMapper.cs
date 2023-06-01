@@ -177,6 +177,7 @@ public static class PersoonMapper
             {
                 case "080000":
                 case "081300":
+                case "089999":
                     retval.Adresregel1 = true;
                     retval.Adresregel2 = true;
                     retval.Adresregel3 = true;

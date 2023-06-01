@@ -131,3 +131,17 @@ Functionaliteit: immigratie velden in onderzoek
     | 080000                  | hele categorie verblijfplaats |
     | 081400                  | hele groep immigratie         |
     | 081410                  | land vanwaar ingeschreven     |
+
+Rule: aanduiding in onderzoek waarde '089999' zet immigratie velden niet in onderzoek
+
+  Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere immigratie velden wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
+    | naam                            | waarde   |
+    | aanduiding in onderzoek (83.10) | 089999   |
+    | datum ingang onderzoek (83.20)  | 20020701 |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000152                       |
+    | fields              | immigratie                      |
+    Dan heeft de response een persoon zonder 'immigratie' gegevens

@@ -91,6 +91,10 @@ components:
       type: string
       pattern: ^[a-zA-Z0-9À-ž \(\)\,\.\-\']{1,80}$
       example: "Duiven"
+    IndicatieVastgesteldVerblijftNietOpAdres:
+      description: |
+        Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.
+      type: boolean
     VerblijfadresBinnenland:
       type: object
       properties:
@@ -217,6 +221,8 @@ components:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            indicatieVastgesteldVerblijftNietOpAdres:
+              $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
             inOnderzoek:
               $ref: "#/components/schemas/AdresInOnderzoek"
     Locatie:
@@ -236,6 +242,8 @@ components:
               $ref: "#/components/schemas/VerblijfadresLocatie"
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            indicatieVastgesteldVerblijftNietOpAdres:
+              $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
             inOnderzoek:
               $ref: '#/components/schemas/LocatieInOnderzoek'
     VerblijfplaatsOnbekend:

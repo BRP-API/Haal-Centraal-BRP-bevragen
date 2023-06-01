@@ -498,6 +498,14 @@ namespace BrpProxy.Validators
                 "rni",
                 "verificatie"
             });
+            if(fields.Any(f => f.StartsWith("verblijfplaats")))
+            {
+                retval.Add("verblijfplaats.indicatieVastgesteldVerblijftNietOpAdres");
+            }
+            if(fields.Any(f => f.StartsWith("adressering")))
+            {
+                retval.Add("adressering.IndicatieVastgesteldVerblijftNietOpAdres");
+            }
 
             return retval;
         }

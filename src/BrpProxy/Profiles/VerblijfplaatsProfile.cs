@@ -70,12 +70,22 @@ public class VerblijfplaatsProfile : Profile
                 opt.PreCondition(src => src.NummeraanduidingIdentificatie != "0000000000000000");
                 opt.MapFrom(src => src.NummeraanduidingIdentificatie);
             })
+            .ForMember(dest => dest.IndicatieVastgesteldVerblijftNietOpAdres, opt =>
+            {
+                opt.PreCondition(src => src.InOnderzoek?.AanduidingGegevensInOnderzoek != null);
+                opt.MapFrom(src => src.InOnderzoek.AanduidingGegevensInOnderzoek == "089999");
+            })
             ;
 
         CreateMap<GbaVerblijfplaats, Locatie>()
             .ForMember(dest => dest.DatumVan, opt => opt.MapFrom(src => src.DatumAanvangAdreshouding.Map()))
             .ForMember(dest => dest.DatumIngangGeldigheid, opt => opt.MapFrom(src => src.DatumIngangGeldigheid.Map()))
             .ForMember(dest => dest.Verblijfadres, opt => opt.MapFrom(src => src))
+            .ForMember(dest => dest.IndicatieVastgesteldVerblijftNietOpAdres, opt =>
+            {
+                opt.PreCondition(src => src.InOnderzoek?.AanduidingGegevensInOnderzoek != null);
+                opt.MapFrom(src => src.InOnderzoek.AanduidingGegevensInOnderzoek == "089999");
+            })
             ;
     }
 }

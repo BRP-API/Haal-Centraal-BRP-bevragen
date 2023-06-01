@@ -280,29 +280,32 @@ Rule: De fields parameter bevat veld paden die verwijzen naar een bestaand veld.
     | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                                                 |
-    | geheimhoudingPersoonsgegevens                          |
-    | opschortingBijhouding                                  |
-    | opschortingBijhouding.reden                            |
-    | opschortingBijhouding.reden.omschrijving               |
-    | opschortingBijhouding.datum                            |
-    | opschortingBijhouding.datum.type                       |
-    | rni                                                    |
-    | rni.deelnemer                                          |
-    | rni.deelnemer.code                                     |
-    | rni.omschrijvingVerdrag                                |
-    | rni.categorie                                          |
-    | verificatie                                            |
-    | verificatie.datum                                      |
-    | verificatie.datum.datum                                |
-    | verificatie.omschrijving                               |
-    | inOnderzoek                                            |
-    | inOnderzoek.burgerservicenummer                        |
-    | inOnderzoek.datumIngangOnderzoekPersoon                |
-    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat   |
-    | naam.inOnderzoek.voornamen                             |
-    | geboorte.inOnderzoek.datumIngangOnderzoek              |
-    | partners.aangaanHuwelijkPartnerschap.inOnderzoek.datum |
+    | fields                                                         |
+    | geheimhoudingPersoonsgegevens                                  |
+    | opschortingBijhouding                                          |
+    | opschortingBijhouding.reden                                    |
+    | opschortingBijhouding.reden.omschrijving                       |
+    | opschortingBijhouding.datum                                    |
+    | opschortingBijhouding.datum.type                               |
+    | rni                                                            |
+    | rni.deelnemer                                                  |
+    | rni.deelnemer.code                                             |
+    | rni.omschrijvingVerdrag                                        |
+    | rni.categorie                                                  |
+    | verificatie                                                    |
+    | verificatie.datum                                              |
+    | verificatie.datum.datum                                        |
+    | verificatie.omschrijving                                       |
+    | inOnderzoek                                                    |
+    | inOnderzoek.burgerservicenummer                                |
+    | inOnderzoek.datumIngangOnderzoekPersoon                        |
+    | inOnderzoek.datumIngangOnderzoekGemeente.langFormaat           |
+    | naam.inOnderzoek.voornamen                                     |
+    | geboorte.inOnderzoek.datumIngangOnderzoek                      |
+    | partners.aangaanHuwelijkPartnerschap.inOnderzoek.datum         |
+    | adressering.indicatieVastgesteldVerblijftNietOpAdres           |
+    | adresseringBinnenland.indicatieVastgesteldVerblijftNietOpAdres |
+    | verblijfplaats.indicatieVastgesteldVerblijftNietOpAdres        |
 
   @fout-case
   Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij zoeken
@@ -325,24 +328,26 @@ Rule: De fields parameter bevat veld paden die verwijzen naar een bestaand veld.
     | fields | fields[0] | Parameter bevat een niet toegestane veldnaam. |
 
     Voorbeelden:
-    | fields                                                 |
-    | geheimhoudingPersoonsgegevens                          |
-    | opschortingBijhouding                                  |
-    | opschortingBijhouding.reden                            |
-    | opschortingBijhouding.reden.omschrijving               |
-    | opschortingBijhouding.datum                            |
-    | opschortingBijhouding.datum.type                       |
-    | rni                                                    |
-    | rni.deelnemer                                          |
-    | rni.deelnemer.code                                     |
-    | rni.omschrijvingVerdrag                                |
-    | rni.categorie                                          |
-    | verificatie                                            |
-    | verificatie.datum                                      |
-    | verificatie.datum.datum                                |
-    | verificatie.omschrijving                               |
-    | inOnderzoek                                            |
-    | inOnderzoek.burgerservicenummer                        |
-    | inOnderzoek.datumIngangOnderzoekPersoon                |
-    | naam.inOnderzoek.voornamen                             |
-    | geboorte.inOnderzoek.datumIngangOnderzoek              |
+    | fields                                                         |
+    | geheimhoudingPersoonsgegevens                                  |
+    | opschortingBijhouding                                          |
+    | opschortingBijhouding.reden                                    |
+    | opschortingBijhouding.reden.omschrijving                       |
+    | opschortingBijhouding.datum                                    |
+    | opschortingBijhouding.datum.type                               |
+    | rni                                                            |
+    | rni.deelnemer                                                  |
+    | rni.deelnemer.code                                             |
+    | rni.omschrijvingVerdrag                                        |
+    | rni.categorie                                                  |
+    | verificatie                                                    |
+    | verificatie.datum                                              |
+    | verificatie.datum.datum                                        |
+    | verificatie.omschrijving                                       |
+    | inOnderzoek                                                    |
+    | inOnderzoek.burgerservicenummer                                |
+    | inOnderzoek.datumIngangOnderzoekPersoon                        |
+    | naam.inOnderzoek.voornamen                                     |
+    | geboorte.inOnderzoek.datumIngangOnderzoek                      |
+    | adressering.indicatieVastgesteldVerblijftNietOpAdres           |
+    | adresseringBinnenland.indicatieVastgesteldVerblijftNietOpAdres |

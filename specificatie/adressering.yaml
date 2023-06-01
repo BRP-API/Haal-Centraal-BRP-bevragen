@@ -65,6 +65,8 @@ components:
           $ref: "#/components/schemas/Adresregel3"
         land:
           $ref: "common.yaml#/components/schemas/Waardetabel"
+        indicatieVastgesteldVerblijftNietOpAdres:
+          $ref: 'verblijfplaats.yaml#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
     Adressering:
       allOf:
         - $ref: "#/components/schemas/AdresseringBasis"

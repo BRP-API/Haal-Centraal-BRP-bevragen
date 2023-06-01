@@ -22,7 +22,8 @@ namespace BrpProxy.Validators
                            !x.Contains("geheimhoudingPersoonsgegevens") &&
                            !x.Contains("inOnderzoek") &&
                            !x.Contains("verificatie") &&
-                           !x.Contains("rni")).WithMessage(FieldAllowedErrorMessage);
+                           !x.Contains("rni") &&
+                           !x.Contains("indicatieVastgesteldVerblijftNietOpAdres")).WithMessage(FieldAllowedErrorMessage);
         }
     }
 }

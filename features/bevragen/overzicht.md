@@ -83,6 +83,7 @@ De volgende (gegevensgroep) velden hoeven niet met de fields parameter te worden
 - inOnderzoek
 - opschortingBijhouding
 - rni
+- indicatieVastgesteldVerblijftNietOpAdres
 
 ### Filteren van verblijfplaats velden en de adresregel velden van de adressering gegevensgroep
 
@@ -115,6 +116,16 @@ Om de payload van een response klein te houden, is er voor gekozen om onnodige w
 Ook zorgen de json deserialisatie libraries er voor dat niet geleverde velden automatisch worden gezet naar de standaard waarde behorende bij het type (false bij boolean type, null bij string type).
 
 ## Gegevens in onderzoek
+
+### Vastgesteld verblijft niet op adres
+
+Wanneer tijdens onderzoek is vastgesteld dat een persoon niet meer verblijft op het geregistreerde adres en verblijfplaats gegevens en/of adresregels van de betreffende persoon wordt gevraagd, dan wordt het **indicatieVastgesteldVerblijftNietOpAdres** veld met waarde true meegeleverd.
+
+De functionaliteit van het **indicatieVastgesteldVerblijftNietOpAdres** veld is beschreven in de volgende feature bestanden:
+- [vastgesteld verblijft niet op adres (verblijfplaats binnenland)](./persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature)
+- [vastgesteld verblijft niet op adres (locatie)](./persoon/verblijfplaats/locatie/vastgesteld-verblijft-niet-op-adres.feature)
+- [vastgesteld verblijft niet op adres (raadplegen)](./persoon/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature)
+- [vastgesteld verblijft niet op adres (zoeken)](./persoon-beperkt/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature)
 
 ## Persoon extensies
 

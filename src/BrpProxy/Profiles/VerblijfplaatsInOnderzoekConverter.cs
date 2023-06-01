@@ -11,7 +11,8 @@ public class AdresInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, AdresInO
     {
         return source?.AanduidingGegevensInOnderzoek switch
         {
-            "080000" => new AdresInOnderzoek
+            "080000" or
+            "089999" => new AdresInOnderzoek
             {
                 AdresseerbaarObjectIdentificatie = true,
                 DatumIngangGeldigheid = true,
@@ -84,7 +85,8 @@ public class VerblijfadresBinnenlandInOnderzoekConverter : ITypeConverter<GbaInO
         return source?.AanduidingGegevensInOnderzoek switch
         {
             "080000" or
-            "081100" => new VerblijfadresBinnenlandInOnderzoek
+            "081100" or
+            "089999" => new VerblijfadresBinnenlandInOnderzoek
             {
                 AanduidingBijHuisnummer = true,
                 Huisletter = true,
@@ -233,7 +235,8 @@ public class LocatieInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Locati
     {
         return source?.AanduidingGegevensInOnderzoek switch
         {
-            "080000" => new LocatieInOnderzoek
+            "080000" or
+            "089999" => new LocatieInOnderzoek
             {
                 DatumIngangGeldigheid = true,
                 DatumVan = true,
@@ -282,7 +285,8 @@ public class VerblijfadresLocatieInOnderzoekConverter : ITypeConverter<GbaInOnde
         {
             "080000" or
             "081200" or
-            "081210" => new VerblijfadresLocatieInOnderzoek
+            "081210" or
+            "089999" => new VerblijfadresLocatieInOnderzoek
             {
                 Locatiebeschrijving = true,
                 DatumIngangOnderzoek = source?.DatumIngangOnderzoek.Map()
