@@ -38,7 +38,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       Voorbeelden:
       | veld                  | datum      | lang formaat     |
       | datumVan              | 2000-04-23 | 23 april 2000    |
-      | datumIngangGeldigheid | 20220222   | 22 februari 2020 |
+      | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locatie en één of meerdere verblijfadres velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters

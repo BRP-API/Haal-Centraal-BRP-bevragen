@@ -60,7 +60,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       Voorbeelden:
       | veld                  | datum      | lang formaat     |
       | datumVan              | 2000-04-23 | 23 april 2000    |
-      | datumIngangGeldigheid | 20220222   | 22 februari 2020 |
+      | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere verblijfadres velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters
@@ -85,9 +85,9 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
       Voorbeelden:
-      | veld                | waarde |
-      | officieleStraatnaam | Spui   |
-      | huisnummer          | 123    |
+      | veld            | waarde |
+      | korteStraatnaam | Spui   |
+      | huisnummer      | 123    |
 
     Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en er wordt geen verblijfplaats velden gevraagd
       Als personen wordt gezocht met de volgende parameters
