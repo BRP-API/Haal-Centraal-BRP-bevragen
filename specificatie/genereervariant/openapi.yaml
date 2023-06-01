@@ -1425,9 +1425,9 @@ components:
         De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
       example: "0226010000038820"
     IndicatieVastgesteldVerblijftNietOpAdres:
+      type: boolean
       description: |
         Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.
-        type: boolean
     AdresInOnderzoek:
       allOf:
       - $ref: '#/components/schemas/InOnderzoek'
