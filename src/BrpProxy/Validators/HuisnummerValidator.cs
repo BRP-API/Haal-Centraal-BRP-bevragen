@@ -10,7 +10,7 @@ namespace BrpProxy.Validators
         const string HuisnummerMinimumErrorMessage = "minimum||Waarde is lager dan minimum 1.";
         const string HuisnummerMaximumErrorMessage = "maximum||Waarde is hoger dan maximum 99999.";
 
-        private int? StringToNullableInt(string? value) =>
+        private static int? StringToNullableInt(string? value) =>
             int.TryParse(value, out var result)
                 ? result
                 : null;
@@ -21,10 +21,10 @@ namespace BrpProxy.Validators
                 .NotEmpty().WithMessage(RequiredErrorMessage)
                 .Matches(NumberPattern).WithMessage(NumberErrorMessage);
 
-            Transform(x => x, StringToNullableInt)
+            RuleFor(x => StringToNullableInt(x))
                 .GreaterThan(0).WithMessage(HuisnummerMinimumErrorMessage);
 
-            Transform(x => x, StringToNullableInt)
+            RuleFor(x => StringToNullableInt(x))
                 .LessThan(100000).WithMessage(HuisnummerMaximumErrorMessage);
         }
     }
