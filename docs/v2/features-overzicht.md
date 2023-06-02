@@ -91,6 +91,7 @@ De volgende velden worden automatisch geleverd, als de bijbehorende situatie van
 - opschortingBijhouding
 - rni
 - verificatie
+- indicatieVastgesteldVerblijftNietOpAdres
 
 Automatisch geleverde velden mogen niet worden gevraagd met de fields parameter.
 
@@ -158,6 +159,16 @@ In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de
 Om een afnemer te notificeren dat één of meerdere gevraagde velden in onderzoek zijn, worden de bijbehorende inOnderzoek en datumIngangOnderzoek velden ook geleverd.
 Wanneer één of meerdere velden waaruit een andere veld wordt afgeleid (bijv. de adressering velden) in onderzoek zijn, dan is het afgeleid veld ook in onderzoek en wordt de inOnderzoek veld van het afgeleid veld ook geleverd.
 In het [in onderzoek](./features/in-onderzoek.feature) feature bestand zijn de regels beschreven wanneer de inOnderzoek velden wel/niet worden geleverd.
+
+### Vastgesteld verblijft niet op adres
+
+Wanneer tijdens onderzoek is vastgesteld dat een persoon niet meer verblijft op het geregistreerde adres en verblijfplaats gegevens en/of adresregels van de betreffende persoon wordt gevraagd, dan wordt het **indicatieVastgesteldVerblijftNietOpAdres** veld met waarde true meegeleverd.
+
+De functionaliteit van het **indicatieVastgesteldVerblijftNietOpAdres** veld is beschreven in de volgende feature bestanden:
+- [vastgesteld verblijft niet op adres (verblijfplaats binnenland)](./features/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature)
+- [vastgesteld verblijft niet op adres (locatie)](./features/persoon/verblijfplaats/locatie/vastgesteld-verblijft-niet-op-adres.feature)
+- [vastgesteld verblijft niet op adres (raadplegen)](./features/persoon/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature)
+- [vastgesteld verblijft niet op adres (zoeken)](./features/persoon-beperkt/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature)
 
 ## Geen/null/false waarde, leeg object waarde en standaard waarde
 
