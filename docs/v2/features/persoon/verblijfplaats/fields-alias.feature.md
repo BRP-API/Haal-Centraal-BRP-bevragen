@@ -183,7 +183,7 @@ Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van 
   | verblijfplaatsBinnenland               | alle velden               |
   | verblijfplaatsBinnenland.verblijfadres | alle verblijfadres velden |
 
-### Abstract Scenario: afnemer vraagt verblijfplaatsBinnenland én adressering en de persoon heeft buitenlandse verblijfplaats
+### Scenario: afnemer vraagt verblijfplaatsBinnenland én adressering en de persoon heeft buitenlandse verblijfplaats
 
 * __Gegeven__ de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
 
@@ -210,13 +210,3 @@ Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van 
   | land.code         | 6014                         |
   | land.omschrijving | Verenigde Staten van Amerika |
 
-#### Voorbeelden:
-
-
-  | field                                  |
-  |----------------------------------------|
-  | verblijfplaatsBinnenland               |
-  | verblijfplaatsBinnenland.datumVan      |
-  | verblijfplaatsBinnenland.verblijfadres |
-  | verblijfplaatsBinnenland.regel1        |
-  | verblijfplaatsBinnenland.land          |
