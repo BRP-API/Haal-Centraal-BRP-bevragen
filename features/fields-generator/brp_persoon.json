@@ -17,7 +17,8 @@
         "geheimhoudingPersoonsgegevens",
         "opschortingBijhouding",
         "rni",
-        "verificatie"
+        "verificatie",
+        "indicatieVastgesteldVerblijftNietOpAdres"
     ],
     "autoFields": [
         "type"
