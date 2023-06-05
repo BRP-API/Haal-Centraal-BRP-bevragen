@@ -32,18 +32,10 @@ nav:
         path: /
       - title: Goals canvas
         path: /goals-canvas
-#  - title: Specificaties v. 2.0 beta (API-Lab)
-#    subnav:
-#      - title: Getting started proefomgeving 
-#        path: /getting-started-v2-beta
-#      - title: User stories
-#        path: /user-stories-dev
-#      - title: Bevragen API (redoc)
-#        path: /redoc-beta
-#      - title: Features v. 2.0 beta
-#        path: /features-v2-beta
-  - title: Specificaties v. 2.0
+  - title: Specificaties v. 2
     subnav:
+      - title: Releasenotes
+        path: releasenotes
       - title: Getting started
         path: /v2/getting-started
       - title: User stories

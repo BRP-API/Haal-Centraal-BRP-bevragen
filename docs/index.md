@@ -6,9 +6,9 @@ title: Haal Centraal BRP Personen Bevragen
 
 ![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
 
-API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). De start van de pilot {{ site.apiname }} is gepland in maart 2023.
+API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). De pilot {{ site.apiname }} is gestart.
 
-Voor de pilot {{ site.apiname }} wordt {{ site.apiname }} versie 2.0 gebruikt.
+Voor de pilot {{ site.apiname }} wordt {{ site.apiname }} versie 2 gebruikt.
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Redoc](./v2/redoc)
