@@ -63,6 +63,8 @@ Een veld wordt gevraagd door het volledig pad van het betreffende veld op te gev
 
 Zie de [fields](./features/fields.feature) en de [fields fout cases](./features/fields-fout-cases.feature) feature bestanden voor meer informatie en voorbeelden over het gebruik van veld paden en de fields parameter. 
 
+Het [fields-filtered-PersoonBeperkt.csv]({{ site.persoonBeperktFieldsCsvUrl }}){:target="_blank" rel="noopener"} bestand bevat een overzicht van de toegestane fields waarden voor de Zoek persoon operaties. Voor de Raadpleeg persoon operatie is de overzicht van toegestane fields waarden te vinden in het [fields-filtered-Persoon.csv]({{ site.persoonFieldsCsvUrl }}){:target="_blank" rel="noopener"} bestand.
+
 ### Filteren van datum en waardetabel velden
 
 De {{ site.apiname }} Web API kent de volgende datum types:
