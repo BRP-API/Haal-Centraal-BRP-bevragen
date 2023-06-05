@@ -30,9 +30,6 @@ import yaml, json
 from collections import OrderedDict
 import sys
 import os.path
-import config
-
-
 
 def writeComponent (path, ref, referer=""):
     if debug==True:
@@ -181,9 +178,9 @@ if (not os.path.isfile(SETTINGS.get("projectFolder") + SETTINGS.get("sourceYaml"
     print ("Geef een correcte locatie op voor de API specificaties in sourceYaml.")
     sys.exit()
 
-if (not os.path.isdir(SETTINGS.get("projectFolder") + SETTINGS.get("sheetFolder"))):
-    print ("Geef een correcte locatie op voor de te genereren sheets in sheetFolder.")
-    print (SETTINGS.get("projectFolder") + SETTINGS.get("sheetFolder"))
+if (not os.path.isdir(SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder"))):
+    print ("Geef een correcte locatie op voor de te genereren csv bestanden in fieldslistFolder.")
+    print (SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder"))
     sys.exit()
 
 
