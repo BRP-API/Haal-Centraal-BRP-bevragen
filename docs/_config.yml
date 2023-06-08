@@ -8,6 +8,8 @@ v2SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/
 v2GbaSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/develop/specificatie/gba-genereervariant/openapi.yaml
 onboardingUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/docs/230328%20deelname%20experiment%20BRP%20API's%20v1.7.ppsx
 proefProxyUrl: https://proefomgeving.haalcentraal.nl
+persoonFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-Persoon.csv
+persoonBeperktFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-PersoonBeperkt.csv
 
 PO-email: cathy.dingemanse@rvig.nl
 CZ-email: melvin.lee@rvig.nl
@@ -32,18 +34,10 @@ nav:
         path: /
       - title: Goals canvas
         path: /goals-canvas
-#  - title: Specificaties v. 2.0 beta (API-Lab)
-#    subnav:
-#      - title: Getting started proefomgeving 
-#        path: /getting-started-v2-beta
-#      - title: User stories
-#        path: /user-stories-dev
-#      - title: Bevragen API (redoc)
-#        path: /redoc-beta
-#      - title: Features v. 2.0 beta
-#        path: /features-v2-beta
-  - title: Specificaties v. 2.0
+  - title: Specificaties v. 2
     subnav:
+      - title: Releasenotes
+        path: releasenotes
       - title: Getting started
         path: /v2/getting-started
       - title: User stories

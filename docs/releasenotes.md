@@ -5,6 +5,18 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## Versie 2.1.0
+
+- veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan: (pull request #1713)
+  - verblijfplaats (binnenland en locatie)
+  - adressering
+
+## Versie 2.0.21
+
+### Fixed
+
+- Fields waarde 'naam.geslachtsnaam' resulteert in 500 internal server error (issue #1710)
+
 ## Versie 2.0.0
 
 - de raadpleeg- en zoeken-endpoints zijn nu samengevoegd in 1 endpoint
