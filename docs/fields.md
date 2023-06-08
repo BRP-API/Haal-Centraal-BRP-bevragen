@@ -10,7 +10,7 @@ title: Haal Centraal BRP Personen Bevragen
   }
 
   #fields {
-    width: 80%;
+    width: 100%;
   }
 
   .hidden {
@@ -24,6 +24,8 @@ title: Haal Centraal BRP Personen Bevragen
     border-style: none;
     font-weight: 800;
     cursor: pointer;
+    width: 1em;
+    height: 1em;
   }
 
   .toggleButton:hover {
@@ -100,7 +102,7 @@ Met fields mag je alleen vragen om gegevens die bij het zoektype teruggegeven ku
     if (field.split('.').length > 1) { parent = document.getElementById(field.split('.').slice(0, -1).join('.') + '-list'); }
 
     li = document.createElement('li');
-    li.innerHTML = `<input type="checkbox" id="${field}" onchange="click_item(this)"/>`;
+    li.innerHTML = `<input type="checkbox" id="${field}" onchange="click_item(this)"/> `;
     li.innerHTML += field.split('.').slice(-1);
     li.innerHTML += ` <button id="${field}-toggle" onclick="toggleGroupFields('${field}')" class="toggleButton">+</button>`;
     li.innerHTML += `<ul id="${field}-list" class="hidden"></ul>`;
