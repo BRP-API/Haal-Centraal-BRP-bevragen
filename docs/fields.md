@@ -44,7 +44,7 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
 
 <div id="selectors"></div>
 
-## 3. Kopieer de volgende fields en gebruik dit in je request bij de fields parameter
+## 3. kopieer de waarde hieronder en gebruik dit in je request bij de fields parameter
 
 <textarea id="fields" class="form-control"></textarea>
 
@@ -196,3 +196,4 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
     }
   }
 </script>
+
