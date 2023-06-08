@@ -24,6 +24,8 @@ title: Haal Centraal BRP Personen Bevragen
     border-style: none;
     font-weight: 800;
     cursor: pointer;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .toggleButton:hover {
