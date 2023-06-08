@@ -18,18 +18,11 @@ title: Haal Centraal BRP Personen Bevragen
   }
 
   .toggleButton {
-    background-color: darkgray;
-    color: white;
     border-radius: 50%;
-    border-style: none;
     font-family: monospace;
     font-weight: 800;
     cursor: pointer;
-    padding: 2px 4px;
-  }
-
-  .toggleButton:hover {
-    background-color: black;
+    padding: 0px 5px;
   }
 </style>
 
@@ -40,15 +33,11 @@ Hieronder bieden we een tool om de waarde voor de fields parameter samen te stel
 Sommige gegevens krijg je automatisch geleverd, dus die hoef (en mag) je niet te vragen.
 
 ## 1. selecteer het zoektype
-Met fields mag je alleen vragen om gegevens die bij het zoektype teruggegeven kunnen worden. Daarom selecteer je eerst het type vraag dat je wilt doen.
+Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven kunnen worden. Daarom selecteer je eerst het type vraag dat je wilt doen.
 
-<select id="searchType" onchange="loadFieldsList()">
+<select id="searchType" class="form-control" onchange="loadFieldsList()">
   <option value="Persoon">RaadpleegMetBurgerservicenummer</option>
-  <option value="PersoonBeperkt">ZoekMetGeslachtsnaamEnGeboortedatum</option>
-  <option value="PersoonBeperkt">ZoekMetNaamEnGemeenteVanInschrijving</option>
-  <option value="PersoonBeperkt">ZoekMetPostcodeEnHuisnummer</option>
-  <option value="PersoonBeperkt">ZoekMetStraatHuisnummerEnGemeenteVanInschrijving</option>
-  <option value="PersoonBeperkt">ZoekMetNummeraanduidingIdentificatie</option>
+  <option value="PersoonBeperkt">ZoekMet...</option>
 </select>
 
 ## 2. selecteer de velden die je wilt ontvangen
@@ -57,7 +46,7 @@ Met fields mag je alleen vragen om gegevens die bij het zoektype teruggegeven ku
 
 ## 3. Kopieer de volgende fields en gebruik dit in je request bij de fields parameter
 
-<textarea id="fields"></textarea>
+<textarea id="fields" class="form-control"></textarea>
 
 <script>
   loadFieldsList();
@@ -102,9 +91,9 @@ Met fields mag je alleen vragen om gegevens die bij het zoektype teruggegeven ku
     if (field.split('.').length > 1) { parent = document.getElementById(field.split('.').slice(0, -1).join('.') + '-list'); }
 
     li = document.createElement('li');
-    li.innerHTML = `<input type="checkbox" id="${field}" onchange="click_item(this)"/> `;
+    li.innerHTML = `<input type="checkbox" id="${field}" class="form-check-input" onchange="click_item(this)"/> `;
     li.innerHTML += field.split('.').slice(-1);
-    li.innerHTML += ` <button id="${field}-toggle" onclick="toggleGroupFields('${field}')" class="toggleButton">+</button>`;
+    li.innerHTML += ` <button id="${field}-toggle" onclick="toggleGroupFields('${field}')" class="btn btn-light toggleButton">+</button>`;
     li.innerHTML += `<ul id="${field}-list" class="hidden"></ul>`;
     parent.appendChild(li);
 
