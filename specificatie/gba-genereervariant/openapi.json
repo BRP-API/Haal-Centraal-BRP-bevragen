@@ -347,7 +347,7 @@
             "maxItems" : 130,
             "minItems" : 1,
             "type" : "array",
-            "description" : "Hiermee kun je de velden opgeven die je wenst te ontvangen.\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\n",
+            "description" : "Hiermee kun je de velden opgeven die je wenst te ontvangen.\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\nMeer details over hoe fields werkt lees je in het [feature overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#filteren-van-de-velden-van-de-gevonden-personen).\n",
             "items" : {
               "$ref" : "#/components/schemas/Field"
             }
