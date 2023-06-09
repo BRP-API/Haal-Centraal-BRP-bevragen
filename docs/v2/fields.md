@@ -30,7 +30,11 @@ title: Haal Centraal BRP Personen Bevragen
 Bij het gebruik van de {{ site.apiname }} moet in de fields parameter worden opgegeven welke gegevens je wilt ontvangen.
 Hieronder bieden we een tool om de waarde voor de fields parameter samen te stellen. Hiervoor selecteer je elk veld dat je wilt ontvangen.
 
-Sommige gegevens krijg je automatisch geleverd, dus die hoef (en mag) je niet te vragen.
+Meer details over hoe fields werkt lees je in het [feature overzicht](./features-overzicht#filteren-van-de-velden-van-de-gevonden-personen){:target="_blank" rel="noopener"}
+
+Sommige gegevens krijg je [automatisch geleverd](./features-overzicht#standaard-geleverde-velden), dus die hoef en mag je niet vragen.
+
+Velden onder [verblijfplaatsBinnenland](./features-overzicht#filteren-van-verblijfplaats-velden){:target="_blank" rel="noopener"} en [adresseringBinnenland](./features-overzicht#filteren-van-adresregels-velden){:target="_blank" rel="noopener"} gebruik je wanneer je wel het adres wilt opvragen, maar niet geautoriseerd bent voor buitenlandse adressen.
 
 ## 1. selecteer het zoektype
 Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven kunnen worden. Daarom selecteer je eerst het type vraag dat je wilt doen.
@@ -53,6 +57,8 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
 
 
   function loadFieldsList() {
+    // haal de lijst met toegestane velden op voor het geselecteerde type
+  
     document.getElementById("fields").value = "";
 
     var responseObjectName = document.getElementById("searchType").value;
@@ -73,6 +79,8 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function renderFieldSelectors(responseObjectName, fieldsList) {
+    // maak de lijst met velden inclusief checkboxes
+  
     fieldsList.shift(); // kolomkop overslaan
 
     var selectors = document.getElementById("selectors");
@@ -82,6 +90,8 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function addTreeItem(fieldsList) {
+    // voeg volgende veld toe als checkbox
+  
     if (fieldsList.length == 0) { return; }
 
     var field = fieldsList.shift();
@@ -101,6 +111,8 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function hideUselessToggleButtons() {
+    // verberg toggle knopjes (+/- voor het openen van een groep) voor alle velden die geen groep zijn
+  
     for (element of document.getElementById("fields-tree").getElementsByTagName("li")) {
       var id = element.getElementsByTagName("input")[0].id;
       if (document.getElementById(id + '-list').children.length == 0) {
@@ -110,12 +122,16 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function click_item(item) {
-    setChildren(item);
-    setParent(item);
-    setFields();
+    // verwerk wijziging in checkbox status op een veld
+  
+    setChildren(item); // wanneer het gewijzigde veld een groep is, nemen alle velden in de groep de status van de groep over
+    setParent(item); // wanneer het gewijzigde veld in een groep zit, moet de status van het groepsveld worden bijgewerkt
+    setFields(); // stel de fields parameter samen op basis van de geselecteerde velden
   }
 
   function setChildren(item) {
+    // wanneer het veld een groep is, nemen alle velden in de groep de status van de groep over
+  
     if (document.getElementById(item.id + "-list").children.length > 0)
     {
       for (child of document.getElementById(item.id + "-list").children) {
@@ -127,7 +143,9 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function setParent(item) {
-    if (item.id.split('.').length < 2) { return; }
+    // wanneer het veld in een groep zit, moet de status van het groepsveld worden bijgewerkt
+  
+    if (item.id.split('.').length < 2) { return; } // veld zit niet in een groep
 
     parentId = item.id.split('.').slice(0, -1).join('.');
     parent = document.getElementById(parentId);
@@ -138,6 +156,8 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function determineCheckStatus(item) {
+    //bepaal de status van een groepsveld (item) op basis van de status van de velden in de groep
+                                      
     var checked = 0;
     var notChecked = 0;
 
@@ -153,22 +173,26 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
     }
 
     if (checked > 0 && notChecked == 0) {
+      // alle velden van de groep zijn aangevinkt, dus de hele groep wordt gevraagd
       item.checked = true;
       item.indeterminate = false;
       return;
     }
     if (checked > 0 && notChecked > 0) {
+      // enkele, maar niet alle velden van de groep zijn gevraagd
       item.checked = false;
       item.indeterminate = true;
       return;
     }
 
-    // checked == 0;
+    // checked == 0: geen enkel veld in de groep is aangevinkt
     item.checked = false;
     item.indeterminate = false;
   }
 
   function setFields() {
+    // stel de fields parameter samen op basis van de geselecteerde velden
+  
     fields = [];
 
     elements = document.getElementById("fields-tree").getElementsByTagName("input");
@@ -185,6 +209,8 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
   }
 
   function toggleGroupFields(group) {
+    // toon of verberg de velden binnen de groep
+  
     var list = document.getElementById(group + '-list');
     var toggleButton = document.getElementById(group + '-toggle');
     if (list.classList.contains('hidden')) {
