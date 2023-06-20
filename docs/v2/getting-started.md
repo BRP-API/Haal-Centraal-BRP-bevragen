@@ -37,7 +37,7 @@ Het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target
 
 In plaats van het docker compose bestand kunnen de [Kubernetes configuratie bestanden]({{ site.devBranchUrl}}/.k8s){:target="_blank" rel="noopener"} worden gebruikt om de BrpProxy en de mock van de '{{ site.apiname }}' Web API GBA variant te draaien op een lokale machine.
 
-De mock van de '{{ site.apiname }}' Web API GBA variant is bedoeld voor development/test doeleinden. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](Testdataset persoonslijsten proefomgevingen GBA-V.ods | rvig) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
+De mock van de '{{ site.apiname }}' Web API GBA variant is bedoeld voor development/test doeleinden. Deze mock gebruikt de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/media/288) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
 De volgende paragrafen beschrijven het installeren en aanroepen van de BrpProxy op een lokale machine.
 
