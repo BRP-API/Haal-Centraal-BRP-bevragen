@@ -39,17 +39,17 @@
   },
   "homepage": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^9.1.2",
+    "@cucumber/cucumber": "^9.2.0",
     "@openapitools/openapi-generator-cli": "^2.6.0",
-    "@stoplight/spectral-cli": "^6.6.0",
+    "@stoplight/spectral-cli": "^6.8.0",
     "axios": "^1.4.0",
     "chai": "^4.3.7",
-    "csv-parse": "^5.3.10",
-    "cucumber-html-reporter": "^7.1.0",
+    "csv-parse": "^5.4.0",
+    "cucumber-html-reporter": "^7.1.1",
     "deep-equal-in-any-order": "^2.0.6",
     "husky": "^8.0.3",
     "mvn-dl": "^6.1.1",
     "nswag": "^13.19.0",
-    "pg": "^8.11.0"
+    "pg": "^8.11.1"
   }
 }
