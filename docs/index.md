@@ -8,6 +8,9 @@ title: Haal Centraal BRP Personen Bevragen
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 
+## Planning en Roadmap
+De API is live sinds mei 2023. 
+
 ## Direct uitproberen?
 * Bekijk de specificaties met [Redoc](./v2/redoc)
 * Lees de [Getting started](./v2/getting-started)
