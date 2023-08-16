@@ -28,5 +28,6 @@ public class GeboorteProfile : Profile
             ;
 
         CreateMap<GbaInOnderzoek, GeboorteInOnderzoek?>().ConvertUsing<GeboorteInOnderzoekConverter>();
+        CreateMap<GbaInOnderzoek, GeboorteInOnderzoekBeperkt?>().ConvertUsing<GeboorteInOnderzoekBeperktConverter>();
     }
 }

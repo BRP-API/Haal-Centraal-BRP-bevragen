@@ -1,6 +1,6 @@
 ﻿namespace HaalCentraal.BrpProxy.Generated.Gba;
 
-public partial class GbaGeboorte
+public partial class GbaGeboorteBeperkt
 {
     public GbaInOnderzoek? InOnderzoek { get; set; }
 }

@@ -58,3 +58,21 @@ public class GeboorteInOnderzoekConverter : ITypeConverter<GbaInOnderzoek, Geboo
         };
     }
 }
+
+public class GeboorteInOnderzoekBeperktConverter : ITypeConverter<GbaInOnderzoek, GeboorteInOnderzoekBeperkt?>
+{
+    public GeboorteInOnderzoekBeperkt? Convert(GbaInOnderzoek source, GeboorteInOnderzoekBeperkt? destination, ResolutionContext context)
+    {
+        return source?.AanduidingGegevensInOnderzoek switch
+        {
+            "010000" or
+            "010300" or
+            "010310" => new GeboorteInOnderzoekBeperkt
+            {
+                Datum = true,
+                DatumIngangOnderzoek = source?.DatumIngangOnderzoek?.Map()
+            },
+            _ => null,
+        };
+    }
+}
