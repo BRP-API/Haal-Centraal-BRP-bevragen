@@ -28,6 +28,11 @@ public class PersoonProfile : Profile
                     }
                     src.Naam.InOnderzoek = src.PersoonInOnderzoek;
                 }
+                if(src.Geboorte != null || src.PersoonInOnderzoek != null)
+                {
+                    src.Geboorte ??= new GbaGeboorteBeperkt();
+                    src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
+                }
             })
             .AfterMap((src, dest) =>
             {
