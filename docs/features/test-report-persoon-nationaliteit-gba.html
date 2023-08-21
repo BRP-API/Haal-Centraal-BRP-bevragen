@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:24 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -443,7 +475,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_features31bda897-575b-4504-b243-a84db8cb6b1e">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_featuresccd97567-163a-48b6-b5eb-11d9edc6f90a">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Nationaliteit (persoon)
@@ -459,7 +491,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_nationaliteit_features31bda897-575b-4504-b243-a84db8cb6b1e" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_nationaliteit_featuresccd97567-163a-48b6-b5eb-11d9edc6f90a" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -472,13 +504,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3db0d492-58df-490f-bd44-3af9c4ed505c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7247335d-e352-4951-860a-dc870ee44545">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="alle velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten&#39;">alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -497,7 +529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features3db0d492-58df-490f-bd44-3af9c4ed505c"
+                        <div id="collapseScenariopersoon_nationaliteit_features7247335d-e352-4951-860a-dc870ee44545"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -607,7 +639,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               61ms
+                               83ms
                               </span>
                             
                          
@@ -822,13 +854,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features06243d0d-76e0-42e6-832d-1b09b114901a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features869b09b9-d5cc-497b-ab0d-608ad963c708">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="alle velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten&#39;">alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -847,7 +879,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features06243d0d-76e0-42e6-832d-1b09b114901a"
+                        <div id="collapseScenariopersoon_nationaliteit_features869b09b9-d5cc-497b-ab0d-608ad963c708"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -957,7 +989,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               17ms
                               </span>
                             
                          
@@ -1172,13 +1204,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features2c3d2047-344a-4afe-b634-47e9e409d7d3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features735a3f1c-1991-4e30-bdf9-b5b8e8b895b1">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="alle velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten&#39;">alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1197,7 +1229,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features2c3d2047-344a-4afe-b634-47e9e409d7d3"
+                        <div id="collapseScenariopersoon_nationaliteit_features735a3f1c-1991-4e30-bdf9-b5b8e8b895b1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1307,7 +1339,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -1522,13 +1554,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa8b0bbad-f869-4273-91e1-bedeba93cf45">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5d84e9a5-0963-4a17-97dd-7a3f3730eef8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.type&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1547,7 +1579,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresa8b0bbad-f869-4273-91e1-bedeba93cf45"
+                        <div id="collapseScenariopersoon_nationaliteit_features5d84e9a5-0963-4a17-97dd-7a3f3730eef8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1885,13 +1917,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features82a6615f-95c9-4d4d-b56f-81bfba5f024f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features4353b4b0-9b72-4348-bbae-a5d425218ffe">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.redenOpname&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1910,7 +1942,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features82a6615f-95c9-4d4d-b56f-81bfba5f024f"
+                        <div id="collapseScenariopersoon_nationaliteit_features4353b4b0-9b72-4348-bbae-a5d425218ffe"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2033,7 +2065,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -2248,13 +2280,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features418e3c34-dba0-404c-96fd-fdc175eef9af">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features729c2d25-83a8-4d85-b607-82edd6db412c">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.redenOpname.code&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2273,7 +2305,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features418e3c34-dba0-404c-96fd-fdc175eef9af"
+                        <div id="collapseScenariopersoon_nationaliteit_features729c2d25-83a8-4d85-b607-82edd6db412c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2396,7 +2428,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -2611,13 +2643,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features96550b41-0e03-4a7a-9d2e-42fae0d5985c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresec002617-cb69-4d52-8a2c-53d9234a9baa">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname.omschrijving'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.redenOpname.omschrijving&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.redenOpname.omschrijving'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2636,7 +2668,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features96550b41-0e03-4a7a-9d2e-42fae0d5985c"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresec002617-cb69-4d52-8a2c-53d9234a9baa"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2759,7 +2791,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -2974,13 +3006,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresc74961f5-aff2-49a0-af53-4734eb1bc74a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features10d8b6ce-ce64-4156-9dc2-42c4c7e6bdcd">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.type&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2999,7 +3031,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresc74961f5-aff2-49a0-af53-4734eb1bc74a"
+                        <div id="collapseScenariopersoon_nationaliteit_features10d8b6ce-ce64-4156-9dc2-42c4c7e6bdcd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3122,7 +3154,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -3337,13 +3369,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5aa79db0-81fb-4e74-bc31-dec9f5836d7c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresaae9032b-67f7-4d14-bc57-866e11d92596">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.datum&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3362,7 +3394,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features5aa79db0-81fb-4e74-bc31-dec9f5836d7c"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresaae9032b-67f7-4d14-bc57-866e11d92596"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3485,7 +3517,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               15ms
                               </span>
                             
                          
@@ -3700,13 +3732,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa5c2b0eb-fc76-44d8-8328-c372299f8e4c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa053f102-a1a9-4171-a49c-24044ea404cf">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.langFormaat'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.langFormaat&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.langFormaat'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3725,7 +3757,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresa5c2b0eb-fc76-44d8-8328-c372299f8e4c"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresa053f102-a1a9-4171-a49c-24044ea404cf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3848,7 +3880,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -4063,13 +4095,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf5cb7336-6dfd-4415-9b8b-f15a1e91fbc5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurescac85650-668e-4e4f-a0a6-c200b6944666">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.jaar'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.jaar&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.jaar'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4088,7 +4120,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresf5cb7336-6dfd-4415-9b8b-f15a1e91fbc5"
+                        <div id="collapseScenariopersoon_nationaliteit_featurescac85650-668e-4e4f-a0a6-c200b6944666"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4211,7 +4243,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               17ms
                               </span>
                             
                          
@@ -4426,13 +4458,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features8c4ff693-4e78-4d32-8f4f-010d62c40b96">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf7794d6f-157f-468c-9d23-b5464376e4d2">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.maand'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.maand&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.maand'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4451,7 +4483,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features8c4ff693-4e78-4d32-8f4f-010d62c40b96"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresf7794d6f-157f-468c-9d23-b5464376e4d2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4574,7 +4606,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -4789,13 +4821,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb455f23f-debb-411f-9be4-856210201fb5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features9a1a5c05-3b51-4199-b94b-219072c2148a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.onbekend'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="één of meerdere velden van een nationaliteit wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.onbekend&#39;">één of meerdere velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.onbekend'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4814,7 +4846,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresb455f23f-debb-411f-9be4-856210201fb5"
+                        <div id="collapseScenariopersoon_nationaliteit_features9a1a5c05-3b51-4199-b94b-219072c2148a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4937,7 +4969,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -5152,13 +5184,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features415a1bc7-a46b-4cd1-83b8-38a9ff351178">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features17fdb0b1-cce1-4db3-953d-620c235a341d">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en alle velden wordt gevraagd met field pad &#39;nationaliteiten&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5177,7 +5209,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features415a1bc7-a46b-4cd1-83b8-38a9ff351178"
+                        <div id="collapseScenariopersoon_nationaliteit_features17fdb0b1-cce1-4db3-953d-620c235a341d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5287,7 +5319,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               15ms
                               </span>
                             
                          
@@ -5489,13 +5521,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features9d0df1cf-3cf5-4a6d-acfe-3db2f3e150bf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7f1ed6f0-f0fe-4964-b234-effef7d5853a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en alle velden wordt gevraagd met field pad &#39;nationaliteiten&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5514,7 +5546,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features9d0df1cf-3cf5-4a6d-acfe-3db2f3e150bf"
+                        <div id="collapseScenariopersoon_nationaliteit_features7f1ed6f0-f0fe-4964-b234-effef7d5853a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5624,7 +5656,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               22ms
                               </span>
                             
                          
@@ -5826,13 +5858,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7aadc966-d08e-4372-a7c2-7786fd11942c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0cb5b908-410b-4546-ad12-45355da17319">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.type&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5851,7 +5883,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features7aadc966-d08e-4372-a7c2-7786fd11942c"
+                        <div id="collapseScenariopersoon_nationaliteit_features0cb5b908-410b-4546-ad12-45355da17319"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5974,7 +6006,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -6176,13 +6208,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3c776904-5c3e-4365-8a91-20ebf8e2c037">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features524ae542-1165-45df-82fd-75a842b69e9a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.nationaliteit&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6201,7 +6233,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features3c776904-5c3e-4365-8a91-20ebf8e2c037"
+                        <div id="collapseScenariopersoon_nationaliteit_features524ae542-1165-45df-82fd-75a842b69e9a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6324,7 +6356,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -6526,13 +6558,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresbd7198d5-7977-4025-ad8d-b663bb6b4770">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features21566f15-6a4a-47cc-818d-94b4af9391d9">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.nationaliteit.code&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6551,7 +6583,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresbd7198d5-7977-4025-ad8d-b663bb6b4770"
+                        <div id="collapseScenariopersoon_nationaliteit_features21566f15-6a4a-47cc-818d-94b4af9391d9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6674,7 +6706,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -6876,13 +6908,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features68d88954-9bd4-4397-a8e8-5017236f3702">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd286a1ea-8f5f-4d87-9fe6-e776487977ff">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.omschrijving'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.nationaliteit.omschrijving&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.omschrijving'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6901,7 +6933,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features68d88954-9bd4-4397-a8e8-5017236f3702"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresd286a1ea-8f5f-4d87-9fe6-e776487977ff"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7024,7 +7056,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -7226,13 +7258,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese0d7a902-0969-40aa-ac82-4c383e0c2292">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features12d08cdf-b435-440a-9036-3aacd99a09ee">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7251,7 +7283,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese0d7a902-0969-40aa-ac82-4c383e0c2292"
+                        <div id="collapseScenariopersoon_nationaliteit_features12d08cdf-b435-440a-9036-3aacd99a09ee"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7374,7 +7406,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -7474,7 +7506,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               < 1ms
+                               4ms
                               </span>
                             
                          
@@ -7576,13 +7608,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features7075e3fa-8d13-45ba-b234-bcba8929d02d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresaac07d83-df34-4486-b25b-dd89b2acf4e1">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname.code&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7601,7 +7633,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features7075e3fa-8d13-45ba-b234-bcba8929d02d"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresaac07d83-df34-4486-b25b-dd89b2acf4e1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7724,7 +7756,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               15ms
                               </span>
                             
                          
@@ -7926,13 +7958,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresdb36dd1d-a9ee-466c-855b-351d80f64726">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features4c7f89a2-3f8d-40bc-b18e-d067742c2e3e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.omschrijving'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname.omschrijving&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.omschrijving'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7951,7 +7983,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresdb36dd1d-a9ee-466c-855b-351d80f64726"
+                        <div id="collapseScenariopersoon_nationaliteit_features4c7f89a2-3f8d-40bc-b18e-d067742c2e3e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8074,7 +8106,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -8276,13 +8308,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features89490d0a-4aa6-4089-ae30-027e86c04bda">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features10306aa0-1528-4c7b-9d9d-fd1e41c800aa">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.type&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8301,7 +8333,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features89490d0a-4aa6-4089-ae30-027e86c04bda"
+                        <div id="collapseScenariopersoon_nationaliteit_features10306aa0-1528-4c7b-9d9d-fd1e41c800aa"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8424,7 +8456,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -8626,13 +8658,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features5d0c9d49-fdaa-486e-8ce8-19a13253b03b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features9ed0f523-56d3-410b-a396-405bd31d96fa">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.datum&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8651,7 +8683,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features5d0c9d49-fdaa-486e-8ce8-19a13253b03b"
+                        <div id="collapseScenariopersoon_nationaliteit_features9ed0f523-56d3-410b-a396-405bd31d96fa"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8774,7 +8806,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -8976,13 +9008,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features91567b93-8f86-446f-8a3c-f05f0e36a589">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6ca31f89-c573-430d-bf8c-3423b96dd4e4">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.langFormaat'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.langFormaat&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.langFormaat'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -9001,7 +9033,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features91567b93-8f86-446f-8a3c-f05f0e36a589"
+                        <div id="collapseScenariopersoon_nationaliteit_features6ca31f89-c573-430d-bf8c-3423b96dd4e4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9124,7 +9156,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               17ms
                               </span>
                             
                          
@@ -9326,13 +9358,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf7c4e96b-373a-44c1-b969-10d0e738163f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd85aa8d0-1d32-4561-a0c7-7518fe0eb234">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.jaar'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.jaar&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.jaar'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -9351,7 +9383,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresf7c4e96b-373a-44c1-b969-10d0e738163f"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresd85aa8d0-1d32-4561-a0c7-7518fe0eb234"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9474,7 +9506,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -9676,13 +9708,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features54b098ab-a5a1-496e-8b14-fd9ef9a1601c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features3b643860-e99d-4f1d-96e7-a68ec5f67bf5">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.maand'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.maand&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.maand'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -9701,7 +9733,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features54b098ab-a5a1-496e-8b14-fd9ef9a1601c"
+                        <div id="collapseScenariopersoon_nationaliteit_features3b643860-e99d-4f1d-96e7-a68ec5f67bf5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9824,7 +9856,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -10026,13 +10058,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features13199473-f989-49cd-8710-f39aaa105367">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese92eb331-6523-4ad1-893a-e3ba09dfb973">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.onbekend'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.onbekend&#39;">persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.onbekend'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -10051,7 +10083,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features13199473-f989-49cd-8710-f39aaa105367"
+                        <div id="collapseScenariopersoon_nationaliteit_featurese92eb331-6523-4ad1-893a-e3ba09dfb973"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10174,7 +10206,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -10376,13 +10408,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features23a85c0d-1648-47ec-8c4b-cf22dffe1bd8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf5568de1-f5b4-4952-8560-406901a44a95">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele categorie nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;hele categorie nationaliteit&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten&#39;">'hele categorie nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -10401,7 +10433,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features23a85c0d-1648-47ec-8c4b-cf22dffe1bd8"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresf5568de1-f5b4-4952-8560-406901a44a95"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10524,7 +10556,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               15ms
                               </span>
                             
                          
@@ -10739,13 +10771,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features148fd8d5-7043-4747-9338-da3844002efa">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features80b9b2a1-dc12-4c00-b329-90d0618d10d7">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;hele groep nationaliteit&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.type&#39;">'hele groep nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -10764,7 +10796,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features148fd8d5-7043-4747-9338-da3844002efa"
+                        <div id="collapseScenariopersoon_nationaliteit_features80b9b2a1-dc12-4c00-b329-90d0618d10d7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -10887,7 +10919,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               16ms
                               </span>
                             
                          
@@ -11102,13 +11134,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa525025c-f000-4c81-bcdc-a74c3d443760">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features539410e2-654c-4eb3-a2f5-2ae0b87f1597">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;nationaliteit&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname&#39;">'nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -11127,7 +11159,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresa525025c-f000-4c81-bcdc-a74c3d443760"
+                        <div id="collapseScenariopersoon_nationaliteit_features539410e2-654c-4eb3-a2f5-2ae0b87f1597"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11250,7 +11282,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               22ms
                               </span>
                             
                          
@@ -11465,13 +11497,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresdcb498b2-00a2-41f4-bb25-2e1f261b25de">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features57102a72-90f7-4dee-b93d-bc5abba0398d">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep opnemen nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;hele groep opnemen nationaliteit&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname.code&#39;">'hele groep opnemen nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -11490,7 +11522,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresdcb498b2-00a2-41f4-bb25-2e1f261b25de"
+                        <div id="collapseScenariopersoon_nationaliteit_features57102a72-90f7-4dee-b93d-bc5abba0398d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11613,7 +11645,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -11828,13 +11860,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features1f983e08-7540-4397-99a0-ce5331cfd0db">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features4b1ed674-4afd-423e-a64f-aab72241e84b">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'reden opname nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;reden opname nationaliteit&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid&#39;">'reden opname nationaliteit' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -11853,7 +11885,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features1f983e08-7540-4397-99a0-ce5331cfd0db"
+                        <div id="collapseScenariopersoon_nationaliteit_features4b1ed674-4afd-423e-a64f-aab72241e84b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -11976,7 +12008,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -12191,13 +12223,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6e36c281-dce8-4c1e-824c-74a0f149f727">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0899ca97-2cae-40b1-8863-ff7382ae8786">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep bijzonder Nederlanderschap' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;hele groep bijzonder Nederlanderschap&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.nationaliteit&#39;">'hele groep bijzonder Nederlanderschap' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -12216,7 +12248,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features6e36c281-dce8-4c1e-824c-74a0f149f727"
+                        <div id="collapseScenariopersoon_nationaliteit_features0899ca97-2cae-40b1-8863-ff7382ae8786"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12554,13 +12586,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresc6f3413a-39bb-4fd3-bdec-703365520c3b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresdd3c95c7-00ef-4e3e-89dd-fe1b50ccfb0e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'aanduiding bijzonder Nederlanderschap' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;aanduiding bijzonder Nederlanderschap&#39; van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.nationaliteit.code&#39;">'aanduiding bijzonder Nederlanderschap' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.nationaliteit.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -12579,7 +12611,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresc6f3413a-39bb-4fd3-bdec-703365520c3b"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresdd3c95c7-00ef-4e3e-89dd-fe1b50ccfb0e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -12702,7 +12734,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               14ms
                               </span>
                             
                          
@@ -12917,13 +12949,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresbb7c64c1-7b15-449a-b14e-312ef09c0525">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features973952dd-0497-4eef-b1f7-8885c4b0880e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele categorie nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;hele categorie nationaliteit&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele categorie nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -12942,7 +12974,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresbb7c64c1-7b15-449a-b14e-312ef09c0525"
+                        <div id="collapseScenariopersoon_nationaliteit_features973952dd-0497-4eef-b1f7-8885c4b0880e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13065,7 +13097,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -13267,13 +13299,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresedd9dea3-e285-45d0-9326-6b6acd66c4be">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features21cb3db7-cc66-4282-acfe-4d109b1ebc7f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;hele groep nationaliteit&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.type&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -13292,7 +13324,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresedd9dea3-e285-45d0-9326-6b6acd66c4be"
+                        <div id="collapseScenariopersoon_nationaliteit_features21cb3db7-cc66-4282-acfe-4d109b1ebc7f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13415,7 +13447,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -13617,13 +13649,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese38a970e-ee57-4d40-aa1a-daae32f3df64">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresc967c2d0-73f9-4dcd-a02a-78700b245369">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;nationaliteit&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -13642,7 +13674,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese38a970e-ee57-4d40-aa1a-daae32f3df64"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresc967c2d0-73f9-4dcd-a02a-78700b245369"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -13765,7 +13797,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               17ms
                               </span>
                             
                          
@@ -13967,13 +13999,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese6384c8d-af3f-4ab0-a599-81fac45f06fc">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features2f6310bf-cd7a-4f0c-8969-892ba3d2f131">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep opnemen nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;hele groep opnemen nationaliteit&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname.code&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep opnemen nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -13992,7 +14024,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featurese6384c8d-af3f-4ab0-a599-81fac45f06fc"
+                        <div id="collapseScenariopersoon_nationaliteit_features2f6310bf-cd7a-4f0c-8969-892ba3d2f131"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14115,7 +14147,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               15ms
                               </span>
                             
                          
@@ -14317,13 +14349,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresbd7894d9-73f0-4c15-ad4e-eb396a3f2bf1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresbd33602a-d4a1-4265-afb6-70f8cd236068">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'reden opname nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;reden opname nationaliteit&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'reden opname nationaliteit' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -14342,7 +14374,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresbd7894d9-73f0-4c15-ad4e-eb396a3f2bf1"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresbd33602a-d4a1-4265-afb6-70f8cd236068"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -14465,7 +14497,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -14667,13 +14699,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features079eb8eb-3b88-4889-9953-40da3fe7a002">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa42b5157-2bb5-4c2b-b354-065815608af7">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep bijzonder Nederlanderschap' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;hele groep bijzonder Nederlanderschap&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'hele groep bijzonder Nederlanderschap' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -14692,7 +14724,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features079eb8eb-3b88-4889-9953-40da3fe7a002"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresa42b5157-2bb5-4c2b-b354-065815608af7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15017,13 +15049,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features8fc35ec2-eb6f-4fe5-999b-0ce429756397">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features8fdfa0be-5ae8-48e8-9af2-48782386ce48">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'aanduiding bijzonder Nederlanderschap' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon heeft nationaliteit waarvan &#39;bijzonder Nederlanderschap (65.10)&#39; is gevuld en &#39;aanduiding bijzonder Nederlanderschap&#39; van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad &#39;nationaliteiten.datumIngangGeldigheid.datum&#39;">persoon heeft nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en 'aanduiding bijzonder Nederlanderschap' van de nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad 'nationaliteiten.datumIngangGeldigheid.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -15042,7 +15074,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features8fc35ec2-eb6f-4fe5-999b-0ce429756397"
+                        <div id="collapseScenariopersoon_nationaliteit_features8fdfa0be-5ae8-48e8-9af2-48782386ce48"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15165,7 +15197,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -15367,13 +15399,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf5951c8e-7d59-4eef-a4f4-2e642c661906">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features8c9ba81a-294d-4f71-ad8e-c46363c769ac">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>onbekend waarde voor nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="onbekend waarde voor nationaliteit">onbekend waarde voor nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -15392,7 +15424,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresf5951c8e-7d59-4eef-a4f4-2e642c661906"
+                        <div id="collapseScenariopersoon_nationaliteit_features8c9ba81a-294d-4f71-ad8e-c46363c769ac"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15817,13 +15849,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresfdeec781-46a4-4287-a4bd-af6979f292b0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features8ed2f450-29a7-4574-ad25-85104dcb2812">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>onbekend waarde voor reden opname nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="onbekend waarde voor reden opname nationaliteit">onbekend waarde voor reden opname nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -15842,7 +15874,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresfdeec781-46a4-4287-a4bd-af6979f292b0"
+                        <div id="collapseScenariopersoon_nationaliteit_features8ed2f450-29a7-4574-ad25-85104dcb2812"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -15965,7 +15997,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               12ms
                               </span>
                             
                          
@@ -16279,7 +16311,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_featuresa5d92c5f-88ba-4955-906e-562d83d7cc5b">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_nationaliteit_features42e6f4b4-8616-43d1-9737-26f55d33d14d">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Nationaliteit
@@ -16295,7 +16327,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_nationaliteit_featuresa5d92c5f-88ba-4955-906e-562d83d7cc5b" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_nationaliteit_features42e6f4b4-8616-43d1-9737-26f55d33d14d" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -16308,13 +16340,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresa777635b-502a-400f-a5d0-3770c29c1c64">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features412edf73-3c8f-48c1-8a94-8425a4a5fe76">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft een nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit">persoon heeft een nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -16333,7 +16365,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresa777635b-502a-400f-a5d0-3770c29c1c64"
+                        <div id="collapseScenariopersoon_nationaliteit_features412edf73-3c8f-48c1-8a94-8425a4a5fe76"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -16957,13 +16989,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features2a16113c-dbbf-4262-a913-f501de1fd6a6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresfece9921-1c40-403b-8e71-cc3d1d96fe42">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft meerdere nationaliteiten
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft meerdere nationaliteiten">persoon heeft meerdere nationaliteiten</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -16982,7 +17014,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features2a16113c-dbbf-4262-a913-f501de1fd6a6"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresfece9921-1c40-403b-8e71-cc3d1d96fe42"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -17460,7 +17492,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               17ms
                               </span>
                             
                          
@@ -17814,13 +17846,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0033fc6e-78dd-4bb3-a386-e0d14cadd9c7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features93817e62-d710-4c2f-be32-6c8b455fe17b">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft een nationaliteit met reden opname = onbekend
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft een nationaliteit met reden opname = onbekend">persoon heeft een nationaliteit met reden opname = onbekend</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -17839,7 +17871,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features0033fc6e-78dd-4bb3-a386-e0d14cadd9c7"
+                        <div id="collapseScenariopersoon_nationaliteit_features93817e62-d710-4c2f-be32-6c8b455fe17b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -18235,7 +18267,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               16ms
                               </span>
                             
                          
@@ -18463,13 +18495,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresd94aa973-21e5-466e-8816-74706e262884">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresf976fbc9-1f08-4d44-94d5-f48e2f3a9196">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>de persoon is Staatloos
+                                            <b>Scenario:</b><div class="ellipsis" data-text="de persoon is Staatloos">de persoon is Staatloos</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -18488,7 +18520,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresd94aa973-21e5-466e-8816-74706e262884"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresf976fbc9-1f08-4d44-94d5-f48e2f3a9196"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19112,13 +19144,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features785e3d29-bd92-452e-b680-abacedbd61f1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features748f6f72-3f6e-4a2c-8993-7b2b0e5ce5e0">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>de persoon wordt behandeld als Nederlander, bijzonder Nederlanderschap heeft waarde "B"
+                                            <b>Scenario:</b><div class="ellipsis" data-text="de persoon wordt behandeld als Nederlander, bijzonder Nederlanderschap heeft waarde &quot;B&quot;">de persoon wordt behandeld als Nederlander, bijzonder Nederlanderschap heeft waarde "B"</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -19137,7 +19169,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features785e3d29-bd92-452e-b680-abacedbd61f1"
+                        <div id="collapseScenariopersoon_nationaliteit_features748f6f72-3f6e-4a2c-8993-7b2b0e5ce5e0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -19533,7 +19565,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -19748,13 +19780,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features45ce62eb-3b43-4e0d-a0f2-28e416121989">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features6228b09e-8b22-4459-aa75-2b094459271f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>de persoon wordt behandeld als Nederlander, nationaliteit heeft code 0002
+                                            <b>Scenario:</b><div class="ellipsis" data-text="de persoon wordt behandeld als Nederlander, nationaliteit heeft code 0002">de persoon wordt behandeld als Nederlander, nationaliteit heeft code 0002</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -19773,7 +19805,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features45ce62eb-3b43-4e0d-a0f2-28e416121989"
+                        <div id="collapseScenariopersoon_nationaliteit_features6228b09e-8b22-4459-aa75-2b094459271f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -20169,7 +20201,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -20397,13 +20429,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb000c263-4890-403f-9bd9-b4fe957df5b9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features41a35414-3f4f-48e9-8e85-745e17d2b85f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>de persoon heeft een onbekende nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="de persoon heeft een onbekende nationaliteit">de persoon heeft een onbekende nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -20422,7 +20454,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_featuresb000c263-4890-403f-9bd9-b4fe957df5b9"
+                        <div id="collapseScenariopersoon_nationaliteit_features41a35414-3f4f-48e9-8e85-745e17d2b85f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -21046,13 +21078,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features2c324856-a631-45b3-adba-6280177c3139">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese8e75055-e930-458e-ad0b-00f6718901a8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>beëindigde registratie van vreemde nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="beëindigde registratie van vreemde nationaliteit">beëindigde registratie van vreemde nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -21071,7 +21103,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features2c324856-a631-45b3-adba-6280177c3139"
+                        <div id="collapseScenariopersoon_nationaliteit_featurese8e75055-e930-458e-ad0b-00f6718901a8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -21851,13 +21883,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features410d4b6d-a012-4226-a1d4-c6b381aa015b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0bf76839-4739-456d-804d-70cc7c62412b">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verlies bijzonder Nederlanderschap
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verlies bijzonder Nederlanderschap">verlies bijzonder Nederlanderschap</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -21876,7 +21908,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features410d4b6d-a012-4226-a1d4-c6b381aa015b"
+                        <div id="collapseScenariopersoon_nationaliteit_features0bf76839-4739-456d-804d-70cc7c62412b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -22428,7 +22460,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               13ms
                               </span>
                             
                          
@@ -22656,13 +22688,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features69414e22-5695-41e0-b250-b44d382b1b02">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featurese65b177c-a355-4771-a454-d6a853f443b3">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>nationaliteit is onjuist
+                                            <b>Scenario:</b><div class="ellipsis" data-text="nationaliteit is onjuist">nationaliteit is onjuist</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -22681,7 +22713,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features69414e22-5695-41e0-b250-b44d382b1b02"
+                        <div id="collapseScenariopersoon_nationaliteit_featurese65b177c-a355-4771-a454-d6a853f443b3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -23225,7 +23257,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -23453,13 +23485,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features32fe086a-e6b8-4222-99e8-826b61121ecf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features22857f6e-86bb-43f5-98a1-33a6ff2c5fb4">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>geactualiseerde ingangsdatum geldigheid
+                                            <b>Scenario:</b><div class="ellipsis" data-text="geactualiseerde ingangsdatum geldigheid">geactualiseerde ingangsdatum geldigheid</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -23478,7 +23510,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features32fe086a-e6b8-4222-99e8-826b61121ecf"
+                        <div id="collapseScenariopersoon_nationaliteit_features22857f6e-86bb-43f5-98a1-33a6ff2c5fb4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -23964,7 +23996,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               16ms
                               </span>
                             
                          
@@ -24192,13 +24224,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features91286455-c1b9-4324-98f6-4f5a3b54856a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features73c06f32-9d4b-47f5-beda-de5be163ad62">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>nationaliteit gewijzigd naar bijzonder Nederlanderschap
+                                            <b>Scenario:</b><div class="ellipsis" data-text="nationaliteit gewijzigd naar bijzonder Nederlanderschap">nationaliteit gewijzigd naar bijzonder Nederlanderschap</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -24217,7 +24249,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features91286455-c1b9-4324-98f6-4f5a3b54856a"
+                        <div id="collapseScenariopersoon_nationaliteit_features73c06f32-9d4b-47f5-beda-de5be163ad62"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -24695,7 +24727,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               15ms
                               </span>
                             
                          
@@ -24910,13 +24942,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features993399cc-9b2b-4692-af24-452b30ca4def">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features59755203-adf4-461f-9067-cb929654aa14">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft alleen een beëindigde nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft alleen een beëindigde nationaliteit">persoon heeft alleen een beëindigde nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -24935,7 +24967,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features993399cc-9b2b-4692-af24-452b30ca4def"
+                        <div id="collapseScenariopersoon_nationaliteit_features59755203-adf4-461f-9067-cb929654aa14"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -25550,13 +25582,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_features0a093afe-e10a-4f47-bea0-627e03fcfef5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_nationaliteit_featuresb1b10008-e09c-4d69-8907-205ba8d99c49">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft geen nationaliteit
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft geen nationaliteit">persoon heeft geen nationaliteit</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -25575,7 +25607,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_nationaliteit_features0a093afe-e10a-4f47-bea0-627e03fcfef5"
+                        <div id="collapseScenariopersoon_nationaliteit_featuresb1b10008-e09c-4d69-8907-205ba8d99c49"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>

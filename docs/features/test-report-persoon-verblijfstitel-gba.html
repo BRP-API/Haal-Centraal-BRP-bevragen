@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:25 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -443,7 +475,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verblijfstitel_features3531746c-91d1-4e98-b3e3-26e18faca31c">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verblijfstitel_features364fc306-31f2-4349-b12b-d85149732b48">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>verblijfstitel (persoon)
@@ -459,7 +491,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_verblijfstitel_features3531746c-91d1-4e98-b3e3-26e18faca31c" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_verblijfstitel_features364fc306-31f2-4349-b12b-d85149732b48" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -472,13 +504,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresd969b8e0-c4ef-41a8-8148-493cf4b7e158">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresfd651db7-f40e-491b-995e-c6d2a5d0f5d4">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verblijfstitel heeft geen verblijfstitel
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verblijfstitel heeft geen verblijfstitel">verblijfstitel heeft geen verblijfstitel</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -497,7 +529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresd969b8e0-c4ef-41a8-8148-493cf4b7e158"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresfd651db7-f40e-491b-995e-c6d2a5d0f5d4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -694,7 +726,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               59ms
+                               63ms
                               </span>
                             
                          
@@ -834,13 +866,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features747818a0-2884-4bb4-b2e0-ada7987bc196">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features2abf2a7a-6c71-416a-9cff-6893feeecf33">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verblijfstitel heeft geen datum einde
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verblijfstitel heeft geen datum einde">verblijfstitel heeft geen datum einde</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -859,7 +891,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features747818a0-2884-4bb4-b2e0-ada7987bc196"
+                        <div id="collapseScenariopersoon_verblijfstitel_features2abf2a7a-6c71-416a-9cff-6893feeecf33"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1056,7 +1088,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               17ms
                               </span>
                             
                          
@@ -1245,13 +1277,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features30f58880-e1ab-4ede-842e-b5ca3f897c1f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresf84951ec-5c53-4e42-99bb-c519839e2a59">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verblijfstitel heeft een datum einde in het verleden
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verblijfstitel heeft een datum einde in het verleden">verblijfstitel heeft een datum einde in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1270,7 +1302,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features30f58880-e1ab-4ede-842e-b5ca3f897c1f"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresf84951ec-5c53-4e42-99bb-c519839e2a59"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1491,7 +1523,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               15ms
                               </span>
                             
                          
@@ -1631,13 +1663,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features99bc7891-c6fc-4f5d-a90d-27c5587d6179">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features20e9462e-4a7a-4f70-833b-30181bbc87f8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verblijfstitel heeft een datum einde vandaag
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verblijfstitel heeft een datum einde vandaag">verblijfstitel heeft een datum einde vandaag</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1656,7 +1688,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features99bc7891-c6fc-4f5d-a90d-27c5587d6179"
+                        <div id="collapseScenariopersoon_verblijfstitel_features20e9462e-4a7a-4f70-833b-30181bbc87f8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1877,7 +1909,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -2017,13 +2049,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features815a39b7-a57b-4c1a-9dc4-2629262a747d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features6fe03e01-fd6f-44b2-ae47-d0319a40f5e8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verblijfstitel heeft een datum einde in de toekomst
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verblijfstitel heeft een datum einde in de toekomst">verblijfstitel heeft een datum einde in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2042,7 +2074,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features815a39b7-a57b-4c1a-9dc4-2629262a747d"
+                        <div id="collapseScenariopersoon_verblijfstitel_features6fe03e01-fd6f-44b2-ae47-d0319a40f5e8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2247,7 +2279,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -2462,13 +2494,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features274ca1cf-17ca-4969-874e-b2c6d43fc7c3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features6956bb2e-2718-40a4-8215-5173830e9d34">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon's verblijfstitel velden is in onderzoek geweest
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon&#39;s verblijfstitel velden is in onderzoek geweest">persoon's verblijfstitel velden is in onderzoek geweest</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2487,7 +2519,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features274ca1cf-17ca-4969-874e-b2c6d43fc7c3"
+                        <div id="collapseScenariopersoon_verblijfstitel_features6956bb2e-2718-40a4-8215-5173830e9d34"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2910,13 +2942,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresa34903ae-a258-4752-946c-aef81e61472d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresd94e99a3-10df-445a-aeba-a0fac8ec264e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon's verblijfstitel velden is in onderzoek
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon&#39;s verblijfstitel velden is in onderzoek">persoon's verblijfstitel velden is in onderzoek</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2935,7 +2967,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresa34903ae-a258-4752-946c-aef81e61472d"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresd94e99a3-10df-445a-aeba-a0fac8ec264e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3148,7 +3180,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -3376,13 +3408,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresce41d218-e6c9-41a6-9bfb-35c78b02820c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresa5bc013f-2d34-4bca-9a7f-a7080fa9aab0">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon's verblijfstitel velden is onbekend
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon&#39;s verblijfstitel velden is onbekend">persoon's verblijfstitel velden is onbekend</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3401,7 +3433,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresce41d218-e6c9-41a6-9bfb-35c78b02820c"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresa5bc013f-2d34-4bca-9a7f-a7080fa9aab0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3821,13 +3853,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features1bd175e7-70cb-4280-9ae4-e5a4d1ec0a18">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features4d94f257-2be5-40fd-9c8f-3a7b06eb02e0">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>vervallen verblijfstitel (aanduiding 98) wordt niet geleverd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="vervallen verblijfstitel (aanduiding 98) wordt niet geleverd">vervallen verblijfstitel (aanduiding 98) wordt niet geleverd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3846,7 +3878,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features1bd175e7-70cb-4280-9ae4-e5a4d1ec0a18"
+                        <div id="collapseScenariopersoon_verblijfstitel_features4d94f257-2be5-40fd-9c8f-3a7b06eb02e0"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4067,7 +4099,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -4207,13 +4239,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresa5d0f99d-06cf-49a2-a2a8-9cfc76f972c0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresa1f7c786-f0b7-45b3-9032-31fd27ec033e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>code voor aanduiding verblijfstitel (39.10) komt niet voor in de tabel Verblijfstitel
+                                            <b>Scenario:</b><div class="ellipsis" data-text="code voor aanduiding verblijfstitel (39.10) komt niet voor in de tabel Verblijfstitel">code voor aanduiding verblijfstitel (39.10) komt niet voor in de tabel Verblijfstitel</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4232,7 +4264,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresa5d0f99d-06cf-49a2-a2a8-9cfc76f972c0"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresa1f7c786-f0b7-45b3-9032-31fd27ec033e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4421,7 +4453,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               14ms
                               </span>
                             
                          
@@ -4597,13 +4629,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresf48af04c-2c6e-4d54-8572-65f400f329e4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featurese4be6823-c33e-4169-91e4-cd0eefa0c2c2">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>verblijfstitel is onjuist
+                                            <b>Scenario:</b><div class="ellipsis" data-text="verblijfstitel is onjuist">verblijfstitel is onjuist</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4622,7 +4654,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresf48af04c-2c6e-4d54-8572-65f400f329e4"
+                        <div id="collapseScenariopersoon_verblijfstitel_featurese4be6823-c33e-4169-91e4-cd0eefa0c2c2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4898,7 +4930,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          

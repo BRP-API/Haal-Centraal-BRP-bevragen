@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:25 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -442,7 +474,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_uitsluiting_kiesrecht_features815f7d58-947d-425f-9931-68d65031c1c3">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_uitsluiting_kiesrecht_features15a6aea8-a423-4d36-868b-9a190060a1d6">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: uitsluiting kiesrecht velden vragen met fields
@@ -458,7 +490,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_uitsluiting_kiesrecht_features815f7d58-947d-425f-9931-68d65031c1c3" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_uitsluiting_kiesrecht_features15a6aea8-a423-4d36-868b-9a190060a1d6" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -471,13 +503,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresba0d1b21-1e8e-4650-908a-7b90da7e7d18">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf6906e36-4e5b-40a9-a7fa-5f08628a5198">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'aanduiding uitgesloten kiesrecht (38.10)' wordt gevraagd met field pad 'uitsluitingKiesrecht.uitgeslotenVanKiesrecht'
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;aanduiding uitgesloten kiesrecht (38.10)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.uitgeslotenVanKiesrecht&#39;">'aanduiding uitgesloten kiesrecht (38.10)' wordt gevraagd met field pad 'uitsluitingKiesrecht.uitgeslotenVanKiesrecht'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -496,7 +528,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresba0d1b21-1e8e-4650-908a-7b90da7e7d18"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf6906e36-4e5b-40a9-a7fa-5f08628a5198"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -593,7 +625,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               69ms
+                               83ms
                               </span>
                             
                          
@@ -769,13 +801,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features6a3c5753-260c-4093-bb18-6f0770e9dbc8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featurese750b4ff-9095-43da-b44e-3987c9678f10">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -794,7 +826,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features6a3c5753-260c-4093-bb18-6f0770e9dbc8"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featurese750b4ff-9095-43da-b44e-3987c9678f10"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -904,7 +936,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               18ms
+                               21ms
                               </span>
                             
                          
@@ -1106,13 +1138,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresa8605b57-5344-48f7-bc02-f589d3c2c592">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresee076e9a-82ec-48ba-a2c2-8f86942871ed">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum.type&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1131,7 +1163,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresa8605b57-5344-48f7-bc02-f589d3c2c592"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresee076e9a-82ec-48ba-a2c2-8f86942871ed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1443,13 +1475,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features9b3eca53-7c1d-4109-ba60-aecbbf4df21c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features82db67b2-bd05-482d-9dd4-5c9c1c6fdf14">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum.datum&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1468,7 +1500,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features9b3eca53-7c1d-4109-ba60-aecbbf4df21c"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features82db67b2-bd05-482d-9dd4-5c9c1c6fdf14"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1578,7 +1610,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               17ms
                               </span>
                             
                          
@@ -1780,13 +1812,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features0d403860-a095-4d9b-a42c-80715f44e2e2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featurese6d5d2ce-ffd3-4c58-ba80-7fac253dae28">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.langFormaat'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum.langFormaat&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.langFormaat'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1805,7 +1837,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features0d403860-a095-4d9b-a42c-80715f44e2e2"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featurese6d5d2ce-ffd3-4c58-ba80-7fac253dae28"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1915,7 +1947,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               18ms
                               </span>
                             
                          
@@ -2117,13 +2149,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf3bc6e08-34ec-4193-8cd2-21ebf8a96bdd">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features0c4dae33-6c8c-4bd5-9af6-06e341e04b0f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.jaar'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum.jaar&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.jaar'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2142,7 +2174,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf3bc6e08-34ec-4193-8cd2-21ebf8a96bdd"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features0c4dae33-6c8c-4bd5-9af6-06e341e04b0f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2252,7 +2284,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               19ms
                               </span>
                             
                          
@@ -2454,13 +2486,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features5c72230e-11e3-47dc-b5d2-ed11b3703adf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresaa3032d5-fb7b-4d9e-a135-483607c996e5">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.maand'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum.maand&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.maand'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2479,7 +2511,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features5c72230e-11e3-47dc-b5d2-ed11b3703adf"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresaa3032d5-fb7b-4d9e-a135-483607c996e5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2791,13 +2823,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features4f97e439-d921-4e68-8342-0cf9dbad38c9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresd11d7935-f40c-4ea0-a29e-26a43873ca56">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.onbekend'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum.onbekend&#39;">'einddatum uitsluiting kiesrecht (38.20)' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum.onbekend'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2816,7 +2848,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features4f97e439-d921-4e68-8342-0cf9dbad38c9"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresd11d7935-f40c-4ea0-a29e-26a43873ca56"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2926,7 +2958,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               20ms
                               </span>
                             
                          
@@ -3128,13 +3160,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features55cdce3c-e253-45b3-8d6b-6562752d63bb">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf9d7f83d-561d-464a-b33c-87dae61334f5">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' van het type 'Datum' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; van het type &#39;Datum&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum&#39;">'einddatum uitsluiting kiesrecht (38.20)' van het type 'Datum' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3153,7 +3185,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features55cdce3c-e253-45b3-8d6b-6562752d63bb"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf9d7f83d-561d-464a-b33c-87dae61334f5"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3263,7 +3295,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               19ms
                               </span>
                             
                          
@@ -3504,13 +3536,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features304b4b57-eaaf-4c3f-9683-8b55dbcd058d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf4d6f923-f327-451b-ab13-1491064a36dd">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' van het type 'DatumOnbekend' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; van het type &#39;DatumOnbekend&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum&#39;">'einddatum uitsluiting kiesrecht (38.20)' van het type 'DatumOnbekend' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3529,7 +3561,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features304b4b57-eaaf-4c3f-9683-8b55dbcd058d"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf4d6f923-f327-451b-ab13-1491064a36dd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3639,7 +3671,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               20ms
                               </span>
                             
                          
@@ -3880,13 +3912,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features5d7f7493-020b-408b-8b75-851f9e835b96">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf1b0aa7c-95cb-4812-a32e-97de5e6fea1b">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' van het type 'JaarDatum' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; van het type &#39;JaarDatum&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum&#39;">'einddatum uitsluiting kiesrecht (38.20)' van het type 'JaarDatum' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3905,7 +3937,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features5d7f7493-020b-408b-8b75-851f9e835b96"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf1b0aa7c-95cb-4812-a32e-97de5e6fea1b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4015,7 +4047,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               21ms
                               </span>
                             
                          
@@ -4256,13 +4288,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features159f3565-ed5d-48b7-bf45-7ef4c2ea3ee9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featurese737d004-9f37-48bf-a4da-758707db37c8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' van het type 'JaarMaandDatum' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; van het type &#39;JaarMaandDatum&#39; wordt gevraagd met field pad &#39;uitsluitingKiesrecht.einddatum&#39;">'einddatum uitsluiting kiesrecht (38.20)' van het type 'JaarMaandDatum' wordt gevraagd met field pad 'uitsluitingKiesrecht.einddatum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4281,7 +4313,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features159f3565-ed5d-48b7-bf45-7ef4c2ea3ee9"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featurese737d004-9f37-48bf-a4da-758707db37c8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4391,7 +4423,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               20ms
                               </span>
                             
                          
@@ -4643,7 +4675,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_uitsluiting_kiesrecht_features93aef8be-c1d8-4636-aeab-24660f372dd3">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_uitsluiting_kiesrecht_features655b81c9-c0cf-4490-a275-91a9c6818187">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Kiesrecht
@@ -4659,7 +4691,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_uitsluiting_kiesrecht_features93aef8be-c1d8-4636-aeab-24660f372dd3" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_uitsluiting_kiesrecht_features655b81c9-c0cf-4490-a275-91a9c6818187" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -4672,13 +4704,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresbbd24b1b-654f-4d4b-b928-14ab82c8eb90">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featurese31cf283-3edd-4dbf-8173-f9d9fdbef251">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon is uitgesloten van kiesrecht zonder einddatum uitsluiting
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon is uitgesloten van kiesrecht zonder einddatum uitsluiting">persoon is uitgesloten van kiesrecht zonder einddatum uitsluiting</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4697,7 +4729,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresbbd24b1b-654f-4d4b-b928-14ab82c8eb90"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featurese31cf283-3edd-4dbf-8173-f9d9fdbef251"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4786,7 +4818,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               20ms
                               </span>
                             
                          
@@ -4962,13 +4994,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresccedc630-9bbb-42ca-a6aa-c19065b952cf">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features5380371b-3f5f-4cf3-aa1e-6503aa6b42dd">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' ligt in de toekomst
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; ligt in de toekomst">'einddatum uitsluiting kiesrecht (38.20)' ligt in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4987,7 +5019,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresccedc630-9bbb-42ca-a6aa-c19065b952cf"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features5380371b-3f5f-4cf3-aa1e-6503aa6b42dd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5084,7 +5116,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               19ms
                               </span>
                             
                          
@@ -5260,13 +5292,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features9abad5e1-b86d-4564-b674-d9b26107130c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features5620aea0-ead4-4fa3-9363-e42933549ad6">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is vandaag of een datum in het verleden">'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5285,7 +5317,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features9abad5e1-b86d-4564-b674-d9b26107130c"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features5620aea0-ead4-4fa3-9363-e42933549ad6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5339,530 +5371,6 @@ pre {
                                       
                                         <td>
                                           vandaag
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               15ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          uitsluitingKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon zonder gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresdb8a05e7-e82c-4798-bed7-7600d6431dbf">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresdb8a05e7-e82c-4798-bed7-7600d6431dbf"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          aanduiding uitgesloten kiesrecht (38.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting kiesrecht (38.20)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          A
-                                        </td>
-                                      
-                                        <td>
-                                          gisteren
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               16ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000127
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          uitsluitingKiesrecht
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon zonder gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresb5cabc58-ba15-402c-8eae-3b0a2c51cae4">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresb5cabc58-ba15-402c-8eae-3b0a2c51cae4"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          aanduiding uitgesloten kiesrecht (38.10)
-                                        </th>
-                                         
-                                        <th>
-                                          einddatum uitsluiting kiesrecht (38.20)
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          A
-                                        </td>
-                                      
-                                        <td>
-                                          vandaag - 1 jaar
                                         </td>
                                       
                                       </tr>
@@ -6046,13 +5554,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features1726a0a0-997d-4129-aa74-fc1af1decb41">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresf13f6c9a-312d-409f-8bc0-192598cdb1f7">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is vandaag of een datum in het verleden">'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6071,7 +5579,531 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features1726a0a0-997d-4129-aa74-fc1af1decb41"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresf13f6c9a-312d-409f-8bc0-192598cdb1f7"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          aanduiding uitgesloten kiesrecht (38.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting kiesrecht (38.20)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          A
+                                        </td>
+                                      
+                                        <td>
+                                          gisteren
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               18ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          uitsluitingKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon zonder gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features200c849d-eb5d-4716-957a-7a122ee293f8">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is vandaag of een datum in het verleden">'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden</div>
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features200c849d-eb5d-4716-957a-7a122ee293f8"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000127&#39; heeft de volgende &#39;kiesrecht&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          aanduiding uitgesloten kiesrecht (38.10)
+                                        </th>
+                                         
+                                        <th>
+                                          einddatum uitsluiting kiesrecht (38.20)
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          A
+                                        </td>
+                                      
+                                        <td>
+                                          vandaag - 1 jaar
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               19ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000127
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          uitsluitingKiesrecht
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon zonder gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features10cdd26a-f8e6-4581-ba68-0df621d5fa98">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is vandaag of een datum in het verleden">'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden</div>
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features10cdd26a-f8e6-4581-ba68-0df621d5fa98"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6168,7 +6200,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               18ms
                               </span>
                             
                          
@@ -6308,13 +6340,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features700c04a6-4491-41d2-9238-85c5d35b1669">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresdc60a1e6-d4a3-4d89-a433-9540953b33b9">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is vandaag of een datum in het verleden">'einddatum uitsluiting kiesrecht (38.20)' is vandaag of een datum in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6333,7 +6365,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features700c04a6-4491-41d2-9238-85c5d35b1669"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresdc60a1e6-d4a3-4d89-a433-9540953b33b9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6430,7 +6462,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               20ms
                               </span>
                             
                          
@@ -6570,13 +6602,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features7dc42be9-0f63-465e-b4ab-655fc7fd8b56">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features8a2b0326-8d29-45d2-9511-373c564800bd">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is dit jaar
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is dit jaar">'einddatum uitsluiting kiesrecht (38.20)' is dit jaar</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6595,7 +6627,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features7dc42be9-0f63-465e-b4ab-655fc7fd8b56"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features8a2b0326-8d29-45d2-9511-373c564800bd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6692,7 +6724,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               19ms
                               </span>
                             
                          
@@ -6868,13 +6900,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresa362a076-b340-49a7-8982-f658bda1277b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresa5c409f1-88fd-42bc-baab-1353738b9b9d">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is volgend jaar
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is volgend jaar">'einddatum uitsluiting kiesrecht (38.20)' is volgend jaar</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6893,7 +6925,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresa362a076-b340-49a7-8982-f658bda1277b"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresa5c409f1-88fd-42bc-baab-1353738b9b9d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6990,7 +7022,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               19ms
                               </span>
                             
                          
@@ -7166,13 +7198,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresbaaac2b5-0eba-4940-b639-4a7153564310">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features83760296-76d6-4475-b23b-87df269b5985">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is deze maand
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is deze maand">'einddatum uitsluiting kiesrecht (38.20)' is deze maand</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7191,7 +7223,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresbaaac2b5-0eba-4940-b639-4a7153564310"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features83760296-76d6-4475-b23b-87df269b5985"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7288,7 +7320,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               18ms
                               </span>
                             
                          
@@ -7464,13 +7496,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresce89d084-2179-41c5-9773-57e886f0a7a8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featurese0eb73a9-41d6-4262-8aba-de3af6ee62c8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is volgende maand
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is volgende maand">'einddatum uitsluiting kiesrecht (38.20)' is volgende maand</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7489,7 +7521,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresce89d084-2179-41c5-9773-57e886f0a7a8"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featurese0eb73a9-41d6-4262-8aba-de3af6ee62c8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7586,7 +7618,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               19ms
                               </span>
                             
                          
@@ -7762,13 +7794,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features183168cd-a847-4ed5-9f04-77691f0530b1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresb8ac06d7-6dbd-45a2-9dd1-e8cef13d042f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'einddatum uitsluiting kiesrecht (38.20)' is onbekend
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting kiesrecht (38.20)&#39; is onbekend">'einddatum uitsluiting kiesrecht (38.20)' is onbekend</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7787,7 +7819,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features183168cd-a847-4ed5-9f04-77691f0530b1"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresb8ac06d7-6dbd-45a2-9dd1-e8cef13d042f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8060,13 +8092,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features9c73137a-1ff0-4f92-b7cf-3021fb2d99d4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features7cf2589a-e15b-4c8c-abae-10a12406e5f8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'aanduiding uitgesloten kiesrecht (38.10)' heeft geen waarde
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;aanduiding uitgesloten kiesrecht (38.10)&#39; heeft geen waarde">'aanduiding uitgesloten kiesrecht (38.10)' heeft geen waarde</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8085,7 +8117,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features9c73137a-1ff0-4f92-b7cf-3021fb2d99d4"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features7cf2589a-e15b-4c8c-abae-10a12406e5f8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8174,7 +8206,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               17ms
                               </span>
                             
                          
@@ -8314,13 +8346,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_featuresa493472f-a59f-4d86-a07e-a8d3011fbee7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_uitsluiting_kiesrecht_features12dfdc37-3bd3-4bc1-8983-89590607340e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft geen uitsluiting kiesrecht gegevens
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft geen uitsluiting kiesrecht gegevens">persoon heeft geen uitsluiting kiesrecht gegevens</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8339,7 +8371,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_featuresa493472f-a59f-4d86-a07e-a8d3011fbee7"
+                        <div id="collapseScenariopersoon_uitsluiting_kiesrecht_features12dfdc37-3bd3-4bc1-8983-89590607340e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>

@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:24 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -443,7 +475,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_europees_kiesrecht_features087402a3-b581-4042-8dbd-bfa4c30d09f3">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_europees_kiesrecht_featurescfd0fec1-f2d8-40ed-aae9-783068a145e9">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Europees kiesrecht velden vragen met fields
@@ -459,7 +491,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_europees_kiesrecht_features087402a3-b581-4042-8dbd-bfa4c30d09f3" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_europees_kiesrecht_featurescfd0fec1-f2d8-40ed-aae9-783068a145e9" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -472,13 +504,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features1bf6232b-7108-4186-9d3c-f0d43c651247">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features266bdd78-79c9-4f05-a574-1acec9fb878a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft geen Europees kiesrecht gegevens
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft geen Europees kiesrecht gegevens">persoon heeft geen Europees kiesrecht gegevens</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -497,7 +529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features1bf6232b-7108-4186-9d3c-f0d43c651247"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features266bdd78-79c9-4f05-a574-1acec9fb878a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -586,7 +618,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               56ms
+                               59ms
                               </span>
                             
                          
@@ -726,13 +758,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features2c771777-4489-4b53-9e2f-2601a4073e63">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features01e7d8bc-d3b7-4194-b9ee-1fc526b5b9d1">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'Europees kiesrecht (31.10)' heeft geen waarde
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;Europees kiesrecht (31.10)&#39; heeft geen waarde">'Europees kiesrecht (31.10)' heeft geen waarde</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -751,7 +783,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features2c771777-4489-4b53-9e2f-2601a4073e63"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features01e7d8bc-d3b7-4194-b9ee-1fc526b5b9d1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -840,7 +872,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -980,13 +1012,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa2bab6fd-4dad-4104-9134-1802e90e9d9a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa62a4731-6b1c-4eb7-9831-ce771f83712c">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde">einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1005,7 +1037,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa2bab6fd-4dad-4104-9134-1802e90e9d9a"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa62a4731-6b1c-4eb7-9831-ce771f83712c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1094,7 +1126,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               16ms
                               </span>
                             
                          
@@ -1283,13 +1315,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features0dc7284d-787e-48ab-822a-6256fb15e78a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features2e18a28b-f127-4794-88ec-3af5c250c563">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde">einddatum uitsluiting europees kiesrecht (31.30) heeft geen waarde</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1308,7 +1340,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features0dc7284d-787e-48ab-822a-6256fb15e78a"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features2e18a28b-f127-4794-88ec-3af5c250c563"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1586,13 +1618,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresd875114b-9e83-4796-bc17-510733367c75">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features389642a0-f349-4590-a831-5cab9f774442">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1611,7 +1643,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresd875114b-9e83-4796-bc17-510733367c75"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features389642a0-f349-4590-a831-5cab9f774442"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1721,7 +1753,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -1897,13 +1929,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features200c9806-1937-4d74-8dbe-e45c8ece469a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresf38aa1de-4158-4e52-b317-760916b3e08b">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting.type&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1922,7 +1954,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features200c9806-1937-4d74-8dbe-e45c8ece469a"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresf38aa1de-4158-4e52-b317-760916b3e08b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2032,7 +2064,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               12ms
                               </span>
                             
                          
@@ -2208,13 +2240,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features212c80c8-aa04-4bf7-960e-71e17c4e4797">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresbc1a732f-1685-4d6a-ac9c-d067ebd34a9d">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting.datum&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2233,7 +2265,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features212c80c8-aa04-4bf7-960e-71e17c4e4797"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresbc1a732f-1685-4d6a-ac9c-d067ebd34a9d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2343,7 +2375,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               12ms
                               </span>
                             
                          
@@ -2519,13 +2551,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features979ae85d-6730-4901-b238-334df0950ba6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features6ce995eb-1efa-446d-a5a0-2f7a5c461aed">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.langFormaat'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting.langFormaat&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.langFormaat'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2544,7 +2576,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features979ae85d-6730-4901-b238-334df0950ba6"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features6ce995eb-1efa-446d-a5a0-2f7a5c461aed"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2830,13 +2862,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresf36a21a5-f3e4-4d75-86b1-9467e2bf0cf9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features9ce854e6-6cc4-4e3d-8fbb-06e32e9ffaa9">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.jaar'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting.jaar&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.jaar'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2855,7 +2887,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresf36a21a5-f3e4-4d75-86b1-9467e2bf0cf9"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features9ce854e6-6cc4-4e3d-8fbb-06e32e9ffaa9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2965,7 +2997,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -3141,13 +3173,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresbf06c09e-ac54-4786-8ff3-563701549756">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features67cf49e3-afc6-412d-bd6d-5d573f1da137">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.maand'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting.maand&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.maand'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3166,7 +3198,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresbf06c09e-ac54-4786-8ff3-563701549756"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features67cf49e3-afc6-412d-bd6d-5d573f1da137"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3452,13 +3484,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features6e63117d-98b4-40ee-877b-4831efb9535e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa689fb04-4cb1-482d-bf9a-d3dfb1cadef3">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.onbekend'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;einddatum uitsluiting Europees kiesrecht (31.30)&#39; wordt gevraagd met field pad &#39;europeesKiesrecht.einddatumUitsluiting.onbekend&#39;">'einddatum uitsluiting Europees kiesrecht (31.30)' wordt gevraagd met field pad 'europeesKiesrecht.einddatumUitsluiting.onbekend'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3477,7 +3509,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features6e63117d-98b4-40ee-877b-4831efb9535e"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa689fb04-4cb1-482d-bf9a-d3dfb1cadef3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3587,7 +3619,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -3763,13 +3795,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features9c1fee1a-3b29-45e5-b30c-76430b23c001">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features70a1c5dd-71a4-426a-966d-ace65e8e160d">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden">einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3788,7 +3820,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features9c1fee1a-3b29-45e5-b30c-76430b23c001"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features70a1c5dd-71a4-426a-966d-ace65e8e160d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3885,7 +3917,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               13ms
                               </span>
                             
                          
@@ -4025,13 +4057,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features4060f976-ca3d-4615-ad2a-7b4de5fa565d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features451fda73-1348-4655-aad9-d6b86108e682">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden">einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4050,7 +4082,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features4060f976-ca3d-4615-ad2a-7b4de5fa565d"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features451fda73-1348-4655-aad9-d6b86108e682"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4147,7 +4179,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               16ms
                               </span>
                             
                          
@@ -4287,13 +4319,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresb5e72373-ca43-4d2c-9389-6e269e9271c8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features41704179-6e9e-4733-ba2d-5499d9572c0e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden">einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4312,7 +4344,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresb5e72373-ca43-4d2c-9389-6e269e9271c8"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features41704179-6e9e-4733-ba2d-5499d9572c0e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4409,7 +4441,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               19ms
                               </span>
                             
                          
@@ -4549,13 +4581,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresb6bd568b-4108-4690-a7fa-1c256ec6a938">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresc2759462-5e41-423a-b7bc-b2a93086b1db">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden">einddatum uitsluiting europees kiesrecht (31.30) is vandaag of ligt in het verleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4574,7 +4606,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresb6bd568b-4108-4690-a7fa-1c256ec6a938"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresc2759462-5e41-423a-b7bc-b2a93086b1db"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4671,7 +4703,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               16ms
                               </span>
                             
                          
@@ -4811,13 +4843,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa0083f5e-dfa8-445e-b3c7-b6b24c547c92">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features41738a37-dd12-4380-a147-7e7abec749d3">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst">einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4836,7 +4868,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa0083f5e-dfa8-445e-b3c7-b6b24c547c92"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features41738a37-dd12-4380-a147-7e7abec749d3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4933,7 +4965,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               15ms
                               </span>
                             
                          
@@ -5135,13 +5167,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features494238c5-34d3-4f2b-82a6-389d831c34e0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features06571409-f1ea-4765-acfb-59ce4680a4d7">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst">einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5160,7 +5192,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features494238c5-34d3-4f2b-82a6-389d831c34e0"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features06571409-f1ea-4765-acfb-59ce4680a4d7"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5257,7 +5289,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               14ms
                               </span>
                             
                          
@@ -5459,13 +5491,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features62f76b5c-0bad-49e7-8dac-bee4bde3795a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featurese6be5b3c-fdce-4656-9713-e2fa8c27eadc">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst">einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5484,7 +5516,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features62f76b5c-0bad-49e7-8dac-bee4bde3795a"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featurese6be5b3c-fdce-4656-9713-e2fa8c27eadc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5581,7 +5613,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               17ms
                               </span>
                             
                          
@@ -5783,13 +5815,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresb1d0d1dd-d2aa-45cb-ab94-40b1af1605a9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features8c233fe4-d848-4b50-932a-02d0dd239180">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst">einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5808,7 +5840,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresb1d0d1dd-d2aa-45cb-ab94-40b1af1605a9"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_features8c233fe4-d848-4b50-932a-02d0dd239180"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5905,7 +5937,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               15ms
                               </span>
                             
                          
@@ -6107,13 +6139,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_features22a7b474-d284-4f68-95ad-e0c7c2e6ccbe">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresc0c2d00b-789b-4430-9bf6-fd6a7e153dde">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst">einddatum uitsluiting europees kiesrecht (31.30) ligt in de toekomst</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6132,7 +6164,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_features22a7b474-d284-4f68-95ad-e0c7c2e6ccbe"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresc0c2d00b-789b-4430-9bf6-fd6a7e153dde"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6229,7 +6261,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               13ms
                               </span>
                             
                          
@@ -6431,13 +6463,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featuresa0e5fe4e-0903-4b51-8f42-5b270f19ca7a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_europees_kiesrecht_featurescaf12cfb-0968-48c1-92ac-2f0d43d682e9">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>einddatum uitsluiting europees kiesrecht (31.30) is onbekend
+                                            <b>Scenario:</b><div class="ellipsis" data-text="einddatum uitsluiting europees kiesrecht (31.30) is onbekend">einddatum uitsluiting europees kiesrecht (31.30) is onbekend</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6456,7 +6488,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_europees_kiesrecht_featuresa0e5fe4e-0903-4b51-8f42-5b270f19ca7a"
+                        <div id="collapseScenariopersoon_europees_kiesrecht_featurescaf12cfb-0968-48c1-92ac-2f0d43d682e9"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6553,7 +6585,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               11ms
+                               13ms
                               </span>
                             
                          

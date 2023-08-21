@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:24 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -443,7 +475,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_leeftijd_features8a710aa3-7ad4-4646-92da-bf4ee5604141">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_leeftijd_featuresff8be127-8961-4d43-9bf6-9a3a921a96d0">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>leeftijd veld vragen met fields (persoon)
@@ -459,7 +491,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_leeftijd_features8a710aa3-7ad4-4646-92da-bf4ee5604141" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_leeftijd_featuresff8be127-8961-4d43-9bf6-9a3a921a96d0" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -472,13 +504,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_leeftijd_features6cebf934-1e18-4c27-b11b-322b479db84f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_leeftijd_featuresd5bff983-7811-4dc6-b37b-ad14b58efcdf">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon is niet overleden
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon is niet overleden">persoon is niet overleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -497,7 +529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_leeftijd_features6cebf934-1e18-4c27-b11b-322b479db84f"
+                        <div id="collapseScenariopersoon_leeftijd_featuresd5bff983-7811-4dc6-b37b-ad14b58efcdf"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -607,7 +639,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               63ms
+                               66ms
                               </span>
                             
                          
@@ -783,13 +815,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_leeftijd_features09d5a0b5-be2d-438e-be3d-c21765c84e5b">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_leeftijd_features0fedb8a9-2b8d-4c28-a6df-b9c368fa7644">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon is overleden
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon is overleden">persoon is overleden</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -808,7 +840,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_leeftijd_features09d5a0b5-be2d-438e-be3d-c21765c84e5b"
+                        <div id="collapseScenariopersoon_leeftijd_features0fedb8a9-2b8d-4c28-a6df-b9c368fa7644"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1074,7 +1106,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          

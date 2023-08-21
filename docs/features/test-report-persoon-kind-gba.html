@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:24 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -443,7 +475,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_featuresd8cbecd4-6508-4906-a716-de5438420ae8">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_featuresa3d841c5-8cd8-4907-ad59-fc8cbe2278e4">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>kind - geboorte
@@ -459,7 +491,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_kind_featuresd8cbecd4-6508-4906-a716-de5438420ae8" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_kind_featuresa3d841c5-8cd8-4907-ad59-fc8cbe2278e4" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -472,13 +504,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresba6baa33-34e0-48e0-946e-14cb190c7636">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresfa9d4784-234c-403d-af86-e1891fed8a07">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>Kind heeft onbekend geboorte gegevens
+                                            <b>Scenario:</b><div class="ellipsis" data-text="Kind heeft onbekend geboorte gegevens">Kind heeft onbekend geboorte gegevens</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -497,7 +529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresba6baa33-34e0-48e0-946e-14cb190c7636"
+                        <div id="collapseScenariopersoon_kind_featuresfa9d4784-234c-403d-af86-e1891fed8a07"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -620,7 +652,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               61ms
+                               66ms
                               </span>
                             
                          
@@ -848,13 +880,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features55709474-a54d-4a13-a810-01a83add1767">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features346c2e25-9e0f-49b1-904b-9f40c6c3de13">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>Plaats is buitenlandse plaats of locatie bij code voor kind geboorte
+                                            <b>Scenario:</b><div class="ellipsis" data-text="Plaats is buitenlandse plaats of locatie bij code voor kind geboorte">Plaats is buitenlandse plaats of locatie bij code voor kind geboorte</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -873,7 +905,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features55709474-a54d-4a13-a810-01a83add1767"
+                        <div id="collapseScenariopersoon_kind_features346c2e25-9e0f-49b1-904b-9f40c6c3de13"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -962,7 +994,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               18ms
                               </span>
                             
                          
@@ -1150,7 +1182,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_featuresf31be179-af78-449d-9830-27ad1eefbe96">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_features793a8385-158d-475c-8c35-a062b7c3a75a">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>kind - naam
@@ -1166,7 +1198,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_kind_featuresf31be179-af78-449d-9830-27ad1eefbe96" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_kind_features793a8385-158d-475c-8c35-a062b7c3a75a" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -1179,13 +1211,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresbc849bd1-61f2-4361-b7b9-e699fcf484a4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features04845c6d-5f03-4866-8111-8f1492462a12">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>Kind voorvoegsel naam is leeg
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="Kind voorvoegsel naam is leeg">Kind voorvoegsel naam is leeg</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1204,7 +1236,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresbc849bd1-61f2-4361-b7b9-e699fcf484a4"
+                        <div id="collapseScenariopersoon_kind_features04845c6d-5f03-4866-8111-8f1492462a12"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1314,7 +1346,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -1503,13 +1535,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features1fe84ec4-17ec-4ad3-93bf-2374d3f8e583">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresb184f038-a8a5-4ab4-b0d6-ccdd79f48118">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>Kind voorvoegsel naam is leeg
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="Kind voorvoegsel naam is leeg">Kind voorvoegsel naam is leeg</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1528,7 +1560,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features1fe84ec4-17ec-4ad3-93bf-2374d3f8e583"
+                        <div id="collapseScenariopersoon_kind_featuresb184f038-a8a5-4ab4-b0d6-ccdd79f48118"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1638,7 +1670,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               16ms
                               </span>
                             
                          
@@ -1827,13 +1859,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresa56b9523-1d58-4b73-878d-15bc1c7cf240">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features6396b419-e72e-456b-a15a-60834023a7e8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>Kind voorvoegsel naam is leeg
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="Kind voorvoegsel naam is leeg">Kind voorvoegsel naam is leeg</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1852,7 +1884,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresa56b9523-1d58-4b73-878d-15bc1c7cf240"
+                        <div id="collapseScenariopersoon_kind_features6396b419-e72e-456b-a15a-60834023a7e8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1962,7 +1994,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               25ms
                               </span>
                             
                          
@@ -2151,13 +2183,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features6f61df5e-4df3-439f-86fe-91e4e80d8da4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresb568e135-e4d8-409d-a112-272628bb17f6">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>Kind voorletters gevraagd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="Kind voorletters gevraagd">Kind voorletters gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2176,7 +2208,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features6f61df5e-4df3-439f-86fe-91e4e80d8da4"
+                        <div id="collapseScenariopersoon_kind_featuresb568e135-e4d8-409d-a112-272628bb17f6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2286,7 +2318,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               15ms
                               </span>
                             
                          
@@ -2478,7 +2510,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_features645cf74f-fe9c-4d12-8b2e-e2c3357f3ea7">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_kind_featurescb06b2c9-295b-4638-bec3-1e1076456acd">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>kinderen raadplegen
@@ -2494,7 +2526,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_kind_features645cf74f-fe9c-4d12-8b2e-e2c3357f3ea7" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_kind_featurescb06b2c9-295b-4638-bec3-1e1076456acd" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.<br/>  Dit bevat enkele identificerende eigenschappen van de kinderen.</div>
@@ -2509,13 +2541,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features6169480b-644f-4d88-be2e-f58ec81dc6ab">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features81919629-a4a2-44ac-bb92-b2b35a87af78">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>de naam van een kind is gecorrigeerd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="de naam van een kind is gecorrigeerd">de naam van een kind is gecorrigeerd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2534,7 +2566,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features6169480b-644f-4d88-be2e-f58ec81dc6ab"
+                        <div id="collapseScenariopersoon_kind_features81919629-a4a2-44ac-bb92-b2b35a87af78"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2721,7 +2753,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -2923,13 +2955,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features4b0b36a9-3c96-468a-b3ee-530ebf4dc834">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features4bf7e77d-564a-477d-8d57-4c9c528245e2">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>naamswijziging kind
+                                            <b>Scenario:</b><div class="ellipsis" data-text="naamswijziging kind">naamswijziging kind</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2948,7 +2980,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features4b0b36a9-3c96-468a-b3ee-530ebf4dc834"
+                        <div id="collapseScenariopersoon_kind_features4bf7e77d-564a-477d-8d57-4c9c528245e2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3103,7 +3135,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -3279,13 +3311,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresf559e924-b4e5-405c-8267-8d9aa061d4d1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features8d2e26c5-2517-42fa-aeba-ab9a150e763a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>bestaan kind bekend, veld met onbekend waarde wordt gevraagd met fields
+                                            <b>Scenario:</b><div class="ellipsis" data-text="bestaan kind bekend, veld met onbekend waarde wordt gevraagd met fields">bestaan kind bekend, veld met onbekend waarde wordt gevraagd met fields</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3304,7 +3336,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresf559e924-b4e5-405c-8267-8d9aa061d4d1"
+                        <div id="collapseScenariopersoon_kind_features8d2e26c5-2517-42fa-aeba-ab9a150e763a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3401,7 +3433,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               15ms
                               </span>
                             
                          
@@ -3577,13 +3609,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features13f8ebb1-fbf8-49a9-81ba-7b8363b6e0e1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features24bb7a39-7826-4759-8735-b12bc4ba78e4">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>bestaan kind bekend, veld met onbekend waarde wordt niet gevraagd met fields
+                                            <b>Scenario:</b><div class="ellipsis" data-text="bestaan kind bekend, veld met onbekend waarde wordt niet gevraagd met fields">bestaan kind bekend, veld met onbekend waarde wordt niet gevraagd met fields</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3602,7 +3634,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features13f8ebb1-fbf8-49a9-81ba-7b8363b6e0e1"
+                        <div id="collapseScenariopersoon_kind_features24bb7a39-7826-4759-8735-b12bc4ba78e4"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3699,7 +3731,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -3839,13 +3871,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features4835eff0-cac2-41e5-aed8-3ec566c500b2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresb10ecef9-5d34-4047-9dfd-dbb41ccd9673">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>ontkenning ouderschap, herroeping van adoptie en nietig verklaren erkenning
+                                            <b>Scenario:</b><div class="ellipsis" data-text="ontkenning ouderschap, herroeping van adoptie en nietig verklaren erkenning">ontkenning ouderschap, herroeping van adoptie en nietig verklaren erkenning</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3864,7 +3896,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features4835eff0-cac2-41e5-aed8-3ec566c500b2"
+                        <div id="collapseScenariopersoon_kind_featuresb10ecef9-5d34-4047-9dfd-dbb41ccd9673"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4191,7 +4223,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               22ms
+                               15ms
                               </span>
                             
                          
@@ -4331,13 +4363,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresc3a6af75-e5e5-4b9f-b398-bd0b9de3d124">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featurese84ea69e-c1de-446c-8e7d-7c5d9d7c33cd">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon heeft geen kind
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon heeft geen kind">persoon heeft geen kind</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4356,7 +4388,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresc3a6af75-e5e5-4b9f-b398-bd0b9de3d124"
+                        <div id="collapseScenariopersoon_kind_featurese84ea69e-c1de-446c-8e7d-7c5d9d7c33cd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4453,7 +4485,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               12ms
+                               13ms
                               </span>
                             
                          
@@ -4593,13 +4625,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features478f01d1-10b3-41d9-b141-1321cba816c3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresf4eecd5a-13f3-4a4e-b48a-342c9920d564">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>met fields vragen om een gegeven zonder waarde
+                                            <b>Scenario:</b><div class="ellipsis" data-text="met fields vragen om een gegeven zonder waarde">met fields vragen om een gegeven zonder waarde</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4618,7 +4650,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_features478f01d1-10b3-41d9-b141-1321cba816c3"
+                        <div id="collapseScenariopersoon_kind_featuresf4eecd5a-13f3-4a4e-b48a-342c9920d564"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4715,7 +4747,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -4855,13 +4887,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featurese863da0e-19ba-4ded-9a7c-a7305e71882d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features1b76b19c-72f0-41c2-9cca-254725977568">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>Geen kind, maar dat wordt wel onderzocht
+                                            <b>Scenario:</b><div class="ellipsis" data-text="Geen kind, maar dat wordt wel onderzocht">Geen kind, maar dat wordt wel onderzocht</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4880,7 +4912,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featurese863da0e-19ba-4ded-9a7c-a7305e71882d"
+                        <div id="collapseScenariopersoon_kind_features1b76b19c-72f0-41c2-9cca-254725977568"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5055,7 +5087,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               13ms
+                               14ms
                               </span>
                             
                          
@@ -5195,13 +5227,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresdd4c883f-5029-4cef-ae34-05416f546d97">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features40f11e42-d3ce-4850-aa8f-efe040debb07">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet
+                                            <b>Scenario:</b><div class="ellipsis" data-text="Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet">Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5220,7 +5252,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresdd4c883f-5029-4cef-ae34-05416f546d97"
+                        <div id="collapseScenariopersoon_kind_features40f11e42-d3ce-4850-aa8f-efe040debb07"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5489,7 +5521,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               16ms
                               </span>
                             
                          
@@ -5678,13 +5710,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_featuresb78af213-1f7e-4eff-87fa-5b5ead839c50">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_kind_features2000cff8-30c8-4b97-b56f-639d5b806612">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>de persoon heeft een levenloos geboren kind en een levend kind
+                                            <b>Scenario:</b><div class="ellipsis" data-text="de persoon heeft een levenloos geboren kind en een levend kind">de persoon heeft een levenloos geboren kind en een levend kind</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5703,7 +5735,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_kind_featuresb78af213-1f7e-4eff-87fa-5b5ead839c50"
+                        <div id="collapseScenariopersoon_kind_features2000cff8-30c8-4b97-b56f-639d5b806612"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5866,7 +5898,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               14ms
+                               15ms
                               </span>
                             
                          

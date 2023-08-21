@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:24 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -442,7 +474,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_featurese62cd483-67f7-4279-a4fc-11ad90330475">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features79d7be3f-8f3b-4299-a6f9-8b9f64a1b438">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: geboorte velden vragen met fields
@@ -458,7 +490,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geboorte_featurese62cd483-67f7-4279-a4fc-11ad90330475" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geboorte_features79d7be3f-8f3b-4299-a6f9-8b9f64a1b438" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -471,13 +503,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresbab706b4-51cf-4c16-a7b5-aeb7a2c706e2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf7d99a83-f9c2-49e8-994a-8c6556568697">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -496,7 +528,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresbab706b4-51cf-4c16-a7b5-aeb7a2c706e2"
+                        <div id="collapseScenariopersoon_geboorte_featuresf7d99a83-f9c2-49e8-994a-8c6556568697"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -593,7 +625,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               69ms
+                               68ms
                               </span>
                             
                          
@@ -795,13 +827,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features610eb2d7-5228-4499-afe9-b891836c79d6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features920e5582-e214-4d9a-b684-bbe4ed9e2f71">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.type'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum.type&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.type'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -820,7 +852,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features610eb2d7-5228-4499-afe9-b891836c79d6"
+                        <div id="collapseScenariopersoon_geboorte_features920e5582-e214-4d9a-b684-bbe4ed9e2f71"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -917,7 +949,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               18ms
                               </span>
                             
                          
@@ -1119,13 +1151,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurescf982934-7ef0-41a6-9417-cdf0b4c17a27">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd808a98c-6701-481b-8ef6-e9ba1c94720a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum.datum&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1144,7 +1176,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featurescf982934-7ef0-41a6-9417-cdf0b4c17a27"
+                        <div id="collapseScenariopersoon_geboorte_featuresd808a98c-6701-481b-8ef6-e9ba1c94720a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1241,7 +1273,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               19ms
                               </span>
                             
                          
@@ -1443,13 +1475,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features9687380e-213a-41f8-99ed-19e346aede7d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresc605cd21-e50d-4ef5-836f-9f3ab9175067">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.langFormaat'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum.langFormaat&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.langFormaat'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1468,7 +1500,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features9687380e-213a-41f8-99ed-19e346aede7d"
+                        <div id="collapseScenariopersoon_geboorte_featuresc605cd21-e50d-4ef5-836f-9f3ab9175067"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1565,7 +1597,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               18ms
                               </span>
                             
                          
@@ -1767,13 +1799,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7de6439a-f9de-42e2-b45b-d63a425c0085">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresb24fe7db-576e-4290-879e-0f2fe1e30cd8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.jaar'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum.jaar&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.jaar'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1792,7 +1824,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features7de6439a-f9de-42e2-b45b-d63a425c0085"
+                        <div id="collapseScenariopersoon_geboorte_featuresb24fe7db-576e-4290-879e-0f2fe1e30cd8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1889,7 +1921,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               16ms
                               </span>
                             
                          
@@ -2091,13 +2123,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd125dfa0-8867-4b44-ae19-293561ecac37">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1a3eb85b-4a23-4941-83b1-bee5ce3e4374">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.maand'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum.maand&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.maand'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2116,7 +2148,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresd125dfa0-8867-4b44-ae19-293561ecac37"
+                        <div id="collapseScenariopersoon_geboorte_features1a3eb85b-4a23-4941-83b1-bee5ce3e4374"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2213,7 +2245,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               18ms
                               </span>
                             
                          
@@ -2415,13 +2447,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3d03f835-72f0-46b2-bd1b-56f413077ed5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresbbb176df-4fc4-4860-8589-d1c5079fe850">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.onbekend'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; wordt gevraagd met field pad &#39;geboorte.datum.onbekend&#39;">'geboortedatum (03.10)' wordt gevraagd met field pad 'geboorte.datum.onbekend'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2440,7 +2472,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features3d03f835-72f0-46b2-bd1b-56f413077ed5"
+                        <div id="collapseScenariopersoon_geboorte_featuresbbb176df-4fc4-4860-8589-d1c5079fe850"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2537,7 +2569,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               19ms
                               </span>
                             
                          
@@ -2739,13 +2771,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features6c95dca2-439b-4adf-8d1c-9f18691fd113">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf509c96d-19ad-416a-b5c4-f0d9480cd6ba">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'Datum' wordt gevraagd met field pad 'geboorte.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; van het type &#39;Datum&#39; wordt gevraagd met field pad &#39;geboorte.datum&#39;">'geboortedatum (03.10)' van het type 'Datum' wordt gevraagd met field pad 'geboorte.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2764,7 +2796,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features6c95dca2-439b-4adf-8d1c-9f18691fd113"
+                        <div id="collapseScenariopersoon_geboorte_featuresf509c96d-19ad-416a-b5c4-f0d9480cd6ba"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2861,7 +2893,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               17ms
                               </span>
                             
                          
@@ -3102,13 +3134,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7aa86080-7854-44a3-a050-b818f4f8dfa8">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3f792dfc-25e3-4d84-9a7e-91ccae9f6e4f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'DatumOnbekend' wordt gevraagd met field pad 'geboorte.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; van het type &#39;DatumOnbekend&#39; wordt gevraagd met field pad &#39;geboorte.datum&#39;">'geboortedatum (03.10)' van het type 'DatumOnbekend' wordt gevraagd met field pad 'geboorte.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3127,7 +3159,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features7aa86080-7854-44a3-a050-b818f4f8dfa8"
+                        <div id="collapseScenariopersoon_geboorte_features3f792dfc-25e3-4d84-9a7e-91ccae9f6e4f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3224,7 +3256,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               18ms
+                               19ms
                               </span>
                             
                          
@@ -3465,13 +3497,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features5c59796a-bddf-4e8e-b7de-f371f14dbbc3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features652fcf76-c1ed-4302-a60b-5283ade72d9e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'JaarDatum' wordt gevraagd met field pad 'geboorte.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; van het type &#39;JaarDatum&#39; wordt gevraagd met field pad &#39;geboorte.datum&#39;">'geboortedatum (03.10)' van het type 'JaarDatum' wordt gevraagd met field pad 'geboorte.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3490,7 +3522,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features5c59796a-bddf-4e8e-b7de-f371f14dbbc3"
+                        <div id="collapseScenariopersoon_geboorte_features652fcf76-c1ed-4302-a60b-5283ade72d9e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3587,7 +3619,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               19ms
                               </span>
                             
                          
@@ -3828,13 +3860,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features90c0049a-f8fa-4de0-a10a-6644a8af38e7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featurese9365965-5bbd-425d-bdc9-851e618ce445">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum (03.10)' van het type 'JaarMaandDatum' wordt gevraagd met field pad 'geboorte.datum'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum (03.10)&#39; van het type &#39;JaarMaandDatum&#39; wordt gevraagd met field pad &#39;geboorte.datum&#39;">'geboortedatum (03.10)' van het type 'JaarMaandDatum' wordt gevraagd met field pad 'geboorte.datum'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3853,7 +3885,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features90c0049a-f8fa-4de0-a10a-6644a8af38e7"
+                        <div id="collapseScenariopersoon_geboorte_featurese9365965-5bbd-425d-bdc9-851e618ce445"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3950,7 +3982,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               23ms
+                               18ms
                               </span>
                             
                          
@@ -4191,13 +4223,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresa6635c2c-6551-4285-9219-407363032cad">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0306dd9c-f499-4191-8200-e80958f807be">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteplaats (03.20)&#39; wordt gevraagd met field pad &#39;geboorte.plaats&#39;">'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4216,7 +4248,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresa6635c2c-6551-4285-9219-407363032cad"
+                        <div id="collapseScenariopersoon_geboorte_features0306dd9c-f499-4191-8200-e80958f807be"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4313,7 +4345,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               17ms
                               </span>
                             
                          
@@ -4502,13 +4534,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features6f6f08a8-d670-4752-b320-56a67a8712ba">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3383aa1d-c482-429d-b638-bd59f4bbe31a">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteplaats (03.20)&#39; wordt gevraagd met field pad &#39;geboorte.plaats.code&#39;">'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4527,7 +4559,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features6f6f08a8-d670-4752-b320-56a67a8712ba"
+                        <div id="collapseScenariopersoon_geboorte_features3383aa1d-c482-429d-b638-bd59f4bbe31a"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4624,7 +4656,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               17ms
                               </span>
                             
                          
@@ -4813,13 +4845,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features7eacef0c-099d-49f3-8b1e-a2b90de7265d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresde73bece-9498-48ac-9eea-fddf5e4008dc">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats.omschrijving'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteplaats (03.20)&#39; wordt gevraagd met field pad &#39;geboorte.plaats.omschrijving&#39;">'geboorteplaats (03.20)' wordt gevraagd met field pad 'geboorte.plaats.omschrijving'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4838,7 +4870,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features7eacef0c-099d-49f3-8b1e-a2b90de7265d"
+                        <div id="collapseScenariopersoon_geboorte_featuresde73bece-9498-48ac-9eea-fddf5e4008dc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5124,13 +5156,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features1b154c7e-b8e9-42d6-b928-4b217c2234d2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4f380159-c932-4004-b521-2d6f1fd95cf1">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteplaats (03.20)' met standaardwaarde wordt gevraagd met field pad 'geboorte.plaats'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteplaats (03.20)&#39; met standaardwaarde wordt gevraagd met field pad &#39;geboorte.plaats&#39;">'geboorteplaats (03.20)' met standaardwaarde wordt gevraagd met field pad 'geboorte.plaats'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5149,7 +5181,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features1b154c7e-b8e9-42d6-b928-4b217c2234d2"
+                        <div id="collapseScenariopersoon_geboorte_features4f380159-c932-4004-b521-2d6f1fd95cf1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5246,7 +5278,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               16ms
                               </span>
                             
                          
@@ -5386,13 +5418,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf1683e59-ad8e-4c50-9be9-a5faef67f06d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features8b029f8e-4144-4ce2-aa54-55057ee02d54">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteland (03.30)&#39; wordt gevraagd met field pad &#39;geboorte.land&#39;">'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5411,7 +5443,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresf1683e59-ad8e-4c50-9be9-a5faef67f06d"
+                        <div id="collapseScenariopersoon_geboorte_features8b029f8e-4144-4ce2-aa54-55057ee02d54"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5508,7 +5540,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               18ms
+                               16ms
                               </span>
                             
                          
@@ -5697,13 +5729,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features2036b616-6167-4e0d-a6f6-a775a343c4af">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresae32fe09-262a-4d65-a186-fe0c00d0a0c6">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land.code'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteland (03.30)&#39; wordt gevraagd met field pad &#39;geboorte.land.code&#39;">'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land.code'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -5722,7 +5754,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features2036b616-6167-4e0d-a6f6-a775a343c4af"
+                        <div id="collapseScenariopersoon_geboorte_featuresae32fe09-262a-4d65-a186-fe0c00d0a0c6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5819,7 +5851,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               18ms
                               </span>
                             
                          
@@ -6008,13 +6040,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features70d0ccf4-e3b7-4be7-99b6-f81fb33039a5">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features63054664-fd6d-488d-aee8-3c558fb199dc">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land.omschrijving'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteland (03.30)&#39; wordt gevraagd met field pad &#39;geboorte.land.omschrijving&#39;">'geboorteland (03.30)' wordt gevraagd met field pad 'geboorte.land.omschrijving'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6033,7 +6065,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features70d0ccf4-e3b7-4be7-99b6-f81fb33039a5"
+                        <div id="collapseScenariopersoon_geboorte_features63054664-fd6d-488d-aee8-3c558fb199dc"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6319,13 +6351,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4b5e3498-780b-4ced-b513-4612019028c9">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features0617dc77-01aa-430a-a700-4a0f21630f53">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteland (03.30)' met standaardwaarde wordt gevraagd met field pad 'geboorte.land'
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteland (03.30)&#39; met standaardwaarde wordt gevraagd met field pad &#39;geboorte.land&#39;">'geboorteland (03.30)' met standaardwaarde wordt gevraagd met field pad 'geboorte.land'</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6344,7 +6376,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features4b5e3498-780b-4ced-b513-4612019028c9"
+                        <div id="collapseScenariopersoon_geboorte_features0617dc77-01aa-430a-a700-4a0f21630f53"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6441,7 +6473,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               18ms
                               </span>
                             
                          
@@ -6592,7 +6624,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_features83a686d1-e519-420f-9d23-f5332ef4a18b">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geboorte_featuresb82c5e2a-4a88-46e5-bbf8-41dcafc7b42b">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>Persoon: geboorte velden in onderzoek
@@ -6608,7 +6640,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geboorte_features83a686d1-e519-420f-9d23-f5332ef4a18b" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geboorte_featuresb82c5e2a-4a88-46e5-bbf8-41dcafc7b42b" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -6621,13 +6653,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features6f287311-c6a3-4886-b527-08aeea8ee4c4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4a055c91-dc3e-4c03-aca8-8a09910c7edb">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele categorie persoon' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;hele categorie persoon&#39; is in onderzoek en geboortedatum, plaats en land worden gevraagd">'hele categorie persoon' is in onderzoek en geboortedatum, plaats en land worden gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -6646,7 +6678,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features6f287311-c6a3-4886-b527-08aeea8ee4c4"
+                        <div id="collapseScenariopersoon_geboorte_features4a055c91-dc3e-4c03-aca8-8a09910c7edb"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -6769,7 +6801,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               19ms
+                               21ms
                               </span>
                             
                          
@@ -7049,13 +7081,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresb02fa113-5f62-4b22-88e5-b9299aee206f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features36a88a03-10e0-4a61-9ce7-d40a73a830f2">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'hele groep geboorte' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;hele groep geboorte&#39; is in onderzoek en geboortedatum, plaats en land worden gevraagd">'hele groep geboorte' is in onderzoek en geboortedatum, plaats en land worden gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7074,7 +7106,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresb02fa113-5f62-4b22-88e5-b9299aee206f"
+                        <div id="collapseScenariopersoon_geboorte_features36a88a03-10e0-4a61-9ce7-d40a73a830f2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7197,7 +7229,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               18ms
                               </span>
                             
                          
@@ -7477,13 +7509,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd8115038-bc1d-4682-b9e7-fa1fcec7acfe">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features59075268-440d-4c31-a908-d5ca242cc233">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboortedatum' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum&#39; is in onderzoek en geboortedatum, plaats en land worden gevraagd">'geboortedatum' is in onderzoek en geboortedatum, plaats en land worden gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7502,7 +7534,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresd8115038-bc1d-4682-b9e7-fa1fcec7acfe"
+                        <div id="collapseScenariopersoon_geboorte_features59075268-440d-4c31-a908-d5ca242cc233"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -7905,13 +7937,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresd39a2db0-3e0b-4e69-97e0-4e5a9a50bd2d">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features9523f4a5-8f6c-449b-9a78-18ae28fd1dc3">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteplaats' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteplaats&#39; is in onderzoek en geboortedatum, plaats en land worden gevraagd">'geboorteplaats' is in onderzoek en geboortedatum, plaats en land worden gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -7930,7 +7962,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_featuresd39a2db0-3e0b-4e69-97e0-4e5a9a50bd2d"
+                        <div id="collapseScenariopersoon_geboorte_features9523f4a5-8f6c-449b-9a78-18ae28fd1dc3"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8053,7 +8085,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               21ms
+                               18ms
                               </span>
                             
                          
@@ -8333,13 +8365,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features3336b50c-6072-4e1e-ab94-463ecd643622">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features19e991b2-6c1a-4a89-a902-43afb3ee34be">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>'geboorteland' is in onderzoek en geboortedatum, plaats en land worden gevraagd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="&#39;geboorteland&#39; is in onderzoek en geboortedatum, plaats en land worden gevraagd">'geboorteland' is in onderzoek en geboortedatum, plaats en land worden gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8358,7 +8390,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features3336b50c-6072-4e1e-ab94-463ecd643622"
+                        <div id="collapseScenariopersoon_geboorte_features19e991b2-6c1a-4a89-a902-43afb3ee34be"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8761,13 +8793,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features9043ee27-c872-45e6-8fb1-3466eaa4e0be">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf9f21ed1-a060-4ab8-9317-eaa07682c8c8">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'geboortedatum' is in onderzoek, maar wordt niet gevraagd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;geboortedatum&#39; is in onderzoek, maar wordt niet gevraagd">'geboortedatum' is in onderzoek, maar wordt niet gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -8786,7 +8818,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features9043ee27-c872-45e6-8fb1-3466eaa4e0be"
+                        <div id="collapseScenariopersoon_geboorte_featuresf9f21ed1-a060-4ab8-9317-eaa07682c8c8"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -8909,7 +8941,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               19ms
                               </span>
                             
                          
@@ -9049,13 +9081,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features4a78d569-21a0-4db4-afab-ae647e7bc448">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresb530ae1b-5a23-43f6-82a8-5579334282dd">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'geboorteplaats' is in onderzoek, maar wordt niet gevraagd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;geboorteplaats&#39; is in onderzoek, maar wordt niet gevraagd">'geboorteplaats' is in onderzoek, maar wordt niet gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -9074,7 +9106,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features4a78d569-21a0-4db4-afab-ae647e7bc448"
+                        <div id="collapseScenariopersoon_geboorte_featuresb530ae1b-5a23-43f6-82a8-5579334282dd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9197,7 +9229,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               17ms
+                               16ms
                               </span>
                             
                          
@@ -9337,13 +9369,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features11af93de-5f9e-41b2-8e47-ea04f00deae7">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_featuresf94ebcad-c332-40fd-89f7-ea66618b547e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>'geboorteland' is in onderzoek, maar wordt niet gevraagd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="&#39;geboorteland&#39; is in onderzoek, maar wordt niet gevraagd">'geboorteland' is in onderzoek, maar wordt niet gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -9362,7 +9394,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features11af93de-5f9e-41b2-8e47-ea04f00deae7"
+                        <div id="collapseScenariopersoon_geboorte_featuresf94ebcad-c332-40fd-89f7-ea66618b547e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9485,7 +9517,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               18ms
                               </span>
                             
                          
@@ -9625,13 +9657,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features33034ee2-209f-4465-880b-8421c4eefd97">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geboorte_features43d67d7b-d208-4f3f-a7b1-c5c2f9260398">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>hele groep 'geboorte' is in onderzoek, maar wordt niet gevraagd
+                                            <b>Scenario:</b><div class="ellipsis" data-text="hele groep &#39;geboorte&#39; is in onderzoek, maar wordt niet gevraagd">hele groep 'geboorte' is in onderzoek, maar wordt niet gevraagd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -9650,7 +9682,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geboorte_features33034ee2-209f-4465-880b-8421c4eefd97"
+                        <div id="collapseScenariopersoon_geboorte_features43d67d7b-d208-4f3f-a7b1-c5c2f9260398"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -9773,7 +9805,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               15ms
+                               18ms
                               </span>
                             
                          

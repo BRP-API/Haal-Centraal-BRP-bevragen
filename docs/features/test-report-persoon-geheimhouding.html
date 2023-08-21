@@ -285,6 +285,38 @@ pre {
     min-width: 100%;
 }
 
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .2s linear;
+    white-space: nowrap;
+    padding:.5rem 1rem;
+}
+.ellipsis:focus, .ellipsis:hover {
+  color:transparent;
+}
+.ellipsis:focus:after,.ellipsis:hover:after{
+    content:attr(data-text);
+    overflow: visible;
+    text-overflow: inherit;
+    background: #fff;
+    position: absolute;
+    left:auto;
+    top:auto;
+    width: auto;
+    max-width: 100%;
+    border: 1px solid #eaebec;
+    padding: 0 .5rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.28);
+    white-space: normal;
+    word-wrap: break-word;
+    display:block;
+    color:black;
+    margin-top:-1.25rem;
+    z-index: 1;
+  }
 
     /** Issue in google-charts tooltip - https://github.com/google/google-visualization-issues/issues/2162 */
     .google-visualization-tooltip {
@@ -365,7 +397,7 @@ pre {
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Mon Jun 05 2023 15:09:24 GMT+0000 (Coordinated Universal Time)
+              Mon Aug 21 2023 10:15:43 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -442,7 +474,7 @@ pre {
                     <div class="tags">
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geheimhouding_featuresa241ce29-b1c0-4169-aef0-6b59fd116d85">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_geheimhouding_features6c414066-5ebf-4e47-b1f8-569da3c66296">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>geheimhouding: niet verstrekken van gegevens van een persoon aan derden
@@ -458,7 +490,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_geheimhouding_featuresa241ce29-b1c0-4169-aef0-6b59fd116d85" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_geheimhouding_features6c414066-5ebf-4e47-b1f8-569da3c66296" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     <div class="description">  Wanneer een consumer van de BRP API gegevens bevraagt van een persoon die geen toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden<br/>  Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens</div>
@@ -473,13 +505,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features1879aa6f-1560-4431-8183-7bf5a8e20784">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features8f33cc3e-8efb-4d88-8029-e8af1fbbb48c">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Scenario:</b>persoon die toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden, wordt geraadpleegd met burgerservicenummer
+                                            <b>Scenario:</b><div class="ellipsis" data-text="persoon die toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden, wordt geraadpleegd met burgerservicenummer">persoon die toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -498,7 +530,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features1879aa6f-1560-4431-8183-7bf5a8e20784"
+                        <div id="collapseScenariopersoon_geheimhouding_features8f33cc3e-8efb-4d88-8029-e8af1fbbb48c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -595,7 +627,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               58ms
+                               73ms
                               </span>
                             
                          
@@ -771,13 +803,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features4e475442-f70a-4169-aa4b-0d7ff0d3aefe">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresa932b391-75ba-4e12-b2d4-a218fa24b56e">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 1, wordt geraadpleegd met burgerservicenummer
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 1, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 1, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -796,7 +828,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features4e475442-f70a-4169-aa4b-0d7ff0d3aefe"
+                        <div id="collapseScenariopersoon_geheimhouding_featuresa932b391-75ba-4e12-b2d4-a218fa24b56e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -893,7 +925,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               18ms
+                               21ms
                               </span>
                             
                          
@@ -1082,13 +1114,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features68aa9b89-2712-41ae-ac9b-0c71482db856">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features8f7fc732-0c88-40b6-ac26-5d2e1dc78215">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 2, wordt geraadpleegd met burgerservicenummer
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 2, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 2, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1107,7 +1139,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features68aa9b89-2712-41ae-ac9b-0c71482db856"
+                        <div id="collapseScenariopersoon_geheimhouding_features8f7fc732-0c88-40b6-ac26-5d2e1dc78215"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1204,7 +1236,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               21ms
                               </span>
                             
                          
@@ -1393,13 +1425,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features60d5f117-d2ec-4a5c-8eca-aab50b37f39f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresb0aedbf4-7ba4-4d0f-bc19-87df6c6724ef">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 3, wordt geraadpleegd met burgerservicenummer
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 3, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 3, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1418,7 +1450,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features60d5f117-d2ec-4a5c-8eca-aab50b37f39f"
+                        <div id="collapseScenariopersoon_geheimhouding_featuresb0aedbf4-7ba4-4d0f-bc19-87df6c6724ef"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1472,6 +1504,317 @@ pre {
                                       
                                         <td>
                                           3
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Als </span>
+                          <span> personen wordt gezocht met de volgende parameters</span>
+                            
+                          
+                              <span class="step-duration">
+                               21ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          type
+                                        </td>
+                                      
+                                        <td>
+                                          RaadpleegMetBurgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          fields
+                                        </td>
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Dan </span>
+                          <span> heeft de response een persoon met de volgende gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          burgerservicenummer
+                                        </td>
+                                      
+                                        <td>
+                                          000000152
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          geheimhoudingPersoonsgegevens
+                                        </td>
+                                      
+                                        <td>
+                                          true
+                                        </td>
+                                      
+                                      </tr>
+                                    
+                              </table>
+                               </div>
+                                        
+                               
+
+                            
+                          
+                          <!-- Adding data table data-->
+                          
+                      </span>
+                                
+                                
+
+                                    
+
+                                    
+
+                                    
+
+                                    
+                                </div>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                
+                                
+                                <div class="tags">
+                                </div>
+                                
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresddd15b24-e2e2-4171-92ba-a98a8e88624b">
+                                    <div>
+
+                                        <div style="padding-right: 30px">
+                                            <i class="glyphicon glyphicon-chevron-right"></i>
+                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 4, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 4, wordt geraadpleegd met burgerservicenummer</div>
+                                        </div>
+                                        <div>
+                            <span class="label-container ">
+                              
+                              <span class="label label-success"
+                                                               title="3 Steps Passed">3</span>
+                              
+                              
+                              
+                              
+                              
+                            </span>
+                                        </div>
+                                    </div>
+                                    <div><small><i></i></small></div>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseScenariopersoon_geheimhouding_featuresddd15b24-e2e2-4171-92ba-a98a8e88624b"
+                             class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div></div>
+                                
+                                
+                                
+                                
+                                
+                                <p class="scenario-container">
+                                <div class="row steps">
+                                    
+                                    
+                                    <span class="label label-success" title="Success"><i
+                                            class="glyphicon glyphicon-ok"></i></span>
+                                    
+                                    
+                                    <span class="text">
+                        <span class="keyword highlight">Gegeven </span>
+                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;inschrijving&#39; gegevens</span>
+                            
+                          
+                              <span class="step-duration">
+                               < 1ms
+                              </span>
+                            
+                         
+                            
+                               
+                                <div class="scrollBar">
+                                    <table class="arguments">
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <th>
+                                          naam
+                                        </th>
+                                         
+                                        <th>
+                                          waarde
+                                        </th>
+                                         
+                                        </tr>
+                                    
+                                      <tr>
+                                      
+                                      
+                                        <td>
+                                          indicatie geheim (70.10)
+                                        </td>
+                                      
+                                        <td>
+                                          4
                                         </td>
                                       
                                       </tr>
@@ -1704,13 +2047,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features0b6202fc-c9e3-4360-9c9a-5e2efa396c0f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features8588ce57-febb-476d-a06f-3e2ffcd89e8b">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 4, wordt geraadpleegd met burgerservicenummer
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 5, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 5, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -1729,318 +2072,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features0b6202fc-c9e3-4360-9c9a-5e2efa396c0f"
-                             class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div></div>
-                                
-                                
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Gegeven </span>
-                          <span> de persoon met burgerservicenummer &#39;000000152&#39; heeft de volgende &#39;inschrijving&#39; gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          indicatie geheim (70.10)
-                                        </td>
-                                      
-                                        <td>
-                                          4
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Als </span>
-                          <span> personen wordt gezocht met de volgende parameters</span>
-                            
-                          
-                              <span class="step-duration">
-                               17ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          type
-                                        </td>
-                                      
-                                        <td>
-                                          RaadpleegMetBurgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          fields
-                                        </td>
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                <p class="scenario-container">
-                                <div class="row steps">
-                                    
-                                    
-                                    <span class="label label-success" title="Success"><i
-                                            class="glyphicon glyphicon-ok"></i></span>
-                                    
-                                    
-                                    <span class="text">
-                        <span class="keyword highlight">Dan </span>
-                          <span> heeft de response een persoon met de volgende gegevens</span>
-                            
-                          
-                              <span class="step-duration">
-                               < 1ms
-                              </span>
-                            
-                         
-                            
-                               
-                                <div class="scrollBar">
-                                    <table class="arguments">
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <th>
-                                          naam
-                                        </th>
-                                         
-                                        <th>
-                                          waarde
-                                        </th>
-                                         
-                                        </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          burgerservicenummer
-                                        </td>
-                                      
-                                        <td>
-                                          000000152
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                                      <tr>
-                                      
-                                      
-                                        <td>
-                                          geheimhoudingPersoonsgegevens
-                                        </td>
-                                      
-                                        <td>
-                                          true
-                                        </td>
-                                      
-                                      </tr>
-                                    
-                              </table>
-                               </div>
-                                        
-                               
-
-                            
-                          
-                          <!-- Adding data table data-->
-                          
-                      </span>
-                                
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-                                </div>
-                                </p>
-                                
-                                
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                
-                                
-                                <div class="tags">
-                                </div>
-                                
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresbd188818-3781-42bf-8f44-b9611fbbf0e7">
-                                    <div>
-
-                                        <div style="padding-right: 30px">
-                                            <i class="glyphicon glyphicon-chevron-right"></i>
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 5, wordt geraadpleegd met burgerservicenummer
-                                        </div>
-                                        <div>
-                            <span class="label-container ">
-                              
-                              <span class="label label-success"
-                                                               title="3 Steps Passed">3</span>
-                              
-                              
-                              
-                              
-                              
-                            </span>
-                                        </div>
-                                    </div>
-                                    <div><small><i></i></small></div>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresbd188818-3781-42bf-8f44-b9611fbbf0e7"
+                        <div id="collapseScenariopersoon_geheimhouding_features8588ce57-febb-476d-a06f-3e2ffcd89e8b"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2137,7 +2169,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               24ms
                               </span>
                             
                          
@@ -2326,13 +2358,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features86350f4e-89e5-486c-8410-43e73af2b578">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features4fd2c0da-c680-46af-82a2-243605251366">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 6, wordt geraadpleegd met burgerservicenummer
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 6, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 6, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2351,7 +2383,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features86350f4e-89e5-486c-8410-43e73af2b578"
+                        <div id="collapseScenariopersoon_geheimhouding_features4fd2c0da-c680-46af-82a2-243605251366"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2448,7 +2480,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               20ms
+                               18ms
                               </span>
                             
                          
@@ -2637,13 +2669,13 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features10bdcc80-b39f-48c4-a498-d2d04f8a6a5e">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features7783de0a-ac80-40b0-a4b2-d3127844e80f">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>persoon met indicatie geheim 7, wordt geraadpleegd met burgerservicenummer
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="persoon met indicatie geheim 7, wordt geraadpleegd met burgerservicenummer">persoon met indicatie geheim 7, wordt geraadpleegd met burgerservicenummer</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2662,7 +2694,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features10bdcc80-b39f-48c4-a498-d2d04f8a6a5e"
+                        <div id="collapseScenariopersoon_geheimhouding_features7783de0a-ac80-40b0-a4b2-d3127844e80f"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2759,7 +2791,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               16ms
+                               19ms
                               </span>
                             
                          
@@ -2949,13 +2981,13 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featuresf721bd2e-dc00-4d65-88a8-9f7a8c6992f1">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features84688c35-df91-4d29-bc1c-de46a1ec83f1">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd">veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -2974,7 +3006,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_featuresf721bd2e-dc00-4d65-88a8-9f7a8c6992f1"
+                        <div id="collapseScenariopersoon_geheimhouding_features84688c35-df91-4d29-bc1c-de46a1ec83f1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2997,7 +3029,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               5ms
+                               6ms
                               </span>
                             
                          
@@ -3321,13 +3353,13 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features5c920792-338b-4d87-9c9f-d222899ad36f">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features3d113a64-f433-49a9-975f-45334235ac52">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd">veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3346,7 +3378,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features5c920792-338b-4d87-9c9f-d222899ad36f"
+                        <div id="collapseScenariopersoon_geheimhouding_features3d113a64-f433-49a9-975f-45334235ac52"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3369,7 +3401,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               4ms
+                               5ms
                               </span>
                             
                          
@@ -3693,13 +3725,13 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features35fa3703-791f-4a64-a043-cf00dfd3d6e3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features7c88f0ba-90c2-4ebe-8737-171ddf8cb737">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd">veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -3718,7 +3750,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features35fa3703-791f-4a64-a043-cf00dfd3d6e3"
+                        <div id="collapseScenariopersoon_geheimhouding_features7c88f0ba-90c2-4ebe-8737-171ddf8cb737"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3741,7 +3773,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               4ms
+                               5ms
                               </span>
                             
                          
@@ -4065,13 +4097,13 @@ pre {
                                     
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_features7cc04497-8941-4f79-ba01-2d7463134b9c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_geheimhouding_featurescddac146-1fb8-4f68-b342-425cfe91aa9d">
                                     <div>
 
                                         <div style="padding-right: 30px">
                                             <i class="glyphicon glyphicon-chevron-right"></i>
                                             <i class="glyphicon glyphicon-chevron-down"></i>
-                                            <b>Abstract Scenario:</b>veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
+                                            <b>Abstract Scenario:</b><div class="ellipsis" data-text="veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd">veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd</div>
                                         </div>
                                         <div>
                             <span class="label-container ">
@@ -4090,7 +4122,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_geheimhouding_features7cc04497-8941-4f79-ba01-2d7463134b9c"
+                        <div id="collapseScenariopersoon_geheimhouding_featurescddac146-1fb8-4f68-b342-425cfe91aa9d"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4113,7 +4145,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               4ms
+                               5ms
                               </span>
                             
                          
