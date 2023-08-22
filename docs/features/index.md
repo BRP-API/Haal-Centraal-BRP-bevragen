@@ -4,7 +4,7 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5500 scenarios (21 failed, 5479 passed)
+Totaal: 5506 scenarios (0 failed, 5506 passed)
 
 ## GBA v2.0.43
 
@@ -37,7 +37,7 @@ Totaal: 5500 scenarios (21 failed, 5479 passed)
 ## Proxy v2.0.20
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
-- [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 359 scenarios (359 passed)
+- [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 227 scenarios (227 passed)
   - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 533 scenarios (533 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
@@ -48,28 +48,7 @@ Totaal: 5500 scenarios (21 failed, 5479 passed)
   - [kind](./test-report-persoon-kind.html){:target="_blank" rel="noopener"}: 85 scenarios (85 passed)
   - [leeftijd](./test-report-persoon-leeftijd.html){:target="_blank" rel="noopener"}: 17 scenarios (17 passed)
   - [naam](./test-report-persoon-naam.html){:target="_blank" rel="noopener"}: 111 scenarios (111 passed)
-  - [nationaliteit](./test-report-persoon-nationaliteit.html){:target="_blank" rel="noopener"}: 149 scenarios (21 failed, 128 passed)
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:64
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:65
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:66
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:88
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:89
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:116
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:140
-    - features/bevragen/persoon/nationaliteit/nationaliteit/in-onderzoek.feature:141
-    - features/bevragen/persoon/nationaliteit/onbekend/in-onderzoek.feature:61
-    - features/bevragen/persoon/nationaliteit/onbekend/in-onderzoek.feature:62
-    - features/bevragen/persoon/nationaliteit/onbekend/in-onderzoek.feature:63
-    - features/bevragen/persoon/nationaliteit/staatloos/in-onderzoek.feature:63
-    - features/bevragen/persoon/nationaliteit/staatloos/in-onderzoek.feature:64
-    - features/bevragen/persoon/nationaliteit/staatloos/in-onderzoek.feature:65
-    - features/bevragen/persoon/nationaliteit/staatloos/in-onderzoek.feature:68
-    - features/bevragen/persoon/nationaliteit/staatloos/in-onderzoek.feature:69
-    - features/bevragen/persoon/nationaliteit/vastgesteld-niet-nederlander/in-onderzoek.feature:63
-    - features/bevragen/persoon/nationaliteit/vastgesteld-niet-nederlander/in-onderzoek.feature:64
-    - features/bevragen/persoon/nationaliteit/vastgesteld-niet-nederlander/in-onderzoek.feature:65
-    - features/bevragen/persoon/nationaliteit/vastgesteld-niet-nederlander/in-onderzoek.feature:68
-    - features/bevragen/persoon/nationaliteit/vastgesteld-niet-nederlander/in-onderzoek.feature:69
+  - [nationaliteit](./test-report-persoon-nationaliteit.html){:target="_blank" rel="noopener"}: 149 scenarios (149 passed)
   - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding.html){:target="_blank" rel="noopener"}: 45 scenarios (45 passed)
   - [ouder](./test-report-persoon-ouder.html){:target="_blank" rel="noopener"}: 183 scenarios (183 passed)
   - [overlijden](./test-report-persoon-overlijden.html){:target="_blank" rel="noopener"}: 43 scenarios (43 passed)
