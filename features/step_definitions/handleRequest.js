@@ -82,7 +82,8 @@ async function getOAuthAccessToken(accessTokenUrl, oAuthSettings) {
             grant_type: 'client_credentials',
             client_id: oAuthSettings.clientId,
             client_secret: oAuthSettings.clientSecret,
-            scope: oAuthSettings.scopes
+            scope: oAuthSettings.scopes,
+            resourceServer: oAuthSettings.resourceServer
         })
     };
 

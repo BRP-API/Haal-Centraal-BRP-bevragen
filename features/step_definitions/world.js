@@ -27,7 +27,8 @@ class World {
                     afnemerID: "000008",
                     clientId: "",
                     clientSecret: "",
-                    scopes: ["000000099000000080000"]
+                    scopes: ["000000099000000080000"],
+                    resourceServer: "ResourceServer02"
                 }
             ]
         }
