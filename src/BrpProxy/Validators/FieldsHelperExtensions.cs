@@ -354,6 +354,15 @@ namespace BrpProxy.Validators
             .Contains(fieldPart);
         }
 
+        private static bool IsNationaliteitFieldPart(this string fieldPart)
+        {
+            return new[]
+            {
+                "nationaliteiten"
+            }
+            .Contains(fieldPart);
+        }
+
         private static bool IsVerblijfplaatsFieldPart(this string fieldPart)
         {
             return new[]
@@ -452,7 +461,8 @@ namespace BrpProxy.Validators
                         }
                         else
                         {
-                            if (fieldParts[0].IsVerblijfplaatsFieldPart())
+                            if (fieldParts[0].IsVerblijfplaatsFieldPart() ||
+                                fieldParts[0].IsNationaliteitFieldPart())
                             {
                                 retval.Add($"{fieldParts[0]}.inOnderzoek.type");
                             }

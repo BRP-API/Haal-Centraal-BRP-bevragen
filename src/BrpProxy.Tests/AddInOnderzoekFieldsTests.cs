@@ -127,7 +127,13 @@ namespace BrpProxy.Tests
                     new[] { "nationaliteiten.datumIngangGeldigheid" })]
         [InlineData(new[] { "nationaliteiten.nationaliteit" },
                     new[] { "nationaliteiten.nationaliteit",
+                            "nationaliteiten.inOnderzoek.type",
                             "nationaliteiten.inOnderzoek.nationaliteit",
+                            "nationaliteiten.inOnderzoek.datumIngangOnderzoek" })]
+        [InlineData(new[] { "nationaliteiten.redenOpname" },
+                    new[] { "nationaliteiten.redenOpname",
+                            "nationaliteiten.inOnderzoek.type",
+                            "nationaliteiten.inOnderzoek.redenOpname",
                             "nationaliteiten.inOnderzoek.datumIngangOnderzoek" })]
 
         [InlineData(new[] { "ouders" },
