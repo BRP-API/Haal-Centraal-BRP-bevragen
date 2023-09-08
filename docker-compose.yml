@@ -39,7 +39,8 @@ services:
       - brp-api-network
     # volumes:
     #   - ./src/config/BrpProxy/configuration:/app/configuration
-
+    # Use ca-certificates.crt provided by the Linux host running the container
+    #   - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
   gbamock:
     container_name: gbamock
     image: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock:latest
