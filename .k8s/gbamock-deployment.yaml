@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gbamock
-          image: iswish/haal-centraal-brp-bevragen-gba-mock:latest
+          image: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock:latest
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Release
