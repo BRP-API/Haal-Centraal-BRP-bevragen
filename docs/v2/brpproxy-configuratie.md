@@ -19,7 +19,7 @@ De __Downstream__ configuratie van de BrpProxy moet worden aangepast om bevragin
 
 ### Wijzigen van de Downstream configuratie van de BrpProxy (Docker Compose variant)
 
-De volgende environment variabelen moet worden opgenomen in de configuratie van de BrpProxy in het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}:
+De volgende environment variabelen moet worden opgenomen in de configuratie van de BrpProxy in het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}:
 
 - Routes__0__DownstreamScheme. De communicatie protocol die moet worden gebruikt voor het aanroepen van de {{ site.apiname }} Web API GBA variant
 - Routes__0__DownstreamHostAndPorts__0__Host. De host naam van de aan te roepen {{ site.apiname }} Web API GBA variant
@@ -31,7 +31,7 @@ In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te s
 
   brpproxy:
     container_name: brpproxy
-    image: iswish/haal-centraal-brp-bevragen-proxy:latest
+    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy:latest
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
@@ -40,6 +40,8 @@ In het volgende voorbeeld is de BrpProxy geconfigureerd om bevragingen door te s
       - Routes__0__DownstreamHostAndPorts__0__Port=443
     ports:
       - "5001:5000"
+    networks:
+      - brp-api-network
 
 ```
 
@@ -161,7 +163,7 @@ Het configuratie bestand wordt vervolgens met behulp van een volume mount gemont
       volumes:
         - name: brpproxy-routing-configuration
           hostPath:
-            path: {{ host-path }}/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/configuration
+            path: <host-path>/Haal-Centraal-BRP-bevragen/src/config/BrpProxy/configuration
 
 ```
 
