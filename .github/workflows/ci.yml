@@ -75,38 +75,38 @@ jobs:
         run: |
           ./scripts/specs-verify.sh ${{ secrets.DBHOST }} ${{ secrets.DBUSER }} ${{ secrets.DBPASSWORD }} ${{ secrets.CLIENTID }} ${{ secrets.CLIENTSECRET }}
 
-          - name: Generate functional test reports
-          if: always()
-          run: |
-            api_version="$(sed -n 's/image:.*:\(.*\)/\1/p' ${{ env.DOCKER_API_FILE_PATH}})"
+      - name: Generate functional test reports
+        if: always()
+        run: |
+          api_version="$(sed -n 's/image:.*:\(.*\)/\1/p' ${{ env.DOCKER_API_FILE_PATH}})"
 
-            node ./scripts/generate-cucumber-report.js "$api_version" ${{ vars.PROXY_VERSION }}
+          node ./scripts/generate-cucumber-report.js "$api_version" ${{ vars.PROXY_VERSION }}
 
-            node ./scripts/parse-summary.js "$api_version" ${{ vars.PROXY_VERSION }}
-  
-            doCommit=false
+          node ./scripts/parse-summary.js "$api_version" ${{ vars.PROXY_VERSION }}
 
-            if [ -n "$(git status docs/features/*.html --porcelain)" ]; then
-              search_string='2.5.1\/moment.min.js"'
-              replace_string='2.5.1\/moment.min.js" integrity="sha512-r8lfwD+xE5L0FjDLicb4ZiF32sJqCAOnLN0nxQq5VW0t0nFEEiNIvTZ\/I9Su4ulGpDCfYjXsSFZsT9FpILp2+A==" crossorigin="anonymous" referrerpolicy="no-referrer"'
-              sed -i "s/$search_string/$replace_string/" docs/features/*.html
+          doCommit=false
 
-              git add docs/features/*.html
-              doCommit=true
-            fi
+          if [ -n "$(git status docs/features/*.html --porcelain)" ]; then
+            search_string='2.5.1\/moment.min.js"'
+            replace_string='2.5.1\/moment.min.js" integrity="sha512-r8lfwD+xE5L0FjDLicb4ZiF32sJqCAOnLN0nxQq5VW0t0nFEEiNIvTZ\/I9Su4ulGpDCfYjXsSFZsT9FpILp2+A==" crossorigin="anonymous" referrerpolicy="no-referrer"'
+            sed -i "s/$search_string/$replace_string/" docs/features/*.html
 
-            if [ -n "$(git status docs/features/index.md --porcelain)" ]; then
-              git add docs/features/index.md
-              doCommit=true
-            fi
+            git add docs/features/*.html
+            doCommit=true
+          fi
 
-            if [ $doCommit = true ] && [ ${{ github.ref_type }} != 'tag' ]; then
-              git config user.name "$GITHUB_ACTOR"
-              git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-              git pull --ff-only
-              git commit -m "commit functional test reports"
-              git push
-            fi
+          if [ -n "$(git status docs/features/index.md --porcelain)" ]; then
+            git add docs/features/index.md
+            doCommit=true
+          fi
+
+          if [ $doCommit = true ] && [ ${{ github.ref_type }} != 'tag' ]; then
+            git config user.name "$GITHUB_ACTOR"
+            git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git pull --ff-only
+            git commit -m "commit functional test reports"
+            git push
+          fi
 
       - name: Stop containers
         if: always()
