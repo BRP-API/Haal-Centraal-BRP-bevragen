@@ -8,6 +8,7 @@ on:
       - .github/workflows/ci.yml
       - .docker/brp-api.yml
     branches:
+      - develop
       - master
     tags:
       - v*-proxy
@@ -15,11 +16,12 @@ on:
   workflow_dispatch:
 
 env:
-  SOLUTION_FILE: BRP.sln
-  API_COMPOSE_FILE: .docker/brp-api.yml
-  PROXY_COMPOSE_FILE: .docker/brp-proxy.yml
-  PROXY_IMAGE_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy
-  MOCK_IMAGE_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock
+  DOTNET_VERSION: 6.0.x
+  DOTNET_SOLUTION: BRP.sln
+  NODE_VERSION: '18'
+  CONTAINER_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen
+  COMPOSE_FILE_ARGUMENT: -f .docker/db-ci.yml -f .docker/brp-api.yml -f .docker/brp-proxy.yml
+  DOCKER_API_FILE_PATH: .docker/brp-api.yml
 
 jobs:
   build:
@@ -30,13 +32,13 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-            dotnet-version: 6.0.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Restore dependencies
-        run: dotnet restore $SOLUTION_FILE
+        run: dotnet restore ${{ env.DOTNET_SOLUTION }}
       - name: Build
-        run: dotnet build $SOLUTION_FILE --configuration Release --no-restore
+        run: dotnet build ${{ env.DOTNET_SOLUTION }} --configuration Release --no-restore
       - name: Test
-        run: dotnet test $SOLUTION_FILE --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
+        run: dotnet test ${{ env.DOTNET_SOLUTION }} --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
   publish:
     needs: build
     runs-on: ubuntu-latest
@@ -48,7 +50,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
         run: npm ci
       - name: Cache container images
@@ -65,7 +67,7 @@ jobs:
           username: ${{ secrets.P5_CR_USER }}
           password: ${{ secrets.P5_CR_PWD }}
       - name: Start containers
-        run: docker compose -f .docker/db-ci.yml -f $API_COMPOSE_FILE -f $PROXY_COMPOSE_FILE up -d
+        run: docker compose ${{ env.COMPOSE_FILE_ARGUMENT }} up -d
       - name: Wait for DB restart
         run: sleep 5s
         shell: bash
@@ -73,37 +75,42 @@ jobs:
         run: |
           ./scripts/specs-verify.sh ${{ secrets.DBHOST }} ${{ secrets.DBUSER }} ${{ secrets.DBPASSWORD }} ${{ secrets.CLIENTID }} ${{ secrets.CLIENTSECRET }}
 
-          node ./scripts/generate-cucumber-report.js ${{ vars.API_VERSION }} ${{ vars.PROXY_VERSION }}
+          - name: Generate functional test reports
+          if: always()
+          run: |
+            api_version="$(sed -n 's/image:.*:\(.*\)/\1/p' ${{ env.DOCKER_API_FILE_PATH}})"
 
-          node ./scripts/parse-summary.js  ${{ vars.API_VERSION }} ${{ vars.PROXY_VERSION }}
+            node ./scripts/generate-cucumber-report.js "$api_version" ${{ vars.PROXY_VERSION }}
 
-          doCommit=false
+            node ./scripts/parse-summary.js "$api_version" ${{ vars.PROXY_VERSION }}
+  
+            doCommit=false
 
-          if [ -n "$(git status docs/features/*.html --porcelain)" ]; then
-            search_string='2.5.1\/moment.min.js"'
-            replace_string='2.5.1\/moment.min.js" integrity="sha512-r8lfwD+xE5L0FjDLicb4ZiF32sJqCAOnLN0nxQq5VW0t0nFEEiNIvTZ\/I9Su4ulGpDCfYjXsSFZsT9FpILp2+A==" crossorigin="anonymous" referrerpolicy="no-referrer"'
-            sed -i "s/$search_string/$replace_string/" docs/features/*.html
+            if [ -n "$(git status docs/features/*.html --porcelain)" ]; then
+              search_string='2.5.1\/moment.min.js"'
+              replace_string='2.5.1\/moment.min.js" integrity="sha512-r8lfwD+xE5L0FjDLicb4ZiF32sJqCAOnLN0nxQq5VW0t0nFEEiNIvTZ\/I9Su4ulGpDCfYjXsSFZsT9FpILp2+A==" crossorigin="anonymous" referrerpolicy="no-referrer"'
+              sed -i "s/$search_string/$replace_string/" docs/features/*.html
 
-            git add docs/features/*.html
-            doCommit=true
-          fi
+              git add docs/features/*.html
+              doCommit=true
+            fi
 
-          if [ -n "$(git status docs/features/index.md --porcelain)" ]; then
-            git add docs/features/index.md
-            doCommit=true
-          fi
+            if [ -n "$(git status docs/features/index.md --porcelain)" ]; then
+              git add docs/features/index.md
+              doCommit=true
+            fi
 
-          if [ $doCommit = true ] && [ ${{ github.ref_type }} != 'tag' ]; then
-            git config user.name "$GITHUB_ACTOR"
-            git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-            git pull --ff-only
-            git commit -m "commit functional test reports"
-            git push
-          fi
+            if [ $doCommit = true ] && [ ${{ github.ref_type }} != 'tag' ]; then
+              git config user.name "$GITHUB_ACTOR"
+              git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+              git pull --ff-only
+              git commit -m "commit functional test reports"
+              git push
+            fi
 
       - name: Stop containers
         if: always()
-        run: docker compose -f .docker/db-ci.yml -f $API_COMPOSE_FILE -f $PROXY_COMPOSE_FILE down
+        run: docker compose ${{ env.COMPOSE_FILE_ARGUMENT }} down
       - uses: actions-ecosystem/action-regex-match@v2
         if: always()
         id: regex-match
@@ -120,13 +127,13 @@ jobs:
       - name: push proxy container images
         if: always() && steps.regex-match.outputs.group2 == 'proxy'
         run: |
-          docker tag $PROXY_IMAGE_NAME:latest $PROXY_IMAGE_NAME:${{ steps.regex-match.outputs.group1 }}
-          docker push $PROXY_IMAGE_NAME:latest
-          docker push $PROXY_IMAGE_NAME:${{ steps.regex-match.outputs.group1 }}
+          docker tag ${{ env.CONTAINER_NAME }}-proxy:latest ${{ env.CONTAINER_NAME }}-proxy:${{ steps.regex-match.outputs.group1 }}
+          docker push ${{ env.CONTAINER_NAME }}-proxy:latest
+          docker push ${{ env.CONTAINER_NAME }}-proxy:${{ steps.regex-match.outputs.group1 }}
       - name: push mock container images
         if: always() && steps.regex-match.outputs.group2 == 'mock'
         run: |
-          docker tag $MOCK_IMAGE_NAME:latest $MOCK_IMAGE_NAME:${{ steps.regex-match.outputs.group1 }}
-          docker push $MOCK_IMAGE_NAME:latest
-          docker push $MOCK_IMAGE_NAME:${{ steps.regex-match.outputs.group1 }}
-    
+          docker tag ${{ env.CONTAINER_NAME }}-mock:latest ${{ env.CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
+          docker push ${{ env.CONTAINER_NAME }}-mock:latest
+          docker push ${{ env.CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
+  
