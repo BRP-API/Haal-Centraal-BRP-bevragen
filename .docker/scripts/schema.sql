@@ -14,20 +14,12 @@ SET standard_conforming_strings = on;
 CREATE ROLE haalcentraal;
 ALTER ROLE haalcentraal WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION NOBYPASSRLS;
 -- CREATE ROLE root;
-ALTER ROLE root WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:ZbC1uarLIHzv3deC50wv0g==$7DYr9c9q9dlJlHbZihbx5qejS0c5ROqLm0+XOof7xyI=:rw6N5KAhcqxuXcbZvzIuE4/AbBUR6GBM57ff58+rBtQ=';
+ALTER ROLE root WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'md5b4b8daf4b8ea9d39568719e1e320076f';
 
 
 
 
 
-
---
--- Databases
---
-
---
--- Database "template1" dump
---
 
 \connect template1
 
@@ -35,8 +27,8 @@ ALTER ROLE root WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYP
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7 (Debian 14.7-1.pgdg110+1)
--- Dumped by pg_dump version 14.7 (Debian 14.7-1.pgdg110+1)
+-- Dumped from database version 11.21
+-- Dumped by pg_dump version 11.21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -51,10 +43,6 @@ SET row_security = off;
 
 --
 -- PostgreSQL database dump complete
---
-
---
--- Database "postgres" dump
 --
 
 \connect postgres
@@ -63,8 +51,8 @@ SET row_security = off;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7 (Debian 14.7-1.pgdg110+1)
--- Dumped by pg_dump version 14.7 (Debian 14.7-1.pgdg110+1)
+-- Dumped from database version 11.21
+-- Dumped by pg_dump version 11.21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -82,15 +70,11 @@ SET row_security = off;
 --
 
 --
--- Database "root" dump
---
-
---
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7 (Debian 14.7-1.pgdg110+1)
--- Dumped by pg_dump version 14.7 (Debian 14.7-1.pgdg110+1)
+-- Dumped from database version 11.21
+-- Dumped by pg_dump version 11.21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -107,7 +91,7 @@ SET row_security = off;
 -- Name: root; Type: DATABASE; Schema: -; Owner: root
 --
 
--- CREATE DATABASE root WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+-- CREATE DATABASE root WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
 
 
 ALTER DATABASE root OWNER TO root;
@@ -130,15 +114,11 @@ SET row_security = off;
 --
 
 --
--- Database "rvig_haalcentraal_testdata" dump
---
-
---
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7 (Debian 14.7-1.pgdg110+1)
--- Dumped by pg_dump version 14.7 (Debian 14.7-1.pgdg110+1)
+-- Dumped from database version 11.21
+-- Dumped by pg_dump version 11.21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -155,7 +135,7 @@ SET row_security = off;
 -- Name: rvig_haalcentraal_testdata; Type: DATABASE; Schema: -; Owner: haalcentraal
 --
 
-CREATE DATABASE rvig_haalcentraal_testdata WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.utf8';
+CREATE DATABASE rvig_haalcentraal_testdata WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
 
 
 ALTER DATABASE rvig_haalcentraal_testdata OWNER TO haalcentraal;
@@ -183,7 +163,7 @@ CREATE SCHEMA vospg;
 ALTER SCHEMA vospg OWNER TO haalcentraal;
 
 --
--- Name: adminpack; Type: EXTENSION; Schema: -; Owner: -
+-- Name: adminpack; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
@@ -393,7 +373,7 @@ ALTER TABLE public.activiteit_id_sequence OWNER TO haalcentraal;
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = true;
 
 --
 -- Name: activiteit_small; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -441,6 +421,8 @@ CREATE SEQUENCE public.adres_id_sequence
 
 ALTER TABLE public.adres_id_sequence OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: afnemer; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -473,6 +455,8 @@ CREATE SEQUENCE public.afnemer_id_sequence
 
 
 ALTER TABLE public.afnemer_id_sequence OWNER TO haalcentraal;
+
+SET default_with_oids = true;
 
 --
 -- Name: gebeurtenis_data; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -538,6 +522,8 @@ CREATE TABLE public.gebeurtenis_small (
 
 ALTER TABLE public.gebeurtenis_small OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: haalcentraal_vraag; Type: TABLE; Schema: public; Owner: root
 --
@@ -580,6 +566,8 @@ CREATE TABLE public.herindeling (
 
 
 ALTER TABLE public.herindeling OWNER TO haalcentraal;
+
+SET default_with_oids = true;
 
 --
 -- Name: lo3_adres; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -835,6 +823,8 @@ CREATE VIEW public.lo3_bericht_view_uitgaand AS
 
 ALTER TABLE public.lo3_bericht_view_uitgaand OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: lo3_gba_deelnemer; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -850,6 +840,8 @@ CREATE TABLE public.lo3_gba_deelnemer (
 
 
 ALTER TABLE public.lo3_gba_deelnemer OWNER TO haalcentraal;
+
+SET default_with_oids = true;
 
 --
 -- Name: lo3_gemeente; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -867,6 +859,8 @@ CREATE TABLE public.lo3_gemeente (
 
 ALTER TABLE public.lo3_gemeente OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: lo3_gezagsverhouding; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -881,6 +875,8 @@ CREATE TABLE public.lo3_gezagsverhouding (
 
 
 ALTER TABLE public.lo3_gezagsverhouding OWNER TO haalcentraal;
+
+SET default_with_oids = true;
 
 --
 -- Name: lo3_land; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -1015,6 +1011,8 @@ CREATE TABLE public.lo3_pl (
 
 ALTER TABLE public.lo3_pl OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: lo3_pl_afnemer_ind; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -1029,6 +1027,8 @@ CREATE TABLE public.lo3_pl_afnemer_ind (
 
 
 ALTER TABLE public.lo3_pl_afnemer_ind OWNER TO haalcentraal;
+
+SET default_with_oids = true;
 
 --
 -- Name: lo3_pl_gezagsverhouding; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -1095,6 +1095,8 @@ CREATE TABLE public.lo3_pl_nationaliteit (
 
 
 ALTER TABLE public.lo3_pl_nationaliteit OWNER TO haalcentraal;
+
+SET default_with_oids = false;
 
 --
 -- Name: lo3_pl_overlijden; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -1293,6 +1295,8 @@ CREATE TABLE public.lo3_pl_verblijfplaats (
 
 ALTER TABLE public.lo3_pl_verblijfplaats OWNER TO haalcentraal;
 
+SET default_with_oids = true;
+
 --
 -- Name: lo3_pl_verblijfstitel; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -1329,6 +1333,8 @@ CREATE TABLE public.lo3_relatie_eind_reden (
 
 ALTER TABLE public.lo3_relatie_eind_reden OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: lo3_rni_deelnemer; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -1343,6 +1349,8 @@ CREATE TABLE public.lo3_rni_deelnemer (
 
 
 ALTER TABLE public.lo3_rni_deelnemer OWNER TO haalcentraal;
+
+SET default_with_oids = true;
 
 --
 -- Name: lo3_titel_predicaat; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -1463,6 +1471,8 @@ CREATE TABLE public.lookup_codewaarde (
 
 ALTER TABLE public.lookup_codewaarde OWNER TO haalcentraal;
 
+SET default_with_oids = false;
+
 --
 -- Name: miteller; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -1572,6 +1582,8 @@ CREATE SEQUENCE public.selectie_instelling_id_sequence
 
 ALTER TABLE public.selectie_instelling_id_sequence OWNER TO haalcentraal;
 
+SET default_with_oids = true;
+
 --
 -- Name: spg_mailbox; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -1594,6 +1606,8 @@ CREATE TABLE public.spg_schema (
 
 
 ALTER TABLE public.spg_schema OWNER TO haalcentraal;
+
+SET default_with_oids = false;
 
 --
 -- Name: tmp_convert_special_characters_adres; Type: TABLE; Schema: public; Owner: haalcentraal
@@ -1636,6 +1650,8 @@ CREATE TABLE public.tmp_convert_special_characters_persoon (
 
 ALTER TABLE public.tmp_convert_special_characters_persoon OWNER TO haalcentraal;
 
+SET default_with_oids = true;
+
 --
 -- Name: toestand_overgang; Type: TABLE; Schema: public; Owner: haalcentraal
 --
@@ -1666,6 +1682,8 @@ CREATE SEQUENCE public.toestand_overgang_id_sequence
 
 
 ALTER TABLE public.toestand_overgang_id_sequence OWNER TO haalcentraal;
+
+SET default_with_oids = false;
 
 --
 -- Name: pl_bericht; Type: TABLE; Schema: vospg; Owner: haalcentraal
