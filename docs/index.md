@@ -14,6 +14,7 @@ De API is live sinds mei 2023. Verwacht wordt dat het Experimentbesluit Datamini
 
 ## Aansluiten en voorwaarden
 Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit aan met een API Gateway voor een veilige verbinding met RvIG, en sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. De aansluiting verloopt via Diginetwerk, vereist een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow). 
+
 Stuur een mail naar info@RvIG voor een kennismakingmakingsgesprek en onboarding.
 
 ## Direct uitproberen?
