@@ -7,13 +7,13 @@ title: Haal Centraal BRP Personen Bevragen
 ![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
-De API biedt naast persoonsgegevens uit de BRP ook informatieproducten zoals leeftijd, aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief, of adressering (passend voor brief en vensterenvelop). Hiervoor is een wetwijziging nodig: het [Experimentbesluit Dataminimalisatie](https://www.rijksoverheid.nl/documenten/besluiten/2023/08/28/experimentbesluit-brp-dataminimalisatie-amvb-nvt-versie-voorhang). Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. 
+De API biedt naast persoonsgegevens uit de BRP ook informatieproducten zoals leeftijd, aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief, of adressering (passend voor brief en vensterenvelop). Hiervoor is een wetwijziging nodig: het [Experimentbesluit Dataminimalisatie](https://www.rijksoverheid.nl/documenten/besluiten/2023/08/28/experimentbesluit-brp-dataminimalisatie-amvb-nvt-versie-voorhang). 
 
 ## Planning en Roadmap
 De API is live sinds mei 2023. Verwacht wordt dat het Experimentbesluit Dataminimalisatie in het tweede kwartaal van 2024 in werking treedt. Tot die tijd gebruiken afnemers een "BrpProxy API" die de bewerking tot informatieproducten bij afnemers uitvoert. De "BrpProxy API" wordt door RvIG verstrekt. 
 
 ## Aansluiten en voorwaarden
-Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit aan met een API Gateway voor een veilige verbinding met RvIG, en sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. De aansluiting verloopt via Diginetwerk, vereist een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow). 
+Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. Voor de technische aansluiting is een API Gateway nodig. Aansluiten kan via Diginetwerk met gebruik van een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow).
 
 Stuur een mail naar info@RvIG voor een kennismakingmakingsgesprek en onboarding.
 
