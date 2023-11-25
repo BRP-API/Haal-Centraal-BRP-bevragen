@@ -13,7 +13,7 @@ De API biedt naast persoonsgegevens uit de BRP ook informatieproducten zoals lee
 De API is live sinds mei 2023. Verwacht wordt dat het Experimentbesluit Dataminimalisatie in het tweede kwartaal van 2024 in werking treedt. Tot die tijd gebruiken afnemers een "BrpProxy API" die de bewerking tot informatieproducten bij afnemers uitvoert. De "BrpProxy API" wordt door RvIG verstrekt. 
 
 ## Aansluiten en voorwaarden
-Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit aan met een API Gateway voor een veilige verbinding met RvIG, en sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. De aansluiting verloopt via Diginetwerk, vereist een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 Client Credentials Flow). 
+Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit aan met een API Gateway voor een veilige verbinding met RvIG, en sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. De aansluiting verloopt via Diginetwerk, vereist een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow). 
 Stuur een mail naar info@RvIG voor een kennismakingmakingsgesprek en onboarding.
 
 ## Direct uitproberen?
