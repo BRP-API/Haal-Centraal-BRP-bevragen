@@ -2,7 +2,7 @@
 layout: page-with-side-nav
 title: Haal Centraal BRP Personen Bevragen
 ---
-# Haal Centraal {{ site.apiname }}
+# BRP Personen {{ site.apiname }}
 
 ![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
 
