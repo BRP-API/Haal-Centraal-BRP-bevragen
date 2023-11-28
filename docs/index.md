@@ -1,6 +1,6 @@
 ---
 layout: page-with-side-nav
-title: Haal Centraal BRP Personen Bevragen
+title: Haal Centraal BRP Personen
 ---
 # {{ site.apiname }}
 
