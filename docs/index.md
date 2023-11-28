@@ -15,7 +15,7 @@ De API is live sinds mei 2023. Verwacht wordt dat het Experimentbesluit Datamini
 ## Aansluiten en voorwaarden
 Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. Voor de technische aansluiting is een API Gateway nodig. Aansluiten kan via Diginetwerk met gebruik van een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow).
 
-Stuur een mail naar [info@RvIG](mailto:info@rvig) voor een kennismakingmakingsgesprek en onboarding.[Download]({{ site.onboardingUrl }}){:target="_blank" rel="noopener"} en lees het onboardingproces.
+Stuur een mail naar [info@RvIG](mailto:info@rvig) voor een kennismakingmakingsgesprek en onboarding. [Download]({{ site.onboardingUrl }}){:target="_blank" rel="noopener"} en lees het onboardingproces.
 
 ## Direct uitproberen?
 * Bekijk de specificaties met [Redoc](./v2/redoc)
@@ -24,11 +24,9 @@ Stuur een mail naar [info@RvIG](mailto:info@rvig) voor een kennismakingmakingsge
 ## Heb je meer nodig?
 Gebruik de BRP Personen bevragen API in combinatie met (een van de) andere BRP Bevragen API’s:
 
-* [Historische BRP-gegevens bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
-* [Reisdocumenten bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
-* [Bewoning en medebewoners bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
-* [Landelijke tabellen bevragen]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-tabellen-bevragen){:target="_blank" rel="noopener"}
-
+* [BRP Historie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
+* [BRP Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
+* [BRP Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
 
 Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](./v1/swagger-ui) of [Redoc](./v1/redoc) en download de [technische specificaties]({{ site.v1SpecUrl }}){:target="_blank" rel="noopener"}
 
