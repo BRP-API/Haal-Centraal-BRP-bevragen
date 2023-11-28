@@ -7,7 +7,7 @@ title: Haal Centraal BRP Personen Bevragen
 ![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
-De API biedt naast persoonsgegevens uit de BRP ook de informatieproducten leeftijd, aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief, en adressering (passend op een vensterenvelop). Hiermee kan RvIG beter voorzien in klantbehoeften, en worden minder persoonsgegevens verstrekt. Hiervoor is een wetwijziging nodig: het [Experimentbesluit Dataminimalisatie](https://www.rijksoverheid.nl/documenten/besluiten/2023/08/28/experimentbesluit-brp-dataminimalisatie-amvb-nvt-versie-voorhang). 
+De API biedt naast persoonsgegevens uit de BRP ook de informatieproducten leeftijd, aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief, en adressering (passend op een vensterenvelop). Zo kan RvIG beter voorzien in klantbehoeften, en worden minder persoonsgegevens verstrekt. Hiervoor is een wetwijziging nodig: het [Experimentbesluit Dataminimalisatie](https://www.rijksoverheid.nl/documenten/besluiten/2023/08/28/experimentbesluit-brp-dataminimalisatie-amvb-nvt-versie-voorhang). 
 
 ## Planning en Roadmap
 De API is live sinds mei 2023. Verwacht wordt dat het Experimentbesluit Dataminimalisatie in het tweede kwartaal van 2024 in werking treedt. Tot die tijd gebruiken afnemers een "BrpProxy API" die de bewerking tot informatieproducten bij afnemers uitvoert. De "BrpProxy API" wordt door RvIG verstrekt. 
