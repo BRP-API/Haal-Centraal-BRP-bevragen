@@ -135,8 +135,60 @@ namespace BrpProxy.Middlewares
                 : ValidatePersonenQueryResult.CreateFrom(new PersonenQueryRequestBodyValidator().Validate(JObject.Parse(requestBody)), context);
         }
 
+        private static bool IsProxyResponse(this string payload)
+        {
+            var proxyTokens = new List<string>
+            {
+                "adressering",
+                "\"type\":\"Adres\"",
+                "\"type\":\"Locatie\"",
+                "\"type\":\"VerblijfplaatsBuitenland\"",
+                "\"type\":\"VerblijfplaatsOnbekend\"",
+                "langFormaat",
+                "\"geheimhoudingPersoonsgegevens\":true",
+                "\"vanuitVerblijfplaatsOnbekend\":true",
+                "\"indicatieVestigingVanuitBuitenland\":true",
+                "voorletters",
+                "leeftijd",
+                "volledigeNaam",
+                "\"type\":\"Nationaliteit\"",
+                "BehandeldAlsNederlander",
+                "VastgesteldNietNederlander",
+                "\"type\":\"Staatloos\"",
+                "NationaliteitOnbekend",
+                "\"verblijfstitel\":{}"
+            };
+            return proxyTokens.Exists(t => payload.Contains(t));
+
+            //return payload.Contains("adressering") ||
+            //    payload.Contains("\"type\":\"Adres\"") ||
+            //    payload.Contains("\"type\":\"Locatie\"") ||
+            //    payload.Contains("\"type\":\"VerblijfplaatsBuitenland\"") ||
+            //    payload.Contains("\"type\":\"VerblijfplaatsOnbekend\"") ||
+            //    payload.Contains("langFormaat") ||
+            //    payload.Contains("\"geheimhoudingPersoonsgegevens\":true") ||
+            //    payload.Contains("\"vanuitVerblijfplaatsOnbekend\":true") ||
+            //    payload.Contains("\"indicatieVestigingVanuitBuitenland\":true") ||
+            //    payload.Contains("voorletters") ||
+            //    payload.Contains("leeftijd") ||
+            //    payload.Contains("volledigeNaam") ||
+            //    payload.Contains("\"type\":\"Nationaliteit\"") ||
+            //    payload.Contains("BehandeldAlsNederlander") ||
+            //    payload.Contains("VastgesteldNietNederlander") ||
+            //    payload.Contains("\"type\":\"Staatloos\"") ||
+            //    payload.Contains("NationaliteitOnbekend") ||
+            //    payload.Contains("\"verblijfstitel\":{}");
+
+        }
+
         public static string Transform(this string payload, IMapper mapper, ICollection<string> fields, ICollection<string> originalFields, ILogger logger)
         {
+            if(payload.IsProxyResponse())
+            {
+                logger.LogInformation("proxy2proxy");
+                return payload;
+            }
+
             PersonenQueryResponse retval;
             var response = JsonConvert.DeserializeObject<Gba.PersonenQueryResponse>(payload);
             logger.LogDebug("Original response body: {@response}", response);
