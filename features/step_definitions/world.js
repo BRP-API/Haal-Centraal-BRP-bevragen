@@ -1,7 +1,7 @@
 class World {
     constructor(parameters) {
         this.context = parameters;
-        this.context.proxyUrl = "http://localhost:5001/haalcentraal/api/brp";
+        this.context.proxyUrl = "http://localhost:5002/haalcentraal/api/brp";
         this.context.apiUrl = "http://localhost:8000/haalcentraal/api/brp";
         this.context.extraHeaders = [
             { "naam": "Authorization", "waarde": "" }
@@ -10,6 +10,7 @@ class World {
             useDb: true,
             logStatements: false,
             cleanup: true,
+            deleteIndividualRecords: true,
             poolConfig: {
                 user: "",
                 host: "",

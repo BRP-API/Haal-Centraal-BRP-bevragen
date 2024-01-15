@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+  brpproxy-2:
+    container_name: brpproxy-2
+    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:5000
+      - Routes__0__DownstreamScheme=http
+      - Routes__0__DownstreamHostAndPorts__0__Host=brpproxy
+      - Routes__0__DownstreamHostAndPorts__0__Port=5000
+      - Serilog__MinimumLevel__Override__BrpProxy=Debug
+    ports:
+      - "5002:5000"
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network

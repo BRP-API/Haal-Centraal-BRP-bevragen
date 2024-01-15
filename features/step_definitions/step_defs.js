@@ -5,12 +5,15 @@ const { stringifyValues } = require('./stringify.js');
 const { postBevragenRequestWithBasicAuth, handleOAuthRequest } = require('./handleRequest.js');
 const { Pool } = require('pg');
 const { noSqlData, executeSqlStatements, rollbackSqlStatements, insertIntoPersoonlijstStatement, insertIntoAdresStatement, insertIntoStatement } = require('./postgresqlHelpers.js');
-const { Given, When, Then, setWorldConstructor, Before, After } = require('@cucumber/cucumber');
+const { Given, When, Then, setWorldConstructor, Before, After, setDefaultTimeout } = require('@cucumber/cucumber');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const should = require('chai').use(deepEqualInAnyOrder).should();
 const { tableNameMap, columnNameMap, createAutorisatieSettingsFor, createRequestBody, createBasicAuthorizationHeader, createAdresseringBinnenlandAutorisatieSettingsFor, createVerblijfplaatsBinnenlandAutorisatieSettingsFor } = require('./gba.js');
 
 setWorldConstructor(World);
+
+// https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/timeouts.md
+setDefaultTimeout(30000);
 
 let pool = undefined;
 let logSqlStatements = false;
