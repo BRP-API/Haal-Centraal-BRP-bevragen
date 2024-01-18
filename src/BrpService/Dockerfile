@@ -22,4 +22,8 @@ RUN dotnet publish "BrpService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# See https://github.com/Contrast-Security-OSS/agent-operator/blob/master/docs/public/08-tips.md
+ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
+
 ENTRYPOINT ["dotnet", "HaalCentraal.BrpService.dll"]
