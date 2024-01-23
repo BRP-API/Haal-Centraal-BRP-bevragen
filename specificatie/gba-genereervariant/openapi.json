@@ -364,7 +364,8 @@
             "RaadpleegMetBurgerservicenummer" : "#/components/schemas/RaadpleegMetBurgerservicenummer",
             "ZoekMetPostcodeEnHuisnummer" : "#/components/schemas/ZoekMetPostcodeEnHuisnummer",
             "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving",
-            "ZoekMetNummeraanduidingIdentificatie" : "#/components/schemas/ZoekMetNummeraanduidingIdentificatie"
+            "ZoekMetNummeraanduidingIdentificatie" : "#/components/schemas/ZoekMetNummeraanduidingIdentificatie",
+            "ZoekMetAdresseerbaarObjectIdentificatie" : "#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatie"
           }
         }
       },
@@ -509,6 +510,19 @@
             },
             "nummeraanduidingIdentificatie" : {
               "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
+            }
+          }
+        } ]
+      },
+      "ZoekMetAdresseerbaarObjectIdentificatie" : {
+        "required" : [ "adresseerbaarObjectIdentificatie" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PersonenQuery"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "adresseerbaarObjectIdentificatie" : {
+              "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
             }
           }
         } ]
@@ -874,6 +888,12 @@
         "description" : "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n",
         "example" : "0518200000366054"
       },
+      "AdresseerbaarObjectIdentificatie" : {
+        "pattern" : "^[0-9]{16}$",
+        "type" : "string",
+        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
+        "example" : "0226010000038820"
+      },
       "GbaGeboorteBeperkt" : {
         "type" : "object",
         "properties" : {
@@ -1192,12 +1212,6 @@
             }
           }
         } ]
-      },
-      "AdresseerbaarObjectIdentificatie" : {
-        "pattern" : "^[0-9]{16}$",
-        "type" : "string",
-        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
-        "example" : "0226010000038820"
       },
       "NaamOpenbareRuimte" : {
         "maxLength" : 80,
