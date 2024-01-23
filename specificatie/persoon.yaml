@@ -248,6 +248,10 @@ components:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
           $ref: 'common.yaml#/components/schemas/Waardetabel'
+        gezag:
+          type: array
+          items: 
+            $ref: 'gezag.yaml#/components/schemas/AbstractGezag'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
         kinderen:

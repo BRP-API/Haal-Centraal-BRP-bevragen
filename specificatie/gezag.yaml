@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Gezag definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GezagPersoonBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+        - type: object
+          properties:
+            gezag:
+              type: array
+              items: 
+                $ref: '#/components/schemas/AbstractGezag'
+    Meerderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+    Minderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+    AbstractGezag:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
+          Voogdij: '#/components/schemas/Voogdij'
+          GeenGezag: '#/components/schemas/GeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+    TweehoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezag'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/Meerderjarige'
+              minItems: 2
+              maximum: 2
+            kind:
+              $ref: '#/components/schemas/Minderjarige'
+    EenhoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezag'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/Meerderjarige'
+            kind:
+              $ref: '#/components/schemas/Minderjarige'
+    GezamenlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezag'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/Meerderjarige'
+            derde:
+              $ref: '#/components/schemas/Meerderjarige'
+            kind:
+              $ref: '#/components/schemas/Minderjarige'
+    Voogdij:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezag'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: '#/components/schemas/Meerderjarige'
+              minItems: 1
+              maximum: 2
+            kind:
+              $ref: '#/components/schemas/Minderjarige'
+    GeenGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezag'
+    GezagNietTeBepalen:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezag'

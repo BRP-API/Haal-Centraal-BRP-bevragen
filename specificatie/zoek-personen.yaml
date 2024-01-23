@@ -84,6 +84,7 @@ components:
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummer'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving'
           ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatie'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatie'
       properties:
         type:
           type: string
@@ -207,6 +208,15 @@ components:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             nummeraanduidingIdentificatie:
               $ref: 'verblijfplaats.yaml#/components/schemas/NummeraanduidingIdentificatie'
+    ZoekMetAdresseerbaarObjectIdentificatie:
+      required:
+        - adresseerbaarObjectIdentificatie
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            adresseerbaarObjectIdentificatie:
+              $ref: 'verblijfplaats.yaml#/components/schemas/AdresseerbaarObjectIdentificatie'
     PersonenQueryResponse:
       type: object
       required:
@@ -220,6 +230,7 @@ components:
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse'
           ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatieResponse'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatieResponse'
       properties:
         type:
           type: string
@@ -289,3 +300,14 @@ components:
                 * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+    ZoekMetAdresseerbaarObjectIdentificatieResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'gezag.yaml#/components/schemas/GezagPersoonBeperkt'
