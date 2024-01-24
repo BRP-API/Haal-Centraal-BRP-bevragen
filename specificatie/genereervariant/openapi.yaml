@@ -733,7 +733,7 @@ components:
       - type: object
         properties:
           ouders:
-            maximum: 2
+            maxItems: 2
             minItems: 2
             type: array
             items:
@@ -776,7 +776,7 @@ components:
       - type: object
         properties:
           derden:
-            maximum: 2
+            maxItems: 2
             minItems: 1
             type: array
             items:
