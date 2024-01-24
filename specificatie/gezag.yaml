@@ -51,7 +51,7 @@ components:
               items:
                 $ref: '#/components/schemas/Meerderjarige'
               minItems: 2
-              maximum: 2
+              maxItems: 2
             kind:
               $ref: '#/components/schemas/Minderjarige'
     EenhoofdigOuderlijkGezag:
@@ -84,7 +84,7 @@ components:
               items:
                 $ref: '#/components/schemas/Meerderjarige'
               minItems: 1
-              maximum: 2
+              maxItems: 2
             kind:
               $ref: '#/components/schemas/Minderjarige'
     GeenGezag:
