@@ -247,7 +247,10 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+            - $ref: 'common.yaml#/components/schemas/Waardetabel'
+            - type: object
+              deprecated: true
         gezag:
           type: array
           items: 
