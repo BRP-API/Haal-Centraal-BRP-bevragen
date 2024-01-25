@@ -819,7 +819,12 @@
             "$ref" : "#/components/schemas/IndicatieCurateleRegister"
           },
           "indicatieGezagMinderjarige" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Waardetabel"
+            }, {
+              "type" : "object",
+              "deprecated" : true
+            } ]
           },
           "gezag" : {
             "type" : "array",
