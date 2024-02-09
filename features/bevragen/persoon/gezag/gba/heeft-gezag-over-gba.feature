@@ -29,10 +29,10 @@ Functionaliteit: gezagsrelaties van de minderjarige(n) waar een de meerderjarig 
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
-      | naam                     | waarde           |
-      | type                     | HeeftGezagOver   |
-      | kind.burgerservicenummer | 000000012        |
-      | gezagRelatie.type        | GezamenlijkGezag |
+      | naam                            | waarde           |
+      | type                            | HeeftGezagOver   |
+      | gezaghouder.burgerservicenummer | 000000024        |
+      | gezagRelaties.type              | GezamenlijkGezag |
       En heeft 'gezagRelatie' een 'ouder' met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000024 |
