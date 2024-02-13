@@ -77,3 +77,29 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder gegevens
+
+  Rule: wanneer over een minderjarig kind van een persoon tijdelijk niemand gezag heeft, wordt gezag over dit kind niet geleverd
+
+    Scenario: tijdelijk heeft niemand gezag over een minderjarig kind
+      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000012                   |
+      En de persoon met burgerservicenummer '000000024' heeft geen gezagsrelaties
+      En de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
+      | naam                  | waarde   |
+      | geboortedatum (03.10) | 20190516 |
+      En de persoon heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En de persoon heeft een ouder '2' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000048                   |
+      En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000012       | G          |                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000012                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon zonder gegevens
