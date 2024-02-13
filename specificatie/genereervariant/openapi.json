@@ -827,10 +827,7 @@
             } ]
           },
           "gezag" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/AbstractGezag"
-            }
+            "$ref" : "#/components/schemas/Gezag"
           },
           "verblijfstitel" : {
             "$ref" : "#/components/schemas/Verblijfstitel"
@@ -844,7 +841,7 @@
           "ouders" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/Ouder"
+              "$ref" : "#/components/schemas/Ouder_1"
             }
           },
           "partners" : {
@@ -918,15 +915,19 @@
           "type" : "object",
           "properties" : {
             "gezag" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/components/schemas/AbstractGezag"
-              }
+              "$ref" : "#/components/schemas/Gezag"
             }
           }
         } ]
       },
-      "AbstractGezag" : {
+      "Gezag" : {
+        "minItems" : 0,
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        }
+      },
+      "AbstractGezagsrelatie" : {
         "required" : [ "type" ],
         "type" : "object",
         "properties" : {
@@ -941,14 +942,13 @@
             "EenhoofdigOuderlijkGezag" : "#/components/schemas/EenhoofdigOuderlijkGezag",
             "GezamenlijkGezag" : "#/components/schemas/GezamenlijkGezag",
             "Voogdij" : "#/components/schemas/Voogdij",
-            "GeenGezag" : "#/components/schemas/GeenGezag",
             "GezagNietTeBepalen" : "#/components/schemas/GezagNietTeBepalen"
           }
         }
       },
       "TweehoofdigOuderlijkGezag" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGezag"
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
         }, {
           "type" : "object",
           "properties" : {
@@ -957,13 +957,19 @@
               "minItems" : 2,
               "type" : "array",
               "items" : {
-                "$ref" : "#/components/schemas/Meerderjarige"
+                "$ref" : "#/components/schemas/Ouder"
               }
             },
-            "kind" : {
+            "minderjarige" : {
               "$ref" : "#/components/schemas/Minderjarige"
             }
           }
+        } ]
+      },
+      "Ouder" : {
+        "required" : [ "burgerservicenummer" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Meerderjarige"
         } ]
       },
       "Meerderjarige" : {
@@ -975,6 +981,7 @@
         }
       },
       "Minderjarige" : {
+        "required" : [ "burgerservicenummer" ],
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
@@ -984,14 +991,14 @@
       },
       "EenhoofdigOuderlijkGezag" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGezag"
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
         }, {
           "type" : "object",
           "properties" : {
             "ouder" : {
-              "$ref" : "#/components/schemas/Meerderjarige"
+              "$ref" : "#/components/schemas/Ouder"
             },
-            "kind" : {
+            "minderjarige" : {
               "$ref" : "#/components/schemas/Minderjarige"
             }
           }
@@ -999,17 +1006,17 @@
       },
       "GezamenlijkGezag" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGezag"
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
         }, {
           "type" : "object",
           "properties" : {
             "ouder" : {
-              "$ref" : "#/components/schemas/Meerderjarige"
+              "$ref" : "#/components/schemas/Ouder"
             },
             "derde" : {
               "$ref" : "#/components/schemas/Meerderjarige"
             },
-            "kind" : {
+            "minderjarige" : {
               "$ref" : "#/components/schemas/Minderjarige"
             }
           }
@@ -1017,7 +1024,7 @@
       },
       "Voogdij" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGezag"
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
         }, {
           "type" : "object",
           "properties" : {
@@ -1029,20 +1036,15 @@
                 "$ref" : "#/components/schemas/Meerderjarige"
               }
             },
-            "kind" : {
+            "minderjarige" : {
               "$ref" : "#/components/schemas/Minderjarige"
             }
           }
         } ]
       },
-      "GeenGezag" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGezag"
-        } ]
-      },
       "GezagNietTeBepalen" : {
         "allOf" : [ {
-          "$ref" : "#/components/schemas/AbstractGezag"
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
         } ]
       },
       "Field" : {
@@ -2394,7 +2396,7 @@
           }
         } ]
       },
-      "Ouder" : {
+      "Ouder_1" : {
         "type" : "object",
         "properties" : {
           "burgerservicenummer" : {
