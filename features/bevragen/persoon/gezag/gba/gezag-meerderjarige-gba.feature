@@ -55,7 +55,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder 'gezag' gegevens
 
 
   Rule: wanneer het gezag voor een minderjarig kind niet bepaald kan worden, wordt gezag over dit kind niet geleverd
@@ -76,7 +76,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder 'gezag' gegevens
 
   Rule: wanneer over een minderjarig kind van een persoon tijdelijk niemand gezag heeft, wordt gezag over dit kind niet geleverd
 
@@ -102,4 +102,4 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder 'gezag' gegevens

@@ -77,7 +77,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder gegevens
+      Dan heeft de response een persoon zonder 'gezag' gegevens
 
 
   Rule: wanneer het gezag voor een minderjarige niet bepaald kan worden, wordt dit in gezag aangegeven
