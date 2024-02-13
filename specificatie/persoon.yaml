@@ -252,9 +252,7 @@ components:
             - type: object
               deprecated: true
         gezag:
-          type: array
-          items: 
-            $ref: 'gezag.yaml#/components/schemas/AbstractGezag'
+          $ref: 'gezag.yaml#/components/schemas/Gezag'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
         kinderen:
