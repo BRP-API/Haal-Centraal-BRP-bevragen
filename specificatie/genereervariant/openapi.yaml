@@ -729,6 +729,7 @@ components:
           EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
           GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
           Voogdij: '#/components/schemas/Voogdij'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
           GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
     TweehoofdigOuderlijkGezag:
       allOf:
@@ -787,12 +788,15 @@ components:
         properties:
           derden:
             maxItems: 2
-            minItems: 1
+            minItems: 0
             type: array
             items:
               $ref: '#/components/schemas/Meerderjarige'
           minderjarige:
             $ref: '#/components/schemas/Minderjarige'
+    TijdelijkGeenGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
     GezagNietTeBepalen:
       allOf:
       - $ref: '#/components/schemas/AbstractGezagsrelatie'

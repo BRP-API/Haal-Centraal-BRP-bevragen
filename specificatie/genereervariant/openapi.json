@@ -942,6 +942,7 @@
             "EenhoofdigOuderlijkGezag" : "#/components/schemas/EenhoofdigOuderlijkGezag",
             "GezamenlijkGezag" : "#/components/schemas/GezamenlijkGezag",
             "Voogdij" : "#/components/schemas/Voogdij",
+            "TijdelijkGeenGezag" : "#/components/schemas/TijdelijkGeenGezag",
             "GezagNietTeBepalen" : "#/components/schemas/GezagNietTeBepalen"
           }
         }
@@ -1030,7 +1031,7 @@
           "properties" : {
             "derden" : {
               "maxItems" : 2,
-              "minItems" : 1,
+              "minItems" : 0,
               "type" : "array",
               "items" : {
                 "$ref" : "#/components/schemas/Meerderjarige"
@@ -1040,6 +1041,11 @@
               "$ref" : "#/components/schemas/Minderjarige"
             }
           }
+        } ]
+      },
+      "TijdelijkGeenGezag" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
         } ]
       },
       "GezagNietTeBepalen" : {
