@@ -4,9 +4,9 @@
 Functionaliteit: gezagsrelaties van een meerderjarige
 
 
-  Rule: voor een minderjarige met twee ouders met gezag wordt de gezagsrelatie naar beide ouders geleverd
+  Rule: een meerderjarige krijgt voor een minderjarig kind met twee ouders met gezag de gezagsrelatie naar beide ouders geleverd
 
-    Scenario: beide ouders hebben gezag over de minderjarige
+    Scenario: beide ouders hebben gezag over het minderjarige kind van bevraagde persoon
       Gegeven voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | OG2        | 000000024        |
@@ -31,9 +31,9 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000048 |
 
 
-  Rule: voor een minderjarige met één ouder met gezag wordt de gezagsrelatie naar deze ouders geleverd
+  Rule: een meerderjarige krijgt voor een minderjarig kind met één ouder met gezag de gezagsrelatie naar deze ouder geleverd
 
-    Scenario: één ouder heeft gezag over de minderjarige
+    Scenario: alleen de bevraagde persoon heeft gezag over de minderjarige
       Gegeven voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | OG1        | 000000024        |
@@ -49,7 +49,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | ouder.burgerservicenummer        | 000000024                |
 
 
-  Rule: voor een minderjarige met gezamenlijk gezag wordt de gezagsrelatie naar de ouder en de andere gezaghebbende geleverd
+  Rule: een meerderjarige die samen met diens partner gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar de ouder en de partner geleverd
 
     Scenario: de ouder en diens partner hebben gezag over het kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -80,8 +80,31 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | ouder.burgerservicenummer        | 000000024        |
       | derde.burgerservicenummer        | 000000048        |
 
+    Scenario: persoon heeft van rechtswege gezamenlijk gezag over het minderjarige kind van diens partner
+      Gegeven voor de persoon met burgerservicenummer '000000048' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000012       | GG         | 000000048        |
+      En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000012       | GG         | 000000024        |
+      | 000000012       | GG         | 000000048        |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000048                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
+      | naam                             | waarde           |
+      | type                             | GezamenlijkGezag |
+      | minderjarige.burgerservicenummer | 000000012        |
+      | ouder.burgerservicenummer        | 000000024        |
+      | derde.burgerservicenummer        | 000000048        |
 
-  Rule: voor een meerderjarige wordt er geen gezagsrelatie naar de ouders geleverd
+
+  Rule: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
 
     Scenario: gezag wordt gevraagd van ouder met meerderjarig kind
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
@@ -103,9 +126,9 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder 'gezag' gegevens
 
 
-  Rule: wanneer het gezag voor een minderjarig kind niet bepaald kan worden, wordt gezag over dit kind niet geleverd
+  Rule: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
 
-    Scenario: gezag over minderjarige kan niet worden bepaald
+    Scenario: gezag over minderjarige kind kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
       | burgerservicenummer (01.20) |
       | 000000012                   |
@@ -123,33 +146,30 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder 'gezag' gegevens
 
-  Rule: wanneer over een minderjarig kind van een persoon tijdelijk niemand gezag heeft, wordt gezag over dit kind niet geleverd
+  Rule: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
 
     Scenario: tijdelijk heeft niemand gezag over een minderjarig kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
       | burgerservicenummer (01.20) |
       | 000000012                   |
+      En de persoon heeft de volgende 'gezagsverhouding' gegevens
+      | naam                               | waarde |
+      | indicatie curateleregister (33.10) | 1      |
       En de persoon met burgerservicenummer '000000024' heeft geen gezagsrelaties
-      En de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
-      | naam                  | waarde   |
-      | geboortedatum (03.10) | 20190516 |
-      En de persoon heeft een ouder '1' met de volgende gegevens
+      En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
       | burgerservicenummer (01.20) |
       | 000000024                   |
-      En de persoon heeft een ouder '2' met de volgende gegevens
-      | burgerservicenummer (01.20) |
-      | 000000048                   |
       En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | G          |                  |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000012                       |
+      | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder 'gezag' gegevens
 
-  Rule: wanneer een niet-ouder van rechtswege gezag heeft over de minderjarige wordt deze voogdij in gezag aangegeven 
+  Rule: een meerderjarige die rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt deze gezagsrelatie geleverd als voogdij
 
     Scenario: de partner van overleden ouder heeft gezag over de minderjarige
       Gegeven voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
@@ -161,7 +181,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000012                       |
+      | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
       | naam                             | waarde    |
