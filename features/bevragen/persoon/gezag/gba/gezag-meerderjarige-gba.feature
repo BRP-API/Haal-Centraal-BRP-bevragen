@@ -31,7 +31,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000048 |
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind met één ouder met gezag de gezagsrelatie naar deze ouder geleverd
+  Rule: een meerderjarige die als enige gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar zichzelf geleverd
 
     Scenario: alleen de bevraagde persoon heeft gezag over de minderjarige
       Gegeven voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
