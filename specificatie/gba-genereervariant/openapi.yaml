@@ -203,6 +203,7 @@ components:
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse'
           ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatieResponse'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatieResponse'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
       allOf:
       - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -257,6 +258,15 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/GbaPersoonBeperkt'
+    ZoekMetAdresseerbaarObjectIdentificatieResponse:
+      allOf:
+      - $ref: '#/components/schemas/PersonenQueryResponse'
+      - type: object
+        properties:
+          personen:
+            type: array
+            items:
+              $ref: '#/components/schemas/GbaGezagPersoonBeperkt'
     PersonenQuery:
       required:
       - fields
@@ -584,7 +594,12 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: '#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: '#/components/schemas/Waardetabel'
+          - type: object
+            deprecated: true
+        gezag:
+          $ref: '#/components/schemas/Gezag'
         verblijfstitel:
           $ref: '#/components/schemas/GbaVerblijfstitel'
         kinderen:
@@ -615,6 +630,103 @@ components:
       description: |
         Geeft aan dat de persoon onder curatele is gesteld.
       example: true
+    GbaGezagPersoonBeperkt:
+      allOf:
+      - $ref: '#/components/schemas/GbaPersoonBeperkt'
+      - type: object
+        properties:
+          gezag:
+            $ref: '#/components/schemas/Gezag'
+    Gezag:
+      minItems: 0
+      type: array
+      items:
+        $ref: '#/components/schemas/AbstractGezagsrelatie'
+    AbstractGezagsrelatie:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
+          Voogdij: '#/components/schemas/Voogdij'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+    TweehoofdigOuderlijkGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          ouders:
+            maxItems: 2
+            minItems: 2
+            type: array
+            items:
+              $ref: '#/components/schemas/Ouder'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    Ouder:
+      required:
+      - burgerservicenummer
+      allOf:
+      - $ref: '#/components/schemas/Meerderjarige'
+    Meerderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+    Minderjarige:
+      required:
+      - burgerservicenummer
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+    EenhoofdigOuderlijkGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          ouder:
+            $ref: '#/components/schemas/Ouder'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    GezamenlijkGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          ouder:
+            $ref: '#/components/schemas/Ouder'
+          derde:
+            $ref: '#/components/schemas/Meerderjarige'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    Voogdij:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          derden:
+            maxItems: 2
+            minItems: 0
+            type: array
+            items:
+              $ref: '#/components/schemas/Meerderjarige'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    TijdelijkGeenGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+    GezagNietTeBepalen:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
     Field:
       pattern: "^[a-zA-Z0-9\\._]{1,200}$"
       type: string
