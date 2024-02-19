@@ -6,6 +6,13 @@ info:
 paths: {}
 components:
   schemas:
+    GbaGezagPersoonBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
+        - type: object
+          properties:
+            gezag:
+              $ref: "#/components/schemas/Gezag"
     GezagPersoonBeperkt:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
