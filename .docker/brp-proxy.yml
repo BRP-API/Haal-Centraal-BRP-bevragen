@@ -4,7 +4,7 @@ services:
 
   brpproxy:
     container_name: brpproxy
-    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy:latest
+    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-proxy:2.1.1
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
