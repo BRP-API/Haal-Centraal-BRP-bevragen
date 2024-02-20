@@ -34,7 +34,7 @@ Totaal: 5506 scenarios (0 failed, 5506 passed)
 - [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 388 scenarios (388 passed)
 
 
-## Proxy v2.0.20
+## Proxy v2.1.1
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
