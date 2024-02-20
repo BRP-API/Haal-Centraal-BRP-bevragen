@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOTNET_VERSION: 8.0.x
+  DOTNET_VERSION: 6.0.x
   DOTNET_SOLUTION: BRP.sln
   NODE_VERSION: '18'
   CONTAINER_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen
