@@ -884,7 +884,7 @@
               "minItems" : 2,
               "type" : "array",
               "items" : {
-                "$ref" : "#/components/schemas/Ouder"
+                "$ref" : "#/components/schemas/GezagOuder"
               }
             },
             "minderjarige" : {
@@ -893,7 +893,7 @@
           }
         } ]
       },
-      "Ouder" : {
+      "GezagOuder" : {
         "required" : [ "burgerservicenummer" ],
         "allOf" : [ {
           "$ref" : "#/components/schemas/Meerderjarige"
@@ -923,7 +923,7 @@
           "type" : "object",
           "properties" : {
             "ouder" : {
-              "$ref" : "#/components/schemas/Ouder"
+              "$ref" : "#/components/schemas/GezagOuder"
             },
             "minderjarige" : {
               "$ref" : "#/components/schemas/Minderjarige"
@@ -938,7 +938,7 @@
           "type" : "object",
           "properties" : {
             "ouder" : {
-              "$ref" : "#/components/schemas/Ouder"
+              "$ref" : "#/components/schemas/GezagOuder"
             },
             "derde" : {
               "$ref" : "#/components/schemas/Meerderjarige"

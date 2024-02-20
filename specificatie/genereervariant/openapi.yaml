@@ -652,7 +652,7 @@ components:
         ouders:
           type: array
           items:
-            $ref: '#/components/schemas/Ouder_1'
+            $ref: '#/components/schemas/Ouder'
         partners:
           type: array
           items:
@@ -741,10 +741,10 @@ components:
             minItems: 2
             type: array
             items:
-              $ref: '#/components/schemas/Ouder'
+              $ref: '#/components/schemas/GezagOuder'
           minderjarige:
             $ref: '#/components/schemas/Minderjarige'
-    Ouder:
+    GezagOuder:
       required:
       - burgerservicenummer
       allOf:
@@ -767,7 +767,7 @@ components:
       - type: object
         properties:
           ouder:
-            $ref: '#/components/schemas/Ouder'
+            $ref: '#/components/schemas/GezagOuder'
           minderjarige:
             $ref: '#/components/schemas/Minderjarige'
     GezamenlijkGezag:
@@ -776,7 +776,7 @@ components:
       - type: object
         properties:
           ouder:
-            $ref: '#/components/schemas/Ouder'
+            $ref: '#/components/schemas/GezagOuder'
           derde:
             $ref: '#/components/schemas/Meerderjarige'
           minderjarige:
@@ -1799,7 +1799,7 @@ components:
         properties:
           burgerservicenummer:
             type: boolean
-    Ouder_1:
+    Ouder:
       type: object
       properties:
         burgerservicenummer:
