@@ -181,6 +181,12 @@ components:
           Adres: '#/components/schemas/Adres'
           VerblijfplaatsOnbekend: '#/components/schemas/VerblijfplaatsOnbekend'
           Locatie: '#/components/schemas/Locatie'
+      example:
+        type: Adres
+        functieAdres:
+          code: W
+          omschrijving: woonadres
+        adresseerbaarObjectIdentificatie: 0226010000038820
     VerblijfplaatsBuitenland:
       description: |
         * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
