@@ -54,6 +54,20 @@ services:
     networks:
       - brp-api-network
 
+  gezagmock:
+    container_name: gezagmock
+    image: ghcr.io/brp-api/gezag-mock:latest
+    build:
+      context: .
+      dockerfile: src/GezagMock/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:5020
+    ports:
+      - "5020:5020"
+    networks:
+      - brp-api-network
+
 networks:
   brp-api-network:
     name: brp-api-network

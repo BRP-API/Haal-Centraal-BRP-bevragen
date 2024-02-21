@@ -16,11 +16,11 @@ on:
   workflow_dispatch:
 
 env:
-  DOTNET_VERSION: 8.0.x
+  DOTNET_VERSION: 6.0.x
   DOTNET_SOLUTION: BRP.sln
   NODE_VERSION: '18'
   CONTAINER_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen
-  COMPOSE_FILE_ARGUMENT: -f .docker/db-ci.yml -f .docker/brp-api.yml -f .docker/brp-proxy.yml -f .docker/brp-proxy-2-proxy.yml
+  COMPOSE_FILE_ARGUMENT: -f .docker/db-ci.yml -f .docker/brp-api.yml -f .docker/brp-proxy.yml -f .docker/brp-proxy-2-proxy.yml -f .docker/gezag-mock.yml
   DOCKER_API_FILE_PATH: .docker/brp-api.yml
 
 jobs:

@@ -5,6 +5,7 @@ title: Haal Centraal BRP Personen
 # {{ site.apiname }}
 
 ![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
+![ci]({{ site.repoUrl}}/workflows/ci/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De API biedt naast persoonsgegevens uit de BRP ook de informatieproducten leeftijd, aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief, en adressering (passend op een vensterenvelop). Zo kan RvIG beter voorzien in klantbehoeften, en hoeven onze klanten minder persoonsgegevens te verwerken. Hiervoor is een wetwijziging nodig: het [Experimentbesluit Dataminimalisatie](https://www.rijksoverheid.nl/documenten/besluiten/2023/08/28/experimentbesluit-brp-dataminimalisatie-amvb-nvt-versie-voorhang). 
