@@ -396,7 +396,7 @@ Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gege
     this.context.expected.push(expected);
 });
 
-Then(/^heeft de response een persoon met een '(kind|ouder|partner|nationaliteit)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
+Then(/^heeft de response een persoon met een '(kind|ouder|partner|nationaliteit|rni)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
     this.context.verifyResponse = true;
 
     const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
