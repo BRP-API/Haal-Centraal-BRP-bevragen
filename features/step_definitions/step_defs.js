@@ -9,6 +9,7 @@ const { Given, When, Then, setWorldConstructor, Before, After, setDefaultTimeout
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const should = require('chai').use(deepEqualInAnyOrder).should();
 const { tableNameMap, columnNameMap, createAutorisatieSettingsFor, createRequestBody, createBasicAuthorizationHeader, createAdresseringBinnenlandAutorisatieSettingsFor, createVerblijfplaatsBinnenlandAutorisatieSettingsFor } = require('./gba.js');
+const fs = require('fs');
 
 setWorldConstructor(World);
 
@@ -346,6 +347,10 @@ async function handleRequest(context, dataTable) {
         context.sqlData = [{}];
     }
 
+    if(context.gezagDataPath !== undefined && context.gezag !== undefined) {
+        fs.writeFileSync(context.gezagDataPath, JSON.stringify(context.gezag, null, '\t'));
+    }
+
     const afnemerId = context.afnemerId ?? context.oAuth.clients[0].afnemerID;
     const gemeenteCode = context.gemeenteCode ?? "800";
     const url = context.proxyAanroep ? context.proxyUrl : context.apiUrl;
@@ -391,7 +396,7 @@ Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gege
     this.context.expected.push(expected);
 });
 
-Then(/^heeft de response een persoon met een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
+Then(/^heeft de response een persoon met een '(kind|ouder|partner|nationaliteit)' met ?(?:alleen)? de volgende gegevens$/, function(relatie, dataTable) {
     this.context.verifyResponse = true;
 
     const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
