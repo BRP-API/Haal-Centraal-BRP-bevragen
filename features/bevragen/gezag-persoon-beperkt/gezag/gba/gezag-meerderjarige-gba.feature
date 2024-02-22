@@ -98,16 +98,19 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | ouder.burgerservicenummer        | 000000024        |
       | derde.burgerservicenummer        | 000000048        |
 
+
+  Rule: een meerderjarige die gezag heeft over een minderjarig kind van de partner krijgt geen gezagsrelatie geleverd
+
     Scenario: persoon heeft van rechtswege gezamenlijk gezag over het minderjarige kind van diens partner
-      Gegeven de persoon met burgerservicenummer '000000048' heeft de volgende 'verblijfplaats' gegevens
-      | functie adres (10.10) |
-      | W                     |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      | 0518                 | 0599010051001502                         |
-      En voor de persoon met burgerservicenummer '000000048' gelden de volgende gezagsrelaties
+      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000012                   |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000048                   |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000012       | GG         | 000000048        |
+      | 000000012       | GG         | 000000024        |
       En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
       | burgerservicenummer (01.20) |
       | 000000024                   |
@@ -115,17 +118,22 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | GG         | 000000024        |
       | 000000012       | GG         | 000000048        |
+      En de persoon met burgerservicenummer '000000048' heeft de volgende 'verblijfplaats' gegevens
+      | functie adres (10.10) |
+      | W                     |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
+      | 0518                 | 0599010051001502                         |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En de persoon met burgerservicenummer '000000048' heeft geen gezagsrelaties
       Als gba personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000048                       |
-      | fields              | gezag                           |
-      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
-      | naam                             | waarde           |
-      | type                             | GezamenlijkGezag |
-      | minderjarige.burgerservicenummer | 000000012        |
-      | ouder.burgerservicenummer        | 000000024        |
-      | derde.burgerservicenummer        | 000000048        |
+      | naam                             | waarde                                  |
+      | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
+      | adresseerbaarObjectIdentificatie | 0599010051001502                        |
+      | fields                           | gezag                                   |
+      Dan heeft de response een persoon zonder 'gezag' gegevens
 
 
   Rule: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
@@ -182,6 +190,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | fields                           | gezag                                   |
       Dan heeft de response een persoon zonder 'gezag' gegevens
 
+
   Rule: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
 
     Scenario: tijdelijk heeft niemand gezag over een minderjarig kind
@@ -211,7 +220,8 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | fields                           | gezag                                   |
       Dan heeft de response een persoon zonder 'gezag' gegevens
 
-  Rule: een meerderjarige die rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt deze gezagsrelatie geleverd als voogdij
+
+  Rule: een meerderjarige die rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt geen gezagsrelatie geleverd
 
     Scenario: de partner van overleden ouder heeft gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -220,9 +230,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
       | 0518                 | 0599010051001502                         |
-      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
-      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000012       | V          | 000000024        |
+      En de persoon met burgerservicenummer '000000024' heeft geen gezagsrelaties
       En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | V          | 000000024        |
@@ -231,10 +239,4 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | gezag                                   |
-      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
-      | naam                             | waarde    |
-      | type                             | Voogdij   |
-      | minderjarige.burgerservicenummer | 000000012 |
-      En heeft 'gezag' een 'derde' met de volgende gegevens
-      | naam                | waarde    |
-      | burgerservicenummer | 000000024 |
+      Dan heeft de response een persoon zonder 'gezag' gegevens

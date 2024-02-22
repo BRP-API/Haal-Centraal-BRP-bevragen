@@ -200,6 +200,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | naam                | waarde    |
       | burgerservicenummer | 000000024 |
 
+
   Rule: wanneer van rechtswege gezag is toegewezen aan een voogd dan is de voogd niet bekend en wordt gezag geleverd zonder belanghebbenden
 
     Scenario: er is een gerechtelijke uitspraak tot gezag voor ouder 1 en een derde
