@@ -192,3 +192,32 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder 'gezag' gegevens
+
+
+  Rule: een meerderjarige die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd
+
+    Scenario: gezag van meerderjarig persoon in RNI kan niet worden bepaald
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | naam                  | waarde   |
+      | geboortedatum (03.10) | 19580119 |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20020701                             | R                                    |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 1999   |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000024       | N          |                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
+      | naam | waarde             |
+      | type | GezagNietTeBepalen |
+      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+      | naam               | waarde                    |
+      | reden.code         | R                         |
+      | reden.omschrijving | pl is aangelegd in de rni |
