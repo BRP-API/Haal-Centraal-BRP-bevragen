@@ -176,4 +176,4 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | naam                             | waarde    |
       | type                             | Voogdij   |
       | minderjarige.burgerservicenummer | 000000012 |
-      En heeft 'gezag' geen 'derde' gegevens
+      En heeft 'gezag' geen derden
