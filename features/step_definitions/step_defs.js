@@ -533,7 +533,7 @@ function toCollectionName(gegevensgroep) {
     }
 }
 
-Then(/^heeft de persoon ?(?:nog)? een '(.*)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
+Then(/^heeft de persoon ?(?:nog)? een '(kind|ouder|partner|nationaliteit|rni)' met ?(?:alleen)? de volgende gegevens$/, function (gegevensgroep, dataTable) {
     const expected = createObjectFrom(dataTable, this.context.proxyAanroep);
 
     let groep = toCollectionName(gegevensgroep);
