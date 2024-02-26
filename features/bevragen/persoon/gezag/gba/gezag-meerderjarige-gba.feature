@@ -233,3 +233,59 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam               | waarde                    |
       | reden.code         | R                         |
       | reden.omschrijving | pl is aangelegd in de rni |
+
+
+  Rule: een meerderjarige met gezag over meerdere minderjarigen krijgt de gezagsrelaties van al deze minderjarigen
+
+    Scenario: meerderjarige heeft gezag over meerdere kinderen
+      Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000012                   |
+      En de persoon heeft een 'kind' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En de persoon heeft een 'kind' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000036                   |
+      En voor de persoon met burgerservicenummer '000000048' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000012       | OG2        | 000000048        |
+      | 000000024       | OG1        | 000000048        |
+      | 000000036       | GG         | 000000048        |
+      En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000012       | OG2        | 000000048        |
+      | 000000012       | OG2        | 000000061        |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000024       | OG1        | 000000048        |
+      En voor de persoon met burgerservicenummer '000000036' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000036       | GG         | 000000048        |
+      | 000000036       | GG         | 000000073        |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000048                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
+      | naam                             | waarde                    |
+      | type                             | TweehoofdigOuderlijkGezag |
+      | minderjarige.burgerservicenummer | 000000012                 |
+      En heeft 'gezag' een 'ouder' met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000048 |
+      En heeft 'gezag' een 'ouder' met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000061 |
+      En heeft de persoon een 'gezag' met de volgende gegevens
+      | naam                             | waarde                   |
+      | type                             | EenhoofdigOuderlijkGezag |
+      | minderjarige.burgerservicenummer | 000000024                |
+      | ouder.burgerservicenummer        | 000000048                |
+      En heeft de persoon een 'gezag' met de volgende gegevens
+      | naam                             | waarde           |
+      | type                             | GezamenlijkGezag |
+      | minderjarige.burgerservicenummer | 000000036        |
+      | ouder.burgerservicenummer        | 000000048        |
+      | derde.burgerservicenummer        | 000000073        |
