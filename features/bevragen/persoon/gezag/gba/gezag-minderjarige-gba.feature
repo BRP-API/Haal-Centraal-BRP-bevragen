@@ -6,6 +6,9 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
   Rule: voor een minderjarige met twee ouders met gezag wordt de gezagsrelatie naar beide ouders geleverd
 
     Scenario: beide ouders hebben gezag over de minderjarige
+      Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
       Gegeven voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | OG2        | 000000024        |
@@ -30,6 +33,9 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
   Rule: voor een minderjarige met één ouder met gezag wordt de gezagsrelatie naar deze ouder geleverd
 
     Scenario: één ouder heeft gezag over de minderjarige
+      Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
       Gegeven voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | OG1        | 000000024        |
@@ -101,7 +107,10 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
   Rule: wanneer het gezag voor een minderjarige niet bepaald kan worden, wordt dit in gezag aangegeven
 
     Scenario: gezag over minderjarige kan niet worden bepaald
-      Gegeven voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
+      | naam                  | waarde   |
+      | geboortedatum (03.10) | 20190516 |
+      En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | N          |                  |
       Als gba personen wordt gezocht met de volgende parameters
@@ -142,7 +151,10 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
   Rule: wanneer een niet-ouder van rechtswege gezag heeft over de minderjarige wordt deze voogdij in gezag aangegeven 
 
     Scenario: de partner van overleden ouder heeft gezag over de minderjarige
-      Gegeven voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
+      Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
+      | naam                  | waarde   |
+      | geboortedatum (03.10) | 20190516 |
+      En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | V          | 000000024        |
       Als gba personen wordt gezocht met de volgende parameters
