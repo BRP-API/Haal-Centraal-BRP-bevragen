@@ -496,12 +496,152 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | derde.burgerservicenummer        | 000000048 |
   
 
-  Rule: een meerderjarige die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd
+  Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de leeftijd lager is dan 18 jaar
+    # voor een persoon die staat ingeschreven in RNI levert de gezagsmodule altijd soort gezag 'N' (niet te bepalen)
+    # wanneer zeker is dat de persoon meerderjarig is, moet geen 'gezag niet te bepalen' worden geleverd
+    # wanneer de leeftijd exact bepaald kan worden (zie ../leeftijd/overzicht.feature), wordt 'gezag niet te bepalen' alleen geleverd wanneer de leeftijd lager is dan 18 jaar
 
-    Scenario: gezag van meerderjarig persoon in RNI kan niet worden bepaald
+    Abstract Scenario: gezag van minderjarig persoon in RNI kan niet worden bepaald
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | naam                  | waarde          |
+      | geboortedatum (03.10) | <geboortedatum> |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20020701                             | R                                    |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 1999   |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000024       | N          |                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
+      | naam | waarde             |
+      | type | GezagNietTeBepalen |
+      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+      | naam               | waarde                    |
+      | reden.code         | R                         |
+      | reden.omschrijving | pl is aangelegd in de rni |
+
+      Voorbeelden:
+      | geboortedatum            | berekende leeftijd |
+      | gisteren - 5 jaar        | 5                  |
+      | vandaag - 17 jaar        | 17                 |
+      | morgen - 18 jaar         | 17                 |
+      | vorige maand - 10 jaar   | 10                 |
+      | vorige maand - 17 jaar   | 17                 |
+      | volgende maand - 18 jaar | 17                 |
+
+    Abstract Scenario: voor een meerderjarig persoon in RNI wordt geen gezag geleverd
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | naam                  | waarde          |
+      | geboortedatum (03.10) | <geboortedatum> |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20020701                             | R                                    |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 1999   |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000024       | N          |                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon zonder 'gezag' gegevens
+      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+      | naam               | waarde                    |
+      | reden.code         | R                         |
+      | reden.omschrijving | pl is aangelegd in de rni |
+
+      Voorbeelden:
+      | geboortedatum            | berekende leeftijd |
+      | 19590210                 | 65+                |
+      | vandaag - 18 jaar        | 18                 |
+      | vorige maand - 18 jaar   | 18                 |
+      | volgende maand - 19 jaar | 18                 |
+
+
+  Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer het geboortejaar is ten minste 19 jaar voor het huidige jaar
+    # wanneer de leeftijd niet exact bepaald kan worden en er is wel een geboortejaar bekend, wordt 'gezag niet te bepalen' alleen geleverd wanneer de persoon aan het begin van het jaar al meerderjarig (18 jaar) is
+
+    Abstract Scenario: gezag van minderjarig persoon in RNI kan niet worden bepaald
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | naam                  | waarde          |
+      | geboortedatum (03.10) | <geboortedatum> |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20020701                             | R                                    |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 1999   |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000024       | N          |                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
+      | naam | waarde             |
+      | type | GezagNietTeBepalen |
+      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+      | naam               | waarde                    |
+      | reden.code         | R                         |
+      | reden.omschrijving | pl is aangelegd in de rni |
+
+      Voorbeelden:
+      | geboortedatum        | leeftijd      |
+      | deze maand - 5 jaar  | 4 of 5 jaar   |
+      | dit jaar - 5 jaar    | 4 of 5 jaar   |
+      | deze maand - 18 jaar | 17 of 18 jaar |
+      | dit jaar - 18 jaar   | 17 of 18 jaar |
+
+    Abstract Scenario: voor een meerderjarig persoon in RNI wordt geen gezag geleverd
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | naam                  | waarde          |
+      | geboortedatum (03.10) | <geboortedatum> |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20020701                             | R                                    |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | naam                              | waarde |
+      | gemeente van inschrijving (09.10) | 1999   |
+      En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag | bsnMeerderjarige |
+      | 000000024       | N          |                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon zonder 'gezag' gegevens
+      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
+      | naam               | waarde                    |
+      | reden.code         | R                         |
+      | reden.omschrijving | pl is aangelegd in de rni |
+
+      Voorbeelden:
+      | geboortedatum        | leeftijd      |
+      | deze maand - 35 jaar | 34 of 35 jaar |
+      | dit jaar - 35 jaar   | 34 of 35 jaar |
+      | deze maand - 19 jaar | 18 of 19 jaar |
+      | dit jaar - 19 jaar   | 18 of 19 jaar |
+
+
+  Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de geboortedatum volledig onbekend is
+
+    Scenario: gezag van minderjarig persoon in RNI kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                  | waarde   |
-      | geboortedatum (03.10) | 19580119 |
+      | geboortedatum (03.10) | 00000000 |
       En de persoon heeft de volgende 'inschrijving' gegevens
       | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
       | 20020701                             | R                                    |
