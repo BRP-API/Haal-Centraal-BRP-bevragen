@@ -45,6 +45,7 @@ const columnNameMap = new Map([
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
 
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
+    ['reden ontbinding huwelijk/geregistreerd partnerschap (07.40)', 'relatie_eind_reden'],
 
     ['datum overlijden (08.10)', 'overlijden_datum'],
     ['plaats overlijden (08.20)', 'overlijden_plaats'],

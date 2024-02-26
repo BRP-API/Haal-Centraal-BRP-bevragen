@@ -191,17 +191,30 @@ Functionaliteit: gezagsrelaties van een meerderjarige
   Rule: een meerderjarige die rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt geen gezagsrelatie geleverd
 
     Scenario: de partner van overleden ouder heeft gezag over de minderjarige
-      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
+      Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
       | burgerservicenummer (01.20) |
-      | 000000012                   |
+      | 000000024                   |
       En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000012       | V          | 000000024        |
+      | 000000012       | V          | 000000048        |
+      En de persoon met burgerservicenummer '000000024' heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+      | 000000048                   | 20120428                                                           |
+      En de persoon heeft de volgende 'overlijden' gegevens
+      | naam                     | waarde   |
+      | datum overlijden (08.10) | 20231001 |
       En de persoon met burgerservicenummer '000000024' heeft geen gezagsrelaties
+      En de persoon met burgerservicenummer '000000048' heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
+      | 000000024                   | 20120428                                                           |
+      En de 'partner' is gewijzigd naar de volgende gegevens
+      | burgerservicenummer (01.20) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | reden ontbinding huwelijk/geregistreerd partnerschap (07.40) |
+      | 000000024                   | 20231001                                                     | O                                                            |
+      En de persoon met burgerservicenummer '000000048' heeft geen gezagsrelaties
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
+      | burgerservicenummer | 000000048                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder 'gezag' gegevens
 
