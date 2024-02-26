@@ -1,17 +1,33 @@
 const { toDateOrString } = require("./calcDate");
 
-function createObjectFrom(dataTable, dateAsDate = false) {
-    let obj = {};
-
-    dataTable.hashes().forEach(function(row) {
-        mapRowToProperty(obj, row, dateAsDate);
-    });
-
-    return obj;
+function setPropertyValue(obj, propertyName, propertyValue, dateAsDate) {
+    if(propertyName === 'periode') {
+        const match = propertyValue.match(/^(?<datumVan>[\d-]*) tot (?<datumTot>[\d-]*)$/);
+        if(match) {
+            obj[propertyName] = match.groups;
+        }
+        else {
+            obj[propertyName] = toDateOrString(propertyValue, dateAsDate);
+        }
+    }
+    else {
+        obj[propertyName] = toDateOrString(propertyValue, dateAsDate);
+    }
 }
 
-function mapRowToProperty(obj, row, dateAsDate = false) {
-    setProperty(obj, row.naam, row.waarde, dateAsDate);
+function setNestedPropertyValue(obj, propertyName, propertyValue, dateAsDate) {
+    const propertyNames = propertyName.split('.');
+
+    if(propertyNames.length == 1) {
+        setPropertyValue(obj, propertyName, propertyValue, dateAsDate);
+    }
+    else {
+        const propName = propertyNames[0];
+        if(obj[propName] === undefined) {
+            obj[propName] = {};
+        }
+        setNestedPropertyValue(obj[propName], propertyNames.splice(1).join('.'), propertyValue, dateAsDate);
+    }
 }
 
 function setProperty(obj, propertyName, propertyValue, dateAsDate) {
@@ -20,23 +36,53 @@ function setProperty(obj, propertyName, propertyValue, dateAsDate) {
     }
 
     if(propertyName.includes('.')) {
-        let propertyNames = propertyName.split('.');
-        let property = obj;
+        setNestedPropertyValue(obj, propertyName, propertyValue, dateAsDate);
+    }
+    else {
+        setPropertyValue(obj, propertyName, propertyValue, dateAsDate);
+    }
+}
 
-        propertyNames.forEach(function(propName, index) {
-            if(index === propertyNames.length-1) {
-                property[propName] = toDateOrString(propertyValue, dateAsDate);
-            }
-            else {
-                if(property[propName] === undefined) {
-                    property[propName] = {};
-                }
-                property = property[propName];
-            }
+function createObjectFrom(dataTable, dateAsDate = false) {
+    let obj = {};
+
+    setObjectPropertiesFrom(obj, dataTable, dateAsDate);
+
+    return obj;
+}
+
+function createObjectArrayFrom(dataTable, dateAsDate = false) {
+    let retval = [];
+
+    dataTable.hashes().forEach(function(row) {
+        let obj = {};
+
+        Object.keys(row).forEach(function(propertyName) {
+            setProperty(obj, propertyName, row[propertyName], dateAsDate);
+        });
+
+        retval.push(obj);
+    });
+
+    return retval;
+}
+
+function mapRowToProperty(obj, row, dateAsDate = false) {
+    setProperty(obj, row.naam, row.waarde, dateAsDate);
+}
+
+function setObjectPropertiesFrom(obj, dataTable, dateAsDate = false) {
+    if(dataTable.raw()[0][0] === 'naam') {
+        dataTable.hashes().forEach(function(row) {
+            mapRowToProperty(obj, row, dateAsDate);
         });
     }
     else {
-        obj[propertyName] = toDateOrString(propertyValue, dateAsDate);
+        dataTable.hashes().forEach(function(row) {
+            Object.keys(row).forEach(function(propertyName) {
+                setProperty(obj, propertyName, row[propertyName]);
+            })
+        });
     }
 }
 
