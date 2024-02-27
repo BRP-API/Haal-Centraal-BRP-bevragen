@@ -143,26 +143,26 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | 000000061                   |
       En voor de persoon met burgerservicenummer '000000048' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000012       | GG         | 000000024        |
-      | 000000024       | GG         | 000000024        |
-      | 000000036       | GG         | 000000024        |
-      En de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
-      | naam                  | waarde   |
-      | geboortedatum (03.10) | 20180219 |
+      | 000000012       | GG         | 000000048        |
+      | 000000024       | GG         | 000000048        |
+      | 000000036       | GG         | 000000048        |
+      En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000048                   |
       En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | GG         | 000000048        |
       | 000000012       | GG         | 000000061        |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | naam                  | waarde   |
-      | geboortedatum (03.10) | 20191014 |
+      En de persoon met burgerservicenummer '000000024' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000048                   |
       En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000036       | GG         | 000000061        |
-      | 000000036       | GG         | 000000048        |
-      En de persoon met burgerservicenummer '000000036' heeft de volgende gegevens
-      | naam                  | waarde   |
-      | geboortedatum (03.10) | 20210516 |
+      | 000000024       | GG         | 000000061        |
+      | 000000024       | GG         | 000000048        |
+      En de persoon met burgerservicenummer '000000036' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000048                   |
       En voor de persoon met burgerservicenummer '000000036' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000036       | GG         | 000000048        |
