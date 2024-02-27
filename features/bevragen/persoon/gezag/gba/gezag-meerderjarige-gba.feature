@@ -599,7 +599,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | volgende maand - 19 jaar | 18                 |
 
 
-  Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer het geboortejaar is ten minste 19 jaar voor het huidige jaar
+  Rule: een persoon die in RNI staat ingeschreven met een onvolledige geboortedatum krijgt gezag niet te bepalen geleverd wanneer het geboortejaar is ten minste 19 jaar voor het huidige jaar
     # wanneer de leeftijd niet exact bepaald kan worden en er is wel een geboortejaar bekend, wordt 'gezag niet te bepalen' alleen geleverd wanneer de persoon aan het begin van het jaar al meerderjarig (18 jaar) is
 
     Abstract Scenario: gezag van minderjarig persoon in RNI kan niet worden bepaald
