@@ -201,7 +201,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | burgerservicenummer | 000000024 |
 
 
-  Rule: wanneer van rechtswege gezag is toegewezen aan een voogd dan is de voogd niet bekend en wordt gezag geleverd zonder belanghebbenden
+  Rule: wanneer met een gerechtelijke uitspraak gezag is toegewezen aan een voogd dan is de voogd niet bekend en wordt gezag geleverd zonder de voogd(en)
 
     Scenario: er is een gerechtelijke uitspraak tot gezag voor ouder 1 en een derde
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
