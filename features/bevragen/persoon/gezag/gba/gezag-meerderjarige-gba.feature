@@ -275,6 +275,37 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam                | waarde    |
       | burgerservicenummer | 000000061 |
 
+    Abstract Scenario: voor het minderjarige kind van de partner <omschrijving>
+      Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000012                   |
+      En de persoon heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000048                   |
+      En de persoon met burgerservicenummer '000000024' heeft geen gezagsrelaties
+      En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
+      | bsnMinderjarige | soortGezag    | bsnMeerderjarige |
+      | 000000012       | <soort gezag> | <meerderjarige>  |
+      En de persoon met burgerservicenummer '000000048' heeft een 'partner' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En de persoon met burgerservicenummer '000000048' heeft geen gezagsrelaties
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000048                       |
+      | fields              | gezag                           |
+      Dan heeft de response een persoon zonder 'gezag' gegevens
+
+      Voorbeelden:
+      | soort gezag | omschrijving                      | meerderjarige |
+      | N           | kan het gezag niet bepaald worden |               |
+      | G           | is er tijdelijk geen gezag        |               |
+      | OG1         | heeft alleen de ouder gezag       | 000000024     |
+
 
   Rule: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
 
