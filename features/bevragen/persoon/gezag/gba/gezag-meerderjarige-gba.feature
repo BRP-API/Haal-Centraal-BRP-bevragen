@@ -514,7 +514,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       En de persoon met burgerservicenummer '000000048' heeft geen gezagsrelaties
       En de persoon met burgerservicenummer '000000061' heeft een 'partner' met de volgende gegevens
       | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
-      | 000000061                   | 20230614                                                           |
+      | 000000048                   | 20230614                                                           |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
