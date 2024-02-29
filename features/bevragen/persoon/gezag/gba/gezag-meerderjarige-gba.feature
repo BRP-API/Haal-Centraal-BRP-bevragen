@@ -218,7 +218,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000048                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
     Scenario: persoon heeft gezag over een eigen kind en heeft van rechtswege gezamenlijk gezag over het minderjarige kind van diens partner
       Gegeven de persoon met burgerservicenummer '000000036' heeft een 'kind' met de volgende gegevens
@@ -298,7 +298,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000048                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
       Voorbeelden:
       | soort gezag | omschrijving                      | meerderjarige |
@@ -326,7 +326,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
@@ -347,7 +347,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
@@ -371,7 +371,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd
@@ -585,7 +585,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
       En heeft de persoon de volgende 'opschortingBijhouding' gegevens
       | naam               | waarde                    |
       | reden.code         | R                         |
@@ -653,7 +653,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
       En heeft de persoon de volgende 'opschortingBijhouding' gegevens
       | naam               | waarde                    |
       | reden.code         | R                         |

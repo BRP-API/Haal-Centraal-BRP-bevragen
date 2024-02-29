@@ -169,7 +169,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | gezag                                   |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
@@ -196,7 +196,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | gezag                                   |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
@@ -226,7 +226,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | gezag                                   |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd

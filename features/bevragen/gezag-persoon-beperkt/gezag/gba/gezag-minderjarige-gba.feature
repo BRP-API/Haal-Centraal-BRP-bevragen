@@ -119,7 +119,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | gezag                                   |
-      Dan heeft de response een persoon zonder 'gezag' gegevens
+      Dan heeft de response een persoon zonder gezag
 
 
   Rule: wanneer het gezag voor een minderjarige niet bepaald kan worden, wordt dit in gezag aangegeven
