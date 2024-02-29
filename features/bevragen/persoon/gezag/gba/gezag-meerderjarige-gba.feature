@@ -565,6 +565,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam               | waarde                    |
       | reden.code         | R                         |
       | reden.omschrijving | pl is aangelegd in de rni |
+      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum            | berekende leeftijd |
@@ -598,6 +599,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam               | waarde                    |
       | reden.code         | R                         |
       | reden.omschrijving | pl is aangelegd in de rni |
+      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum            | berekende leeftijd |
@@ -635,6 +637,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam               | waarde                    |
       | reden.code         | R                         |
       | reden.omschrijving | pl is aangelegd in de rni |
+      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum        | leeftijd      |
@@ -666,6 +669,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam               | waarde                    |
       | reden.code         | R                         |
       | reden.omschrijving | pl is aangelegd in de rni |
+      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum        | leeftijd      |
@@ -702,6 +706,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam               | waarde                    |
       | reden.code         | R                         |
       | reden.omschrijving | pl is aangelegd in de rni |
+      | datum              | 20020701                  |
 
 
   Rule: een meerderjarige met gezag over meerdere minderjarigen krijgt de gezagsrelaties van al deze minderjarigen
