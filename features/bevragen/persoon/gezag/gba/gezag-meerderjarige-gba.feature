@@ -421,12 +421,16 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | naam                             | waarde    |
       | type                             | Voogdij   |
       | minderjarige.burgerservicenummer | 000000012 |
-      | derde.burgerservicenummer        | 000000048 |
+      En heeft 'gezag' een 'derde' met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000048 |
       En heeft de persoon een 'gezag' met de volgende gegevens
       | naam                             | waarde    |
       | type                             | Voogdij   |
       | minderjarige.burgerservicenummer | 000000024 |
-      | derde.burgerservicenummer        | 000000048 |
+      En heeft 'gezag' een 'derde' met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000048 |
 
     Scenario: de partner van ouder onder curatele heeft gezag over een minderjarig kind, maar niet over alle kinderen
       Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
