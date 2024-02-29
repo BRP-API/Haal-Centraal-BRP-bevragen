@@ -444,7 +444,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | 000000061                   |
       En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000012       | V          | 000000073        |
+      | 000000024       | V          | 000000073        |
       En de persoon met burgerservicenummer '000000036' heeft een ouder '1' met de volgende gegevens
       | burgerservicenummer (01.20) |
       | 000000061                   |
