@@ -512,7 +512,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       En de 'partner' is gewijzigd naar de volgende gegevens
       | burgerservicenummer (01.20) | datum ontbinding huwelijk/geregistreerd partnerschap (07.10) | reden ontbinding huwelijk/geregistreerd partnerschap (07.40) |
       | 000000036                   | 20191001                                                     | O                                                            |
-      En de 'partner' is gewijzigd naar de volgende gegevens
+      En de persoon heeft een 'partner' met de volgende gegevens
       | burgerservicenummer (01.20) | datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10) |
       | 000000061                   | 20230614                                                           |
       En de persoon met burgerservicenummer '000000048' heeft geen gezagsrelaties
