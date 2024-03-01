@@ -103,7 +103,7 @@ Functionaliteit: gezagsrelaties vragen met fields
       | gezag.ouders,gezag.ouder                   |
       | gezag.type,gezag.minderjarige,gezag.ouders |
 
-    Scenario: gezag vragen met fields <fields> dat niet van toepassing is op de persoon geeft alle van velden van gezag die wel van toepassing zijn op de persoon
+    Scenario: gezag vragen met fields <fields> dat niet van toepassing is op de persoon geeft alle velden van gezag die wel van toepassing zijn op de persoon
       Als gba personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
