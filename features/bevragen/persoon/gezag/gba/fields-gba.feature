@@ -33,7 +33,7 @@ Functionaliteit: gezagsrelaties vragen met fields
       | 000000036       | GG         | 000000061        |
       En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
       | burgerservicenummer (01.20) |
-      | 000000036                   |
+      | 000000048                   |
       En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | OG1        | 000000048        |
