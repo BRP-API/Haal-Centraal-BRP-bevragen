@@ -60,6 +60,9 @@ Functionaliteit: protocollering van de gevraagde gegevens voor gezag
       En de persoon met burgerservicenummer '000000085' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 20190516 |
+      En de persoon heeft heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0518                              |
       En voor de persoon met burgerservicenummer '000000085' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000085       | N          |                  |
@@ -68,10 +71,10 @@ Functionaliteit: protocollering van de gevraagde gegevens voor gezag
       | geboortedatum (03.10) | 20190516 |
       En voor de persoon met burgerservicenummer '000000097' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
-      | 000000097       | N          |                  |
+      | 000000097       | G          |                  |
 
 
-  Rule: Wanneer gezag wordt gevraagsd, wordt gevraagde rubriek 'PAGZ01' geprotocolleerd
+  Rule: Wanneer gezag wordt gevraagd, wordt gevraagde rubriek 'PAGZ01' geprotocolleerd
 
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken 'PAGZ01'
       Als gba personen wordt gezocht met de volgende parameters

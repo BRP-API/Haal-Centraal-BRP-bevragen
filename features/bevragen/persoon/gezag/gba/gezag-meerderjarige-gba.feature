@@ -536,7 +536,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
   
 
   Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de leeftijd lager is dan 18 jaar
-    # voor een persoon die staat ingeschreven in RNI levert de gezagsmodule altijd soort gezag 'N' (niet te bepalen)
+    # voor een persoon die staat ingeschreven in RNI (gemeente van inschrijving is gelijk aan 1999) levert de gezagsmodule altijd soort gezag 'N' (niet te bepalen)
     # wanneer zeker is dat de persoon meerderjarig is, moet geen 'gezag niet te bepalen' worden geleverd
     # wanneer de leeftijd exact bepaald kan worden (zie ../leeftijd/overzicht.feature), wordt 'gezag niet te bepalen' alleen geleverd wanneer de leeftijd lager is dan 18 jaar
 
@@ -544,9 +544,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                  | waarde          |
       | geboortedatum (03.10) | <geboortedatum> |
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20020701                             | R                                    |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde |
       | gemeente van inschrijving (09.10) | 1999   |
@@ -580,9 +577,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                  | waarde          |
       | geboortedatum (03.10) | <geboortedatum> |
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20020701                             | R                                    |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde |
       | gemeente van inschrijving (09.10) | 1999   |
