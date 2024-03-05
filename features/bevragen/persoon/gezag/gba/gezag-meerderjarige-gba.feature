@@ -558,11 +558,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
       | naam | waarde             |
       | type | GezagNietTeBepalen |
-      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-      | naam               | waarde                    |
-      | reden.code         | R                         |
-      | reden.omschrijving | pl is aangelegd in de rni |
-      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum            | berekende leeftijd |
@@ -589,11 +584,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder gezag
-      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-      | naam               | waarde                    |
-      | reden.code         | R                         |
-      | reden.omschrijving | pl is aangelegd in de rni |
-      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum            | berekende leeftijd |
@@ -610,9 +600,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                  | waarde          |
       | geboortedatum (03.10) | <geboortedatum> |
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20020701                             | R                                    |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde |
       | gemeente van inschrijving (09.10) | 1999   |
@@ -627,11 +614,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
       | naam | waarde             |
       | type | GezagNietTeBepalen |
-      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-      | naam               | waarde                    |
-      | reden.code         | R                         |
-      | reden.omschrijving | pl is aangelegd in de rni |
-      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum        | leeftijd      |
@@ -644,9 +626,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                  | waarde          |
       | geboortedatum (03.10) | <geboortedatum> |
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20020701                             | R                                    |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde |
       | gemeente van inschrijving (09.10) | 1999   |
@@ -659,11 +638,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000024                       |
       | fields              | gezag                           |
       Dan heeft de response een persoon zonder gezag
-      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-      | naam               | waarde                    |
-      | reden.code         | R                         |
-      | reden.omschrijving | pl is aangelegd in de rni |
-      | datum              | 20020701                  |
 
       Voorbeelden:
       | geboortedatum        | leeftijd      |
@@ -679,9 +653,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam                  | waarde   |
       | geboortedatum (03.10) | 00000000 |
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20020701                             | R                                    |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | naam                              | waarde |
       | gemeente van inschrijving (09.10) | 1999   |
@@ -696,11 +667,6 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon met een 'gezag' met de volgende gegevens
       | naam | waarde             |
       | type | GezagNietTeBepalen |
-      En heeft de persoon de volgende 'opschortingBijhouding' gegevens
-      | naam               | waarde                    |
-      | reden.code         | R                         |
-      | reden.omschrijving | pl is aangelegd in de rni |
-      | datum              | 20020701                  |
 
 
   Rule: een meerderjarige met gezag over meerdere minderjarigen krijgt de gezagsrelaties van al deze minderjarigen
