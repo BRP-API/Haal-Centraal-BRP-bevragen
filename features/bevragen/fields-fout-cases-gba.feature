@@ -282,12 +282,12 @@ Rule: De fields parameter bevat verkorte/volledig veld paden die verwijzen naar 
     | fields | fields[1] | Parameter bevat een niet bestaande veldnaam. |
 
     Voorbeelden:
-    | zoektype                                         | parameter 1                   | waarde 1         | parameter 2             | waarde 2 | parameter 3                | waarde 3 |
-    | ZoekMetGeslachtsnaamEnGeboortedatum              | geslachtsnaam                 | Jansen           | geboortedatum           | 19750730 | voornamen                  | Jan      |
-    | ZoekMetNaamEnGemeenteVanInschrijving             | geslachtsnaam                 | Jansen           | gemeenteVanInschrijving | 0518     | voornamen                  | Jan      |
-    | ZoekMetPostcodeEnHuisnummer                      | postcode                      | 1234AB           | huisnummer              | 123      | huisletter                 | a        |
-    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving | straat                        | Spui             | huisnummer              | 70       | gemeenteVanInschrijving    | 0518     |
-    | ZoekMetNummeraanduidingIdentificatie             | nummeraanduidingIdentificatie | 0518200000123456 | gemeenteVanInschrijving | 0518     | inclusiefOverledenPersonen | true     |
+    | zoektype                                         | parameter 1                   | waarde 1         | parameter 2             | waarde 2   | parameter 3                | waarde 3 |
+    | ZoekMetGeslachtsnaamEnGeboortedatum              | geslachtsnaam                 | Jansen           | geboortedatum           | 1975-07-30 | voornamen                  | Jan      |
+    | ZoekMetNaamEnGemeenteVanInschrijving             | geslachtsnaam                 | Jansen           | gemeenteVanInschrijving | 0518       | voornamen                  | Jan      |
+    | ZoekMetPostcodeEnHuisnummer                      | postcode                      | 1234AB           | huisnummer              | 123        | huisletter                 | a        |
+    | ZoekMetStraatHuisnummerEnGemeenteVanInschrijving | straat                        | Spui             | huisnummer              | 70         | gemeenteVanInschrijving    | 0518     |
+    | ZoekMetNummeraanduidingIdentificatie             | nummeraanduidingIdentificatie | 0518200000123456 | gemeenteVanInschrijving | 0518       | inclusiefOverledenPersonen | true     |
 
   @fout-case
   Abstract Scenario: Automatisch geleverd veld <fields> mag niet worden gevraagd bij raadplegen
