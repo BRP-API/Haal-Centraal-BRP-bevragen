@@ -83,8 +83,8 @@ Functionaliteit: gezagsrelaties vragen met fields
       | naam                             | waarde           |
       | type                             | GezamenlijkGezag |
       | minderjarige.burgerservicenummer | 000000036        |
-      | ouder.burgerservicenummer        | 000000048        |
-      | derde.burgerservicenummer        | 000000061        |
+      | ouder.burgerservicenummer        | 000000061        |
+      | derde.burgerservicenummer        | 000000048        |
 
       Voorbeelden:
       | fields                                     |
