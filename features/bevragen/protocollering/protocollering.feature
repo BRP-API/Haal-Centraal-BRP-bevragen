@@ -107,13 +107,13 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | naam            | waarde     |
       | anummer (01.10) | 4363741376 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                    |
-      | type                | RaadpleegMetBurgerservicenummer                           |
-      | burgerservicenummer | 000000024                                                 |
-      | fields              | geboorte.datum,partners.naam.voornamen,naam.geslachtsnaam |
+      | naam                | waarde                                                                                                                                  |
+      | type                | RaadpleegMetBurgerservicenummer                                                                                                         |
+      | burgerservicenummer | 000000024                                                                                                                               |
+      | fields              | geboorte.datum,adressering.adresregel2,partners.naam.voornamen,adressering.gebruikInLopendeTekst, naam.geslachtsnaam,adressering.aanhef |
       Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
-      | request_gevraagde_rubrieken |
-      | 010240, 010310, 050210      |
+      | request_gevraagde_rubrieken                    |
+      | 010240, 010310, 050210, PANM03, PANM06, PAVP04 |
 
   Rule: Wanneer met fields een hele groep wordt gevraagd, worden alle velden in die groep opgenomen in het veld 'request_gevraagde_rubrieken'.
 
@@ -131,11 +131,12 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | groep             | gevraagde rubrieken                    |
-      | geboorte          | 010310, 010320, 010330                 |
-      | nationaliteiten   | 040510, 046310, 046510, 048510         |
-      | overlijden        | 060810, 060820, 060830                 |
-      | europeesKiesrecht | 133110, 133130                         |
+      | groep                                | gevraagde rubrieken            |
+      | geboorte                             | 010310, 010320, 010330         |
+      | nationaliteiten                      | 040510, 046310, 046510, 048510 |
+      | overlijden                           | 060810, 060820, 060830         |
+      | europeesKiesrecht                    | 133110, 133130                 |
+      | partners.aangaanHuwelijkPartnerschap | 050610, 050620, 050630         |
 
     Scenario: vragen om hele relatie <relatie>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -229,14 +230,10 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                               | gevraagde rubrieken                                                                    |
-      | leeftijd                             | 010310                                                                                 |
-      | naam.voorletters                     | 010210                                                                                 |
-      | naam.volledigeNaam                   | 010210, 010220, 010230, 010240, 010410                                                 |
-      | adressering.aanschrijfwijze          | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
-      | adressering.adresregel1              | 081110, 081120, 081130, 081140, 081150, 081210, 081310, 081330                         |
-      | adressering.adresregel2              | 080910, 081110, 081120, 081160, 081170, 081210, 081310, 081340                         |
-      | partners.aangaanHuwelijkPartnerschap | 050610, 050620, 050630                                                                 |
+      | fields             | gevraagde rubrieken                    |
+      | leeftijd           | 010310                                 |
+      | naam.voorletters   | 010210                                 |
+      | naam.volledigeNaam | 010210, 010220, 010230, 010240, 010410 |
 
   Rule: Wanneer een veld wordt gevraagd waarbij meerdere velden worden meegeleverd voor het bepalen van het polymorfe type, dan worden alle daarvoor nodige velden in 'request_gevraagde_rubrieken' opgenomen.
 
@@ -260,27 +257,6 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | verblijfplaats.functieAdres   | 081010, 081110, 081210, 081310         |
       | verblijfplaats.datumVan       | 081030, 081110, 081210, 081310, 081320 |
   
-  Rule: Wanneer een gevraagde rubriek nodig is voor meerdere fields velden, wordt de rubriek één keer in 'request_gevraagde_rubrieken' opgenomen.
-
-    Abstract Scenario: Vragen om <fields> protocolleert ook benodigde velden voor het type
-      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | naam            | waarde     |
-      | anummer (01.10) | 5264846450 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | <fields>                        |
-      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
-      | request_gevraagde_rubrieken |
-      | <gevraagde rubrieken>       |
-
-      Voorbeelden:
-      | fields                                                                   | gevraagde rubrieken                                                                    |
-      | adressering.aanhef,adressering.aanschrijfwijze,naam                      | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
-      | leeftijd,geboorte.datum                                                  | 010310                                                                                 |
-      | verblijfplaats.functieAdres,verblijfplaats.verblijfadres.korteStraatnaam | 081010, 081110, 081210, 081310                                                         |
-
   Rule: Wanneer in het antwoord meerdere personen worden geleverd, dan wordt er per geleverde persoon een protocolleringsrecord opgenomen
 
     Scenario: Zoek persoon met alle mogelijke parameters
