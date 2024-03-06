@@ -1,7 +1,7 @@
 #language: nl
 
 @gba @protocollering
-Functionaliteit: protocollering van de gevraagde gegevens voor gebruikInLopendeTekst
+Functionaliteit: protocollering van de gevraagde gegevens voor aanschrijfwijze
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
@@ -20,5 +20,10 @@ Functionaliteit: protocollering van de gevraagde gegevens voor gebruikInLopendeT
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                            | gevraagde rubrieken                                                                    |
-      | adressering.gebruikInLopendeTekst | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
+      | fields                                              | gevraagde rubrieken |
+      | adressering.aanschrijfwijze                         | PANM04, PANM05      |
+      | adressering.aanschrijfwijze.aanspreekvorm           | PANM04              |
+      | adressering.aanschrijfwijze.naam                    | PANM05              |
+      | adresseringBinnenland.aanschrijfwijze               | PANM04, PANM05      |
+      | adresseringBinnenland.aanschrijfwijze.aanspreekvorm | PANM04              |
+      | adresseringBinnenland.aanschrijfwijze.naam          | PANM05              |

@@ -95,7 +95,7 @@ Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consume
     | land.code         | 6014                         |
     | land.omschrijving | Verenigde Staten van Amerika |
 
-Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
+Rule: de 'adresseringBinnenland' field alias kan worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
 
   Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias de adresregel velden van een verblijfplaats buitenland
     Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering binnenland' gegevens
@@ -114,6 +114,7 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
 
     Voorbeelden:
     | fields                                                              |
+    | adresseringBinnenland                                               |
     | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2 |
 
   Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias de adresregel velden van een adres
@@ -140,6 +141,7 @@ Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consu
 
     Voorbeelden:
     | fields                                                              |
+    | adresseringBinnenland                                               |
     | adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2 |
 
   Abstract Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias een adresregel veld van een verblijfplaats buitenland

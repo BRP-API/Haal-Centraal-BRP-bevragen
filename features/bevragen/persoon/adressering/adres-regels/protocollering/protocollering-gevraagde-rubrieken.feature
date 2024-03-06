@@ -1,7 +1,7 @@
 #language: nl
 
-@gba @protocollering
-Functionaliteit: protocollering van de gevraagde gegevens voor aanschrijfwijze
+@protocollering
+Functionaliteit: protocollering van de gevraagde gegevens voor adresregels
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
@@ -10,7 +10,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor aanschrijfwijze
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 8016043787 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
@@ -20,7 +20,12 @@ Functionaliteit: protocollering van de gevraagde gegevens voor aanschrijfwijze
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                    | gevraagde rubrieken                                                                    |
-      | adressering.aanschrijfwijze               | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
-      | adressering.aanschrijfwijze.naam          | 010210, 010220, 010230, 010240, 010410, 016110, 050220, 050230, 050240, 050610, 050710 |
-      | adressering.aanschrijfwijze.aanspreekvorm | 010220, 010410, 016110, 050220, 050610, 050710                                         |
+      | fields                            | gevraagde rubrieken |
+      | adressering.adresregel1           | PAVP03              |
+      | adressering.adresregel2           | PAVP04              |
+      | adressering.adresregel3           | 081350              |
+      | adressering.land                  | 081310              |
+      | adressering.land.code             | 081310              |
+      | adressering.land.omschrijving     | 081310              |
+      | adresseringBinnenland.adresregel1 | PAVP03              |
+      | adresseringBinnenland.adresregel2 | PAVP04              |
