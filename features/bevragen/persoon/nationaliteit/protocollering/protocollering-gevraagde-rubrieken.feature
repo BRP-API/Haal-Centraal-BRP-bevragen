@@ -4,6 +4,8 @@
 Functionaliteit: protocollering van de gevraagde gegevens voor nationaliteiten 
 
   Rule: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+    - voor nationaliteit type geldt rubriek aanduiding "PA.NT.01"
+    - type wordt altijd meegeleverd, dus wordt ook altijd geprotocolleerd
 
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken <gevraagde rubrieken>
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
