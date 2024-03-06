@@ -22,4 +22,4 @@ Functionaliteit: protocollering van leeftijd van de persoon
       Voorbeelden:
       | fields         | gevraagde rubrieken |
       | geboorte.datum | 010310              |
-      | leeftijd       | 010310              |
+      | leeftijd       | PAGL01              |
