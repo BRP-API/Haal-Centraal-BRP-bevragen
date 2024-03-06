@@ -1,6 +1,6 @@
 #language: nl
 
-@gba @protocollering
+@protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor persoon 
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
@@ -10,7 +10,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor persoon
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 8016043787 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
