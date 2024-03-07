@@ -1,6 +1,6 @@
 # language: nl
 
-@gba @autorisatie
+@autorisatie
 Functionaliteit: autorisatie gegevens van verblijfstitelgegevens van Persoon
 
     @fout-case
@@ -15,7 +15,7 @@ Functionaliteit: autorisatie gegevens van verblijfstitelgegevens van Persoon
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -62,7 +62,7 @@ Functionaliteit: autorisatie gegevens van verblijfstitelgegevens van Persoon
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
