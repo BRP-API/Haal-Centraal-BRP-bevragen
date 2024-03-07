@@ -1,6 +1,6 @@
 #language: nl
 
-@gba @protocollering
+@protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor overlijden 
 
   Rule: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
@@ -9,7 +9,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor overlijden
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 8016043787 |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000012                       |
