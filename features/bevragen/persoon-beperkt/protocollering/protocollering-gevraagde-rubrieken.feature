@@ -1,6 +1,6 @@
 #language: nl
 
-@gba @protocollering
+@protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor persoon 
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
@@ -12,7 +12,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor persoon
       | anummer (01.10)       | 8016043787 |
       | geslachtsnaam (02.40) | Maassen    |
       | geboortedatum (03.10) | 19830526   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
       | geslachtsnaam | Maassen                             |
@@ -23,14 +23,8 @@ Functionaliteit: protocollering van de gevraagde gegevens voor persoon
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                    | gevraagde rubrieken                    |
-      | naam                                      | 010210, 010220, 010230, 010240, 010410 |
-      | naam.adellijkeTitelPredicaat              | 010220                                 |
-      | naam.adellijkeTitelPredicaat.code         | 010220                                 |
-      | naam.adellijkeTitelPredicaat.omschrijving | 010220                                 |
-      | naam.adellijkeTitelPredicaat.soort        | 010220                                 |
-      | naam.geslachtsnaam                        | 010240                                 |
-      | naam.volledigeNaam                        | 010210, 010220, 010230, 010240, 010410 |
-      | naam.voorletters                          | 010210                                 |
-      | naam.voornamen                            | 010210                                 |
-      | naam.voorvoegsel                          | 010230                                 |
+      | fields                     | gevraagde rubrieken |
+      | burgerservicenummer        | 010120              |
+      | geslacht                   | 010410              |
+      | geslacht.code              | 010410              |
+      | geslacht.omschrijving      | 010410              |

@@ -1,7 +1,7 @@
 # language: nl
 
-@gba @autorisatie
-Functionaliteit: autorisatie gegevens van leeftijd van persoon bij zoeken
+@autorisatie
+Functionaliteit: autorisatie gegevens van geboorte van persoon bij zoeken
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om veld <fields> waarvoor deze niet geautoriseerd is
@@ -18,7 +18,7 @@ Functionaliteit: autorisatie gegevens van leeftijd van persoon bij zoeken
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
       | 0518                 | 2628HJ           | 2                  |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam       | waarde                      |
       | type       | ZoekMetPostcodeEnHuisnummer |
       | postcode   | 2628HJ                      |
@@ -33,8 +33,15 @@ Functionaliteit: autorisatie gegevens van leeftijd van persoon bij zoeken
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | fields   | missende autorisatie | ad hoc rubrieken                          |
-      | leeftijd | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | fields                     | missende autorisatie | ad hoc rubrieken                          |
+      | geboorte                   | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum             | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum.langFormaat | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum.type        | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum.datum       | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum.onbekend    | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum.jaar        | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
+      | geboorte.datum.maand       | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
 
     Abstract Scenario: Afnemer vraagt <fields>, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -50,7 +57,7 @@ Functionaliteit: autorisatie gegevens van leeftijd van persoon bij zoeken
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
       | 0518                 | 2628HJ           | 2                  |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam       | waarde                      |
       | type       | ZoekMetPostcodeEnHuisnummer |
       | postcode   | 2628HJ                      |
@@ -59,5 +66,12 @@ Functionaliteit: autorisatie gegevens van leeftijd van persoon bij zoeken
       Dan heeft de response 1 persoon
 
       Voorbeelden:
-      | fields   | ad hoc rubrieken |
-      | leeftijd | 10310            |
+      | fields                     | ad hoc rubrieken |
+      | geboorte                   | 10310            |
+      | geboorte.datum             | 10310            |
+      | geboorte.datum.langFormaat | 10310            |
+      | geboorte.datum.type        | 10310            |
+      | geboorte.datum.datum       | 10310            |
+      | geboorte.datum.onbekend    | 10310            |
+      | geboorte.datum.jaar        | 10310            |
+      | geboorte.datum.maand       | 10310            |
