@@ -3,6 +3,7 @@ class World {
         this.context = parameters;
         this.context.proxyUrl = "http://localhost:5002/haalcentraal/api/brp";
         this.context.apiUrl = "http://localhost:8000/haalcentraal/api/brp";
+        this.context.gezagDataPath = './src/config/GezagMock/test-data.json';
         this.context.extraHeaders = [
             { "naam": "Authorization", "waarde": "" }
         ];

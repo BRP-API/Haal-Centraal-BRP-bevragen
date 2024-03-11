@@ -1387,6 +1387,12 @@ components:
           type: string
       description: |
         Gegevens over het verblijf of de woonlocatie van een persoon.
+      example:
+        type: Adres
+        functieAdres:
+          code: W
+          omschrijving: woonadres
+        adresseerbaarObjectIdentificatie: "0226010000038820"
       discriminator:
         propertyName: type
         mapping:
