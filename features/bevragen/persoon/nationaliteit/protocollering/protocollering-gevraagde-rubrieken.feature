@@ -23,18 +23,18 @@ Functionaliteit: protocollering van de gevraagde gegevens voor nationaliteiten
       Voorbeelden:
       | fields                                            | gevraagde rubrieken            |
       | nationaliteiten.type                              | PANT01                         |
-      | nationaliteiten.nationaliteit                     | 040510, PANT01                 |
-      | nationaliteiten.nationaliteit.code                | 040510, PANT01                 |
-      | nationaliteiten.nationaliteit.omschrijving        | 040510, PANT01                 |
-      | nationaliteiten.redenOpname                       | 046310, PANT01                 |
-      | nationaliteiten.redenOpname.code                  | 046310, PANT01                 |
-      | nationaliteiten.redenOpname.omschrijving          | 046310, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid             | 048510, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid.langFormaat | 048510, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid.type        | 048510, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid.datum       | 048510, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid.onbekend    | 048510, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid.jaar        | 048510, PANT01                 |
-      | nationaliteiten.datumIngangGeldigheid.maand       | 048510, PANT01                 |
+      | nationaliteiten.nationaliteit                     | 040510                         |
+      | nationaliteiten.nationaliteit.code                | 040510                         |
+      | nationaliteiten.nationaliteit.omschrijving        | 040510                         |
+      | nationaliteiten.redenOpname                       | 046310                         |
+      | nationaliteiten.redenOpname.code                  | 046310                         |
+      | nationaliteiten.redenOpname.omschrijving          | 046310                         |
+      | nationaliteiten.datumIngangGeldigheid             | 048510                         |
+      | nationaliteiten.datumIngangGeldigheid.langFormaat | 048510                         |
+      | nationaliteiten.datumIngangGeldigheid.type        | 048510                         |
+      | nationaliteiten.datumIngangGeldigheid.datum       | 048510                         |
+      | nationaliteiten.datumIngangGeldigheid.onbekend    | 048510                         |
+      | nationaliteiten.datumIngangGeldigheid.jaar        | 048510                         |
+      | nationaliteiten.datumIngangGeldigheid.maand       | 048510                         |
       | nationaliteiten                                   | 040510, 046310, 048510, PANT01 |
 
