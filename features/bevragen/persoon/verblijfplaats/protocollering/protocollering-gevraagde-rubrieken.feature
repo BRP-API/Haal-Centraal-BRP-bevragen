@@ -29,39 +29,72 @@ Functionaliteit: protocollering van de gevraagde gegevens voor verblijfplaats
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                             | gevraagde rubrieken                                                                 |
-      | functieAdres                                       | 81010                                                                               |
-      | verblijfplaats.datumVan                            | PAVP01                                                                              |
-      | verblijfplaats.datumVan.type                       | PAVP01                                                                              |
-      | verblijfplaats.datumVan.datum                      | PAVP01                                                                              |
-      | verblijfplaats.datumVan.langFormaat                | PAVP01                                                                              |
-      | verblijfplaats.datumVan.jaar                       | PAVP01                                                                              |
-      | verblijfplaats.datumVan.maand                      | PAVP01                                                                              |
-      | verblijfplaats.datumVan.onbekend                   | PAVP01                                                                              |
-      | verblijfadres.korteStraatnaam                      | 81110                                                                               |
-      | verblijfadres.officieleStraatnaam                  | 81115                                                                               |
-      | verblijfadres.huisnummer                           | 81120                                                                               |
-      | verblijfadres.huisletter                           | 81130                                                                               |
-      | verblijfadres.huisnummertoevoeging                 | 81140                                                                               |
-      | verblijfadres.aanduidingBijHuisnummer              | 81150                                                                               |
-      | verblijfadres.aanduidingBijHuisnummer.code         | 81150                                                                               |
-      | verblijfadres.aanduidingBijHuisnummer.omschrijving | 81150                                                                               |
-      | verblijfadres.postcode                             | 81160                                                                               |
-      | verblijfadres.woonplaats                           | 81170                                                                               |
-      | verblijfadres.locatiebeschrijving                  | 81210                                                                               |
-      | verblijfadres.land                                 | 81210                                                                               |
-      | verblijfadres.land.code                            | 81210                                                                               |
-      | verblijfadres.land.omschrijving                    | 81210                                                                               |
-      | verblijfadres.regel1                               | 81330                                                                               |
-      | verblijfadres.regel2                               | 81340                                                                               |
-      | verblijfadres.regel3                               | 81350                                                                               |
-      | adresseerbaarObjectIdentificatie                   | 81180                                                                               |
-      | nummeraanduidingIdentificatie                      | 81190                                                                               |
-      | datumIngangGeldigheid                              | 88510                                                                               |
-      | datumIngangGeldigheid.type                         | 88510                                                                               |
-      | datumIngangGeldigheid.datum                        | 88510                                                                               |
-      | datumIngangGeldigheid.langFormaat                  | 88510                                                                               |
-      | datumIngangGeldigheid.jaar                         | 88510                                                                               |
-      | datumIngangGeldigheid.maand                        | 88510                                                                               |
-      | datumIngangGeldigheid.onbekend                     | 88510                                                                               |
-      | verblijfadres                                      | 81010 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 81330 81340 81350 |
+      | fields                                                                      | gevraagde rubrieken                                                                                                                    |
+      | verblijfplaats.type                                                         | PAVP02                                                                                                                                 |
+      | verblijfplaats.functieAdres                                                 | 081010                                                                                                                                 |
+      | verblijfplaats.datumVan                                                     | PAVP01                                                                                                                                 |
+      | verblijfplaats.datumVan.type                                                | PAVP01                                                                                                                                 |
+      | verblijfplaats.datumVan.datum                                               | PAVP01                                                                                                                                 |
+      | verblijfplaats.datumVan.langFormaat                                         | PAVP01                                                                                                                                 |
+      | verblijfplaats.datumVan.jaar                                                | PAVP01                                                                                                                                 |
+      | verblijfplaats.datumVan.maand                                               | PAVP01                                                                                                                                 |
+      | verblijfplaats.datumVan.onbekend                                            | PAVP01                                                                                                                                 |
+      | verblijfplaats.verblijfadres.korteStraatnaam                                | 081110                                                                                                                                 |
+      | verblijfplaats.verblijfadres.officieleStraatnaam                            | 081115                                                                                                                                 |
+      | verblijfplaats.verblijfadres.huisnummer                                     | 081120                                                                                                                                 |
+      | verblijfplaats.verblijfadres.huisletter                                     | 081130                                                                                                                                 |
+      | verblijfplaats.verblijfadres.huisnummertoevoeging                           | 081140                                                                                                                                 |
+      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer                        | 081150                                                                                                                                 |
+      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.code                   | 081150                                                                                                                                 |
+      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.omschrijving           | 081150                                                                                                                                 |
+      | verblijfplaats.verblijfadres.postcode                                       | 081160                                                                                                                                 |
+      | verblijfplaats.verblijfadres.woonplaats                                     | 081170                                                                                                                                 |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                            | 081210                                                                                                                                 |
+      | verblijfplaats.verblijfadres.land                                           | 081210                                                                                                                                 |
+      | verblijfplaats.verblijfadres.land.code                                      | 081210                                                                                                                                 |
+      | verblijfplaats.verblijfadres.land.omschrijving                              | 081210                                                                                                                                 |
+      | verblijfplaats.verblijfadres.regel1                                         | 081330                                                                                                                                 |
+      | verblijfplaats.verblijfadres.regel2                                         | 081340                                                                                                                                 |
+      | verblijfplaats.verblijfadres.regel3                                         | 081350                                                                                                                                 |
+      | verblijfplaats.adresseerbaarObjectIdentificatie                             | 081180                                                                                                                                 |
+      | verblijfplaats.nummeraanduidingIdentificatie                                | 081190                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid                                        | 088510                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid.type                                   | 088510                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid.datum                                  | 088510                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid.langFormaat                            | 088510                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid.jaar                                   | 088510                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid.maand                                  | 088510                                                                                                                                 |
+      | verblijfplaats.datumIngangGeldigheid.onbekend                               | 088510                                                                                                                                 |
+      | verblijfplaats.verblijfadres                                                | 081110, 081115, 081120, 081130, 081140, 081150, 081160, 081170, 081210, 081310, 081330, 081340, 081350                                 |
+      | verblijfplaats                                                              | 081010, 081110, 081115, 081120, 081130, 081140, 081150, 081160, 081170, 081210, 081310, 081330, 081340, 081350, 088510, PAVP01, PAVP02 |
+      | verblijfplaatsBinnenland.type                                               | PAVP02                                                                                                                                 |
+      | verblijfplaatsBinnenland.functieAdres                                       | 081010                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan                                           | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan.type                                      | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan.datum                                     | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan.langFormaat                               | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan.jaar                                      | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan.maand                                     | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumVan.onbekend                                  | PAVP01                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.korteStraatnaam                      | 081110                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.officieleStraatnaam                  | 081115                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.huisnummer                           | 081120                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.huisletter                           | 081130                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.huisnummertoevoeging                 | 081140                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer              | 081150                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer.code         | 081150                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer.omschrijving | 081150                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.postcode                             | 081160                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.woonplaats                           | 081170                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving                  | 081210                                                                                                                                 |
+      | verblijfplaatsBinnenland.adresseerbaarObjectIdentificatie                   | 081180                                                                                                                                 |
+      | verblijfplaatsBinnenland.nummeraanduidingIdentificatie                      | 081190                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid                              | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.type                         | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.datum                        | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.langFormaat                  | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.jaar                         | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.maand                        | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.onbekend                     | 088510                                                                                                                                 |
+      | verblijfplaatsBinnenland.verblijfadres                                      | 081110, 081115, 081120, 081130, 081140, 081150, 081160, 081170, 081210                                                                 |
+      | verblijfplaatsBinnenland                                                    | 081010, 081110, 081115, 081120, 081130, 081140, 081150, 081160, 081170, 081210, 088510, PAVP01, PAVP02                                 |
