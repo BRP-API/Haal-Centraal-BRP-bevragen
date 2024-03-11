@@ -9,7 +9,7 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       | nationaliteit (05.10) | 0001   |
 
   Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
-    Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor de LO BRP rubriek waar het veld mee gevuld wordt plus nationaliteit type (PA.NT.01)
+    Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor de LO BRP rubriek waar het veld mee gevuld wordt
 
     @fout-case
     Abstract Scenario: Afnemer vraagt <gevraagd veld> (<missende autorisatie>), waarvoor deze niet geautoriseerd is
