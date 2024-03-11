@@ -10,6 +10,7 @@ services:
       - AuthenticationTypes=Basic
       # - AuthenticationTypes=jwtbearer
       - Serilog__MinimumLevel__Default=Information
+      - WebApi__Url=http://gezagmock:5020
     ports:
       - "8000:80"
     networks:
