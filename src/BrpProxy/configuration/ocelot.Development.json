@@ -3,11 +3,11 @@
     {
       "UpstreamPathTemplate": "/haalcentraal/api/brp/personen",
       "DownstreamPathTemplate": "/haalcentraal/api/brp/personen",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5011"
+          "Port": "5010"
         }
       ]
     }

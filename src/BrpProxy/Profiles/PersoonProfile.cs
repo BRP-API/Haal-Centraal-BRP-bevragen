@@ -118,6 +118,11 @@ public class PersoonProfile : Profile
                 opt.Condition(src => src.GemeenteVanInschrijving?.Code != "0000");
             })
             .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
+            .ForMember(dest => dest.IndicatieGezagMinderjarige, opt => opt.MapFrom(src => src.IndicatieGezagMinderjarige))
+            .ForMember(dest => dest.Gezag, opt => {
+                opt.PreCondition(src => src.Gezag != null);
+                opt.MapFrom(src => src.Gezag);
+            })
             ;
     }
 }
