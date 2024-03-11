@@ -11,7 +11,6 @@ Functionaliteit: autorisatie gegevens van gemeente van persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) |
       | 19830526              | Maassen               |
@@ -48,7 +47,6 @@ Functionaliteit: autorisatie gegevens van gemeente van persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) |
       | 19830526              | Maassen               |

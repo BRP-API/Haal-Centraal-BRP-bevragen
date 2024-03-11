@@ -30,7 +30,6 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       Als personen wordt gezocht met de volgende parameters
       | naam       | waarde                      |
       | type       | ZoekMetPostcodeEnHuisnummer |
@@ -69,7 +68,6 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       Als personen wordt gezocht met de volgende parameters
       | naam       | waarde                      |
       | type       | ZoekMetPostcodeEnHuisnummer |

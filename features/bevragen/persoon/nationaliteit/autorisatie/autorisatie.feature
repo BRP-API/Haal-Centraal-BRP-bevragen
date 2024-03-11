@@ -19,7 +19,6 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
@@ -59,7 +58,6 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                              |
       | type                | RaadpleegMetBurgerservicenummer     |
@@ -94,7 +92,6 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                   |
       | type                | RaadpleegMetBurgerservicenummer          |
@@ -115,7 +112,6 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                                   |
       | type                | RaadpleegMetBurgerservicenummer          |
