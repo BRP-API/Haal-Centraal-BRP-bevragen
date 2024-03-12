@@ -1,6 +1,6 @@
 #language: nl
 
-@gba @protocollering
+@protocollering
 Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
 
   Rule: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
@@ -9,7 +9,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | anummer (01.10) |
       | 1219379318      |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
@@ -25,7 +25,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       En de persoon met burgerservicenummer '000000048' heeft de volgende gegevens
       | anummer (01.10) |
       | 9607152635      |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024,000000048             |
@@ -47,7 +47,7 @@ Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | naam                 | waarde |
       | gemeentecode (92.10) | 0599   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer     | 000000024                       |

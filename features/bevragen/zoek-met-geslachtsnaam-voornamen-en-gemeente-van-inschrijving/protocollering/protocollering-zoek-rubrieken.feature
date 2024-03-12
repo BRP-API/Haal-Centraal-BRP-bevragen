@@ -1,6 +1,6 @@
 #language: nl
 
-@gba @protocollering
+@protocollering
 Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijving
 
     Achtergrond:
@@ -18,7 +18,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijvi
   Rule: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met alleen de verplichte parameters
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                 |
@@ -30,7 +30,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijvi
       | 010210, 010240, 080910 |
 
     Abstract Scenario: Zoek persoon met parameter <optionele parameter>
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                 |
@@ -50,7 +50,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNaamEnGemeenteVanInschrijvi
   Rule: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met inclusiefOverledenPersonen
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                       | waarde                               |
       | type                       | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving    | 0599                                 |
