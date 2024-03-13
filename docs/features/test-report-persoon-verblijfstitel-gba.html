@@ -390,14 +390,14 @@ pre {
       <div class="navbar-header">
         
           <a class="navbar-brand">
-            Haal Centraal BRP Bevragen API - GBA     2.1.2-2024031315
+            Haal Centraal BRP Bevragen API - GBA     2.1.2-2024031316
           </a>
           <div class="project-name visible-md visible-lg">
             persoon verblijfstitel features
           </div>
           <div class="label-container">
             <div class="generated-on">
-              Wed Mar 13 2024 15:14:22 GMT+0000 (Coordinated Universal Time)
+              Wed Mar 13 2024 16:05:17 GMT+0000 (Coordinated Universal Time)
             </div>
           </div>
       </div>
@@ -475,7 +475,7 @@ pre {
                         
                     </div>
                     
-                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verblijfstitel_featuresda0449e7-534a-4895-8b8d-5b3bfb813046">
+                    <a data-toggle="collapse" href="#collapseFeaturepersoon_verblijfstitel_features79eb1155-a937-49f0-927d-4464120d6974">
                         <i class="glyphicon glyphicon-chevron-right"></i>
                         <i class="glyphicon glyphicon-chevron-down"></i>
                         <b>Functionaliteit:</b>verblijfstitel (persoon)
@@ -491,7 +491,7 @@ pre {
                     </a>
                 </h4>
             </div>
-            <div id="collapseFeaturepersoon_verblijfstitel_featuresda0449e7-534a-4895-8b8d-5b3bfb813046" class="panel-collapse collapse">
+            <div id="collapseFeaturepersoon_verblijfstitel_features79eb1155-a937-49f0-927d-4464120d6974" class="panel-collapse collapse">
                 <div class="panel-body">
                     
                     
@@ -504,7 +504,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features5363dd59-f5c8-4b0c-84f5-9a9cb0ac0fd3">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features832cfd49-a7f7-49e3-8fe6-bf3579e70b2e">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -529,7 +529,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features5363dd59-f5c8-4b0c-84f5-9a9cb0ac0fd3"
+                        <div id="collapseScenariopersoon_verblijfstitel_features832cfd49-a7f7-49e3-8fe6-bf3579e70b2e"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -726,7 +726,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               42ms
+                               47ms
                               </span>
                             
                          
@@ -885,7 +885,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_06">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -908,7 +915,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -952,7 +966,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresebe1db41-a457-463e-853a-1cffdb3bcc11">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features190b26eb-41c9-4663-b195-dafdeed9e865">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -977,7 +991,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresebe1db41-a457-463e-853a-1cffdb3bcc11"
+                        <div id="collapseScenariopersoon_verblijfstitel_features190b26eb-41c9-4663-b195-dafdeed9e865"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1382,7 +1396,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_16">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -1405,7 +1426,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -1449,7 +1477,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features956ae8f7-1c38-48ab-8684-60156e058e5a">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features66570e2c-7553-44bb-87da-594ebe9659f2">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1474,7 +1502,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features956ae8f7-1c38-48ab-8684-60156e058e5a"
+                        <div id="collapseScenariopersoon_verblijfstitel_features66570e2c-7553-44bb-87da-594ebe9659f2"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -1695,7 +1723,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               9ms
+                               6ms
                               </span>
                             
                          
@@ -1854,7 +1882,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_26">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -1877,7 +1912,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -1921,7 +1963,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features862108c7-b8f6-4d22-924c-f234e25d7f5c">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresefa4b4ec-b119-4f91-9e1d-4df3417eec83">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -1946,7 +1988,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features862108c7-b8f6-4d22-924c-f234e25d7f5c"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresefa4b4ec-b119-4f91-9e1d-4df3417eec83"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2326,7 +2368,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_36">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -2349,7 +2398,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -2393,7 +2449,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresc2968d10-76f7-4a3a-b63b-1b617ed53fd6">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features753bce37-a525-4bac-a9fb-8a6c954ec77c">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2418,7 +2474,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresc2968d10-76f7-4a3a-b63b-1b617ed53fd6"
+                        <div id="collapseScenariopersoon_verblijfstitel_features753bce37-a525-4bac-a9fb-8a6c954ec77c"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -2857,7 +2913,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_46">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -2880,7 +2943,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -2924,7 +2994,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresddc442c8-5c4d-40a4-8dcc-19223ef0f042">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features44c07191-eee1-4cc3-89e1-5a60544fcea1">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -2949,7 +3019,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresddc442c8-5c4d-40a4-8dcc-19223ef0f042"
+                        <div id="collapseScenariopersoon_verblijfstitel_features44c07191-eee1-4cc3-89e1-5a60544fcea1"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3170,7 +3240,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               5ms
+                               6ms
                               </span>
                             
                          
@@ -3391,7 +3461,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_56">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -3414,7 +3491,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -3458,7 +3542,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features8db98a57-c7fc-463e-a611-03b015584fa4">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features7e22ba67-d3bb-4cc8-8306-4134e6db8287">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -3483,7 +3567,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features8db98a57-c7fc-463e-a611-03b015584fa4"
+                        <div id="collapseScenariopersoon_verblijfstitel_features7e22ba67-d3bb-4cc8-8306-4134e6db8287"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -3696,7 +3780,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               5ms
+                               6ms
                               </span>
                             
                          
@@ -3943,7 +4027,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_66">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -3966,7 +4057,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -4010,7 +4108,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features2610f1f9-5e79-4f26-963e-9a0c26bdd819">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresf81513b1-af58-4b71-8458-d2233a5e08d6">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4035,7 +4133,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features2610f1f9-5e79-4f26-963e-9a0c26bdd819"
+                        <div id="collapseScenariopersoon_verblijfstitel_featuresf81513b1-af58-4b71-8458-d2233a5e08d6"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4240,7 +4338,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               5ms
+                               6ms
                               </span>
                             
                          
@@ -4474,7 +4572,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_76">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -4497,7 +4602,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -4541,7 +4653,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features90d35ca9-7cb3-4110-bcef-80c7f862c5a0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features2cba15a0-7467-4e69-99e2-7cbc26997c71">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -4566,7 +4678,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_features90d35ca9-7cb3-4110-bcef-80c7f862c5a0"
+                        <div id="collapseScenariopersoon_verblijfstitel_features2cba15a0-7467-4e69-99e2-7cbc26997c71"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -4946,7 +5058,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_86">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -4969,7 +5088,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -5013,7 +5139,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresc96717e0-b96a-478f-85ce-ad71e5773de0">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features7e2b8c62-dd51-40d7-b24b-d731b5547871">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5038,7 +5164,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresc96717e0-b96a-478f-85ce-ad71e5773de0"
+                        <div id="collapseScenariopersoon_verblijfstitel_features7e2b8c62-dd51-40d7-b24b-d731b5547871"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5422,7 +5548,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_96">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -5445,7 +5578,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -5489,7 +5629,7 @@ pre {
                                 <div class="tags">
                                 </div>
                                 
-                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_featuresbb39fc46-8eed-4b0c-9fc8-f0e663ec29d2">
+                                <a data-toggle="collapse" href="#collapseScenariopersoon_verblijfstitel_features94d237f3-dc3c-4be8-8e7d-1691d0899dcd">
                                     <div>
 
                                         <div style="padding-right: 30px">
@@ -5514,7 +5654,7 @@ pre {
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseScenariopersoon_verblijfstitel_featuresbb39fc46-8eed-4b0c-9fc8-f0e663ec29d2"
+                        <div id="collapseScenariopersoon_verblijfstitel_features94d237f3-dc3c-4be8-8e7d-1691d0899dcd"
                              class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div></div>
@@ -5790,7 +5930,7 @@ pre {
                             
                           
                               <span class="step-duration">
-                               6ms
+                               7ms
                               </span>
                             
                          
@@ -5949,7 +6089,14 @@ pre {
                                              data-toggle="modal"
                                              style="cursor: pointer"
                                              data-target="#error-modal-0_107">
-                                            <br> AssertionError: response body: "": expected 500 to equal 200
+                                            <br> AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500
@@ -5972,7 +6119,14 @@ pre {
                                             </div>
                                             <div class="modal-body">
                                                 <h5>
-                                                    <pre><br>AssertionError: response body: "": expected 500 to equal 200
+                                                    <pre><br>AssertionError: response body: {
+	"type": "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1",
+	"title": "An item with the same key has already been added. Key: RequestBodySerialized",
+	"status": 500,
+	"detail": "   at System.Collections.Generic.Dictionary`2.TryInsert(TKey key, TValue value, InsertionBehavior behavior)\n   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)\n   at Rvig.HaalCentraalApi.Shared.Validation.ApiCallValidator.ValidateUnusableQueryParams(Object model, HttpContext context) in /source/Rvig.HaalCentraalApi.Shared/Validation/ApiCallValidator.cs:line 68\n   at Rvig.HaalCentraalApi.Personen.Controllers.GbaApiPersonenController.GetPersonen(PersonenQuery model) in /source/Rvig.HaalCentraalApi.Personen/Controllers/GbaApiPersonenController.cs:line 32\n   at lambda_method26(Closure, Object)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeActionMethodAsync)g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.(InvokeNextActionFilterAsync)g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeNextResourceFilter)g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\n--- End of stack trace from previous location ---\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.(InvokeAsync)g__Logged|17_1(ResourceInvoker invoker)\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.(Invoke)g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\n   at Rvig.Base.App.Middleware.ForceAcceptAndContentTypeHeadersWithValueMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/ForceContentTypeWithValueMiddleware.cs:line 28\n   at Rvig.Base.App.Middleware.EnableRequestBodyBufferingMiddleware.InvokeAsync(HttpContext context) in /source/Rvig.Base.App/Middleware/EnableRequestBodyBufferingMiddleware.cs:line 32\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.StatusCodePagesMiddleware.Invoke(HttpContext context)\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.(Invoke)g__Awaited|8_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+	"instance": "/haalcentraal/api/brp/personen",
+	"code": "serverError"
+}: expected 500 to equal 200
     + expected - actual
 
     -500

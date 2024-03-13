@@ -4,12 +4,11 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5506 scenarios (5093 failed, 413 passed)
+Totaal: 5506 scenarios (5079 failed, 427 passed)
 
-## GBA v    2.1.2-2024031315
+## GBA v    2.1.2-2024031316
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (226 failed, 118 passed)
-    - features/bevragen/raadpleeg-met-burgerservicenummer/dev/fout-cases-gba.feature:48
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (225 failed, 119 passed)
     - features/bevragen/raadpleeg-met-burgerservicenummer/dev/fout-cases-gba.feature:186
     - features/bevragen/raadpleeg-met-burgerservicenummer/dev/fout-cases-gba.feature:187
     - features/bevragen/raadpleeg-met-burgerservicenummer/dev/fout-cases-gba.feature:188
@@ -456,9 +455,7 @@ Totaal: 5506 scenarios (5093 failed, 413 passed)
     - features/bevragen/persoon-beperkt/verificatie/dev/fields-gba.feature:59
     - features/bevragen/persoon-beperkt/verificatie/dev/fields-gba.feature:60
     - features/bevragen/persoon-beperkt/verificatie/dev/fields-gba.feature:61
-- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 525 scenarios (515 failed, 10 passed)
-    - features/bevragen/fields-fout-cases-gba.feature:87
-    - features/bevragen/fields-fout-cases-gba.feature:106
+- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 525 scenarios (502 failed, 23 passed)
     - features/bevragen/fields-fout-cases-gba.feature:225
     - features/bevragen/fields-fout-cases-gba.feature:244
     - features/bevragen/fields-fout-cases-gba.feature:284
@@ -938,11 +935,6 @@ Totaal: 5506 scenarios (5093 failed, 413 passed)
     - features/bevragen/fields-fout-cases-gba.feature:826
     - features/bevragen/fields-fout-cases-gba.feature:827
     - features/bevragen/fields-fout-cases-gba.feature:828
-    - features/bevragen/zoek-fout-cases-gba.feature:9
-    - features/bevragen/zoek-fout-cases-gba.feature:25
-    - features/bevragen/zoek-fout-cases-gba.feature:42
-    - features/bevragen/zoek-fout-cases-gba.feature:77
-    - features/bevragen/zoek-fout-cases-gba.feature:78
     - features/bevragen/zoek-fout-cases-gba.feature:84
     - features/bevragen/zoek-fout-cases-gba.feature:111
     - features/bevragen/zoek-fout-cases-gba.feature:112
@@ -963,12 +955,6 @@ Totaal: 5506 scenarios (5093 failed, 413 passed)
     - features/bevragen/zoek-fout-cases-gba.feature:156
     - features/bevragen/zoek-fout-cases-gba.feature:157
     - features/bevragen/zoek-fout-cases-gba.feature:158
-    - features/bevragen/zoek-fout-cases-gba.feature:179
-    - features/bevragen/zoek-fout-cases-gba.feature:180
-    - features/bevragen/zoek-fout-cases-gba.feature:181
-    - features/bevragen/zoek-fout-cases-gba.feature:182
-    - features/bevragen/zoek-fout-cases-gba.feature:183
-    - features/bevragen/zoek-fout-cases-gba.feature:184
     - features/bevragen/zoek-fout-cases-gba.feature:189
     - features/bevragen/zoek-fout-cases-gba.feature:201
     - features/bevragen/zoek-fout-cases-gba.feature:210
