@@ -20,13 +20,7 @@ Functionaliteit: autorisatie voor aanhef
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
       | fields              | <fields>                        |
-      Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                                  |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
-      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
-      | status   | 403                                                                     |
-      | code     | unauthorizedField                                                       |
-      | instance | /haalcentraal/api/brp/personen                                          |
+      Dan heeft de response 1 persoon
 
       Voorbeelden:
       | fields                       |

@@ -245,6 +245,20 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | 20120 20210 20220 20230 20240 20310 20320 20330 20410 26210 30120 30210 30220 30230 30240 30310 30320 30330 30410 PAOU01 | 36210                   | datumIngangFamilierechtelijkeBetrekking.maand       |
       | 20120 20210 20220 20230 20240 20310 20320 20330 20410 26210 30120 30210 30220 30230 30240 30310 30320 30330 30410 PAOU01 | 36210                   | datumIngangFamilierechtelijkeBetrekking.onbekend    |
 
+    Scenario: Afnemer vraagt hele groep ouders en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60)                                                                                                      | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 20120 20210 20220 20230 20240 20310 20320 20330 20410 26210 30120 30210 30220 30230 30240 30310 30320 30330 30410 36210 PAOU01 | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam         | waarde |
+      | afnemerID    | 000008 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | ouders                          |
+      Dan heeft de response 1 persoon
+
     @fout-case
     Abstract Scenario: Afnemer is niet geautoriseerd voor ouders door ontbrekende autorisatie voor <niet geautoriseerd veld>
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens

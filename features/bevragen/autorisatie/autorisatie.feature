@@ -328,7 +328,6 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer     | 000000024                       |
-      | gemeenteVanInschrijving | 0800                            |
       | fields                  | partners.geslacht               |
       Dan heeft de response 1 persoon
 
