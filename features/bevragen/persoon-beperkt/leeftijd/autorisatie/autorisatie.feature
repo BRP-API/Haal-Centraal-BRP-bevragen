@@ -58,4 +58,4 @@ Functionaliteit: autorisatie gegevens van leeftijd van persoon bij zoeken
 
       Voorbeelden:
       | fields   | ad hoc rubrieken |
-      | leeftijd | 10310            |
+      | leeftijd | PAGL01           |

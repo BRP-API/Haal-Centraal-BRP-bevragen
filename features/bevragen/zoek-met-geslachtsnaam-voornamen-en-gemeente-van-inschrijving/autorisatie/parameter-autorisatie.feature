@@ -1,6 +1,6 @@
 # language: nl
 
-@gba @autorisatie
+@autorisatie
 Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijving
 
     Achtergrond:
@@ -33,8 +33,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                 |
@@ -68,8 +67,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                 |
@@ -94,8 +92,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                 |
@@ -112,8 +109,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0599                                 |
@@ -124,9 +120,9 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       Dan heeft de response 1 persoon
 
       Voorbeelden:
-      | extra parameter         | rubriek extra parameter | waarde |
-      | voorvoegsel             | 10230                   | de     |
-      | geslacht                | 10410                   | V      |
+      | extra parameter | rubriek extra parameter | waarde |
+      | voorvoegsel     | 10230                   | de     |
+      | geslacht        | 10410                   | V      |
 
 
   Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
@@ -142,7 +138,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                               |
       | type                    | ZoekMetNaamEnGemeenteVanInschrijving |
       | gemeenteVanInschrijving | 0800                                 |

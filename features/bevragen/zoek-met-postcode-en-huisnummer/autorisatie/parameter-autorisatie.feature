@@ -1,6 +1,6 @@
 # language: nl
 
-@gba @autorisatie
+@autorisatie
 Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
 
     Achtergrond:
@@ -26,8 +26,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
       | postcode                | 2497BV                      |
@@ -61,8 +60,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                 | waarde                      |
       | type                 | ZoekMetPostcodeEnHuisnummer |
       | postcode             | 2497BV                      |
@@ -86,8 +84,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
       | postcode                | 2497BV                      |
@@ -103,8 +100,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam              | waarde                      |
       | type              | ZoekMetPostcodeEnHuisnummer |
       | postcode          | 2497BV                      |
@@ -132,7 +128,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetPostcodeEnHuisnummer
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                      |
       | type                    | ZoekMetPostcodeEnHuisnummer |
       | postcode                | 2497BV                      |

@@ -9,8 +9,8 @@ Functionaliteit: autorisatie gegevens van verblijfstitelgegevens van Persoon
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 <ad hoc rubrieken>        | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
+      | naam      | waarde |
+      | afnemerID | 000008 |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |
@@ -55,8 +55,8 @@ Functionaliteit: autorisatie gegevens van verblijfstitelgegevens van Persoon
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 <ad hoc rubrieken>        | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
+      | naam      | waarde |
+      | afnemerID | 000008 |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | geslachtsaanduiding (04.10) |
       | 19830526              | Maassen               | Pieter            | M                           |

@@ -63,7 +63,7 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | 10120 20110 30110              | A-nummer uit groep 01 dat niet voorkomt in de resource       |
       | 10120 20310 30210              | exact 1 gegeven van ouder 1 en 1 ander gegeven van ouder 2   |
       | 10120 20120 20240 30310 306210 | meerdere gegevens van ouder 1 en andere gegevens van ouder 2 |
-      | PAOU01                         | alleen voorletters van ouder(s)                              |
+      | 10120 PAOU01                   | alleen voorletters van ouder(s)                              |
 
       
   Rule: Vragen met fields om een gegeven van ouders, wanneer de afnemer niet geautoriseerd is voor dan gegeven van ouder 1 én van ouder 2, geeft een foutmelding

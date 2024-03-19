@@ -25,8 +25,8 @@ Functionaliteit: autorisatie op parameters bij RaadpleegMetBurgerservicenummer
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | <ad hoc rubrieken>              | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
+      | naam      | waarde |
+      | afnemerID | 000008 |
       Als personen wordt gezocht met de volgende parameters
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
@@ -52,8 +52,8 @@ Functionaliteit: autorisatie op parameters bij RaadpleegMetBurgerservicenummer
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120                           | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
+      | naam      | waarde |
+      | afnemerID | 000008 |
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
@@ -72,7 +72,7 @@ Functionaliteit: autorisatie op parameters bij RaadpleegMetBurgerservicenummer
       | naam                    | waarde                          |
       | type                    | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer     | 000000024                       |
-      | gemeenteVanInschrijving | 0800                            |
+      | gemeenteVanInschrijving | 0530                            |
       | fields                  | burgerservicenummer             |
       Dan heeft de response 1 persoon
 

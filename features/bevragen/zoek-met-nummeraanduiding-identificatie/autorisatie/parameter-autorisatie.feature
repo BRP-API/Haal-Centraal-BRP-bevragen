@@ -1,6 +1,6 @@
 # language: nl
 
-@gba @autorisatie
+@autorisatie
 Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentificatie
     Achtergrond:
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -26,8 +26,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0800200000219679                     |
@@ -49,8 +48,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000618922                     |
@@ -72,8 +70,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000618922                     |
@@ -87,8 +84,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0599200000618922                     |
@@ -109,7 +105,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | naam         | waarde |
       | afnemerID    | 000008 |
       | gemeenteCode | 0800   |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                          | waarde                               |
       | type                          | ZoekMetNummeraanduidingIdentificatie |
       | nummeraanduidingIdentificatie | 0800200000219679                     |
