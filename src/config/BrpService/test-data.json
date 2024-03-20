@@ -8247,7 +8247,18 @@
     "indicatieGezagMinderjarige": {
       "code": "2",
       "omschrijving": "Ouder2 heeft het gezag"
-    }
+    },
+    "gezag": [
+      {
+        "type": "EenhoofdigOuderlijkGezag",
+        "minderjarige": {
+          "burgerservicenummer": "999990408"
+        },
+        "ouder": {
+          "burgerservicenummer": "999990792"
+        }
+      }
+    ]
   },
   {
     "aNummer": "4209368084",
@@ -8849,7 +8860,23 @@
     "indicatieGezagMinderjarige": {
       "code": "12",
       "omschrijving": "Ouder1 en ouder2 hebben het gezag"
-    }
+    },
+    "gezag": [
+      {
+        "type": "TweehoofdigOuderlijkGezag",
+        "minderjarige": {
+          "burgerservicenummer": "999992144"
+        },
+        "ouders": [
+          {
+            "burgerservicenummer": "999990937"
+          },
+          {
+            "burgerservicenummer": "999993562"
+          }
+        ]
+      }
+    ]
   },
   {
     "aNummer": "8294830352",
@@ -9039,7 +9066,16 @@
     "indicatieGezagMinderjarige": {
       "code": "D",
       "omschrijving": "Een of meer derden hebben het gezag"
-    }
+    },
+    "gezag": [
+      {
+        "type": "Voogdij",
+        "minderjarige": {
+          "burgerservicenummer": "999991711"
+        },
+        "derden": []
+      }
+    ]
   },
   {
     "aNummer": "9275974237",
@@ -48980,7 +49016,21 @@
     "indicatieGezagMinderjarige": {
       "code": "2D",
       "omschrijving": "Ouder2 en een derde hebben het gezag"
-    }
+    },
+    "gezag": [
+      {
+        "type": "GezamenlijkGezag",
+        "minderjarige": {
+          "burgerservicenummer": "999991577"
+        },
+        "ouder": {
+          "burgerservicenummer": "999993562"
+        },
+        "derde": {
+          "burgerservicenummer": "000000048"
+        }
+      }
+    ]
   },
   {
     "aNummer": "6216781931",

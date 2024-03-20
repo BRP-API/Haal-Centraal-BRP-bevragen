@@ -4,9 +4,9 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5506 scenarios (0 failed, 5506 passed)
+Totaal: 5506 scenarios (1 failed, 5505 passed)
 
-## GBA v    2.0.47
+## GBA v    2.1.2-2024031317
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (344 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
@@ -30,11 +30,12 @@ Totaal: 5506 scenarios (0 failed, 5506 passed)
   - [verblijfplaats](./test-report-persoon-verblijfplaats-gba.html){:target="_blank" rel="noopener"}: 80 scenarios (80 passed)
   - [verblijfstitel](./test-report-persoon-verblijfstitel-gba.html){:target="_blank" rel="noopener"}: 11 scenarios (11 passed)
   - [verificatie](./test-report-persoon-verificatie-gba.html){:target="_blank" rel="noopener"}: 13 scenarios (13 passed)
-- [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (788 passed)
+- [Autorisatie](./test-report-autorisatie-gba.html){:target="_blank" rel="noopener"}: 788 scenarios (1 failed, 787 passed)
+    - features/bevragen/persoon-beperkt/geboorte/dev/autorisatie-gba.feature:70
 - [Protocollering](./test-report-protocollering-gba.html){:target="_blank" rel="noopener"}: 388 scenarios (388 passed)
 
 
-## Proxy v2.1.1
+## Proxy v2.1.2
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 208 scenarios (208 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
