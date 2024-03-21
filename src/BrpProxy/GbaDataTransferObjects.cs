@@ -513,7 +513,7 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
         public IndicatieGezagMinderjarige IndicatieGezagMinderjarige { get; set; }
 
         [Newtonsoft.Json.JsonProperty("gezag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Gezag Gezag { get; set; }
+        public System.Collections.Generic.ICollection<AbstractGezagsrelatie> Gezag { get; set; }
 
         [Newtonsoft.Json.JsonProperty("verblijfstitel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public GbaVerblijfstitel Verblijfstitel { get; set; }
@@ -548,15 +548,10 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     public partial class GbaGezagPersoonBeperkt : GbaPersoonBeperkt
     {
         [Newtonsoft.Json.JsonProperty("gezag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Gezag Gezag { get; set; }
+        public System.Collections.Generic.ICollection<AbstractGezagsrelatie> Gezag { get; set; }
 
     }
 
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Gezag : System.Collections.ObjectModel.Collection<AbstractGezagsrelatie>
-    {
-
-    }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class TweehoofdigOuderlijkGezag : AbstractGezagsrelatie

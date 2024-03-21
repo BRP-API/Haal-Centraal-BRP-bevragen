@@ -109,6 +109,23 @@ public class FilterTests
                     Postcode = "2628HJ",
                     Huisnummer = 2
                 }
+            },
+            Gezag = new Collection<AbstractGezagsrelatie>
+            {
+                new TweehoofdigOuderlijkGezag
+                {
+                    Minderjarige = new Minderjarige
+                    {
+                        Burgerservicenummer = "12345",
+                    },
+                    Ouders = new Collection<GezagOuder>
+                    {
+                        new GezagOuder
+                        {
+                            Burgerservicenummer = "23456"
+                        }
+                    }
+                }
             }
         },
         new Persoon
@@ -121,7 +138,7 @@ public class FilterTests
             },
         }
     };
-
+    
     [Fact]
     public void FilterSimpleProperty()
     {
@@ -402,6 +419,36 @@ public class FilterTests
                     }
                 },
                 new Persoon { Burgerservicenummer = "23456" }
+            }.ToJson());
+    }
+
+    [Theory]
+    [InlineData("gezag")]
+    [InlineData("gezag.type")]
+    [InlineData("gezag.ouder")]
+    public void FilterGezag(string field)
+    {
+        personen[0].Filter(new[] { field })!.ToJson()
+            .Should().Be(
+            new Persoon
+            {
+                Gezag = new Collection<AbstractGezagsrelatie>
+                {
+                    new TweehoofdigOuderlijkGezag
+                    {
+                        Minderjarige = new Minderjarige
+                        {
+                            Burgerservicenummer = "12345",
+                        },
+                        Ouders = new Collection<GezagOuder>
+                        {
+                            new GezagOuder
+                            {
+                                Burgerservicenummer = "23456"
+                            }
+                        }
+                    }
+                }
             }.ToJson());
     }
 }

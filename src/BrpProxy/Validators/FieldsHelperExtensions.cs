@@ -123,7 +123,7 @@ namespace BrpProxy.Validators
 
             var retval = Activator.CreateInstance(entity.GetType());
 
-            foreach (var field in fields.Where(f => !(f.Contains("kinderen") || f.Contains("nationaliteiten") || f.Contains("ouders") || f.Contains("partners"))))
+            foreach (var field in fields.Where(f => !(f.Contains("kinderen") || f.Contains("nationaliteiten") || f.Contains("ouders") || f.Contains("partners") || f.StartsWith("gezag"))))
             {
                 var fieldParts = field.Split('.');
 
@@ -157,7 +157,7 @@ namespace BrpProxy.Validators
                 }
             }
 
-            foreach(var relatieNaam in new[] { "kinderen", "nationaliteiten", "ouders", "partners" })
+            foreach(var relatieNaam in new[] { "kinderen", "nationaliteiten", "ouders", "partners", "gezag" })
             {
                 (var pi, var srcValue) = entity.GetValue(relatieNaam);
                 if (pi == null || srcValue == null)
@@ -172,6 +172,11 @@ namespace BrpProxy.Validators
                 if (relatieFields.Any(x => x == relatieNaam))
                 {
                     // alle velden van de relatie moeten worden geretourneerd
+                    pi.SetValue(retval, srcValue);
+                }
+                else if (relatieFields.Any() && relatieNaam == "gezag")
+                {
+                    // alle velden van gezag moeten worden geretourneerd
                     pi.SetValue(retval, srcValue);
                 }
                 else if (relatieFields.Any())
