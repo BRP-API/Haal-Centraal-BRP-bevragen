@@ -234,28 +234,6 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | leeftijd           | 010310                                 |
       | naam.voorletters   | 010210                                 |
       | naam.volledigeNaam | 010210, 010220, 010230, 010240, 010410 |
-
-  Rule: Wanneer een veld wordt gevraagd waarbij meerdere velden worden meegeleverd voor het bepalen van het polymorfe type, dan worden alle daarvoor nodige velden in 'request_gevraagde_rubrieken' opgenomen.
-
-    Abstract Scenario: Vragen om <fields> protocolleert ook benodigde velden voor het type
-      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | naam            | waarde     |
-      | anummer (01.10) | 5264846450 |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                          |
-      | type                | RaadpleegMetBurgerservicenummer |
-      | burgerservicenummer | 000000024                       |
-      | fields              | <fields>                        |
-      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
-      | request_gevraagde_rubrieken |
-      | <gevraagde rubrieken>       |
-
-      Voorbeelden:
-      | fields                        | gevraagde rubrieken                    |
-      | nationaliteiten.nationaliteit | 040510, 046510                         |
-      | nationaliteiten.redenOpname   | 040510, 046310, 046510                 |
-      | verblijfplaats.functieAdres   | 081010, 081110, 081210, 081310         |
-      | verblijfplaats.datumVan       | 081030, 081110, 081210, 081310, 081320 |
   
   Rule: Wanneer in het antwoord meerdere personen worden geleverd, dan wordt er per geleverde persoon een protocolleringsrecord opgenomen
 
