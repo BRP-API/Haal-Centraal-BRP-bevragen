@@ -133,7 +133,6 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       Voorbeelden:
       | groep                                | gevraagde rubrieken            |
       | geboorte                             | 010310, 010320, 010330         |
-      | nationaliteiten                      | 040510, 046310, 046510, 048510 |
       | overlijden                           | 060810, 060820, 060830         |
       | europeesKiesrecht                    | 133110, 133130                 |
       | partners.aangaanHuwelijkPartnerschap | 050610, 050620, 050630         |
