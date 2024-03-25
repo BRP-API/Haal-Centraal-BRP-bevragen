@@ -776,6 +776,10 @@ After(async function() {
     }
 
     await rollbackSqlStatements(this.context.sqlData, pool, tableNameMap, logSqlStatements);
+
+    if(this.context.gezagDataPath !== undefined) {
+        fs.writeFileSync(this.context.gezagDataPath, JSON.stringify([], null, '\t'));
+    }
 });
 
 function getNextStapelNr(sqlData, relatie) {
