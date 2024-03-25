@@ -1,24 +1,26 @@
 # language: nl
 
-@gba @autorisatie
-Functionaliteit: autorisatie gegevens van geboorte van persoon in gezag persoon beperkt
+@autorisatie
+Functionaliteit: autorisatie gegevens van geboorte van persoon bij zoeken
+
+    Achtergrond:
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | naam                                     | waarde           |
+      | gemeentecode (92.10)                     | 0599             |
+      | identificatiecode verblijfplaats (11.80) | 0599010051001502 |
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om veld <fields> waarvoor deze niet geautoriseerd is
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | <ad hoc rubrieken> 81180        | N                        | 20201128                |
+      | <ad hoc rubrieken> 81120 81160  | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
-      | naam         | waarde |
-      | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0518                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      | 0518                 | 0599010051001502                         |
-      Als gba personen wordt gezocht met de volgende parameters
+      | naam      | waarde |
+      | afnemerID | 000008 |
+      Als personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
@@ -42,21 +44,14 @@ Functionaliteit: autorisatie gegevens van geboorte van persoon in gezag persoon 
       | geboorte.datum.jaar        | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
       | geboorte.datum.maand       | 10310                | 10120 10210 10320 10330 20310 30310 50310 |
 
-      Abstract Scenario: Afnemer vraagt <fields>, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
+    Abstract Scenario: Afnemer vraagt <fields>, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | <ad hoc rubrieken> 81180        | N                        | 20201128                |
+      | <ad hoc rubrieken> 81120 81160  | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam         | waarde |
       | afnemerID    | 000008 |
-      | gemeenteCode | 0800   |
-      En de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0518                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      | 0518                 | 0599010051001502                         |
-      Als gba personen wordt gezocht met de volgende parameters
+      Als personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |

@@ -1,6 +1,6 @@
 #language: nl
 
-@gba @protocollering
+@protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor persoon 
 
   Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
@@ -9,20 +9,23 @@ Functionaliteit: protocollering van de gevraagde gegevens voor persoon
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken <gevraagde rubrieken>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
-      | 0518                              |
+      | 0599                              |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      | 0518                 | 0599010051001502                         |
-      Als gba personen wordt gezocht met de volgende parameters
+      | naam                                     | waarde           |
+      | gemeentecode (92.10)                     | 0599             |
+      | identificatiecode verblijfplaats (11.80) | 0599010051001502 |
+      Als personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | <fields>                                |
-      Dan heeft de persoon met burgerservicenummer '000000012' de volgende 'protocollering' gegevens
+      Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_gevraagde_rubrieken |
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields         | gevraagde rubrieken |
-      | geboorte.datum | 010310              |
-      | leeftijd       | 010310              |
+      | fields                     | gevraagde rubrieken |
+      | burgerservicenummer        | 010120              |
+      | geslacht                   | 010410              |
+      | geslacht.code              | 010410              |
+      | geslacht.omschrijving      | 010410              |
