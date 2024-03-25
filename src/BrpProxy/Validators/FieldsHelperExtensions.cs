@@ -250,6 +250,7 @@ namespace BrpProxy.Validators
                     case "partners.aangaanHuwelijkPartnerschap.datum":
                     case "partners.geboorte.datum":
                     case "verblijfplaats.type":
+                    case "nationaliteiten.type":
                         retval.Add(field);
                         break;
                     case "verblijfplaatsBinnenland.type":

@@ -329,32 +329,22 @@ public class FilterTests
             }.ToJson());
     }
 
-    //[Fact]
-    //public void FilterNationaliteitenCollection()
-    //{
-    //    personen[0].Filter(new[] { "nationaliteiten.nationaliteit1" })!.ToJson()
-    //        .Should().Be(
-    //        new Persoon
-    //        {
-    //            Nationaliteiten = new Collection<AbstractNationaliteit>
-    //            {
-    //                new NationaliteitBekend
-    //                {
-    //                    Nationaliteit = new Waardetabel{ Code = "1"}
-    //                },
-    //                new NationaliteitBekend
-    //                {
-    //                    Nationaliteit = new Waardetabel { Code = "2"}
-    //                },
-    //                new BehandeldAlsNederlander
-    //                {
-    //                },
-    //                new VastgesteldNietNederlander
-    //                {
-    //                }
-    //            }
-    //        }.ToJson());
-    //}
+    [Fact]
+    public void FilterNationaliteitenCollection()
+    {
+        personen[0].Filter(new[] { "nationaliteiten.type" })!.ToJson()
+            .Should().Be(
+            new Persoon
+            {
+                Nationaliteiten = new Collection<AbstractNationaliteit>
+                {
+                    new NationaliteitBekend(),
+                    new NationaliteitBekend(),
+                    new BehandeldAlsNederlander(),
+                    new VastgesteldNietNederlander()
+                }
+            }.ToJson());
+    }
 
     [Fact]
     public void FilterFieldInComplexPropertyInCombinatieMetFilterInOnderzoekComplexProperty()
