@@ -178,7 +178,12 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+            - $ref: 'common.yaml#/components/schemas/Waardetabel'
+            - type: object
+              deprecated: true
+        gezag:
+          $ref: 'gezag.yaml#/components/schemas/Gezag'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/GbaVerblijfstitel'
         kinderen:
@@ -247,7 +252,12 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          allOf:
+            - $ref: 'common.yaml#/components/schemas/Waardetabel'
+            - type: object
+              deprecated: true
+        gezag:
+          $ref: 'gezag.yaml#/components/schemas/Gezag'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
         kinderen:

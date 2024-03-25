@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Gezag definities
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GbaGezagPersoonBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
+        - type: object
+          properties:
+            gezag:
+              $ref: "#/components/schemas/Gezag"
+    GezagPersoonBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+        - type: object
+          properties:
+            gezag:
+              $ref: "#/components/schemas/Gezag"
+    Gezag:
+      type: array
+      items: 
+        $ref: '#/components/schemas/AbstractGezagsrelatie'
+      minItems: 0
+    Meerderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+    Minderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+      required: 
+        - burgerservicenummer
+    GezagOuder:
+      allOf: 
+        - $ref: '#/components/schemas/Meerderjarige'
+      required: 
+        -  burgerservicenummer
+    AbstractGezagsrelatie:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
+          Voogdij: '#/components/schemas/Voogdij'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+    TweehoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/GezagOuder'
+              minItems: 2
+              maxItems: 2
+            minderjarige:
+              $ref: '#/components/schemas/Minderjarige'
+    EenhoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuder'
+            minderjarige:
+              $ref: '#/components/schemas/Minderjarige'
+    GezamenlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuder'
+            derde:
+              $ref: '#/components/schemas/Meerderjarige'
+            minderjarige:
+              $ref: '#/components/schemas/Minderjarige'
+    Voogdij:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: '#/components/schemas/Meerderjarige'
+              minItems: 0
+              maxItems: 2
+            minderjarige:
+              $ref: '#/components/schemas/Minderjarige'
+    TijdelijkGeenGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+    GezagNietTeBepalen:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'

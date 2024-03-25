@@ -91,6 +91,16 @@ def writeProperty(path, property, propertyDef):
     if "$ref" in propertyDef:
         writeComponent (path, propertyDef.get("$ref"))
 
+    if "allOf" in propertyDef:
+        for object in propertyDef.get("allOf"):
+            if "$ref" in object:
+                writeComponent (path, object.get("$ref"))
+
+            if "properties" in object:
+                properties = sorted(object.get("properties").items())
+                for property, propertyDef in properties:
+                    writeProperty(path, property, propertyDef)
+
     if "properties" in propertyDef:
         properties = sorted(propertyDef.get("properties"))
         for subProperty, subPropertyDef in properties:
