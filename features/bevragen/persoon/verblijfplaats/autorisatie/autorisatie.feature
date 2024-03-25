@@ -37,40 +37,40 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
 
       Voorbeelden:
       | gevraagd veld                                                     | ad hoc rubrieken                                                                                             |
-      | verblijfplaats.functieAdres                                       | 81010 81110 81210 81310                                                                                      |
-      | verblijfplaats.datumVan                                           | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.datumVan.type                                      | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.datumVan.datum                                     | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.datumVan.langFormaat                               | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.datumVan.jaar                                      | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.datumVan.maand                                     | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.datumVan.onbekend                                  | 81110 81210 81310 PAVP01                                                                                     |
-      | verblijfplaats.verblijfadres.korteStraatnaam                      | 81110 81210 81310                                                                                            |
-      | verblijfplaats.verblijfadres.officieleStraatnaam                  | 81110 81115 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.huisnummer                           | 81110 81120 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.huisletter                           | 81110 81130 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.huisnummertoevoeging                 | 81110 81140 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer              | 81110 81150 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.code         | 81110 81150 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.omschrijving | 81110 81150 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.postcode                             | 81110 81160 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.woonplaats                           | 81110 81170 81210 81310                                                                                      |
-      | verblijfplaats.verblijfadres.locatiebeschrijving                  | 81110 81210 81310                                                                                            |
-      | verblijfplaats.verblijfadres.land                                 | 81110 81210 81310                                                                                            |
-      | verblijfplaats.verblijfadres.land.code                            | 81110 81210 81310                                                                                            |
-      | verblijfplaats.verblijfadres.land.omschrijving                    | 81110 81210 81310                                                                                            |
-      | verblijfplaats.verblijfadres.regel1                               | 81110 81210 81310 81330                                                                                      |
-      | verblijfplaats.verblijfadres.regel2                               | 81110 81210 81310 81340                                                                                      |
-      | verblijfplaats.verblijfadres.regel3                               | 81110 81210 81310 81350                                                                                      |
-      | verblijfplaats.adresseerbaarObjectIdentificatie                   | 81110 81180 81210 81310                                                                                      |
-      | verblijfplaats.nummeraanduidingIdentificatie                      | 81110 81190 81210 81310                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid                              | 81110 81210 81310 88510                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid.type                         | 81110 81210 81310 88510                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid.datum                        | 81110 81210 81310 88510                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid.langFormaat                  | 81110 81210 81310 88510                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid.jaar                         | 81110 81210 81310 88510                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid.maand                        | 81110 81210 81310 88510                                                                                      |
-      | verblijfplaats.datumIngangGeldigheid.onbekend                     | 81110 81210 81310 88510                                                                                      |
+      | verblijfplaats.functieAdres                                       | 81010                                                                                                        |
+      | verblijfplaats.datumVan                                           | PAVP01                                                                                                       |
+      | verblijfplaats.datumVan.type                                      | PAVP01                                                                                                       |
+      | verblijfplaats.datumVan.datum                                     | PAVP01                                                                                                       |
+      | verblijfplaats.datumVan.langFormaat                               | PAVP01                                                                                                       |
+      | verblijfplaats.datumVan.jaar                                      | PAVP01                                                                                                       |
+      | verblijfplaats.datumVan.maand                                     | PAVP01                                                                                                       |
+      | verblijfplaats.datumVan.onbekend                                  | PAVP01                                                                                                       |
+      | verblijfplaats.verblijfadres.korteStraatnaam                      | 81110                                                                                                        |
+      | verblijfplaats.verblijfadres.officieleStraatnaam                  | 81115                                                                                                        |
+      | verblijfplaats.verblijfadres.huisnummer                           | 81120                                                                                                        |
+      | verblijfplaats.verblijfadres.huisletter                           | 81130                                                                                                        |
+      | verblijfplaats.verblijfadres.huisnummertoevoeging                 | 81140                                                                                                        |
+      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer              | 81150                                                                                                        |
+      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.code         | 81150                                                                                                        |
+      | verblijfplaats.verblijfadres.aanduidingBijHuisnummer.omschrijving | 81150                                                                                                        |
+      | verblijfplaats.verblijfadres.postcode                             | 81160                                                                                                        |
+      | verblijfplaats.verblijfadres.woonplaats                           | 81170                                                                                                        |
+      | verblijfplaats.verblijfadres.locatiebeschrijving                  | 81210                                                                                                        |
+      | verblijfplaats.verblijfadres.land                                 | 81310                                                                                                        |
+      | verblijfplaats.verblijfadres.land.code                            | 81310                                                                                                        |
+      | verblijfplaats.verblijfadres.land.omschrijving                    | 81310                                                                                                        |
+      | verblijfplaats.verblijfadres.regel1                               | 81330                                                                                                        |
+      | verblijfplaats.verblijfadres.regel2                               | 81340                                                                                                        |
+      | verblijfplaats.verblijfadres.regel3                               | 81350                                                                                                        |
+      | verblijfplaats.adresseerbaarObjectIdentificatie                   | 81180                                                                                                        |
+      | verblijfplaats.nummeraanduidingIdentificatie                      | 81190                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid                              | 88510                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid.type                         | 88510                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid.datum                        | 88510                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid.langFormaat                  | 88510                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid.jaar                         | 88510                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid.maand                        | 88510                                                                                                        |
+      | verblijfplaats.datumIngangGeldigheid.onbekend                     | 88510                                                                                                        |
       | verblijfplaats.verblijfadres                                      | 81110 81115 81120 81130 81140 81150 81160 81170 81210 81310 81330 81340 81350                                |
       | verblijfplaats                                                    | 81010 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81310 81330 81340 81350 88510 PAVP01 |
 
@@ -159,6 +159,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfadres.aanduidingBijHuisnummer           | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81160 81170 81180 81190 81210 81310 81320 81330 81340 81350 88510 PAVP01 | 81150                |
       | verblijfadres.postcode                          | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81170 81180 81190 81210 81310 81320 81330 81340 81350 88510 PAVP01 | 81160                |
       | verblijfadres.woonplaats                        | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81180 81190 81210 81310 81320 81330 81340 81350 88510 PAVP01 | 81170                |
+      | verblijfadres.locatiebeschrijving               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81310 81320 81330 81340 81350 88510 PAVP01 | 81210                |
       | verblijfadres.land                              | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81320 81330 81340 81350 88510 PAVP01 | 81310                |
       | verblijfadres.land.code                         | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81320 81330 81340 81350 88510 PAVP01 | 81310                |
       | verblijfadres.land.omschrijving                 | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81320 81330 81340 81350 88510 PAVP01 | 81310                |
@@ -201,6 +202,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfadres.aanduidingBijHuisnummer           | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81160 81170 81180 81190 81210 81310 81320 81330 81340 81350 88510 PAVP01 | 81150                |
       | verblijfadres.postcode                          | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81170 81180 81190 81210 81310 81320 81330 81340 81350 88510 PAVP01 | 81160                |
       | verblijfadres.woonplaats                        | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81180 81190 81210 81310 81320 81330 81340 81350 88510 PAVP01 | 81170                |
+      | verblijfadres.locatiebeschrijving               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81310 81320 81330 81340 81350 88510 PAVP01 | 81210                |
       | verblijfadres.land                              | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81320 81330 81340 81350 88510 PAVP01 | 81310                |
       | verblijfadres.land.code                         | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81320 81330 81340 81350 88510 PAVP01 | 81310                |
       | verblijfadres.land.omschrijving                 | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81320 81330 81340 81350 88510 PAVP01 | 81310                |
@@ -244,8 +246,8 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaats.verblijfadres.regel1          |
       
 
-  Rule: Wanneer met fields een veld van verblijfplaats wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaats wordt bepaald, wordt een foutmelding gegeven
-    Om een veld van verblijfplaats te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het verblijfplaatstype mee bepaald wordt:
+  Rule: Wanneer met fields om type van verblijfplaats wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaats wordt bepaald, wordt een foutmelding gegeven
+    Om type van verblijfplaats te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het verblijfplaatstype mee bepaald wordt:
     - 81110: straatnaam
     - 81210: locatiebeschrijving
     - 81310: land
@@ -265,7 +267,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       Dan heeft de response 1 persoon
 
     @fout-case
-    Abstract Scenario: Afnemer is wel geautoriseerd voor gevraagde veld, maar niet voor <missende autorisatie> die nodig is voor verblijfplaats type
+    Abstract Scenario: Afnemer is niet geautoriseerd voor <missende autorisatie> die nodig is voor verblijfplaats type
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
       | 10120 <ad hoc rubrieken>        | N                        | 20201128                |
@@ -276,7 +278,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
-      | fields              | verblijfplaats.<gevraagd veld>  |
+      | fields              | verblijfplaats.type             |
       Dan heeft de response een object met de volgende gegevens
       | naam     | waarde                                                                  |
       | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
@@ -286,89 +288,10 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | instance | /haalcentraal/api/brp/personen                                          |
 
       Voorbeelden:
-      | gevraagd veld                                      | ad hoc rubrieken   | missende autorisatie        |
-      | type                                               | 81210 81310        | straat (81110)              |
-      | functieAdres                                       | 81010 81210 81310  | straat (81110)              |
-      | datumVan                                           | PAVP01 81210 81310 | straat (81110)              |
-      | verblijfadres.officieleStraatnaam                  | 81115 81210 81310  | straat (81110)              |
-      | verblijfadres.huisnummer                           | 81120 81210 81310  | straat (81110)              |
-      | verblijfadres.huisletter                           | 81130 81210 81310  | straat (81110)              |
-      | verblijfadres.huisnummertoevoeging                 | 81140 81210 81310  | straat (81110)              |
-      | verblijfadres.aanduidingBijHuisnummer              | 81150 81210 81310  | straat (81110)              |
-      | verblijfadres.aanduidingBijHuisnummer.code         | 81150 81210 81310  | straat (81110)              |
-      | verblijfadres.aanduidingBijHuisnummer.omschrijving | 81150 81210 81310  | straat (81110)              |
-      | verblijfadres.postcode                             | 81160 81210 81310  | straat (81110)              |
-      | verblijfadres.woonplaats                           | 81170 81210 81310  | straat (81110)              |
-      | verblijfadres.locatiebeschrijving                  | 81210 81210 81310  | straat (81110)              |
-      | verblijfadres.land                                 | 81310 81210 81310  | straat (81110)              |
-      | verblijfadres.land.code                            | 81310 81210 81310  | straat (81110)              |
-      | verblijfadres.land.omschrijving                    | 81310 81210 81310  | straat (81110)              |
-      | verblijfadres.regel1                               | 81330 81210 81310  | straat (81110)              |
-      | verblijfadres.regel2                               | 81340 81210 81310  | straat (81110)              |
-      | verblijfadres.regel3                               | 81350 81210 81310  | straat (81110)              |
-      | adresseerbaarObjectIdentificatie                   | 81180 81210 81310  | straat (81110)              |
-      | nummeraanduidingIdentificatie                      | 81190 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid                              | 88510 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid.type                         | 88510 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid.datum                        | 88510 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid.langFormaat                  | 88510 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid.jaar                         | 88510 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid.maand                        | 88510 81210 81310  | straat (81110)              |
-      | datumIngangGeldigheid.onbekend                     | 88510 81210 81310  | straat (81110)              |
-      | type                                               | 81110 81310        | locatiebeschrijving (81210) |
-      | functieAdres                                       | 81010 81110 81310  | locatiebeschrijving (81210) |
-      | datumVan                                           | PAVP01 81110 81310 | locatiebeschrijving (81210) |
-      | verblijfadres.korteStraatnaam                      | 81110 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.officieleStraatnaam                  | 81115 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.huisnummer                           | 81120 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.huisletter                           | 81130 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.huisnummertoevoeging                 | 81140 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.aanduidingBijHuisnummer              | 81150 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.aanduidingBijHuisnummer.code         | 81150 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.aanduidingBijHuisnummer.omschrijving | 81150 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.postcode                             | 81160 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.woonplaats                           | 81170 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.land                                 | 81310 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.land.code                            | 81310 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.land.omschrijving                    | 81310 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.regel1                               | 81330 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.regel2                               | 81340 81110 81310  | locatiebeschrijving (81210) |
-      | verblijfadres.regel3                               | 81350 81110 81310  | locatiebeschrijving (81210) |
-      | adresseerbaarObjectIdentificatie                   | 81180 81110 81310  | locatiebeschrijving (81210) |
-      | nummeraanduidingIdentificatie                      | 81190 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid                              | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid.type                         | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid.datum                        | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid.langFormaat                  | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid.jaar                         | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid.maand                        | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | datumIngangGeldigheid.onbekend                     | 88510 81110 81310  | locatiebeschrijving (81210) |
-      | type                                               | 81110 81210        | land (81310)                |
-      | functieAdres                                       | 81010 81110 81210  | land (81310)                |
-      | datumVan                                           | PAVP01 81110 81210 | land (81310)                |
-      | verblijfadres.korteStraatnaam                      | 81110 81110 81210  | land (81310)                |
-      | verblijfadres.officieleStraatnaam                  | 81115 81110 81210  | land (81310)                |
-      | verblijfadres.huisnummer                           | 81120 81110 81210  | land (81310)                |
-      | verblijfadres.huisletter                           | 81130 81110 81210  | land (81310)                |
-      | verblijfadres.huisnummertoevoeging                 | 81140 81110 81210  | land (81310)                |
-      | verblijfadres.aanduidingBijHuisnummer              | 81150 81110 81210  | land (81310)                |
-      | verblijfadres.aanduidingBijHuisnummer.code         | 81150 81110 81210  | land (81310)                |
-      | verblijfadres.aanduidingBijHuisnummer.omschrijving | 81150 81110 81210  | land (81310)                |
-      | verblijfadres.postcode                             | 81160 81110 81210  | land (81310)                |
-      | verblijfadres.woonplaats                           | 81170 81110 81210  | land (81310)                |
-      | verblijfadres.locatiebeschrijving                  | 81210 81110 81210  | land (81310)                |
-      | verblijfadres.regel1                               | 81330 81110 81210  | land (81310)                |
-      | verblijfadres.regel2                               | 81340 81110 81210  | land (81310)                |
-      | verblijfadres.regel3                               | 81350 81110 81210  | land (81310)                |
-      | adresseerbaarObjectIdentificatie                   | 81180 81110 81210  | land (81310)                |
-      | nummeraanduidingIdentificatie                      | 81190 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid                              | 88510 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid.type                         | 88510 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid.datum                        | 88510 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid.langFormaat                  | 88510 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid.jaar                         | 88510 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid.maand                        | 88510 81110 81210  | land (81310)                |
-      | datumIngangGeldigheid.onbekend                     | 88510 81110 81210  | land (81310)                |
+      | ad hoc rubrieken | missende autorisatie        |
+      | 81210 81310      | straat (81110)              |
+      | 81110 81310      | locatiebeschrijving (81210) |
+      | 81110 81210      | land (81310)                |
       
 
   Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
@@ -389,35 +312,34 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
 
       Voorbeelden:
       | fields                                                                      | ad hoc rubrieken                                                                     |
-      | verblijfplaatsBinnenland.type                                               | 81110 81210                                                                          |
-      | verblijfplaatsBinnenland.functieAdres                                       | 81010 81110 81210                                                                    |
-      | verblijfplaatsBinnenland.datumVan                                           | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.datumVan.type                                      | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.datumVan.datum                                     | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.datumVan.langFormaat                               | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.datumVan.jaar                                      | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.datumVan.maand                                     | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.datumVan.onbekend                                  | 81110 81210 PAVP01                                                                   |
-      | verblijfplaatsBinnenland.verblijfadres.korteStraatnaam                      | 81110 81210                                                                          |
-      | verblijfplaatsBinnenland.verblijfadres.officieleStraatnaam                  | 81110 81115 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.huisnummer                           | 81110 81120 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.huisletter                           | 81110 81130 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.huisnummertoevoeging                 | 81110 81140 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer              | 81110 81150 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer.code         | 81110 81150 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer.omschrijving | 81110 81150 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.postcode                             | 81110 81160 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.woonplaats                           | 81110 81170 81210                                                                    |
-      | verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving                  | 81110 81210                                                                          |
-      | verblijfplaatsBinnenland.adresseerbaarObjectIdentificatie                   | 81110 81180 81210                                                                    |
-      | verblijfplaatsBinnenland.nummeraanduidingIdentificatie                      | 81110 81190 81210                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid                              | 81110 81210 88510                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid.type                         | 81110 81210 88510                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid.datum                        | 81110 81210 88510                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid.langFormaat                  | 81110 81210 88510                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid.jaar                         | 81110 81210 88510                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid.maand                        | 81110 81210 88510                                                                    |
-      | verblijfplaatsBinnenland.datumIngangGeldigheid.onbekend                     | 81110 81210 88510                                                                    |
+      | verblijfplaatsBinnenland.functieAdres                                       | 81010                                                                                |
+      | verblijfplaatsBinnenland.datumVan                                           | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.datumVan.type                                      | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.datumVan.datum                                     | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.datumVan.langFormaat                               | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.datumVan.jaar                                      | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.datumVan.maand                                     | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.datumVan.onbekend                                  | PAVP01                                                                               |
+      | verblijfplaatsBinnenland.verblijfadres.korteStraatnaam                      | 81110                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.officieleStraatnaam                  | 81115                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.huisnummer                           | 81120                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.huisletter                           | 81130                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.huisnummertoevoeging                 | 81140                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer              | 81150                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer.code         | 81150                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer.omschrijving | 81150                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.postcode                             | 81160                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.woonplaats                           | 81170                                                                                |
+      | verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving                  | 81210                                                                                |
+      | verblijfplaatsBinnenland.adresseerbaarObjectIdentificatie                   | 81180                                                                                |
+      | verblijfplaatsBinnenland.nummeraanduidingIdentificatie                      | 81190                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid                              | 88510                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.type                         | 88510                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.datum                        | 88510                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.langFormaat                  | 88510                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.jaar                         | 88510                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.maand                        | 88510                                                                                |
+      | verblijfplaatsBinnenland.datumIngangGeldigheid.onbekend                     | 88510                                                                                |
       | verblijfplaatsBinnenland.verblijfadres                                      | 81110 81115 81120 81130 81140 81150 81160 81170 81210                                |
       | verblijfplaatsBinnenland                                                    | 81010 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 88510 PAVP01 |
 
@@ -499,6 +421,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaatsBinnenland.verblijfadres | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81160 81170 81180 81190 81210 88510 PAVP01 | 81150                |
       | verblijfplaatsBinnenland.verblijfadres | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81170 81180 81190 81210 88510 PAVP01 | 81160                |
       | verblijfplaatsBinnenland.verblijfadres | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81180 81190 81210 88510 PAVP01 | 81170                |
+      | verblijfplaatsBinnenland.verblijfadres | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 88510 PAVP01 | 81210                |
       | verblijfplaatsBinnenland               | 10120 80910 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 88510 PAVP01 | 81010                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 88510  | PAVP01               |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 88510 PAVP01 | 81110                |
@@ -513,6 +436,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81180 81190 81210 88510 PAVP01 | 81170                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81190 81210 88510 PAVP01 | 81180                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81210 88510 PAVP01 | 81190                |
+      | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 88510 PAVP01 | 81210                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
@@ -520,3 +444,49 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
+      
+
+  Rule: Wanneer met fields om type van verblijfplaatsBinnenland wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaatsBinnenland wordt bepaald, wordt een foutmelding gegeven
+    Om type van verblijfplaats te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het verblijfplaatstype mee bepaald wordt:
+    - 81110: straatnaam
+    - 81210: locatiebeschrijving
+
+    Scenario: Afnemer heeft de minimale autorisatie voor verblijfplaats type
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 81110 81210               | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam      | waarde |
+      | afnemerID | 000008 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | verblijfplaats.type             |
+      Dan heeft de response 1 persoon
+
+    @fout-case
+    Abstract Scenario: Afnemer is niet geautoriseerd voor <missende autorisatie> die nodig is voor verblijfplaats type
+      Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 10120 <ad hoc rubrieken>        | N                        | 20201128                |
+      En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
+      | naam      | waarde |
+      | afnemerID | 000008 |
+      Als personen wordt gezocht met de volgende parameters
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000024                       |
+      | fields              | verblijfplaats.type             |
+      Dan heeft de response een object met de volgende gegevens
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | code     | unauthorizedField                                                       |
+      | instance | /haalcentraal/api/brp/personen                                          |
+
+      Voorbeelden:
+      | ad hoc rubrieken | missende autorisatie        |
+      | 81210            | straat (81110)              |
+      | 81110            | locatiebeschrijving (81210) |
