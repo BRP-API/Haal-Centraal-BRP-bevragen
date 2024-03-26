@@ -75,7 +75,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor ouders
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                                        | gevraagde rubrieken                                                                    |
-      | ouders.ouderAanduiding                                        |                                                                                        |
-      | ouders.geboorte.datum,ouders.ouderAanduiding                  | 020310, 030310                                                                         |
-      | ouders.naam,ouders.ouderAanduiding,ouders.burgerservicenummer | 020120, 020210, 020220, 020230, 020240, 030120, 030210, 030220, 030230, 030240, PAOU01 |
+      | fields                                                   | gevraagde rubrieken                                                                    |
+      | ouders.ouderAanduiding                                   |                                                                                        |
+      | ouders.geboorte.datum,ouders.ouderAanduiding             | 020310, 030310                                                                         |
+      | ouders.naam,ouders.ouderAanduiding,ouders.geboorte.datum | 020210, 020220, 020230, 020240, 020310, 030210, 030220, 030230, 030240, 030310, PAOU01 |
