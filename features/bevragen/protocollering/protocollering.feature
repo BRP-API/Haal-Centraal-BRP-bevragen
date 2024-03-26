@@ -40,8 +40,8 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
 
     Scenario: Zoek persoon met alleen de verplichte parameters
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | voornamen (02.10) |  geslachtsnaam (02.40) | geboortedatum (03.10) |
-      | Jan Peter         |  Maassen               | 19830526              |
+      | voornamen (02.10) | geslachtsnaam (02.40) | geboortedatum (03.10) |
+      | Jan Peter         | Maassen               | 19830526              |
       Als personen wordt gezocht met de volgende parameters
       | naam          | waarde                              |
       | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
@@ -107,10 +107,10 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | naam            | waarde     |
       | anummer (01.10) | 4363741376 |
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                                                                                                                                  |
-      | type                | RaadpleegMetBurgerservicenummer                                                                                                         |
-      | burgerservicenummer | 000000024                                                                                                                               |
-      | fields              | geboorte.datum,adressering.adresregel2,partners.naam.voornamen,adressering.gebruikInLopendeTekst, naam.geslachtsnaam,adressering.aanhef |
+      | naam                | waarde                                                                                                                                 |
+      | type                | RaadpleegMetBurgerservicenummer                                                                                                        |
+      | burgerservicenummer | 000000024                                                                                                                              |
+      | fields              | geboorte.datum,adressering.adresregel2,partners.naam.voornamen,adressering.gebruikInLopendeTekst,naam.geslachtsnaam,adressering.aanhef |
       Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_gevraagde_rubrieken                    |
       | 010240, 010310, 050210, PANM03, PANM06, PAVP04 |
@@ -131,11 +131,11 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | groep                                | gevraagde rubrieken            |
-      | geboorte                             | 010310, 010320, 010330         |
-      | overlijden                           | 060810, 060820, 060830         |
-      | europeesKiesrecht                    | 133110, 133130                 |
-      | partners.aangaanHuwelijkPartnerschap | 050610, 050620, 050630         |
+      | groep                                | gevraagde rubrieken    |
+      | geboorte                             | 010310, 010320, 010330 |
+      | overlijden                           | 060810, 060820, 060830 |
+      | europeesKiesrecht                    | 133110, 133130         |
+      | partners.aangaanHuwelijkPartnerschap | 050610, 050620, 050630 |
 
     Scenario: vragen om hele relatie <relatie>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -151,9 +151,9 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | relatie  | gevraagde rubrieken                                                                                            |
-      | partners | 050120, 050210, 050220, 050230, 050240, 050310, 050320, 050330, 050410, 050610, 050620, 050630, 050710, 051510 |
-      | kinderen | 090120, 090210, 090220, 090230, 090240, 090310, 090320, 090330                                                 |
+      | relatie  | gevraagde rubrieken                                                                                                    |
+      | partners | 050120, 050210, 050220, 050230, 050240, 050310, 050320, 050330, 050410, 050610, 050620, 050630, 050710, 051510, PAHP01 |
+      | kinderen | 090120, 090210, 090220, 090230, 090240, 090310, 090320, 090330, PAKD01                                                 |
 
 
   Rule: Wanneer een gevraagd veld niet geleverd wordt (bijv. omdat het geen waarde heeft), wordt het wel in het veld 'request_gevraagde_rubrieken' opgenomen.
@@ -178,13 +178,13 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | omschrijving                               | fields                                         | gevraagde rubrieken                            |
-      | persoon heeft geen adellijkeTitelPredicaat | naam                                           | 010210, 010220, 010230, 010240, 010410, 016110 |
-      | persoon heeft geen partner                 | partners.geboorte                              | 050310, 050320, 050330                         |
-      | persoon is niet overleden                  | overlijden.datum                               | 060810                                         |
-      | persoon heeft geen verblijfstitel          | verblijfstitel.aanduiding                      | 103910                                         |
-      | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                                         |
-      | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                                 |
+      | omschrijving                               | fields                                         | gevraagde rubrieken                                    |
+      | persoon heeft geen adellijkeTitelPredicaat | naam                                           | 010210, 010220, 010230, 010240, 016110, PANM01, PANM02 |
+      | persoon heeft geen partner                 | partners.geboorte                              | 050310, 050320, 050330                                 |
+      | persoon is niet overleden                  | overlijden.datum                               | 060810                                                 |
+      | persoon heeft geen verblijfstitel          | verblijfstitel.aanduiding                      | 103910                                                 |
+      | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                                                 |
+      | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                                         |
 
   Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_gevraagde_rubrieken' opgenomen.
     Dit betreft geheimhouding, opschorting, in onderzoek, RNI en verificatie
@@ -229,11 +229,11 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields             | gevraagde rubrieken                    |
-      | leeftijd           | 010310                                 |
-      | naam.voorletters   | 010210                                 |
-      | naam.volledigeNaam | 010210, 010220, 010230, 010240, 010410 |
-  
+      | fields             | gevraagde rubrieken |
+      | leeftijd           | PAGL01              |
+      | naam.voorletters   | PANM01              |
+      | naam.volledigeNaam | PANM02              |
+
   Rule: Wanneer in het antwoord meerdere personen worden geleverd, dan wordt er per geleverde persoon een protocolleringsrecord opgenomen
 
     Scenario: Zoek persoon met alle mogelijke parameters

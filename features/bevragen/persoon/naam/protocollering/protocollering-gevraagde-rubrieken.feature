@@ -20,18 +20,18 @@ Functionaliteit: protocollering van naamgegevens van de persoon
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                                    | gevraagde rubrieken                                            |
-      | naam.adellijkeTitelPredicaat              | 010220                                                         |
-      | naam.adellijkeTitelPredicaat.code         | 010220                                                         |
-      | naam.adellijkeTitelPredicaat.omschrijving | 010220                                                         |
-      | naam.adellijkeTitelPredicaat.soort        | 010220                                                         |
-      | naam.geslachtsnaam                        | 010240                                                         |
-      | naam.voornamen                            | 010210                                                         |
-      | naam.voorvoegsel                          | 010230                                                         |
-      | naam.aanduidingNaamgebruik                | 016110                                                         |
-      | naam.aanduidingNaamgebruik.code           | 016110                                                         |
-      | naam.aanduidingNaamgebruik.omschrijving   | 016110                                                         |
-      | naam.voorletters                          | PANM01                                                         |
-      | naam.volledigeNaam                        | PANM02                                                         |
-      | naam                                      | 010210, 010220, 010230, 010240, 010410, 016110, PANM01, PANM02 |
+      | fields                                    | gevraagde rubrieken                                    |
+      | naam.adellijkeTitelPredicaat              | 010220                                                 |
+      | naam.adellijkeTitelPredicaat.code         | 010220                                                 |
+      | naam.adellijkeTitelPredicaat.omschrijving | 010220                                                 |
+      | naam.adellijkeTitelPredicaat.soort        | 010220                                                 |
+      | naam.geslachtsnaam                        | 010240                                                 |
+      | naam.voornamen                            | 010210                                                 |
+      | naam.voorvoegsel                          | 010230                                                 |
+      | naam.aanduidingNaamgebruik                | 016110                                                 |
+      | naam.aanduidingNaamgebruik.code           | 016110                                                 |
+      | naam.aanduidingNaamgebruik.omschrijving   | 016110                                                 |
+      | naam.voorletters                          | PANM01                                                 |
+      | naam.volledigeNaam                        | PANM02                                                 |
+      | naam                                      | 010210, 010220, 010230, 010240, 016110, PANM01, PANM02 |
 

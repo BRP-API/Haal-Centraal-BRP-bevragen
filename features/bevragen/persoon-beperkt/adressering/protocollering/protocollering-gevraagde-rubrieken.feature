@@ -23,14 +23,14 @@ Functionaliteit: protocollering van de gevraagde gegevens voor adresregels
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                            | gevraagde rubrieken       |
-      | adressering.adresregel1           | PAVP03                    |
-      | adressering.adresregel2           | PAVP04                    |
-      | adressering.adresregel3           | 081350                    |
-      | adressering.land                  | 081310                    |
-      | adressering.land.code             | 081310                    |
-      | adressering.land.omschrijving     | 081310                    |
-      | adressering                       | 81310 81350 PAVP03 PAVP04 |
-      | adresseringBinnenland.adresregel1 | PAVP03                    |
-      | adresseringBinnenland.adresregel2 | PAVP04                    |
-      | adresseringBinnenland             | PAVP03 PAVP04             |
+      | fields                            | gevraagde rubrieken            |
+      | adressering.adresregel1           | PAVP03                         |
+      | adressering.adresregel2           | PAVP04                         |
+      | adressering.adresregel3           | 081350                         |
+      | adressering.land                  | 081310                         |
+      | adressering.land.code             | 081310                         |
+      | adressering.land.omschrijving     | 081310                         |
+      | adressering                       | 081310, 081350, PAVP03, PAVP04 |
+      | adresseringBinnenland.adresregel1 | PAVP03                         |
+      | adresseringBinnenland.adresregel2 | PAVP04                         |
+      | adresseringBinnenland             | PAVP03, PAVP04                 |

@@ -20,6 +20,6 @@ Functionaliteit: protocollering van de gevraagde gegevens voor adressering
       | <gevraagde rubrieken>       |
 
       Voorbeelden:
-      | fields                | gevraagde rubrieken                                          |
-      | adressering           | 81310, 81350, PANM03, PANM04, PANM05, PANM06, PAVP03, PAVP04 |
-      | adresseringBinnenland | PANM03, PANM04, PANM05, PANM06, PAVP03, PAVP04               |
+      | fields                | gevraagde rubrieken                                            |
+      | adressering           | 081310, 081350, PANM03, PANM04, PANM05, PANM06, PAVP03, PAVP04 |
+      | adresseringBinnenland | PANM03, PANM04, PANM05, PANM06, PAVP03, PAVP04                 |
