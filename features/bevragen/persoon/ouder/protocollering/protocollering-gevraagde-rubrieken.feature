@@ -58,7 +58,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor ouders
 
   Rule: Voor ouders.ouderAanduiding wordt niks opgenomen in veld 'request_gevraagde_rubrieken'
 
-    Scenario: vragen om ouders.ouderAanduiding
+    Abstract Scenario: vragen om ouders.ouderAanduiding
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | naam            | waarde     |
       | anummer (01.10) | 7531580186 |
@@ -69,7 +69,13 @@ Functionaliteit: protocollering van de gevraagde gegevens voor ouders
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000024                       |
-      | fields              | ouders.ouderAanduiding          |
+      | fields              | <fields>                        |
       Dan heeft de persoon met burgerservicenummer '000000024' de volgende 'protocollering' gegevens
       | request_gevraagde_rubrieken |
-      |                             |
+      | <gevraagde rubrieken>       |
+
+      Voorbeelden:
+      | fields                                                        | gevraagde rubrieken                                                                    |
+      | ouders.ouderAanduiding                                        |                                                                                        |
+      | ouders.geboorte.datum,ouders.ouderAanduiding                  | 020310, 030310                                                                         |
+      | ouders.naam,ouders.ouderAanduiding,ouders.burgerservicenummer | 020120, 020210, 020220, 020230, 020240, 030120, 030210, 030220, 030230, 030240, PAOU01 |
