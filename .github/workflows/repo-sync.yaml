@@ -1,0 +1,30 @@
+name: sync met source repo
+
+on:
+  # cronjob trigger, workflow wordt één keer per dag uitgevoerd
+  schedule:
+    - cron: 0 0 * * *
+  # handmatig trigger
+  workflow_dispatch:
+
+env:
+  SOURCE_REPO_PATH: ${{ vars.SYNC_SOURCE_REPO_PATH || 'BRP-API/brp-shared' }}
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Sync met '${{ env.SOURCE_REPO_PATH }}' repo
+        uses: AndreasAugustin/actions-template-sync@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: ${{ env.SOURCE_REPO_PATH }}
+          pr_branch_name_prefix: chore/sync-met-source-repo
+          pr_title: "sync met '${{ env.SOURCE_REPO_PATH }}' repo"
+          pr_commit_msg: "chore: sync met '${{ env.SOURCE_REPO_PATH }}' repo"
