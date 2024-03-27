@@ -1,36 +1,4 @@
-const { toDateOrString } = require("./calcDate");
-
-function getGbaPersoonType(persoonType) {
-    switch(persoonType) {
-        case 'persoon':
-            return 'P';
-        case 'kind':
-            return 'K';
-        case 'partner':
-            return 'R';
-        case '1':
-            return '1';
-        case '2':
-            return '2';
-        default:
-            return undefined;
-    }
-}
-
-function createCollectieDataFromArray(persoonType, data, stapelNr=0) {
-    const gbaPersoonType = getGbaPersoonType(persoonType);
-
-    return gbaPersoonType !== undefined
-        ? [
-            [ 'stapel_nr', stapelNr+''],
-            [ 'volg_nr', '0'],
-            [ 'persoon_type', gbaPersoonType]
-          ].concat(data)
-        : [
-            [ 'stapel_nr', stapelNr+''],
-            [ 'volg_nr', '0']
-          ].concat(data);
-}
+const { toDateOrString } = require('./brpDatum');
 
 function createArrayFrom(dataTable, columnNameMap) {
     let retval = [];
@@ -61,10 +29,7 @@ function fromHash(hash, columnNameMap) {
     return retval;
 }
 
-function createVoorkomenDataFromArray(data) {
-    return [
-        [ 'volg_nr', '0']
-    ].concat(data);
+module.exports = {
+    createArrayFrom,
+    fromHash
 }
-
-module.exports = { createCollectieDataFromArray, createArrayFrom, createVoorkomenDataFromArray }

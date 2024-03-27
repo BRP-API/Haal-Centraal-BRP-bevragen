@@ -1,0 +1,1 @@
+folder used to store Identity Server signing key

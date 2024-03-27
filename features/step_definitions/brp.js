@@ -72,13 +72,13 @@ const columnNameMap = new Map([
     ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
 
     ['nationaliteit (05.10)', 'nationaliteit_code'],
-    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
 
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
+    ['reden ontbinding huwelijk/geregistreerd partnerschap (07.40)', 'relatie_eind_reden'],
 
     ['datum overlijden (08.10)', 'overlijden_datum'],
     ['plaats overlijden (08.20)', 'overlijden_plaats'],

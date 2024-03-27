@@ -1,0 +1,15 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/haalcentraal/api/brp/personen",
+      "DownstreamPathTemplate": "/haalcentraal/api/brp/personen",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "brp-referentie-api",
+          "Port": "8080"
+        }
+      ]
+    }
+  ]
+}

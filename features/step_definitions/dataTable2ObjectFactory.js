@@ -87,6 +87,20 @@ function createCollectieObject(context, naamCollectieObject, dataTable = undefin
 }
 
 /**
+ * Creeer voor elke rij van de *dataTable* argument een object met velden aan de hand van naam/waarde paren in het *naamCollectieObject*en collectie veld op het **expected** object van de *context* argument.
+ * Het *naamCollectieObject*en collectie veld wordt overschreven, wanneer deze al bestaat.
+ * Een leeg *naamCollectieObject*en veld wordt gecreeerd, wanneer de *dataTable* argument niet is opgegeven.
+ * @param {*} context. Het ouder object van het **expected** object. Het **expected** object wordt gecreeerd als deze nog niet bestaat 
+ * @param {*} naamCollectieObject. De enkelvoudige vorm van de naam van het te creeeren collectie veld op het **expected** object. De meervoud vorm van de naam wordt bepaald aan de hand van de **collectionNameMap** map gedefinieerd in het brp.js bestand
+ * @param {*} dataTable. Het DataTable object dat wordt gecreeerd en gevuld bij het uitvoeren van een Gherkin Stap Definitie 
+ */
+function createCollectieObjecten(context, naamCollectieObject, dataTable = undefined) {
+    let expected = getExpected(context);
+
+    expected[toCollectieNaam(naamCollectieObject)] = createCollectie(context, dataTable); 
+}
+
+/**
  * Creeer een object met velden aan de hand van de naam/waarde paren in de *dataTable* argument genaamd *naamObjectVeld* op een nieuw gecreeerd object in het *naamCollectieObject*en collectie veld op het 'expected' object van de *context* argument.
  * Het nieuw gecreeerde object toegevoegd aan het *naamCollectieObject*en collectie veld, wanneer deze al bestaat.
  * Een object zonder velden wordt gecreeerd voor het *naamObjectVeld* veld op het nieuw gecreeerde object, wanneer de dataTable argument niet is opgegeven.
@@ -99,20 +113,6 @@ function createCollectieObjectMetObjectVeld(context, naamCollectieObject, naamOb
     let expected = getExpected(context);
 
     getCollectie(expected, naamCollectieObject).push(createObjectMetObjectVeld(context, naamObjectVeld, dataTable));
-}
-
-/**
- * Creeer voor elke rij van de *dataTable* argument een object met velden aan de hand van naam/waarde paren in het *naamCollectieObject*en collectie veld op het **expected** object van de *context* argument.
- * Het *naamCollectieObject*en collectie veld wordt overschreven, wanneer deze al bestaat.
- * Een leeg *naamCollectieObject*en veld wordt gecreeerd, wanneer de *dataTable* argument niet is opgegeven.
- * @param {*} context. Het ouder object van het **expected** object. Het **expected** object wordt gecreeerd als deze nog niet bestaat 
- * @param {*} naamCollectieObject. De enkelvoudige vorm van de naam van het te creeeren collectie veld op het **expected** object. De meervoud vorm van de naam wordt bepaald aan de hand van de **collectionNameMap** map gedefinieerd in het brp.js bestand
- * @param {*} dataTable. Het DataTable object dat wordt gecreeerd en gevuld bij het uitvoeren van een Gherkin Stap Definitie 
- */
-function createCollectieObjecten(context, naamCollectieObject, dataTable = undefined) {
-    let expected = getExpected(context);
-
-    expected[toCollectieNaam(naamCollectieObject)] = createCollectie(context, dataTable); 
 }
 
 /**
@@ -129,18 +129,16 @@ function createObjectVeldInLastCollectieObject(context, naamCollectieObject, naa
     expectedObject[naamObjectVeld] = createObject(context, dataTable);
 }
 
-/**
- * Creeer voor elke rij van de *dataTable* argument een object met velden aan de hand van naam/waarde paren in het *naamSubCollectieObject*en collectie veld op het nieuw gecreeerde object in het *naamCollectieObject*en collectie veld op het **expected** object van de *context* argument.
- * Een leeg *naamSubCollectieObject*en veld wordt gecreeerd, wanneer de *dataTable* argument niet is opgegeven.
- * @param {*} context. Het ouder object van het **expected** object. Het **expected** object wordt gecreeerd als deze nog niet bestaat 
- * @param {*} naamCollectieObject. De enkelvoudige vorm van de naam van het te creeeren collectie veld op het **expected** object. De meervoud vorm van de naam wordt bepaald aan de hand van de **collectionNameMap** map gedefinieerd in het brp.js bestand
- * @param {*} naamSubCollectieObject. De enkelvoudige vorm van de naam van het te creeeren collectie veld op het gecreeerde *naamCollectieObject* object.  De meervoud vorm van de naam wordt bepaald aan de hand van de **collectionNameMap** map gedefinieerd in het brp.js bestand
- * @param {*} dataTable. Het DataTable object dat wordt gecreeerd bij het uitvoeren van een Gherkin Stap Definitie 
- */
-function createCollectieObjectMetSubCollectieObjecten(context, naamCollectieObject, naamSubCollectieObject, dataTable = undefined) {
-    let expected = getExpected(context);
+function createSubObjectVeldInObjectInLastCollectieObject(context, naamCollectieObject, naamObjectVeld, naamSubObjectVeld, dataTable = undefined) {
+    let expected = getLastCollectieObjectFromExpected(context, naamCollectieObject)
 
-    getCollectie(expected, naamCollectieObject).push(createObjectMetCollectieVeld(context, naamSubCollectieObject, dataTable));
+    if(expected[naamObjectVeld] === undefined) {
+        expected[naamObjectVeld] = {};
+    }
+    let expectedObject = expected[naamObjectVeld];
+
+    expectedObject[naamSubObjectVeld] = createObject(context, dataTable);
+
 }
 
 /**
@@ -158,6 +156,20 @@ function createCollectieObjectMetSubCollectieObject(context, naamCollectieObject
     getCollectie(expected, naamCollectieObject).push(expectedObject);
 
     getCollectie(expectedObject, naamSubCollectieObject).push(createObject(context, dataTable));
+}
+
+/**
+ * Creeer voor elke rij van de *dataTable* argument een object met velden aan de hand van naam/waarde paren in het *naamSubCollectieObject*en collectie veld op het nieuw gecreeerde object in het *naamCollectieObject*en collectie veld op het **expected** object van de *context* argument.
+ * Een leeg *naamSubCollectieObject*en veld wordt gecreeerd, wanneer de *dataTable* argument niet is opgegeven.
+ * @param {*} context. Het ouder object van het **expected** object. Het **expected** object wordt gecreeerd als deze nog niet bestaat 
+ * @param {*} naamCollectieObject. De enkelvoudige vorm van de naam van het te creeeren collectie veld op het **expected** object. De meervoud vorm van de naam wordt bepaald aan de hand van de **collectionNameMap** map gedefinieerd in het brp.js bestand
+ * @param {*} naamSubCollectieObject. De enkelvoudige vorm van de naam van het te creeeren collectie veld op het gecreeerde *naamCollectieObject* object.  De meervoud vorm van de naam wordt bepaald aan de hand van de **collectionNameMap** map gedefinieerd in het brp.js bestand
+ * @param {*} dataTable. Het DataTable object dat wordt gecreeerd bij het uitvoeren van een Gherkin Stap Definitie 
+ */
+function createCollectieObjectMetSubCollectieObjecten(context, naamCollectieObject, naamSubCollectieObject, dataTable = undefined) {
+    let expected = getExpected(context);
+
+    getCollectie(expected, naamCollectieObject).push(createObjectMetCollectieVeld(context, naamSubCollectieObject, dataTable));
 }
 
 /**
@@ -223,15 +235,13 @@ module.exports = {
     createCollectieObjecten,
     createCollectieObjectMetObjectVeld,
     createObjectVeldInLastCollectieObject,
-    // createSubCollectieObjectInCollectieObject =
+    createSubObjectVeldInObjectInLastCollectieObject,
     createCollectieObjectMetSubCollectieObject,
-    // createSubCollectieObjectenInCollectieObject =
     createCollectieObjectMetSubCollectieObjecten,
-    // createSubCollectieObjectMetObjectVeldInCollectieObject =
     createCollectieObjectMetSubCollectieObjectMetObjectVeld,
     createSubCollectieObjectInLastCollectieObject,
-    createSubCollectieObjectMetObjectVeldInLastCollectieObject,
     createSubCollectieObjectenInLastCollectieObject,
+    createSubCollectieObjectMetObjectVeldInLastCollectieObject,
     createObjectVeldInLastSubCollectieObjectInLastCollectieObject,
     createSubSubCollectieObjectInLastSubCollectieObjectInLastCollectieObject,
     createSubSubCollectieObjectenInLastSubCollectieObjectInLastCollectieObject

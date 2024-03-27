@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+  identityserver:
+    container_name: identityserver
+    image: ghcr.io/brp-api/identityserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:6000
+    ports:
+      - "6000:6000"
+    volumes:
+      - ../test-data/IdentityServer:/app/keys
+    networks:
+      - brp-api-network
+  
+networks:
+  brp-api-network:
+    name: brp-api-network
+  
