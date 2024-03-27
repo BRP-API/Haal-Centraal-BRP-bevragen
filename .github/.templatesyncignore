@@ -1,1 +1,2 @@
-.github/workflows/ci.yml
+:!src/Brp.Shared.Infrastructure/**/*.*
+*
