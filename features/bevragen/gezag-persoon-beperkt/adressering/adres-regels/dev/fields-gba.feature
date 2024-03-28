@@ -179,8 +179,11 @@ Functionaliteit: adressering (adresregel) velden vragen met fields (gezag persoo
 
     Abstract Scenario: '<type>' is in onderzoek en één of meerdere adresregel velden wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
-      | identificatiecode verblijfplaats (11.80) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
-      | 0599010051001502                         | <aanduiding in onderzoek>       | 20020701                       |
+      | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
+      | <aanduiding in onderzoek>       | 20020701                       |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
+      | 0518                 | 0599010051001502                         |
       Als gba personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
