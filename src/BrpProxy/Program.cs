@@ -37,7 +37,11 @@ try
 
     app.SetupSerilogRequestLogging();
 
+    app.UseRouting();
+
     app.SetupHealthCheckEndpoints(builder.Configuration, Log.Logger);
+
+    app.UseEndpoints(e => e.MapControllers());
 
     app.UseMiddleware<OverwriteResponseBodyMiddleware>();
 
