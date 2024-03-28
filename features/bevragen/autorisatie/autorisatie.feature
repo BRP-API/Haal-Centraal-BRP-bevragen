@@ -534,21 +534,20 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | burgerservicenummer | 000000024                              |
       | fields              | burgerservicenummer,naam.geslachtsnaam |
       Dan heeft de response een object met de volgende gegevens
-      | naam     | waarde                                                      |
-      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3 |
-      | title    | U bent niet geautoriseerd voor het gebruik van deze API.    |
-      | status   | 403                                                         |
-      | detail   | Niet geautoriseerd voor ad hoc bevragingen.                 |
-      | code     | unauthorized                                                |
-      | instance | /haalcentraal/api/brp/personen                              |
+      | naam     | waarde                                                                  |
+      | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.3             |
+      | title    | U bent niet geautoriseerd voor één of meerdere opgegeven field waarden. |
+      | status   | 403                                                                     |
+      | code     | unauthorizedField                                                       |
+      | instance | /haalcentraal/api/brp/personen                                          |
 
     Scenario: Autorisatie voor gevraagd gegeven wordt vanaf morgen ingetrokken
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
       | 010120 010210 010240            | N                        | 20201128                | morgen                                  |
       En de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) | Datum beëindiging tabelregel (35.99.99) |
-      | 010120 010210                   | N                        | morgen                  |                                         |
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 010120 010210                   | N                        | morgen                  |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam      | waarde |
       | afnemerID | 000008 |
