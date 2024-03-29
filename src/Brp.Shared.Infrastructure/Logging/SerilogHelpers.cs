@@ -159,7 +159,7 @@ public static class SerilogHelpers
         config.WriteTo.Seq(serverUrl: seqServerUrl);
     }
 
-    private static EcsTextFormatter ConfigureLoggingWithEcsTextFormatter(this LoggerConfiguration config, IServiceProvider serviceProvider, HostBuilderContext context)
+    private static EcsTextFormatter ConfigureLoggingWithEcsTextFormatter(this LoggerConfiguration config, IServiceProvider serviceProvider)
     {
         var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
         config.Enrich.WithEcsHttpContext(httpContextAccessor);
@@ -223,11 +223,12 @@ public static class SerilogHelpers
 
         logger.Information("Enable file logging using Elasticsearch Common Schema format. Path: {path}, fileSizeLimit: {fileSizeLimitBytes}", ecsPath, fileSizeLimitBytes);
 
-        config.WriteTo.File(
-            formatter: config.ConfigureLoggingWithEcsTextFormatter(serviceProvider, context),
+        config.WriteTo.FileEx(
+            formatter: config.ConfigureLoggingWithEcsTextFormatter(serviceProvider),
             path: ecsPath,
             fileSizeLimitBytes: fileSizeLimitBytes,
             rollOnFileSizeLimit: true,
-            retainedFileCountLimit: retainedFileCountLimit);
+            retainedFileCountLimit: retainedFileCountLimit,
+            preserveLogFilename: true);
     }
 }
