@@ -1,3 +1,5 @@
+#language: nl
+
 @gba
 Functionaliteit: gezagsrelaties van de bewoners van een adresseerbaar object
 
