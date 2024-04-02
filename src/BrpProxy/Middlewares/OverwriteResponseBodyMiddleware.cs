@@ -4,7 +4,6 @@ using Brp.Shared.Infrastructure.Validatie;
 using HaalCentraal.BrpProxy.Generated;
 using Gba = HaalCentraal.BrpProxy.Generated.Gba;
 using Newtonsoft.Json;
-using System.IO.Compression;
 using AutoMapper;
 using BrpProxy.Validators;
 using Newtonsoft.Json.Linq;
@@ -34,15 +33,15 @@ namespace BrpProxy.Middlewares
             string requestBody = string.Empty;
             try
             {
-                if (!await context.HandleRequestMethodIsAllowed(_diagnosticContext))
+                if (!await context.HandleRequestMethodIsAllowed())
                 {
                     return;
                 }
-                if (!await context.HandleRequestAcceptIsSupported(_diagnosticContext))
+                if (!await context.HandleRequestAcceptIsSupported())
                 {
                     return;
                 }
-                if (!await context.HandleMediaTypeIsSupported(_diagnosticContext))
+                if (!await context.HandleMediaTypeIsSupported())
                 {
                     return;
                 }
@@ -222,111 +221,4 @@ namespace BrpProxy.Middlewares
             });
         }
     }
-
-    //public static class HttpResponseHelpers
-    //{
-    //    private static async Task<string> ReadCompressedBodyAsync(this HttpRequest request)
-    //    {
-
-    //        try
-    //        {
-    //            request.Body.Seek(0, SeekOrigin.Begin);
-
-    //            var gzipStream = new GZipStream(request.Body, CompressionMode.Decompress);
-    //            StreamReader streamReader = new(gzipStream, leaveOpen: true);
-
-    //            return await streamReader.ReadToEndAsync();
-    //        }
-    //        finally
-    //        {
-    //            request.Body.Seek(0, SeekOrigin.Begin);
-    //        }
-
-    //    }
-
-    //    private static async Task<string> ReadUncompressedBodyAsync(this HttpRequest request)
-    //    {
-    //        try
-    //        {
-    //            request.Body.Seek(0, SeekOrigin.Begin);
-
-    //            StreamReader streamReader = new StreamReader(request.Body, leaveOpen: true);
-
-    //            return await streamReader.ReadToEndAsync();
-    //        }
-    //        finally
-    //        {
-    //            request.Body.Seek(0, SeekOrigin.Begin);
-    //        }
-    //    }
-
-    //    public static async Task<string> ReadBodyAsync(this HttpRequest request)
-    //    {
-    //        request.EnableBuffering();
-
-    //        try
-    //        {
-    //            if (request.Headers.ContentEncoding.Contains("gzip"))
-    //            {
-    //                return await ReadCompressedBodyAsync(request);
-    //            }
-    //            else
-    //            {
-    //                return await ReadUncompressedBodyAsync(request);
-    //            }
-    //        }
-    //        catch (InvalidDataException)
-    //        {
-    //            return await ReadUncompressedBodyAsync(request);
-    //        }
-    //    }
-
-    //    public static async Task<string> ReadBodyAsync(this HttpResponse response)
-    //    {
-    //        response.Body.Seek(0, SeekOrigin.Begin);
-
-    //        StreamReader streamReader;
-    //        if (response.Headers.ContentEncoding.Contains("gzip"))
-    //        {
-    //            var gzipStream = new GZipStream(response.Body, CompressionMode.Decompress);
-    //            streamReader = new StreamReader(gzipStream);
-    //        }
-    //        else
-    //        {
-    //            streamReader = new StreamReader(response.Body);
-    //        }
-
-    //        var retval = await streamReader.ReadToEndAsync();
-
-    //        response.Body.Seek(0, SeekOrigin.Begin);
-
-    //        return retval;
-    //    }
-    //}
-
-    //public static class MemoryStreamHelpers
-    //{
-    //    public static MemoryStream ToMemoryStream(this string data, HttpResponse response)
-    //    {
-    //        var retval = new MemoryStream();
-
-    //        StreamWriter streamWriter;
-    //        if (response.Headers.ContentEncoding.Contains("gzip"))
-    //        {
-    //            var gzipStream = new GZipStream(retval, CompressionMode.Compress);
-    //            streamWriter = new StreamWriter(gzipStream);
-    //        }
-    //        else
-    //        {
-    //            streamWriter = new StreamWriter(retval);
-    //        }
-
-    //        streamWriter.Write(data);
-    //        streamWriter.Flush();
-
-    //        retval.Seek(0, SeekOrigin.Begin);
-
-    //        return retval;
-    //    }
-    //}
 }
