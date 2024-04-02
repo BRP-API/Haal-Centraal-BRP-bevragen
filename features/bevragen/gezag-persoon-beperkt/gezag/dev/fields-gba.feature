@@ -176,7 +176,6 @@ Functionaliteit: gezagsrelaties vragen met fields bij zoeken op adresseerbaar ob
     Scenario: er is gezag van toepassing op de persoon, maar dit wordt niet gevraagd
       Als gba personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
-      | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
       | adresseerbaarObjectIdentificatie | 0599010051001502                        |
       | fields                           | burgerservicenummer                     |
