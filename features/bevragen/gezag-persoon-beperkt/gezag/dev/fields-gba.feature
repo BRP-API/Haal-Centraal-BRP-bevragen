@@ -182,6 +182,18 @@ Functionaliteit: gezagsrelaties vragen met fields bij zoeken op adresseerbaar ob
       Dan heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000048 |
+      En heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000061 |
+      En heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000012 |
+      En heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000024 |
+      En heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000036 |
 
     @fout-case
     Scenario: De fields parameter bevat het pad naar een niet bestaand veld in gezag
