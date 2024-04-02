@@ -8,7 +8,7 @@ Functionaliteit: reden opschorting bijhouding (gezag persoon beperkt)
      En in het Logisch Ontwerp BRP bij Mogelijke waarden van element 67.20
 
     Abstract Scenario: Opgeschorte persoonslijst wegens "<reden opschorting omschrijving>"
-      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'inschrijving' gegevens
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'inschrijving' gegevens
       | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
       | 20220829                             | <reden opschorting bijhouding>       |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
