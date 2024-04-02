@@ -81,8 +81,19 @@ public static class SerilogHelpers
             {
                 { StatusCode: var status } when status >= 500 => LogEventLevel.Error,
                 { StatusCode: var status } when status >= 400 && status < 500 => LogEventLevel.Warning,
-                _ => LogEventLevel.Information
+                _ => httpContext.LogEventLevelIfHealthCheckEndpoint()
             };
+
+    private static LogEventLevel LogEventLevelIfHealthCheckEndpoint(this HttpContext httpContext) =>
+        httpContext.IsHealthCheckEndpoint()
+            ? LogEventLevel.Verbose
+            : LogEventLevel.Information;
+
+    private static bool IsHealthCheckEndpoint(this HttpContext httpContext)
+    {
+        var endpoint = httpContext.GetEndpoint();
+        return endpoint is not null && string.Equals(endpoint.DisplayName, "Health checks", StringComparison.Ordinal);
+    }
 
     private static void EnrichDiagnosticContext(IDiagnosticContext diagnosticContext, HttpContext httpContext)
     {
@@ -97,6 +108,7 @@ public static class SerilogHelpers
                 .ReadFrom.Configuration(context.Configuration)
                 .SetMinimumLevelOverrides()
                 .Destructure.UsingAttributes(x => x.IgnoreNullProperties = true)
+                .Destructure.JsonNetTypes()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
                 ;
@@ -159,7 +171,7 @@ public static class SerilogHelpers
         config.WriteTo.Seq(serverUrl: seqServerUrl);
     }
 
-    private static EcsTextFormatter ConfigureLoggingWithEcsTextFormatter(this LoggerConfiguration config, IServiceProvider serviceProvider, HostBuilderContext context)
+    private static EcsTextFormatter ConfigureLoggingWithEcsTextFormatter(this LoggerConfiguration config, IServiceProvider serviceProvider)
     {
         var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
         config.Enrich.WithEcsHttpContext(httpContextAccessor);
@@ -223,11 +235,12 @@ public static class SerilogHelpers
 
         logger.Information("Enable file logging using Elasticsearch Common Schema format. Path: {path}, fileSizeLimit: {fileSizeLimitBytes}", ecsPath, fileSizeLimitBytes);
 
-        config.WriteTo.File(
-            formatter: config.ConfigureLoggingWithEcsTextFormatter(serviceProvider, context),
+        config.WriteTo.FileEx(
+            formatter: config.ConfigureLoggingWithEcsTextFormatter(serviceProvider),
             path: ecsPath,
             fileSizeLimitBytes: fileSizeLimitBytes,
             rollOnFileSizeLimit: true,
-            retainedFileCountLimit: retainedFileCountLimit);
+            retainedFileCountLimit: retainedFileCountLimit,
+            preserveLogFilename: true);
     }
 }
