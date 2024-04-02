@@ -1,6 +1,5 @@
 ﻿using Brp.Shared.Infrastructure.ProblemDetails;
 using Microsoft.AspNetCore.Http;
-using Serilog;
 using System.IO.Compression;
 
 namespace Brp.Shared.Infrastructure.Http;
@@ -61,10 +60,8 @@ public static class HttpResponseExtensions
         }
     }
 
-    public static async Task WriteProblemDetailsAsync(this HttpResponse response, Microsoft.AspNetCore.Mvc.ProblemDetails problemDetails, IDiagnosticContext diagnosticContext)
+    public static async Task WriteProblemDetailsAsync(this HttpResponse response, Microsoft.AspNetCore.Mvc.ProblemDetails problemDetails)
     {
-        diagnosticContext.Set("ResponseBody", problemDetails, true);
-
         response.StatusCode = problemDetails.Status!.Value;
 
         await response.WriteAsJsonAsync(

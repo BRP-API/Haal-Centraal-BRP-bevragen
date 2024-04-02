@@ -26,7 +26,7 @@ public static class UnauthenticatedHandler
 
             var problemDetails = context.Request.CreateProblemDetailsFor(StatusCodes.Status401Unauthorized);
 
-            await context.Response.WriteProblemDetailsAsync(problemDetails, diagnosticContext);
+            await context.Response.WriteProblemDetailsAsync(problemDetails);
 
             return false;
         }

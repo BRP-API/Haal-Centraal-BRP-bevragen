@@ -51,6 +51,18 @@ public static class ProblemDetailsFactory
             _ => null
         };
 
+    public static Microsoft.AspNetCore.Mvc.ProblemDetails CreateProblemDetails(this HttpRequest request, int statusCode, string title, string detail)
+    {
+        return new Microsoft.AspNetCore.Mvc.ProblemDetails
+        {
+            Detail = detail,
+            Instance = request.Path.ToUriComponent(),
+            Status = statusCode,
+            Title = title,
+            Type = statusCode.ToStatusCodeIdentifier()
+        };
+    }
+
     public static Microsoft.AspNetCore.Mvc.ProblemDetails CreateProblemDetailsFor(this HttpRequest request, int statusCode, string? paramNames = null, object[]? invalidParams = null)
     {
         Microsoft.AspNetCore.Mvc.ProblemDetails retval = new()

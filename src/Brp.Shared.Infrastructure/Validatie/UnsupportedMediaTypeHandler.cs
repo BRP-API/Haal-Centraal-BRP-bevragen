@@ -2,7 +2,6 @@
 using Brp.Shared.Infrastructure.ProblemDetails;
 using Brp.Shared.Infrastructure.Text;
 using Microsoft.AspNetCore.Http;
-using Serilog;
 
 namespace Brp.Shared.Infrastructure.Validatie;
 
@@ -18,7 +17,7 @@ public static class UnsupportedMediaTypeHandler
         string.IsNullOrWhiteSpace(contentType) ||
         SupportedMediaTypes.Contains(contentType.ToLowerInvariant().RemoveAllWhitespace());
 
-    public static async ValueTask<bool> HandleMediaTypeIsSupported(this HttpContext context, IDiagnosticContext diagnosticContext)
+    public static async ValueTask<bool> HandleMediaTypeIsSupported(this HttpContext context)
     {
         foreach (var contentTypeValue in context.Request.Headers.ContentType)
         {
@@ -26,7 +25,7 @@ public static class UnsupportedMediaTypeHandler
             {
                 var problemDetails = context.Request.CreateProblemDetailsFor(StatusCodes.Status415UnsupportedMediaType);
 
-                await context.Response.WriteProblemDetailsAsync(problemDetails, diagnosticContext);
+                await context.Response.WriteProblemDetailsAsync(problemDetails);
 
                 return false;
             }

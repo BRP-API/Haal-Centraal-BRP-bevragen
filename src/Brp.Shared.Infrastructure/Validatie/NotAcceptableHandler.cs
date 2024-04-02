@@ -2,7 +2,6 @@
 using Brp.Shared.Infrastructure.ProblemDetails;
 using Brp.Shared.Infrastructure.Text;
 using Microsoft.AspNetCore.Http;
-using Serilog;
 
 namespace Brp.Shared.Infrastructure.Validatie;
 
@@ -20,7 +19,7 @@ public static class NotAcceptableHandler
         string.IsNullOrWhiteSpace(acceptValue) ||
         SupportedAcceptValues.Contains(acceptValue.ToLowerInvariant().RemoveAllWhitespace());
 
-    public static async ValueTask<bool> HandleRequestAcceptIsSupported(this HttpContext context, IDiagnosticContext diagnosticContext)
+    public static async ValueTask<bool> HandleRequestAcceptIsSupported(this HttpContext context)
     {
         foreach (var acceptValue in context.Request.Headers.Accept)
         {
@@ -28,7 +27,7 @@ public static class NotAcceptableHandler
             {
                 var problemDetails = context.Request.CreateProblemDetailsFor(StatusCodes.Status406NotAcceptable);
 
-                await context.Response.WriteProblemDetailsAsync(problemDetails, diagnosticContext);
+                await context.Response.WriteProblemDetailsAsync(problemDetails);
 
                 return false;
             }

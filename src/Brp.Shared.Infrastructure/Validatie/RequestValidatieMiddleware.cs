@@ -28,17 +28,17 @@ public class RequestValidatieMiddleware
             return;
         }
 
-        if (!await httpContext.HandleRequestMethodIsAllowed(_diagnosticContext))
+        if (!await httpContext.HandleRequestMethodIsAllowed())
         {
             return;
         }
 
-        if (!await httpContext.HandleRequestAcceptIsSupported(_diagnosticContext))
+        if (!await httpContext.HandleRequestAcceptIsSupported())
         {
             return;
         }
 
-        if (!await httpContext.HandleMediaTypeIsSupported(_diagnosticContext))
+        if (!await httpContext.HandleMediaTypeIsSupported())
         {
             return;
         }
@@ -55,11 +55,15 @@ public class RequestValidatieMiddleware
         var result = _authorisation.Authorize(afnemerId, gemeenteCode, requestBody);
         if (!result.IsValid)
         {
-            _diagnosticContext.Set("NotAuthorized", result.Errors[0].Reason);
+            var reason = result.Errors[0]?.Reason;
+            if (!string.IsNullOrWhiteSpace(reason))
+            {
+                _diagnosticContext.Set("NotAuthorized", reason);
+            }
 
             var problemDetails = httpContext.Request.CreateProblemDetailsFor(result);
 
-            await httpContext.Response.WriteProblemDetailsAsync(problemDetails, _diagnosticContext);
+            await httpContext.Response.WriteProblemDetailsAsync(problemDetails);
 
             return;
         }
@@ -70,6 +74,7 @@ public class RequestValidatieMiddleware
         if (!string.IsNullOrWhiteSpace(geleverdePls))
         {
             _authorisation.Protocolleer(afnemerId, geleverdePls!, requestBody);
+            _diagnosticContext.Set("Protocollering", $"voor pl ids '{geleverdePls}'");
         }
     }
 
