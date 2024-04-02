@@ -104,8 +104,8 @@ Functionaliteit: gezagsrelaties vragen met fields bij zoeken op adresseerbaar ob
       | naam                             | waarde           |
       | type                             | GezamenlijkGezag |
       | minderjarige.burgerservicenummer | 000000036        |
-      | ouder.burgerservicenummer        | 000000048        |
-      | derde.burgerservicenummer        | 000000061        |
+      | ouder.burgerservicenummer        | 000000061        |
+      | derde.burgerservicenummer        | 000000048        |
       En heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000061 |
@@ -123,8 +123,8 @@ Functionaliteit: gezagsrelaties vragen met fields bij zoeken op adresseerbaar ob
       | naam                             | waarde           |
       | type                             | GezamenlijkGezag |
       | minderjarige.burgerservicenummer | 000000036        |
-      | ouder.burgerservicenummer        | 000000048        |
-      | derde.burgerservicenummer        | 000000061        |
+      | ouder.burgerservicenummer        | 000000061        |
+      | derde.burgerservicenummer        | 000000048        |
       En heeft de response een persoon met de volgende gegevens
       | naam                | waarde    |
       | burgerservicenummer | 000000012 |
@@ -153,8 +153,8 @@ Functionaliteit: gezagsrelaties vragen met fields bij zoeken op adresseerbaar ob
       | naam                             | waarde           |
       | type                             | GezamenlijkGezag |
       | minderjarige.burgerservicenummer | 000000036        |
-      | ouder.burgerservicenummer        | 000000048        |
-      | derde.burgerservicenummer        | 000000061        |
+      | ouder.burgerservicenummer        | 000000061        |
+      | derde.burgerservicenummer        | 000000048        |
 
       Voorbeelden:
       | fields                                     |
