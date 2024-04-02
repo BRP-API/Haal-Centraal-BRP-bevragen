@@ -69,15 +69,15 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | GG         | 000000024        |
-      En de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
+      En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
+      | burgerservicenummer (01.20) |
+      | 000000024                   |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
       | functie adres (10.10) |
       | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens
       | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
       | 0518                 | 0599010051001502                         |
-      En de persoon met burgerservicenummer '000000012' heeft een ouder '1' met de volgende gegevens
-      | burgerservicenummer (01.20) |
-      | 000000024                   |
       En voor de persoon met burgerservicenummer '000000012' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000012       | GG        | 000000024        |
