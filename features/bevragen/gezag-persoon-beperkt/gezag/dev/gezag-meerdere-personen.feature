@@ -47,7 +47,7 @@ Functionaliteit: gezagsrelaties van de bewoners van een adresseerbaar object
       En voor de persoon met burgerservicenummer '000000024' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000024       | OG1        | 000000048        |
-      En voor de persoon met burgerservicenummer '00000036' gelden de volgende gezagsrelaties
+      En voor de persoon met burgerservicenummer '000000036' gelden de volgende gezagsrelaties
       | bsnMinderjarige | soortGezag | bsnMeerderjarige |
       | 000000036       | GG         | 000000061        |
       | 000000036       | GG         | 000000048        |
