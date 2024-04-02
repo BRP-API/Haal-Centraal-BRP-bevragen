@@ -13,51 +13,6 @@ Functionaliteit: opschorting bijhouding (gezag persoon beperkt)
       | 0599                 | 0599010051001502                         |
 
 
-  Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
-    Een afgevoerde persoonslijst heeft opschorting bijhouding reden "F" (fout)
-
-    Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met adresseerbaar object identificatie
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20220829                             | F                                    |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                             | waarde                                  |
-      | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
-      | adresseerbaarObjectIdentificatie | 0599010051001502                        |
-      | fields                           | burgerservicenummer                     |
-      Dan heeft de response 0 personen
-
-  Rule: personen op een logisch verwijderde persoonslijst worden niet gevonden bij het zoeken
-
-    Abstract Scenario: persoon opgeschort met reden "W" (wissen) wordt gezocht met adresseerbaar object identificatie
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20220829                             | W                                    |
-      Als personen wordt gezocht met de volgende parameters
-      | naam                             | waarde                                  |
-      | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
-      | adresseerbaarObjectIdentificatie | 0599010051001502                        |
-      | fields                           | burgerservicenummer                     |
-      Dan heeft de response 0 personen
-
-      Voorbeelden:
-      | inclusief overleden personen | zoek overleden personen type |
-      | true                         | inclusief                    |
-      | false                        | exclusief                    |
-
-  Rule: overleden personen worden niet gevonden bij het zoeken
-
-    Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met adresseerbaar object identificatie
-      En de persoon heeft de volgende 'inschrijving' gegevens
-      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
-      | 20220829                             | O                                    |
-      Als gba personen wordt gezocht met de volgende parameters
-      | naam                             | waarde                                  |
-      | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
-      | adresseerbaarObjectIdentificatie | 0599010051001502                        |
-      | fields                           | burgerservicenummer                     |
-      Dan heeft de response 0 personen
-
   Rule: opschortingBijhouding wordt automatisch geleverd indien van toepassing
 
     Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met adresseerbaar object identificatie
