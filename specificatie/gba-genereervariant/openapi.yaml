@@ -417,6 +417,8 @@ components:
       - $ref: '#/components/schemas/PersonenQuery'
       - type: object
         properties:
+          inclusiefOverledenPersonen:
+            $ref: '#/components/schemas/InclusiefOverledenPersonen'
           adresseerbaarObjectIdentificatie:
             $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
     BadRequestFoutbericht:
@@ -1043,7 +1045,10 @@ components:
           datumAanvangAdreshouding:
             $ref: '#/components/schemas/GbaDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/GbaDatum'
+            allOf:
+            - $ref: '#/components/schemas/GbaDatum'
+            - type: object
+              deprecated: true
           functieAdres:
             $ref: '#/components/schemas/Waardetabel'
           naamOpenbareRuimte:

@@ -24,7 +24,7 @@
       "post" : {
         "tags" : [ "Personen" ],
         "summary" : "Zoek personen",
-        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n1.  Raadpleeg met burgerservicenummer\n2.  Zoek met geslachtsnaam en geboortedatum\n3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n4.  Zoek met postcode en huisnummer\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n6.  Zoek met nummeraanduiding identificatie\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\nGebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.\n",
+        "description" : "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n1.  Raadpleeg met burgerservicenummer\n2.  Zoek met geslachtsnaam en geboortedatum\n3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n4.  Zoek met postcode en huisnummer\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n6.  Zoek met nummeraanduiding identificatie\n7.  Zoek met adresseerbaarobject identificatie\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\nGebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.\n",
         "operationId" : "Personen",
         "requestBody" : {
           "content" : {
@@ -544,6 +544,9 @@
         }, {
           "type" : "object",
           "properties" : {
+            "inclusiefOverledenPersonen" : {
+              "$ref" : "#/components/schemas/InclusiefOverledenPersonen"
+            },
             "adresseerbaarObjectIdentificatie" : {
               "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
             }
@@ -1862,7 +1865,12 @@
               "$ref" : "#/components/schemas/AbstractDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/AbstractDatum"
+              }, {
+                "type" : "object",
+                "deprecated" : true
+              } ]
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek"
@@ -1942,7 +1950,8 @@
               "type" : "boolean"
             },
             "datumIngangGeldigheid" : {
-              "type" : "boolean"
+              "type" : "boolean",
+              "deprecated" : true
             }
           }
         } ]
@@ -1970,7 +1979,12 @@
               "$ref" : "#/components/schemas/AbstractDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/AbstractDatum"
+              }, {
+                "type" : "object",
+                "deprecated" : true
+              } ]
             },
             "indicatieVastgesteldVerblijftNietOpAdres" : {
               "$ref" : "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
@@ -2080,7 +2094,8 @@
               "type" : "boolean"
             },
             "datumIngangGeldigheid" : {
-              "type" : "boolean"
+              "type" : "boolean",
+              "deprecated" : true
             },
             "nummeraanduidingIdentificatie" : {
               "type" : "boolean"
@@ -2104,7 +2119,12 @@
               "$ref" : "#/components/schemas/AbstractDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/AbstractDatum"
+              }, {
+                "type" : "object",
+                "deprecated" : true
+              } ]
             },
             "inOnderzoek" : {
               "$ref" : "#/components/schemas/VerblijfplaatsOnbekendInOnderzoek"
@@ -2125,7 +2145,8 @@
               "type" : "boolean"
             },
             "datumIngangGeldigheid" : {
-              "type" : "boolean"
+              "type" : "boolean",
+              "deprecated" : true
             }
           }
         } ]
@@ -2147,7 +2168,12 @@
               "$ref" : "#/components/schemas/VerblijfadresLocatie"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/AbstractDatum"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/AbstractDatum"
+              }, {
+                "type" : "object",
+                "deprecated" : true
+              } ]
             },
             "indicatieVastgesteldVerblijftNietOpAdres" : {
               "$ref" : "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
@@ -2203,7 +2229,8 @@
               "type" : "boolean"
             },
             "datumIngangGeldigheid" : {
-              "type" : "boolean"
+              "type" : "boolean",
+              "deprecated" : true
             }
           }
         } ]

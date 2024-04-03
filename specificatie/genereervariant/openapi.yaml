@@ -34,6 +34,7 @@ paths:
         4.  Zoek met postcode en huisnummer
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
         6.  Zoek met nummeraanduiding identificatie
+        7.  Zoek met adresseerbaarobject identificatie
 
         Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
 
@@ -433,6 +434,8 @@ components:
       - $ref: '#/components/schemas/PersonenQuery'
       - type: object
         properties:
+          inclusiefOverledenPersonen:
+            $ref: '#/components/schemas/InclusiefOverledenPersonen'
           adresseerbaarObjectIdentificatie:
             $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
     BadRequestFoutbericht:
@@ -1413,7 +1416,10 @@ components:
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
     VerblijfadresBuitenland:
@@ -1471,6 +1477,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
     Adres:
       description: |
         Gegevens over het adres van een persoon.
@@ -1494,7 +1501,10 @@ components:
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           indicatieVastgesteldVerblijftNietOpAdres:
             $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
           inOnderzoek:
@@ -1573,6 +1583,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
           nummeraanduidingIdentificatie:
             type: boolean
           adresseerbaarObjectIdentificatie:
@@ -1587,7 +1598,10 @@ components:
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     VerblijfplaatsOnbekendInOnderzoek:
@@ -1601,6 +1615,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
     Locatie:
       description: |
         * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
@@ -1617,7 +1632,10 @@ components:
           verblijfadres:
             $ref: '#/components/schemas/VerblijfadresLocatie'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           indicatieVastgesteldVerblijftNietOpAdres:
             $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
           inOnderzoek:
@@ -1655,6 +1673,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
     Immigratie:
       type: object
       properties:
