@@ -20,7 +20,10 @@ public static class HealthCheckHelpers
         {
             options.ExpectHttpCodes(400, 403);
             options.UsePost();
-            options.AddUri(downstreamEndpoint);
+            options.AddUri(downstreamEndpoint, options =>
+            {
+                options.AddCustomHeader("x-healthcheck", "true");
+            });
         }, name: $"Downstream endpoint: {downstreamEndpoint}");
     }
 
