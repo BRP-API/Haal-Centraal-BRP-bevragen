@@ -40,16 +40,16 @@
   "homepage": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
     "@cucumber/cucumber": "^10.0.1",
-    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@openapitools/openapi-generator-cli": "^2.13.1",
     "@stoplight/spectral-cli": "^6.11.0",
-    "axios": "^1.6.2",
-    "chai": "^4.3.10",
-    "csv-parse": "^5.5.2",
+    "axios": "^1.6.8",
+    "chai": "^4.4.1",
+    "csv-parse": "^5.5.5",
     "cucumber-html-reporter": "^7.1.1",
     "deep-equal-in-any-order": "^2.0.6",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
     "mvn-dl": "^6.1.1",
-    "nswag": "^13.20.0",
-    "pg": "^8.11.3"
+    "nswag": "^14.0.7",
+    "pg": "^8.11.5"
   }
 }
