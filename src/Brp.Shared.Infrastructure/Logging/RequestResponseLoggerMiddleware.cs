@@ -12,7 +12,7 @@ namespace Brp.Shared.Infrastructure.Logging;
 /// </summary>
 internal class RequestResponseLoggerMiddleware
 {
-    private const string CorrelationIdHeaderName = "X-Correlation-Id";
+    private const string CorrelationIdHeaderName = "Request-ID";
     private readonly RequestDelegate _next;
     private readonly IDiagnosticContext _diagnosticContext;
 
