@@ -17,8 +17,8 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
 
     Abstract Scenario: Afnemer vraagt om <fields> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
-      | Rubrieknummer ad hoc (35.95.60)    | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10240 10310 <minimale autorisatie> | N                        | 20201128                |
+      | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
+      | 81180 <minimale autorisatie>    | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam      | waarde |
       | afnemerID | 000008 |
@@ -44,7 +44,7 @@ Functionaliteit: autorisatie adressering adresregels PersoonBeperkt
     Abstract Scenario: Afnemer vraagt om <fields> en is niet geautoriseerd voor <missende autorisatie>
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
       | Rubrieknummer ad hoc (35.95.60) | Medium ad hoc (35.95.67) | Datum ingang (35.99.98) |
-      | 10240 10310 <ad hoc rubrieken>  | N                        | 20201128                |
+      | 81180 <ad hoc rubrieken>        | N                        | 20201128                |
       En de geauthenticeerde consumer heeft de volgende 'claim' gegevens
       | naam      | waarde |
       | afnemerID | 000008 |
