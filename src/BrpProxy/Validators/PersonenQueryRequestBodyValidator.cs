@@ -6,7 +6,7 @@ namespace BrpProxy.Validators
     public class PersonenQueryRequestBodyValidator : AbstractValidator<JObject>
     {
         const string RequiredErrorMessage = "required||Parameter is verplicht.";
-        const string TypePattern = @"^ZoekMetGeslachtsnaamEnGeboortedatum|ZoekMetNaamEnGemeenteVanInschrijving|RaadpleegMetBurgerservicenummer|ZoekMetPostcodeEnHuisnummer|ZoekMetStraatHuisnummerEnGemeenteVanInschrijving|ZoekMetNummeraanduidingIdentificatie$";
+        const string TypePattern = @"^ZoekMetAdresseerbaarObjectIdentificatie|ZoekMetGeslachtsnaamEnGeboortedatum|ZoekMetNaamEnGemeenteVanInschrijving|RaadpleegMetBurgerservicenummer|ZoekMetPostcodeEnHuisnummer|ZoekMetStraatHuisnummerEnGemeenteVanInschrijving|ZoekMetNummeraanduidingIdentificatie$";
         const string TypePatternErrorMessage = "value||Waarde is geen geldig zoek type.";
 
         public PersonenQueryRequestBodyValidator()

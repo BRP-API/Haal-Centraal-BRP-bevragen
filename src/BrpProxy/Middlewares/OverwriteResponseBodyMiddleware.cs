@@ -114,9 +114,7 @@ namespace BrpProxy.Middlewares
             }
             catch (Exception ex)
             {
-                _diagnosticContext.SetException(ex);
-
-                await context.HandleInternalServerError();
+                await context.HandleUnhandledException(requestBody, ex, orgBodyStream, _diagnosticContext);
             }
         }
     }
@@ -128,6 +126,7 @@ namespace BrpProxy.Middlewares
             var result = personenQuery switch
             {
                 RaadpleegMetBurgerservicenummer query => new RaadpleegMetBurgerservicenummerQueryValidator(fieldsHelper).Validate(query),
+                ZoekMetAdresseerbaarObjectIdentificatie query => new ZoekMetAdresseerbaarObjectIdentificatieQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetGeslachtsnaamEnGeboortedatum query => new ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetPostcodeEnHuisnummer query => new ZoekMetPostcodeEnHuisnummerQueryValidator(fieldsHelper).Validate(query),
                 ZoekMetNaamEnGemeenteVanInschrijving query => new ZoekMetNaamEnGemeenteVanInschrijvingQueryValidator(fieldsHelper).Validate(query),
@@ -209,6 +208,11 @@ namespace BrpProxy.Middlewares
                     var result5 = mapper.Map<ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse>(pb);
                     result5.Personen = result5.Personen.ExcludeAfgevoerdePersoon().FilterList(fields);
                     retval = result5;
+                    break;
+                case Gba.ZoekMetAdresseerbaarObjectIdentificatieResponse pb:
+                    var result6 = mapper.Map<ZoekMetAdresseerbaarObjectIdentificatieResponse>(pb);
+                    result6.Personen = result6.Personen.ExcludeAfgevoerdePersoon().FilterList(fields);
+                    retval = result6;
                     break;
                 default:
                     throw new NotSupportedException();

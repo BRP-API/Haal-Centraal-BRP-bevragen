@@ -57,5 +57,20 @@ namespace BrpProxy.Middlewares
 
             return retval;
         }
+
+        public static ICollection<GezagPersoonBeperkt> ExcludeAfgevoerdePersoon(this ICollection<GezagPersoonBeperkt> personen)
+        {
+            var retval = new List<GezagPersoonBeperkt>();
+
+            foreach (var p in personen)
+            {
+                if (p.OpschortingBijhouding?.Reden?.Code != "F")
+                {
+                    retval.Add(p);
+                }
+            }
+
+            return retval;
+        }
     }
 }

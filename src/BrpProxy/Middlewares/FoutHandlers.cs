@@ -13,6 +13,7 @@ namespace BrpProxy.Middlewares
 
         private const string BadRequestIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1";
         private const string NotFoundIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.4";
+        private const string InternalServerErrorIdentifier = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.6.1";
 
         private static readonly Regex ConvertPropertyValueRegex = new(@"^Could not convert string to (?<code>.*):(.*). Path '(?<name>.*)'.$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
         private static readonly Regex RequiredPropertyRegex = new(@"^Required property '(?<name>.*)' expects a non-null value. Path ''.$", RegexOptions.None, TimeSpan.FromMilliseconds(100));
@@ -26,6 +27,18 @@ namespace BrpProxy.Middlewares
                 Instance = new Uri(context.Request.Path, UriKind.Relative),
                 Title = "Opgevraagde resource bestaat niet.",
                 Type = new Uri(NotFoundIdentifier)
+            };
+        }
+
+
+        private static Foutbericht CreateInternalServerErrorFoutbericht(this HttpContext context)
+        {
+            return new Foutbericht
+            {
+                Status = StatusCodes.Status500InternalServerError,
+                Instance = new Uri(context.Request.Path, UriKind.Relative),
+                Title = "Internal Server error.",
+                Type = new Uri(InternalServerErrorIdentifier)
             };
         }
 
@@ -211,6 +224,18 @@ namespace BrpProxy.Middlewares
         {
             diagnosticContext.Set("ResponseBody", foutbericht, true);
 
+            using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response.UseGzip());
+
+            context.SetResponseProperties(foutbericht, bodyStream);
+
+            await bodyStream.CopyToAsync(orgResponseBodyStream);
+        }
+
+        public static async Task HandleUnhandledException(this HttpContext context, string requestBody, Exception ex, Stream orgResponseBodyStream, IDiagnosticContext diagnosticContext)
+        {
+            diagnosticContext.SetException(ex);
+
+            var foutbericht = context.CreateInternalServerErrorFoutbericht();
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response.UseGzip());
 
             context.SetResponseProperties(foutbericht, bodyStream);

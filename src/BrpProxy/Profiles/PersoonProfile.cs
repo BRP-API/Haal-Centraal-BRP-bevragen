@@ -9,6 +9,48 @@ public class PersoonProfile : Profile
 {
     public PersoonProfile()
     {
+        CreateMap<GbaGezagPersoonBeperkt, GezagPersoonBeperkt>()
+            .ForMember(dest => dest.Leeftijd, opt =>
+            {
+                opt.PreCondition(src => src.OpschortingBijhouding == null ||
+                                        src.OpschortingBijhouding.Reden?.Code != "O");
+                opt.MapFrom(src => src.Geboorte.Datum.Map().Leeftijd());
+            })
+            .ForMember(dest => dest.InOnderzoek, opt => opt.MapFrom(src => src.InOnderzoek()))
+            .BeforeMap((src, dest) =>
+            {
+                if (src.Naam != null || src.PersoonInOnderzoek != null)
+                {
+                    src.Naam ??= new GbaNaamBasis();
+                    if (src.Geslacht != null)
+                    {
+                        src.Naam.Geslacht = src.Geslacht;
+                    }
+                    src.Naam.InOnderzoek = src.PersoonInOnderzoek;
+                }
+                if (src.Geboorte != null || src.PersoonInOnderzoek != null)
+                {
+                    src.Geboorte ??= new GbaGeboorteBeperkt();
+                    src.Geboorte.InOnderzoek = src.PersoonInOnderzoek;
+                }
+            })
+            .AfterMap((src, dest) =>
+            {
+                if (src.Verblijfplaats != null)
+                {
+                    dest.Adressering = new AdresseringBeperkt
+                    {
+                        Adresregel1 = src.Verblijfplaats.Adresregel1(),
+                        Adresregel2 = src.Verblijfplaats.Adresregel2(src.GemeenteVanInschrijving),
+                        Adresregel3 = src.Verblijfplaats.Adresregel3(),
+                        Land = src.Verblijfplaats.Land(),
+                        InOnderzoek = src.AdresseringInOnderzoek(),
+                        IndicatieVastgesteldVerblijftNietOpAdres = src.Verblijfplaats?.InOnderzoek?.AanduidingGegevensInOnderzoek == "089999"
+                    };
+                }
+            })
+            ;
+
         CreateMap<GbaPersoonBeperkt, PersoonBeperkt>()
             .ForMember(dest => dest.Leeftijd, opt =>
             {
