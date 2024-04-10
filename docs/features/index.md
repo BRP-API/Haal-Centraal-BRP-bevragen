@@ -4,13 +4,13 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 5506 scenarios (1 failed, 5505 passed)
+Totaal: 5511 scenarios (1 failed, 5510 passed)
 
 ## GBA v    2.1.2-2024040801
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 344 scenarios (344 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
-- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 525 scenarios (525 passed)
+- [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 21 scenarios (21 passed)
   - [geboorte](./test-report-persoon-geboorte-gba.html){:target="_blank" rel="noopener"}: 9 scenarios (9 passed)
