@@ -12,5 +12,7 @@ namespace HaalCentraal.BrpService.Generated
     {
         public string? NummeraanduidingIdentificatie { get; set; }
         public string? NaamOpenbareRuimte { get; set; }
+
+        public string? AdresseerbaarObjectIdentificatie { get; set; }
     }
 }

@@ -29,6 +29,7 @@ public class PersoonController : Generated.ControllerBase
         var retval = body switch
         {
             RaadpleegMetBurgerservicenummer q => await Handle(q),
+            ZoekMetAdresseerbaarObjectIdentificatie q => await Handle(q),
             ZoekMetGeslachtsnaamEnGeboortedatum q => await Handle(q),
             ZoekMetNaamEnGemeenteVanInschrijving q => await Handle(q),
             ZoekMetPostcodeEnHuisnummer q => await Handle(q),
@@ -40,6 +41,17 @@ public class PersoonController : Generated.ControllerBase
         _logger.LogDebug("Response body: {@responsebody}", retval);
 
         return Ok(retval);
+    }
+
+    private async Task<PersonenQueryResponse> Handle(ZoekMetAdresseerbaarObjectIdentificatie query)
+    {
+        Activity.Current?.AddEvent(new ActivityEvent("ZoekMetAdresseerbaarObjectIdentificatie"));
+
+        var retval = await _repository.Zoek<ZoekMetAdresseerbaarObjectIdentificatie>(query);
+
+        Activity.Current?.AddEvent(new ActivityEvent("ZoekMetAdresseerbaarObjectIdentificatie query executed"));
+
+        return retval;
     }
 
     private async Task<PersonenQueryResponse> Handle(ZoekMetPostcodeEnHuisnummer query)

@@ -53,6 +53,11 @@ public class PersoonRepository
                 Personen = JsonConvert.DeserializeObject<List<GbaPersoonBeperkt>>(data)?
                     .AsQueryable().Where(f.ToSpecification().ToExpression()).ToList()
             },
+            ZoekMetAdresseerbaarObjectIdentificatie f => new ZoekMetAdresseerbaarObjectIdentificatieResponse
+            {
+                Personen = JsonConvert.DeserializeObject<List<GbaGezagPersoonBeperkt>>(data)?
+                    .AsQueryable().Where(f.ToSpecification().ToExpression()).ToList()
+            },
             _ => throw new NotSupportedException($"{query}"),
         };
     }

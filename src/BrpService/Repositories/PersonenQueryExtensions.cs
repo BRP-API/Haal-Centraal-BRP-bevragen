@@ -80,6 +80,14 @@ public static class PersonenQueryExtensions
         return specification;
     }
 
+    public static Specification<GbaGezagPersoonBeperkt> ToSpecification(this ZoekMetAdresseerbaarObjectIdentificatie query)
+    {
+        Specification<GbaGezagPersoonBeperkt> specification = new AdresseerbaarObjectIdentificatieSpecification(query.AdresseerbaarObjectIdentificatie);
+        specification = specification.And(new InclusiefOverledenGezagPersonenSpecification(query.InclusiefOverledenPersonen));
+
+        return specification;
+    }
+
     public static Specification<GbaPersoonBeperkt> ToSpecification(this ZoekMetStraatHuisnummerEnGemeenteVanInschrijving query)
     {
         Specification<GbaPersoonBeperkt> specification = new StraatSpecification(query.Straat)
