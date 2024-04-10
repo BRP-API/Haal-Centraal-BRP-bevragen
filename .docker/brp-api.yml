@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.1.2-2024031317
+    image: haalcentraal.azurecr.io/gba-api:2.1.2-2024040801
     environment:
       - Database__Host=postgres
       - Database__Username=root
@@ -14,8 +14,6 @@ services:
       # - AuthenticationTypes=jwtbearer
       - Serilog__MinimumLevel__Default=Information
       # - WebApi__Url=http://gezagmock:5020
-      - ProtocolleringAuthorization__UseAuthorizationChecks=true
-      - ProtocolleringAuthorization__UseProtocollering=true
     ports:
       - "8000:80"
     networks:
