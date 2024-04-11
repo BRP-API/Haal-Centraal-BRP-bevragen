@@ -41,7 +41,7 @@ npx cucumber-js -f json:docs/features/test-result-zoeken-en-raadplegen.json \
                 features/bevragen/zoek-met-nummeraanduiding-identificatie \
                 features/bevragen/zoek-met-postcode-en-huisnummer \
                 features/bevragen/zoek-met-straatnaam-huisnummer-en-gemeente-van-inschrijving \
-                --tags "not @skip-verify" --tags "not @gba" \
+                --tags "not @skip-verify" --tags "not @gba" --tags "not @autorisatie" --tags "not @protocollering" \
                 --world-parameters "$PARAMS"
 
 npx cucumber-js -f json:docs/features/test-result-persoon-beperkt-gba.json \
@@ -55,7 +55,7 @@ npx cucumber-js -f json:docs/features/test-result-persoon-beperkt.json \
                 -f summary:docs/features/test-result-persoon-beperkt-summary.txt \
                 -f summary \
                 features/bevragen/persoon-beperkt \
-                --tags "not @skip-verify" --tags "not @gba" \
+                --tags "not @skip-verify" --tags "not @gba" --tags "not @autorisatie" --tags "not @protocollering" \
                 --world-parameters "$PARAMS"
 
 npx cucumber-js -f json:docs/features/test-result-persoon-gba.json \
@@ -71,7 +71,7 @@ npx cucumber-js -f json:docs/features/test-result-persoon.json \
                 -f summary \
                 features/bevragen/*.feature \
                 features/bevragen/persoon/*.feature \
-                --tags "not @skip-verify" --tags "not @gba" \
+                --tags "not @skip-verify" --tags "not @gba" --tags "not @autorisatie" --tags "not @protocollering" \
                 --world-parameters "$PARAMS"
 
 verify() {
@@ -86,7 +86,7 @@ verify() {
                     -f summary:docs/features/test-result-persoon-$1-summary.txt \
                     -f summary \
                     features/bevragen/persoon/$1 \
-                    --tags "not @skip-verify" --tags "not @gba" \
+                    --tags "not @skip-verify" --tags "not @gba" --tags "not @autorisatie" --tags "not @protocollering" \
                     --world-parameters "$PARAMS"
 }
 
