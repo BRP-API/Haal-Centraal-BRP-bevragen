@@ -117,3 +117,17 @@ Functionaliteit: Persoon: nationaliteit velden vragen met fields
     | DatumOnbekend  | 00000000 |            |      |       | true     | onbekend     |
     | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
     | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
+
+  Scenario: alleen field pad 'type' wordt gevraagd
+    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
+    | naam                  | waarde |
+    | nationaliteit (05.10) | 0001   |
+    | reden opname (63.10)  | 001    |
+    Als personen wordt gezocht met de volgende parameters
+    | naam                | waarde                          |
+    | type                | RaadpleegMetBurgerservicenummer |
+    | burgerservicenummer | 000000012                       |
+    | fields              | nationaliteiten.type            |
+    Dan heeft de response een persoon met een 'nationaliteit' met alleen de volgende gegevens
+    | naam | waarde        |
+    | type | Nationaliteit |
