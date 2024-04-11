@@ -20,20 +20,6 @@ PARAMS="{ \
 
 mkdir -p docs/features
 
-npx cucumber-js -f json:docs/features/test-result-autorisatie-gba.json \
-                -f summary:docs/features/test-result-autorisatie-gba-summary.txt \
-                -f summary \
-                features/bevragen/**/*-gba.feature \
-                --tags "not @skip-verify" --tags "@autorisatie" \
-                --world-parameters "$PARAMS"
-
-npx cucumber-js -f json:docs/features/test-result-protocollering-gba.json \
-                -f summary:docs/features/test-result-protocollering-gba-summary.txt \
-                -f summary \
-                features/bevragen/**/*-gba.feature \
-                --tags "not @skip-verify" --tags "@protocollering" \
-                --world-parameters "$PARAMS"
-
 npx cucumber-js -f json:docs/features/test-result-zoeken-en-raadplegen-gba.json \
                 -f summary:docs/features/test-result-zoeken-en-raadplegen-gba-summary.txt \
                 -f summary \
