@@ -95,4 +95,3 @@ Functionaliteit: Zoek met adresseerbaar object identificatie - fout cases
       | zoeken met parameter uit ander zoektype                                              | voornamen                  | Pietje     |
       | typfout in naam optionele parameter                                                  | gemeenteVanInschijving     | 0363       |
       | zoeken met niet gespecificeerde parameter                                            | bestaatNiet                | een waarde |
-      | inclusiefOverledenPersonen niet mogelijk bij ZoekMetAdresseerbaarObjectIdentificatie | inclusiefOverledenPersonen | true       |

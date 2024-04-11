@@ -45,7 +45,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
   Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisnummertoevoeging]'
 
     Scenario: persoon heeft een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als verblijfplaats
-      Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens heeft de volgende 'verblijfplaats' gegevens
+      Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
       | functie adres (10.10) |
       | W                     |
       En de 'verblijfplaats' heeft de volgende 'adres' gegevens

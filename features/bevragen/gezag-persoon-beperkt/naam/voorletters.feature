@@ -49,6 +49,7 @@ Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere
       Gegeven de persoon met burgerservicenummer '000000425' heeft de volgende gegevens
       | naam                  | waarde   |
       | voornamen (02.10)     |          |
+      | geslachtsnaam (02.40) | Maassen  |
       En de persoon heeft de volgende 'verblijfplaats' gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |

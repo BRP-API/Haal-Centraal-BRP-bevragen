@@ -4,7 +4,7 @@ Functionaliteit: verblijfplaats - fields alias fout cases
 
 Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
-  @fout-case
+  @autorisatie @fout-case
   Abstract Scenario: afnemer is niet geautoriseerd voor 'verblijfplaats buitenland' en vraagt zonder de fields alias één of meer verblijfplaats velden
     Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'verblijfplaats binnenland' gegevens
     Als personen wordt gezocht met de volgende parameters

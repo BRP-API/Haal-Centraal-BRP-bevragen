@@ -3,9 +3,11 @@
 Functionaliteit: Gezag Persoon Beperkt: adresregel velden in onderzoek
 
     Abstract Scenario: '<type>' is in onderzoek en alle adresregel velden worden gevraagd
-      Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
+      Gegeven een adres heeft de volgende gegevens
+      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
+      | 0518                 | 0599010051001502                         |
+      En de persoon met burgerservicenummer '000000188' is ingeschreven op het adres met de volgende gegevens
       | naam                                     | waarde                    |
-      | identificatiecode verblijfplaats (11.80) | 0599010051001502          |
       | aanduiding in onderzoek (83.10)          | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)           | 20020701                  |
       Als personen wordt gezocht met de volgende parameters
@@ -44,10 +46,12 @@ Functionaliteit: Gezag Persoon Beperkt: adresregel velden in onderzoek
       | 081340                  |                | true           |                |         | regel 2 adres buitenland      |
       | 081350                  |                |                | true           |         | regel 3 adres buitenland      |
 
-      Abstract Scenario: '<type>' is in onderzoek en alle adresregel velden worden gevraagd
-      Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
+    Abstract Scenario: '<type>' is in onderzoek en alle adresregel velden worden gevraagd
+      Gegeven een adres heeft de volgende gegevens
+      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
+      | 0518                 | 0599010051001502                         |
+      En de persoon met burgerservicenummer '000000188' is ingeschreven op het adres met de volgende gegevens
       | naam                                     | waarde                    |
-      | identificatiecode verblijfplaats (11.80) | 0599010051001502          |
       | aanduiding in onderzoek (83.10)          | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)           | 20020701                  |
       Als personen wordt gezocht met de volgende parameters

@@ -55,18 +55,15 @@ Functionaliteit: Zoek met adresseerbaar object identificatie
   Rule: Overleden persoon ingeschreven op het adresseerbaar object worden niet gevonden
 
     Scenario: Vind niet overleden personen die zijn ingeschreven op het adres met de opgegeven adresseerbaar object identificatie
-        Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
-        | gemeente van inschrijving (09.10) |
-        | 0599                              |
-        En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+        Gegeven een adres heeft de volgende gegevens
         | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
         | 0599                 | 0599010051001502                         |
-        En de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens
+        En de persoon met burgerservicenummer '000000024' is ingeschreven op het adres met de volgende gegevens
         | gemeente van inschrijving (09.10) |
         | 0599                              |
-        En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-        | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-        | 0599                 | 0599010051001502                         |
+        En de persoon met burgerservicenummer '000000025' is ingeschreven op het adres met de volgende gegevens
+        | gemeente van inschrijving (09.10) |
+        | 0599                              |
         En de persoon heeft de volgende 'inschrijving' gegevens
         | naam                                 | waarde |
         | reden opschorting bijhouding (67.20) | O      |

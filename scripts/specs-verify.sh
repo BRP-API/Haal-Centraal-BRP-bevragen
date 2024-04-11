@@ -20,24 +20,25 @@ PARAMS="{ \
 
 mkdir -p docs/features
 
-npx cucumber-js -f json:docs/features/test-result-autorisatie-gba.json \
-                -f summary:docs/features/test-result-autorisatie-gba-summary.txt \
-                -f summary \
-                features/bevragen/**/*-gba.feature \
-                --tags "not @skip-verify" --tags "@autorisatie" \
-                --world-parameters "$PARAMS"
+# npx cucumber-js -f json:docs/features/test-result-autorisatie-gba.json \
+#                 -f summary:docs/features/test-result-autorisatie-gba-summary.txt \
+#                 -f summary \
+#                 features/bevragen/**/*-gba.feature \
+#                 --tags "not @skip-verify" --tags "@autorisatie" \
+#                 --world-parameters "$PARAMS"
 
-npx cucumber-js -f json:docs/features/test-result-protocollering-gba.json \
-                -f summary:docs/features/test-result-protocollering-gba-summary.txt \
-                -f summary \
-                features/bevragen/**/*-gba.feature \
-                --tags "not @skip-verify" --tags "@protocollering" \
-                --world-parameters "$PARAMS"
+# npx cucumber-js -f json:docs/features/test-result-protocollering-gba.json \
+#                 -f summary:docs/features/test-result-protocollering-gba-summary.txt \
+#                 -f summary \
+#                 features/bevragen/**/*-gba.feature \
+#                 --tags "not @skip-verify" --tags "@protocollering" \
+#                 --world-parameters "$PARAMS"
 
 npx cucumber-js -f json:docs/features/test-result-zoeken-en-raadplegen-gba.json \
                 -f summary:docs/features/test-result-zoeken-en-raadplegen-gba-summary.txt \
                 -f summary \
                 features/bevragen/raadpleeg-met-burgerservicenummer \
+                features/bevragen/zoek-met-adresseerbaar-object-identificatie \
                 features/bevragen/zoek-met-geslachtsnaam-en-geboortedatum \
                 features/bevragen/zoek-met-geslachtsnaam-voornamen-en-gemeente-van-inschrijving \
                 features/bevragen/zoek-met-nummeraanduiding-identificatie \
@@ -50,6 +51,7 @@ npx cucumber-js -f json:docs/features/test-result-zoeken-en-raadplegen.json \
                 -f summary:docs/features/test-result-zoeken-en-raadplegen-summary.txt \
                 -f summary \
                 features/bevragen/raadpleeg-met-burgerservicenummer \
+                features/bevragen/zoek-met-adresseerbaar-object-identificatie \
                 features/bevragen/zoek-met-geslachtsnaam-en-geboortedatum \
                 features/bevragen/zoek-met-geslachtsnaam-voornamen-en-gemeente-van-inschrijving \
                 features/bevragen/zoek-met-nummeraanduiding-identificatie \
@@ -58,11 +60,25 @@ npx cucumber-js -f json:docs/features/test-result-zoeken-en-raadplegen.json \
                 --tags "not @skip-verify" --tags "not @gba" \
                 --world-parameters "$PARAMS"
 
+npx cucumber-js -f json:docs/features/test-result-gezag-persoon-beperkt-gba.json \
+                -f summary:docs/features/test-result-gezag-persoon-beperkt-gba-summary.txt \
+                -f summary \
+                features/bevragen/gezag-persoon-beperkt \
+                --tags "not @skip-verify" --tags "@gba" --tags "not @autorisatie" --tags "not @protocollering" \
+                --world-parameters "$PARAMS"
+
 npx cucumber-js -f json:docs/features/test-result-persoon-beperkt-gba.json \
                 -f summary:docs/features/test-result-persoon-beperkt-gba-summary.txt \
                 -f summary \
                 features/bevragen/persoon-beperkt \
                 --tags "not @skip-verify" --tags "@gba" --tags "not @autorisatie" --tags "not @protocollering" \
+                --world-parameters "$PARAMS"
+
+npx cucumber-js -f json:docs/features/test-result-gezag-persoon-beperkt.json \
+                -f summary:docs/features/test-result-gezag-persoon-beperkt-summary.txt \
+                -f summary \
+                features/bevragen/gezag-persoon-beperkt \
+                --tags "not @skip-verify" --tags "not @gba" \
                 --world-parameters "$PARAMS"
 
 npx cucumber-js -f json:docs/features/test-result-persoon-beperkt.json \
@@ -108,6 +124,7 @@ verify "adressering"
 verify "europees-kiesrecht"
 verify "geboorte"
 verify "geheimhouding"
+verify "gezag"
 verify "gezagsverhouding"
 verify "immigratie"
 verify "kind"

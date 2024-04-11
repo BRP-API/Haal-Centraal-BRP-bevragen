@@ -3,17 +3,17 @@
 Functionaliteit: Gezag Persoon beperkt: geboorte velden in onderzoek
 
     Abstract Scenario: '<type>' is in onderzoek en geboorte wordt gevraagd
-      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      Gegeven een adres heeft de volgende gegevens
+      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
+      | 0518                 | 0599010051001502                         |
+      En de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                            | waarde                    |
       | geboortedatum (03.10)           | 19830526                  |
       | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)  | 20020701                  |
-      En de persoon met burgerservicenummer heeft de volgende 'verblijfplaats' gegevens
+      En de persoon is ingeschreven op het adres met de volgende gegevens
       | gemeente van inschrijving (09.10) |
       | 0518                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      | 0518                 | 0599010051001502                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
@@ -36,17 +36,17 @@ Functionaliteit: Gezag Persoon beperkt: geboorte velden in onderzoek
       | 010310                  | geboortedatum          |
 
     Abstract Scenario: '<type>' is in onderzoek en geboortedatum wordt gevraagd
-      Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
+      Gegeven een adres heeft de volgende gegevens
+      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
+      | 0518                 | 0599010051001502                         |
+      En de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
       | naam                            | waarde                    |
       | geboortedatum (03.10)           | 19830526                  |
       | aanduiding in onderzoek (83.10) | <aanduiding in onderzoek> |
       | datum ingang onderzoek (83.20)  | 20020701                  |
-      En de persoon met burgerservicenummer heeft de volgende 'verblijfplaats' gegevens
+      En de persoon is ingeschreven op het adres met de volgende gegevens
       | gemeente van inschrijving (09.10) |
       | 0518                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      | 0518                 | 0599010051001502                         |
       Als personen wordt gezocht met de volgende parameters
       | naam                             | waarde                                  |
       | type                             | ZoekMetAdresseerbaarObjectIdentificatie |
