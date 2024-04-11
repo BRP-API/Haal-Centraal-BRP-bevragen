@@ -52,27 +52,3 @@ features.forEach((value, key) => {
         brandTitle: `${apiName} - ${proxyVersion}`
     });
 });
-
-reporter.generate({
-    theme: 'bootstrap',
-    jsonFile: 'docs/features/test-result-autorisatie-gba.json',
-    output: 'docs/features/test-report-autorisatie-gba.html',
-    noInlineScreenshots: true,
-    reportSuiteAsScenarios: true,
-    scenarioTimestamp: true,
-    launchReport: false,
-    name:'autorisatie features',
-    brandTitle: `${apiName} - ${gbaVersion}`
-});
-
-reporter.generate({
-    theme: 'bootstrap',
-    jsonFile: 'docs/features/test-result-protocollering-gba.json',
-    output: 'docs/features/test-report-protocollering-gba.html',
-    noInlineScreenshots: true,
-    reportSuiteAsScenarios: true,
-    scenarioTimestamp: true,
-    launchReport: false,
-    name:'protocollering features',
-    brandTitle: `${apiName} - ${gbaVersion}`
-});

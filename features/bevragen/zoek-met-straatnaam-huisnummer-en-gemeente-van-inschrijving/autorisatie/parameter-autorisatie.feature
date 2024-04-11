@@ -128,7 +128,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetStraatHuisnummerEnGemeente
       | huisnummertoevoeging | 81140                   | III    |
 
 
-  Regel: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+  Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
     dan wordt niet gekeken naar de autorisatie van de afnemer
