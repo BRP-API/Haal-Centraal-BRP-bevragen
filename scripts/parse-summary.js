@@ -22,9 +22,7 @@ const gbaFeatures = [
     'Persoon uitsluiting kiesrecht',
     'Persoon verblijfplaats',
     'Persoon verblijfstitel',
-    'Persoon verificatie',
-    'Autorisatie',
-    'Protocollering'
+    'Persoon verificatie'
 ];
 
 const proxyFeatures = [
