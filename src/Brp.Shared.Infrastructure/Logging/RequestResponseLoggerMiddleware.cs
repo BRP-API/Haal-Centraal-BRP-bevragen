@@ -46,10 +46,6 @@ internal class RequestResponseLoggerMiddleware
             ? await context.Response.ReadBodyAsync()
             : await newBodyStream.ReadAsync(context.Response.UseGzip());
 
-        if (context.Response.Headers.ContainsKey("x-geleverde-pls"))
-        {
-            context.Response.Headers.Remove("x-geleverde-pls");
-        }
         _diagnosticContext.Set("ResponseHeaders", context.Response.Headers);
 
         if(context.Response.StatusCode >= StatusCodes.Status400BadRequest)
