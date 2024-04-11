@@ -91,7 +91,8 @@ namespace BrpProxy.Middlewares
 
                 if (Log.IsEnabled(Serilog.Events.LogEventLevel.Debug))
                 {
-                    _diagnosticContext.Set("original responseBody", body);
+                    _diagnosticContext.Set("original response headers", context.Response.Headers);
+                    _diagnosticContext.Set("original response body", body);
                 }
 
                 var resultFields = personenQuery is RaadpleegMetBurgerservicenummer
