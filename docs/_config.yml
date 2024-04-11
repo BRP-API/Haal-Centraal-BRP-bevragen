@@ -5,6 +5,7 @@ mainBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
 devBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
 v1SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/v1.3.1/specificatie/genereervariant/openapi.yaml
 v2SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/genereervariant/openapi.yaml
+v2DevSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/develop/specificatie/genereervariant/openapi.yaml
 v2GbaSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/gba-genereervariant/openapi.yaml
 onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/230615%20deelname%20experiment%20BRP%20API's%20v1.9.ppsx
 proefProxyUrl: https://proefomgeving.haalcentraal.nl
@@ -42,10 +43,12 @@ nav:
         path: /v2/getting-started
       - title: User stories
         path: /user-stories-prod
-      - title: Bevragen API (redoc)
+      - title: Bevragen API
         path: /v2/redoc
-      - title: Bevragen API, GBA variant (redoc)
+      - title: Bevragen API, GBA variant
         path: /v2/redoc-gba
+      - title: Bevragen API (in ontwikkeling)
+        path: /v2/redoc-io
       - title: Features overzicht
         path: /v2/features-overzicht
       - title: Features test overzicht

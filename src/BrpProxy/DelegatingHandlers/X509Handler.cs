@@ -1,18 +1,19 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using Serilog;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BrpProxy.DelegatingHandlers;
 
 public class X509Handler : DelegatingHandler
 {
-    private readonly ILogger<X509Handler> _logger;
     private readonly IWebHostEnvironment _environment;
     private readonly IConfiguration _configuration;
+    private readonly IDiagnosticContext _diagnosticContext;
 
-    public X509Handler(ILogger<X509Handler> logger, IWebHostEnvironment environment, IConfiguration configuration)
+    public X509Handler(IWebHostEnvironment environment, IConfiguration configuration, IDiagnosticContext diagnosticContext)
     {
-        _logger = logger;
         _environment = environment;
         _configuration = configuration;
+        _diagnosticContext = diagnosticContext;
     }
 
     protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -39,22 +40,22 @@ public class X509Handler : DelegatingHandler
 
                         httpClientHandler.ClientCertificates.Add(x509Certificate);
 
-                        _logger.LogDebug("X509Handler.SendAsync. Certificate '{path}' added for mTLS authentication", path);
+                        _diagnosticContext.Set("X509Handler", $"Certificate '{path}' added for mTLS authentication");
                     }
                     catch(Exception ex)
                     {
-                        _logger.LogWarning(ex, $"X509Handler.SendAsync: {ex.Message}");
+                        _diagnosticContext.SetException(ex);
                     }
                 }
             }
             else
             {
-                _logger.LogWarning("X509Handler.SendAsync: Certificate file '{path}' does not exist", path);
+                _diagnosticContext.Set("X509Handler", $"Certificate '{path}' does not exist");
             }
         }
         else
         {
-            _logger.LogDebug("X509Handler:SendAsync: No certificate and/or password provided");
+            _diagnosticContext.Set("X509Handler", "No certificate and/or password provided");
         }
 
         return base.SendAsync(request, cancellationToken);

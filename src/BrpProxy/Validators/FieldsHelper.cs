@@ -1,11 +1,12 @@
 ﻿using HaalCentraal.BrpProxy.Generated;
+using Serilog;
 using System.Collections.ObjectModel;
 
 namespace BrpProxy.Validators;
 
 public class FieldsHelper
 {
-    private readonly ILogger<FieldsHelper> _logger;
+    private readonly IDiagnosticContext _diagnosticContext;
 
     public ReadOnlyDictionary<string,string> PersoonFieldShortcuts { get; private set; }
     public ReadOnlyDictionary<string, string> PersoonBeperktFieldShortcuts { get; }
@@ -115,9 +116,9 @@ public class FieldsHelper
         return dictionary;
     }
 
-    public FieldsHelper(ILogger<FieldsHelper> logger)
+    public FieldsHelper(IDiagnosticContext diagnosticContext)
     {
-        _logger = logger;
+        _diagnosticContext = diagnosticContext;
 
         PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
         BeperktPersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldInOnderzoekMapping());
@@ -135,7 +136,7 @@ public class FieldsHelper
             .Distinct()
             .ToList();
 
-        _logger.LogInformation("extra persoon fields: {@fields}", retval);
+        _diagnosticContext.Set("fields (gevraagd + automatisch geleverd)", retval);
 
         return retval;
     }
@@ -150,7 +151,7 @@ public class FieldsHelper
             .Distinct()
             .ToList();
 
-        _logger.LogInformation("extra persoon beperkt fields: {@fields}", retval);
+        _diagnosticContext.Set("fields (gevraagd + automatisch geleverd)", retval);
 
         return retval;
     }
@@ -183,7 +184,7 @@ public class FieldsHelper
 
         var pathParts = path.Split('.');
 
-        var s1 = pathParts.Last();
+        var s1 = pathParts[^1];
         var s2 = string.Join('.', pathParts.Take(pathParts.Length - 1));
 
         if (new[] { "code", "omschrijving" }.Contains(s1))

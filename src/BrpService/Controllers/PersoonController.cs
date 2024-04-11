@@ -2,6 +2,7 @@
 using HaalCentraal.BrpService.Generated;
 using HaalCentraal.BrpService.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Diagnostics;
 
 namespace HaalCentraal.BrpService.Controllers;
@@ -9,23 +10,19 @@ namespace HaalCentraal.BrpService.Controllers;
 [ApiController]
 public class PersoonController : Generated.ControllerBase
 {
-    private readonly ILogger<PersoonController> _logger;
+    private readonly IDiagnosticContext _diagnosticContext;
     private readonly IMapper _mapper;
     private readonly PersoonRepository _repository;
 
-    public PersoonController(ILogger<PersoonController> logger, IMapper mapper, PersoonRepository repository)
+    public PersoonController(IDiagnosticContext diagnosticContext, IMapper mapper, PersoonRepository repository)
     {
-        _logger = logger;
+        _diagnosticContext = diagnosticContext;
         _mapper = mapper;
         _repository = repository;
     }
 
     public override async Task<ActionResult<PersonenQueryResponse>> GetPersonen([FromBody] PersonenQuery body)
     {
-        _logger.LogDebug("Request headers: {@headers}", HttpContext.Request.Headers);
-        _logger.LogDebug("Request body: {@body}", body);
-
-
         var retval = body switch
         {
             RaadpleegMetBurgerservicenummer q => await Handle(q),
@@ -37,8 +34,6 @@ public class PersoonController : Generated.ControllerBase
             ZoekMetStraatHuisnummerEnGemeenteVanInschrijving q => await Handle(q),
             _ => throw new InvalidOperationException($"Onbekend type query: {body}"),
         };
-
-        _logger.LogDebug("Response body: {@responsebody}", retval);
 
         return Ok(retval);
     }
