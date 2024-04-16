@@ -239,12 +239,13 @@ public static class SerilogHelpers
 
         logger.Information("Enable file logging using Elasticsearch Common Schema format. Path: {path}, fileSizeLimit: {fileSizeLimitBytes}", ecsPath, fileSizeLimitBytes);
 
-        config.WriteTo.FileEx(
+        config.WriteTo.PersistentFile(
             formatter: config.ConfigureLoggingWithEcsTextFormatter(serviceProvider),
             path: ecsPath,
             fileSizeLimitBytes: fileSizeLimitBytes,
             rollOnFileSizeLimit: true,
             retainedFileCountLimit: retainedFileCountLimit,
-            preserveLogFilename: true);
+            preserveLogFilename: true,
+            shared: true);
     }
 }
