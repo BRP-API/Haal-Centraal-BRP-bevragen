@@ -1,3 +1,4 @@
 :!src/Brp.Shared.Infrastructure/**/*.*
 :!src/Brp.Shared.Infrastructure/*.*
+:!src/Serilog.Sinks.PersistentFile/*.*
 *
