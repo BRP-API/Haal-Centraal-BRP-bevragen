@@ -4,7 +4,7 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4843 scenarios (1 failed, 4842 passed)
+Totaal: 4845 scenarios (2 failed, 4843 passed)
 
 ## GBA v    2.1.2-2024040801
 
@@ -37,7 +37,8 @@ Totaal: 4843 scenarios (1 failed, 4842 passed)
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 222 scenarios (222 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 227 scenarios (227 passed)
-  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 532 scenarios (532 passed)
+  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 534 scenarios (1 failed, 533 passed)
+    - features/bevragen/persoon/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature:82
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
   - [geboorte](./test-report-persoon-geboorte.html){:target="_blank" rel="noopener"}: 28 scenarios (28 passed)
   - [geheimhouding](./test-report-persoon-geheimhouding.html){:target="_blank" rel="noopener"}: 12 scenarios (12 passed)
