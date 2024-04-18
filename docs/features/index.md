@@ -4,9 +4,9 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4845 scenarios (2 failed, 4843 passed)
+Totaal: 4845 scenarios (0 failed, 4845 passed)
 
-## GBA v    2.1.2-2024040801
+## GBA v    2.1.5-2024041801
 
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
@@ -37,8 +37,7 @@ Totaal: 4845 scenarios (2 failed, 4843 passed)
 - [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 222 scenarios (222 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 227 scenarios (227 passed)
-  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 534 scenarios (1 failed, 533 passed)
-    - features/bevragen/persoon/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature:82
+  - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 534 scenarios (534 passed)
   - [europees kiesrecht](./test-report-persoon-europees-kiesrecht.html){:target="_blank" rel="noopener"}: 30 scenarios (30 passed)
   - [geboorte](./test-report-persoon-geboorte.html){:target="_blank" rel="noopener"}: 28 scenarios (28 passed)
   - [geheimhouding](./test-report-persoon-geheimhouding.html){:target="_blank" rel="noopener"}: 12 scenarios (12 passed)
