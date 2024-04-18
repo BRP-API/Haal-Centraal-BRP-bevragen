@@ -44,6 +44,40 @@ Functionaliteit: ZoekMetPostcodeEnHuisnummer van persoonslijst met opschorting b
       | fields     | burgerservicenummer         |
       Dan heeft de response 0 personen
 
+    Scenario: persoonslijst heeft opschorting bijhouding reden "F" en zelfde burgerservicenummer is gebruikt op andere persoonslijst
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geslachtsnaam (02.40) |
+      | Maassen               |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeente_code | postcode (11.60) | huisnummer (11.20) |
+      | 0599          | 2628HJ           | 2                  |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20220829                             | F                                    |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geslachtsnaam (02.40) |
+      | Rafi               |
+      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
+      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      | gemeente_code | postcode (11.60) | huisnummer (11.20) |
+      | 0599          | 2628HJ           | 2                  |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam       | waarde                                 |
+      | type       | ZoekMetPostcodeEnHuisnummer            |
+      | postcode   | 2628HJ                                 |
+      | huisnummer | 2                                      |
+      | fields     | burgerservicenummer,naam.geslachtsnaam |
+      Dan heeft de response 1 persoon
+      En heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000024 |
+      | naam.geslachtsnaam  | Rafi      |
+
 
   Rule: Een persoonslijst met reden opschorting bijhouding ongelijk aan "O" (overleden) wordt alleen gevonden bij gebruik van parameter inclusiefOverledenPersonen met waarde true
 

@@ -79,6 +79,28 @@ Functionaliteit: ZoekMetGeslachtsnaamEnGeboortedatum van persoonslijst met opsch
       | naam                | waarde    |
       | burgerservicenummer | 000000048 |
 
+    Scenario: persoonslijst heeft opschorting bijhouding reden "F" en zelfde burgerservicenummer is gebruikt op andere persoonslijst
+      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
+      | 19830526              | Maassen               | Pieter            |
+      En de persoon heeft de volgende 'inschrijving' gegevens
+      | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
+      | 20220829                             | F                                    |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
+      | 19830526              | Maassen               | Peter             |
+      Als gba personen wordt gezocht met de volgende parameters
+      | naam          | waarde                              |
+      | type          | ZoekMetGeslachtsnaamEnGeboortedatum |
+      | geslachtsnaam | Maassen                             |
+      | geboortedatum | 1983-05-26                          |
+      | fields        | burgerservicenummer,naam.voornamen  |
+      Dan heeft de response 1 persoon
+      En heeft de response een persoon met de volgende gegevens
+      | naam                | waarde    |
+      | burgerservicenummer | 000000024 |
+      | naam.voornamen      | Peter     |
+
   Rule: Een persoonslijst met reden opschorting bijhouding ongelijk aan "O" (overleden) wordt alleen gevonden bij gebruik van parameter inclusiefOverledenPersonen met waarde true
 
     Scenario: persoonslijst heeft opschorting bijhouding reden "O" en inclusiefOverledenPersonen wordt niet gebruikt
