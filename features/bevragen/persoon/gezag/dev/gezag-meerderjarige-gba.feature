@@ -376,7 +376,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
 
   Rule: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd
     # de gezagsmodule levert bij het bevragen van de niet-ouder geen gezag
-    # het gezag kan achterhaald worden door het gezag van de kinderen van de partner op te vragen
+    # het gezag kan achterhaald worden door het gezag van de kinderen van de (ex)partner(s) op te vragen
     # voor elke gezagsrelatie van de minderjarige kinderen wordt bepaald of de niet-ouder voogd is van dit kind
 
     Scenario: de partner van overleden ouder heeft gezag over de minderjarige kinderen
