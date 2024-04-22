@@ -2,6 +2,12 @@
 
 public class AuthorisationResult
 {
-    public bool IsValid { get; set; }
-    public List<AuthorisationFailure> Errors { get; set; } = new();
+    public AuthorisationResult(bool isValid, IEnumerable<AuthorisationFailure> errors)
+    {
+        IsValid = isValid;
+        Errors = new(errors);
+    }
+
+    public bool IsValid { get; }
+    public List<AuthorisationFailure> Errors { get; }
 }

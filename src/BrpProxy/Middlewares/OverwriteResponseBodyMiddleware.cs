@@ -8,7 +8,7 @@ using AutoMapper;
 using BrpProxy.Validators;
 using Newtonsoft.Json.Linq;
 using Serilog;
-using Brp.Shared.Infrastructure.ProblemDetails;
+using FluentValidation.Results;
 
 namespace BrpProxy.Middlewares
 {
@@ -48,7 +48,7 @@ namespace BrpProxy.Middlewares
 
                 requestBody = await context.Request.ReadBodyAsync();
 
-                if (!await context.RequestBodyIsValid(requestBody, orgBodyStream, _diagnosticContext))
+                if (!await context.HandleRequestBodyIsValidJson(requestBody, new DummyRequestBodyValidationService(), _diagnosticContext))
                 {
                     return;
                 }
@@ -117,6 +117,14 @@ namespace BrpProxy.Middlewares
             {
                 await context.HandleUnhandledException(requestBody, ex, orgBodyStream, _diagnosticContext);
             }
+        }
+    }
+
+    internal class DummyRequestBodyValidationService : IRequestBodyValidator
+    {
+        public ValidationResult ValidateRequestBody(string requestBody)
+        {
+            return new ValidationResult();
         }
     }
 
