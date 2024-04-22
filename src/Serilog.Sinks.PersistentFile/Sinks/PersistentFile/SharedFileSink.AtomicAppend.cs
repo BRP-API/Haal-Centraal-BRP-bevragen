@@ -102,7 +102,7 @@ namespace Serilog.Sinks.PersistentFile
                         _fileOutput = new FileStream(
                             _path,
                             new FileStreamOptions{
-                                Access = FileAccess.ReadWrite,
+                                Access = FileAccess.Write,
                                 Mode = FileMode.Append,
                                 Options = FileOptions.None,
                                 Share = FileShare.ReadWrite
