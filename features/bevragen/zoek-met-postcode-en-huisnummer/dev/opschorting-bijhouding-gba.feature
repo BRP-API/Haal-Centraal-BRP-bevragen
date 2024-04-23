@@ -45,27 +45,24 @@ Functionaliteit: ZoekMetPostcodeEnHuisnummer van persoonslijst met opschorting b
       Dan heeft de response 0 personen
 
     Scenario: persoonslijst heeft opschorting bijhouding reden "F" en zelfde burgerservicenummer is gebruikt op andere persoonslijst
-      Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
-      | geslachtsnaam (02.40) |
-      | Maassen               |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
-      | gemeente van inschrijving (09.10) |
-      | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
+      Gegeven een adres heeft de volgende gegevens
       | gemeente_code | postcode (11.60) | huisnummer (11.20) |
       | 0599          | 2628HJ           | 2                  |
+      En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
+      | geslachtsnaam (02.40) |
+      | Maassen               |
+      En de persoon is ingeschreven op het adres met de volgende gegevens
+      | gemeente van inschrijving (09.10) |
+      | 0599                              |
       En de persoon heeft de volgende 'inschrijving' gegevens
       | datum opschorting bijhouding (67.10) | reden opschorting bijhouding (67.20) |
       | 20220829                             | F                                    |
       En de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
       | geslachtsnaam (02.40) |
       | Rafi               |
-      En de persoon heeft de volgende 'verblijfplaats' gegevens
+      En de persoon is ingeschreven op het adres met de volgende gegevens
       | gemeente van inschrijving (09.10) |
       | 0599                              |
-      En de 'verblijfplaats' heeft de volgende 'adres' gegevens
-      | gemeente_code | postcode (11.60) | huisnummer (11.20) |
-      | 0599          | 2628HJ           | 2                  |
       Als gba personen wordt gezocht met de volgende parameters
       | naam       | waarde                                 |
       | type       | ZoekMetPostcodeEnHuisnummer            |
