@@ -21,7 +21,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000152                       |
-      | fields              | verblijfplaats.<veld>           |
+      | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                         | waarde      |
       | type                                         | Adres       |
@@ -34,16 +34,18 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
       Voorbeelden:
-      | veld                             | waarde           |
-      | adresseerbaarObjectIdentificatie | 0599010000208579 |
-      | nummeraanduidingIdentificatie    | 0599200000219678 |
+      | groep                    | veld                             | waarde           |
+      | verblijfplaats           | adresseerbaarObjectIdentificatie | 0599010000208579 |
+      | verblijfplaats           | nummeraanduidingIdentificatie    | 0599200000219678 |
+      | verblijfplaatsBinnenland | adresseerbaarObjectIdentificatie | 0599010000208579 |
+      | verblijfplaatsBinnenland | nummeraanduidingIdentificatie    | 0599200000219678 |
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere verblijfplaats velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000152                       |
-      | fields              | verblijfplaats.<veld>           |
+      | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                         | waarde         |
       | type                                         | Adres          |
@@ -58,16 +60,18 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
 
       Voorbeelden:
-      | veld                  | datum      | lang formaat     |
-      | datumVan              | 2000-04-23 | 23 april 2000    |
-      | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
+      | groep                    | veld                  | datum      | lang formaat     |
+      | verblijfplaats           | datumVan              | 2000-04-23 | 23 april 2000    |
+      | verblijfplaats           | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
+      | verblijfplaatsBinnenland | datumVan              | 2000-04-23 | 23 april 2000    |
+      | verblijfplaatsBinnenland | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere verblijfadres velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000000152                           |
-      | fields              | verblijfplaats.verblijfadres.<veld> |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000152                       |
+      | fields              | <groep>.verblijfadres.<veld>    |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                         | waarde      |
       | type                                         | Adres       |
@@ -85,9 +89,11 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
       Voorbeelden:
-      | veld            | waarde |
-      | korteStraatnaam | Spui   |
-      | huisnummer      | 123    |
+      | groep                    | veld            | waarde |
+      | verblijfplaats           | korteStraatnaam | Spui   |
+      | verblijfplaats           | huisnummer      | 123    |
+      | verblijfplaatsBinnenland | korteStraatnaam | Spui   |
+      | verblijfplaatsBinnenland | huisnummer      | 123    |
 
     Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en er wordt geen verblijfplaats velden gevraagd
       Als personen wordt gezocht met de volgende parameters

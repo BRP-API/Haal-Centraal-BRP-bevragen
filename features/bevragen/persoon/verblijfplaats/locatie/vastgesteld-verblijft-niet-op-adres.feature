@@ -21,7 +21,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | naam                | waarde                          |
       | type                | RaadpleegMetBurgerservicenummer |
       | burgerservicenummer | 000000152                       |
-      | fields              | verblijfplaats.<veld>           |
+      | fields              | <groep>.<veld>                  |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                         | waarde         |
       | type                                         | Locatie        |
@@ -36,16 +36,18 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002    |
 
       Voorbeelden:
-      | veld                  | datum      | lang formaat     |
-      | datumVan              | 2000-04-23 | 23 april 2000    |
-      | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
+      | groep                                  | veld                  | datum      | lang formaat     |
+      | verblijfplaats                         | datumVan              | 2000-04-23 | 23 april 2000    |
+      | verblijfplaats                         | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
+      | verblijfplaatsBinnenland               | datumVan              | 2000-04-23 | 23 april 2000    |
+      | verblijverblijfplaatsBinnenlandfplaats | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locatie en één of meerdere verblijfadres velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters
-      | naam                | waarde                              |
-      | type                | RaadpleegMetBurgerservicenummer     |
-      | burgerservicenummer | 000000152                           |
-      | fields              | verblijfplaats.verblijfadres.<veld> |
+      | naam                | waarde                          |
+      | type                | RaadpleegMetBurgerservicenummer |
+      | burgerservicenummer | 000000152                       |
+      | fields              | <groep>.verblijfadres.<veld>    |
       Dan heeft de response een persoon met de volgende 'verblijfplaats' gegevens
       | naam                                         | waarde      |
       | type                                         | Locatie     |
@@ -63,8 +65,9 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
 
       Voorbeelden:
-      | veld                | waarde                       |
-      | locatiebeschrijving | Woonboot in de Grotere Sloot |
+      | groep                    | veld                | waarde                       |
+      | verblijfplaats           | locatiebeschrijving | Woonboot in de Grotere Sloot |
+      | verblijfplaatsBinnenland | locatiebeschrijving | Woonboot in de Grotere Sloot |
 
     Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locatie en er wordt geen verblijfplaats velden gevraagd
       Als personen wordt gezocht met de volgende parameters
