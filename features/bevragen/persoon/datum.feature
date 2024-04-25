@@ -4,7 +4,7 @@ Functionaliteit: leveren van een datum
 
   een datum wordt geleverd met een type op basis van de nauwkeurigheid van de waarde
 
-  Rule: een datum krijgt type "Datum" wanneer de laatste twee cijfers in de GBA datum ongelijk zijn aan "00".
+  Regel: een datum krijgt type "Datum" wanneer de laatste twee cijfers in de GBA datum ongelijk zijn aan "00".
         Hierbij geldt dat:
         - de datum wordt geleverd in veld "datum", in full-date formaat als gedefinieerd in RFC 3339, sectie 5.6
         - veld "type" krijgt de waarde "Datum"
@@ -33,7 +33,7 @@ Functionaliteit: leveren van een datum
         | 19780914  | 1978-09-14 | 14 september 1978 |
         | 20021102  | 2002-11-02 | 2 november 2002   |
 
-  Rule: een datum krijgt type "JaarMaandDatum" wanneer de laatste twee cijfers in de GBA datum gelijk zijn aan "00".
+  Regel: een datum krijgt type "JaarMaandDatum" wanneer de laatste twee cijfers in de GBA datum gelijk zijn aan "00".
         Hierbij geldt dat:
         - het jaar, dat staat in de eerste 4 cijfers, wordt geleverd in veld "jaar" als integer (getal)
         - de maand, dat staat in posities 5 en 6, wordt geleverd in veld "maand" als integer (getal)
@@ -65,7 +65,7 @@ Functionaliteit: leveren van een datum
         | 19501000  | 1950 | 10    | oktober 1950  |
         | 19991200  | 1999 | 12    | december 1999 |
 
-  Rule: een datum krijgt type "JaarDatum" wanneer de laatste vier cijfers in de GBA datum gelijk zijn aan "0000".
+  Regel: een datum krijgt type "JaarDatum" wanneer de laatste vier cijfers in de GBA datum gelijk zijn aan "0000".
         Hierbij geldt dat:
         - het jaar, dat staat in de eerste 4 cijfers, wordt geleverd in veld "jaar" als integer (getal)
         - veld "type" krijgt de waarde "JaarDatum"
@@ -85,7 +85,7 @@ Functionaliteit: leveren van een datum
         | datumIngangFamilierechtelijkeBetrekking.jaar        | 1963      |
         | datumIngangFamilierechtelijkeBetrekking.langFormaat | 1963      |
 
-  Rule: een datum krijgt type "DatumOnbekend" wanneer de GBA datum gelijk is aan "00000000".
+  Regel: een datum krijgt type "DatumOnbekend" wanneer de GBA datum gelijk is aan "00000000".
         Hierbij geldt dat:
         - veld "type" krijgt de waarde "DatumOnbekend"
         - veld "onbekend" wordt opgenomen met de boolean waarde true

@@ -19,7 +19,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetPostcodeEnHuisnummer
       | huisnummertoevoeging (11.40) | 2               |
       | postcode (11.60)             | 2497BV          |
 
-  Rule: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+  Regel: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met alleen de verplichte parameters
       Als personen wordt gezocht met de volgende parameters
@@ -51,7 +51,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetPostcodeEnHuisnummer
       | gemeenteVanInschrijving | 0599   | 080910, 081120, 081160 |
 
 
-  Rule: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
+  Regel: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met inclusiefOverledenPersonen
       Als personen wordt gezocht met de volgende parameters

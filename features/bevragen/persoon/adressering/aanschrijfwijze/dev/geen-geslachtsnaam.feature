@@ -2,7 +2,7 @@
 
 Functionaliteit: Als gemeente wil ik de geen onjuiste aanschrijfwijze van mijn burgers 
 
-  Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanschrijfwijze niet opgenomen
+  Regel: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanschrijfwijze niet opgenomen
 
     Abstract Scenario: geslachtsnaam van de persoon is onbekend bij aanduiding naamgebruik "<naamgebruik>" levert geen aanschrijfwijze
       Gegeven de persoon met burgerservicenummer '000000401' heeft de volgende gegevens

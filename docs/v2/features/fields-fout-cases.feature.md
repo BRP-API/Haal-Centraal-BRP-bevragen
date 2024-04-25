@@ -8,7 +8,7 @@ title: persoon/persoon beperkt velden vragen met fields - fout cases
 # Functionaliteit: persoon/persoon beperkt velden vragen met fields - fout cases
 
 
-## Rule: De fields parameter is een verplichte parameter
+## Regel: De fields parameter is een verplichte parameter
 
 
 `@fout-case`
@@ -62,7 +62,7 @@ title: persoon/persoon beperkt velden vragen met fields - fout cases
   |----------|--------|-------------------------|
   | required | fields | Parameter is verplicht. |
 
-## Rule: De fields parameter bevat een lijst met minimaal één veld pad
+## Regel: De fields parameter bevat een lijst met minimaal één veld pad
 
 
 `@fout-case`
@@ -171,7 +171,7 @@ title: persoon/persoon beperkt velden vragen met fields - fout cases
   |-------|--------|--------------------------|
   | array | fields | Parameter is geen array. |
 
-## Rule: De fields parameter bevat een lijst met maximaal 130 veld paden
+## Regel: De fields parameter bevat een lijst met maximaal 130 veld paden
 
 
 `@fout-case`
@@ -242,7 +242,7 @@ title: persoon/persoon beperkt velden vragen met fields - fout cases
   | aNummer,adressering,adressering.adresregel1,adressering.adresregel2,adressering.adresregel3,adressering.land,adressering.aanhef,adressering.aanschrijfwijze,adressering.aanschrijfwijze.aanspreekvorm,adressering.aanschrijfwijze.naam,adressering.gebruikInLopendeTekst,burgerservicenummer,datumEersteInschrijvingGBA,datumInschrijvingInGemeente,europeesKiesrecht,europeesKiesrecht.aanduiding,europeesKiesrecht.einddatumUitsluiting,geboorte,geboorte.datum,geboorte.land,geboorte.plaats,gemeenteVanInschrijving,geslacht,immigratie,immigratie.datumVestigingInNederland,immigratie.indicatieVestigingVanuitBuitenland,immigratie.landVanwaarIngeschreven,immigratie.vanuitVerblijfplaatsOnbekend,indicatieCurateleRegister,indicatieGezagMinderjarige,kinderen,kinderen.burgerservicenummer,kinderen.geboorte,kinderen.geboorte.datum,kinderen.geboorte.land,kinderen.geboorte.plaats,kinderen.naam,kinderen.naam.adellijkeTitelPredicaat,kinderen.naam.geslachtsnaam,kinderen.naam.voorletters,kinderen.naam.voornamen,kinderen.naam.voorvoegsel,leeftijd,naam,naam.adellijkeTitelPredicaat,naam.geslachtsnaam,naam.volledigeNaam,naam.voorletters,naam.voornamen,naam.voorvoegsel,naam.aanduidingNaamgebruik,nationaliteiten,nationaliteiten.redenOpname,nationaliteiten.datumIngangGeldigheid,nationaliteiten.nationaliteit,opschortingBijhouding,opschortingBijhouding.datum,ouders,ouders.burgerservicenummer,ouders.datumIngangFamilierechtelijkeBetrekking,ouders.geboorte,ouders.geboorte.datum,ouders.geboorte.land,ouders.geboorte.plaats,ouders.geslacht,ouders.naam,ouders.naam.adellijkeTitelPredicaat,ouders.naam.geslachtsnaam,ouders.naam.voorletters,ouders.naam.voornamen,ouders.naam.voorvoegsel,ouders.ouderAanduiding,overlijden,overlijden.datum,overlijden.land,overlijden.plaats,partners,partners.aangaanHuwelijkPartnerschap,partners.aangaanHuwelijkPartnerschap.datum,partners.aangaanHuwelijkPartnerschap.land,partners.aangaanHuwelijkPartnerschap.plaats,partners.burgerservicenummer,partners.geboorte,partners.geboorte.datum,partners.geboorte.land,partners.geboorte.plaats,partners.geslacht,partners.naam,partners.naam.adellijkeTitelPredicaat,partners.naam.geslachtsnaam,partners.naam.voorletters,partners.naam.voornamen,partners.naam.voorvoegsel,partners.ontbindingHuwelijkPartnerschap,partners.ontbindingHuwelijkPartnerschap.datum,partners.soortVerbintenis,uitsluitingKiesrecht,uitsluitingKiesrecht.einddatum,uitsluitingKiesrecht.uitgeslotenVanKiesrecht,verblijfplaats,verblijfplaats.datumIngangGeldigheid,verblijfplaats.datumVan,verblijfplaats.verblijfadres,verblijfplaats.verblijfadres.land,verblijfplaats.verblijfadres.regel1,verblijfplaats.verblijfadres.regel2,verblijfplaats.verblijfadres.regel3,verblijfplaats.adresseerbaarObjectIdentificatie,verblijfplaats.functieAdres,verblijfplaats.nummeraanduidingIdentificatie,verblijfplaats.verblijfadres.aanduidingBijHuisnummer,verblijfplaats.verblijfadres.huisletter,verblijfplaats.verblijfadres.huisnummer,verblijfplaats.verblijfadres.huisnummertoevoeging,verblijfplaats.verblijfadres.korteStraatnaam,verblijfplaats.verblijfadres.officieleStraatnaam,verblijfplaats.verblijfadres.postcode,verblijfplaats.verblijfadres.woonplaats,verblijfplaats.verblijfadres.locatiebeschrijving,verblijfstitel,verblijfstitel.aanduiding,verblijfstitel.datumEinde,verblijfstitel.datumIngang,verblijfplaatsBinnenland,verblijfplaatsBinnenland.datumIngangGeldigheid,verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres,verblijfplaatsBinnenland.adresseerbaarObjectIdentificatie,verblijfplaatsBinnenland.functieAdres,verblijfplaatsBinnenland.nummeraanduidingIdentificatie,verblijfplaatsBinnenland.verblijfadres.aanduidingBijHuisnummer,verblijfplaatsBinnenland.verblijfadres.huisletter,verblijfplaatsBinnenland.verblijfadres.huisnummer,verblijfplaatsBinnenland.verblijfadres.huisnummertoevoeging,verblijfplaatsBinnenland.verblijfadres.korteStraatnaam,verblijfplaatsBinnenland.verblijfadres.officieleStraatnaam,verblijfplaatsBinnenland.verblijfadres.postcode,verblijfplaatsBinnenland.verblijfadres.woonplaats,verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving,adresseringBinnenland,adresseringBinnenland.adresregel1,adresseringBinnenland.adresregel2 |
 
 
-## Rule: De fields parameter bevat veld paden die verwijzen naar een bestaand veld. Een veld pad is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
+## Regel: De fields parameter bevat veld paden die verwijzen naar een bestaand veld. Een veld pad is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
 
 - kleine letters (a-z)  
 - hoofdletters (A-Z)  

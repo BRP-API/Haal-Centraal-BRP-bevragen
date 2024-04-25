@@ -2,7 +2,7 @@
 
 Functionaliteit: Kiesrecht
 
-Rule: uitsluiting kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting kiesrecht (38.20)' geen waarde heeft
+Regel: uitsluiting kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting kiesrecht (38.20)' geen waarde heeft
 
   Scenario: persoon is uitgesloten van kiesrecht zonder einddatum uitsluiting
 		Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'kiesrecht' gegevens
@@ -17,7 +17,7 @@ Rule: uitsluiting kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting k
     | naam                    | waarde |
     | uitgeslotenVanKiesrecht | true   |
 
-Rule: uitsluiting kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting kiesrecht (38.20)' in de toekomst ligt
+Regel: uitsluiting kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting kiesrecht (38.20)' in de toekomst ligt
 
   Scenario: 'einddatum uitsluiting kiesrecht (38.20)' ligt in de toekomst
     Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'kiesrecht' gegevens
@@ -51,7 +51,7 @@ Rule: uitsluiting kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting k
     | vorige maand          |
     | vorig jaar            |
 
-Rule: Bij een 'einddatum uitsluiting kiesrecht (38.20)' waarvan alleen het jaar bekend is, wordt uitsluiting kiesrecht gegevens geleverd als het jaar gelijk is aan het huidig jaar of als het jaar in de toekomst ligt
+Regel: Bij een 'einddatum uitsluiting kiesrecht (38.20)' waarvan alleen het jaar bekend is, wordt uitsluiting kiesrecht gegevens geleverd als het jaar gelijk is aan het huidig jaar of als het jaar in de toekomst ligt
 
 	Abstract Scenario: 'einddatum uitsluiting kiesrecht (38.20)' is <einddatum uitsluiting>
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -71,7 +71,7 @@ Rule: Bij een 'einddatum uitsluiting kiesrecht (38.20)' waarvan alleen het jaar 
     | dit jaar              |
     | volgend jaar          |
 
-Rule: Bij een 'einddatum uitsluiting kiesrecht (38.20)' waarvan de dag niet bekend is, wordt uitsluiting kiesrecht gegevens geleverd als het jaar en maand gelijk is aan de huidige maand of een maand in de toekomst
+Regel: Bij een 'einddatum uitsluiting kiesrecht (38.20)' waarvan de dag niet bekend is, wordt uitsluiting kiesrecht gegevens geleverd als het jaar en maand gelijk is aan de huidige maand of een maand in de toekomst
 
 	Abstract Scenario: 'einddatum uitsluiting kiesrecht (38.20)' is <einddatum uitsluiting>
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -91,7 +91,7 @@ Rule: Bij een 'einddatum uitsluiting kiesrecht (38.20)' waarvan de dag niet beke
     | deze maand            |
     | volgende maand        |
 
-Rule: uitsluiting kiesrecht gegevens wordt geleverd bij een onbekend 'einddatum uitsluiting kiesrecht (38.20)'
+Regel: uitsluiting kiesrecht gegevens wordt geleverd bij een onbekend 'einddatum uitsluiting kiesrecht (38.20)'
 
 	Scenario: 'einddatum uitsluiting kiesrecht (38.20)' is onbekend
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -106,7 +106,7 @@ Rule: uitsluiting kiesrecht gegevens wordt geleverd bij een onbekend 'einddatum 
     | naam                    | waarde |
     | uitgeslotenVanKiesrecht | true   |
 
-Rule: uitsluiting kiesrecht gegevens wordt niet geleverd wanneer 'aanduiding uitgesloten kiesrecht (38.10)' geen waarde heeft
+Regel: uitsluiting kiesrecht gegevens wordt niet geleverd wanneer 'aanduiding uitgesloten kiesrecht (38.10)' geen waarde heeft
 
 	Scenario: 'aanduiding uitgesloten kiesrecht (38.10)' heeft geen waarde
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens

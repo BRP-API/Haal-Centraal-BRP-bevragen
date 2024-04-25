@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving - fout cases
 
-Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parameters
+Regel: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parameters
 
   @fout-case
   Scenario: De voornamen, geslachtsnaam en gemeenteVanInschrijving parameters zijn niet opgegeven
@@ -134,7 +134,7 @@ Rule: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parame
     | Een lege string is opgegeven als geslachtsnaam waarde             | Jan       |               | 0518                      | geslachtsnaam           |
     | Een lege string is opgegeven als gemeente van inschrijving waarde | Jan       | Jansen        |                           | gemeenteVanInschrijving |
 
-Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
+Regel: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -166,7 +166,7 @@ Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 k
     | De opgegeven geslachtsnaam is meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven geslachtsnaam bevat ongeldige karakters      | <script>alert('hello world');</script>                                                                                                                                                                              |
 
-Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
+Regel: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -199,7 +199,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
     | *SEN                 |
     | Jan*sen              |
 
-Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
+Regel: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -231,7 +231,7 @@ Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 20
     | De opgegeven voornamen is meer dan 199 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven voornamen bevat ongeldige karakters      | <script>alert('hello world');</script>                                                                                                                                                                              |
 
-Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
+Regel: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -263,7 +263,7 @@ Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 e
     | *iet                   |
     | *ETER                  |
 
-Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
+Regel: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
@@ -292,7 +292,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
     | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
     | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |
 
-Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:
+Regel: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - spatie ( ) en de enkele aanhalingsteken (')
@@ -319,7 +319,7 @@ Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 
     | code    | name        | reason                                               |
     | pattern | voorvoegsel | Waarde voldoet niet aan patroon ^[a-zA-Z \']{1,10}$. |
 
-Rule: De geslacht waarde is één karakter lang en kan één van de volgende karakters zijn: M, m, V, v, O, o
+Regel: De geslacht waarde is één karakter lang en kan één van de volgende karakters zijn: M, m, V, v, O, o
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'geslacht' parameter
@@ -348,7 +348,7 @@ Rule: De geslacht waarde is één karakter lang en kan één van de volgende kar
     | N                                      |
     | <script>alert('hello world');</script> |
 
-Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+Regel: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
@@ -377,7 +377,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
     |                              |
     | geen boolean                 |
 
-Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
   @fout-case
   Abstract Scenario: <titel>

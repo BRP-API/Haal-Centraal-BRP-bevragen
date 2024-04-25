@@ -16,7 +16,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
       | 0599                 | 0599200000618922                           |
 
-  Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
 
     @fout-case
     Scenario: Gebruik van parameter nummeraanduidingIdentificatie waarvoor de afnemer niet geautoriseerd is (81190)
@@ -92,7 +92,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNummeraanduidingIdentifica
       | fields                        | burgerservicenummer                  |
       Dan heeft de response 1 persoon
 
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+  Regel: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
     dan wordt niet gekeken naar de autorisatie van de afnemer

@@ -25,7 +25,7 @@ Zodat ik dit niet zelf hoef af te leiden uit de aanduiding in onderzoek waarde
   |----------------------|------------------------------|
   | 0518                 | Woonboot in de Grotere Sloot |
 
-## Rule: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres verblijfplaats veld en alle geleverde verblijfplaats velden zijn in onderzoek
+## Regel: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres verblijfplaats veld en alle geleverde verblijfplaats velden zijn in onderzoek
 
 
 ### Abstract Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locatie en één of meerdere verblijfplaats velden wordt gevraagd

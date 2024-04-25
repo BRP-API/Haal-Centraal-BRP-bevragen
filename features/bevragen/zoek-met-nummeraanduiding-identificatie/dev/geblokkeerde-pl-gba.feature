@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: ZoekMetNummeraanduidingIdentificatie bij geblokkeerde persoonslijst
 
-  Rule: zoeken vindt ook personen waarvan de persoonslijst is geblokkeerd
+  Regel: zoeken vindt ook personen waarvan de persoonslijst is geblokkeerd
 
     Scenario: Persoonslijst is geblokkeerd
       Gegeven een adres heeft de volgende gegevens

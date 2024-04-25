@@ -8,7 +8,7 @@ title: adressering - fields alias fout cases
 # Functionaliteit: adressering - fields alias fout cases
 
 
-## Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer niet is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
+## Regel: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer niet is geautoriseerd voor het bevragen van adresregels horende bij verblijfplaats buitenland
 
 
 `@fout-case`
@@ -41,7 +41,7 @@ title: adressering - fields alias fout cases
   | adressering.adresregel1 |
   | adressering.land        |
 
-## Rule: de 'adresseringBinnenland' field alias kan niet worden gebruikt in combinatie met de adresregel velden voor verblijfplaats buitenland
+## Regel: de 'adresseringBinnenland' field alias kan niet worden gebruikt in combinatie met de adresregel velden voor verblijfplaats buitenland
 
 
 `@fout-case`

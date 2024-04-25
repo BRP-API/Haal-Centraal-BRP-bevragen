@@ -2,7 +2,7 @@
 
 Functionaliteit: in onderzoek
 
-Rule: als een gevraagde veld in onderzoek is, dan wordt het bijbehorend inOnderzoek veld en datumIngangOnderzoek ook geleverd
+Regel: als een gevraagde veld in onderzoek is, dan wordt het bijbehorend inOnderzoek veld en datumIngangOnderzoek ook geleverd
 
   Abstract Scenario: burgerservicenummer wordt gevraagd en <type> is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
@@ -52,7 +52,7 @@ Rule: als een gevraagde veld in onderzoek is, dan wordt het bijbehorend inOnderz
     | 113300                  | hele groep curatele             |
     | 113310                  | indicatie curateleregister      |
 
-Rule: als één of meerdere velden van een gevraagde groep in onderzoek zijn, dan worden de bijbehorende inOnderzoek velden en datumIngangOnderzoek ook geleverd
+Regel: als één of meerdere velden van een gevraagde groep in onderzoek zijn, dan worden de bijbehorende inOnderzoek velden en datumIngangOnderzoek ook geleverd
 
   Scenario: alle velden van de groep 'naam' wordt gevraagd en <type> is in onderzoek
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
@@ -89,7 +89,7 @@ Rule: als één of meerdere velden van een gevraagde groep in onderzoek zijn, da
     | 010200                  | hele groep naam        | true         | true               | true           | true             |                | true           | true              |
     | 010240                  | geslachtsnaam veld     |              |                    |                | true             |                |                | true              |
 
-Rule: als een veld in een groep in onderzoek is en er wordt een ander veld in dezelfde/andere groep gevraagd, dan wordt de inOnderzoek veld van de groep niet geleverd
+Regel: als een veld in een groep in onderzoek is en er wordt een ander veld in dezelfde/andere groep gevraagd, dan wordt de inOnderzoek veld van de groep niet geleverd
 
   Scenario: burgerservicenummer is in onderzoek, maar wordt niet gevraagd
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende gegevens
@@ -106,7 +106,7 @@ Rule: als een veld in een groep in onderzoek is en er wordt een ander veld in de
     | geslacht.omschrijving | man    |
 
 
-Rule: in onderzoek wordt niet geleverd wanneer het onderzoek is beëindigd
+Regel: in onderzoek wordt niet geleverd wanneer het onderzoek is beëindigd
 
   Scenario: 'hele categorie persoon' in onderzoek is beëindigd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -121,7 +121,7 @@ Rule: in onderzoek wordt niet geleverd wanneer het onderzoek is beëindigd
     | naam                | waarde    |
     | burgerservicenummer | 000000152 |
 
-Rule: voor een afgeleid gegeven wordt in onderzoek geleverd wanneer tenminste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
+Regel: voor een afgeleid gegeven wordt in onderzoek geleverd wanneer tenminste één van de gegevens waaruit het wordt afgeleid in onderzoek staat
 
   Scenario: 'hele categorie verblijfplaats' is in onderzoek en adresregel1 word gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

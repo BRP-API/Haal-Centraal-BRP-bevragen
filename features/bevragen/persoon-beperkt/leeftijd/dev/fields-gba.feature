@@ -44,7 +44,7 @@ Functionaliteit: leeftijd veld vragen met fields (persoon beperkt)
     | naam  | waarde   |
     | datum | 19500304 |
 
-Rule: wanneer het leeftijd veld voor een persoon wordt gevraagd en de categorie persoon (01) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: wanneer het leeftijd veld voor een persoon wordt gevraagd en de categorie persoon (01) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' is in onderzoek en leeftijd veld wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

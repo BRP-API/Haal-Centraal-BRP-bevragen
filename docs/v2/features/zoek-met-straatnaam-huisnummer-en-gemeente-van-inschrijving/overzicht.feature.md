@@ -8,7 +8,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
 # Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving
 
 
-## Rule: Straat (niet hoofdlettergevoelig), huisnummer en gemeente van inschrijving zijn verplichte parameters
+## Regel: Straat (niet hoofdlettergevoelig), huisnummer en gemeente van inschrijving zijn verplichte parameters
 
 Straat parameter zoekt over zowel straatnaam als naam openbare ruimte  
 
@@ -105,7 +105,7 @@ Straat parameter zoekt over zowel straatnaam als naam openbare ruimte
   |---------------------|-----------|
   | burgerservicenummer | 000000026 |
 
-## Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
+## Regel: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
 
 ### Abstract Scenario: Zoek een persoon met huisletter
@@ -204,7 +204,7 @@ Straat parameter zoekt over zowel straatnaam als naam openbare ruimte
   | 000000029           | 0363                      | Vitternkade      | 102        | II                    | verblijfplaats heeft geen huisletter |
   | 000000029           | 0363                      | Vitternkade      | 102        | ii                    | verblijfplaats heeft geen huisletter |
 
-## Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+## Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
 
 ### Scenario: Zoek een overleden persoon
@@ -257,7 +257,7 @@ Straat parameter zoekt over zowel straatnaam als naam openbare ruimte
   | reden.code         | O          |
   | reden.omschrijving | overlijden |
 
-## Rule: Voor de straat parameter kan wildcard matching (niet hooflettergevoelig) worden toegepast.
+## Regel: Voor de straat parameter kan wildcard matching (niet hooflettergevoelig) worden toegepast.
 
 Er moet dan minimaal 7 letters (exclusief de wildcard "*" teken) worden opgegeven.  
 De wildcard komt overeen met nul of meer (niet-spatie) karakters.  

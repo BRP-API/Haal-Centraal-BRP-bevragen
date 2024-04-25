@@ -6,7 +6,7 @@ Functionaliteit: samenstellen van adresregels wanneer één of meerdere verblijf
   Wil ik dat de verblijfplaats gegevens van een persoon kan worden gevraagd conform NEN 5825:2002
   Zodat ik de adresgegevens van de persoon op de correcte manier kan gebruiken 
 
-Rule: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' of 'huisnummer (11.20)' de standaardwaarde als waarde hebben
+Regel: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' of 'huisnummer (11.20)' de standaardwaarde als waarde hebben
 
   Abstract Scenario: persoon heeft een adres met <omschrijving>
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -32,7 +32,7 @@ Rule: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' o
     | .                        | 88         | een straatnaam met standaardwaarde |
     | Jonkheer van Riemsdijkln | 0          | een huisnummer met standaardwaarde |
 
-Rule: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'land (13.10)' de standwaarde heeft of 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben de standaardwaarde
+Regel: adresregels voor een verblijfplaats buitenland worden niet geleverd als 'land (13.10)' de standwaarde heeft of 'regel 1 adres buitenland (13.30)', 'regel 2 adres buitenland (13.40)' en 'regel 3 adres buitenland (13.50)' hebben de standaardwaarde
 
   Scenario: persoon heeft een verblijfplaats buitenland en 'land (13.10)' heeft de standaardwaarde
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens

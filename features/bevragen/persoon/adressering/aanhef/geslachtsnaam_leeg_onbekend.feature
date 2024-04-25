@@ -2,7 +2,7 @@
 
 Functionaliteit: Aanhef opstellen wanneer de geslachtsnaam van de persoon leeg of onbekend is. 
 
-  Rule: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanhef niet opgenomen
+  Regel: Wanneer de geslachtsnaam van de persoon leeg of onbekend is en de naam van de persoon wordt gebruikt, wordt aanhef niet opgenomen
     De aanhef wordt niet opgenomen in het antwoord wanneer aan alle volgende condities is voldaan:
       - de geslachtsnaam van de persoon is leeg of onbekend (.)
       - aanduidingNaamgebruik is ongelijk aan "P" (partner)

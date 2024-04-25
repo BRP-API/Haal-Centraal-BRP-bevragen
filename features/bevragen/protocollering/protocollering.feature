@@ -21,7 +21,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
 
   Zowel request_zoek_rubrieken als request_gevraagde_rubrieken bevatten de LO-BRP elementnummers als 6 cijferig rubrieknummer (incl. voorloopnul), gescheiden door komma spatie, en oplopend gesorteerd.
 
-  Rule: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+  Regel: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Scenario: Raadpleeg een persoon op burgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -36,7 +36,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | request_zoek_rubrieken |
       | 010120                 |
 
-  Rule: Zoekrubrieken worden oplopend gesorteerd op rubrieknummer en gescheiden door komma en spatie
+  Regel: Zoekrubrieken worden oplopend gesorteerd op rubrieknummer en gescheiden door komma en spatie
 
     Scenario: Zoek persoon met alleen de verplichte parameters
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -53,7 +53,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | request_zoek_rubrieken |
       | 010210, 010240, 010310 |
 
-  Rule: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
+  Regel: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met inclusiefOverledenPersonen
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -70,7 +70,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | request_zoek_rubrieken |
       | 010240, 010310         |
 
-  Rule: Gevraagde velden in fields worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_gevraagde_rubrieken'.
+  Regel: Gevraagde velden in fields worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_gevraagde_rubrieken'.
 
     Abstract Scenario: Gevraagde veld <fields veld> wordt vastgelegd in 'request_gevraagde_rubrieken' als <rubrieknummer>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -100,7 +100,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | geslacht.omschrijving       | 010410              |
       | partners.naam.geslachtsnaam | 050240              |
 
-  Rule: Gevraagde rubrieken worden oplopend gesorteerd en gescheiden door komma en spatie
+  Regel: Gevraagde rubrieken worden oplopend gesorteerd en gescheiden door komma en spatie
 
     Scenario: Gevraagde veld <fields veld> wordt vastgelegd in 'request_gevraagde_rubrieken' als <rubrieknummer>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -115,7 +115,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | request_gevraagde_rubrieken                    |
       | 010240, 010310, 050210, PANM03, PANM06, PAVP04 |
 
-  Rule: Wanneer met fields een hele groep wordt gevraagd, worden alle velden in die groep opgenomen in het veld 'request_gevraagde_rubrieken'.
+  Regel: Wanneer met fields een hele groep wordt gevraagd, worden alle velden in die groep opgenomen in het veld 'request_gevraagde_rubrieken'.
 
     Abstract Scenario: vragen om hele groep <groep>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -156,7 +156,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | kinderen | 090120, 090210, 090220, 090230, 090240, 090310, 090320, 090330, PAKD01                                                 |
 
 
-  Rule: Wanneer een gevraagd veld niet geleverd wordt (bijv. omdat het geen waarde heeft), wordt het wel in het veld 'request_gevraagde_rubrieken' opgenomen.
+  Regel: Wanneer een gevraagd veld niet geleverd wordt (bijv. omdat het geen waarde heeft), wordt het wel in het veld 'request_gevraagde_rubrieken' opgenomen.
     
     Abstract Scenario: Vragen om <fields> en <omschrijving>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -186,7 +186,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | persoon heeft geen kind                    | kinderen.naam.voornamen                        | 090210                                                 |
       | persoon heeft alleen ouder 1               | ouders.datumIngangFamilierechtelijkeBetrekking | 026210, 036210                                         |
 
-  Rule: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_gevraagde_rubrieken' opgenomen.
+  Regel: Wanneer een veld ongevraagd geleverd wordt, wordt het niet in 'request_gevraagde_rubrieken' opgenomen.
     Dit betreft geheimhouding, opschorting, in onderzoek, RNI en verificatie
 
     Scenario: Persoon heeft geheimhouding, opschorting, in onderzoek, RNI en verificatie
@@ -213,7 +213,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | request_gevraagde_rubrieken |
       | 010120, 010240              |
 
-  Rule: Wanneer een veld wordt gevraagd dat wordt bepaald uit een of meerdere andere velden, dan worden alle daarvoor nodige velden in 'request_gevraagde_rubrieken' opgenomen.
+  Regel: Wanneer een veld wordt gevraagd dat wordt bepaald uit een of meerdere andere velden, dan worden alle daarvoor nodige velden in 'request_gevraagde_rubrieken' opgenomen.
 
     Abstract Scenario: Vragen om <fields>
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -234,7 +234,7 @@ Functionaliteit: Als burger wil ik zien wie welke gegegevens van mij heeft gezie
       | naam.voorletters   | PANM01              |
       | naam.volledigeNaam | PANM02              |
 
-  Rule: Wanneer in het antwoord meerdere personen worden geleverd, dan wordt er per geleverde persoon een protocolleringsrecord opgenomen
+  Regel: Wanneer in het antwoord meerdere personen worden geleverd, dan wordt er per geleverde persoon een protocolleringsrecord opgenomen
 
     Scenario: Zoek persoon met alle mogelijke parameters
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens

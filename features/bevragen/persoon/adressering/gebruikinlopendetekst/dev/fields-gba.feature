@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: adressering gebruikInLopendeTekst veld vragen met fields
 
-  Rule: Voor adressering.gebruikInLopendeTekst in fields moeten andere velden worden geleverd
+  Regel: Voor adressering.gebruikInLopendeTekst in fields moeten andere velden worden geleverd
 
     Scenario: adressering.gebruikInLopendeTekst is gevraagd
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens

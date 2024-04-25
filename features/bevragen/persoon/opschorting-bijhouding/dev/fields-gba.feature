@@ -4,7 +4,7 @@
 Functionaliteit: GbaPersoon: opschorting bijhouding leveren als niet gevraagd met fields
 
 
-Rule: opschortingBijhouding wordt automatisch geleverd indien van toepassing
+Regel: opschortingBijhouding wordt automatisch geleverd indien van toepassing
 
   Abstract Scenario: 'reden opschorting bijhouding (67.20)' met waarde '<opschorting reden>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -58,7 +58,7 @@ Rule: opschortingBijhouding wordt automatisch geleverd indien van toepassing
     | burgerservicenummer         | 000000322 |
     | opschortingBijhouding.datum | 00000000  |
 
-Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch wordt geleverd
+Regel: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
   @fout-case
   Abstract Scenario: veld <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd 

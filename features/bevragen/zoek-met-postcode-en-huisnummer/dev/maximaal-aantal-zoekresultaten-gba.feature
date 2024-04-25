@@ -57,7 +57,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetPostcodeEnHuisnummer
       | 0599                 | 2628HJ           | 2                  | B                  |
     
 
-  Rule: Wanneer er meer dan 10 personen gevonden worden bij zoeken wordt een foutmelding gegeven
+  Regel: Wanneer er meer dan 10 personen gevonden worden bij zoeken wordt een foutmelding gegeven
 
     @fout-case
     Scenario: Meer dan 10 personen gevonden

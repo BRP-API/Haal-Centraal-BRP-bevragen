@@ -39,7 +39,7 @@ Functionaliteit: GbaPersoon: Raadplegen van afgevoerde persoonslijst
     | 12                                   | 1                                  |
     
 
-Rule: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de reden en datum opschorting geleverd en indien gevraagd de aNummer en/of burgerservicenummer
+Regel: bij het raadplegen van een persoon met afgevoerde persoonslijst wordt de reden en datum opschorting geleverd en indien gevraagd de aNummer en/of burgerservicenummer
   Overige gegevens op de afgevoerde persoonslijst worden niet geleverd
 
   Abstract Scenario: geraadpleegde persoon is opgeschort met reden "F" (fout) en er is gevraagd om <fields>

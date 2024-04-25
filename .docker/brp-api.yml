@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.1.5-2024041801
+    image: haalcentraal.azurecr.io/gba-api:2.2.0-2024042201
     environment:
       - Database__Host=postgres
       - Database__Username=root

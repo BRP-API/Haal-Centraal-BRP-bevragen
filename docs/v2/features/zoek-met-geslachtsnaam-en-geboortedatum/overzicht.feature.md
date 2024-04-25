@@ -8,7 +8,7 @@ title: Zoek met geslachtsnaam en geboortedatum
 # Functionaliteit: Zoek met geslachtsnaam en geboortedatum
 
 
-## Rule: Geslachtsnaam (niet hooflettergevoelig) en geboortedatum zijn verplichte parameters. 
+## Regel: Geslachtsnaam (niet hooflettergevoelig) en geboortedatum zijn verplichte parameters. 
 
 
 ### Abstract Scenario: Zoek een persoon met zijn volledige geslachtsnaam en geboortedatum
@@ -139,7 +139,7 @@ title: Zoek met geslachtsnaam en geboortedatum
   |---------------------|-----------|
   | burgerservicenummer | 000000026 |
 
-## Rule: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
+## Regel: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
 
 ### Abstract Scenario: Zoek met volledige voornamen
@@ -217,7 +217,7 @@ title: Zoek met geslachtsnaam en geboortedatum
   | maassen       | VAN         |
   | MAASSEN       | Van         |
 
-## Rule: De optionele 'geslacht' parameter (niet hooflettergevoelig) kan worden toegevoegd om de zoek criteria aan te scherpen.
+## Regel: De optionele 'geslacht' parameter (niet hooflettergevoelig) kan worden toegevoegd om de zoek criteria aan te scherpen.
 
 
 ### Abstract Scenario: Zoek met geslacht
@@ -251,7 +251,7 @@ title: Zoek met geslachtsnaam en geboortedatum
   | v                   |
   | V                   |
 
-## Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+## Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
 
 ### Scenario: Zoek een overleden persoon
@@ -298,7 +298,7 @@ title: Zoek met geslachtsnaam en geboortedatum
   | reden.code         | O          |
   | reden.omschrijving | overlijden |
 
-## Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+## Regel: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 
 
 ### Abstract Scenario: Zoek met gemeenteVanInschrijving
@@ -339,7 +339,7 @@ title: Zoek met geslachtsnaam en geboortedatum
   |---------------------|-----------|
   | burgerservicenummer | 000000027 |
 
-## Rule: Voor de geslachtsnaam en voornamen parameters kan wildcard matching (niet hooflettergevoelig) worden toegepast.
+## Regel: Voor de geslachtsnaam en voornamen parameters kan wildcard matching (niet hooflettergevoelig) worden toegepast.
 
 Er moet dan minimaal 3 letters (exclusief de wildcard "*" teken) worden opgegeven.  
 De wildcard moet als laatste karakter worden opgegeven.  

@@ -3,7 +3,7 @@
 Functionaliteit: Naamgebruik in een lopende tekst voor een persoon met meerdere actuele partners
 
 
-Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de gebruikInLopendeTekst
+Regel: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de gebruikInLopendeTekst
 
   Scenario: meerdere actuele relaties
     Gegeven de persoon met burgerservicenummer '000000280' heeft de volgende gegevens

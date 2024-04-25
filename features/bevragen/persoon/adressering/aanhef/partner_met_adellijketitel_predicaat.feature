@@ -2,7 +2,7 @@
 
 Functionaliteit: Bij het opstellen van de aanhef maakt een adellijke titel of een predicaat van de partner onderdeel van uit. 
 
-Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
+Regel: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat van de (ex)partner onder de volgende condities:
   - de (ex)partner heeft een adellijke titel
   - het geslacht van de persoon is "V"
   - de persoon gebruikt de naam van haar (ex)partner (aanduidingNaamgebruik is ongelijk aan "E")
@@ -108,7 +108,7 @@ Rule: De aanhef voor een persoon wordt bepaald door het adellijkeTitelPredicaat 
       | V           | Hoogwelgeboren vrouwe   |
       | N           | Hoogwelgeboren vrouwe   |
 
-Rule: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de partner boven de adellijke titel van de persoon:
+Regel: Voor het bepalen van de aanhef gaat gebruik van de adellijke titel van de partner boven de adellijke titel van de persoon:
   - de persoon heeft een adellijke titel of predicaat
   - de (ex)partner heeft een adellijke titel
   - het geslacht van de persoon is "V" (vrouw)

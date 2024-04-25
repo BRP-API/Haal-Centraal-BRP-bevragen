@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: RaadpleegMetBurgerservicenummer van persoonslijst met opschorting bijhouding
 
-  Rule: Een persoonslijst met reden opschorting bijhouding "W" (wissen) wordt niet geleverd
+  Regel: Een persoonslijst met reden opschorting bijhouding "W" (wissen) wordt niet geleverd
 
     Scenario: persoonslijst heeft opschorting bijhouding reden "W"
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'inschrijving' gegevens

@@ -3,7 +3,7 @@
 @protocollering
 Functionaliteit: Protocollering zoekrubrieken RaadpleegMetBurgerservicenummer
 
-  Rule: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+  Regel: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Scenario: Raadpleeg één persoon op burgerservicenummer
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens

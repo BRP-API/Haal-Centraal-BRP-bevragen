@@ -14,7 +14,7 @@ Functionaliteit: opschorting bijhouding (persoon beperkt)
     | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) | postcode (11.60) | huisnummer (11.20) | straatnaam (11.10)  |
     | 0530                 | 0599200000219679                           | 1628HJ           | 31                 | Haagse Reigerstraat |
 
-Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
+Regel: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     Een afgevoerde persoonslijst heeft opschorting bijhouding reden "F" (fout)
 
   Abstract Scenario: persoon opgeschort met reden "F" (fout) wordt gezocht met geslachtsnaam en geboortedatum <zoek overleden personen type> overleden personen
@@ -108,7 +108,7 @@ Rule: personen met afgevoerde persoonslijst worden niet gevonden bij het zoeken
     | true                         | inclusief                    |
     | false                        | exclusief                    |
 
-Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
   Scenario: persoon opgeschort met reden "O" (overlijden) wordt gezocht met geslachtsnaam en geboortedatum exclusief overleden personen
     En de persoon heeft de volgende 'inschrijving' gegevens

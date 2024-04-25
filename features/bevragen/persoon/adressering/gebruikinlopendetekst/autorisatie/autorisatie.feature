@@ -3,7 +3,7 @@
 @autorisatie
 Functionaliteit: autorisatie voor gebruikInLopendeTekst
 
-  Rule: Vragen met fields om gebruikInLopendeTekst, wanneer de gebruiker niet geautoriseerd is voor gebruikInLopendeTekst, geeft een foutmelding
+  Regel: Vragen met fields om gebruikInLopendeTekst, wanneer de gebruiker niet geautoriseerd is voor gebruikInLopendeTekst, geeft een foutmelding
   
     Abstract Scenario: Afnemer vraagt om gebruikInLopendeTekst en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens

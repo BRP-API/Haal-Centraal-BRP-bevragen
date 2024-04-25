@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: leeftijd veld vragen met fields (persoon)
 
-Rule: geboortedatum wordt geleverd voor een niet-overleden persoon bij field pad 'leeftijd'
+Regel: geboortedatum wordt geleverd voor een niet-overleden persoon bij field pad 'leeftijd'
 
   Scenario: persoon is niet overleden
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -19,7 +19,7 @@ Rule: geboortedatum wordt geleverd voor een niet-overleden persoon bij field pad
     | naam           | waarde   |
     | geboorte.datum | 19500304 |
 
-Rule: geboortedatum en reden opschorting bijhouding wordt geleverd voor een overleden persoon bij field pad 'leeftijd'
+Regel: geboortedatum en reden opschorting bijhouding wordt geleverd voor een overleden persoon bij field pad 'leeftijd'
 
   Scenario: persoon is overleden
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

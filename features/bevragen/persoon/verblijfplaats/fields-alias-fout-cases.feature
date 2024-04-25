@@ -2,7 +2,7 @@
 
 Functionaliteit: verblijfplaats - fields alias fout cases
 
-Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
+Regel: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
   @autorisatie @fout-case
   Abstract Scenario: afnemer is niet geautoriseerd voor 'verblijfplaats buitenland' en vraagt zonder de fields alias één of meer verblijfplaats velden
@@ -27,7 +27,7 @@ Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een 
     | verblijfplaats.verblijfadres      |
     | verblijfplaats.verblijfadres.land |
 
-Rule: de field alias 'verblijfplaatsBinnenland' mag niet worden gebruikt voor het vragen van 'verblijfplaats buitenland' velden
+Regel: de field alias 'verblijfplaatsBinnenland' mag niet worden gebruikt voor het vragen van 'verblijfplaats buitenland' velden
 
   @fout-case
   Abstract Scenario: de fields alias wordt gebruikt voor het vragen van één of meerdere 'verblijfplaats buitenland' velden

@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: adressering aanhef veld vragen met fields
 
-  Rule: Voor adressering.aanhef in fields moeten andere velden worden geleverd
+  Regel: Voor adressering.aanhef in fields moeten andere velden worden geleverd
 
     Scenario: aanhef is gevraagd
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens

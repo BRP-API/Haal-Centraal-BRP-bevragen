@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving - fout cases
 
-Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
+Regel: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
 
   @fout-case
   Scenario: De straat, huisnummer en gemeenteVanInschrijving parameters zijn niet opgegeven
@@ -47,7 +47,7 @@ Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
     | required | huisnummer              | Parameter is verplicht. |
     | required | gemeenteVanInschrijving | Parameter is verplicht. |
 
-Rule: een straat is een string bestaande uit minimaal 1 en maximaal 80 karakters. Deze karakters kunnen zijn:
+Regel: een straat is een string bestaande uit minimaal 1 en maximaal 80 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -80,7 +80,7 @@ Rule: een straat is een string bestaande uit minimaal 1 en maximaal 80 karakters
     | De opgegeven straat is meer dan 80 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven straat bevat ongeldige karakters     | <script>alert('hello world');</script>                                                                    |
 
-Rule: een straat met wildcard is een string bestaande uit minimaal 7 en maximaal 79 karakters, beginnend of eindigend met de "*" karakters. De overige karakters kunnen zijn:
+Regel: een straat met wildcard is een string bestaande uit minimaal 7 en maximaal 79 karakters, beginnend of eindigend met de "*" karakters. De overige karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -114,7 +114,7 @@ Rule: een straat met wildcard is een string bestaande uit minimaal 7 en maximaal
     | Laan * van | De "*" wildcard is niet opgegeven als eerste of laatste karakter in de straat parameter |
     | Laan*      | De straat parameter bevat niet het minimum aantal vereiste karakters                    |
 
-Rule: een huisnummer is een getal tussen 1 en 99999
+Regel: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
   Abstract Scenario: Een string met één of meerdere niet-numerieke karakters is opgegeven als huisnummer waarde 
@@ -169,7 +169,7 @@ Rule: een huisnummer is een getal tussen 1 en 99999
     | 0          | minimum | Waarde is lager dan minimum 1.     |
     | 100000     | maximum | Waarde is hoger dan maximum 99999. |
 
-Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
+Regel: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisletter' parameter
@@ -198,7 +198,7 @@ Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoe
     | <script>alert('hello world');</script> |
     | 1                                      |
 
-Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
+Regel: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - spatie ( ) en min (-)
@@ -230,7 +230,7 @@ Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaa
     | <script>alert('hello world');</script> |
     | 123.45                                 |
 
-Rule: inclusiefOverledenPersonen is een boolean
+Regel: inclusiefOverledenPersonen is een boolean
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
@@ -259,7 +259,7 @@ Rule: inclusiefOverledenPersonen is een boolean
     |                              |
     | geen boolean                 |
 
-Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
   @fout-case
   Abstract Scenario: <titel>

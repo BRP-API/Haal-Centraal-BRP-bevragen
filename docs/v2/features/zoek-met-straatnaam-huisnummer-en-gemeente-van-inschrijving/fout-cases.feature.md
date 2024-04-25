@@ -8,7 +8,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
 # Functionaliteit: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van inschrijving - fout cases
 
 
-## Rule: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
+## Regel: Straat, huisnummer en gemeenteVanInschrijving zijn verplichte parameters
 
 
 `@fout-case`
@@ -68,7 +68,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   | required | huisnummer              | Parameter is verplicht. |
   | required | gemeenteVanInschrijving | Parameter is verplicht. |
 
-## Rule: een straat is een string bestaande uit minimaal 1 en maximaal 80 karakters. Deze karakters kunnen zijn:
+## Regel: een straat is een string bestaande uit minimaal 1 en maximaal 80 karakters. Deze karakters kunnen zijn:
 
 - kleine letters (a-z)  
 - hoofdletters (A-Z)  
@@ -112,7 +112,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   | De opgegeven straat is meer dan 80 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
   | De opgegeven straat bevat ongeldige karakters     | \<script\>alert('hello world');</script>                                                                    |
 
-## Rule: een straat met wildcard is een string bestaande uit minimaal 7 en maximaal 79 karakters, beginnend of eindigend met de "*" karakters. De overige karakters kunnen zijn:
+## Regel: een straat met wildcard is een string bestaande uit minimaal 7 en maximaal 79 karakters, beginnend of eindigend met de "*" karakters. De overige karakters kunnen zijn:
 
 - kleine letters (a-z)  
 - hoofdletters (A-Z)  
@@ -157,7 +157,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   | Laan * van | De "*" wildcard is niet opgegeven als eerste of laatste karakter in de straat parameter |
   | Laan*      | De straat parameter bevat niet het minimum aantal vereiste karakters                    |
 
-## Rule: een huisnummer is een getal tussen 1 en 99999
+## Regel: een huisnummer is een getal tussen 1 en 99999
 
 
 `@fout-case`
@@ -233,7 +233,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   | 0          | minimum | Waarde is lager dan minimum 1.     |
   | 100000     | maximum | Waarde is hoger dan maximum 99999. |
 
-## Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
+## Regel: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
 
 
 `@fout-case`
@@ -273,7 +273,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   | \<script\>alert('hello world');</script> |
   | 1                                      |
 
-## Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
+## Regel: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
 
 - kleine letters (a-z)  
 - hoofdletters (A-Z)  
@@ -316,7 +316,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   | \<script\>alert('hello world');</script> |
   | 123.45                                 |
 
-## Rule: inclusiefOverledenPersonen is een boolean
+## Regel: inclusiefOverledenPersonen is een boolean
 
 
 `@fout-case`
@@ -356,7 +356,7 @@ title: Zoek met straatnaam/naam openbare ruimte, huisnummer en gemeente van insc
   |                              |
   | geen boolean                 |
 
-## Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+## Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
 
 `@fout-case`

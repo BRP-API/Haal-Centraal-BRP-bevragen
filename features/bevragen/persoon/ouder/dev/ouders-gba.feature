@@ -5,7 +5,7 @@ Functionaliteit: ouder (persoon)
   Van een persoon kunnen ouders worden geleverd.
   Dit bevat gegevens over de familierechtelijke betrekking plus enkele identificerende eigenschappen van de ouder.
 
-Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie 3 heeft ouderAanduiding "2"
+Regel: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie 3 heeft ouderAanduiding "2"
 
   Scenario: Persoon heeft twee ouders
     Gegeven de persoon met burgerservicenummer '000000152' heeft een ouder '1' met de volgende gegevens
@@ -28,7 +28,7 @@ Rule: De ouder in categorie 2 heeft ouderAanduiding "1" en de ouder in categorie
     | ouderAanduiding | 2         |
     | naam.voornamen  | Guîllaumé |
 
-Rule: de actuele gegevens van ouders worden geleverd
+Regel: de actuele gegevens van ouders worden geleverd
 
   Scenario: oudergegevens gecorrigeerd
     Gegeven de persoon met burgerservicenummer '000000164' heeft een ouder '1' met de volgende gegevens
@@ -138,7 +138,7 @@ Rule: de actuele gegevens van ouders worden geleverd
     | naam.voornamen  | Wieger |
     | ouderAanduiding | 2      |
 
-Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
+Regel: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
   # Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van de ouder
 
   Scenario: De ouder heeft geslachtswijziging ondergaan, maar de gevraagde persoon erkent dit niet
@@ -174,7 +174,7 @@ Rule: de geleverde oudergegevens zijn de gegevens zoals die staan op de persoons
     | naam.voornamen        | Karel     |
     | ouderAanduiding       | 2         |
 
-Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 1, 2, 3, 4 of 62, dan wordt de ouder niet opgenomen
+Regel: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 1, 2, 3, 4 of 62, dan wordt de ouder niet opgenomen
   Gebruik van de fields parameter heeft geen invloed op het leveren van een ouder
 
   Scenario: vondeling (onbekende ouder met ouderaanduiding "1" en geen ouder met ouderaanduiding "2")
@@ -278,7 +278,7 @@ Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenome
     Dan heeft de response een persoon zonder 'ouder' gegevens
         
 
-Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan wordt er een 'ouders' zonder gegevens geleverd
+Regel: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met fields gevraagde gegevens heeft een waarde, dan wordt er een 'ouders' zonder gegevens geleverd
 
   Scenario: met fields vragen om gegevens zonder waarde
     Gegeven de persoon met burgerservicenummer '000000292' heeft een ouder '1' met de volgende gegevens
@@ -398,7 +398,7 @@ Rule: Wanneer van de ouder wel gegevens geregistreerd zijn, maar geen van de met
     | 2                | 030320                  | ouders.geboorte.plaats                         |                     |               |                 |               | geboorteplaats         |
     | 2                | 030330                  | ouders.naam.voorvoegsel                        |                     |               |                 |               | geboorteland           |
 
-Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
+Regel: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
       - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
       - als de waarde in de geboorteplaats (03.20) niet voorkomt in de landelijke tabel Gemeenten, dan wordt de waarde alleen in de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
 
@@ -416,7 +416,7 @@ Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt d
     | plaats.omschrijving | 52°2'43N4°22'39"O |
 
 
-Rule: Wanneer gevraagd wordt om de voorletters van de ouders, worden de voornamen geleverd
+Regel: Wanneer gevraagd wordt om de voorletters van de ouders, worden de voornamen geleverd
 
   Scenario: Gevraag wordt om de voorletters van de ouders
     Gegeven de persoon met burgerservicenummer '000000152' heeft een ouder '1' met de volgende gegevens

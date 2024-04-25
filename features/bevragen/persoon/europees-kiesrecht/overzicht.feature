@@ -2,7 +2,7 @@
 
 Functionaliteit: Europees kiesrecht
 
-Rule: Europees kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting Europees kiesrecht (31.30)' geen waarde heeft
+Regel: Europees kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting Europees kiesrecht (31.30)' geen waarde heeft
 
   Scenario: persoon is uitgesloten van Europees kiesrecht zonder einddatum uitsluiting
 		Gegeven de persoon met burgerservicenummer '000000127' heeft de volgende 'kiesrecht' gegevens
@@ -32,7 +32,7 @@ Rule: Europees kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting Euro
     | aanduiding.code         | 2                       |
     | aanduiding.omschrijving | persoon ontvangt oproep |
 
-Rule: Europees kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting Europees kiesrecht (31.30)' in de toekomst ligt
+Regel: Europees kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting Europees kiesrecht (31.30)' in de toekomst ligt
 
 	Scenario: 'einddatum uitsluiting Europees kiesrecht (31.30)' ligt in de toekomst
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -67,7 +67,7 @@ Rule: Europees kiesrecht gegevens wordt geleverd als 'einddatum uitsluiting Euro
     | vorige maand          |
     | vorig jaar            |
 
-Rule: Bij een 'einddatum uitsluiting Europees kiesrecht (31.30)' waarvan alleen het jaar bekend is, wordt Europees kiesrecht gegevens geleverd als het jaar gelijk is aan het huidig jaar of als het jaar in de toekomst ligt
+Regel: Bij een 'einddatum uitsluiting Europees kiesrecht (31.30)' waarvan alleen het jaar bekend is, wordt Europees kiesrecht gegevens geleverd als het jaar gelijk is aan het huidig jaar of als het jaar in de toekomst ligt
 
 	Abstract Scenario: 'einddatum uitsluiting Europees kiesrecht (31.30)' is <einddatum uitsluiting>
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -88,7 +88,7 @@ Rule: Bij een 'einddatum uitsluiting Europees kiesrecht (31.30)' waarvan alleen 
     | dit jaar              |
     | volgend jaar          |
 
-Rule: Bij een 'einddatum uitsluiting Europees kiesrecht (31.30)' waarvan de dag niet bekend is, wordt uitsluiting kiesrecht gegevens geleverd als het jaar en maand gelijk is aan de huidige maand of een maand in de toekomst
+Regel: Bij een 'einddatum uitsluiting Europees kiesrecht (31.30)' waarvan de dag niet bekend is, wordt uitsluiting kiesrecht gegevens geleverd als het jaar en maand gelijk is aan de huidige maand of een maand in de toekomst
 
 	Abstract Scenario: 'einddatum uitsluiting Europees kiesrecht (31.30)' is <einddatum uitsluiting>
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -109,7 +109,7 @@ Rule: Bij een 'einddatum uitsluiting Europees kiesrecht (31.30)' waarvan de dag 
     | deze maand            |
     | volgende maand        |
 
-Rule: Europees kiesrecht gegevens wordt geleverd bij een onbekend 'einddatum uitsluiting Europees kiesrecht (31.30)'
+Regel: Europees kiesrecht gegevens wordt geleverd bij een onbekend 'einddatum uitsluiting Europees kiesrecht (31.30)'
 
 	Scenario: 'einddatum uitsluiting Europees kiesrecht (31.30)' is onbekend
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens
@@ -125,7 +125,7 @@ Rule: Europees kiesrecht gegevens wordt geleverd bij een onbekend 'einddatum uit
     | aanduiding.code         | 1                      |
     | aanduiding.omschrijving | persoon is uitgesloten |
 
-Rule: Europees kiesrecht gegevens wordt niet geleverd wanneer 'Europees kiesrecht (31.10)' geen waarde heeft
+Regel: Europees kiesrecht gegevens wordt niet geleverd wanneer 'Europees kiesrecht (31.10)' geen waarde heeft
 
 	Scenario: 'Europees kiesrecht (31.10)' heeft geen waarde
 		Gegeven de persoon met burgerservicenummer '000000164' heeft de volgende 'kiesrecht' gegevens

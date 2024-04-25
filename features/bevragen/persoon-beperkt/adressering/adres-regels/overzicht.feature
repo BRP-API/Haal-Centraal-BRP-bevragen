@@ -6,7 +6,7 @@ Functionaliteit: samenstellen van adresregels
   Wil ik dat de verblijfplaats gegevens van een persoon kan worden gevraagd conform NEN 5825:2002
   Zodat ik de adresgegevens van de persoon op de correcte manier kan gebruiken 
 
-Rule: adresregel1 wordt voor een adres met alleen straatnaam en huisnummer als volgt samengesteld: '[straatnaam][spatie][huisnummer]'
+Regel: adresregel1 wordt voor een adres met alleen straatnaam en huisnummer als volgt samengesteld: '[straatnaam][spatie][huisnummer]'
 
   Scenario: persoon heeft een adres met alleen een straatnaam en huisnummer als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -28,7 +28,7 @@ Rule: adresregel1 wordt voor een adres met alleen straatnaam en huisnummer als v
     | naam        | waarde                      |
     | adresregel1 | Jonkheer van Riemsdijkln 88 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisletter als volgt samengesteld: '[straatnaam][spatie][huisnummer][spatie][huisletter]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisletter als volgt samengesteld: '[straatnaam][spatie][huisnummer][spatie][huisletter]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en huisletter als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -50,7 +50,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisletter 
     | naam        | waarde                |
     | adresregel1 | Borgesiusstraat 103 c |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisnummertoevoeging]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisnummertoevoeging]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -72,7 +72,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummert
     | naam        | waarde                       |
     | adresregel1 | Daniël Stalpertstraat 35 III |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een cijfer als volgt samengesteld: [straatnaam][spatie][huisnummer]-[huisnummertoevoeging]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een cijfer als volgt samengesteld: [straatnaam][spatie][huisnummer]-[huisnummertoevoeging]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een cijfer als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -94,7 +94,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummert
     | naam        | waarde            |
     | adresregel1 | Atatürkstraat 9-2 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en huisnummertoevoeging als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en huisnummertoevoeging als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter en huisnummertoevoeging die begint met een letter als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -136,7 +136,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en
     | naam        | waarde          |
     | adresregel1 | Cronus 555 B73c |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'by' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -158,7 +158,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding 
     | naam        | waarde                     |
     | adresregel1 | Graan voor Visch bij 15201 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer en aanduiding bij huisnummer 'to' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -180,7 +180,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en aanduiding 
     | naam        | waarde              |
     | adresregel1 | 1e Exloërmond t/o 3 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisletter]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisletter]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'by' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -202,7 +202,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en
     | naam        | waarde                       |
     | adresregel1 | Graan voor Visch bij 15201 B |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisletter]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisletter]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter en aanduiding bij huisnummer 'to' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -224,7 +224,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en
     | naam        | waarde                |
     | adresregel1 | 1e Exloërmond t/o 3 B |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisnummertoevoeging]
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisnummertoevoeging]
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -246,7 +246,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoe
     | naam        | waarde                         |
     | adresregel1 | Graan voor Visch bij 15201 III |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer]-[huisnummertoevoeging]
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer]-[huisnummertoevoeging]
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'by' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -268,7 +268,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoe
     | naam        | waarde                       |
     | adresregel1 | Graan voor Visch bij 15201-2 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisnummertoevoeging]
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisnummertoevoeging]
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -290,7 +290,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoe
     | naam        | waarde                  |
     | adresregel1 | 1e Exloërmond t/o 3 III |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer]-[huisnummertoevoeging]
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer]-[huisnummertoevoeging]
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisnummertoevoeging die begint met een cijfer en aanduiding bij huisnummer 'to' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -312,7 +312,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisnummertoe
     | naam        | waarde                |
     | adresregel1 | 1e Exloërmond t/o 3-2 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging en aanduiding bij huisnummer 'by' als volgt samengesteld: [straatnaam][spatie]bij[spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'by' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -354,7 +354,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, h
     | naam        | waarde                        |
     | adresregel1 | Graan voor Visch bij 15201 L2 |
 
-Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
+Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging en aanduiding bij huisnummer 'to' als volgt samengesteld: [straatnaam][spatie]t/o[spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
 
   Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter, huisnummertoevoeging die begint met een letter en aanduiding bij huisnummer 'to' als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -396,7 +396,7 @@ Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter, h
     | naam        | waarde                 |
     | adresregel1 | 1e Exloërmond t/o 3 L2 |
 
-Rule: adresregel1 wordt voor een locatie gevuld met de locatiebeschrijving
+Regel: adresregel1 wordt voor een locatie gevuld met de locatiebeschrijving
 
   Scenario: persoon heeft een locatie als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -418,7 +418,7 @@ Rule: adresregel1 wordt voor een locatie gevuld met de locatiebeschrijving
     | naam        | waarde                            |
     | adresregel1 | Woonboot tegenover de Grote Sloot |
 
-Rule: adresregel2 wordt voor een adres met postcode en woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][woonplaats in hoofdletters]
+Regel: adresregel2 wordt voor een adres met postcode en woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][woonplaats in hoofdletters]
 
   Scenario: persoon heeft een adres met postcode en woonplaats als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -440,7 +440,7 @@ Rule: adresregel2 wordt voor een adres met postcode en woonplaats als volgt same
     | naam        | waarde                |
     | adresregel2 | 2583 XL  SCHEVENINGEN |
 
-Rule: adresregel2 wordt voor een adres met postcode en zonder woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][omschrijving gemeente van inschrijving in hoofdletters]
+Regel: adresregel2 wordt voor een adres met postcode en zonder woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][omschrijving gemeente van inschrijving in hoofdletters]
 
   Scenario: persoon heeft een adres met postcode en zonder woonplaats als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -462,7 +462,7 @@ Rule: adresregel2 wordt voor een adres met postcode en zonder woonplaats als vol
     | naam        | waarde                 |
     | adresregel2 | 2584 BZ  'S-GRAVENHAGE |
 
-Rule: adresregel2 wordt voor een locatie als volgt samengesteld: [omschrijving gemeente van inschrijving in hoofdletters]
+Regel: adresregel2 wordt voor een locatie als volgt samengesteld: [omschrijving gemeente van inschrijving in hoofdletters]
 
   Scenario: persoon heeft een locatie als verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -484,7 +484,7 @@ Rule: adresregel2 wordt voor een locatie als volgt samengesteld: [omschrijving g
     | naam        | waarde        |
     | adresregel2 | 'S-GRAVENHAGE |
 
-Rule: adresregel1 wordt voor een verblijfplaats buitenland gevuld met regel1 van de verblijfplaats
+Regel: adresregel1 wordt voor een verblijfplaats buitenland gevuld met regel1 van de verblijfplaats
 
   Scenario: persoon verblijft in het buitenland
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -503,7 +503,7 @@ Rule: adresregel1 wordt voor een verblijfplaats buitenland gevuld met regel1 van
     | naam        | waarde          |
     | adresregel1 | Rue du pomme 26 |
 
-Rule: adresregel2 wordt voor een verblijfplaats buitenland gevuld met regel2 van de verblijfplaats
+Regel: adresregel2 wordt voor een verblijfplaats buitenland gevuld met regel2 van de verblijfplaats
 
   Scenario: persoon verblijft in het buitenland
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -522,7 +522,7 @@ Rule: adresregel2 wordt voor een verblijfplaats buitenland gevuld met regel2 van
     | naam        | waarde    |
     | adresregel2 | Bruxelles |
 
-Rule: adresregel3 wordt voor een verblijfplaats buitenland gevuld met regel3 van de verblijfplaats
+Regel: adresregel3 wordt voor een verblijfplaats buitenland gevuld met regel3 van de verblijfplaats
 
   Scenario: persoon verblijft in het buitenland
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens
@@ -541,7 +541,7 @@ Rule: adresregel3 wordt voor een verblijfplaats buitenland gevuld met regel3 van
     | naam        | waarde        |
     | adresregel3 | postcode 1000 |
 
-Rule: land wordt voor een verblijfplaats buitenland gevuld met land van de verblijfplaats
+Regel: land wordt voor een verblijfplaats buitenland gevuld met land van de verblijfplaats
 
   Scenario: persoon verblijft in het buitenland
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende gegevens

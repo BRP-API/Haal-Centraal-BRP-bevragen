@@ -3,7 +3,7 @@
 @protocollering
 Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatum
 
-  Rule: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+  Regel: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met alleen de verplichte parameters
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -91,7 +91,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetGeslachtsnaamEnGeboortedatu
       | geslacht                | M          | 010240, 010310, 010410 |
       | gemeenteVanInschrijving | 0599       | 010240, 010310, 080910 |
 
-  Rule: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
+  Regel: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met inclusiefOverledenPersonen
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens

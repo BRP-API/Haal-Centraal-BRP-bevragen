@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: ZoekMetPostcodeEnHuisnummer bij geblokkeerde persoonslijst
 
-  Rule: zoeken vindt ook personen waarvan de persoonslijst is geblokkeerd
+  Regel: zoeken vindt ook personen waarvan de persoonslijst is geblokkeerd
 
     Scenario: Persoonslijst is geblokkeerd
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens

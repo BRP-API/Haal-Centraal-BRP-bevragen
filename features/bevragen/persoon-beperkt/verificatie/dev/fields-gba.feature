@@ -12,7 +12,7 @@ Functionaliteit: verificatie velden vragen met fields (persoon beperkt)
     | datum verificatie (71.10)        | 20020701             |
     | omschrijving verificatie (71.20) | bewijs nationaliteit |
 
-  Rule: verificatie van de persoonsgegevens wordt bij elke vraag teruggegeven
+  Regel: verificatie van de persoonsgegevens wordt bij elke vraag teruggegeven
 
     Scenario: persoonsgegevens zijn geverifieerd en verificatie wordt niet gevraagd
       Als gba personen wordt gezocht met de volgende parameters
@@ -26,7 +26,7 @@ Functionaliteit: verificatie velden vragen met fields (persoon beperkt)
       | datum        | 20020701             |
       | omschrijving | bewijs nationaliteit |
 
-Rule: verificatie mag niet worden gevraagd, omdat het automatisch wordt geleverd
+Regel: verificatie mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
     @fout-case
     Abstract Scenario: veld <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd

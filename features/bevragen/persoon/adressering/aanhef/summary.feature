@@ -12,7 +12,7 @@ Functionaliteit: Aanhef bepalen
   # VP = voorvoegselGeslachtsnaam partner
   # GP = geslachtsnaam partner
 
-Rule: De aanhef van een persoon zonder partner wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
+Regel: De aanhef van een persoon zonder partner wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
   - GA: De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
     | geslacht | aanhef begint met (GA) |
     | M        | Geachte heer           |
@@ -91,7 +91,7 @@ Rule: De aanhef van een persoon zonder partner wordt samengesteld door geslacht,
     | V                     |
     | N                     |
     
-Rule: De aanhef van een persoon met een (ex-)partner wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
+Regel: De aanhef van een persoon met een (ex-)partner wordt samengesteld door geslacht, de voorletters, voorvoegsels en geslachtsnaam te combineren. 
   - De aanhef wordt voorafgegaan door "Geachte" gevolgd door "mevrouw", "heer" of de voorletters, afhankelijk van het geslacht:
     | geslacht | aanhef begint met (GA) |
     | M        | Geachte heer           |

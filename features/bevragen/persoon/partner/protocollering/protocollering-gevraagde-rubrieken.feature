@@ -3,7 +3,7 @@
 @protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor partner 
 
-  Rule: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+  Regel: Gebruikte parameters worden vertaald naar rubrieknummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken <gevraagde rubrieken>
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens

@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Raadpleeg met burgerservicenummer - fout cases
 
-Rule: De burgerservicenummer parameter is een verplichte parameter
+Regel: De burgerservicenummer parameter is een verplichte parameter
 
   @fout-case
   Scenario: De burgerservicenummer parameter is niet opgegeven
@@ -23,7 +23,7 @@ Rule: De burgerservicenummer parameter is een verplichte parameter
     | code     | name                | reason                  |
     | required | burgerservicenummer | Parameter is verplicht. |
 
-Rule: De burgerservicenummer parameter bevat een lijst met minimaal één burgerservicenummer
+Regel: De burgerservicenummer parameter bevat een lijst met minimaal één burgerservicenummer
 
   @fout-case
   Abstract Scenario: De burgerservicenummer parameter bevat een lege lijst
@@ -63,7 +63,7 @@ Rule: De burgerservicenummer parameter bevat een lijst met minimaal één burger
     | code  | name                | reason                   |
     | array | burgerservicenummer | Parameter is geen array. |
 
-Rule: Een burgerservicenummer is een string bestaande uit exact 9 cijfers
+Regel: Een burgerservicenummer is een string bestaande uit exact 9 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
@@ -110,7 +110,7 @@ Rule: Een burgerservicenummer is een string bestaande uit exact 9 cijfers
     | pattern | burgerservicenummer[0] | Waarde voldoet niet aan patroon ^[0-9]{9}$. |
     | pattern | burgerservicenummer[2] | Waarde voldoet niet aan patroon ^[0-9]{9}$. |
 
-Rule: De burgerservicenummer parameter bevat een lijst van maximaal 20 burgerservicenummers
+Regel: De burgerservicenummer parameter bevat een lijst van maximaal 20 burgerservicenummers
 
   @fout-case
   Scenario: De burgerservicenummer parameter bevat meer dan 20 burgerservicenummers
@@ -131,7 +131,7 @@ Rule: De burgerservicenummer parameter bevat een lijst van maximaal 20 burgerser
     | code     | name                | reason                         |
     | maxItems | burgerservicenummer | Array bevat meer dan 20 items. |
 
-Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
+Regel: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
@@ -159,7 +159,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
     | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
     | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |
 
-Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
   @fout-case
   Abstract Scenario: <titel>

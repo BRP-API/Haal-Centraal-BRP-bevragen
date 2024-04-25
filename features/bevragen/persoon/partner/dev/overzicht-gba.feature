@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: partner
 
-Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt alleen de ex-partner met de meest recente datum ontbinding geleverd
+Regel: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt alleen de ex-partner met de meest recente datum ontbinding geleverd
 
   Abstract Scenario: persoon heeft alleen ontbonden huwelijken/partnerschappen met <omschrijving>
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -123,7 +123,7 @@ Rule: Als een persoon alleen ontbonden huwelijken/partnerschappen heeft, wordt a
     | fields              | partners                        |
     Dan heeft de response een persoon zonder 'partner' gegevens
 
-Rule: Een partner wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02), geboorte (groep 03), aangaan (groep 06), ontbinding (groep 07) of 15 (soort verbintenis) van de partner een waarde heeft.
+Regel: Een partner wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02), geboorte (groep 03), aangaan (groep 06), ontbinding (groep 07) of 15 (soort verbintenis) van de partner een waarde heeft.
 
   Scenario: bestaan partner bekend, veld met onbekend waarde wordt gevraagd met fields
       Gegeven de persoon met burgerservicenummer '000000036' heeft een 'partner' met de volgende gegevens
@@ -206,7 +206,7 @@ Rule: Een partner wordt alleen teruggegeven als minimaal één gegeven in de ide
     Dan heeft de response een persoon zonder 'partner' gegevens
 
 
-Rule: Wanneer er meerdere actuele (niet-ontbonden) huwelijken/partnerschappen zijn, worden die allemaal geleverd
+Regel: Wanneer er meerdere actuele (niet-ontbonden) huwelijken/partnerschappen zijn, worden die allemaal geleverd
 
   Scenario: persoon heeft meerdere actuele huwelijken/partnerschappen
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

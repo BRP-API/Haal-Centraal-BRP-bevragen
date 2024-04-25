@@ -30,7 +30,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
     | PS   | Prinses      | titel     |
     | R    | Ridder       | titel     |
 
-  Rule: Voor een persoon met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
+  Regel: Voor een persoon met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
     | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
     | E                      | eigen naam                   | VL AT VV GN             |
     | P                      | partner naam                 | VL VP GP                |
@@ -173,7 +173,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | N           | J.A. barones van den Aedel-de Boer |
 
 
-  Rule: Voor een persoon met adellijk predicaat wordt de naam in aanschrijfwijze als volgt samengesteld:
+  Regel: Voor een persoon met adellijk predicaat wordt de naam in aanschrijfwijze als volgt samengesteld:
     | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
     | E                      | eigen naam                   | PK VL VV GN             |
     | P                      | partner naam                 | VL VP GP                |
