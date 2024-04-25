@@ -12,7 +12,7 @@ Functionaliteit: Persoon: verificatie velden vragen met fields
       | omschrijving verificatie (71.20) | bewijs nationaliteit |
 
 
-  Rule: verificatie van de persoonsgegevens wordt bij elke vraag teruggegeven
+  Regel: verificatie van de persoonsgegevens wordt bij elke vraag teruggegeven
 
     Scenario: persoonsgegevens zijn geverifieerd en verificatie wordt niet gevraagd
       Als personen wordt gezocht met de volgende parameters
@@ -58,7 +58,7 @@ Functionaliteit: Persoon: verificatie velden vragen met fields
       | JaarDatum      | 20200000 |            | 2020 |       |          | 2020         |
       | JaarMaandDatum | 20200300 |            | 2020 | 3     |          | maart 2020   |
 
-  Rule: verificatie mag niet worden gevraagd, omdat het automatisch wordt geleverd
+  Regel: verificatie mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
     @fout-case
     Abstract Scenario: veld <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd 

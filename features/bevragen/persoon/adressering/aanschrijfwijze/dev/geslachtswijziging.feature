@@ -5,7 +5,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   predicaat is niet gewijzigd, dan worden titel of predicaat en de aanspreekvorm geleverd die horen bij het geslacht.
 
 
-  Rule: De adellijke titel of het predicaat en de aanspreekvorm worden opgenomen in de vorm die hoort bij het geslacht van de persoon:
+  Regel: De adellijke titel of het predicaat en de aanspreekvorm worden opgenomen in de vorm die hoort bij het geslacht van de persoon:
       | adellijke titel/predicaat | geslacht | titel/predicaat bij geslacht | aanspreekvorm            |
       | JH                        | M        | jonkheer                     | De hoogwelgeboren heer   |
       | JH                        | V        | jonkvrouw                    | De hoogwelgeboren vrouwe |

@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: adressering adresregel velden vragen met fields
 
-Rule: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
+Regel: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
 
   Scenario: persoon heeft een adres met alleen een straatnaam en huisnummer als verblijfplaats en adresregel1 wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -154,7 +154,7 @@ Rule: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor
     | .                        | 88         | een straatnaam met standaardwaarde |
     | Jonkheer van Riemsdijkln | 0          | een huisnummer met standaardwaarde |
 
-Rule: wanneer adresregel3 en/of het land veld van de adressering groep voor een persoon met een adres wordt gevraagd, dan worden geen verblijfplaats gegevens geleverd
+Regel: wanneer adresregel3 en/of het land veld van de adressering groep voor een persoon met een adres wordt gevraagd, dan worden geen verblijfplaats gegevens geleverd
 
   Abstract Scenario: persoon heeft een adres als verblijfplaats en <veld> wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -175,7 +175,7 @@ Rule: wanneer adresregel3 en/of het land veld van de adressering groep voor een 
     | adresregel3 |
     | land        |
 
-Rule: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een locatie wordt gevraagd, dan wordt de waarde van 'locatiebeschrijving (12.10)' ook geleverd
+Regel: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een locatie wordt gevraagd, dan wordt de waarde van 'locatiebeschrijving (12.10)' ook geleverd
 
   Scenario: persoon heeft een locatie als verblijfplaats en adresregel1 wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000309' heeft de volgende 'verblijfplaats' gegevens
@@ -213,7 +213,7 @@ Rule: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor
     | naam                | waarde                            |
     | locatiebeschrijving | Woonboot tegenover de Grote Sloot |
 
-Rule: wanneer adresregel3 en/of het land veld van de adressering groep voor een persoon met een locatie wordt gevraagd, dan worden geen verblijfplaats gegevens geleverd
+Regel: wanneer adresregel3 en/of het land veld van de adressering groep voor een persoon met een locatie wordt gevraagd, dan worden geen verblijfplaats gegevens geleverd
 
   Abstract Scenario: persoon heeft een locatie als verblijfplaats en <veld> wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000309' heeft de volgende 'verblijfplaats' gegevens
@@ -234,7 +234,7 @@ Rule: wanneer adresregel3 en/of het land veld van de adressering groep voor een 
     | adresregel3 |
     | land        |
 
-Rule: wanneer adresregel1, adresregel2 en/of adresregel3 velden voor een persoon met een verblijfplaats buitenland wordt gevraagd, dan wordt het land veld van de verblijfplaats ook geleverd
+Regel: wanneer adresregel1, adresregel2 en/of adresregel3 velden voor een persoon met een verblijfplaats buitenland wordt gevraagd, dan wordt het land veld van de verblijfplaats ook geleverd
 
   Abstract Scenario: persoon heeft een verblijfplaats buitenland en adresregel1 wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
@@ -353,7 +353,7 @@ Rule: wanneer adresregel1, adresregel2 en/of adresregel3 velden voor een persoon
     | 5010      | België            |
     | 0000      | Onbekend          |
 
-Rule: wanneer het land veld van de adressering groep voor een persoon met een verblijfplaats buitenland wordt gevraagd, dan worden de regel velden van de verblijfplaats ook geleverd
+Regel: wanneer het land veld van de adressering groep voor een persoon met een verblijfplaats buitenland wordt gevraagd, dan worden de regel velden van de verblijfplaats ook geleverd
 
   Abstract Scenario: persoon heeft een verblijfplaats buitenland en land wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens
@@ -377,7 +377,7 @@ Rule: wanneer het land veld van de adressering groep voor een persoon met een ve
     | 5010      | België            |
     | 0000      | Onbekend          |
 
-Rule: wanneer één of meerdere adresregel velden voor een persoon wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: wanneer één of meerdere adresregel velden voor een persoon wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' is in onderzoek en één of meerdere adresregel velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000346' heeft de volgende 'verblijfplaats' gegevens

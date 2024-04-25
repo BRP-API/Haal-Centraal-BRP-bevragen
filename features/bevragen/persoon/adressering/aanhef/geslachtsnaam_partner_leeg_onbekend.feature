@@ -2,7 +2,7 @@
 
 Functionaliteit: Aanhef opstellen wanneer de geslachtsnaam van de partner van de persoon leeg of onbekend is. 
 
-Rule: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
+Regel: Aanduiding naamgebruik "E" (eigen naam) wordt gehanteerd voor een persoon wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt
   De aanhef wordt samengesteld voor aanduiding naamgebruik "E" wanneer aan alle volgende condities is voldaan:
     - de geslachtsnaam van de partner is leeg of onbekend (.)
     - aanduidingNaamgebruik is ongelijk aan "E" (eigen)

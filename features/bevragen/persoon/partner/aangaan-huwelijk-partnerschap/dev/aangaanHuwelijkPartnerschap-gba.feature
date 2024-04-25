@@ -10,7 +10,7 @@ Functionaliteit: aangaan huwelijk/partnerschap bij actuele of ontbonden relatie
   in het actuele voorkomen in de registratie staan. De gegevens over aangaan van het huwelijk/partnerschap moeten worden gehaald
   uit het eerste historische voorkomen waarin deze voorkomen.
 
-  Rule: aangaanHuwelijkPartnerschap wordt bij een niet-ontbonden partner -indien gevraagd met fields- geleverd
+  Regel: aangaanHuwelijkPartnerschap wordt bij een niet-ontbonden partner -indien gevraagd met fields- geleverd
 
     Scenario: partnerschap is niet ontbonden
       Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -53,7 +53,7 @@ Functionaliteit: aangaan huwelijk/partnerschap bij actuele of ontbonden relatie
       | land.code           | 5010     |
       | land.omschrijving   | België   |
 
-  Rule: aangaanHuwelijkPartnerschap wordt bij een ontbonden partner gehaald uit het meest recente voorkomen van de partner waarbij aangaanHuwelijkPartnerschap een waarde heeft
+  Regel: aangaanHuwelijkPartnerschap wordt bij een ontbonden partner gehaald uit het meest recente voorkomen van de partner waarbij aangaanHuwelijkPartnerschap een waarde heeft
 
     Scenario: partnerschap is ontbonden
       Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

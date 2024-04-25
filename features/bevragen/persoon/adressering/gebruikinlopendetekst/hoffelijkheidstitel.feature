@@ -16,7 +16,7 @@ Functionaliteit: Naamgebruik in een lopende tekst voor een persoon met een partn
   # PR = predicaat
   # HT = hoffelijkheidstitel of 'titre de courtoisie'
 
-Rule: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijkheidstitel ('titre de courtoisie') in gebruikInLopendeTekst, waarbij geldt dat:
+Regel: een vrouw met een (ex)partner met een adellijke titel krijgt een hoffelijkheidstitel ('titre de courtoisie') in gebruikInLopendeTekst, waarbij geldt dat:
   - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
     | aanduidingNaamgebruik | gebruikinlopendetekst |
     | E                     | PR AT VV GN           |

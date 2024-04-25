@@ -3,7 +3,7 @@
 @autorisatie
 Functionaliteit: autorisatie voor aanschrijfwijze
 
-  Rule: Vragen met fields om aanschrijfwijze, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit aanschrijfwijze wordt afgeleid, geeft een foutmelding
+  Regel: Vragen met fields om aanschrijfwijze, wanneer de gebruiker niet geautoriseerd is voor alle velden waaruit aanschrijfwijze wordt afgeleid, geeft een foutmelding
   
     Abstract Scenario: Afnemer vraagt om <fields> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens

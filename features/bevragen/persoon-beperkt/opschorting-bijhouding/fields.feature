@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon beperkt: opschorting bijhouding velden vragen met fields
 
-Rule: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch wordt geleverd
+Regel: opschortingBijhouding mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
   @fout-case
   Abstract Scenario: veld <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd 

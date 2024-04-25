@@ -40,7 +40,7 @@ Functionaliteit: partner velden vragen met fields
     | voornamen   | Reindert |
     | voorletters | R.       |
 
-Rule: Als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel één of meerdere ontbonden huwelijk of geregistreerd partnerschappen, dan wordt alleen het meest recente ontbonden huwelijk of geregistreerd partnerschap geleverd
+Regel: Als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel één of meerdere ontbonden huwelijk of geregistreerd partnerschappen, dan wordt alleen het meest recente ontbonden huwelijk of geregistreerd partnerschap geleverd
 
   Scenario: persoon heeft een ontbonden huwelijk/partnerschap
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens
@@ -93,7 +93,7 @@ Rule: Als er geen actueel huwelijk of geregistreerd partnerschap is, maar wel é
     | datum.datum       | 2012-04-01   |
     | datum.langFormaat | 1 april 2012 |
 
-Rule: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap geleverd
+Regel: Als er een actueel huwelijk of geregistreerd partnerschap is wordt alleen dit actueel huwelijk of geregistreerd partnerschap geleverd
 
   Scenario: persoon heeft een actueel en een ontbonden huwelijk
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'partner' met de volgende gegevens

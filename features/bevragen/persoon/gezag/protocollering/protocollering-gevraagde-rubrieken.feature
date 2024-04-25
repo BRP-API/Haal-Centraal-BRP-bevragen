@@ -3,7 +3,7 @@
 @protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor gezag
 
-  Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
+  Regel: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
 
     Scenario: Met fields vragen om gezag wordt vastgelegd als gevraagde rubrieken PAGZ01
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens

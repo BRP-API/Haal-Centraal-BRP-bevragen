@@ -23,7 +23,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       | gemeente van inschrijving (09.10) |
       | 0599                              |
 
-  Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     
     @fout-case
     Abstract Scenario: Zoeken met parameter <parameter niet toegestaan> waarvoor de afnemer niet geautoriseerd is (<ontbrekende rubriek>)
@@ -125,7 +125,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetNaamEnGemeenteVanInschrijv
       | geslacht        | 10410                   | V      |
 
 
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
+  Regel: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen voor haar eigen inwoners
     Wanneer de afnemer parameter gemeenteVanInschrijving gebruikt 
     en die is gelijk aan de waarde van gemeenteCode in de 'claim', 
     dan wordt niet gekeken naar de autorisatie van de afnemer

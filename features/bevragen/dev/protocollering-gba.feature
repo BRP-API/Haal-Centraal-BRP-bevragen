@@ -12,7 +12,7 @@ Functionaliteit: geef geleverde persoonslijsten door aan protocollerings-API
       | 2002  | 19830526              | Maassen               | Jan Peter         | van                 |
 
 
-  Rule: in de response wordt een komma gescheiden lijst van geleverde persoonslijsten opgenomen in de response header "x-geleverde-pls"
+  Regel: in de response wordt een komma gescheiden lijst van geleverde persoonslijsten opgenomen in de response header "x-geleverde-pls"
 
     Scenario: raadplegen levert 1 persoon
       Als personen wordt gezocht met de volgende parameters

@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met nummeraanduiding identificatie - fout cases
 
-Rule: nummeraanduidingIdentificatie is een verplichte parameter
+Regel: nummeraanduidingIdentificatie is een verplichte parameter
 
   @fout-case
   Scenario: De nummeraanduidingIdentificatie parameter is niet opgegeven
@@ -41,7 +41,7 @@ Rule: nummeraanduidingIdentificatie is een verplichte parameter
     | code     | name                          | reason                  |
     | required | nummeraanduidingIdentificatie | Parameter is verplicht. |
 
-Rule: Een nummeraanduidingIdentificatie is een string bestaande uit exact 16 cijfers
+Regel: Een nummeraanduidingIdentificatie is een string bestaande uit exact 16 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
@@ -68,7 +68,7 @@ Rule: Een nummeraanduidingIdentificatie is een string bestaande uit exact 16 cij
     | 12345678901234567                 | De opgegeven nummeraanduidingIdentificatie is een string met meer dan 16 cijfers   |
     | <script>1234567890123456</script> | De opgegeven nummeraanduidingIdentificatie bevat niet-cijfer karakters             |
 
-Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+Regel: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
@@ -95,7 +95,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
     |                              |
     | geen boolean                 |
 
-Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
   @fout-case
   Abstract Scenario: <titel>

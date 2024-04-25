@@ -8,7 +8,7 @@ Functionaliteit: verblijfstitel velden vragen met fields
     | 00   | Onbekend                                                                       |
     | 37   | Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec. |
 
-  Rule: een verblijfstitel wordt alleen geleverd wanneer die nog geldig is
+  Regel: een verblijfstitel wordt alleen geleverd wanneer die nog geldig is
     - een verblijfstitel wordt geleverd wanneer Datum einde verblijfstitel (39.20) leeg is of een datum in de toekomst heeft
     - een verblijfstitel wordt NIET geleverd wanneer Datum einde verblijfstitel (39.20) vandaag is of een datum in het verleden heeft
 
@@ -74,7 +74,7 @@ Functionaliteit: verblijfstitel velden vragen met fields
       | datum einde is vandaag      | vandaag    |
       | datum einde in het verleden | 20220315   |
 
-  Rule: een verblijfstitel met aanduiding 98 "geen verblijfstitel (meer)" wordt niet opgenomen
+  Regel: een verblijfstitel met aanduiding 98 "geen verblijfstitel (meer)" wordt niet opgenomen
 
     Scenario: vervallen verblijfstitel
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende 'verblijfstitel' gegevens
@@ -89,7 +89,7 @@ Functionaliteit: verblijfstitel velden vragen met fields
       | naam                | waarde    |
       | burgerservicenummer | 000000139 |
 
-  Rule: Een verblijfstitel met onbekende aanduiding wordt wel geleverd
+  Regel: Een verblijfstitel met onbekende aanduiding wordt wel geleverd
 
     Scenario: persoon heeft verblijfstitel maar het is nog onbekend welke
       Gegeven de persoon met burgerservicenummer '000000140' heeft de volgende 'verblijfstitel' gegevens

@@ -37,7 +37,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
   # To Do (t.z.t.): regels voor voorwaarderegel ad hoc (35.95.61)
 
 
-  Rule: Een afnemer is geautoriseerd voor ad hoc gegevensverstrekking als Medium ad hoc (35.95.67) de waarde “N” of “A” heeft
+  Regel: Een afnemer is geautoriseerd voor ad hoc gegevensverstrekking als Medium ad hoc (35.95.67) de waarde “N” of “A” heeft
     Wanneer Medium ad hoc (35.95.67) leeg is of een andere waarde dan "N" of "A" heeft, wordt een foutmelding gegeven
 
     @fout-case
@@ -66,7 +66,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | instance | /haalcentraal/api/brp/personen                              |
 
 
-  Rule: Zoeken met een parameter op een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
+  Regel: Zoeken met een parameter op een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
     Om een parameter te mogen gebruiken moet de afnemer geautoriseerd zijn voor de LO BRP rubriek waar met de parameter op gefilterd wordt
 
     @fout-case
@@ -125,7 +125,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | instance | /haalcentraal/api/brp/personen                                         |
 
 
-  Rule: Vragen met fields om een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
+  Regel: Vragen met fields om een veld waarvoor de gebruiker niet geautoriseerd is geeft een foutmelding
     Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het veld mee gevuld of van afgeleid wordt
 
     @fout-case
@@ -207,7 +207,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | nationaliteiten | 10120 40510 46310 46410 46510 | datumIngangGeldigheid (48510)                |
 
 
-  Rule: Een veld dat automatisch wordt meegeleverd vereist geen autorisatie voor dat veld
+  Regel: Een veld dat automatisch wordt meegeleverd vereist geen autorisatie voor dat veld
 
     Scenario: Afnemer heeft onderzoek, geheimhouding, opschorting, rni en verificatie en heeft dat niet in de autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -238,7 +238,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response 1 persoon
 
 
-  Rule: voor het vragen en beoordelen van gegevens is geen autorisatie nodig voor gebruik van indicatie onjuist (84.10)
+  Regel: voor het vragen en beoordelen van gegevens is geen autorisatie nodig voor gebruik van indicatie onjuist (84.10)
 
     Scenario: kindgegevens zijn gecorrigeerd (zijn onjuist) en afnemer is heeft geen autorisatie voor indicatie onjuist (98410) 
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -273,7 +273,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response een persoon zonder 'kind' gegevens
 
 
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen
+  Regel: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen
     Wanneer gemeenteCode in de 'claim' in de OAuth token gevuld is,
     dan wordt niet gekeken naar de autorisatie van de afnemer
 
@@ -303,7 +303,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | 0800                      | eigen inwoner                   |
       | 0530                      | inwoner van een andere gemeente |
   
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle gegevens
+  Regel: Een gemeente als afnemer is geautoriseerd voor alle gegevens
     Wanneer gemeenteCode in de 'claim' in de OAuth token gevuld is,
     dan wordt niet gekeken naar de autorisatie van de afnemer
 
@@ -337,7 +337,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       | 0530                      | inwoner van een andere gemeente |
 
 
-  Rule: Alleen een autorisatie tabelregel waarbij de Datum beëindiging tabelregel (35.99.99) leeg is of in de toekomst ligt wordt gebruikt
+  Regel: Alleen een autorisatie tabelregel waarbij de Datum beëindiging tabelregel (35.99.99) leeg is of in de toekomst ligt wordt gebruikt
 
     @fout-case
     Scenario: Autorisatie voor ad hoc gegevensverstrekking is ingetrokken
@@ -470,7 +470,7 @@ Functionaliteit: autorisatie voor het gebruik van de API
       Dan heeft de response 1 persoon
 
 
-  Rule: Alleen een autorisatie tabelregel waarbij de Datum ingang (35.99.98) gelijk is aan vandaag of in het verleden ligt wordt gebruikt
+  Regel: Alleen een autorisatie tabelregel waarbij de Datum ingang (35.99.98) gelijk is aan vandaag of in het verleden ligt wordt gebruikt
 
     @fout-case
     Scenario: Autorisatie voor ad hoc gegevensverstrekking gaat morgen in

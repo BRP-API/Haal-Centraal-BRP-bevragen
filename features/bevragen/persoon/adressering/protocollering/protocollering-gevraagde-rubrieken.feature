@@ -3,7 +3,7 @@
 @protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor adressering
 
-  Rule: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
+  Regel: Met fields gevraagde velden worden geprotocolleerd als de elementnummers volgens Logisch ontwerp BRP
     Dit is een 6-cijferige code, met zo nodig voorloopnul voor categorieën.
 
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken <gevraagde rubrieken>

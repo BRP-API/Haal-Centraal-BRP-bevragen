@@ -23,7 +23,7 @@ Functionaliteit: persoon/persoon beperkt velden vragen met fields
     | geboortedatum (03.10) |
     | 00000000              |
 
-Rule: Alleen met fields gevraagde velden worden geleverd
+Regel: Alleen met fields gevraagde velden worden geleverd
 
   Scenario: de 'root' veld van een persoon wordt gevraagd
     Als personen wordt gezocht met de volgende parameters
@@ -86,7 +86,7 @@ Rule: Alleen met fields gevraagde velden worden geleverd
     | voorletters   | Y.J.                        |
     | volledigeNaam | Yvonne Johanna Kierkegaarde |
 
-Rule: Het volledige pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn 'ouder' velden met een '.' karakter tussen de veld namen 
+Regel: Het volledige pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn 'ouder' velden met een '.' karakter tussen de veld namen 
 
   Scenario: een veld van een 'gegevensgroep' veld van een persoon wordt gevraagd
     Als personen wordt gezocht met de volgende parameters
@@ -134,7 +134,7 @@ Rule: Het volledige pad van een veld is de samenvoeging van de naam van het veld
     | naam                | waarde    |
     | burgerservicenummer | 999992971 |
 
-Rule: Een veld waarvan het volledig pad deels overeenkomt met een opgegeven veld pad wordt niet geleverd
+Regel: Een veld waarvan het volledig pad deels overeenkomt met een opgegeven veld pad wordt niet geleverd
 
   Scenario: het opgegeven pad is het volledig pad van het voornamen veld én een deel van het volledig pad van het voornamen veld van de partner/ouder/kind velden van de persoon
     Als personen wordt gezocht met de volgende parameters
@@ -146,7 +146,7 @@ Rule: Een veld waarvan het volledig pad deels overeenkomt met een opgegeven veld
     | naam      | waarde         |
     | voornamen | Yvonne Johanna |
     
-Rule: Het vragen van één of meerdere velden van een 'waardetabel' veld levert alle velden van de 'waardetabel' veld
+Regel: Het vragen van één of meerdere velden van een 'waardetabel' veld levert alle velden van de 'waardetabel' veld
 
   Abstract Scenario: 'geslachtsaanduiding (04.10)' wordt gevraagd met field pad '<fields>'
     Als personen wordt gezocht met de volgende parameters
@@ -165,7 +165,7 @@ Rule: Het vragen van één of meerdere velden van een 'waardetabel' veld levert 
     | geslacht.code         |
     | geslacht.omschrijving |
 
-Rule: Het vragen van één of meerdere velden van een 'datum' veld levert alle velden van de 'datum' veld
+Regel: Het vragen van één of meerdere velden van een 'datum' veld levert alle velden van de 'datum' veld
 
   Abstract Scenario: een 'VolledigeDatum' veld wordt gevraagd
     Als personen wordt gezocht met de volgende parameters
@@ -260,7 +260,7 @@ Rule: Het vragen van één of meerdere velden van een 'datum' veld levert alle v
     | geboorte.datum.onbekend                  |
     | geboorte.datum.jaar,geboorte.datum.maand |
  
-Rule: Een gevraagd veld zonder waarde wordt niet geleverd
+Regel: Een gevraagd veld zonder waarde wordt niet geleverd
 
   Scenario: het gevraagde veld heeft geen waarde
     Als personen wordt gezocht met de volgende parameters

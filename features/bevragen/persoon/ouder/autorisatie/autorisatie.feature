@@ -8,7 +8,7 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | voornamen (02.10) |
       | Lisette           |
 
-  Rule: Voor het vragen van ouderaanduiding met fields, moet de afnemer geautoriseerd zijn voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2 uit de groepen 01, 02, 03, 04 en/of 62.
+  Regel: Voor het vragen van ouderaanduiding met fields, moet de afnemer geautoriseerd zijn voor ten minste één gegeven van ouder 1 én ten minste één gegeven van ouder 2 uit de groepen 01, 02, 03, 04 en/of 62.
     De impliciete autorisatie voor het ontvangen van inOnderzoek op oudergegevens wordt voor het ouderAanduiding veld niet meegenomen.
 
     @fout-case
@@ -66,7 +66,7 @@ Functionaliteit: autorisatie oudergegevens Persoon
       | 10120 PAOU01                   | alleen voorletters van ouder(s)                              |
 
       
-  Rule: Vragen met fields om een gegeven van ouders, wanneer de afnemer niet geautoriseerd is voor dan gegeven van ouder 1 én van ouder 2, geeft een foutmelding
+  Regel: Vragen met fields om een gegeven van ouders, wanneer de afnemer niet geautoriseerd is voor dan gegeven van ouder 1 én van ouder 2, geeft een foutmelding
 
     Abstract Scenario: Afnemer vraagt ouders.<fields> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens

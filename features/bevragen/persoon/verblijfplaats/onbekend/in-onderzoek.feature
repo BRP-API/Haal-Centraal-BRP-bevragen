@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: verblijfplaats onbekend velden zijn in onderzoek
 
-Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek worden geleverd als het betreffende veld wordt gevraagd
+Regel: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek worden geleverd als het betreffende veld wordt gevraagd
 
   Abstract Scenario: '<type>' is in onderzoek en alle verblijfplaats onbekend velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -69,7 +69,7 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | 088500                  | hele groep geldigheid   |
     | 088510                  | datum ingang geldigheid |
 
-Rule: 'type' veld van 'verblijfplaats onbekend' is in onderzoek als het identificerende gegeven van verblijfplaats onbekend ('land adres buitenland (13.10) met waarde 0000') in onderzoek is
+Regel: 'type' veld van 'verblijfplaats onbekend' is in onderzoek als het identificerende gegeven van verblijfplaats onbekend ('land adres buitenland (13.10) met waarde 0000') in onderzoek is
 
   Abstract Scenario: '<type>' veld is in onderzoek en datumVan wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

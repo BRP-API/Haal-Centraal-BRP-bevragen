@@ -54,7 +54,7 @@ Functionaliteit: persoon: in onderzoek
     | 080900                  |
     | 080920                  |
 
-Rule: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
+Regel: in onderzoek wordt niet opgenomen wanneer het onderzoek beëindigd is
   - Datum einde onderzoek (83.30) heeft een waarde
 
   Scenario: onderzoek is beëindigd

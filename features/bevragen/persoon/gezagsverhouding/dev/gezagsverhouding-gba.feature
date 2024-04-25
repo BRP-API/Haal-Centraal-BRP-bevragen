@@ -235,7 +235,7 @@ Functionaliteit: gezagsverhouding
     | fields              | indicatieCurateleRegister       |
     Dan heeft de response een persoon zonder gegevens
 
-  Rule: Onjuiste gegevens worden niet geleverd.
+  Regel: Onjuiste gegevens worden niet geleverd.
   Scenario: persoon heeft 'gezagsverhouding' veld: 'indicatie gezag minderjarige (32.10)' en de gezagsverhouding is gecorrigeerd naar onjuist
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'gezagsverhouding' gegevens
     | naam                                 | waarde |

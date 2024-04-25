@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: adressering aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden vragen met fields
 
-Rule: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adressering van een persoon wordt gevraagd en de categorie persoon (01) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adressering van een persoon wordt gevraagd en de categorie persoon (01) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' is in onderzoek en aanhef, aanschrijfwijze en gebruikInLopendeTekst velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -34,7 +34,7 @@ Rule: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adre
     | 016100                  | hele groep naamgebruik       |
     | 016110                  | aanduiding naamgebruik       |
 
-Rule: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adressering van een persoon wordt gevraagd en de categorie partner (05) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: als de aanhef, aanschrijfwijze en/of gebruikInLopendeTekst velden van adressering van een persoon wordt gevraagd en de categorie partner (05) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' is in onderzoek en aanhef, aanschrijfwijze en gebruikInLopendeTekst velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft een 'partner' met de volgende gegevens

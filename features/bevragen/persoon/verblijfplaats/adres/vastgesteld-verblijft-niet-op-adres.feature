@@ -14,7 +14,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | gemeentecode (92.10) | straatnaam (11.10) | huisnummer (11.20) | identificatiecode verblijfplaats (11.80) | identificatiecode nummeraanduiding (11.90) |
       | 0519                 | Spui               | 123                | 0599010000208579                         | 0599200000219678                           |
 
-  Rule: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres verblijfplaats veld en alle geleverde verblijfplaats velden zijn in onderzoek
+  Regel: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres verblijfplaats veld en alle geleverde verblijfplaats velden zijn in onderzoek
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere adres velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters

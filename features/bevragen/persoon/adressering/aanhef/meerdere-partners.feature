@@ -2,7 +2,7 @@
 
 Functionaliteit: Aanhef opstellen wanneer de persoon meerdere actuele partners heeft. 
 
-Rule: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanhef
+Regel: Bij meerdere actuele (niet ontbonden) huwelijken/partnerschappen worden de naamgegevens van de eerste partner (oudste relatie) gebruikt voor het samenstellen van de aanhef
 
   Abstract Scenario: meerdere actuele relaties
     Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens

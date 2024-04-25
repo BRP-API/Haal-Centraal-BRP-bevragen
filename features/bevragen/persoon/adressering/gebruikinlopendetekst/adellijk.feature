@@ -16,7 +16,7 @@ Functionaliteit: Naamgebruik in een lopende tekst voor een persoon met adellijke
   # PR = predicaat
   # HT = hoffelijkheidstitel of 'titre de courtoisie'
 
-  Rule: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  Regel: gebruikInLopendeTekst voor een persoon met adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
     - gebruikInLopendeTekst wordt samengesteld uit naamcomponenten van de persoon en eventuele (ex)partner op basis van de aanduidingNaamgebruik:
       | aanduidingNaamgebruik | gebruikinlopendetekst |
       | E                     | PR AT VV GN           |

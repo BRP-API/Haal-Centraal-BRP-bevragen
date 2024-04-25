@@ -25,7 +25,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | gemeente van inschrijving (09.10) |
       | 0599                              |
 
-  Rule: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer een parameter wordt gebruikt van een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     
     @fout-case
     Abstract Scenario: Zoeken met parameter <parameter niet toegestaan> waarvoor de afnemer niet geautoriseerd is (<ontbrekende rubriek>)
@@ -129,7 +129,7 @@ Functionaliteit: autorisatie op parameters bij ZoekMetGeslachtsnaamEnGeboortedat
       | gemeenteVanInschrijving | 80910                   | 0599   |
 
 
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen
+  Regel: Een gemeente als afnemer is geautoriseerd voor alle zoekvragen
     Wanneer de afnemer gemeenteCode in de 'claim' van het OAuth token heeft, 
     dan wordt niet gekeken naar de autorisatie van de afnemer
 

@@ -17,7 +17,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
   
   Onderstaande regels gelden alleen wanneer GEEN adellijke titel of predicaat, dan wel hoffelijkheidstitel mag worden gebruikt.
 
-  Rule: De naam in aanschrijfwijze wordt op basis van aanduiding naamgebruik als volgt samengesteld:
+  Regel: De naam in aanschrijfwijze wordt op basis van aanduiding naamgebruik als volgt samengesteld:
     | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
     | E                      | eigen naam                   | VL VV GN                |
     | P                      | partner naam                 | VL VP GP                |

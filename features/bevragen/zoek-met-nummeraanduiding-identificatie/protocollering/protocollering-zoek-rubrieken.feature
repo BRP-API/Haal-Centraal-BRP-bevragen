@@ -14,7 +14,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNummeraanduidingIdentificat
       | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
       | 0599                 | 0599200000219679                           |
 
-  Rule: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
+  Regel: Gebruikte parameters worden vertaald naar elementnummers volgens Logisch ontwerp BRP en vastgelegd in het veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met alleen de verplichte parameters
       Als personen wordt gezocht met de volgende parameters
@@ -38,7 +38,7 @@ Functionaliteit: Protocollering zoekrubrieken ZoekMetNummeraanduidingIdentificat
       | 080910, 081190         |
 
 
-  Rule: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
+  Regel: Gebruik van de parameter inclusiefOverledenPersonen wordt niet vastgelegd in veld 'request_zoek_rubrieken'.
 
     Scenario: Zoek persoon met inclusiefOverledenPersonen
       Als personen wordt gezocht met de volgende parameters

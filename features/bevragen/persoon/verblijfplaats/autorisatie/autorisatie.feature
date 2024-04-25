@@ -18,7 +18,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | woonplaats (11.70)           | Scheveningen    |
 
 
-  Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het veld mee gevuld of van afgeleid wordt
 
     Abstract Scenario: Afnemer vraagt <gevraagd veld>, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
@@ -219,7 +219,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | datumIngangGeldigheid.maand                     | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81310 81320 81330 81340 81350 PAVP01 | 88510                |
       | datumIngangGeldigheid.onbekend                  | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 81310 81320 81330 81340 81350 PAVP01 | 88510                |
 
-  Rule: Een gemeente als afnemer is geautoriseerd voor alle verblijfplaats gegevens
+  Regel: Een gemeente als afnemer is geautoriseerd voor alle verblijfplaats gegevens
      
     Abstract Scenario: Gemeente vraagt om velden in verblijfplaats en er zit geen enkel verblijfplaatsgegeven in de autorisatie
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -246,7 +246,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaats.verblijfadres.regel1          |
       
 
-  Rule: Wanneer met fields om type van verblijfplaats wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaats wordt bepaald, wordt een foutmelding gegeven
+  Regel: Wanneer met fields om type van verblijfplaats wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaats wordt bepaald, wordt een foutmelding gegeven
     Om type van verblijfplaats te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het verblijfplaatstype mee bepaald wordt:
     - 81110: straatnaam
     - 81210: locatiebeschrijving
@@ -294,7 +294,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | 81110 81210      | land (81310)                |
       
 
-  Rule: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
+  Regel: de 'verblijfplaatsBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
     Abstract Scenario: Afnemer vraagt om alleen binnengemeentelijke verblijfplaatsgegevens, en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -446,7 +446,7 @@ Functionaliteit: autorisatie verblijfplaatsgegevens Persoon
       | verblijfplaatsBinnenland               | 10120 80910 81010 81030 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 PAVP01 | 88510                |
       
 
-  Rule: Wanneer met fields om type van verblijfplaatsBinnenland wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaatsBinnenland wordt bepaald, wordt een foutmelding gegeven
+  Regel: Wanneer met fields om type van verblijfplaatsBinnenland wordt gevraagd en de afnemer is niet geautoriseerd voor een van de velden waarmee type verblijfplaatsBinnenland wordt bepaald, wordt een foutmelding gegeven
     Om type van verblijfplaats te mogen vragen moet de afnemer geautoriseerd zijn voor alle LO BRP rubrieken waar het verblijfplaatstype mee bepaald wordt:
     - 81110: straatnaam
     - 81210: locatiebeschrijving

@@ -155,7 +155,7 @@ Functionaliteit: partner velden vragen met fields (persoon)
     | geboorte.datum                    | 00000000  |
     | aangaanHuwelijkPartnerschap.datum | 00000000  |
 
-Rule: voornamen wordt geleverd met field pad 'naam.voorletters'
+Regel: voornamen wordt geleverd met field pad 'naam.voorletters'
 
   Scenario: 'voorletters' wordt gevraagd met field pad 'naam.voorletters'
     Gegeven de persoon met burgerservicenummer '000000176' heeft een 'partner' met de volgende gegevens

@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Buitenlandse geboorteplaats of locatie (persoon)
 
-  Rule: wanneer de waarde voor een geboorteplaats(03.20) geen valide gemeentecode bevat wordt de plaats geleverd in de omschrijving en wordt veld code niet geleverd
+  Regel: wanneer de waarde voor een geboorteplaats(03.20) geen valide gemeentecode bevat wordt de plaats geleverd in de omschrijving en wordt veld code niet geleverd
     - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
 
     Abstract Scenario: Geboorteplaats is een <omschrijving>
@@ -25,7 +25,7 @@ Functionaliteit: Buitenlandse geboorteplaats of locatie (persoon)
       | 52°2'43N4°22'39"O  | locatieaanduiding               |
       | A.B. Pakjesboot 12 | locatie aan boord van een schip |
 
-  Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+  Regel: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
     Scenario: code voor geboorteland (03.30) komt niet voor in de tabel Landen
       Gegeven de persoon met burgerservicenummer '000000231' heeft de volgende gegevens

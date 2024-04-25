@@ -32,7 +32,7 @@ Functionaliteit: persoon: in onderzoek leveren bij vragen om gegevens van kind
       | indicatie curateleregister (33.10) | indicatie gezag minderjarige (32.10) | aanduiding in onderzoek (83.10) | datum ingang onderzoek (83.20) |
       | 1                                  | 12                                   | 110000                          | 20230111                       |
 
-  Rule: onderzoek wordt geleverd wanneer ten minste één gegeven uit die categorie is gevraagd
+  Regel: onderzoek wordt geleverd wanneer ten minste één gegeven uit die categorie is gevraagd
 
     Abstract Scenario: meerdere categorieën in onderzoek en <fields> uit categorie Kind wordt gevraagd
       Als gba personen wordt gezocht met de volgende parameters

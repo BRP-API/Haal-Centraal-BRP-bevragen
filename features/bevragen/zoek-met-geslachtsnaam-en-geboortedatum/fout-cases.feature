@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum - fout cases
 
-Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
+Regel: Geslachtsnaam en geboortedatum zijn verplichte parameters
 
   @fout-case
   Scenario: De geslachtsnaam en geboortedatum parameters zijn niet opgegeven
@@ -107,7 +107,7 @@ Rule: Geslachtsnaam en geboortedatum zijn verplichte parameters
     | Een lege string is opgegeven als geboortedatum waarde |               | maassen       | geboortedatum      |
     | Een lege string is opgegeven als geslachtsnaam waarde | 1983-05-26    |               | geslachtsnaam      |
 
-Rule: De geboortedatum is een datum string geformatteerd volgens de [ISO 8601 date format](https://www.w3.org/QA/Tips/iso-date)
+Regel: De geboortedatum is een datum string geformatteerd volgens de [ISO 8601 date format](https://www.w3.org/QA/Tips/iso-date)
 
   @fout-case
   Abstract Scenario: Een ongeldig datum is opgegeven als geboortedatum waarde
@@ -134,7 +134,7 @@ Rule: De geboortedatum is een datum string geformatteerd volgens de [ISO 8601 da
     | 19830526      |
     | 26 mei 1983   |
 
-Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
+Regel: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -165,7 +165,7 @@ Rule: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 k
     | De opgegeven geslachtsnaam is meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven geslachtsnaam bevat ongeldige karakters      | <script>alert('hello world');</script>                                                                                                                                                                              |
 
-Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
+Regel: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -298,7 +298,7 @@ Rule: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en m
     | pattern | geslachtsnaam | Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž \.\-\']{1,200}$\|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$. |
     | date    | geboortedatum | Waarde is geen geldige datum.                                                                        |
 
-Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 199 karakters. Deze karakters kunnen zijn:
+Regel: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 199 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -330,7 +330,7 @@ Rule: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 19
     | De opgegeven voornamen zijn meer dan 200 karakters lang | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ |
     | De opgegeven voornamen bevat ongeldige karakters        | <script>alert('hello world');</script>                                                                                                                                                                              |
 
-Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
+Regel: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 en maximaal 199 karakters, eindigend met de "*" karakter. De overige karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - diakrieten (À-ž)
@@ -362,7 +362,7 @@ Rule: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 e
     | *iet                   |
     | *ETER                  |
 
-Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:
+Regel: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - spatie ( ) en de enkele aanhalingsteken (')
@@ -388,7 +388,7 @@ Rule: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 
     | code    | name        | reason                                               |
     | pattern | voorvoegsel | Waarde voldoet niet aan patroon ^[a-zA-Z \']{1,10}$. |
 
-Rule: De geslacht waarde is één karakter lang en kan één van de volgende karakters zijn: M, m, V, v, O, o
+Regel: De geslacht waarde is één karakter lang en kan één van de volgende karakters zijn: M, m, V, v, O, o
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'geslacht' parameter
@@ -416,7 +416,7 @@ Rule: De geslacht waarde is één karakter lang en kan één van de volgende kar
     | N                                      |
     | <script>alert('hello world');</script> |
 
-Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+Regel: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
@@ -444,7 +444,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
     |                              |
     | geen boolean                 |
 
-Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
+Regel: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
 
   @fout-case
   Abstract Scenario: <titel>
@@ -473,7 +473,7 @@ Rule: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers
     | De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang   | 12345                                  |
     | De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters    | <script>alert('hello world');</script> |
 
-Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
   @fout-case
   Abstract Scenario: <titel>

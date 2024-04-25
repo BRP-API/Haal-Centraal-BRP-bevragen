@@ -34,7 +34,7 @@ Functionaliteit: autorisatie partners
       | soort verbintenis (15.10)                                    | P         |
 
 
-  Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
 
     Abstract Scenario: Afnemer vraagt om partners.<fields> en heeft uitsluitend de autorisatie die nodig is om deze vraag te mogen stellen
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens
@@ -194,7 +194,7 @@ Functionaliteit: autorisatie partners
       | soortVerbintenis.code                | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50630 50710 PAHP01 | 51510                |
       | soortVerbintenis.omschrijving        | 10120 50120 50210 50220 50230 50240 50310 50320 50330 50410 50610 50620 50630 50710 PAHP01 | 51510                |
 
-  Rule: voor het vragen en beoordelen van partnergegevens is geen autorisatie nodig voor indicatie onjuist (58410)
+  Regel: voor het vragen en beoordelen van partnergegevens is geen autorisatie nodig voor indicatie onjuist (58410)
 
     Scenario: huwelijk is onjuist en afnemer heeft geen autorisatie voor indicatie onjuist (58410)
       Gegeven de afnemer met indicatie '000008' heeft de volgende 'autorisatie' gegevens

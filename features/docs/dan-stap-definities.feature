@@ -2,7 +2,7 @@
 
 Functionaliteit: Dan stap definities
 
-  Rule: En heeft het object de volgende '<gegevensgroep>' gegevens
+  Regel: En heeft het object de volgende '<gegevensgroep>' gegevens
 
     @fout-case
     Scenario: En heeft het object de volgende 'invalidParams' gegevens
@@ -28,7 +28,7 @@ Functionaliteit: Dan stap definities
       | code     |
       | required |
 
-  Rule: Dan heeft de response een leeg persoon object
+  Regel: Dan heeft de response een leeg persoon object
         Dan heeft de response een persoon zonder gegevens  
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
@@ -52,7 +52,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een leeg persoon object     |
       | heeft de response een persoon zonder gegevens |
 
-  Rule: Dan heeft de response (nog) een persoon met (alleen) de volgende gegevens
+  Regel: Dan heeft de response (nog) een persoon met (alleen) de volgende gegevens
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -80,7 +80,7 @@ Functionaliteit: Dan stap definities
       | heeft de response nog een persoon met de volgende gegevens        |
       | heeft de response nog een persoon met alleen de volgende gegevens |
 
-  Rule: Dan heeft de response een persoon met (alleen) de volgende '<gegevensgroep>' gegevens
+  Regel: Dan heeft de response een persoon met (alleen) de volgende '<gegevensgroep>' gegevens
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -108,7 +108,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon met de volgende 'naam' gegevens        |
       | heeft de response een persoon met alleen de volgende 'naam' gegevens |
 
-  Rule: Dan heeft de response een persoon met een '<collectie gegevensgroep>' met (alleen) de volgende gegevens
+  Regel: Dan heeft de response een persoon met een '<collectie gegevensgroep>' met (alleen) de volgende gegevens
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -138,7 +138,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon met een 'kind' met de volgende gegevens        |
       | heeft de response een persoon met een 'kind' met alleen de volgende gegevens |
 
-  Rule: Dan heeft de response een persoon met een '<collectie gegevensgroep>' met (alleen) de volgende '<gegevensgroep>' gegevens
+  Regel: Dan heeft de response een persoon met een '<collectie gegevensgroep>' met (alleen) de volgende '<gegevensgroep>' gegevens
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -170,7 +170,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon met een 'kind' met de volgende 'naam' gegevens        |
       | heeft de response een persoon met een 'kind' met alleen de volgende 'naam' gegevens |
 
-  Rule: Dan heeft de response een persoon zonder '<collectie gegevensgroep>' gegevens
+  Regel: Dan heeft de response een persoon zonder '<collectie gegevensgroep>' gegevens
 
     Scenario: Dan heeft de response een persoon zonder 'kind' gegevens
       Gegeven de response body is gelijk aan
@@ -189,7 +189,7 @@ Functionaliteit: Dan stap definities
       En de response status is gelijk aan 200
       Dan heeft de response een persoon zonder 'kind' gegevens
 
-  Rule: Dan heeft de response een persoon zonder '<gegevensgroep>' gegevens
+  Regel: Dan heeft de response een persoon zonder '<gegevensgroep>' gegevens
         Dan heeft de response een persoon met een leeg '<gegevensgroep>' object
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
@@ -214,7 +214,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon zonder 'verblijfplaats' gegevens     |
       | heeft de response een persoon met een leeg 'verblijfplaats' object |
 
-  Rule: Dan heeft de response een persoon met een '<collectie gegevensgroep>' zonder gegevens
+  Regel: Dan heeft de response een persoon met een '<collectie gegevensgroep>' zonder gegevens
         Dan heeft de response een persoon met een leeg '<collectie gegevensgroep' object
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
@@ -242,7 +242,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon met een 'kind' zonder gegevens |
       | heeft de response een persoon met een leeg 'kind' object     |
 
-  Rule: Dan heeft de response een persoon met een '<collectie gegevensgroep>' met een leeg '<gegevensgroep>' object
+  Regel: Dan heeft de response een persoon met een '<collectie gegevensgroep>' met een leeg '<gegevensgroep>' object
         Dan heeft de response een persoon met een '<collectie gegevensgroep>' zonder '<gegevensgroep>' gegevens
 
     Abstract Scenario: Dan <stap definitie met hetzelfde gedrag>
@@ -271,7 +271,7 @@ Functionaliteit: Dan stap definities
       | heeft de response een persoon met een 'kind' met een leeg 'naam' object |
       | heeft de response een persoon met een 'kind' zonder 'naam' gegevens     |
 
-  Rule: En heeft de persoon (alleen) de volgende '<gegevensgroep>' gegevens
+  Regel: En heeft de persoon (alleen) de volgende '<gegevensgroep>' gegevens
 
     Abstract Scenario: En <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -305,7 +305,7 @@ Functionaliteit: Dan stap definities
       | heeft de persoon de volgende 'geboorte' gegevens        |
       | heeft de persoon alleen de volgende 'geboorte' gegevens |
 
-  Rule: En heeft de persoon een '<collectie gegevensgroep>' met (alleen) de volgende '<gegevensgroep>' gegevens
+  Regel: En heeft de persoon een '<collectie gegevensgroep>' met (alleen) de volgende '<gegevensgroep>' gegevens
 
     Abstract Scenario: En <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -341,7 +341,7 @@ Functionaliteit: Dan stap definities
       | heeft de persoon een 'ouder' met de volgende 'naam' gegevens        |
       | heeft de persoon een 'ouder' met alleen de volgende 'naam' gegevens |
 
-  Rule: En heeft de persoon een '<collectie gegevensgroep>' met (alleen) de volgende gegevens
+  Regel: En heeft de persoon een '<collectie gegevensgroep>' met (alleen) de volgende gegevens
 
     Abstract Scenario: En <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -375,7 +375,7 @@ Functionaliteit: Dan stap definities
       | heeft de persoon een 'partner' met de volgende gegevens        |
       | heeft de persoon een 'partner' met alleen de volgende gegevens |
 
-  Rule: En heeft (de|het) '<collectie gegevensgroep>' (alleen) de volgende '<gegevensgroep>' gegevens
+  Regel: En heeft (de|het) '<collectie gegevensgroep>' (alleen) de volgende '<gegevensgroep>' gegevens
 
     Abstract Scenario: En <stap definitie met hetzelfde gedrag>
       Gegeven de response body is gelijk aan
@@ -411,7 +411,7 @@ Functionaliteit: Dan stap definities
       | heeft de 'ouder' de volgende 'geboorte' gegevens        |
       | heeft de 'ouder' alleen de volgende 'geboorte' gegevens |
 
-  Rule: En heeft de persoon een leeg '<gegevensgroep>' object
+  Regel: En heeft de persoon een leeg '<gegevensgroep>' object
 
     Scenario: En heeft de persoon een leeg 'naam' object
       Gegeven de response body is gelijk aan
@@ -436,7 +436,7 @@ Functionaliteit: Dan stap definities
       | datum | 2022-05-06 |
       En heeft de persoon een leeg 'naam' object
 
-  Rule: En heeft de persoon geen '<collectie gegevensgroep>' gegevens
+  Regel: En heeft de persoon geen '<collectie gegevensgroep>' gegevens
 
     Scenario: En heeft de persoon geen 'kind' gegevens
       Gegeven de response body is gelijk aan
@@ -459,7 +459,7 @@ Functionaliteit: Dan stap definities
       | burgerservicenummer | 000000012 |
       En heeft de persoon geen 'kind' gegevens
 
-  Rule: En heeft de persoon geen '<gegevensgroep>' gegevens
+  Regel: En heeft de persoon geen '<gegevensgroep>' gegevens
 
     Scenario: En heeft de persoon geen 'verblijfplaats' gegevens
       Gegeven de response body is gelijk aan
@@ -482,7 +482,7 @@ Functionaliteit: Dan stap definities
       | burgerservicenummer | 000000012 |
       En heeft de persoon geen 'verblijfplaats' gegevens
 
-  Rule: En heeft de persoon een '<collectie gegevensgroep>' zonder gegevens 
+  Regel: En heeft de persoon een '<collectie gegevensgroep>' zonder gegevens 
 
     Scenario: En heeft de persoon een 'ouder' zonder gegevens
       Gegeven de response body is gelijk aan
@@ -507,7 +507,7 @@ Functionaliteit: Dan stap definities
       | burgerservicenummer | 000000012 |
       En heeft de persoon een 'ouder' zonder gegevens
 
-  Rule: En heeft de persoon een '<collectie gegevensgroep>' zonder '<gegevensgroep>' gegevens
+  Regel: En heeft de persoon een '<collectie gegevensgroep>' zonder '<gegevensgroep>' gegevens
 
     Scenario: En heeft de persoon een 'ouder' zonder 'naam' gegevens
       Gegeven de response body is gelijk aan
@@ -534,7 +534,7 @@ Functionaliteit: Dan stap definities
       | burgerservicenummer | 000000012 |
       En heeft de persoon een 'ouder' zonder 'naam' gegevens
 
-  Rule: En heeft (de|het) '<collectie gegevensgroep>' een leeg '<gegevensgroep>' object
+  Regel: En heeft (de|het) '<collectie gegevensgroep>' een leeg '<gegevensgroep>' object
         En heeft (de|het) '<collectie gegevensgroep>' geen '<gegevensgroep>' gegevens
 
     Abstract Scenario: En <stap definitie met hetzelfde gedrag>
@@ -567,7 +567,7 @@ Functionaliteit: Dan stap definities
       | heeft de 'partner' een leeg 'naam' object |
       | heeft de 'partner' geen 'naam' gegevens   |
 
-  Rule: Dan heeft de response <aantal> perso(o)n(en)
+  Regel: Dan heeft de response <aantal> perso(o)n(en)
 
     Scenario: Dan heeft de response 0 personen
       Gegeven de response body is gelijk aan

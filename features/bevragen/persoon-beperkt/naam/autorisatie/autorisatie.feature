@@ -20,7 +20,7 @@ Functionaliteit: Autorisatie voor naam in PersoonBeperkt
       | 0518                 | 2628HJ           | 2                  |
 
 
-  Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
 
     @fout-case
     Abstract Scenario: Afnemer vraagt om <fields> en is niet geautoriseerd voor <missende autorisatie>

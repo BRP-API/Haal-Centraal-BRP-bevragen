@@ -8,7 +8,7 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       | naam                  | waarde |
       | nationaliteit (05.10) | 0001   |
 
-  Rule: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
+  Regel: Wanneer met fields gevraagd wordt om een veld waarvoor de gebruiker niet geautoriseerd is, wordt een foutmelding gegeven
     Om een veld te mogen vragen moet de afnemer geautoriseerd zijn voor de LO BRP rubriek waar het veld mee gevuld wordt
 
     @fout-case
@@ -82,7 +82,7 @@ Functionaliteit: autorisatie nationaliteitgegevens Persoon
       | nationaliteiten.datumIngangGeldigheid.maand       | 48510             |
       | nationaliteiten                                   | 40510 46310 48510 |
 
-  Rule: Wanneer met fields gevraagd wordt om type en de gebruiker is niet geautoriseerd voor nationaliteit, wordt een foutmelding gegeven
+  Regel: Wanneer met fields gevraagd wordt om type en de gebruiker is niet geautoriseerd voor nationaliteit, wordt een foutmelding gegeven
 
     @fout-case
     Scenario: Afnemer vraagt type, maar is niet geautoriseerd voor nationaliteit (40510)

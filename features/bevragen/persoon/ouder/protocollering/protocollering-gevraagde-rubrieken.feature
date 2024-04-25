@@ -3,7 +3,7 @@
 @protocollering
 Functionaliteit: protocollering van de gevraagde gegevens voor ouders 
 
-  Rule: Wanneer met fields een veld van ouders wordt gevraagd, worden de bijbehorende rubrieknummers voor ouder 1 én ouder 2 opgenomen in het veld 'request_gevraagde_rubrieken'.
+  Regel: Wanneer met fields een veld van ouders wordt gevraagd, worden de bijbehorende rubrieknummers voor ouder 1 én ouder 2 opgenomen in het veld 'request_gevraagde_rubrieken'.
 
     Abstract Scenario: Met fields vragen om <fields> wordt vastgelegd als gevraagde rubrieken <gevraagde rubrieken>
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
@@ -56,7 +56,7 @@ Functionaliteit: protocollering van de gevraagde gegevens voor ouders
       | ouders.naam                                                | 020210, 020220, 020230, 020240, 030210, 030220, 030230, 030240, PAOU01                                                                                                 |
       | ouders                                                     | 020120, 020210, 020220, 020230, 020240, 020310, 020320, 020330, 020410, 026210, 030120, 030210, 030220, 030230, 030240, 030310, 030320, 030330, 030410, 036210, PAOU01 |
 
-  Rule: Voor ouders.ouderAanduiding wordt niks opgenomen in veld 'request_gevraagde_rubrieken'
+  Regel: Voor ouders.ouderAanduiding wordt niks opgenomen in veld 'request_gevraagde_rubrieken'
 
     Abstract Scenario: vragen om ouders.ouderAanduiding
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens

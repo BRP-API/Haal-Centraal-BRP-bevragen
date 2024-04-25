@@ -4,7 +4,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
   Van een persoon worden -indien gevraagd met de fields parameter- de kinderen geleverd.
   Dit bevat enkele identificerende eigenschappen van de kinderen.
 
-  Rule: de actuele gegevens van kinderen worden geleverd
+  Regel: de actuele gegevens van kinderen worden geleverd
 
     Scenario: de naam van een kind is gecorrigeerd
       Gegeven de persoon met burgerservicenummer '000000012' heeft een 'kind' met de volgende gegevens
@@ -41,7 +41,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | naam           | waarde |
       | naam.voornamen | Vica   |
 
-  Rule: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
+  Regel: Een kind wordt alleen teruggegeven als minimaal één gegeven in de identificatienummers (groep 01), naam (groep 02) of geboorte (groep 03) van het kind een waarde heeft.
     - Wanneer in een categorie kind alleen gegevens zijn opgenomen in groep 81 of 82, 85 en 86, wordt dit kind niet opgenomen in het antwoord
     - Wanneer een gegeven een standaardwaarde heeft (dit betekent dat de waarde onbekend is), zoals "." (punt) bij geslachtsnaam of "00000000" bij geboortedatum, geldt dat hier als het bestaan van een waarde en wordt het kind wel geleverd.
     - Wanneer door de gebruikte fields parameter in het request het kind in de response geen enkel gegeven heeft met een waarde, dan wordt het kind geleverd zonder gegevens (dus als leeg object)
@@ -105,7 +105,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | fields              | kinderen.burgerservicenummer    |
       Dan heeft de response een persoon met een 'kind' zonder gegevens
 
-  Rule: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
+  Regel: de geleverde kindgegevens zijn de gegevens zoals die staan op de persoonslijst van de gevraagde persoon
     Bij het raadplegen van een persoon worden alleen gegevens uit de persoonslijst van de gevraagde persoon gebruikt, en nooit gegevens van de persoonslijst van het kind
 
     Scenario: Het kind heeft geslachtswijziging en naamswijziging ondergaan, maar de gevraagde persoon erkent dit niet
@@ -134,7 +134,7 @@ Functionaliteit: Kinderen van een persoon raadplegen
       | burgerservicenummer | 000000097 |
       | naam.voornamen      | Karel     |
 
-  Rule: Wanneer een kind alleen "onbekend"-waardes heeft, wordt er een 'kind' zonder gegevens geleverd.
+  Regel: Wanneer een kind alleen "onbekend"-waardes heeft, wordt er een 'kind' zonder gegevens geleverd.
     - Wanneer geen van de met fields gevraagde kindgegevens een waarde heeft, maar andere gegevens van het kind wel wordt er ook een 'kind' zonder gegevens geleverd.
 
     Scenario: Kind is volledig onbekend
