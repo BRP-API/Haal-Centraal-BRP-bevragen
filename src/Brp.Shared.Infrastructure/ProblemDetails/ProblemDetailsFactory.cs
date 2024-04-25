@@ -37,6 +37,8 @@ public static class ProblemDetailsFactory
             StatusCodes.Status405MethodNotAllowed => "Gebruikte bevragingsmethode is niet toegestaan.",
             StatusCodes.Status406NotAcceptable => "Gevraagde content type wordt niet ondersteund.",
             StatusCodes.Status415UnsupportedMediaType => "Media Type wordt niet ondersteund.",
+            StatusCodes.Status500InternalServerError => "Internal Server error.",
+            StatusCodes.Status502BadGateway => "Bronservice is tijdelijk niet beschikbaar.",
             _ => null
         };
 
@@ -50,6 +52,8 @@ public static class ProblemDetailsFactory
             StatusCodes.Status405MethodNotAllowed => StatusCodeIdentifiers.MethodNotAllowedIdentifier,
             StatusCodes.Status406NotAcceptable => StatusCodeIdentifiers.NotAcceptableIdentifier,
             StatusCodes.Status415UnsupportedMediaType => StatusCodeIdentifiers.UnsupportedMediaTypeIdentifier,
+            StatusCodes.Status500InternalServerError => StatusCodeIdentifiers.InternalServerErrorIdentifier,
+            StatusCodes.Status502BadGateway => StatusCodeIdentifiers.ServiceUnavailableIdentifier,
             _ => null
         };
 
