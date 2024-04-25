@@ -6,7 +6,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
   Wil ik dat de verblijfplaats gegevens van een persoon kan worden gevraagd conform NEN 5825:2002
   Zodat ik de adresgegevens van de persoon op de correcte manier kan gebruiken
 
-  Rule: adresregel1 wordt voor een adres met alleen straatnaam en huisnummer als volgt samengesteld: '[straatnaam][spatie][huisnummer]'
+  Regel: adresregel1 wordt voor een adres met alleen straatnaam en huisnummer als volgt samengesteld: '[straatnaam][spatie][huisnummer]'
 
     Scenario: persoon heeft een adres met alleen een straatnaam en huisnummer als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -24,7 +24,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
       | naam        | waarde                      |
       | adresregel1 | Jonkheer van Riemsdijkln 88 |
 
-  Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisletter als volgt samengesteld: '[straatnaam][spatie][huisnummer][spatie][huisletter]'
+  Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisletter als volgt samengesteld: '[straatnaam][spatie][huisnummer][spatie][huisletter]'
 
     Scenario: persoon heeft een adres met straatnaam, huisnummer en huisletter als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -42,7 +42,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
       | naam        | waarde                |
       | adresregel1 | Borgesiusstraat 103 c |
 
-  Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisnummertoevoeging]'
+  Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisnummertoevoeging]'
 
     Scenario: persoon heeft een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een letter als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -60,7 +60,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
       | naam        | waarde                       |
       | adresregel1 | Daniël Stalpertstraat 35 III |
 
-  Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een cijfer als volgt samengesteld: [straatnaam][spatie][huisnummer]-[huisnummertoevoeging]'
+  Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een cijfer als volgt samengesteld: [straatnaam][spatie][huisnummer]-[huisnummertoevoeging]'
 
     Scenario: persoon heeft een adres met straatnaam, huisnummer en huisnummertoevoeging die begint met een cijfer als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -78,7 +78,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
       | naam        | waarde            |
       | adresregel1 | Atatürkstraat 9-2 |
 
-  Rule: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en huisnummertoevoeging als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
+  Regel: adresregel1 wordt voor een adres met straatnaam, huisnummer, huisletter en huisnummertoevoeging als volgt samengesteld: [straatnaam][spatie][huisnummer][spatie][huisletter][huisnummertoevoeging]'
 
     Scenario: persoon heeft een adres met straatnaam, huisnummer, huisletter en huisnummertoevoeging die begint met een letter als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -113,7 +113,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
       | adresregel1 | Cronus 555 B73c |
 
 
-  Rule: adresregel2 wordt voor een adres met postcode en woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][woonplaats in hoofdletters]
+  Regel: adresregel2 wordt voor een adres met postcode en woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][woonplaats in hoofdletters]
 
     Scenario: persoon heeft een adres met postcode en woonplaats als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -131,7 +131,7 @@ Functionaliteit: samenstellen van adresregels in gezag persoon beperkt
       | naam        | waarde                |
       | adresregel2 | 2583 XL  SCHEVENINGEN |
 
-  Rule: adresregel2 wordt voor een adres met postcode en zonder woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][omschrijving gemeente van inschrijving in hoofdletters]
+  Regel: adresregel2 wordt voor een adres met postcode en zonder woonplaats als volgt samengesteld: [postcode numeriek deel][spatie][postcode alfabetisch deel][2 spaties][omschrijving gemeente van inschrijving in hoofdletters]
 
     Scenario: persoon heeft een adres met postcode en zonder woonplaats als verblijfplaats
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens

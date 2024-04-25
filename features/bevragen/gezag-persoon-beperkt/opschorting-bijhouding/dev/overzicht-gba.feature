@@ -13,7 +13,7 @@ Functionaliteit: opschorting bijhouding (gezag persoon beperkt)
       | 0599                 | 0599010051001502                         |
 
 
-  Rule: opschortingBijhouding wordt automatisch geleverd indien van toepassing
+  Regel: opschortingBijhouding wordt automatisch geleverd indien van toepassing
 
     Abstract Scenario: persoon opgeschort met reden "<reden opschorting bijhouding>" (<reden opschorting omschrijving>) wordt gezocht met adresseerbaar object identificatie
       En de persoon heeft de volgende 'inschrijving' gegevens

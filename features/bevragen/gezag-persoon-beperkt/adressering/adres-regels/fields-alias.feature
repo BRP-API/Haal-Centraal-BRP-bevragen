@@ -5,7 +5,7 @@ Functionaliteit: Gezag Persoon beperkt: adressering velden vragen met fields/fie
   Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van de adresregel velden voor een verblijfplaats buitenland
   Dan moet de consumer de adresseringBinnenland fields alias gebruiken om aan te geven dat hij adresregel velden voor een verblijfplaats binnenland vraagt
 
-  Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
+  Regel: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
 
     Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias alle adresregel velden met hun volledig pad van een adres
       Gegeven de afnemer met indicatie '000008' is geautoriseerd voor 'adressering binnenland' gegevens

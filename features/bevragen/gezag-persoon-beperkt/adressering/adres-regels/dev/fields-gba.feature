@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: adressering (adresregel) velden vragen met fields (gezag persoon beperkt)
 
-  Rule: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
+  Regel: wanneer adresregel1 en/of adresregel2 velden van de adressering groep voor een persoon met een adres wordt gevraagd, dan wordt altijd de waarde van 'straatnaam (11.10)' en 'huisnummer (11.20)' geleverd
 
     Scenario: persoon heeft een adres met alleen een straatnaam en huisnummer als verblijfplaats en adresregel1 wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -154,7 +154,7 @@ Functionaliteit: adressering (adresregel) velden vragen met fields (gezag persoo
       | .                        | 88         | een straatnaam met standaardwaarde |
       | Jonkheer van Riemsdijkln | 0          | een huisnummer met standaardwaarde |
 
-  Rule: wanneer adresregel3 en/of het land veld van de adressering groep voor een persoon met een adres wordt gevraagd, dan worden geen verblijfplaats gegevens geleverd
+  Regel: wanneer adresregel3 en/of het land veld van de adressering groep voor een persoon met een adres wordt gevraagd, dan worden geen verblijfplaats gegevens geleverd
 
     Abstract Scenario: persoon heeft een adres als verblijfplaats en <veld> wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -175,7 +175,7 @@ Functionaliteit: adressering (adresregel) velden vragen met fields (gezag persoo
       | adresregel3 |
       | land        |
 
-  Rule: wanneer één of meerdere adresregel velden voor een persoon wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+  Regel: wanneer één of meerdere adresregel velden voor een persoon wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
     Abstract Scenario: '<type>' is in onderzoek en één of meerdere adresregel velden wordt gevraagd
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens
@@ -230,7 +230,7 @@ Functionaliteit: adressering (adresregel) velden vragen met fields (gezag persoo
       | 088500                  | hele groep geldigheid              | adressering.adresregel1,adressering.land                                                 |
       | 088510                  | datum ingang geldigheid            | adressering.adresregel1,adressering.adresregel2                                          |
 
-  Rule: wanneer groep adressering wordt gevraagd bij zoeken, dan worden de adresgegevens geleverd en niet naam of partner
+  Regel: wanneer groep adressering wordt gevraagd bij zoeken, dan worden de adresgegevens geleverd en niet naam of partner
 
     Scenario: adressering is gevraagd
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens

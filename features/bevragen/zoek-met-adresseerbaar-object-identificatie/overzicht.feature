@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met adresseerbaar object identificatie
 
-  Rule: adresseerbaar object identificatie is een verplichte parameter
+  Regel: adresseerbaar object identificatie is een verplichte parameter
 
     Scenario: Zoek een persoon met de adresseerbaar object identificatie van zijn verblijfplaats
         Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -52,7 +52,7 @@ Functionaliteit: Zoek met adresseerbaar object identificatie
         | naam                | waarde    |
         | burgerservicenummer | 000000025 |
 
-  Rule: Overleden persoon ingeschreven op het adresseerbaar object worden niet gevonden
+  Regel: Overleden persoon ingeschreven op het adresseerbaar object worden niet gevonden
 
     Scenario: Vind niet overleden personen die zijn ingeschreven op het adres met de opgegeven adresseerbaar object identificatie
         Gegeven een adres heeft de volgende gegevens
@@ -77,7 +77,7 @@ Functionaliteit: Zoek met adresseerbaar object identificatie
         | naam                | waarde    |
         | burgerservicenummer | 000000024 |
 
-  Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+  Regel: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 
     Scenario: Zoek met gemeenteVanInschrijving
         Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens

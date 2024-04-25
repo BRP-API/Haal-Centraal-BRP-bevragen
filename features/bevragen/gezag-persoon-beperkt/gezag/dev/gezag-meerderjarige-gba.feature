@@ -4,7 +4,7 @@
 Functionaliteit: gezagsrelaties van een meerderjarige
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind met twee ouders met gezag de gezagsrelatie naar beide ouders geleverd
+  Regel: een meerderjarige krijgt voor een minderjarig kind met twee ouders met gezag de gezagsrelatie naar beide ouders geleverd
 
     Scenario: beide ouders hebben gezag over het minderjarige kind van bevraagde persoon
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -37,7 +37,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000048 |
 
 
-  Rule: een meerderjarige die als enige gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar zichzelf geleverd
+  Regel: een meerderjarige die als enige gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar zichzelf geleverd
 
     Scenario: alleen de bevraagde persoon heeft gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -61,7 +61,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | ouder.burgerservicenummer        | 000000024                |
 
 
-  Rule: een meerderjarige die samen met diens partner gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar de ouder en de partner geleverd
+  Regel: een meerderjarige die samen met diens partner gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar de ouder en de partner geleverd
 
     Scenario: de ouder en diens partner hebben gezag over het kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -99,7 +99,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | derde.burgerservicenummer        | 000000048        |
 
 
-  Rule: een meerderjarige die gezag heeft over een minderjarig kind van de partner krijgt de gezagsrelatie naar de ouder en zichzelf geleverd
+  Regel: een meerderjarige die gezag heeft over een minderjarig kind van de partner krijgt de gezagsrelatie naar de ouder en zichzelf geleverd
     # de gezagsmodule levert bij het bevragen van de niet-ouder geen gezag
     # het gezag kan achterhaald worden door het gezag van de kinderen van de partner op te vragen
     # voor elke gezagsrelatie van de minderjarige kinderen wordt bepaald of de niet-ouder gezamenlijk gezag heeft over het kind
@@ -144,7 +144,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | derde.burgerservicenummer        | 000000048        |
 
 
-  Rule: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
+  Regel: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
 
     Scenario: gezag wordt gevraagd van ouder met meerderjarig kind
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
@@ -172,7 +172,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
+  Regel: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
 
     Scenario: gezag over minderjarige kind kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -199,7 +199,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
+  Regel: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
 
     Scenario: tijdelijk heeft niemand gezag over een minderjarig kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -229,7 +229,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd
+  Regel: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd
     # de gezagsmodule levert bij het bevragen van de niet-ouder geen gezag
     # het gezag kan achterhaald worden door het gezag van de kinderen van de partner op te vragen
     # voor elke gezagsrelatie van de minderjarige kinderen wordt bepaald of de niet-ouder voogd is van dit kind

@@ -55,7 +55,7 @@ Functionaliteit: gezagsrelaties vragen met fields
       | 000000036       | GG         | 000000048        |
 
 
-  Rule: Het vragen van één of meerdere velden van 'gezag' levert alle velden van 'gezag' die van toepassing zijn op de persoon
+  Regel: Het vragen van één of meerdere velden van 'gezag' levert alle velden van 'gezag' die van toepassing zijn op de persoon
 
     Scenario: gezag vragen met fields <fields> geeft alle van velden van alle soorten gezag van toepassing op de persoon
       Als personen wordt gezocht met de volgende parameters
