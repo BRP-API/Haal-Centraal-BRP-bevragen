@@ -12,7 +12,7 @@ title: leveren 'indicatie vastgesteld verblijft niet op adres' veld bij het vrag
 Wil ik een indicatie krijgen bij het vragen van adresregel gegevens van een persoon als is vastgesteld dat de gevraagde persoon niet meer verblijft op het geregistreerde adres  
 Zodat ik dit niet zelf hoef af te leiden uit de aanduiding in onderzoek waarde  
 
-## Rule: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres adressering veld en alle geleverde adresregel velden zijn in onderzoek
+## Regel: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres adressering veld en alle geleverde adresregel velden zijn in onderzoek
 
 
 ### Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere adresregel velden wordt gevraagd

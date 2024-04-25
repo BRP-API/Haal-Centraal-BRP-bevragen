@@ -8,7 +8,7 @@ title: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
 # Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
 
 
-## Rule: Geslachtsnaam, voornamen (beide niet hoofdlettergevoelig) en gemeenteVanInschrijving zijn verplichte parameters
+## Regel: Geslachtsnaam, voornamen (beide niet hoofdlettergevoelig) en gemeenteVanInschrijving zijn verplichte parameters
 
 
 ### Abstract Scenario: Zoek een persoon met zijn volledige geslachtsnaam, voornamen en de code van de gemeente waar hij is ingeschreven
@@ -86,7 +86,7 @@ title: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
   |---------------------|-----------|
   | burgerservicenummer | 000000024 |
 
-## Rule: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
+## Regel: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
 
 ### Abstract Scenario: Zoek een persoon met volledige voorvoegsel
@@ -127,7 +127,7 @@ title: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
   | Van         |
   | VAN         |
 
-## Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+## Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
 
 ### Scenario: Zoek een overleden persoon

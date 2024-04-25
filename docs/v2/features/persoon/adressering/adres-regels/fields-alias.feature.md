@@ -11,7 +11,7 @@ title: adressering velden vragen met fields/fields alias
 Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van de adresregel velden voor een verblijfplaats buitenland  
 * __Dan__ moet de consumer de adresseringBinnenland fields alias gebruiken om aan te geven dat hij adresregel velden voor een verblijfplaats binnenland vraagt
 
-## Rule: de standaard adresregel veld paden kunnen worden gebruikt door een consumer die is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats binnenland (adres, locatie) en verblijfplaats buitenland
+## Regel: de standaard adresregel veld paden kunnen worden gebruikt door een consumer die is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats binnenland (adres, locatie) en verblijfplaats buitenland
 
 
 ### Abstract Scenario: afnemer is geautoriseerd voor 'adressering buitenland' en vraagt \<sub titel\>
@@ -136,7 +136,7 @@ Wanneer een consumer van de BRP API niet is geautoriseerd voor het bevragen van 
   | land.code         | 6014                         |
   | land.omschrijving | Verenigde Staten van Amerika |
 
-## Rule: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
+## Regel: de 'adresseringBinnenland' field alias moet worden gebruikt door een consumer die niet is geautoriseerd voor het vragen van adresregels horende bij verblijfplaats buitenland
 
 
 ### Scenario: afnemer is niet geautoriseerd voor 'adressering buitenland' en vraagt met de fields alias de adresregel velden van een verblijfplaats buitenland

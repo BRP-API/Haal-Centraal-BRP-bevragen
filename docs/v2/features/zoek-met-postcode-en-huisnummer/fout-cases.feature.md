@@ -8,7 +8,7 @@ title: Zoek met postcode en huisnummer - fout cases
 # Functionaliteit: Zoek met postcode en huisnummer - fout cases
 
 
-## Rule: Postcode en huisnummer zijn verplichte parameters
+## Regel: Postcode en huisnummer zijn verplichte parameters
 
 
 `@fout-case`
@@ -152,7 +152,7 @@ title: Zoek met postcode en huisnummer - fout cases
   | Een lege string is opgegeven als huisnummer waarde |          | 2          | postcode           |
   | Een lege waarde is opgegeven als postcode waarde   | 2628HJ   |            | huisnummer         |
 
-## Rule: een huisnummer is een getal tussen 1 en 99999
+## Regel: een huisnummer is een getal tussen 1 en 99999
 
 
 `@fout-case`
@@ -226,7 +226,7 @@ title: Zoek met postcode en huisnummer - fout cases
   | 0          | minimum | Waarde is lager dan minimum 1.     |
   | 100000     | maximum | Waarde is hoger dan maximum 99999. |
 
-## Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 letters (niet hoofdlettergevoelig)
+## Regel: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 letters (niet hoofdlettergevoelig)
 
 
 `@fout-case`
@@ -293,7 +293,7 @@ title: Zoek met postcode en huisnummer - fout cases
   | pattern | postcode   | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$. |
   | integer | huisnummer | Waarde is geen geldig getal.                                       |
 
-## Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
+## Regel: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
 
 
 `@fout-case`
@@ -332,7 +332,7 @@ title: Zoek met postcode en huisnummer - fout cases
   | \<script\>alert('hello world');</script> |
   | 1                                      |
 
-## Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
+## Regel: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
 
 - kleine letters (a-z)  
 - hoofdletters (A-Z)  
@@ -374,7 +374,7 @@ title: Zoek met postcode en huisnummer - fout cases
   | \<script\>alert('hello world');</script> |
   | 123.45                                 |
 
-## Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+## Regel: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
 
 `@fout-case`
@@ -413,7 +413,7 @@ title: Zoek met postcode en huisnummer - fout cases
   |                              |
   | geen boolean                 |
 
-## Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+## Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
 
 `@fout-case`
