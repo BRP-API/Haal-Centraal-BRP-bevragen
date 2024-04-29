@@ -4,10 +4,10 @@ title: Getting Started
 ---
 # Getting Started
 
-Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel 38 van het Besluit BRP kunnen zich aanmelden voor deelname aan de pilot BRP.
+Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel 38 van het Besluit BRP kunnen zich aanmelden voor deelname aan het Experiment dataminimalisatie.
 
 1. Bekijk de [functionaliteit en specificaties](#functionaliteit-en-specificaties)
-2. Probeer en test de BRP API [lokaal](#probeer-en-test-de-api-lokaal) of in de [proef omgeving](#probeer-en-test-de-api-in-de-proef-omgeving)
+2. Probeer en test de {{ site.apiname }} [lokaal](#probeer-en-test-de-api-lokaal) of in de [proef omgeving](#probeer-en-test-de-api-in-de-proef-omgeving)
 3. [Download]({{ site.onboardingUrl }}){:target="_blank" rel="noopener"} en lees het onboardingproces
 
 ## Functionaliteit en specificaties
@@ -45,21 +45,21 @@ De volgende paragrafen beschrijven het installeren en aanroepen van de {{ site.a
 Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
 
 - [git](https://git-scm.com/downloads) voor het clonen van git repositories
-- [Postman](https://www.postman.com/downloads/) voor het aanroepen van Web API
+- [Postman](https://www.postman.com/downloads/) voor het aanroepen van {{ site.apiname }}
 
 
 ### Gebruik Docker als container engine
 
 - Download het [docker compose bestand]({{ site.devBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}
 - Start een command prompt window voor de map met het docker-compose.yaml bestand
-- Start de BRP API Personen en de mock met behulp van de volgende statement:
+- Start de {{ site.apiname }} en de mock met behulp van de volgende statement:
   ```sh
 
   docker-compose up -d
 
   ```
   De {{ site.apiname }} is nu te benaderen via de url: *http://localhost:5001/haalcentraal/api/brp/personen*
-- Valideer dat de BRP API Personen en de mock draaien met behulp van de volgende curl statement:
+- Valideer dat de {{ site.apiname }} en de mock draaien met behulp van de volgende curl statement:
   ```sh
 
   curl --location --request POST 'http://localhost:5001/haalcentraal/api/brp/personen' \
