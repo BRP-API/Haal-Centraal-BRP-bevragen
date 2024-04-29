@@ -16,7 +16,7 @@ PO-email: cathy.dingemanse@rvig.nl
 CZ-email: melvin.lee@rvig.nl
 Tester-email: frank.samwel@rvig.nl
 
-apiname: "BRP Personen"
+apiname: "BRP API Personen"
 url: "http://localhost:4000"
 # M.b.v. de optionele variabele 'logo' kan een ander logo dan het VNG logo in de rechterbovenhoek geplaatst worden.
 # Het betreffende bestand zal dan wel in de folder '\assets\img' van het remote the 'VNG-Realisatie/jekyll-theme-haal-centraal' moeten worden geplaatst.
