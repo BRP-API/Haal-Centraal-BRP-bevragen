@@ -1,27 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gbamock
+  name: personenmock
   labels:
-    app: haal-centraal-brp-bevragen-api
+    app: brp-api-personen-mock
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: gbamock
+      name: personenmock
   template:
     metadata:
       labels:
-        name: gbamock
+        name: personenmock
     spec:
       containers:
-        - name: gbamock
-          image: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock:latest
+        - name: personenmock
+          image: ghcr.io/brp-api/personen-mock:latest
+          imagePullPolicy: Never
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Release
             - name: ASPNETCORE_URLS
               value: http://+:5010
           ports:
-            - name: http
+            - name: http-mock
               containerPort: 5010

@@ -27,4 +27,4 @@ COPY --from=publish /app/publish .
 # See https://github.com/Contrast-Security-OSS/agent-operator/blob/master/docs/public/08-tips.md
 ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
 
-ENTRYPOINT ["dotnet", "HaalCentraal.BrpService.dll"]
+ENTRYPOINT ["dotnet", "Personen Mock.dll"]

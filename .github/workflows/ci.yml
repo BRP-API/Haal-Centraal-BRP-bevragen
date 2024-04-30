@@ -18,8 +18,9 @@ on:
 env:
   DOTNET_VERSION: 6.0.x
   DOTNET_SOLUTION: BRP.sln
-  NODE_VERSION: '18'
+  NODE_VERSION: '20'
   CONTAINER_NAME: ghcr.io/brp-api/haal-centraal-brp-bevragen
+  MOCK_CONTAINER_NAME: ghcr.io/brp-api/personen-mock
   COMPOSE_FILE_ARGUMENT: -f .docker/db-ci.yml -f .docker/brp-api.yml -f .docker/brp-proxy.yml -f .docker/brp-proxy-2-proxy.yml -f .docker/gezag-mock.yml
   DOCKER_API_FILE_PATH: .docker/brp-api.yml
 
@@ -28,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -46,9 +47,9 @@ jobs:
       contents: write
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install dependencies
@@ -133,7 +134,7 @@ jobs:
       - name: push mock container images
         if: always() && steps.regex-match.outputs.group2 == 'mock'
         run: |
-          docker tag ${{ env.CONTAINER_NAME }}-mock:latest ${{ env.CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
-          docker push ${{ env.CONTAINER_NAME }}-mock:latest
-          docker push ${{ env.CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
+          docker tag ${{ env.MOCK_CONTAINER_NAME }}-mock:latest ${{ env.MOCK_CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
+          docker push ${{ env.MOCK_CONTAINER_NAME }}-mock:latest
+          docker push ${{ env.MOCK_CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
   
