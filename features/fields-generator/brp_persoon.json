@@ -30,7 +30,8 @@
         "JaarDatum",
         "JaarMaandDatum",
         "Waardetabel",
-        "AdellijkeTitelPredicaatType"
+        "AdellijkeTitelPredicaatType",
+        "AbstractGezagsrelatie"
     ],
     "aliases": [
         { 

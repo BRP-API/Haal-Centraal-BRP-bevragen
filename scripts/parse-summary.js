@@ -82,41 +82,42 @@ function parseSummaries(source) {
     }
     summaryFiles.forEach(file => {
         const line = getSummaryLine(file);
-
-        let match = line.match(/^(?<total>\d+) scenarios \((?<passed>\d+) passed\)$/);
-        if(match) {
-            scenarioSummary.total += Number(match.groups['total']);
-            scenarioSummary.passed += Number(match.groups['passed']);
-        }
-        match = line.match(/^(?<total>\d+) scenarios \((?<failed>\d+) failed, (?<passed>\d+) passed\)$/);
-        if(match) {
-            scenarioSummary.total += Number(match.groups['total']);
-            scenarioSummary.failed += Number(match.groups['failed']);
-            scenarioSummary.passed += Number(match.groups['passed']);
-        }
-        match = line.match(/^(?<total>\d+) scenarios \((?<failed>\d+) failed\)$/);
-        if(match) {
-            scenarioSummary.total += Number(match.groups['total']);
-            scenarioSummary.failed += Number(match.groups['failed']);
-        }
-
-        match = file.match(/.*\/test-result-(?<report>[\w\-]+)-summary.txt/);
-        if(match) {
-            const report = match.groups['report'];
-            if(report.includes('-gba')) {
-                scenarioSummary.gba.push({
-                    'name': report.replace('-gba', ''),
-                    'summary': line,
-                    'failedScenarios': parseFailedScenariosFromSummaryFile(file)
-                });
+        if(line !== undefined) {
+            let match = line.match(/^(?<total>\d+) scenarios \((?<passed>\d+) passed\)$/);
+            if(match) {
+                scenarioSummary.total += Number(match.groups['total']);
+                scenarioSummary.passed += Number(match.groups['passed']);
             }
-            else {
-                scenarioSummary.proxy.push({
-                    'name': report,
-                    'summary': line,
-                    'failedScenarios': parseFailedScenariosFromSummaryFile(file)
+            match = line.match(/^(?<total>\d+) scenarios \((?<failed>\d+) failed, (?<passed>\d+) passed\)$/);
+            if(match) {
+                scenarioSummary.total += Number(match.groups['total']);
+                scenarioSummary.failed += Number(match.groups['failed']);
+                scenarioSummary.passed += Number(match.groups['passed']);
+            }
+            match = line.match(/^(?<total>\d+) scenarios \((?<failed>\d+) failed\)$/);
+            if(match) {
+                scenarioSummary.total += Number(match.groups['total']);
+                scenarioSummary.failed += Number(match.groups['failed']);
+            }
 
-                });
+            match = file.match(/.*\/test-result-(?<report>[\w\-]+)-summary.txt/);
+            if(match) {
+                const report = match.groups['report'];
+                if(report.includes('-gba')) {
+                    scenarioSummary.gba.push({
+                        'name': report.replace('-gba', ''),
+                        'summary': line,
+                        'failedScenarios': parseFailedScenariosFromSummaryFile(file)
+                    });
+                }
+                else {
+                    scenarioSummary.proxy.push({
+                        'name': report,
+                        'summary': line,
+                        'failedScenarios': parseFailedScenariosFromSummaryFile(file)
+
+                    });
+                }
             }
         }
     });

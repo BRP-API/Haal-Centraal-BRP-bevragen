@@ -10,8 +10,10 @@ public class FieldsHelper
 
     public ReadOnlyDictionary<string,string> PersoonFieldShortcuts { get; private set; }
     public ReadOnlyDictionary<string, string> PersoonBeperktFieldShortcuts { get; }
+    public ReadOnlyDictionary<string, string> GezagPersoonBeperktFieldShortcuts { get; }
     public ReadOnlyDictionary<string,string> PersoonFieldPaths { get; }
     public ReadOnlyDictionary<string,string> BeperktPersoonFieldPaths { get; }
+    public ReadOnlyDictionary<string, string> BeperktGezagPersoonFieldPaths { get; }
 
     private IDictionary<string, string> SetupFieldShortcuts()
     {
@@ -50,6 +52,27 @@ public class FieldsHelper
         var dictionary = new Dictionary<string, string>();
 
         foreach (var kvp in BeperktPersoonFieldPaths)
+        {
+            if (kvp.Key.StartsWith("adressering") &&
+                !new[]
+                {
+                    "adressering.adresregel3",
+                    "adressering.land"
+                }.Contains(kvp.Key))
+            {
+                dictionary.Add(kvp.Key.Replace("adressering", "adresseringBinnenland"), kvp.Value);
+            }
+            dictionary.Add(kvp.Key, kvp.Value);
+        }
+
+        return dictionary;
+    }
+
+    private IDictionary<string, string> SetupGezagPersoonBeperktFieldShortcuts()
+    {
+        var dictionary = new Dictionary<string, string>();
+
+        foreach (var kvp in BeperktGezagPersoonFieldPaths)
         {
             if (kvp.Key.StartsWith("adressering") &&
                 !new[]
@@ -116,14 +139,41 @@ public class FieldsHelper
         return dictionary;
     }
 
+    public static IDictionary<string, string> SetupGezagPersoonBeperktFieldInOnderzoekMapping()
+    {
+        var dictionary = new Dictionary<string, string>();
+
+        var persoonFields = typeof(GezagPersoonBeperkt).GetPropertyPaths("HaalCentraal");
+        var persoonInOnderzoekFields = persoonFields.Where(x => x.IsInOnderzoekField()).OrderBy(x => x);
+        foreach (var field in persoonFields)
+        {
+            if (field.IsInOnderzoekField())
+            {
+                dictionary.Add(field, "");
+            }
+            else if (field.Contains('.'))
+            {
+                dictionary.Add(field, ToNestedInOnderzoekPath(persoonInOnderzoekFields, field));
+            }
+            else
+            {
+                dictionary.Add(field, ToInOnderzoekpath(persoonInOnderzoekFields, field));
+            }
+        }
+
+        return dictionary;
+    }
+
     public FieldsHelper(IDiagnosticContext diagnosticContext)
     {
         _diagnosticContext = diagnosticContext;
 
         PersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupFieldInOnderzoekMapping());
         BeperktPersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldInOnderzoekMapping());
+        BeperktGezagPersoonFieldPaths = new ReadOnlyDictionary<string, string>(SetupGezagPersoonBeperktFieldInOnderzoekMapping());
         PersoonFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupFieldShortcuts());
         PersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupPersoonBeperktFieldShortcuts());
+        GezagPersoonBeperktFieldShortcuts = new ReadOnlyDictionary<string, string>(SetupGezagPersoonBeperktFieldShortcuts());
     }
 
     public ICollection<string> AddExtraPersoonFields(ICollection<string> fields)

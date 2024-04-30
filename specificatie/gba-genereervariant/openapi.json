@@ -242,7 +242,8 @@
             "RaadpleegMetBurgerservicenummer" : "#/components/schemas/RaadpleegMetBurgerservicenummerResponse",
             "ZoekMetPostcodeEnHuisnummer" : "#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse",
             "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse",
-            "ZoekMetNummeraanduidingIdentificatie" : "#/components/schemas/ZoekMetNummeraanduidingIdentificatieResponse"
+            "ZoekMetNummeraanduidingIdentificatie" : "#/components/schemas/ZoekMetNummeraanduidingIdentificatieResponse",
+            "ZoekMetAdresseerbaarObjectIdentificatie" : "#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatieResponse"
           }
         }
       },
@@ -336,6 +337,21 @@
           }
         } ]
       },
+      "ZoekMetAdresseerbaarObjectIdentificatieResponse" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PersonenQueryResponse"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "personen" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/GbaGezagPersoonBeperkt"
+              }
+            }
+          }
+        } ]
+      },
       "PersonenQuery" : {
         "required" : [ "fields", "type" ],
         "type" : "object",
@@ -364,7 +380,8 @@
             "RaadpleegMetBurgerservicenummer" : "#/components/schemas/RaadpleegMetBurgerservicenummer",
             "ZoekMetPostcodeEnHuisnummer" : "#/components/schemas/ZoekMetPostcodeEnHuisnummer",
             "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving" : "#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving",
-            "ZoekMetNummeraanduidingIdentificatie" : "#/components/schemas/ZoekMetNummeraanduidingIdentificatie"
+            "ZoekMetNummeraanduidingIdentificatie" : "#/components/schemas/ZoekMetNummeraanduidingIdentificatie",
+            "ZoekMetAdresseerbaarObjectIdentificatie" : "#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatie"
           }
         }
       },
@@ -509,6 +526,22 @@
             },
             "nummeraanduidingIdentificatie" : {
               "$ref" : "#/components/schemas/NummeraanduidingIdentificatie"
+            }
+          }
+        } ]
+      },
+      "ZoekMetAdresseerbaarObjectIdentificatie" : {
+        "required" : [ "adresseerbaarObjectIdentificatie" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PersonenQuery"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "inclusiefOverledenPersonen" : {
+              "$ref" : "#/components/schemas/InclusiefOverledenPersonen"
+            },
+            "adresseerbaarObjectIdentificatie" : {
+              "$ref" : "#/components/schemas/AdresseerbaarObjectIdentificatie"
             }
           }
         } ]
@@ -752,7 +785,15 @@
             "$ref" : "#/components/schemas/IndicatieCurateleRegister"
           },
           "indicatieGezagMinderjarige" : {
-            "$ref" : "#/components/schemas/Waardetabel"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Waardetabel"
+            }, {
+              "type" : "object",
+              "deprecated" : true
+            } ]
+          },
+          "gezag" : {
+            "$ref" : "#/components/schemas/Gezag"
           },
           "verblijfstitel" : {
             "$ref" : "#/components/schemas/GbaVerblijfstitel"
@@ -795,6 +836,151 @@
         "type" : "boolean",
         "description" : "Geeft aan dat de persoon onder curatele is gesteld.\n",
         "example" : true
+      },
+      "GbaGezagPersoonBeperkt" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/GbaPersoonBeperkt"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "gezag" : {
+              "$ref" : "#/components/schemas/Gezag"
+            }
+          }
+        } ]
+      },
+      "Gezag" : {
+        "minItems" : 0,
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        }
+      },
+      "AbstractGezagsrelatie" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "TweehoofdigOuderlijkGezag" : "#/components/schemas/TweehoofdigOuderlijkGezag",
+            "EenhoofdigOuderlijkGezag" : "#/components/schemas/EenhoofdigOuderlijkGezag",
+            "GezamenlijkGezag" : "#/components/schemas/GezamenlijkGezag",
+            "Voogdij" : "#/components/schemas/Voogdij",
+            "TijdelijkGeenGezag" : "#/components/schemas/TijdelijkGeenGezag",
+            "GezagNietTeBepalen" : "#/components/schemas/GezagNietTeBepalen"
+          }
+        }
+      },
+      "TweehoofdigOuderlijkGezag" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "ouders" : {
+              "maxItems" : 2,
+              "minItems" : 2,
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/GezagOuder"
+              }
+            },
+            "minderjarige" : {
+              "$ref" : "#/components/schemas/Minderjarige"
+            }
+          }
+        } ]
+      },
+      "GezagOuder" : {
+        "required" : [ "burgerservicenummer" ],
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Meerderjarige"
+        } ]
+      },
+      "Meerderjarige" : {
+        "type" : "object",
+        "properties" : {
+          "burgerservicenummer" : {
+            "$ref" : "#/components/schemas/Burgerservicenummer"
+          }
+        }
+      },
+      "Minderjarige" : {
+        "required" : [ "burgerservicenummer" ],
+        "type" : "object",
+        "properties" : {
+          "burgerservicenummer" : {
+            "$ref" : "#/components/schemas/Burgerservicenummer"
+          }
+        }
+      },
+      "EenhoofdigOuderlijkGezag" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "ouder" : {
+              "$ref" : "#/components/schemas/GezagOuder"
+            },
+            "minderjarige" : {
+              "$ref" : "#/components/schemas/Minderjarige"
+            }
+          }
+        } ]
+      },
+      "GezamenlijkGezag" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "ouder" : {
+              "$ref" : "#/components/schemas/GezagOuder"
+            },
+            "derde" : {
+              "$ref" : "#/components/schemas/Meerderjarige"
+            },
+            "minderjarige" : {
+              "$ref" : "#/components/schemas/Minderjarige"
+            }
+          }
+        } ]
+      },
+      "Voogdij" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "derden" : {
+              "maxItems" : 2,
+              "minItems" : 0,
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Meerderjarige"
+              }
+            },
+            "minderjarige" : {
+              "$ref" : "#/components/schemas/Minderjarige"
+            }
+          }
+        } ]
+      },
+      "TijdelijkGeenGezag" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        } ]
+      },
+      "GezagNietTeBepalen" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AbstractGezagsrelatie"
+        } ]
       },
       "Field" : {
         "pattern" : "^[a-zA-Z0-9\\._]{1,200}$",
@@ -873,6 +1059,12 @@
         "type" : "string",
         "description" : "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n",
         "example" : "0518200000366054"
+      },
+      "AdresseerbaarObjectIdentificatie" : {
+        "pattern" : "^[0-9]{16}$",
+        "type" : "string",
+        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
+        "example" : "0226010000038820"
       },
       "GbaGeboorteBeperkt" : {
         "type" : "object",
@@ -1182,7 +1374,12 @@
               "$ref" : "#/components/schemas/GbaDatum"
             },
             "datumIngangGeldigheid" : {
-              "$ref" : "#/components/schemas/GbaDatum"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/GbaDatum"
+              }, {
+                "type" : "object",
+                "deprecated" : true
+              } ]
             },
             "functieAdres" : {
               "$ref" : "#/components/schemas/Waardetabel"
@@ -1192,12 +1389,6 @@
             }
           }
         } ]
-      },
-      "AdresseerbaarObjectIdentificatie" : {
-        "pattern" : "^[0-9]{16}$",
-        "type" : "string",
-        "description" : "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
-        "example" : "0226010000038820"
       },
       "NaamOpenbareRuimte" : {
         "maxLength" : 80,

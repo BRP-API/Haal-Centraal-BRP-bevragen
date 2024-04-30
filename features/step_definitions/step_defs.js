@@ -330,6 +330,17 @@ Given(/^de persoon met burgerservicenummer '(\d*)' is ingeschreven op het adres 
         ].concat(createArrayFrom(dataTable, columnNameMap)) ];
 });
 
+Given(/^de persoon is ingeschreven op het adres met de volgende gegevens$/, function (dataTable) {
+    let sqlData = this.context.sqlData.at(-1);
+
+    sqlData['inschrijving'] = [[[ 'geheim_ind', '0' ]]];
+
+    sqlData['verblijfplaats'] = [
+        [
+            [ 'volg_nr', '0']
+        ].concat(createArrayFrom(dataTable, columnNameMap)) ];
+});
+
 Given(/^de persoon heeft (?:GEEN|geen) '(.*)' gegevens$/, function (_) {
     // doe niets
 });
@@ -776,6 +787,10 @@ After(async function() {
     }
 
     await rollbackSqlStatements(this.context.sqlData, pool, tableNameMap, logSqlStatements);
+
+    if(this.context.gezagDataPath !== undefined) {
+        fs.writeFileSync(this.context.gezagDataPath, JSON.stringify([], null, '\t'));
+    }
 });
 
 function getNextStapelNr(sqlData, relatie) {

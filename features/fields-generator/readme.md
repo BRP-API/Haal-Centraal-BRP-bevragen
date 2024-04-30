@@ -19,7 +19,7 @@ Er zijn rijen opgenomen voor losse velden (simple type velden zoals string, inte
 De bestanden fields-filtered-Persoon.csv en fields-filtered-PersoonBeperkt.csv bevatten alle paden die in de "fields" parameter ingevuld kunnen worden. Gebruik deze lijst om gewenste velden uit te kiezen om de fields parameter mee samen te stellen.
 
 Deze lijst bevat geen velden die wel in de resource zitten, maar niet expliciet met fields gevraagd hoeven te worden, omdat die al automatisch geleverd zullen worden.
-Deze lijst bevat ook geen sub-velden van een datum of waardetabel, omdat datum- of waardetabelobjecten altijd in zijn geheel geleverd worden.
+Deze lijst bevat ook geen sub-velden van een datum of waardetabel, omdat datum- of waardetabelobjecten altijd in zijn geheel geleverd worden. Idem voor adellijkeTitelPredicaat (is uitgebreide waardetabel). Zelfde geldt voor gezag, omdat het vragen van een veld uit gezag altijd alle relevante velden van gezag levert.
 
 Er zijn rijen opgenomen voor losse velden (simple type velden zoals string, integer, boolean), en ook voor het vragen van hele groepen (objecten).
 

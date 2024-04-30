@@ -10,12 +10,19 @@ services:
       - Database__Database=rvig_haalcentraal_testdata
       - HaalcentraalApi__MaxSearchResults=10
       - ASPNETCORE_URLS=http://+;
-      - AuthenticationTypes=Basic
+      # - AuthenticationTypes=Basic
       # - AuthenticationTypes=jwtbearer
       - Serilog__MinimumLevel__Default=Information
-      # - WebApi__Url=http://gezagmock:5020
+      - WebApi__Url=http://gezagmock:5020/api/v1
+      - ProtocolleringAuthorization__UseAuthorizationChecks=false
+      - ProtocolleringAuthorization__UseProtocollering=false
+      - Ecs__Path=/var/log/brp-api.json
+      - Ecs__FileSizeLimitBytes=10240
+      - Ecs__RetainedFileCountLimit=5
     ports:
       - "8000:80"
+    volumes:
+      - ../test-data/logs:/var/log
     networks:
       - brp-api-network
 

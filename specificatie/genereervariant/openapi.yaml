@@ -34,6 +34,7 @@ paths:
         4.  Zoek met postcode en huisnummer
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
         6.  Zoek met nummeraanduiding identificatie
+        7.  Zoek met adresseerbaarobject identificatie
 
         Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
 
@@ -205,6 +206,7 @@ components:
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse'
           ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatieResponse'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatieResponse'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
       allOf:
       - $ref: '#/components/schemas/PersonenQueryResponse'
@@ -271,6 +273,17 @@ components:
               * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
             items:
               $ref: '#/components/schemas/PersoonBeperkt'
+    ZoekMetAdresseerbaarObjectIdentificatieResponse:
+      allOf:
+      - $ref: '#/components/schemas/PersonenQueryResponse'
+      - type: object
+        properties:
+          personen:
+            type: array
+            description: |
+              * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+            items:
+              $ref: '#/components/schemas/GezagPersoonBeperkt'
     PersonenQuery:
       required:
       - fields
@@ -304,6 +317,7 @@ components:
           ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummer'
           ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving'
           ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatie'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatie'
     ZoekMetGeslachtsnaamEnGeboortedatum:
       required:
       - geboortedatum
@@ -413,6 +427,17 @@ components:
             $ref: '#/components/schemas/InclusiefOverledenPersonen'
           nummeraanduidingIdentificatie:
             $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+    ZoekMetAdresseerbaarObjectIdentificatie:
+      required:
+      - adresseerbaarObjectIdentificatie
+      allOf:
+      - $ref: '#/components/schemas/PersonenQuery'
+      - type: object
+        properties:
+          inclusiefOverledenPersonen:
+            $ref: '#/components/schemas/InclusiefOverledenPersonen'
+          adresseerbaarObjectIdentificatie:
+            $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
     BadRequestFoutbericht:
       allOf:
       - $ref: '#/components/schemas/Foutbericht'
@@ -615,7 +640,12 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: '#/components/schemas/Waardetabel'
+          allOf:
+          - $ref: '#/components/schemas/Waardetabel'
+          - type: object
+            deprecated: true
+        gezag:
+          $ref: '#/components/schemas/Gezag'
         verblijfstitel:
           $ref: '#/components/schemas/Verblijfstitel'
         kinderen:
@@ -676,6 +706,103 @@ components:
       description: |
         Geeft aan dat de persoon onder curatele is gesteld.
       example: true
+    GezagPersoonBeperkt:
+      allOf:
+      - $ref: '#/components/schemas/PersoonBeperkt'
+      - type: object
+        properties:
+          gezag:
+            $ref: '#/components/schemas/Gezag'
+    Gezag:
+      minItems: 0
+      type: array
+      items:
+        $ref: '#/components/schemas/AbstractGezagsrelatie'
+    AbstractGezagsrelatie:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
+          Voogdij: '#/components/schemas/Voogdij'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+    TweehoofdigOuderlijkGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          ouders:
+            maxItems: 2
+            minItems: 2
+            type: array
+            items:
+              $ref: '#/components/schemas/GezagOuder'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    GezagOuder:
+      required:
+      - burgerservicenummer
+      allOf:
+      - $ref: '#/components/schemas/Meerderjarige'
+    Meerderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+    Minderjarige:
+      required:
+      - burgerservicenummer
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+    EenhoofdigOuderlijkGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          ouder:
+            $ref: '#/components/schemas/GezagOuder'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    GezamenlijkGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          ouder:
+            $ref: '#/components/schemas/GezagOuder'
+          derde:
+            $ref: '#/components/schemas/Meerderjarige'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    Voogdij:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+      - type: object
+        properties:
+          derden:
+            maxItems: 2
+            minItems: 0
+            type: array
+            items:
+              $ref: '#/components/schemas/Meerderjarige'
+          minderjarige:
+            $ref: '#/components/schemas/Minderjarige'
+    TijdelijkGeenGezag:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
+    GezagNietTeBepalen:
+      allOf:
+      - $ref: '#/components/schemas/AbstractGezagsrelatie'
     Field:
       pattern: "^[a-zA-Z0-9\\._]{1,200}$"
       type: string
@@ -758,6 +885,12 @@ components:
       description: |
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       example: "0518200000366054"
+    AdresseerbaarObjectIdentificatie:
+      pattern: "^[0-9]{16}$"
+      type: string
+      description: |
+        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+      example: "0226010000038820"
     GeboorteBeperkt:
       allOf:
       - $ref: '#/components/schemas/GeboorteBasis'
@@ -1283,7 +1416,10 @@ components:
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
     VerblijfadresBuitenland:
@@ -1341,6 +1477,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
     Adres:
       description: |
         Gegevens over het adres van een persoon.
@@ -1364,7 +1501,10 @@ components:
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           indicatieVastgesteldVerblijftNietOpAdres:
             $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
           inOnderzoek:
@@ -1428,12 +1568,6 @@ components:
             type: boolean
           woonplaats:
             type: boolean
-    AdresseerbaarObjectIdentificatie:
-      pattern: "^[0-9]{16}$"
-      type: string
-      description: |
-        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
-      example: "0226010000038820"
     IndicatieVastgesteldVerblijftNietOpAdres:
       type: boolean
       description: |
@@ -1449,6 +1583,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
           nummeraanduidingIdentificatie:
             type: boolean
           adresseerbaarObjectIdentificatie:
@@ -1463,7 +1598,10 @@ components:
           datumVan:
             $ref: '#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     VerblijfplaatsOnbekendInOnderzoek:
@@ -1477,6 +1615,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
     Locatie:
       description: |
         * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
@@ -1493,7 +1632,10 @@ components:
           verblijfadres:
             $ref: '#/components/schemas/VerblijfadresLocatie'
           datumIngangGeldigheid:
-            $ref: '#/components/schemas/AbstractDatum'
+            allOf:
+            - $ref: '#/components/schemas/AbstractDatum'
+            - type: object
+              deprecated: true
           indicatieVastgesteldVerblijftNietOpAdres:
             $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
           inOnderzoek:
@@ -1531,6 +1673,7 @@ components:
             type: boolean
           datumIngangGeldigheid:
             type: boolean
+            deprecated: true
     Immigratie:
       type: object
       properties:

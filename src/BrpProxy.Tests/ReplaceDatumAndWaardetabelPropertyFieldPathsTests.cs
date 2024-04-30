@@ -8,7 +8,7 @@ namespace BrpProxy.Tests
     public class ReplaceDatumAndWaardetabelPropertyFieldPathsTests
     {
         [Theory]
-        [InlineData(new string[] { "adresseringBinnenland" }, new string[] { "adressering" })]
+        [InlineData(new string[] { "adresseringBinnenland" }, new string[] { "adressering.aanhef", "adressering.aanschrijfwijze", "adressering.gebruikInLopendeTekst", "adressering.adresregel1", "adressering.adresregel2" })]
         [InlineData(new string[] { "adresseringBinnenland.aanhef" }, new string[] { "adressering.aanhef" })]
         [InlineData(new string[] { "adresseringBinnenland.aanschrijfwijze" }, new string[] { "adressering.aanschrijfwijze" })]
         [InlineData(new string[] { "adresseringBinnenland.aanschrijfwijze.naam" }, new string[] { "adressering.aanschrijfwijze.naam" })]

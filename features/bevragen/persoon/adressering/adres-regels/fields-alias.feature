@@ -110,7 +110,7 @@ Regel: de 'adresseringBinnenland' field alias kan worden gebruikt door een consu
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000097                       |
     | fields              | <fields>                        |
-    Dan heeft de response een persoon zonder 'adresseringBinnenland' gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
     | fields                                                              |
@@ -157,7 +157,7 @@ Regel: de 'adresseringBinnenland' field alias kan worden gebruikt door een consu
     | type                | RaadpleegMetBurgerservicenummer |
     | burgerservicenummer | 000000097                       |
     | fields              | adresseringBinnenland.<field>   |
-    Dan heeft de response een persoon zonder 'adresseringBinnenland' gegevens
+    Dan heeft de response een persoon zonder 'adressering' gegevens
 
     Voorbeelden:
     | field       |
