@@ -45,32 +45,10 @@ nav:
         path: /user-stories-prod
       - title: Bevragen API
         path: /v2/redoc
-      - title: Bevragen API, GBA variant
-        path: /v2/redoc-gba
-      - title: Bevragen API (in ontwikkeling)
-        path: /v2/redoc-io
       - title: Features overzicht
         path: /v2/features-overzicht
       - title: Features test overzicht
         path: /features/index
-      - title: BrpProxy configuratie
-        path: /v2/brpproxy-configuratie
-
-#  - title: Specificaties v. 1.3
-#    subnav:
-#      - title: Getting started
-#        path: /getting-started
-#      - title: User stories
-#        path: /user-stories-prod
-#      - title: User stories (afgeschermd)
-#        url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
-#        target: blank
-#      - title: Bevragen API (swagger-ui)
-#        path: /swagger-ui
-#      - title: Bevragen API (redoc)
-#        path: /redoc
-#      - title: Features
-#        path: /features
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
