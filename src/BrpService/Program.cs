@@ -1,6 +1,8 @@
 using Brp.Shared.Infrastructure.HealthCheck;
 using Brp.Shared.Infrastructure.Logging;
 using Brp.Shared.Infrastructure.Utils;
+using BrpProxy.Middlewares;
+using BrpProxy.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using HaalCentraal.BrpService.Extensions;
@@ -20,13 +22,12 @@ try
 
     builder.SetupSerilog(Log.Logger);
 
+    builder.Services.AddSingleton<FieldsHelper>();
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
     builder.Services.AddControllers()
                     .ConfigureInvalidModelStateHandling()
                     .AddNewtonsoftJson();
-    builder.Services.AddFluentValidationAutoValidation(options => options.DisableDataAnnotationsValidation = true)
-                    .AddValidatorsFromAssemblyContaining<ZoekMetGeslachtsnaamEnGeboortedatumQueryValidator>();
 
     builder.Services.AddScoped<PersoonRepository>();
 
@@ -37,6 +38,8 @@ try
     app.SetupSerilogRequestLogging();
 
     app.SetupHealthCheckEndpoints(builder.Configuration, Log.Logger);
+
+    app.UseMiddleware<OverwriteResponseBodyMiddleware>();
 
     app.MapControllers();
 
