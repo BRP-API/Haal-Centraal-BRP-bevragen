@@ -134,7 +134,7 @@ jobs:
       - name: push mock container images
         if: always() && steps.regex-match.outputs.group2 == 'mock'
         run: |
-          docker tag ${{ env.MOCK_CONTAINER_NAME }}-mock:latest ${{ env.MOCK_CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
-          docker push ${{ env.MOCK_CONTAINER_NAME }}-mock:latest
-          docker push ${{ env.MOCK_CONTAINER_NAME }}-mock:${{ steps.regex-match.outputs.group1 }}
+          docker tag ${{ env.MOCK_CONTAINER_NAME }}:latest ${{ env.MOCK_CONTAINER_NAME }}:${{ steps.regex-match.outputs.group1 }}
+          docker push ${{ env.MOCK_CONTAINER_NAME }}:latest
+          docker push ${{ env.MOCK_CONTAINER_NAME }}:${{ steps.regex-match.outputs.group1 }}
   
