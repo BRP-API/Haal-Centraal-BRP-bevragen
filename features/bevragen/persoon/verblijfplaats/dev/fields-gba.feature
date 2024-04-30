@@ -346,15 +346,17 @@ Regel: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt
     | inOnderzoek.datumIngangOnderzoek          | 20020701                  |
 
     Voorbeelden:
-    | aanduiding in onderzoek | fields                                                                        | type                          |
-    | 080000                  | verblijfplaats                                                                | hele categorie verblijfplaats |
-    | 081100                  | verblijfplaats                                                                | hele groep adres              |
-    | 081150                  | verblijfplaats.verblijfadres                                                  | aanduiding bij huisnummer     |
-    | 081130                  | verblijfplaats.datumVan                                                       | huisletter                    |
-    | 081160                  | verblijfplaats.verblijfadres.postcode,verblijfplaats.verblijfadres.huisnummer | postcode                      |
-    | 081020                  | verblijfplaats.nummeraanduidingIdentificatie                                  | gemeentedeel                  |
-    | 080910                  | verblijfplaats                                                                | gemeente van inschrijving     |
-    | 081410                  | verblijfplaats.verblijfadres                                                  | land vanwaar ingeschreven     |
+    | aanduiding in onderzoek | fields                                                                        | type                                          |
+    | 080000                  | verblijfplaats                                                                | hele categorie verblijfplaats                 |
+    | 081100                  | verblijfplaats                                                                | hele groep adres                              |
+    | 081150                  | verblijfplaats.verblijfadres                                                  | aanduiding bij huisnummer                     |
+    | 081130                  | verblijfplaats.datumVan                                                       | huisletter                                    |
+    | 081160                  | verblijfplaats.verblijfadres.postcode,verblijfplaats.verblijfadres.huisnummer | postcode                                      |
+    | 081020                  | verblijfplaats.nummeraanduidingIdentificatie                                  | gemeentedeel                                  |
+    | 080910                  | verblijfplaats                                                                | gemeente van inschrijving                     |
+    | 081410                  | verblijfplaats.verblijfadres                                                  | land vanwaar ingeschreven                     |
+    | 080000                  | verblijfplaatsBinnenland                                                      | hele categorie verblijfplaats                 |
+    | 089999                  | verblijfplaatsBinnenland.adresseerbaarObjectIdentificatie                     | indicatie vastgesteld verblijft niet op adres |
 
   Abstract Scenario: '<type>' van een locatie is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -377,14 +379,16 @@ Regel: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt
     | inOnderzoek.datumIngangOnderzoek          | 20020701                    |
 
     Voorbeelden:
-    | aanduiding in onderzoek | fields                                                                                | type                          |
-    | 080000                  | verblijfplaats                                                                        | hele categorie verblijfplaats |
-    | 081200                  | verblijfplaats                                                                        | hele groep locatie            |
-    | 081210                  | verblijfplaats.verblijfadres                                                          | locatiebeschrijving           |
-    | 088510                  | verblijfplaats.verblijfadres.locatiebeschrijving,verblijfplaats.datumIngangGeldigheid | datum ingang geldigheid       |
-    | 081020                  | verblijfplaats.verblijfadres.locatiebeschrijving                                      | gemeentedeel                  |
-    | 080910                  | verblijfplaats                                                                        | gemeente van inschrijving     |
-    | 081410                  | verblijfplaats.verblijfadres                                                          | land vanwaar ingeschreven     |
+    | aanduiding in onderzoek | fields                                                                                | type                                          |
+    | 080000                  | verblijfplaats                                                                        | hele categorie verblijfplaats                 |
+    | 081200                  | verblijfplaats                                                                        | hele groep locatie                            |
+    | 081210                  | verblijfplaats.verblijfadres                                                          | locatiebeschrijving                           |
+    | 088510                  | verblijfplaats.verblijfadres.locatiebeschrijving,verblijfplaats.datumIngangGeldigheid | datum ingang geldigheid                       |
+    | 081020                  | verblijfplaats.verblijfadres.locatiebeschrijving                                      | gemeentedeel                                  |
+    | 080910                  | verblijfplaats                                                                        | gemeente van inschrijving                     |
+    | 081410                  | verblijfplaats.verblijfadres                                                          | land vanwaar ingeschreven                     |
+    | 080000                  | verblijfplaatsBinnenland                                                              | hele categorie verblijfplaats                 |
+    | 089999                  | verblijfplaatsBinnenland.verblijfadres                                                | indicatie vastgesteld verblijft niet op adres |
 
   Abstract Scenario: '<type>' van een verblijfplaats buitenland is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
