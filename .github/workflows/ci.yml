@@ -23,6 +23,7 @@ env:
   MOCK_CONTAINER_NAME: ghcr.io/brp-api/personen-mock
   COMPOSE_FILE_ARGUMENT: -f .docker/db-ci.yml -f .docker/brp-api.yml -f .docker/brp-proxy.yml -f .docker/brp-proxy-2-proxy.yml -f .docker/gezag-mock.yml
   DOCKER_API_FILE_PATH: .docker/brp-api.yml
+  HUSKY: 0
 
 jobs:
   build:
