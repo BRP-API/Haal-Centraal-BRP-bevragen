@@ -12,6 +12,8 @@ COPY ["src/BrpService/BrpService.csproj", "src/BrpService/"]
 RUN dotnet restore "src/BrpService/BrpService.csproj"
 COPY . .
 COPY src/config/BrpService/test-data.json src/BrpService/Data/test-data.json
+RUN rm src/BrpProxy/appsettings.json
+RUN rm src/BrpProxy/appsettings.Development.json
 WORKDIR "/src/src/BrpService"
 RUN dotnet build "BrpService.csproj" -c "$BUILD_CONFIGURATION" -o /app/build
 
