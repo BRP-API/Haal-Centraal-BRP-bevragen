@@ -10,7 +10,11 @@
         {
             "name": "PersoonBeperkt",
             "fullResource": "Persoon"
-        }        
+        },
+        {
+            "name": "GezagPersoonBeperkt",
+            "fullResource": "Persoon"
+        }      
     ],
     "forbiddenFields": [
         "inOnderzoek",
