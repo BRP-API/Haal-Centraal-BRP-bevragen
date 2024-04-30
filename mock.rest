@@ -1,0 +1,136 @@
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["aNummer",
+             "adressering",
+             "burgerservicenummer",
+             "datumEersteInschrijvingGBA",
+             "datumInschrijvingInGemeente",
+             "europeesKiesrecht",
+             "geboorte",
+             "gemeenteVanInschrijving",
+             "geslacht",
+             "immigratie",
+             "indicatieCurateleRegister",
+             "indicatieGezagMinderjarige",
+             "gezag",
+             "kinderen",
+             "leeftijd",
+             "naam",
+             "nationaliteiten",
+             "ouders",
+             "overlijden",
+             "partners",
+             "uitsluitingKiesrecht",
+             "verblijfplaats",
+             "verblijfstitel"],
+  "type": "RaadpleegMetBurgerservicenummer",
+  "burgerservicenummer": ["999990408"],
+  "gemeenteVanInschrijving": "0599"
+}
+
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["adressering",
+             "burgerservicenummer",
+             "geboorte",
+             "geslacht",
+             "gezag",
+             "leeftijd",
+             "naam"],
+  "type": "ZoekMetAdresseerbaarObjectIdentificatie",
+  "adresseerbaarObjectIdentificatie": "0518010060731001"
+}
+
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["adressering",
+             "burgerservicenummer",
+             "geboorte",
+             "geslacht",
+             "leeftijd",
+             "naam"],
+  "type": "ZoekMetGeslachtsnaamEnGeboortedatum",
+  "geslachtsnaam": "Meijden",
+  "geboortedatum": "1959-04-17"
+}
+
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["adressering",
+             "burgerservicenummer",
+             "geboorte",
+             "geslacht",
+             "leeftijd",
+             "naam"],
+  "type": "ZoekMetNaamEnGemeenteVanInschrijving",
+  "geslachtsnaam": "Holthuizen",
+  "voornamen": "Adrianus",
+  "gemeenteVanInschrijving": "0518"
+}
+
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["adressering",
+             "burgerservicenummer",
+             "geboorte",
+             "geslacht",
+             "leeftijd",
+             "naam"],
+  "type": "ZoekMetNummeraanduidingIdentificatie",
+  "nummeraanduidingIdentificatie": "1810200010001001"
+}
+
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["adressering",
+             "burgerservicenummer",
+             "geboorte",
+             "geslacht",
+             "leeftijd",
+             "naam"],
+  "type": "ZoekMetPostcodeEnHuisnummer",
+  "postcode": "2563KJ",
+  "huisnummer": "2"
+}
+
+###
+
+POST http://localhost:5010/haalcentraal/api/brp/personen
+content-type: application/json
+
+{
+  "fields": ["adressering",
+             "burgerservicenummer",
+             "geboorte",
+             "geslacht",
+             "leeftijd",
+             "naam"],
+  "type": "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving",
+  "straat": "Thorbeckelaan",
+  "huisnummer": "731",
+  "gemeenteVanInschrijving": "0518"
+}
