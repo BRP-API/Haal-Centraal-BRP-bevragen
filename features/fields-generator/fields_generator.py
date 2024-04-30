@@ -63,10 +63,14 @@ def writeComponent (path, ref, referer=""):
                 for property, propertyDef in properties:
                     writeProperty(path, property, propertyDef)
 
+    if component.get('type') == "array":
+        if "$ref" in component.get('items'):
+            writeComponent (path, component.get("items").get("$ref"))
+
     if component.get("discriminator") is not None:
         for discriminator, component in  component.get("discriminator").get("mapping").items():
             if debug==True:
-                print ("mapping: " + discriminator + " ==> " + component)
+                print ("mapping: " + discriminator + " ==> " + component) 
 
             writeComponent (path, component, ref)
 
