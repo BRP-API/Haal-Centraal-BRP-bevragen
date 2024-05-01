@@ -5,7 +5,7 @@ title: Features
 
 # {{ site.apiname }} Web API Features
 
-Met de {{ site.apiname }} Web API kun je  gegevens van actuele personen in de basisregistratie personen (BRP) zoeken en raadplegen met hun identificerende gegevens.
+Met de {{ site.apiname }} Web API kun je  gegevens van actuele personen in de basisregistratie personen (BRP) voor jouw applicatie zoeken en raadplegen met hun identificerende gegevens.
 
 In de BRP worden personen uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet jouw applicatie de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie gebruiken om de betreffende persoon/personen te raadplegen.
 
