@@ -8,7 +8,12 @@ title: Haal Centraal BRP Personen
 ![ci]({{ site.repoUrl}}/workflows/ci/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
-De {{ site.apiname }} biedt naast persoonsgegevens uit de BRP ook de informatieproducten gezag, leeftijd, aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief, en adressering (passend op een vensterenvelop). Zo kan RvIG beter voorzien in klantbehoeften, en hoeven onze klanten minder persoonsgegevens te verwerken. De juridische grondslag hiervoor is het [Experimentbesluit Dataminimalisatie](https://zoek.officielebekendmakingen.nl/stb-2024-96.html). 
+De {{ site.apiname }} biedt naast persoonsgegevens uit de BRP ook informatieproducten:
+- gezag
+- leeftijd
+- aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief
+- adresregels die altijd passen op een vensterenvelop.
+De BRP API Personen voorziet beter in klantbehoeften, waardoor klanten minder persoonsgegevens hoeven te verwerken. De juridische grondslag hiervoor is het [Experimentbesluit Dataminimalisatie](https://zoek.officielebekendmakingen.nl/stb-2024-96.html). 
 
 ## Planning en Roadmap
 De BRP API is live sinds mei 2023 en bestaat uit de onderdelen Personen, [Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"} en [Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}. Rond 1 juli 2024 wordt [Verblijfplaatshistorie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"} verwacht, waarmee de verblijfplaatsen van een persoon kunnen worden opgevraagd op een peildatum of in een bepaalde periode. 
