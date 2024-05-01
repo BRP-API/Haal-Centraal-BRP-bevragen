@@ -4,7 +4,7 @@ title: Getting Started
 ---
 # Getting Started
 
-Alle gemeenten en andere organisaties met een autorisatiebesluit conform artikel 38 van het Besluit BRP kunnen zich aanmelden voor deelname aan het Experiment dataminimalisatie.
+Gemeenten en andere organisaties met een autorisatiebesluit kunnen zich aanmelden voor deelname aan het Experiment dataminimalisatie.
 
 1. Bekijk de [functionaliteit en specificaties](#functionaliteit-en-specificaties)
 2. Probeer en test de {{ site.apiname }} [lokaal](#probeer-en-test-de-api-lokaal) of in de [proef omgeving](#probeer-en-test-de-api-in-de-proef-omgeving)
@@ -18,31 +18,31 @@ De OAS3 specificatie van de {{ site.apiname }} kan worden bekeken met behulp van
 
 Download de [OAS3 specificatie]({{ site.mainBranchUrl }}/specificatie/genereervariant/openapi.yaml){:target="_blank" rel="noopener"} van de '{{ site.apiname }}' om hiermee consumer code te genereren.
 
-De [funtionele documentatie](./features-overzicht) van de {{ site.apiname }} vindt je in de [features overzicht](./features-overzicht).
+De [functionele documentatie](./features-overzicht) van de {{ site.apiname }} vind je in het [features overzicht](./features-overzicht).
 
-## Probeer en test de API in de proef omgeving
+## Probeer en test de API in de proefomgeving
 
-De {{ site.apiname }} kan worden geprobeerd via de proef omgeving met de volgende url: [{{ site.proefProxyUrl }}]. Hiervoor heb je een apikey nodig.
+Je kunt de {{ site.apiname }} uitproberen op de proefomgeving met de volgende url: [{{ site.proefProxyUrl }}]. Hiervoor heb je een apikey nodig.
 
-- Vraag een apikey aan bij de product owner [{{ site.PO-email }}](mailto:{{ site.PO-email }}). De apikey die is uitgereikt op de API Labs kan ook worden gebruikt.
+- Vraag een apikey aan bij de product owner [{{ site.PO-email }}](mailto:{{ site.PO-email }}). 
 - Voeg de apikey toe aan een request met de __X-API-KEY__ header.
 
 ## Probeer en test de API lokaal
 
-Een mock van de {{ site.apiname }} is beschikbaar als een containerized applicatie, zodat het makkelijk kan worden gehost op een lokale machine of in een test omgeving.
+Een mock van de {{ site.apiname }} is beschikbaar als een containerized applicatie, die je gemakkelijk kunt hosten op een lokale machine of in een testomgeving. Bijkomend voordeel is dat je je eigen testgevallen kunt toevoegen aan het JSON bestand.
 
-Het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose-mock.yml){:target="_blank" rel="noopener"} kan worden gebruikt om de {{ site.apiname }} mock met behulp van [Docker Desktop](https://www.docker.com/products/docker-desktop) te draaien op een lokale machine.
+Je kunt het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose-mock.yml){:target="_blank" rel="noopener"} gebruiken om de {{ site.apiname }} mock met behulp van [Docker Desktop](https://www.docker.com/products/docker-desktop) te draaien op een lokale machine.
 
-In plaats van het docker compose bestand kunnen de [Kubernetes configuratie bestanden]({{ site.devBranchUrl}}/.k8s){:target="_blank" rel="noopener"} worden gebruikt om de {{ site.apiname }} mock te draaien op een lokale machine. De {{ site.apiname }} mock maakt gebruik van de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/media/288) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
+In plaats van het docker compose bestand kun je de [Kubernetes configuratie bestanden]({{ site.devBranchUrl}}/.k8s){:target="_blank" rel="noopener"} gebruiken om de {{ site.apiname }} mock te draaien op een lokale machine. De {{ site.apiname }} mock maakt gebruik van de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/media/288) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
-De volgende paragrafen beschrijven het installeren en aanroepen van de {{ site.apiname }} mock op een lokale machine.
+De volgende paragrafen beschrijven wat je moet doen om de {{ site.apiname }} mock op een lokale machine te installeren en aan te roepen.
 
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) voor het hosten van containers
-- Docker Desktop kan ook worden gebruikt om de containers te hosten met behulp van Kubernetes engine. Hiervoor moet in Docker Desktop Kubernetes ondersteuning worden aangezet in de Settings/Kubernetes configuratie scherm ![Enable Kubernetes](../img/docker-desktop-enable-k8s.png)
+- Je kunt Docker Desktop ook gebruiken om de containers te hosten met behulp van de Kubernetes engine. Hiervoor moet je in Docker Desktop Kubernetes ondersteuning aanzetten in het Settings/Kubernetes configuratie scherm ![Enable Kubernetes](../img/docker-desktop-enable-k8s.png)
 
-Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
+Optioneel kun je de volgende tools ook op de lokale machine installeren:
 
 - [git](https://git-scm.com/downloads) voor het clonen van git repositories
 - [Postman](https://www.postman.com/downloads/) voor het aanroepen van {{ site.apiname }}
@@ -71,7 +71,7 @@ Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
   }'
 
   ```
-- Om de {{ site.apiname }} mock container te stoppen moet de volgende statement worden uitgevoerd:
+- Om de {{ site.apiname }} mock container te stoppen voer je de volgende statement uit:
   ```sh
 
   docker-compose -f docker-compose-mock.yml down
@@ -102,7 +102,7 @@ Optioneel kan de volgende tools ook op de lokale machine worden geïnstalleerd
   }'
 
   ```
-- Om de {{ site.apiname }} mock container te stoppen moet de volgende statement worden uitgevoerd:
+- Om de {{ site.apiname }} mock container te stoppen voer je de volgende statement uit:
   ```sh
 
   kubectl delete -f .k8s/brppersonenmock-deployment.yaml \
