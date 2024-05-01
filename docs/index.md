@@ -13,6 +13,7 @@ De {{ site.apiname }} biedt naast persoonsgegevens uit de BRP ook informatieprod
 - leeftijd
 - aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief
 - adresregels die altijd passen op een vensterenvelop.
+
 De BRP API Personen voorziet beter in klantbehoeften, waardoor klanten minder persoonsgegevens hoeven te verwerken. De juridische grondslag hiervoor is het [Experimentbesluit Dataminimalisatie](https://zoek.officielebekendmakingen.nl/stb-2024-96.html). 
 
 ## Planning en Roadmap
