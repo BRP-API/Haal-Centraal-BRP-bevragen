@@ -14,13 +14,13 @@ De {{ site.apiname }} biedt naast persoonsgegevens uit de BRP ook informatieprod
 - aanschrijfwijze, aanhef, een verwijzing naar een persoon in de tekst van een brief
 - adresregels die altijd passen op een vensterenvelop.
 
-De BRP API Personen voorziet beter in klantbehoeften, waardoor klanten minder persoonsgegevens hoeven te verwerken. De juridische grondslag hiervoor is het [Experimentbesluit Dataminimalisatie](https://zoek.officielebekendmakingen.nl/stb-2024-96.html). 
+De BRP API Personen voorziet beter in klantbehoeften, waardoor klanten minder persoonsgegevens hoeven te verwerken. De juridische grondslag hiervoor is het [Experimentbesluit Dataminimalisatie](https://zoek.officielebekendmakingen.nl/stb-2024-96.html). In het experiment worden de voorbereidingen getroffen voor een stucturele wetswijziging.
 
 ## Planning en Roadmap
 De BRP API is live sinds mei 2023 en bestaat uit de onderdelen Personen, [Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"} en [Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}. Rond 1 juli 2024 wordt [Verblijfplaatshistorie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"} verwacht, waarmee de verblijfplaatsen van een persoon kunnen worden opgevraagd op een peildatum of in een bepaalde periode. 
 
 ## Aansluiten en voorwaarden
-Gemeenten en andere afnemers van de BRP met een autorisatiebesluit voor verstrekking van een zoekvraag mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. Voor de technische aansluiting is een API Gateway nodig. Aansluiten kan via Diginetwerk met gebruik van een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow).
+Gemeenten en andere afnemers van de BRP met een autorisatiebesluit mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. Voor de technische aansluiting is een API Gateway nodig. Aansluiten kan via Diginetwerk met gebruik van een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow).
 
 Stuur een mail naar [info@RvIG](mailto:info@rvig) voor een kennismakingmakingsgesprek en onboarding. [Download]({{ site.onboardingUrl }}){:target="_blank" rel="noopener"} en lees het onboardingproces.
 
