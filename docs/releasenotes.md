@@ -5,6 +5,11 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## Versie 2.2.0
+
+- gezagsrelaties van een persoon bevragen (met behulp van raadpleeg met burgerservicenummer)
+- gezagsrelaties van de personen bevragen die op een adresseerbaar object staan ingeschreven (met behulp van zoek met adresseerbaar object)
+
 ## Versie 2.1.0
 
 - veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan: (pull request #1713)

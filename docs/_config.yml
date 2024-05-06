@@ -38,7 +38,7 @@ nav:
   - title: Specificaties v. 2
     subnav:
       - title: Releasenotes
-        path: releasenotes
+        path: /releasenotes
       - title: Getting started
         path: /v2/getting-started
       - title: User stories
