@@ -10,6 +10,8 @@ title: Haal Centraal BRP Personen Bevragen
 - gezagsrelaties van een persoon bevragen (met behulp van raadpleeg met burgerservicenummer)
 - gezagsrelaties van de personen bevragen die op een adresseerbaar object staan ingeschreven (met behulp van zoek met adresseerbaar object)
 
+Gebruik de [personen-mock](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/pkgs/container/personen-mock) om gezag lokaal uit te proberen
+
 ## Versie 2.1.0
 
 - veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan: (pull request #1713)
