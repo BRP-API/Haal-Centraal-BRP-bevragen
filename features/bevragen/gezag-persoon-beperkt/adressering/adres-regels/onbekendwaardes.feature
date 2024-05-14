@@ -7,7 +7,7 @@ Functionaliteit: samenstellen van adresregels wanneer één of meerdere verblijf
   Zodat ik de adresgegevens van de persoon op de correcte manier kan gebruiken 
 
 
-  Rule: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' of 'huisnummer (11.20)' de standaardwaarde als waarde hebben
+  Regel: adresregels voor een adres worden niet geleverd als 'straatnaam (11.10)' of 'huisnummer (11.20)' de standaardwaarde als waarde hebben
 
     Abstract Scenario: persoon heeft een adres met <omschrijving>
       Gegeven de persoon met burgerservicenummer '000000188' heeft de volgende 'verblijfplaats' gegevens

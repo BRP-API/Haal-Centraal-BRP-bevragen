@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum
 
-Rule: voorvoegsel is niet hoofdlettergevoelig
+Regel: voorvoegsel is niet hoofdlettergevoelig
 
   Scenario: Zoek met volledige voorvoegsel in hoofdletters
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -43,7 +43,7 @@ Rule: voorvoegsel is niet hoofdlettergevoelig
     | naam                | waarde    |
     | burgerservicenummer | 000000048 |
 
-Rule: geslacht is niet hoofdlettergevoelig
+Regel: geslacht is niet hoofdlettergevoelig
 
   Scenario: Zoek met geslacht in kleine letters
     Gegeven de persoon met burgerservicenummer '000000027' heeft de volgende gegevens
@@ -61,7 +61,7 @@ Rule: geslacht is niet hoofdlettergevoelig
     | naam                | waarde    |
     | burgerservicenummer | 000000027 |
 
-Rule: voor een overleden persoon moet datum overlijden worden geretourneerd
+Regel: voor een overleden persoon moet datum overlijden worden geretourneerd
 
   Scenario: Zoek een overleden persoon
     Gegeven de persoon met burgerservicenummer '000000028' heeft de volgende gegevens

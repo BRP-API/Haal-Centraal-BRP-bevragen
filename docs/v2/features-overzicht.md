@@ -5,19 +5,19 @@ title: Features
 
 # {{ site.apiname }} Web API Features
 
-De {{ site.apiname }} Web API maakt het mogelijk om gegevens van actuele personen in de basisregistratie personen (BRP) te raadplegen. De personen worden opgezocht op basis van hun identificerende gegevens.
+Met de {{ site.apiname }} Web API kun je  gegevens van actuele personen in de basisregistratie personen (BRP) voor jouw applicatie zoeken en raadplegen met hun identificerende gegevens.
 
-In de BRP worden personen uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie worden gebruikt om de betreffende persoon/personen te raadplegen.
+In de BRP worden personen uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet jouw applicatie de [Raadpleeg persoon met burgerservicenummer](#raadplegen-van-personen) operatie gebruiken om de betreffende persoon/personen te raadplegen.
 
-Is het burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kan deze worden opgezocht met behulp van de [Zoek persoon](#zoeken-van-personen) operaties.
+Is het burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kun je deze laten opzoeken met de [Zoek persoon](#zoeken-van-personen) operaties.
 
 ## Algemene Verordening Gegevensbescherming (AVG)
 
-De BRP bevragen API is ontworpen conform de REST principes. Om ook aan de AVG te conformeren zijn er concessies gedaan met betrekking tot het toepassen van de REST principes. De belangrijkste concessie is dat de POST methode en niet de GET methode wordt gebruikt om personen te bevragen. Dit zorgt er voor dat er geen [persoonlijk identificeerbare informatie (PII)](https://piwikpro.nl/blog/pii-niet-pii-en-persoonsgegevens/) terecht komen in de url van een request en daardoor ook niet in server logs.
+De BRP bevragen API is ontworpen conform de REST principes. Om ook aan de AVG te conformeren zijn er concessies gedaan aan het toepassen van de REST principes. De belangrijkste concessie is dat de POST methode en niet de GET methode wordt gebruikt om personen te bevragen. Dit zorgt er voor dat er geen [persoonlijk identificeerbare informatie (PII)](https://piwikpro.nl/blog/pii-niet-pii-en-persoonsgegevens/) terecht komen in de url van een request en daardoor ook niet in server logs.
 
 ## Zoeken van personen
 
-De volgende zoek operaties kunnen worden gebruikt om een persoon met niet-uniek identificerende persoonsgegevens te vinden:
+Je kunt de volgende zoekoperaties gebruiken om een persoon met niet-uniek identificerende persoonsgegevens te vinden:
 
 - zoek met geslachtsnaam en geboortedatum
   - [overzicht](./features/zoek-met-geslachtsnaam-en-geboortedatum/overzicht.feature)
@@ -34,14 +34,15 @@ De volgende zoek operaties kunnen worden gebruikt om een persoon met niet-uniek 
 - zoek met nummeraanduiding identificatie
   - [overzicht](./features/zoek-met-nummeraanduiding-identificatie/overzicht.feature)
   - [fout cases](./features/zoek-met-nummeraanduiding-identificatie/fout-cases.feature)
+- zoek met adresseerbaar object identificatie
 
-Het resultaat van deze operaties is een PersoonBeperkt collectie/lijst. Standaard bevat deze lijst alleen personen die in leven zijn. Om een overleden persoon te zoeken, moet de inclusiefOverledenPersonen parameter op true worden gezet. 
+Het resultaat van de "zoek met adresseerbaar object identificatie" operatie is een GezagPersoonBeperkt collectie/lijst, en bevat naast de PersoonBeperkt lijst ook de gezagsrelaties van alle personen die op dit adres wonen. Het resultaat van alle andere operaties is een PersoonBeperkt collectie/lijst. Standaard bevat deze lijst alleen personen die in leven zijn. Om een overleden persoon te zoeken, moet de inclusiefOverledenPersonen parameter op true worden gezet. 
 
 Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'. Zie de [overlijden overzicht](./features/persoon-beperkt/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 ## Raadplegen van personen
 
-Als de burgerservicenummer van de te bevragen personen wel bekend is, kan de volgende operatie worden gebruikt om gegevens van de persoon te raadplegen:
+Als het burgerservicenummer van de te bevragen personen bekend is, kan de volgende operatie worden gebruikt om gegevens van de persoon te raadplegen:
 
 - raadpleeg met burgerservicenummer
   - [overzicht](./features/raadpleeg-met-burgerservicenummer/overzicht.feature)
@@ -53,19 +54,19 @@ Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met
 
 ## Filteren van de velden van de gevonden personen
 
-Bij elke bevraging moet de fields parameter verplicht worden gebruikt om aan te geven welke velden van de gevonden persoon/personen geleverd moet worden. Om de privacy van de gevraagde personen te beschermen mag een afnemer alleen de velden vragen waarvoor hij doelbinding heeft en moet de gevraagde velden worden beperkt tot wat nodig is voor de uit te voeren taak.
+Elke bevraging moet verplicht een fields parameter bevatten om aan te geven welke velden van de gevonden persoon/personen geleverd moet worden. Om de privacy van de gevraagde personen te beschermen mag een afnemer uitsluitend die velden vragen waarvoor hij doelbinding heeft en wat op dat moment nodig is voor de uit te voeren taak.
 Bijkomend voordeel van deze data minimalisatie is dat er ook wordt bijgedragen aan verduurzaming. Hoe minder velden er worden gevraagd, hoe minder de server en het netwerk worden belast.
 
-Een veld wordt gevraagd door het volledig pad van het betreffende veld op te geven in de fields parameter. Het volledig pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn 'ouder' velden met een '.' karakter tussen de veld namen. Voorbeelden van volledige paden:
+Een veld wordt gevraagd door het volledige pad van het betreffende veld op te geven in de fields parameter. Het volledige pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn 'ouder' velden met een '.' karakter tussen de veld namen. Voorbeelden van volledige paden zijn:
 
 - geboorte.datum (volledig pad van het geboortedatum veld van een persoon)
 - kinderen.naam.voornamen (volledig pad van het voornamen veld van de kinderen van een persoon)
 
-Zie de [fields](./features/fields.feature) en de [fields fout cases](./features/fields-fout-cases.feature) feature bestanden voor meer informatie en voorbeelden over het gebruik van veld paden en de fields parameter. 
+Zie de [fields](./features/fields.feature) en de [fields fout cases](./features/fields-fout-cases.feature) feature bestanden voor meer informatie en voorbeelden van het gebruik van veldpaden en de fields parameter. 
 
-Het [fields-filtered-PersoonBeperkt.csv]({{ site.persoonBeperktFieldsCsvUrl }}){:target="_blank" rel="noopener"} bestand bevat een overzicht van de toegestane fields waarden voor de Zoek persoon operaties. Voor de Raadpleeg persoon operatie is de overzicht van toegestane fields waarden te vinden in het [fields-filtered-Persoon.csv]({{ site.persoonFieldsCsvUrl }}){:target="_blank" rel="noopener"} bestand.
+Het [fields-filtered-PersoonBeperkt.csv]({{ site.persoonBeperktFieldsCsvUrl }}){:target="_blank" rel="noopener"} bestand bevat een overzicht van de toegestane fields waarden voor de Zoek personen operaties. Voor de Raadpleeg persoon operatie is de overzicht van toegestane fields waarden te vinden in het [fields-filtered-Persoon.csv]({{ site.persoonFieldsCsvUrl }}){:target="_blank" rel="noopener"} bestand.
 
-Stel je fields eenvoudig samen met de [fields tool](./fields){:target="_blank" rel="noopener"}.
+Wil je dit snel en foutloos doen? Stel dan je fields eenvoudig samen met de [fields tool](./fields){:target="_blank" rel="noopener"}.
 
 ### Filteren van datum en waardetabel velden
 
@@ -81,14 +82,14 @@ en de volgende waardetabel types:
 - Waardetabel
 - AdellijkeTitelPredicaatType
 
-Bij het vragen van één of meerdere velden van deze types wordt altijd alle velden van het gevraagde type geleverd. In de [fields](./features/fields.feature) feature bestand zijn onder de volgende rules voorbeelden hiervan opgenomen:
+Bij het vragen van één of meerdere velden van deze types worden altijd alle velden van het gevraagde type geleverd. In het [fields](./features/fields.feature) feature bestand vind je voorbeelden hiervan onder de volgende rules:
 
-- [Rule: Het vragen van één of meerdere velden van een 'waardetabel' veld levert alle velden van de 'waardetabel' veld](./features/fields.feature#rule-het-vragen-van-één-of-meerdere-velden-van-een-waardetabel-veld-levert-alle-velden-van-de-waardetabel-veld)
-- [Rule: Het vragen van één of meerdere velden van een 'datum' veld levert alle velden van de 'datum' veld](./features/fields.feature#rule-het-vragen-van-één-of-meerdere-velden-van-een-datum-veld-levert-alle-velden-van-de-datum-veld)
+- [Regel: Het vragen van één of meerdere velden van een 'waardetabel' veld levert alle velden van de 'waardetabel' veld](./features/fields.feature#rule-het-vragen-van-één-of-meerdere-velden-van-een-waardetabel-veld-levert-alle-velden-van-de-waardetabel-veld)
+- [Regel: Het vragen van één of meerdere velden van een 'datum' veld levert alle velden van de 'datum' veld](./features/fields.feature#rule-het-vragen-van-één-of-meerdere-velden-van-een-datum-veld-levert-alle-velden-van-de-datum-veld)
 
 ### Standaard geleverde velden
 
-De volgende velden worden automatisch geleverd, als de bijbehorende situatie van toepassing is:
+De volgende velden worden indien van toepassing automatisch geleverd:
 
 - geheimhoudingPersoonsgegevens
 - inOnderzoek
@@ -117,9 +118,9 @@ Het gebruik van de __verblijfplaatsBinnenland__ fields alias is beschreven in de
 
 ### Filteren van adresregels velden
 
-De adresregel velden van een persoon wordt samengesteld uit de verblijfplaats velden van een persoon. Om de adresregel velden te kunnen vragen moet de afnemer daarom minimaal geautoriseerd zijn voor de verblijfplaats velden waarmee de adresregel velden worden samengesteld.
+De adresregelvelden van een persoon worden samengesteld uit de verblijfplaatsvelden van een persoon. Om de adresregelvelden te kunnen vragen moet de afnemer minimaal geautoriseerd zijn voor de verblijfplaatsvelden waarmee de adresregelvelden worden samengesteld.
 
-Dit betekent dat de twee autorisatie profielen van verblijfplaats ook gelden voor het vragen van adresregel velden. Afnemers die niet geautoriseerd zijn voor het vragen van adresregels van een verblijfplaats buitenland moeten daarom de __adresseringBinnenland__ fields alias gebruiken om aan te geven dat alleen adresregels voor verblijfplaats binnenland wordt gevraagd.
+Dit betekent dat de twee autorisatieprofielen van verblijfplaats ook gelden voor het vragen van adresregelvelden. Afnemers die niet geautoriseerd zijn voor het vragen van adresregels van een verblijfplaats buitenland moeten daarom de __adresseringBinnenland__ fields alias gebruiken om aan te geven dat alleen adresregels voor verblijfplaats binnenland worden gevraagd.
 
 Het gebruik van de __adresseringBinnenland__ fields alias is beschreven in de volgende feature bestanden:
 
@@ -128,13 +129,13 @@ Het gebruik van de __adresseringBinnenland__ fields alias is beschreven in de vo
 
 ### Filteren van partner velden
 
-Bij het vragen van de partners van een persoon wordt de gevraagde gegevens van actuele partners (= niet ontbonden huwelijk/geregistreerd partnerschap) geleverd. Heeft de betreffende persoon alleen ontbonden huwelijk/geregistreerd partnerschappen, dan wordt alleen de gevraagde gegevens van het meest recente ontbonden huwelijk/geregistreerd partnerschap geleverd.
+Bij het vragen van de partners van een persoon worden de gevraagde gegevens van actuele partners (= niet ontbonden huwelijk/geregistreerd partnerschap) geleverd. Heeft de persoon alleen ontbonden huwelijk/geregistreerd partnerschappen, dan worden alleen de gevraagde gegevens van het meest recente ontbonden huwelijk/geregistreerd partnerschap geleverd.
 
-In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
+In het volgende feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
 
-- [partner velden vragen met fields](./features/persoon/partner/overzicht.feature)
+- [partnervelden vragen met fields](./features/persoon/partner/overzicht.feature)
 
-### Filteren van nationaliteit velden
+### Filteren van nationaliteitvelden
 
 De {{ site.apiname }} Web API kent de volgende nationaliteit types:
 
@@ -148,25 +149,25 @@ Er wordt alleen gegevens van actuele (= niet beëindigde) nationaliteiten geleve
 
 In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
 
-- [nationaliteit velden vragen met fields](./features/persoon/nationaliteit/overzicht.feature)
+- [nationaliteitvelden vragen met fields](./features/persoon/nationaliteit/overzicht.feature)
 
-### Filteren van verblijfstitel velden
+### Filteren van verblijfstitelvelden
 
-Wanneer velden van de verblijfstitel wordt gevraagd, dan wordt de gevraagde gegevens geleverd als de verblijfstitel niet is beëindigd. Gegevens van een verblijfstitel wordt ook niet geleverd als de aanduiding gelijk is aan 'geen verblijfstitel (meer)'.
+Wanneer velden van de verblijfstitel wordt gevraagd, dan worden de gevraagde gegevens geleverd als de verblijfstitel niet is beëindigd. Gegevens van een verblijfstitel worden ook niet geleverd als de aanduiding gelijk is aan 'geen verblijfstitel (meer)'.
 
-In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
+In het volgende feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario's/voorbeelden:
 
-- [verblijfstitel velden vragen met fields](./features/persoon/verblijfstitel/overzicht.feature)
+- [verblijfstitelvelden vragen met fields](./features/persoon/verblijfstitel/overzicht.feature)
 
-## Eén of meerdere gevraagde velden zijn in onderzoek
+## Eén of meer gevraagde velden zijn in onderzoek
 
-Om een afnemer te notificeren dat één of meerdere gevraagde velden in onderzoek zijn, worden de bijbehorende inOnderzoek en datumIngangOnderzoek velden ook geleverd.
-Wanneer één of meerdere velden waaruit een andere veld wordt afgeleid (bijv. de adressering velden) in onderzoek zijn, dan is het afgeleid veld ook in onderzoek en wordt de inOnderzoek veld van het afgeleid veld ook geleverd.
-In het [in onderzoek](./features/in-onderzoek.feature) feature bestand zijn de regels beschreven wanneer de inOnderzoek velden wel/niet worden geleverd.
+Om een afnemer te informeren dat één of meer gevraagde velden in onderzoek zijn, worden de bijbehorende inOnderzoek en datumIngangOnderzoek velden ook geleverd.
+Wanneer één of meer velden waaruit een andere veld wordt afgeleid (bijv. de adressering velden) in onderzoek zijn, dan is het afgeleide veld ook in onderzoek en wordt het inOnderzoekveld van het afgeleide veld ook geleverd.
+In het [in onderzoek](./features/in-onderzoek.feature) featurebestand zijn de regels beschreven wanneer de inOnderzoekvelden wel/niet worden geleverd.
 
 ### Vastgesteld verblijft niet op adres
 
-Wanneer tijdens onderzoek is vastgesteld dat een persoon niet meer verblijft op het geregistreerde adres en verblijfplaats gegevens en/of adresregels van de betreffende persoon wordt gevraagd, dan wordt het **indicatieVastgesteldVerblijftNietOpAdres** veld met waarde true meegeleverd.
+Wanneer tijdens onderzoek is vastgesteld dat een persoon niet meer verblijft op het geregistreerde adres en verblijfplaatsgegevens en/of adresregels van de betreffende persoon worden gevraagd, dan wordt het **indicatieVastgesteldVerblijftNietOpAdres** veld met waarde true meegeleverd.
 
 De functionaliteit van het **indicatieVastgesteldVerblijftNietOpAdres** veld is beschreven in de volgende feature bestanden:
 - [vastgesteld verblijft niet op adres (verblijfplaats binnenland)](./features/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature)
@@ -183,4 +184,4 @@ Om de payload van een response klein te houden, is er voor gekozen om velden met
 - gevraagde velden hebben de _false_ waarde. Voorbeeld: indicatieCurateleRegister veld wordt gevraagd voor een persoon die niet onder curatele is gesteld.
 - gevraagde velden is een groep velden die de persoon niet heeft. Voorbeeld: verblijfstitel velden wordt gevraagd voor een persoon die geen verblijfstitel heeft
 - gevraagde velden heeft de __standaard__ waarde. In de BRP wordt de standaard waarde gebruikt om aan te geven dat een gegeven onbekend is. Voorbeeld: geboorte.plaats veld wordt gevraagd voor een persoon waarvan de geboorteplaats onbekend is
-- gevraagde velden hebben geen aanduiding in onderzoek.
+- gevraagde velden hebben geen aanduiding "in onderzoek".

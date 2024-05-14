@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: reden opschorting bijhouding (persoon beperkt)
 
-  Rule: Bij de code voor reden opschorting bijhouding moet de juiste omschrijving worden geleverd
+  Regel: Bij de code voor reden opschorting bijhouding moet de juiste omschrijving worden geleverd
      De juiste omschrijving staat in https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen/blob/master/docs/tabelwaarden.csv
      En in het Logisch Ontwerp BRP bij Mogelijke waarden van element 67.20
 

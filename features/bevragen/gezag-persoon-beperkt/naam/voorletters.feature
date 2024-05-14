@@ -13,7 +13,7 @@ Als één of meerdere voornamen uit één letter bestaan, dan volgt er na de let
 Wanneer na een voorletter zonder punt (voornaam had één letter) nog een andere voorletter volgt, wordt daartussen een spatie gezet.
 
 
-  Rule: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
+  Regel: Voorletters wordt samengesteld uit de eerste letter van de voornamen gescheiden door een punt
 
     Abstract Scenario: <titel>
       Gegeven de persoon met burgerservicenummer '000000413' heeft de volgende gegevens

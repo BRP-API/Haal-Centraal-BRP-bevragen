@@ -25,7 +25,7 @@ Zodat ik dit niet zelf hoef af te leiden uit de aanduiding in onderzoek waarde
   |----------------------|--------------------|--------------------|------------------------------------------|--------------------------------------------|
   | 0519                 | Spui               | 123                | 0599010000208579                         | 0599200000219678                           |
 
-## Rule: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres verblijfplaats veld en alle geleverde verblijfplaats velden zijn in onderzoek
+## Regel: aanduiding in onderzoek waarde '089999' wordt geleverd als indicatieVastgesteldVerblijftNietOpAdres verblijfplaats veld en alle geleverde verblijfplaats velden zijn in onderzoek
 
 
 ### Abstract Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere adres velden wordt gevraagd

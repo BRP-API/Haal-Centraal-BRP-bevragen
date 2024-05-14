@@ -15,7 +15,7 @@ Functionaliteit: RNI-deelnemer gegevens leveren (persoon beperkt)
     | 0201 | Sociale Verzekeringsbank (inzake AOW, Anw en AKW)                  |
     | 0501 | Immigratie- en naturalisatiedienst (inzake nationaliteitsgegevens) |
 
-Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verblijfplaats) worden geleverd wanneer één of meerdere velden uit die categoriën wordt gevraagd
+Regel: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verblijfplaats) worden geleverd wanneer één of meerdere velden uit die categoriën wordt gevraagd
 
   Abstract Scenario: persoon heeft RNI-deelnemer gegevens voor categorie 01 (Persoon) en één of meerdere velden uit die categorie wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
@@ -236,7 +236,7 @@ Rule: RNI-deelnemer gegevens die horen bij categorie 01 (Persoon) en/of 08 (Verb
     | naam.volledigeNaam |
 
 
-Rule: rni mag niet worden gevraagd, omdat het automatisch wordt geleverd
+Regel: rni mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
    @fout-case
    Abstract Scenario: rni in <fields> mag niet worden gevraagd, omdat het automatisch wordt geleverd

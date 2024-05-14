@@ -16,7 +16,7 @@ Functionaliteit: Naamgebruik in een lopende tekst voor een persoon zonder adelli
   # PR = predicaat
   # HT = hoffelijkheidstitel of 'titre de courtoisie'
 
-  Rule: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
+  Regel: gebruikInLopendeTekst voor een persoon zonder adellijke titel of predicaat wordt samengesteld afhankelijk van het geslacht en de waarde van aanduidingNaamgebruik, waarbij geldt dat:
     - gebruikInLopendeTekst wordt voorafgegaan door "mevrouw", "de heer" of de voorletters, afhankelijk van het geslacht:
       | geslacht | gebruikInLopendeTekst begint met (GA) |
       | M        | de heer                               |

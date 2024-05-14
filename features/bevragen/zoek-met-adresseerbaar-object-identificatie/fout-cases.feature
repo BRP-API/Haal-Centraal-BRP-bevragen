@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met adresseerbaar object identificatie - fout cases
 
-  Rule: adresseerbaarObjectIdentificatie is een verplichte parameter
+  Regel: adresseerbaarObjectIdentificatie is een verplichte parameter
 
     @fout-case
     Scenario: De adresseerbaarObjectIdentificatie parameter is niet opgegeven
@@ -41,7 +41,7 @@ Functionaliteit: Zoek met adresseerbaar object identificatie - fout cases
       | code     | name                             | reason                  |
       | required | adresseerbaarObjectIdentificatie | Parameter is verplicht. |
 
-  Rule: Een adresseerbaarObjectIdentificatie is een string bestaande uit exact 16 cijfers
+  Regel: Een adresseerbaarObjectIdentificatie is een string bestaande uit exact 16 cijfers
 
     @fout-case
     Abstract Scenario: <titel>
@@ -68,7 +68,7 @@ Functionaliteit: Zoek met adresseerbaar object identificatie - fout cases
       | 12345678901234567                 | De opgegeven adresseerbaarObjectIdentificatie is een string met meer dan 16 cijfers   |
       | <script>1234567890123456</script> | De opgegeven adresseerbaarObjectIdentificatie bevat niet-cijfer karakters             |
 
-  Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt
+  Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt
 
     @fout-case
     Abstract Scenario: <titel>

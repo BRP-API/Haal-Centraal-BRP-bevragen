@@ -7,7 +7,7 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
   Wanneer een element in de registratie een standaardwaarde heeft, die betekent dat de waarde onbekend is, wordt het corresponderende veld niet opgenomen in de response.
 
 
-Rule: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
+Regel: datumvelden waarde "00000000": worden vertaald naar DatumOnbekend
 
   Scenario: volledig onbekende datum aanvang adreshouding in verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens

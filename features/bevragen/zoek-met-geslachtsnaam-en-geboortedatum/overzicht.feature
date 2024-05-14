@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met geslachtsnaam en geboortedatum
 
-Rule: Geslachtsnaam (niet hooflettergevoelig) en geboortedatum zijn verplichte parameters. 
+Regel: Geslachtsnaam (niet hooflettergevoelig) en geboortedatum zijn verplichte parameters. 
 
   Abstract Scenario: Zoek een persoon met zijn volledige geslachtsnaam en geboortedatum
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -89,7 +89,7 @@ Rule: Geslachtsnaam (niet hooflettergevoelig) en geboortedatum zijn verplichte p
     | naam                | waarde    |
     | burgerservicenummer | 000000026 |
 
-Rule: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
+Regel: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
   Abstract Scenario: Zoek met volledige voornamen
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -142,7 +142,7 @@ Rule: Optionele 'naam' parameters (niet hooflettergevoelig) kunnen worden toegev
     | maassen       | VAN         |
     | MAASSEN       | Van         |
 
-Rule: De optionele 'geslacht' parameter (niet hooflettergevoelig) kan worden toegevoegd om de zoek criteria aan te scherpen.
+Regel: De optionele 'geslacht' parameter (niet hooflettergevoelig) kan worden toegevoegd om de zoek criteria aan te scherpen.
 
   Abstract Scenario: Zoek met geslacht
     Gegeven de persoon met burgerservicenummer '000000027' heeft de volgende gegevens
@@ -165,7 +165,7 @@ Rule: De optionele 'geslacht' parameter (niet hooflettergevoelig) kan worden toe
     | v                   |
     | V                   |
 
-Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
   Scenario: Zoek een overleden persoon
     Gegeven de persoon met burgerservicenummer '000000028' heeft de volgende gegevens
@@ -196,7 +196,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | reden.code         | O          |
     | reden.omschrijving | overlijden |
 
-Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+Regel: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 
   Abstract Scenario: Zoek met gemeenteVanInschrijving
     Gegeven de persoon met burgerservicenummer '000000027' heeft de volgende gegevens
@@ -223,7 +223,7 @@ Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om 
     | naam                | waarde    |
     | burgerservicenummer | 000000027 |
 
-Rule: Voor de geslachtsnaam en voornamen parameters kan wildcard matching (niet hooflettergevoelig) worden toegepast.
+Regel: Voor de geslachtsnaam en voornamen parameters kan wildcard matching (niet hooflettergevoelig) worden toegepast.
       Er moet dan minimaal 3 letters (exclusief de wildcard "*" teken) worden opgegeven.
       De wildcard moet als laatste karakter worden opgegeven.
       De wildcard komt overeen met nul of meer (niet-spatie) karakters.

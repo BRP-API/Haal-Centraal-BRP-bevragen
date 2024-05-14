@@ -5,7 +5,7 @@ Functionaliteit: overlijden
   Wanneer een consumer van de BRP API gegevens bevraagt van een overleden persoon
   Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens zonder expliciet om overlijden gegevens te vragen met de fields parameter
 
-  Rule: opschorting bijhouding met reden "O" wordt altijd geleverd als de gevraagde persoon is overleden. Ook als het niet met fields is gevraagd
+  Regel: opschorting bijhouding met reden "O" wordt altijd geleverd als de gevraagde persoon is overleden. Ook als het niet met fields is gevraagd
 
     Abstract Scenario: <sub titel> van een niet-overleden persoon
       Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -94,7 +94,7 @@ Functionaliteit: overlijden
       | plaats overlijden (08.20) | plaats |
       | land overlijden (08.30)   | land   |
 
-  Rule: leeftijd veld wordt niet geleverd voor overleden personen
+  Regel: leeftijd veld wordt niet geleverd voor overleden personen
 
     Scenario: leeftijd wordt gevraagd van een overleden persoon
       Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

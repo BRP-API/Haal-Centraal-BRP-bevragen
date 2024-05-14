@@ -8,7 +8,7 @@ title: verblijfplaats - fields alias fout cases
 # Functionaliteit: verblijfplaats - fields alias fout cases
 
 
-## Rule: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
+## Regel: de standaard verblijfplaats field paden mag niet worden gebruikt door een consumer die niet is geautoriseerd voor het bevragen van 'verblijfplaats buitenland' velden
 
 
 `@fout-case`
@@ -42,7 +42,7 @@ title: verblijfplaats - fields alias fout cases
   | verblijfplaats.verblijfadres      |
   | verblijfplaats.verblijfadres.land |
 
-## Rule: de field alias 'verblijfplaatsBinnenland' mag niet worden gebruikt voor het vragen van 'verblijfplaats buitenland' velden
+## Regel: de field alias 'verblijfplaatsBinnenland' mag niet worden gebruikt voor het vragen van 'verblijfplaats buitenland' velden
 
 
 `@fout-case`

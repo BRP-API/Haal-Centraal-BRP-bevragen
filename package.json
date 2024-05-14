@@ -39,9 +39,9 @@
   },
   "homepage": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.0.1",
-    "@openapitools/openapi-generator-cli": "^2.13.1",
-    "@stoplight/spectral-cli": "^6.11.0",
+    "@cucumber/cucumber": "^10.5.1",
+    "@openapitools/openapi-generator-cli": "^2.13.4",
+    "@stoplight/spectral-cli": "^6.11.1",
     "axios": "^1.6.8",
     "chai": "^4.4.1",
     "csv-parse": "^5.5.5",

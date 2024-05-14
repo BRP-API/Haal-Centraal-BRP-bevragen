@@ -2,7 +2,7 @@
 
 Functionaliteit: Leveren van lege waarden
 
-  Rule: Een boolean veld met waarde false wordt niet geleverd
+  Regel: Een boolean veld met waarde false wordt niet geleverd
 
     Scenario: persoon heeft veld: 'indicatie geheim (70.10)'
       Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende 'inschrijving' gegevens
@@ -17,7 +17,7 @@ Functionaliteit: Leveren van lege waarden
       | naam                | waarde    |
       | burgerservicenummer | 000000139 |
 
-  Rule: Een string (tekst) veld met lege waarde wordt niet geleverd
+  Regel: Een string (tekst) veld met lege waarde wordt niet geleverd
       - Dit geldt ook voor een standaard/onbekendwaarde: zie onbekend_waardes.feature
 
     Scenario: voorvoegsel naam is leeg
@@ -53,7 +53,7 @@ Functionaliteit: Leveren van lege waarden
       | naam      | waarde |
       | voornamen | Jan    |
 
-  Rule: Een object (groep) wordt niet geleverd wanneer de onderliggende categorie niet bestaat of niet geleverd moet worden
+  Regel: Een object (groep) wordt niet geleverd wanneer de onderliggende categorie niet bestaat of niet geleverd moet worden
 
     Scenario: persoon is niet overleden en heeft geen verblijfstitel
       Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende gegevens
@@ -70,7 +70,7 @@ Functionaliteit: Leveren van lege waarden
       | naam                | waarde    |
       | burgerservicenummer | 000000176 |
 
-  Rule: een array (list, collectie) veld wordt geleverd als lege array wanneer het geen enkel item bevat
+  Regel: een array (list, collectie) veld wordt geleverd als lege array wanneer het geen enkel item bevat
 
     Scenario: persoon heeft geen partner en geen kinderen
       Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende gegevens
@@ -108,7 +108,7 @@ Functionaliteit: Leveren van lege waarden
       | fields              | burgerservicenummer             |
       Dan heeft de response 0 personen
 
-  Rule: Een object (groep) wordt geleverd als leeg object wanneer er ten minste één gegeven in die groep bestaat, maar geen enkel veld in die groep geleverd moet worden
+  Regel: Een object (groep) wordt geleverd als leeg object wanneer er ten minste één gegeven in die groep bestaat, maar geen enkel veld in die groep geleverd moet worden
     - Hierbij geldt ook een veld dat niet met fields is gevraagd voor het bestaan van de groep
     - hierbij geldt ook een veld met een standaardwaarde, leegwaarde of boolean false voor het bestaan van de groep
 

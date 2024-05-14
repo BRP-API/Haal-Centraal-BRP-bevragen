@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+  personen-mock:
+    container_name: personen-mock
+    image: ghcr.io/brp-api/personen-mock:latest
+    build:
+      context: .
+      dockerfile: src/BrpService/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:5010
+    ports:
+      - "5010:5010"
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network

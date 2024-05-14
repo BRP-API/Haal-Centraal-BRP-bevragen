@@ -132,7 +132,7 @@ Functionaliteit: immigratie velden in onderzoek
     | 081400                  | hele groep immigratie         |
     | 081410                  | land vanwaar ingeschreven     |
 
-Rule: aanduiding in onderzoek waarde '089999' zet immigratie velden niet in onderzoek
+Regel: aanduiding in onderzoek waarde '089999' zet immigratie velden niet in onderzoek
 
   Scenario: gevraagde persoon verblijft niet meer op het geregistreerde adres en één of meerdere immigratie velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

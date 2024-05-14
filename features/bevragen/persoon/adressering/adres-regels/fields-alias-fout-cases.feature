@@ -3,7 +3,7 @@
 Functionaliteit: adressering - fields alias fout cases
 
 
-Rule: de 'adresseringBinnenland' field alias kan niet worden gebruikt in combinatie met de adresregel velden voor verblijfplaats buitenland
+Regel: de 'adresseringBinnenland' field alias kan niet worden gebruikt in combinatie met de adresregel velden voor verblijfplaats buitenland
 
   @fout-case
   Abstract Scenario: afnemer vraagt met de fields alias het '<field>' veld van de adresseringBinnenland gegevensgroep

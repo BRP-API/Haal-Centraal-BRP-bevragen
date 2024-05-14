@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: immigratie velden vragen met fields
 
-Rule: land vanwaar ingeschreven wordt geleverd bij field pad 'immigratie.landVanwaarIngeschreven' of 'immigratie.vanuitVerblijfplaatsOnbekend'
+Regel: land vanwaar ingeschreven wordt geleverd bij field pad 'immigratie.landVanwaarIngeschreven' of 'immigratie.vanuitVerblijfplaatsOnbekend'
 
   Abstract Scenario: 'land vanwaar ingeschreven (14.10)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -42,7 +42,7 @@ Rule: land vanwaar ingeschreven wordt geleverd bij field pad 'immigratie.landVan
     | immigratie.landVanwaarIngeschreven.code         | 0000      |
     | immigratie.landVanwaarIngeschreven.omschrijving | Onbekend  |
 
-Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+Regel: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
   Scenario: code voor land vanwaar ingeschreven (14.10) komt niet voor in de tabel Landen
     Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende 'verblijfplaats' gegevens
@@ -57,7 +57,7 @@ Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt 
     | naam                         | waarde |
     | landVanwaarIngeschreven.code | 1234   |
 
-Rule: datum vestiging in Nederland wordt geleverd bij field pad 'immigratie.datumVestigingInNederland' of 'immigratie.indicatieVestigingVanuitBuitenland'
+Regel: datum vestiging in Nederland wordt geleverd bij field pad 'immigratie.datumVestigingInNederland' of 'immigratie.indicatieVestigingVanuitBuitenland'
 
   Abstract Scenario: 'datum vestiging in nederland (14.20)' wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -84,7 +84,7 @@ Rule: datum vestiging in Nederland wordt geleverd bij field pad 'immigratie.datu
     | immigratie.datumVestigingInNederland.onbekend    |
     | immigratie.indicatieVestigingVanuitBuitenland    |
 
-Rule: als één of meerdere immigratie velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: als één of meerdere immigratie velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' is in onderzoek en één of meerdere 'immigratie' velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

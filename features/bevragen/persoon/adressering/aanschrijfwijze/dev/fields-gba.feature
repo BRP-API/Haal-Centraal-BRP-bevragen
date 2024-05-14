@@ -30,7 +30,7 @@ Functionaliteit: adressering aanschrijfwijze velden vragen met fields
       | geslachtsnaam (02.40)                                              | Aedel          |
       | datum ontbinding huwelijk/geregistreerd partnerschap (07.10)       | 20211109       |
 
-  Rule: Voor adressering.aanschrijfwijze in fields moeten andere velden worden geleverd
+  Regel: Voor adressering.aanschrijfwijze in fields moeten andere velden worden geleverd
     
     Abstract Scenario: <fields> is gevraagd
       Als gba personen wordt gezocht met de volgende parameters

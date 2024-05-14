@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: immigratie veld 'indicatieVestigingVanuitBuitenland' vragen met fields
 
-Rule: indicatieVestigingVanuitBuitenland wordt geleverd met de waarde true wanneer datumVestigingInNederland een waarde heeft
+Regel: indicatieVestigingVanuitBuitenland wordt geleverd met de waarde true wanneer datumVestigingInNederland een waarde heeft
 
   Abstract Scenario: 'datum vestiging in Nederland (14.20)' wordt gevraagd met field pad 'immigratie.indicatieVestigingVanuitBuitenland'
     Gegeven de persoon met burgerservicenummer '000000395' heeft de volgende 'verblijfplaats' gegevens 

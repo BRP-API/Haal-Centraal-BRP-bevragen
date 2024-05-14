@@ -51,7 +51,7 @@ Functionaliteit: maximaal aantal zoekresultaten ZoekMetGeslachtsnaamEnGeboorteda
       | 19830526              | Maassen               | Jan Peter         |
     
 
-  Rule: Wanneer er meer dan 10 personen gevonden worden bij zoeken wordt een foutmelding gegeven
+  Regel: Wanneer er meer dan 10 personen gevonden worden bij zoeken wordt een foutmelding gegeven
 
     @fout-case
     Scenario: Meer dan 10 personen gevonden

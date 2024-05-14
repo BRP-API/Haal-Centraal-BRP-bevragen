@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.1.2-2024040801
+    image: haalcentraal.azurecr.io/gba-api:2.2.0-2024042201
     environment:
       - Database__Host=postgres
       - Database__Username=root
@@ -16,8 +16,13 @@ services:
       - WebApi__Url=http://gezagmock:5020/api/v1
       - ProtocolleringAuthorization__UseAuthorizationChecks=false
       - ProtocolleringAuthorization__UseProtocollering=false
+      - Ecs__Path=/var/log/brp-api.json
+      - Ecs__FileSizeLimitBytes=10240
+      - Ecs__RetainedFileCountLimit=5
     ports:
       - "8000:80"
+    volumes:
+      - ../test-data/logs:/var/log
     networks:
       - brp-api-network
 

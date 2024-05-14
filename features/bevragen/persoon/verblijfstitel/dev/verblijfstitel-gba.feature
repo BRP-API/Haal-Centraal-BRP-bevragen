@@ -133,7 +133,7 @@ Achtergrond:
     | fields              | verblijfstitel                  |
     Dan heeft de response een persoon zonder gegevens
     
-Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+Regel: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
   Scenario: code voor aanduiding verblijfstitel (39.10) komt niet voor in de tabel Verblijfstitel
     Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfstitel' gegevens
@@ -148,7 +148,7 @@ Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt 
     | naam            | waarde |
     | aanduiding.code | 01     |
 
-Rule: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 39, dan wordt de verblijfstitel niet opgenomen
+Regel: Wanneer alleen gegevens in groep 81, 82, 83, 84, 85 en/of 86 zijn opgenomen en geen gegevens in groep 39, dan wordt de verblijfstitel niet opgenomen
 
   Scenario: verblijfstitel is onjuist
     Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'verblijfstitel' gegevens

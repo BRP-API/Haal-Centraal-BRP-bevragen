@@ -2,7 +2,7 @@
 
 Functionaliteit: Als gemeente wil ik alleen juiste partnergegevens gebruiken in de aanschrijfwijze van mijn burgers 
 
-  Rule: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt, wordt aanduiding naamgebruik "E" (eigen naam) gehanteerd
+  Regel: Wanneer de geslachtsnaam van de partner leeg of onbekend is en de naam van de partner wordt gebruikt, wordt aanduiding naamgebruik "E" (eigen naam) gehanteerd
 
     Abstract Scenario: geslachtsnaam van de partner is onbekend bij aanduiding naamgebruik "<naamgebruik>" levert aanschrijfwijze met eigen naam
       Gegeven de persoon met burgerservicenummer '000000504' heeft de volgende gegevens

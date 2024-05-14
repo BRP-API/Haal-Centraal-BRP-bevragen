@@ -59,6 +59,17 @@ geslacht
 geslacht.code
 geslacht.omschrijving
 gezag
+gezag.type
+gezag.minderjarige
+gezag.minderjarige.burgerservicenummer
+gezag.ouders
+gezag.ouders.burgerservicenummer
+gezag.ouder
+gezag.ouder.burgerservicenummer
+gezag.derde
+gezag.derde.burgerservicenummer
+gezag.derden
+gezag.derden.burgerservicenummer
 immigratie
 immigratie.datumVestigingInNederland
 immigratie.datumVestigingInNederland.langFormaat

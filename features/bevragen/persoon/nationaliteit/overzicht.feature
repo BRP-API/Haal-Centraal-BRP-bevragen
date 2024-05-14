@@ -2,7 +2,7 @@
 
 Functionaliteit: nationaliteit velden vragen met fields
 
-Rule: een nationaliteit heeft de type 'Nationaliteit' wanneer de waarde van 'nationaliteit (05.10)' ongelijk is aan 0000, 0002, 0499, 0500
+Regel: een nationaliteit heeft de type 'Nationaliteit' wanneer de waarde van 'nationaliteit (05.10)' ongelijk is aan 0000, 0002, 0499, 0500
 
   Abstract Scenario: waarde van 'nationaliteit (05.10)' is gelijk aan '<code>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -24,7 +24,7 @@ Rule: een nationaliteit heeft de type 'Nationaliteit' wanneer de waarde van 'nat
     | 0001 | Nederlandse  |
     | 0263 | Surinaamse   |
 
-Rule: een nationaliteit heeft de type 'Staatloos' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0499
+Regel: een nationaliteit heeft de type 'Staatloos' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0499
 
   Scenario: waarde van 'nationaliteit (05.10)' is gelijk aan '0499'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -39,7 +39,7 @@ Rule: een nationaliteit heeft de type 'Staatloos' wanneer de waarde van 'nationa
     | naam | waarde    |
     | type | Staatloos |
 
-Rule: een nationaliteit heeft de type 'BehandeldAlsNederlander' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0002 of als de waarde van 'bijzonder Nederlanderschap (65.10)' gelijk is aan 'B'
+Regel: een nationaliteit heeft de type 'BehandeldAlsNederlander' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0002 of als de waarde van 'bijzonder Nederlanderschap (65.10)' gelijk is aan 'B'
 
   Abstract Scenario: waarde van '<element>' is gelijk aan '<code>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -59,7 +59,7 @@ Rule: een nationaliteit heeft de type 'BehandeldAlsNederlander' wanneer de waard
     | bijzonder Nederlanderschap (65.10) | B    |
     | nationaliteit (05.10)              | 0002 |
 
-Rule: een nationaliteit heeft de type 'VastgesteldNietNederlander' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0500 of als de waarde van 'bijzonder Nederlanderschap (65.10)' gelijk is aan 'V'
+Regel: een nationaliteit heeft de type 'VastgesteldNietNederlander' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0500 of als de waarde van 'bijzonder Nederlanderschap (65.10)' gelijk is aan 'V'
 
   Abstract Scenario: waarde van '<element>' is gelijk aan '<code>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -79,7 +79,7 @@ Rule: een nationaliteit heeft de type 'VastgesteldNietNederlander' wanneer de wa
     | bijzonder Nederlanderschap (65.10) | V    |
     | nationaliteit (05.10)              | 0500 |
 
-Rule: een nationaliteit heeft de type 'Onbekend' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0000
+Regel: een nationaliteit heeft de type 'Onbekend' wanneer de waarde van 'nationaliteit (05.10)' gelijk is aan 0000
 
   Scenario: waarde van 'nationaliteit (05.10)' is gelijk aan '0000'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -94,7 +94,7 @@ Rule: een nationaliteit heeft de type 'Onbekend' wanneer de waarde van 'national
     | naam | waarde                |
     | type | NationaliteitOnbekend |
 
-Rule: een persoon kan meerdere actuele nationaliteiten hebben
+Regel: een persoon kan meerdere actuele nationaliteiten hebben
 
   Scenario: persoon heeft meerdere nationaliteiten
    Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -119,7 +119,7 @@ Rule: een persoon kan meerdere actuele nationaliteiten hebben
     | nationaliteit.code         | 0455           |
     | nationaliteit.omschrijving | Montenegrijnse |
 
-Rule: een beëindigde nationaliteit wordt niet geleverd
+Regel: een beëindigde nationaliteit wordt niet geleverd
 
   Scenario: persoon heeft alleen een beëindigde nationaliteit
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens

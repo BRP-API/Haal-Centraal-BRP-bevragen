@@ -29,7 +29,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
     | PS   | Prinses      | titel     |
     | R    | Ridder       | titel     |
 
-  Rule: Voor een vrouw zonder adellijke titel of predicaat maar met partner met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
+  Regel: Voor een vrouw zonder adellijke titel of predicaat maar met partner met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
     | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
     | E                      | eigen naam                   | VL VV GN                |
     | P                      | partner naam                 | VL HT VP GP             |
@@ -207,7 +207,7 @@ Functionaliteit: Als gemeente wil ik de juiste en consistente aanschrijfwijze va
       | PS            |
       | R             |
 
-  Rule: Voor een vrouw met adellijke titel met partner met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
+  Regel: Voor een vrouw met adellijke titel met partner met adellijke titel wordt de naam in aanschrijfwijze als volgt samengesteld:
     | aanduiding naamgebruik | omschrijving                 | naam in aanschrijfwijze |
     | E                      | eigen naam                   | VL AT VV GN             |
     | P                      | partner naam                 | VL HT VP GP             |

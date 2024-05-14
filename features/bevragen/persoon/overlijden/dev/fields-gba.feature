@@ -107,7 +107,7 @@ Functionaliteit: overlijden velden vragen met fields (persoon)
     | land overlijden (08.30)   | land   | 6030 | Nederland    |
     
     
-Rule: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+Regel: wanneer voor de code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
   Abstract Scenario: code voor land overlijden (08.30) komt niet voor in de tabel Landen
     Gegeven de persoon met burgerservicenummer '000000243' heeft de volgende 'overlijden' gegevens

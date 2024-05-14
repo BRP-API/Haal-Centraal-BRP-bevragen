@@ -4,7 +4,7 @@
 Functionaliteit: gezagsrelaties van de bewoners van een adresseerbaar object
 
 
-  Rule: voor alle meerderjarige en minderjarige personen die staan ingeschreven op gevraagde adresseerbaar object wordt gezag geleverd
+  Regel: voor alle meerderjarige en minderjarige personen die staan ingeschreven op gevraagde adresseerbaar object wordt gezag geleverd
 
     Scenario: 
       Gegeven een adres heeft de volgende gegevens

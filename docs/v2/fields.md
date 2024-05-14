@@ -42,6 +42,7 @@ Met fields mag je alleen vragen om gegevens die bij het vraagtype teruggegeven k
 <select id="searchType" class="form-control" onchange="loadFieldsList()">
   <option value="Persoon">RaadpleegMetBurgerservicenummer</option>
   <option value="PersoonBeperkt">ZoekMet...</option>
+  <option value="GezagPersoonBeperkt">ZoekMetAdresseerbaarObjectIdentificatie</option>
 </select>
 
 ## 2. selecteer de velden die je wilt ontvangen

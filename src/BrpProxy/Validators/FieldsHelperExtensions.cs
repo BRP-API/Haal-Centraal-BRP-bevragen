@@ -243,6 +243,9 @@ namespace BrpProxy.Validators
             {
                 switch (field)
                 {
+                    case "adresseringBinnenland":
+                        retval.AddRange(new[] { "adressering.aanhef", "adressering.aanschrijfwijze", "adressering.gebruikInLopendeTekst", "adressering.adresregel1", "adressering.adresregel2" });
+                        break;
                     case "geboorte.datum":
                     case "kinderen.geboorte.datum":
                     case "ouders.geboorte.datum":

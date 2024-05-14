@@ -22,7 +22,7 @@ Functionaliteit: kind - geboorte
     | land.code           | 0000     |
     | land.omschrijving   | Onbekend |
 
-Rule: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
+Regel: wanneer geboorteplaats (03.20) geen valide gemeentecode bevat, dan wordt de plaats geleverd in de omschrijving veld en wordt het code veld niet geleverd
       - een valide gemeentecode bestaat uit vier cijfers en komt voor in de landelijke tabel Gemeenten
       - als de waarde in de geboorteplaats (03.20) niet voorkomt in de landelijke tabel Gemeenten, dan wordt de waarde alleen in de omschrijving opgenomen. (Buitenlandse plaatsnaam of coördinaten)
 

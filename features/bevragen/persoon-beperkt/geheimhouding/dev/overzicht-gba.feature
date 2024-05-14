@@ -6,7 +6,7 @@ Functionaliteit: geheimhouding: niet verstrekken van gegevens van een persoon aa
   Wanneer een consumer van de BRP API gegevens bevraagt van een persoon die geen toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden
   Dan wil de consumer hiervan worden geattendeerd middels een indicatie bij de gevraagde gegevens
 
-Rule: indicatie geheim waarde 0 wordt niet geleverd
+Regel: indicatie geheim waarde 0 wordt niet geleverd
 
   Scenario: persoon die toestemming heeft gegeven voor het verstrekken van zijn gegevens aan derden, wordt geraadpleegd met burgerservicenummer
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -25,7 +25,7 @@ Rule: indicatie geheim waarde 0 wordt niet geleverd
     | naam                | waarde    |
     | burgerservicenummer | 000000152 |
 
-Rule: indicatie geheim met waarde hoger dan 0 wordt vertaald naar geheimhoudingPersoonsgegevens waarde true en ongevraagd meegeleverd
+Regel: indicatie geheim met waarde hoger dan 0 wordt vertaald naar geheimhoudingPersoonsgegevens waarde true en ongevraagd meegeleverd
 
   Abstract Scenario: persoon met indicatie geheim <waarde>, wordt geraadpleegd met burgerservicenummer
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -55,7 +55,7 @@ Rule: indicatie geheim met waarde hoger dan 0 wordt vertaald naar geheimhoudingP
     | 6      |
     | 7      |
 
-Rule: geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
+Regel: geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd
 
   @fout-case
   Abstract Scenario: veld geheimhoudingPersoonsgegevens mag niet worden gevraagd, omdat het automatisch wordt geleverd

@@ -7,7 +7,7 @@ Functionaliteit: verblijfplaats velden met standaard-waardes worden ongewijzigd 
   Wanneer een element in de registratie een standaardwaarde heeft, die betekent dat de waarde onbekend is, wordt het corresponderende veld opgenomen in de response met de betreffende waarde. 
 
 
-Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfplaats
+Regel: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfplaats
   Het gaat om de volgende properties en standaardwaardes van de persoon:
   | property                                         | standaardwaarde  |
   | ------------------------------------------------ | ---------------- |
@@ -80,7 +80,7 @@ Rule: de volgende standaardwaarden worden ongewijzigd geleverd bij de verblijfpl
     | verblijfplaats.nummeraanduidingIdentificatie    | nummeraanduidingIdentificatie    | identificatiecode nummeraanduiding (11.90) | 0000000000000000 |
     | verblijfplaats.adresseerbaarObjectIdentificatie | adresseerbaarObjectIdentificatie | identificatiecode verblijfplaats (11.80)   | 0000000000000000 |
 
-Rule: datumvelden waarde "00000000" worden geleverd
+Regel: datumvelden waarde "00000000" worden geleverd
   
   Scenario: volledig onbekende datum aanvang adreshouding in adres
     Gegeven de persoon met burgerservicenummer '000000371' heeft de volgende 'verblijfplaats' gegevens
@@ -117,7 +117,7 @@ Rule: datumvelden waarde "00000000" worden geleverd
     | land.omschrijving           | Verenigde Staten van Amerika |
     | datumAanvangAdresBuitenland | 00000000                     |
 
-Rule: wanneer er voor een code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
+Regel: wanneer er voor een code geen bijbehorende waarde voorkomt in de tabel, wordt alleen de code geleverd
 
   Scenario: code voor land adres buitenland (13.10) komt niet voor in de tabel Landen
     Gegeven de persoon met burgerservicenummer '000000255' heeft de volgende 'verblijfplaats' gegevens

@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
 
-Rule: voorvoegsel is niet hoofdlettergevoelig
+Regel: voorvoegsel is niet hoofdlettergevoelig
 
   Scenario: Zoek een persoon met volledige voorvoegsel in hoofdletters
     Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende gegevens

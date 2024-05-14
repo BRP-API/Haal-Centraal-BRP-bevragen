@@ -2,7 +2,7 @@
 
 Functionaliteit: Zoek met nummeraanduiding identificatie
 
-Rule: nummeraanduiding identificatie is een verplichte parameter
+Regel: nummeraanduiding identificatie is een verplichte parameter
 
   Scenario: Zoek een persoon met de nummeraanduiding identificatie van zijn verblijfplaats
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens
@@ -52,7 +52,7 @@ Rule: nummeraanduiding identificatie is een verplichte parameter
     | naam                | waarde    |
     | burgerservicenummer | 000000025 |
 
-Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
   Scenario: Zoek overleden personen die zijn ingeschreven op het adres met de opgegeven nummeraanduiding identificatie
     Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens
@@ -79,7 +79,7 @@ Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven 
     | reden.code         | O          |
     | reden.omschrijving | overlijden |
 
-Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+Regel: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 
   Scenario: Zoek met gemeenteVanInschrijving
     Gegeven de persoon met burgerservicenummer '000000025' heeft de volgende 'verblijfplaats' gegevens

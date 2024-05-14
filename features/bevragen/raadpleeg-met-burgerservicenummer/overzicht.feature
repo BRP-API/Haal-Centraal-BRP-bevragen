@@ -2,7 +2,7 @@
 
 Functionaliteit: Raadpleeg met burgerservicenummer
 
-Rule: voor het raadplegen van een persoon moet zijn burgerservicenummer worden opgegeven
+Regel: voor het raadplegen van een persoon moet zijn burgerservicenummer worden opgegeven
 
   Scenario: Raadpleeg één persoon
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -18,7 +18,7 @@ Rule: voor het raadplegen van een persoon moet zijn burgerservicenummer worden o
     | naam                | waarde    |
     | burgerservicenummer | 000000024 |
 
-Rule: voor het raadplegen van meerdere personen moeten hun burgerservicenummers worden opgegeven
+Regel: voor het raadplegen van meerdere personen moeten hun burgerservicenummers worden opgegeven
 
   Scenario: Raadpleeg meerdere personen
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -46,7 +46,7 @@ Rule: voor het raadplegen van meerdere personen moeten hun burgerservicenummers 
     | naam                | waarde    |
     | burgerservicenummer | 000000026 |
 
-Rule: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
+Regel: De optionele 'gemeenteVanInschrijving' parameter kan worden toegevoegd om de zoek criteria aan te scherpen
 
   Scenario: Raadpleeg persoon met gemeenteVanInschrijving
     Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'verblijfplaats' gegevens

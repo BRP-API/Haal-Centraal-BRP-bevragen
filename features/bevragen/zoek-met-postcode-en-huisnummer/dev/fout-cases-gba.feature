@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Zoek met postcode en huisnummer - fout cases
 
-Rule: Postcode en huisnummer zijn verplichte parameters
+Regel: Postcode en huisnummer zijn verplichte parameters
 
   @fout-case
   Scenario: De postcode en huisnummer parameters zijn niet opgegeven 
@@ -108,7 +108,7 @@ Rule: Postcode en huisnummer zijn verplichte parameters
     | Een lege string is opgegeven als huisnummer waarde |          | 2          | postcode           |
     | Een lege waarde is opgegeven als postcode waarde   | 2628HJ   |            | huisnummer         |
 
-Rule: een huisnummer is een getal tussen 1 en 99999
+Regel: een huisnummer is een getal tussen 1 en 99999
 
   @fout-case
   Abstract Scenario: Een string met één of meerdere niet-numerieke karakters is opgegeven als huisnummer waarde 
@@ -161,7 +161,7 @@ Rule: een huisnummer is een getal tussen 1 en 99999
     | 0          | minimum | Waarde is lager dan minimum 1.     |
     | 100000     | maximum | Waarde is hoger dan maximum 99999. |
 
-Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 letters (niet hoofdlettergevoelig)
+Regel: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 letters (niet hoofdlettergevoelig)
 
   @fout-case
   Abstract Scenario: Een ongeldig postcode is opgegeven 
@@ -210,7 +210,7 @@ Rule: een postcode is een string bestaande uit 4 cijfers, 0 of 1 spatie en 2 let
     | pattern | postcode   | Waarde voldoet niet aan patroon ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$. |
     | minimum | huisnummer | Waarde is lager dan minimum 1.                                     |
 
-Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
+Regel: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoelig)
 
   @fout-case
   Abstract Scenario: Een ongeldige waarde is opgegeven voor de 'huisletter' parameter
@@ -238,7 +238,7 @@ Rule: een huisletter is een string bestaande uit 1 letter (niet hoofdlettergevoe
     | <script>alert('hello world');</script> |
     | 1                                      |
 
-Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
+Regel: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaal 4 karakters. Deze karakters kunnen zijn:
       - kleine letters (a-z)
       - hoofdletters (A-Z)
       - spatie ( ) en min (-)
@@ -269,7 +269,7 @@ Rule: Een huisnummertoevoeging is een string bestaande uit minimaal 1 en maximaa
     | <script>alert('hello world');</script> |
     | 123.45                                 |
 
-Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
+Regel: inclusiefOverledenPersonen is een boolean (true of false waarde)
 
   @fout-case
   Abstract Scenario: Een ongeldig waarde is opgegeven voor de 'inclusiefOverledenPersonen' parameter
@@ -297,7 +297,7 @@ Rule: inclusiefOverledenPersonen is een boolean (true of false waarde)
     |                              |
     | geen boolean                 |
 
-Rule: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
+Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt 
 
   @fout-case
   Abstract Scenario: <titel>

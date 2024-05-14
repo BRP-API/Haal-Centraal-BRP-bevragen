@@ -2,7 +2,7 @@
 
 Functionaliteit: verblijfplaats
 
-Rule: Een verblijfplaats is een adres wanneer straatnaam (11.10) een waarde heeft
+Regel: Een verblijfplaats is een adres wanneer straatnaam (11.10) een waarde heeft
 
   Abstract Scenario: 'straatnaam (11.10)' heeft een waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -26,7 +26,7 @@ Rule: Een verblijfplaats is een adres wanneer straatnaam (11.10) een waarde heef
     | Spui   |
     | .      |
 
-Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving (12.10) een waarde heeft
+Regel: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving (12.10) een waarde heeft
 
   Scenario: 'locatiebeschrijving (12.10)' heeft een waarde 
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -45,7 +45,7 @@ Rule: Een verblijfplaats is een binnenlandse locatie wanneer locatiebeschrijving
     | naam | waarde  |
     | type | Locatie |
 
-Rule: Een verblijfplaats is een verblijfplaats buitenland wanneer 'land adres buitenland (13.10)' ongelijk is aan 0000
+Regel: Een verblijfplaats is een verblijfplaats buitenland wanneer 'land adres buitenland (13.10)' ongelijk is aan 0000
 
   Scenario: 'land adres buitenland (13.10)' heeft een waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -60,7 +60,7 @@ Rule: Een verblijfplaats is een verblijfplaats buitenland wanneer 'land adres bu
     | naam | waarde                   |
     | type | VerblijfplaatsBuitenland |
 
-Rule: Een verblijfplaats is een onbekend verblijfplaats wanneer 'land adres buitenland (13.10)' gelijk is aan 0000
+Regel: Een verblijfplaats is een onbekend verblijfplaats wanneer 'land adres buitenland (13.10)' gelijk is aan 0000
 
   Scenario: waarde 'land adres buitenland (13.10)' is gelijk aan 0000
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -75,7 +75,7 @@ Rule: Een verblijfplaats is een onbekend verblijfplaats wanneer 'land adres buit
     | naam | waarde                 |
     | type | VerblijfplaatsOnbekend |
 
-Rule: Een persoon heeft geen verblijfplaats wanneer 'straatnaam (11.10)' én 'locatiebeschrijving (12.10)' én 'land adres buitenland (13.10)' geen waarde heeft
+Regel: Een persoon heeft geen verblijfplaats wanneer 'straatnaam (11.10)' én 'locatiebeschrijving (12.10)' én 'land adres buitenland (13.10)' geen waarde heeft
 
   Scenario: De adres gegevens én locatiebeschrijving hebben geen waarde
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens
@@ -102,7 +102,7 @@ Rule: Een persoon heeft geen verblijfplaats wanneer 'straatnaam (11.10)' én 'lo
     | fields              | verblijfplaats                  |
     Dan heeft de response een persoon zonder gegevens
 
-Rule: Een persoon heeft geen verblijfplaats wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
+Regel: Een persoon heeft geen verblijfplaats wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
 
   Abstract Scenario: Een verblijfplaats <type> wordt gevraagd met field pad 'verblijfplaatsBinnenland'
     Gegeven de persoon met burgerservicenummer '000000097' heeft de volgende 'verblijfplaats' gegevens

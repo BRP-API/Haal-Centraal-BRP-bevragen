@@ -4,7 +4,7 @@
 Functionaliteit: gezagsrelaties van een meerderjarige
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind met twee ouders met gezag de gezagsrelatie naar beide ouders geleverd
+  Regel: een meerderjarige krijgt voor een minderjarig kind met twee ouders met gezag de gezagsrelatie naar beide ouders geleverd
 
     Scenario: beide ouders hebben gezag over het minderjarige kind van bevraagde persoon
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -37,7 +37,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000048 |
 
 
-  Rule: een meerderjarige die als enige gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar zichzelf geleverd
+  Regel: een meerderjarige die als enige gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar zichzelf geleverd
 
     Scenario: alleen de bevraagde persoon heeft gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -58,7 +58,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | ouder.burgerservicenummer        | 000000024                |
 
 
-  Rule: een meerderjarige die samen met diens partner gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar de ouder en de partner geleverd
+  Regel: een meerderjarige die samen met diens partner gezag heeft over een minderjarig kind krijgt de gezagsrelatie naar de ouder en de partner geleverd
 
     Scenario: de ouder en diens partner hebben gezag over het kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -90,7 +90,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | derde.burgerservicenummer        | 000000048        |
 
 
-  Rule: een meerderjarige die gezag heeft over een minderjarig kind van de partner krijgt de gezagsrelatie naar de ouder en zichzelf geleverd
+  Regel: een meerderjarige die gezag heeft over een minderjarig kind van de partner krijgt de gezagsrelatie naar de ouder en zichzelf geleverd
     # de gezagsmodule levert bij het bevragen van de niet-ouder geen gezag
     # het gezag kan achterhaald worden door het gezag van de kinderen van de partner op te vragen
     # voor elke gezagsrelatie van de minderjarige kinderen wordt bepaald of de niet-ouder gezamenlijk gezag heeft over het kind
@@ -307,7 +307,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | OG1         | heeft alleen de ouder gezag       | 000000024     |
 
 
-  Rule: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
+  Regel: een meerderjarige krijg voor een meerderjarig kind geen gezagsrelatie geleverd
 
     Scenario: gezag wordt gevraagd van ouder met meerderjarig kind
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende gegevens
@@ -329,7 +329,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
+  Regel: een meerderjarige krijgt voor een minderjarig kind waarvoor het gezag niet bepaald kan worden geen gezagsrelatie geleverd
 
     Scenario: gezag over minderjarige kind kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -350,7 +350,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
+  Regel: een meerderjarige krijgt voor een minderjarig kind waarover tijdelijk niemand gezag heeft geen gezagsrelatie geleverd
 
     Scenario: tijdelijk heeft niemand gezag over een minderjarig kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -374,7 +374,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd
+  Regel: een meerderjarige die van rechtswege gezag heeft over een minderjarige die geen kind is van de meerderjarige krijgt de gezagsrelatie naar zichzelf geleverd
     # de gezagsmodule levert bij het bevragen van de niet-ouder geen gezag
     # het gezag kan achterhaald worden door het gezag van de kinderen van de (ex)partner(s) op te vragen
     # voor elke gezagsrelatie van de minderjarige kinderen wordt bepaald of de niet-ouder voogd is van dit kind
@@ -535,7 +535,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | burgerservicenummer | 000000048 |
   
 
-  Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de leeftijd lager is dan 18 jaar
+  Regel: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de leeftijd lager is dan 18 jaar
     # voor een persoon die staat ingeschreven in RNI (gemeente van inschrijving is gelijk aan 1999) levert de gezagsmodule altijd soort gezag 'N' (niet te bepalen)
     # wanneer zeker is dat de persoon meerderjarig is, moet geen 'gezag niet te bepalen' worden geleverd
     # wanneer de leeftijd exact bepaald kan worden (zie ../leeftijd/overzicht.feature), wordt 'gezag niet te bepalen' alleen geleverd wanneer de leeftijd lager is dan 18 jaar
@@ -593,7 +593,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | volgende maand - 19 jaar | 18                 |
 
 
-  Rule: een persoon die in RNI staat ingeschreven met een onvolledige geboortedatum krijgt gezag niet te bepalen geleverd wanneer het geboortejaar is ten minste 19 jaar voor het huidige jaar
+  Regel: een persoon die in RNI staat ingeschreven met een onvolledige geboortedatum krijgt gezag niet te bepalen geleverd wanneer het geboortejaar is ten minste 19 jaar voor het huidige jaar
     # wanneer de leeftijd niet exact bepaald kan worden en er is wel een geboortejaar bekend, wordt 'gezag niet te bepalen' alleen geleverd wanneer de persoon aan het begin van het jaar al meerderjarig (18 jaar) is
 
     Abstract Scenario: gezag van minderjarig persoon in RNI kan niet worden bepaald
@@ -647,7 +647,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | dit jaar - 19 jaar   | 18 of 19 jaar |
 
 
-  Rule: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de geboortedatum volledig onbekend is
+  Regel: een persoon die in RNI staat ingeschreven krijgt gezag niet te bepalen geleverd wanneer de geboortedatum volledig onbekend is
 
     Scenario: gezag van minderjarig persoon in RNI kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende gegevens
@@ -669,7 +669,7 @@ Functionaliteit: gezagsrelaties van een meerderjarige
       | type | GezagNietTeBepalen |
 
 
-  Rule: een meerderjarige met gezag over meerdere minderjarigen krijgt de gezagsrelaties van al deze minderjarigen
+  Regel: een meerderjarige met gezag over meerdere minderjarigen krijgt de gezagsrelaties van al deze minderjarigen
 
     Scenario: meerderjarige heeft gezag over meerdere kinderen
       Gegeven de persoon met burgerservicenummer '000000048' heeft een 'kind' met de volgende gegevens

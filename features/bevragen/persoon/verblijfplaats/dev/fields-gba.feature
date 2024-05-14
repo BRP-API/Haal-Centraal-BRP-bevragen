@@ -5,7 +5,7 @@ Functionaliteit: verblijfplaats velden vragen met fields (persoon)
 
   Om het type van een verblijfplaats af te kunnen leiden moet ook het identificerende gegeven van de verblijfplaats type worden geleverd
 
-Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt ook de waarde van 'straatnaam (11.10)' geleverd
+Regel: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt ook de waarde van 'straatnaam (11.10)' geleverd
 
   Scenario: alle velden van een adres wordt gevraagd met field pad 'verblijfplaats'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -58,7 +58,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd, dan wordt o
     | verblijfplaats.verblijfadres.regel1                             |                          |               |                   |               |                           |               |
     | verblijfplaats.verblijfadres.huisletter                         | huisletter               | a             |                   |               |                           |               |
     
-Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
+Regel: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
 
   Scenario: alle velden van een locatie wordt gevraagd met field pad 'verblijfplaats'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -108,7 +108,7 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd, dan wordt
     | verblijfplaats.datumVan,verblijfplaats.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
     | verblijfplaats.verblijfadres.regel1                                      |                          |               |                   |               |                           |               |
 
-Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt gevraagd, dan wordt ook de waarde van 'land adres buitenland (13.10)' geleverd
+Regel: wanneer één of meerdere velden van een verblijfplaats buitenland wordt gevraagd, dan wordt ook de waarde van 'land adres buitenland (13.10)' geleverd
 
   Scenario: alle velden van een verblijfplaats buitenland wordt gevraagd met field pad 'verblijfplaats'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -156,7 +156,7 @@ Rule: wanneer één of meerdere velden van een verblijfplaats buitenland wordt g
     | verblijfplaats.datumVan,verblijfplaats.verblijfadres.huisnummer | datumAanvangAdresBuitenland | 20150808                    |             |                      |             |               |
     | verblijfplaats.verblijfadres.regel1                             | regel1                      | 1600 Pennsylvania Avenue NW |             |                      |             |               |
 
-Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'straatnaam (11.10)' geleverd
+Regel: wanneer één of meerdere velden van een adres wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'straatnaam (11.10)' geleverd
 
   Scenario: alle velden van een adres wordt gevraagd met field pad 'verblijfplaatsBinnenland'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -248,7 +248,7 @@ Rule: wanneer één of meerdere velden van een adres wordt gevraagd met de field
     | verblijfplaats.verblijfadres           |
     | verblijfplaatsBinnenland.verblijfadres |
 
-Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
+Regel: wanneer één of meerdere velden van een locatie wordt gevraagd met de field alias verblijfplaatsBinnenland, dan wordt ook de waarde van 'locatiebeschrijving (12.10)' geleverd
 
   Scenario: alle velden van een locatie wordt gevraagd met field pad 'verblijfplaatsBinnenland'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -297,7 +297,7 @@ Rule: wanneer één of meerdere velden van een locatie wordt gevraagd met de fie
     | verblijfplaatsBinnenland.verblijfadres                                                       |                          |               |                   |               |                           |               |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.locatiebeschrijving | datumAanvangAdreshouding | 20150808      |                   |               |                           |               |
 
-Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats object wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
+Regel: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats object wanneer de verblijfplaatsBinnenland field alias wordt gebruikt en de persoon heeft een verblijfplaats buitenland of verblijfplaats onbekend
 
   Abstract Scenario: de persoon heeft een verblijfplaats buitenland en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -323,7 +323,7 @@ Rule: Een persoon heeft een verblijfplaats zonder gegevens/leeg verblijfplaats o
     | verblijfplaatsBinnenland.verblijfadres                                              |
     | verblijfplaatsBinnenland.datumVan,verblijfplaatsBinnenland.verblijfadres.huisnummer |
 
-Rule: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: als één of meerdere (gegevensgroep) velden van een verblijfplaats wordt gevraagd en de categorie verblijfplaats (08) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' van een adres is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

@@ -2,7 +2,7 @@
 
 Functionaliteit: volledige naam (persoon beperkt)
 
-Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
+Regel: de volledige naam wordt samengesteld door achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
   - standaardwaarde "." voor geslachtsnaam wordt niet opgenomen in volledigeNaam
   - wanneer de volledigeNaam geen inhoud heeft, gelijk is aan "", dan wordt volledigeNaam niet opgenomen
 
@@ -52,7 +52,7 @@ Rule: de volledige naam wordt samengesteld door achter elkaar plaatsen van voorn
     | burgerservicenummer | 000000450 |
     En heeft de persoon een leeg 'naam' object
 
-Rule: een predicaat wordt opgenomen voor de voornamen met de omschrijving horend bij de waarde in tabel 38 in de vorm die hoort bij het geslacht en geschreven in kleine letters
+Regel: een predicaat wordt opgenomen voor de voornamen met de omschrijving horend bij de waarde in tabel 38 in de vorm die hoort bij het geslacht en geschreven in kleine letters
   - wanneer er geen vorm is die hoort bij het predicaat (geslacht "O"), wordt de omschrijving horend bij de waarde van de code in tabel 38 gebruikt
 
   Abstract Scenario: volledige naam van persoon met predikaat
@@ -85,7 +85,7 @@ Rule: een predicaat wordt opgenomen voor de voornamen met de omschrijving horend
     | O        | Jo Anne              | JH                      | van         | Hoogh         | jonkheer Jo Anne van Hoogh                  |
     
 
-Rule: een adellijke titel wordt opgenomen tussen de voornamen en het voorvoegsel met de omschrijving horend bij de waarde in tabel 38 in de vorm die hoort bij het geslacht en geschreven in kleine letters
+Regel: een adellijke titel wordt opgenomen tussen de voornamen en het voorvoegsel met de omschrijving horend bij de waarde in tabel 38 in de vorm die hoort bij het geslacht en geschreven in kleine letters
   - wanneer er geen vorm is die hoort bij de adellijke titel (geslacht "O" of titel "R" met geslacht "V"), wordt de omschrijving horend bij de waarde van de code in tabel 38 gebruikt
 
   Abstract Scenario: volledige naam van persoon met adellijke titel

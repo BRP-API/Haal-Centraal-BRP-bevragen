@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: verblijfplaats binnenland (adres) - verblijfadres velden zijn in onderzoek
 
-Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek worden geleverd als het betreffende veld wordt gevraagd
+Regel: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek worden geleverd als het betreffende veld wordt gevraagd
 
   Abstract Scenario: '<type>' is in onderzoek en alle verblijfadres velden wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens
@@ -106,7 +106,7 @@ Rule: Het in onderzoek zijn van een veld en bijbehorende datumIngangOnderzoek wo
     | inOnderzoek.datumIngangOnderzoek.langFormaat | 1 juli 2002 |
     En heeft de 'verblijfplaats' geen 'verblijfadres' gegevens
 
-Rule: 'type' veld van 'verblijfplaats binnenland (adres)' is in onderzoek als het identificerende gegeven van adres ('straatnaam (11.10)') in onderzoek is
+Regel: 'type' veld van 'verblijfplaats binnenland (adres)' is in onderzoek als het identificerende gegeven van adres ('straatnaam (11.10)') in onderzoek is
 
   Abstract Scenario: '<type>' veld is in onderzoek en postcode wordt gevraagd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'verblijfplaats' gegevens

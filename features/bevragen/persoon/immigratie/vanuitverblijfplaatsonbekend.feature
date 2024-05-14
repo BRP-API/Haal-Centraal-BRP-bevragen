@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon: immigratie veld 'vanuitVerblijfplaatsOnbekend' vragen met fields
 
-Rule: vanuitVerblijfplaatsOnbekend krijgt de waarde true wanneer land van waar ingeschreven de waarde '0000' (onbekend) heeft
+Regel: vanuitVerblijfplaatsOnbekend krijgt de waarde true wanneer land van waar ingeschreven de waarde '0000' (onbekend) heeft
 
   Scenario: 'land vanwaar ingeschreven (14.10)' met waarde 0000 wordt gevraagd met field pad 'immigratie.vanuitVerblijfplaatsOnbekend'
     Gegeven de persoon met burgerservicenummer '000000395' heeft de volgende 'verblijfplaats' gegevens 

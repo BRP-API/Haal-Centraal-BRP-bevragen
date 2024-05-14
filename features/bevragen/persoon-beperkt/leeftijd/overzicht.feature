@@ -2,7 +2,7 @@
 
 Functionaliteit: Persoon beperkt: leeftijd
 
-Rule: leeftijd wordt geleverd bij een volledig bekende geboortedatum
+Regel: leeftijd wordt geleverd bij een volledig bekende geboortedatum
 
   Abstract Scenario: geboortedatum is een volledig datum
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -49,7 +49,7 @@ Rule: leeftijd wordt geleverd bij een volledig bekende geboortedatum
       | 28 februari 2017 | 20       |
       | 01 maart 2017    | 21       |
 
-Rule: leeftijd wordt niet geleverd bij een volledig onbekende geboortedatum
+Regel: leeftijd wordt niet geleverd bij een volledig onbekende geboortedatum
 
   Scenario: geboortedatum is een onbekend datum
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -67,7 +67,7 @@ Rule: leeftijd wordt niet geleverd bij een volledig onbekende geboortedatum
     | fields                  | leeftijd                             |
     Dan heeft de response een persoon zonder gegevens
 
-Rule: leeftijd wordt niet geleverd bij een geboortedatum waarvan alleen het jaar bekend is
+Regel: leeftijd wordt niet geleverd bij een geboortedatum waarvan alleen het jaar bekend is
 
   Scenario: maand en dag van geboortedatum is onbekend
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -85,7 +85,7 @@ Rule: leeftijd wordt niet geleverd bij een geboortedatum waarvan alleen het jaar
     | fields                  | leeftijd                             |
     Dan heeft de response een persoon zonder gegevens
 
-Rule: leeftijd wordt niet geleverd bij een geboortedatum waarvan alleen de dag onbekend is als de geboortemaand gelijk is aan de huidige maand
+Regel: leeftijd wordt niet geleverd bij een geboortedatum waarvan alleen de dag onbekend is als de geboortemaand gelijk is aan de huidige maand
 
   Abstract Scenario: dag van geboortedatum is onbekend en geboortemaand is niet de huidige maand
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens
@@ -126,7 +126,7 @@ Rule: leeftijd wordt niet geleverd bij een geboortedatum waarvan alleen de dag o
     | fields                  | leeftijd                             |
     Dan heeft de response een persoon zonder gegevens
 
-Rule: leeftijd wordt niet geleverd voor een overleden persoon
+Regel: leeftijd wordt niet geleverd voor een overleden persoon
 
   Scenario: persoon is overleden
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende gegevens

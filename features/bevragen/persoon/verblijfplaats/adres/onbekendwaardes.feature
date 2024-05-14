@@ -6,7 +6,7 @@ Functionaliteit: Als gebruiker van de API wil ik geen onbekend waardes ontvangen
   Wanneer in de registratie specifieke waarden gereserveerd zijn voor een onbekende waarde, worden deze waarden niet doorgegeven in de API.
   Wanneer een element in de registratie een standaardwaarde heeft, die betekent dat de waarde onbekend is, wordt het corresponderende veld niet opgenomen in de response.
 
-Rule: Niet leveren van de standaard/onbekend waarde van een adres veld
+Regel: Niet leveren van de standaard/onbekend waarde van een adres veld
   Het gaat om de volgende properties en standaardwaardes van de persoon:
   | property                                   | standaardwaarde  |
   | ------------------------------------------ | ---------------- |

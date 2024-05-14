@@ -24,17 +24,18 @@ def find_or_create_collectie(persoon, collectiefield):
     return persoon[collectiefield][0]
 
 def set_field_value(target_object, field_name, value):
-    if field_name == 'europeesKiesrecht':
-        if value == '2':
-            target_object[field_name] = True
-    elif field_name == 'uitgeslotenVanKiesrecht':
-        if value == 'A':
-            target_object[field_name] = True
-    elif field_name == 'indicatieCurateleRegister':
-        if value == '1':
-            target_object[field_name] = True
-    else:
-        target_object[field_name] = value
+    match field_name:
+        case 'europeesKiesrecht':
+            if value == '2':
+                target_object[field_name] = True
+        case 'uitgeslotenVanKiesrecht':
+            if value == 'A':
+                target_object[field_name] = True
+        case 'indicatieCurateleRegister':
+            if value == '1':
+                target_object[field_name] = True
+        case _:
+            target_object[field_name] = value
 
 def map_dictionary(src_dict, fields_to_map):
     target_object = {}
@@ -68,6 +69,119 @@ def map_dictionary(src_dict, fields_to_map):
             tmp_object = tmp_object[subfield]
 
     return target_object
+
+def find_ouder(ouders, ouder_aanduiding):
+    if ouders is None:
+        return None
+    
+    for ouder in ouders:
+        if ouder.get('ouderAanduiding') == ouder_aanduiding:
+            return ouder
+    
+    return None
+
+def set_ouder_heeft_gezag(bsn_minderjarige, ouder):
+    if bsn_minderjarige is None and ouder is None:
+        return None
+
+    if ouder is None:
+        return {
+            'type': "EenhoofdigOuderlijkGezag",
+            'minderjarige': {
+                'burgerservicenummer': bsn_minderjarige
+            }
+        }
+
+    return {
+        'type': "EenhoofdigOuderlijkGezag",
+        'minderjarige': {
+            'burgerservicenummer': bsn_minderjarige
+        },
+        'ouder': {
+            'burgerservicenummer': ouder['burgerservicenummer']
+        }
+    }
+
+def set_ouders_hebben_gezag(bsn_minderjarige, ouders):
+    gezagsrelaties = {
+        'type': "TweehoofdigOuderlijkGezag",
+        'minderjarige': {
+            'burgerservicenummer': bsn_minderjarige
+        },
+        'ouders': []
+    }
+
+    for ouder in ouders:
+        gezagsrelaties['ouders'].append({ 'burgerservicenummer': ouder['burgerservicenummer']})
+
+    return gezagsrelaties
+
+def set_gezamenlijk_gezag(bsn_minderjarige, ouder, derde):
+    return {
+        'type': 'GezamenlijkGezag',
+        'minderjarige': {
+            'burgerservicenummer': bsn_minderjarige
+        },
+        'ouder': {
+            'burgerservicenummer': ouder['burgerservicenummer']
+        },
+        'derde': derde
+    }
+
+def set_voogdij(bsn_minderjarige):
+    return {
+        'type': 'Voogdij',
+        'minderjarige': { 'burgerservicenummer': bsn_minderjarige },
+        'derden': []
+    }
+
+def set_gezag(target_object):
+    gezag_minderjarige = target_object.get('indicatieGezagMinderjarige')
+    if gezag_minderjarige is None:
+        return
+
+    target_object['gezag'] = []
+
+    gezagsrelatie = None
+    match gezag_minderjarige['code']:
+        case '1':
+            gezagsrelatie = set_ouder_heeft_gezag(target_object.get('burgerservicenummer'),
+                                                  find_ouder(target_object['ouders'], '1'))
+        case '2':
+            gezagsrelatie = set_ouder_heeft_gezag(target_object.get('burgerservicenummer'),
+                                                  find_ouder(target_object['ouders'], '2'))
+        case '12':
+            gezagsrelatie = set_ouders_hebben_gezag(target_object.get('burgerservicenummer'),
+                                                    target_object['ouders'])
+        case 'D':
+            gezagsrelatie = set_voogdij(target_object['burgerservicenummer'])
+        case '1D':
+            gezagsrelatie = set_gezamenlijk_gezag(target_object['burgerservicenummer'],
+                                                  find_ouder(target_object['ouders'], '1'),
+                                                  { 'burgerservicenummer': '000000024'})
+        case '2D':
+            gezagsrelatie = set_gezamenlijk_gezag(target_object['burgerservicenummer'],
+                                                  find_ouder(target_object['ouders'], '2'),
+                                                  { 'burgerservicenummer': '000000048'})
+
+    if gezagsrelatie:
+        target_object['gezag'].append(gezagsrelatie)
+
+def set_nationaliteiten(last_target_object, src_nationaliteiten, nationaliteiten, reden_opnemen):
+    if src_nationaliteiten is None or src_nationaliteiten[0] is None:
+        return
+    
+    trg_nationaliteiten = last_target_object.get('nationaliteiten')
+
+    src_nationaliteit = src_nationaliteiten[0]
+    
+    if src_nationaliteit.get('nationaliteit') or src_nationaliteit.get('aanduidingBijzonderNederlanderschap'):
+        trg_nationaliteiten.append(src_nationaliteit)
+    else:
+        if src_nationaliteit.get('redenEinde') and len(trg_nationaliteiten) > 0: 
+            trg_nationaliteiten.pop()
+
+    add_nationaliteiten_omschrijvingen(last_target_object, nationaliteiten, reden_opnemen)
 
 def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_json_file):
     """
@@ -103,29 +217,12 @@ def convert_gba_v_testdata(fields_to_map, gba_v_testdata_file, gba_v_testdata_js
                 add_immigratie_omschrijvingen(target_object, landen)
                 add_titel_predicaat_omschrijvingen(target_object, titels_predicaten)
                 add_verblijfstitel_omschrijvingen(target_object, verblijftitels)
+                set_gezag(target_object)
 
                 del target_object['id']
                 target.append(target_object)
             else:
-                last_target_object = target[-1]
-                src_nationaliteiten = target_object.get('nationaliteiten')
-                src_nationaliteit = None
-                
-                if(src_nationaliteiten != None and src_nationaliteiten[0] != None):
-                    src_nationaliteit = src_nationaliteiten[0]
-                
-                if (src_nationaliteit != None):
-                    if (src_nationaliteit.get('nationaliteit') != None or src_nationaliteit.get('aanduidingBijzonderNederlanderschap') != None):
-                        trg_nationaliteiten = last_target_object.get('nationaliteiten')
-                        if (trg_nationaliteiten != None): 
-                            trg_nationaliteiten.append(src_nationaliteit)
-                    else:
-                        if (src_nationaliteit.get('redenEinde') != None):
-                            trg_nationaliteiten = last_target_object.get('nationaliteiten')
-                            if (trg_nationaliteiten != None and len(trg_nationaliteiten) > 0): 
-                                trg_nationaliteiten.pop()
-
-                add_nationaliteiten_omschrijvingen(last_target_object, nationaliteiten, reden_opnemen)
+                set_nationaliteiten(target[-1], target_object.get('nationaliteiten'), nationaliteiten, reden_opnemen)
 
     with open(gba_v_testdata_json_file, 'w', encoding='utf-8') as dst:
         dst.write(json.dumps(target, indent=2, ensure_ascii=False))
@@ -144,26 +241,26 @@ def import_landelijke_tabel(landelijke_tabel_file, naam_code, naam_omschrijving)
     return target
 
 def add_omschrijving(target_object, tabel):
-    if target_object == None:
+    if target_object is None:
         return
 
     code = target_object.get('code')
-    if code == None:
+    if code is None:
         return
 
     omschrijving = tabel.get(code)
-    if omschrijving != None:
+    if omschrijving is not None:
         target_object['omschrijving'] = omschrijving
 
 def add_cijfer_code_omschrijving(target_object, tabel):
-    if target_object == None:
+    if target_object is None:
         return
 
     code = target_object.get('code')
     match = re.search('^\d{3,4}$', code)
     if match:
         omschrijving = tabel.get(code)
-        if omschrijving != None:
+        if omschrijving is not None:
             target_object['omschrijving'] = omschrijving
     else:
         target_object['omschrijving'] = code
@@ -173,7 +270,7 @@ def add_gemeente_van_inschrijving_omschrijving(target_object, gemeenten_tabel):
     add_cijfer_code_omschrijving(target_object.get('gemeenteVanInschrijving'), gemeenten_tabel)
 
 def add_plaats_en_land_omschrijvingen(target_object, gemeenten_tabel, landen_tabel):
-    if target_object == None:
+    if target_object is None:
         return
 
     add_cijfer_code_omschrijving(target_object.get('plaats'), gemeenten_tabel)    
@@ -182,7 +279,7 @@ def add_plaats_en_land_omschrijvingen(target_object, gemeenten_tabel, landen_tab
 def add_kinderen_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, titel_tabel):
     kinderen = target_object.get('kinderen')
 
-    if kinderen == None:
+    if kinderen is None:
         return
 
     for kind in kinderen:
@@ -190,13 +287,13 @@ def add_kinderen_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, ti
 
         naam = kind.get('naam')
 
-        if naam != None:
+        if naam is not None:
             add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
 
 def add_ouders_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, titel_tabel):
     ouders = target_object.get('ouders')
 
-    if ouders == None:
+    if ouders is None:
         return
 
     for ouder in ouders:
@@ -204,13 +301,13 @@ def add_ouders_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, tite
 
         naam = ouder.get('naam')
 
-        if naam != None:
+        if naam is not None:
             add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
 
 def add_partners_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, titel_tabel):
     partners = target_object.get('partners')
 
-    if partners == None:
+    if partners is None:
         return
 
     for partner in partners:
@@ -219,13 +316,13 @@ def add_partners_omschrijvingen(target_object, gemeenten_tabel, landen_tabel, ti
 
         naam = partner.get('naam')
 
-        if naam != None:
+        if naam is not None:
             add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
 
 def add_nationaliteiten_omschrijvingen(target_object, nationaliteiten_tabel, reden_opnemen_tabel):
     nationaliteiten = target_object.get('nationaliteiten')
 
-    if nationaliteiten == None:
+    if nationaliteiten is None:
         return
     
     for nationaliteit in nationaliteiten:
@@ -235,7 +332,7 @@ def add_nationaliteiten_omschrijvingen(target_object, nationaliteiten_tabel, red
 def add_verblijfplaats_omschrijvingen(target_object, landen_tabel):
     verblijfplaats = target_object.get('verblijfplaats')
 
-    if verblijfplaats == None:
+    if verblijfplaats is None:
         return
 
     add_cijfer_code_omschrijving(verblijfplaats.get('land'), landen_tabel)
@@ -243,7 +340,7 @@ def add_verblijfplaats_omschrijvingen(target_object, landen_tabel):
 def add_immigratie_omschrijvingen(target_object, landen_tabel):
     immigratie = target_object.get('immigratie')
 
-    if immigratie == None:
+    if immigratie is None:
         return
     
     add_cijfer_code_omschrijving(immigratie.get('landVanwaarIngeschreven'), landen_tabel)
@@ -251,7 +348,7 @@ def add_immigratie_omschrijvingen(target_object, landen_tabel):
 def add_titel_predicaat_omschrijvingen(target_object, titel_tabel):
     naam = target_object.get('naam')
 
-    if naam == None:
+    if naam is None:
         return
     
     add_omschrijving(naam.get('adellijkeTitelPredicaat'), titel_tabel)
@@ -259,7 +356,7 @@ def add_titel_predicaat_omschrijvingen(target_object, titel_tabel):
 def add_verblijfstitel_omschrijvingen(target_object, verblijfstitel_tabel):
     verblijfstitel = target_object.get('verblijfstitel')
 
-    if verblijfstitel == None:
+    if verblijfstitel is None:
         return
     
     add_omschrijving(verblijfstitel.get('aanduiding'), verblijfstitel_tabel)

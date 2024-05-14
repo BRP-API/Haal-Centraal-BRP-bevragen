@@ -43,7 +43,7 @@ Functionaliteit: Zoek met postcode en huisnummer
     | gemeentecode (92.10) | postcode (11.60) | huisnummer (11.20) |
     | 0600                 | 2630HJ           | 2                  |
 
-Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters. Postcode mag zowel met als zonder spatie tussen de cijfer- en letterdeel worden verstrekt.
+Regel: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte parameters. Postcode mag zowel met als zonder spatie tussen de cijfer- en letterdeel worden verstrekt.
 
   Abstract Scenario: Zoek een persoon met de postcode (<sub-titel>) en huisnummer van het adres van zijn verblijfplaats
     Als personen wordt gezocht met de volgende parameters
@@ -74,7 +74,7 @@ Rule: Postcode (niet hoofdlettergevoelig) en huisnummer zijn verplichte paramete
     | 2628 hj  | spatie tussen de cijfers en kleine letters                            |
     | 2628 Hj  | spatie tussen de cijfers en letters (zowel hoofd- als kleine letters) |
 
-Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
+Regel: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toegevoegd om de zoek criteria aan te scherpen.
 
   Abstract Scenario: Zoek een persoon met de postcode, huisnummer en huisletter van het adres van zijn verblijfplaats
     Als personen wordt gezocht met de volgende parameters
@@ -126,7 +126,7 @@ Rule: Optionele 'adres' parameters (niet hooflettergevoelig) kunnen worden toege
     | naam                | waarde    |
     | burgerservicenummer | 000000029 |
 
-Rule: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
+Regel: De optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om een overleden persoon te kunnen vinden
 
   Scenario: Zoek een overleden persoon
     Als personen wordt gezocht met de volgende parameters

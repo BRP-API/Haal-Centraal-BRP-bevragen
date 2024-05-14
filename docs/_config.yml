@@ -7,7 +7,7 @@ v1SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/
 v2SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/genereervariant/openapi.yaml
 v2DevSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/develop/specificatie/genereervariant/openapi.yaml
 v2GbaSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/gba-genereervariant/openapi.yaml
-onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/230615%20deelname%20experiment%20BRP%20API's%20v1.9.ppsx
+onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/240507%20deelname%20BRP%20API%20v2.4.ppsx
 proefProxyUrl: https://proefomgeving.haalcentraal.nl
 persoonFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-Persoon.csv
 persoonBeperktFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-PersoonBeperkt.csv
@@ -16,7 +16,7 @@ PO-email: cathy.dingemanse@rvig.nl
 CZ-email: melvin.lee@rvig.nl
 Tester-email: frank.samwel@rvig.nl
 
-apiname: "BRP Personen"
+apiname: "BRP API Personen"
 url: "http://localhost:4000"
 # M.b.v. de optionele variabele 'logo' kan een ander logo dan het VNG logo in de rechterbovenhoek geplaatst worden.
 # Het betreffende bestand zal dan wel in de folder '\assets\img' van het remote the 'VNG-Realisatie/jekyll-theme-haal-centraal' moeten worden geplaatst.
@@ -38,39 +38,17 @@ nav:
   - title: Specificaties v. 2
     subnav:
       - title: Releasenotes
-        path: releasenotes
+        path: /releasenotes
       - title: Getting started
         path: /v2/getting-started
       - title: User stories
         path: /user-stories-prod
       - title: Bevragen API
         path: /v2/redoc
-      - title: Bevragen API, GBA variant
-        path: /v2/redoc-gba
-      - title: Bevragen API (in ontwikkeling)
-        path: /v2/redoc-io
       - title: Features overzicht
         path: /v2/features-overzicht
       - title: Features test overzicht
         path: /features/index
-      - title: BrpProxy configuratie
-        path: /v2/brpproxy-configuratie
-
-#  - title: Specificaties v. 1.3
-#    subnav:
-#      - title: Getting started
-#        path: /getting-started
-#      - title: User stories
-#        path: /user-stories-prod
-#      - title: User stories (afgeschermd)
-#        url: https://gitlab.com/vng-realisatie/haal-centraal-brp-afgeschermd/-/issues?label_name%5B%5D=BRP+bevragen
-#        target: blank
-#      - title: Bevragen API (swagger-ui)
-#        path: /swagger-ui
-#      - title: Bevragen API (redoc)
-#        path: /redoc
-#      - title: Features
-#        path: /features
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme

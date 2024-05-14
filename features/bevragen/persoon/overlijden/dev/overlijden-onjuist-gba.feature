@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: overlijden onjuist (persoon)
 
-  Rule: Onjuiste gegevens worden niet geleverd
+  Regel: Onjuiste gegevens worden niet geleverd
 
   Scenario: land overlijden is onjuist en gecorrigeerd
     Gegeven de persoon met burgerservicenummer '000000152' heeft de volgende 'overlijden' gegevens

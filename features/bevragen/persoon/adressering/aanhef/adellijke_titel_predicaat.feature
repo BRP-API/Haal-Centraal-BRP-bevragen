@@ -2,15 +2,15 @@
 
 Functionaliteit: Bij het opstellen van de aanhef maakt een adellijke titel of een predicaat daar onderdeel van uit. 
 
-# Rule: Als de persoon een adellijke titel of predikaat heeft wordt deze gebruikt in het opstellen van de aanhef.
+# Regel: Als de persoon een adellijke titel of predikaat heeft wordt deze gebruikt in het opstellen van de aanhef.
 
 #    Scenario: Aanhef voor persoon met een titel 
 
-# Rule: Als de (ex-)partner van de persoon een adellijke titel of predikaat heeft wordt deze mogelijk gebruikt in het opstellen van de aanhef.
+# Regel: Als de (ex-)partner van de persoon een adellijke titel of predikaat heeft wordt deze mogelijk gebruikt in het opstellen van de aanhef.
 
 #    Scenario: Aanhef met een (ex-)partner met een adellijke titel of predikaat ( en alle naamgebruiken)
 
-Rule: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en het geslacht:
+Regel: De aanhef voor een persoon met adellijke titel of predicaat wordt bepaald op basis van adellijkeTitelPredicaat en het geslacht:
   | adellijkeTitelPredicaat | omschrijving | geslacht | Aanhef                |
   | B                       | Baron        | M        | Hoogwelgeboren heer   |
   | BS                      | Barones      | M        | Hoogwelgeboren heer   |

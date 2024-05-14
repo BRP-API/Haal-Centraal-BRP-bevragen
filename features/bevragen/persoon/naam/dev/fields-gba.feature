@@ -47,7 +47,7 @@ Functionaliteit: naam velden vragen met fields (persoon)
     | naam.adellijkeTitelPredicaat.omschrijving |
     | naam.adellijkeTitelPredicaat.soort        |
 
-Rule: geslachtsaanduiding, voornamen, adellijke titel/predicaat, voorvoegsel, geslachtsnaam wordt geleverd bij field pad 'naam.volledigeNaam'
+Regel: geslachtsaanduiding, voornamen, adellijke titel/predicaat, voorvoegsel, geslachtsnaam wordt geleverd bij field pad 'naam.volledigeNaam'
 
   Scenario: 'volledige naam' wordt gevraagd met field pad 'naam.volledigeNaam'
     Gegeven de persoon met burgerservicenummer '000000619' heeft de volgende gegevens
@@ -95,7 +95,7 @@ Rule: geslachtsaanduiding, voornamen, adellijke titel/predicaat, voorvoegsel, ge
     | aanduidingNaamgebruik.code           | E                   |
     | aanduidingNaamgebruik.omschrijving   | eigen geslachtsnaam |
 
-Rule: voornamen wordt geleverd bij field pad 'naam.voorletters'
+Regel: voornamen wordt geleverd bij field pad 'naam.voorletters'
 
   Scenario: 'voorletters' wordt gevraagd met field pad 'naam.voorletters'
     Gegeven de persoon met burgerservicenummer '000000176' heeft de volgende gegevens

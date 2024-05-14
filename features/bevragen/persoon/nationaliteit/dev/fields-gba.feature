@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: Nationaliteit (persoon)
 
-Rule: wanneer één of meerdere velden van een nationaliteit wordt gevraagd, dan wordt ook de waarde van 'nationaliteit (05.10)' geleverd
+Regel: wanneer één of meerdere velden van een nationaliteit wordt gevraagd, dan wordt ook de waarde van 'nationaliteit (05.10)' geleverd
 
   Abstract Scenario: alle velden van een nationaliteit wordt gevraagd met field pad 'nationaliteiten'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -59,7 +59,7 @@ Rule: wanneer één of meerdere velden van een nationaliteit wordt gevraagd, dan
     | nationaliteiten.datumIngangGeldigheid.maand       | datumIngangGeldigheid | 20020701      |                          |                                                   |
     | nationaliteiten.datumIngangGeldigheid.onbekend    | datumIngangGeldigheid | 20020701      |                          |                                                   |
 
-Rule: wanneer 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden van nationaliteit wordt gevraagd, dan wordt ook de waarde van 'bijzonder Nederlanderschap (65.10)' geleverd
+Regel: wanneer 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerdere velden van nationaliteit wordt gevraagd, dan wordt ook de waarde van 'bijzonder Nederlanderschap (65.10)' geleverd
 
   Scenario: persoon heeft een nationaliteit waarvan 'bijzonder Nederlanderschap (65.10)' is gevuld en alle velden wordt gevraagd met field pad 'nationaliteiten'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens
@@ -115,7 +115,7 @@ Rule: wanneer 'bijzonder Nederlanderschap (65.10)' is gevuld en één of meerder
     | nationaliteiten.datumIngangGeldigheid.maand       | V    | datumIngangGeldigheid | 20020701      |                          |                                                   |
     | nationaliteiten.datumIngangGeldigheid.onbekend    | B    | datumIngangGeldigheid | 20020701      |                          |                                                   |
 
-Rule: als één of meerdere velden van een nationaliteit wordt gevraagd en de categorie nationaliteit (04) heeft in onderzoek gegevens, dan worden deze ook geleverd
+Regel: als één of meerdere velden van een nationaliteit wordt gevraagd en de categorie nationaliteit (04) heeft in onderzoek gegevens, dan worden deze ook geleverd
 
   Abstract Scenario: '<type>' van een nationaliteit is in onderzoek en één of meerdere velden wordt gevraagd met field pad '<fields>'
     Gegeven de persoon met burgerservicenummer '000000012' heeft een 'nationaliteit' met de volgende gegevens

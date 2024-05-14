@@ -3,7 +3,7 @@
 @gba
 Functionaliteit: gezagsrelaties van een minderjarige(n)
 
-  Rule: voor een minderjarige met twee ouders met gezag wordt de gezagsrelatie naar beide ouders geleverd
+  Regel: voor een minderjarige met twee ouders met gezag wordt de gezagsrelatie naar beide ouders geleverd
 
     Scenario: beide ouders hebben gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
@@ -33,7 +33,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | burgerservicenummer | 000000048 |
 
   
-  Rule: voor een minderjarige met één ouder met gezag wordt de gezagsrelatie naar deze ouder geleverd
+  Regel: voor een minderjarige met één ouder met gezag wordt de gezagsrelatie naar deze ouder geleverd
 
     Scenario: één ouder heeft gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
@@ -57,7 +57,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | ouder.burgerservicenummer        | 000000024                |
 
 
-  Rule: voor een minderjarige met gezamenlijk gezag wordt de gezagsrelatie naar de ouder en de andere gezaghebbende geleverd
+  Regel: voor een minderjarige met gezamenlijk gezag wordt de gezagsrelatie naar de ouder en de andere gezaghebbende geleverd
 
     Scenario: de ouder en diens partner hebben gezag over het kind
       Gegeven de persoon met burgerservicenummer '000000024' heeft een 'kind' met de volgende gegevens
@@ -95,7 +95,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | derde.burgerservicenummer        | 000000048        |
 
 
-  Rule: voor een meerderjarige wordt er geen gezagsrelatie naar de ouders geleverd
+  Regel: voor een meerderjarige wordt er geen gezagsrelatie naar de ouders geleverd
 
     Scenario: gezag wordt gevraagd van een meerderjarige
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
@@ -122,7 +122,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       Dan heeft de response een persoon zonder gezag
 
 
-  Rule: wanneer het gezag voor een minderjarige niet bepaald kan worden, wordt dit in gezag aangegeven
+  Regel: wanneer het gezag voor een minderjarige niet bepaald kan worden, wordt dit in gezag aangegeven
 
     Scenario: gezag over minderjarige kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
@@ -144,7 +144,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | type | GezagNietTeBepalen |
 
 
-  Rule: wanneer over een minderjarige tijdelijk niemand gezag heeft, wordt dat in gezag aangegeven
+  Regel: wanneer over een minderjarige tijdelijk niemand gezag heeft, wordt dat in gezag aangegeven
 
     Scenario: tijdelijk heeft niemand gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
@@ -175,7 +175,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | type | TijdelijkGeenGezag |
 
 
-  Rule: wanneer een niet-ouder van rechtswege gezag heeft over de minderjarige wordt deze voogdij in gezag aangegeven 
+  Regel: wanneer een niet-ouder van rechtswege gezag heeft over de minderjarige wordt deze voogdij in gezag aangegeven 
 
     Scenario: de partner van overleden ouder heeft gezag over de minderjarige
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
@@ -201,7 +201,7 @@ Functionaliteit: gezagsrelaties van een minderjarige(n)
       | burgerservicenummer | 000000024 |
 
 
-  Rule: wanneer met een gerechtelijke uitspraak gezag is toegewezen aan een voogd dan is de voogd niet bekend en wordt gezag geleverd zonder de voogd(en)
+  Regel: wanneer met een gerechtelijke uitspraak gezag is toegewezen aan een voogd dan is de voogd niet bekend en wordt gezag geleverd zonder de voogd(en)
 
     Scenario: er is een gerechtelijke uitspraak tot gezag voor ouder 1 en een derde
       Gegeven de persoon met burgerservicenummer '000000012' heeft de volgende 'verblijfplaats' gegevens
