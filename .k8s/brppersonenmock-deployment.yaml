@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personenmock
+  labels:
+    app: brp-api-personen-mock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: personenmock
+  template:
+    metadata:
+      labels:
+        name: personenmock
+    spec:
+      containers:
+        - name: personenmock
+          image: ghcr.io/brp-api/personen-mock:latest
+          imagePullPolicy: Never
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Release
+            - name: ASPNETCORE_URLS
+              value: http://+:5010
+          ports:
+            - name: http-mock
+              containerPort: 5010

@@ -40,9 +40,9 @@ services:
     # volumes:
     #   - ./src/config/BrpProxy/configuration:/app/configuration
 
-  gbamock:
-    container_name: gbamock
-    image: ghcr.io/brp-api/haal-centraal-brp-bevragen-gba-mock:latest
+  personen-mock:
+    container_name: personen-mock
+    image: ghcr.io/brp-api/personen-mock:latest
     build:
       context: .
       dockerfile: src/BrpService/Dockerfile
