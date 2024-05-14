@@ -38,7 +38,7 @@ Functionaliteit: RaadpleegMetBurgerservicenummer van persoonslijst met opschorti
       | naam.geslachtsnaam  | Rafi      |
 
 
-  Rule: Een persoonslijst met reden opschorting bijhouding "F" (fout - afgevoerde persoonslijst) wordt niet geleverd
+  Regel: Een persoonslijst met reden opschorting bijhouding "F" (fout - afgevoerde persoonslijst) wordt niet geleverd
 
     Scenario: persoonslijst heeft opschorting bijhouding reden "F"
       Gegeven de persoon met burgerservicenummer '000000024' heeft de volgende 'inschrijving' gegevens
