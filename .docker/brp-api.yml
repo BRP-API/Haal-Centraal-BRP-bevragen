@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   haalcentraal_api:
-    image: haalcentraal.azurecr.io/gba-api:2.2.0-2024042201
+    image: haalcentraal.azurecr.io/gba-api:2.2.1-2024051501
     environment:
       - Database__Host=postgres
       - Database__Username=root
@@ -10,8 +10,6 @@ services:
       - Database__Database=rvig_haalcentraal_testdata
       - HaalcentraalApi__MaxSearchResults=10
       - ASPNETCORE_URLS=http://+;
-      # - AuthenticationTypes=Basic
-      # - AuthenticationTypes=jwtbearer
       - Serilog__MinimumLevel__Default=Information
       - WebApi__Url=http://gezagmock:5020/api/v1
       - ProtocolleringAuthorization__UseAuthorizationChecks=false
