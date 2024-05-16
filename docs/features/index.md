@@ -4,13 +4,11 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4803 scenarios (2 failed, 4801 passed)
+Totaal: 4803 scenarios (0 failed, 4803 passed)
 
 ## GBA v    2.2.1-2024051501
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 373 scenarios (2 failed, 371 passed)
-    - features/bevragen/raadpleeg-met-burgerservicenummer/dev/opschorting-bijhouding-gba.feature:43
-    - features/bevragen/raadpleeg-met-burgerservicenummer/dev/opschorting-bijhouding-gba.feature:54
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 373 scenarios (373 passed)
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
