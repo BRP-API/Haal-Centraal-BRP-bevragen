@@ -4,11 +4,13 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4845 scenarios (0 failed, 4845 passed)
+Totaal: 4803 scenarios (2 failed, 4801 passed)
 
 ## GBA v    2.2.0-2024042201
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 373 scenarios (2 failed, 371 passed)
+    - features/bevragen/raadpleeg-met-burgerservicenummer/dev/opschorting-bijhouding-gba.feature:43
+    - features/bevragen/raadpleeg-met-burgerservicenummer/dev/opschorting-bijhouding-gba.feature:54
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
@@ -21,7 +23,7 @@ Totaal: 4845 scenarios (0 failed, 4845 passed)
   - [leeftijd](./test-report-persoon-leeftijd-gba.html){:target="_blank" rel="noopener"}: 2 scenarios (2 passed)
   - [naam](./test-report-persoon-naam-gba.html){:target="_blank" rel="noopener"}: 15 scenarios (15 passed)
   - [nationaliteit](./test-report-persoon-nationaliteit-gba.html){:target="_blank" rel="noopener"}: 58 scenarios (58 passed)
-  - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding-gba.html){:target="_blank" rel="noopener"}: 45 scenarios (45 passed)
+  - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding-gba.html){:target="_blank" rel="noopener"}: 18 scenarios (18 passed)
   - [ouder](./test-report-persoon-ouder-gba.html){:target="_blank" rel="noopener"}: 32 scenarios (32 passed)
   - [overlijden](./test-report-persoon-overlijden-gba.html){:target="_blank" rel="noopener"}: 24 scenarios (24 passed)
   - [partner](./test-report-persoon-partner-gba.html){:target="_blank" rel="noopener"}: 54 scenarios (54 passed)
@@ -47,7 +49,7 @@ Totaal: 4845 scenarios (0 failed, 4845 passed)
   - [leeftijd](./test-report-persoon-leeftijd.html){:target="_blank" rel="noopener"}: 17 scenarios (17 passed)
   - [naam](./test-report-persoon-naam.html){:target="_blank" rel="noopener"}: 111 scenarios (111 passed)
   - [nationaliteit](./test-report-persoon-nationaliteit.html){:target="_blank" rel="noopener"}: 154 scenarios (154 passed)
-  - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding.html){:target="_blank" rel="noopener"}: 45 scenarios (45 passed)
+  - [opschorting bijhouding](./test-report-persoon-opschorting-bijhouding.html){:target="_blank" rel="noopener"}: 22 scenarios (22 passed)
   - [ouder](./test-report-persoon-ouder.html){:target="_blank" rel="noopener"}: 183 scenarios (183 passed)
   - [overlijden](./test-report-persoon-overlijden.html){:target="_blank" rel="noopener"}: 43 scenarios (43 passed)
   - [partner](./test-report-persoon-partner.html){:target="_blank" rel="noopener"}: 150 scenarios (150 passed)
