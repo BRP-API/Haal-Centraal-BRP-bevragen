@@ -233,7 +233,6 @@ namespace BrpProxy.Middlewares
 
         public static async Task HandleUnhandledException(this HttpContext context, string requestBody, Exception ex, Stream orgResponseBodyStream, IDiagnosticContext diagnosticContext)
         {
-            diagnosticContext.SetException(ex);
 
             var foutbericht = context.CreateInternalServerErrorFoutbericht();
             using var bodyStream = foutbericht.ToJson().ToMemoryStream(context.Response.UseGzip());

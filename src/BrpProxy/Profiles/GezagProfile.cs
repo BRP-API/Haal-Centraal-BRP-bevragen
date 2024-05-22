@@ -19,6 +19,7 @@ public class GezagProfile : Profile
 
         CreateMap<Gba.GezagOuder, Hc.GezagOuder>();
         CreateMap<Gba.Minderjarige, Hc.Minderjarige>();
+        CreateMap<Gba.Meerderjarige, Hc.Meerderjarige>();
     }
 }
 

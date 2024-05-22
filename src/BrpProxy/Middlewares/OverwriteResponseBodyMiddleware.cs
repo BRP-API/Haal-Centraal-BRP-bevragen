@@ -115,6 +115,9 @@ namespace BrpProxy.Middlewares
             }
             catch (Exception ex)
             {
+                // om onbekend reden wordt een AutomapperMappingException niet gelogd als SetException wordt gebruikt
+                _diagnosticContext.Set("exception", ex);
+
                 await context.HandleUnhandledException(requestBody, ex, orgBodyStream, _diagnosticContext);
             }
         }
