@@ -15,7 +15,7 @@ public class FieldsValidator : AbstractValidator<JObject>
     const string FieldExistErrorMessage = "fields||Parameter bevat een niet bestaande veldnaam.";
     const string FieldAllowedErrorMessage = "fields||Parameter bevat een niet toegestane veldnaam.";
 
-    public FieldsValidator(IEnumerable<string> fieldNames, IEnumerable<string> notAllowedFieldNames)
+    public FieldsValidator(IEnumerable<string> fieldNames, IEnumerable<string> notAllowedFieldNames, int maxNumberFields)
     {
         RuleFor(x => x.GetValue("fields"))
             .Cascade(CascadeMode.Stop)
@@ -30,11 +30,11 @@ public class FieldsValidator : AbstractValidator<JObject>
             RuleFor(x => x.Value<JArray>("fields"))
                 .Cascade(CascadeMode.Stop)
                 .Must(x => x!.Count > 0).OverridePropertyName("fields").WithMessage(string.Format(MinItemsErrorMessage, 1))
-                .Must(x => x!.Count <= 130).OverridePropertyName("fields").WithMessage(string.Format(MaxItemsErrorMessage, 130));
+                .Must(x => x!.Count <= maxNumberFields).OverridePropertyName("fields").WithMessage(string.Format(MaxItemsErrorMessage, maxNumberFields));
 
             RuleForEach(x => x.Value<JArray>("fields")!.Select(y => (string?)y))
                 .SetValidator(new FieldValidator(fieldNames, notAllowedFieldNames))
-                .When(x => x.Value<JArray>("fields")!.Count > 0 && x.Value<JArray>("fields")!.Count < 131)
+                .When(x => x.Value<JArray>("fields")!.Count > 0 && x.Value<JArray>("fields")!.Count <= maxNumberFields)
                 .OverridePropertyName("fields");
         });
     }
