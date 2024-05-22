@@ -24,85 +24,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     
 
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
-    [JsonInheritanceAttribute("ZoekMetGeslachtsnaamEnGeboortedatum", typeof(ZoekMetGeslachtsnaamEnGeboortedatumResponse))]
-    [JsonInheritanceAttribute("ZoekMetNaamEnGemeenteVanInschrijving", typeof(ZoekMetNaamEnGemeenteVanInschrijvingResponse))]
-    [JsonInheritanceAttribute("RaadpleegMetBurgerservicenummer", typeof(RaadpleegMetBurgerservicenummerResponse))]
-    [JsonInheritanceAttribute("ZoekMetPostcodeEnHuisnummer", typeof(ZoekMetPostcodeEnHuisnummerResponse))]
-    [JsonInheritanceAttribute("ZoekMetStraatHuisnummerEnGemeenteVanInschrijving", typeof(ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse))]
-    [JsonInheritanceAttribute("ZoekMetNummeraanduidingIdentificatie", typeof(ZoekMetNummeraanduidingIdentificatieResponse))]
-    [JsonInheritanceAttribute("ZoekMetAdresseerbaarObjectIdentificatie", typeof(ZoekMetAdresseerbaarObjectIdentificatieResponse))]
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PersonenQueryResponse
-    {
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetGeslachtsnaamEnGeboortedatumResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetNaamEnGemeenteVanInschrijvingResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RaadpleegMetBurgerservicenummerResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPersoon> Personen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetPostcodeEnHuisnummerResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetNummeraanduidingIdentificatieResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ZoekMetAdresseerbaarObjectIdentificatieResponse : PersonenQueryResponse
-    {
-        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaGezagPersoonBeperkt> Personen { get; set; }
-
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
     [JsonInheritanceAttribute("ZoekMetGeslachtsnaamEnGeboortedatum", typeof(ZoekMetGeslachtsnaamEnGeboortedatum))]
     [JsonInheritanceAttribute("ZoekMetNaamEnGemeenteVanInschrijving", typeof(ZoekMetNaamEnGemeenteVanInschrijving))]
     [JsonInheritanceAttribute("RaadpleegMetBurgerservicenummer", typeof(RaadpleegMetBurgerservicenummer))]
@@ -258,17 +179,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
 
     }
 
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class BadRequestFoutbericht : Foutbericht
-    {
-        /// <summary>
-        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("invalidParams", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<InvalidParams> InvalidParams { get; set; }
-
-    }
-
     /// <summary>
     /// Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
     /// </summary>
@@ -322,32 +232,17 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
 
     }
 
-    /// <summary>
-    /// Details over fouten in opgegeven parameters
-    /// </summary>
+    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "type")]
+    [JsonInheritanceAttribute("ZoekMetGeslachtsnaamEnGeboortedatum", typeof(ZoekMetGeslachtsnaamEnGeboortedatumResponse))]
+    [JsonInheritanceAttribute("ZoekMetNaamEnGemeenteVanInschrijving", typeof(ZoekMetNaamEnGemeenteVanInschrijvingResponse))]
+    [JsonInheritanceAttribute("RaadpleegMetBurgerservicenummer", typeof(RaadpleegMetBurgerservicenummerResponse))]
+    [JsonInheritanceAttribute("ZoekMetPostcodeEnHuisnummer", typeof(ZoekMetPostcodeEnHuisnummerResponse))]
+    [JsonInheritanceAttribute("ZoekMetStraatHuisnummerEnGemeenteVanInschrijving", typeof(ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse))]
+    [JsonInheritanceAttribute("ZoekMetNummeraanduidingIdentificatie", typeof(ZoekMetNummeraanduidingIdentificatieResponse))]
+    [JsonInheritanceAttribute("ZoekMetAdresseerbaarObjectIdentificatie", typeof(ZoekMetAdresseerbaarObjectIdentificatieResponse))]
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class InvalidParams
+    public partial class PersonenQueryResponse
     {
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Uri Type { get; set; }
-
-        /// <summary>
-        /// Naam van de parameter
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Systeemcode die het type fout aangeeft
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Beschrijving van de fout op de parameterwaarde
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty("reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Reason { get; set; }
 
         private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
 
@@ -357,284 +252,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaPersoonBeperkt
-    {
-        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Burgerservicenummer { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaGeboorteBeperkt Geboorte { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int GeheimhoudingPersoonsgegevens { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslacht { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("persoonInOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaInOnderzoek PersoonInOnderzoek { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaNaamBasis Naam { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("opschortingBijhouding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaOpschortingBijhouding OpschortingBijhouding { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel GemeenteVanInschrijving { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("verblijfplaats", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaVerblijfplaatsBeperkt Verblijfplaats { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("rni", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RniDeelnemer> Rni { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("verificatie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaVerificatie Verificatie { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    /// <summary>
-    /// Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RniDeelnemer
-    {
-        [Newtonsoft.Json.JsonProperty("deelnemer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Deelnemer { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("omschrijvingVerdrag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OmschrijvingVerdrag { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("categorie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Categorie { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaVerificatie
-    {
-        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Datum { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("omschrijving", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Omschrijving { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaPersoon
-    {
-        [Newtonsoft.Json.JsonProperty("aNummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ANummer { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Burgerservicenummer { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("datumEersteInschrijvingGBA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DatumEersteInschrijvingGBA { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int GeheimhoudingPersoonsgegevens { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslacht { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("persoonInOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaInOnderzoek PersoonInOnderzoek { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("gezagInOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaInOnderzoek GezagInOnderzoek { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("uitsluitingKiesrecht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaUitsluitingKiesrecht UitsluitingKiesrecht { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("europeesKiesrecht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaEuropeesKiesrecht EuropeesKiesrecht { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaNaamPersoon Naam { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("nationaliteiten", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaNationaliteit> Nationaliteiten { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaGeboorte Geboorte { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("opschortingBijhouding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaOpschortingBijhouding OpschortingBijhouding { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("overlijden", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaOverlijden Overlijden { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("verblijfplaats", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaVerblijfplaats Verblijfplaats { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("immigratie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaImmigratie Immigratie { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel GemeenteVanInschrijving { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("datumInschrijvingInGemeente", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DatumInschrijvingInGemeente { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("indicatieCurateleRegister", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool IndicatieCurateleRegister { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("indicatieGezagMinderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public IndicatieGezagMinderjarige IndicatieGezagMinderjarige { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("gezag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<AbstractGezagsrelatie> Gezag { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("verblijfstitel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaVerblijfstitel Verblijfstitel { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("kinderen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaKind> Kinderen { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("ouders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaOuder> Ouders { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("partners", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GbaPartner> Partners { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("rni", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RniDeelnemer> Rni { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("verificatie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaVerificatie Verificatie { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaGezagPersoonBeperkt : GbaPersoonBeperkt
-    {
-        [Newtonsoft.Json.JsonProperty("gezag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<AbstractGezagsrelatie> Gezag { get; set; }
-
-    }
-
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TweehoofdigOuderlijkGezag : AbstractGezagsrelatie
-    {
-        [Newtonsoft.Json.JsonProperty("ouders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GezagOuder> Ouders { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Minderjarige Minderjarige { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GezagOuder
-    {
-        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Burgerservicenummer { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Minderjarige
-    {
-        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Always)]
-        public string Burgerservicenummer { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class EenhoofdigOuderlijkGezag : AbstractGezagsrelatie
-    {
-        [Newtonsoft.Json.JsonProperty("ouder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GezagOuder Ouder { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Minderjarige Minderjarige { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GezamenlijkGezag : AbstractGezagsrelatie
-    {
-        [Newtonsoft.Json.JsonProperty("ouder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GezagOuder Ouder { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("derde", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GezagOuder Derde { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Minderjarige Minderjarige { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class Voogdij : AbstractGezagsrelatie
-    {
-        [Newtonsoft.Json.JsonProperty("derden", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GezagOuder> Derden { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Minderjarige Minderjarige { get; set; }
 
     }
 
@@ -722,18 +339,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     }
 
     /// <summary>
-    /// * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
-    /// <br/>
-    /// </summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaOpschortingBijhouding : OpschortingBijhoudingBasis
-    {
-        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Datum { get; set; }
-
-    }
-
-    /// <summary>
     /// * **reden** - wordt gevuld met waarden voor 'Reden_Opschorting_Bijhouding' in 'tabelwaarden.csv'.
     /// <br/>
     /// </summary>
@@ -751,6 +356,18 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    /// <summary>
+    /// * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+    /// <br/>
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GbaOpschortingBijhouding : OpschortingBijhoudingBasis
+    {
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Datum { get; set; }
 
     }
 
@@ -804,6 +421,115 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    /// <summary>
+    /// Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class RniDeelnemer
+    {
+        [Newtonsoft.Json.JsonProperty("deelnemer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Deelnemer { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("omschrijvingVerdrag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string OmschrijvingVerdrag { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("categorie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Categorie { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GbaVerificatie
+    {
+        [Newtonsoft.Json.JsonProperty("datum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Datum { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("omschrijving", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Omschrijving { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GbaPersoonBeperkt
+    {
+        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Burgerservicenummer { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaGeboorteBeperkt Geboorte { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int GeheimhoudingPersoonsgegevens { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("persoonInOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaInOnderzoek PersoonInOnderzoek { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaNaamBasis Naam { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("opschortingBijhouding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaOpschortingBijhouding OpschortingBijhouding { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel GemeenteVanInschrijving { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("verblijfplaats", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaVerblijfplaatsBeperkt Verblijfplaats { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("rni", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RniDeelnemer> Rni { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("verificatie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaVerificatie Verificatie { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ZoekMetGeslachtsnaamEnGeboortedatumResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ZoekMetNaamEnGemeenteVanInschrijvingResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
 
     }
 
@@ -941,6 +667,7 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
         public string DatumAanvangAdreshouding { get; set; }
 
         [Newtonsoft.Json.JsonProperty("datumIngangGeldigheid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Obsolete]
         public string DatumIngangGeldigheid { get; set; }
 
         [Newtonsoft.Json.JsonProperty("functieAdres", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -973,6 +700,104 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
             get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
             set { _additionalProperties = value; }
         }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GezagOuder
+    {
+        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Always)]
+        public string Burgerservicenummer { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class Minderjarige
+    {
+        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Always)]
+        public string Burgerservicenummer { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class TweehoofdigOuderlijkGezag : AbstractGezagsrelatie
+    {
+        [Newtonsoft.Json.JsonProperty("ouders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GezagOuder> Ouders { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Minderjarige Minderjarige { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class EenhoofdigOuderlijkGezag : AbstractGezagsrelatie
+    {
+        [Newtonsoft.Json.JsonProperty("ouder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GezagOuder Ouder { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Minderjarige Minderjarige { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class Meerderjarige
+    {
+        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Burgerservicenummer { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GezamenlijkGezag : AbstractGezagsrelatie
+    {
+        [Newtonsoft.Json.JsonProperty("ouder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GezagOuder Ouder { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("derde", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Meerderjarige Derde { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Minderjarige Minderjarige { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class Voogdij : AbstractGezagsrelatie
+    {
+        [Newtonsoft.Json.JsonProperty("derden", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<Meerderjarige> Derden { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("minderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Minderjarige Minderjarige { get; set; }
 
     }
 
@@ -1075,44 +900,6 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
 
     }
 
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class GbaPartner
-    {
-        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Burgerservicenummer { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel Geslacht { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("soortVerbintenis", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Waardetabel SoortVerbintenis { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaNaamBasis Naam { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaGeboorte Geboorte { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaInOnderzoek InOnderzoek { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("aangaanHuwelijkPartnerschap", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaAangaanHuwelijkPartnerschap AangaanHuwelijkPartnerschap { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("ontbindingHuwelijkPartnerschap", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public GbaOntbindingHuwelijkPartnerschap OntbindingHuwelijkPartnerschap { get; set; }
-
-        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
-
-        [Newtonsoft.Json.JsonExtensionData]
-        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
-        {
-            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
-            set { _additionalProperties = value; }
-        }
-
-    }
-
     /// <summary>
     /// Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
     /// <br/>* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
@@ -1161,8 +948,233 @@ namespace HaalCentraal.BrpProxy.Generated.Gba
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class IndicatieGezagMinderjarige : Waardetabel
+    public partial class GbaPartner
     {
+        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Burgerservicenummer { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("soortVerbintenis", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel SoortVerbintenis { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaNaamBasis Naam { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaGeboorte Geboorte { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("inOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaInOnderzoek InOnderzoek { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("aangaanHuwelijkPartnerschap", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaAangaanHuwelijkPartnerschap AangaanHuwelijkPartnerschap { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("ontbindingHuwelijkPartnerschap", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaOntbindingHuwelijkPartnerschap OntbindingHuwelijkPartnerschap { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GbaPersoon
+    {
+        [Newtonsoft.Json.JsonProperty("aNummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ANummer { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("burgerservicenummer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Burgerservicenummer { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datumEersteInschrijvingGBA", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DatumEersteInschrijvingGBA { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geheimhoudingPersoonsgegevens", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int GeheimhoudingPersoonsgegevens { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geslacht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel Geslacht { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("persoonInOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaInOnderzoek PersoonInOnderzoek { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("gezagInOnderzoek", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaInOnderzoek GezagInOnderzoek { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("uitsluitingKiesrecht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaUitsluitingKiesrecht UitsluitingKiesrecht { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("europeesKiesrecht", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaEuropeesKiesrecht EuropeesKiesrecht { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("naam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaNaamPersoon Naam { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("nationaliteiten", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaNationaliteit> Nationaliteiten { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("geboorte", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaGeboorte Geboorte { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("opschortingBijhouding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaOpschortingBijhouding OpschortingBijhouding { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("overlijden", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaOverlijden Overlijden { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("verblijfplaats", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaVerblijfplaats Verblijfplaats { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("immigratie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaImmigratie Immigratie { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("gemeenteVanInschrijving", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public Waardetabel GemeenteVanInschrijving { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("datumInschrijvingInGemeente", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DatumInschrijvingInGemeente { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("indicatieCurateleRegister", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IndicatieCurateleRegister { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("indicatieGezagMinderjarige", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [System.Obsolete]
+        public Waardetabel IndicatieGezagMinderjarige { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("gezag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<AbstractGezagsrelatie> Gezag { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("verblijfstitel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaVerblijfstitel Verblijfstitel { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("kinderen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaKind> Kinderen { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("ouders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaOuder> Ouders { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("partners", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPartner> Partners { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("rni", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RniDeelnemer> Rni { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("verificatie", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public GbaVerificatie Verificatie { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class RaadpleegMetBurgerservicenummerResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPersoon> Personen { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ZoekMetPostcodeEnHuisnummerResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ZoekMetNummeraanduidingIdentificatieResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaPersoonBeperkt> Personen { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class GbaGezagPersoonBeperkt : GbaPersoonBeperkt
+    {
+        [Newtonsoft.Json.JsonProperty("gezag", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<AbstractGezagsrelatie> Gezag { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ZoekMetAdresseerbaarObjectIdentificatieResponse : PersonenQueryResponse
+    {
+        [Newtonsoft.Json.JsonProperty("personen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<GbaGezagPersoonBeperkt> Personen { get; set; }
+
+    }
+
+    /// <summary>
+    /// Details over fouten in opgegeven parameters
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class InvalidParams
+    {
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Uri Type { get; set; }
+
+        /// <summary>
+        /// Naam van de parameter
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Systeemcode die het type fout aangeeft
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Beschrijving van de fout op de parameterwaarde
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Reason { get; set; }
+
+        private System.Collections.Generic.IDictionary<string, object> _additionalProperties;
+
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties
+        {
+            get { return _additionalProperties ?? (_additionalProperties = new System.Collections.Generic.Dictionary<string, object>()); }
+            set { _additionalProperties = value; }
+        }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class BadRequestFoutbericht : Foutbericht
+    {
+        /// <summary>
+        /// Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("invalidParams", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<InvalidParams> InvalidParams { get; set; }
 
     }
 

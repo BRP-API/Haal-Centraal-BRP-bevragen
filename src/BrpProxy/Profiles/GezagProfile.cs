@@ -8,8 +8,6 @@ public class GezagProfile : Profile
 {
     public GezagProfile()
     {
-        CreateMap<Gba.IndicatieGezagMinderjarige, Hc.IndicatieGezagMinderjarige>();
-
         CreateMap<Gba.AbstractGezagsrelatie, Hc.AbstractGezagsrelatie?>().ConvertUsing<GezagConverter>();
 
         CreateMap<Gba.EenhoofdigOuderlijkGezag, Hc.EenhoofdigOuderlijkGezag>();
