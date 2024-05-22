@@ -178,10 +178,8 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          allOf:
-            - $ref: 'common.yaml#/components/schemas/Waardetabel'
-            - type: object
-              deprecated: true
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'
         verblijfstitel:
@@ -252,10 +250,8 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          allOf:
-            - $ref: 'common.yaml#/components/schemas/Waardetabel'
-            - type: object
-              deprecated: true
+          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'
         verblijfstitel:

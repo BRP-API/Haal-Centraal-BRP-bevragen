@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 servers:
   - description: |
       Proef omgeving
@@ -19,7 +19,7 @@ info:
     url: https://eupl.eu/1.2/nl/
 tags:
   - name: Personen
-externaldocs:
+externalDocs:
   description: BRP API Personen website
   url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
 paths:

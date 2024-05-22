@@ -200,10 +200,8 @@ components:
           datumVan:
             $ref: 'datum.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            allOf:
-              - $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-              - type: object
-                deprecated: true
+            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            deprecated: true
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
     Adres:
@@ -229,10 +227,8 @@ components:
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
-              allOf:
-                - $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-                - type: object
-                  deprecated: true
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              deprecated: true
             indicatieVastgesteldVerblijftNietOpAdres:
               $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
             inOnderzoek:
@@ -253,10 +249,8 @@ components:
             verblijfadres:
               $ref: "#/components/schemas/VerblijfadresLocatie"
             datumIngangGeldigheid:
-              allOf:
-                - $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-                - type: object
-                  deprecated: true
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              deprecated: true
             indicatieVastgesteldVerblijftNietOpAdres:
               $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
             inOnderzoek:
@@ -269,10 +263,8 @@ components:
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
-              allOf:
-                - $ref: 'datum.yaml#/components/schemas/AbstractDatum'
-                - type: object
-                  deprecated: true
+              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              deprecated: true
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
     GbaVerblijfplaats:
@@ -289,10 +281,8 @@ components:
             datumAanvangAdreshouding:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
             datumIngangGeldigheid:
-              allOf:
-                - $ref: 'datum.yaml#/components/schemas/GbaDatum'
-                - type: object
-                  deprecated: true
+              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+              deprecated: true
             functieAdres:
               $ref: 'common.yaml#/components/schemas/Waardetabel'
             naamOpenbareRuimte:

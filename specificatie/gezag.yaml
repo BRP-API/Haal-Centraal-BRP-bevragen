@@ -38,8 +38,10 @@ components:
       required: 
         - burgerservicenummer
     GezagOuder:
-      allOf: 
-        - $ref: '#/components/schemas/Meerderjarige'
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
       required: 
         -  burgerservicenummer
     AbstractGezagsrelatie:
