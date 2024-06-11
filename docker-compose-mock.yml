@@ -13,6 +13,8 @@ services:
       - ASPNETCORE_URLS=http://+:5010
     ports:
       - "5010:5010"
+    volumes:
+      - ./src/config/BrpService:/app/Data
     networks:
       - brp-api-network
 
