@@ -33,6 +33,8 @@ Een mock van de {{ site.apiname }} is beschikbaar als een containerized applicat
 
 Je kunt het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose-mock.yml){:target="_blank" rel="noopener"} gebruiken om de {{ site.apiname }} mock met behulp van [Docker Desktop](https://www.docker.com/products/docker-desktop) te draaien op een lokale machine.
 
+In het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose-mock.yml){:target="_blank" rel="noopener"} is een volume map geconfigureerd naar de ./src/config/BrpService map met het test-data.json bestand. Dit bestand bevat gegevens van persoonslijsten die voorkomen in de LAP omgeving en kan worden uitgebreid met eigen test persoonsgegevens. Herstart de container als het test-data.json bestand is gewijzigd. Aangezien dit bestand kan worden bijgewerkt, is het handig om wijzigingen aan het einde van het bestand toe te voegen. Dit maakt het makkelijker om eigen wijzigingen veilig te stellen voordat het bestand lokaal moet worden bijgewerkt.  
+
 In plaats van het docker compose bestand kun je de [Kubernetes configuratie bestanden]({{ site.devBranchUrl}}/.k8s){:target="_blank" rel="noopener"} gebruiken om de {{ site.apiname }} mock te draaien op een lokale machine. De {{ site.apiname }} mock maakt gebruik van de [testdataset persoonslijsten proefomgevingen GBA-V](https://www.rvig.nl/media/288) als input om de productie situatie zoveel mogelijk te kunnen simuleren.
 
 De volgende paragrafen beschrijven wat je moet doen om de {{ site.apiname }} mock op een lokale machine te installeren en aan te roepen.
