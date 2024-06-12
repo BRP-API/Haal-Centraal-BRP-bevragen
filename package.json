@@ -23,7 +23,7 @@
     "specs:report": "node scripts/generate-cucumber-report.js",
     "specs:summary": "node scripts/parse-summary.js",
     "specs:verify": "bash scripts/specs-verify.sh",
-    "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
+    "pre-commit": "npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
     "prepare": "husky install"
   },
   "repository": {
@@ -37,9 +37,9 @@
   },
   "homepage": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.7.0",
+    "@cucumber/cucumber": "^10.8.0",
     "@openapitools/openapi-generator-cli": "^2.13.4",
-    "@redocly/cli": "^1.12.2",
+    "@redocly/cli": "^1.15.0",
     "@stoplight/spectral-cli": "^6.11.1",
     "axios": "^1.7.2",
     "chai": "^4.4.1",
@@ -49,6 +49,6 @@
     "husky": "^9.0.11",
     "mvn-dl": "^6.1.1",
     "nswag": "^14.0.7",
-    "pg": "^8.11.5"
+    "pg": "^8.12.0"
   }
 }
