@@ -2,10 +2,12 @@
 using Elastic.CommonSchema.Serilog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Enrichers.Sensitive;
 using Serilog.Events;
 using Serilog.Exceptions;
 using System.Text;
@@ -108,6 +110,8 @@ public static class SerilogHelpers
     {
         return (context, serviceProvider, config) =>
         {
+            var maskProperties = context.Configuration.GetSection("SensitiveProperties").Get<string[]>() ?? Array.Empty<string>();
+
             config
                 .ReadFrom.Configuration(context.Configuration)
                 .SetMinimumLevelOverrides()
@@ -115,6 +119,11 @@ public static class SerilogHelpers
                 .Destructure.JsonNetTypes()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
+                .Enrich.WithSensitiveDataMasking(options =>
+                {
+                    options.MaskingOperators.Clear();
+                    options.MaskProperties.AddRange(maskProperties);
+                })
                 ;
 
             context.ConfigureConsoleLogging(config, logger);
@@ -159,7 +168,7 @@ public static class SerilogHelpers
             sb.Append("Log level: Debug");
         }
 
-        logger.Information($"{sb}. Enable debug console logging");
+        logger.Information("Enable debug console logging. {Reasons}", sb);
         config.WriteTo.Console(outputTemplate: ConsoleLogTemplate, theme: Serilog.Sinks.SystemConsole.Themes.AnsiConsoleTheme.Code);
     }
 
@@ -171,7 +180,7 @@ public static class SerilogHelpers
             return;
         }
 
-        logger.Information("Enable logging to Seq. ServerUrl: {serverUrl}", seqServerUrl);
+        logger.Information("Enable logging to Seq. Server url: {ServerUrl}", seqServerUrl);
         config.WriteTo.Seq(serverUrl: seqServerUrl);
     }
 
@@ -237,7 +246,7 @@ public static class SerilogHelpers
             retainedFileCountLimit = 10;
         }
 
-        logger.Information("Enable file logging using Elasticsearch Common Schema format. Path: {path}, fileSizeLimit: {fileSizeLimitBytes}", ecsPath, fileSizeLimitBytes);
+        logger.Information("Enable file logging using Elasticsearch Common Schema format. Path: {Path}, size limit: {FileSizeLimitBytes}, retained file count limit: {RetainedFileCountLimit}", ecsPath, fileSizeLimitBytes, retainedFileCountLimit);
 
         config.WriteTo.PersistentFile(
             formatter: config.ConfigureLoggingWithEcsTextFormatter(serviceProvider),
