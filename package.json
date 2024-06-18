@@ -39,7 +39,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^10.8.0",
     "@openapitools/openapi-generator-cli": "^2.13.4",
-    "@redocly/cli": "^1.15.0",
+    "@redocly/cli": "^1.16.0",
     "@stoplight/spectral-cli": "^6.11.1",
     "axios": "^1.7.2",
     "chai": "^4.4.1",
@@ -48,7 +48,7 @@
     "deep-equal-in-any-order": "^2.0.6",
     "husky": "^9.0.11",
     "mvn-dl": "^6.1.1",
-    "nswag": "^14.0.7",
+    "nswag": "^14.0.8",
     "pg": "^8.12.0"
   }
 }
