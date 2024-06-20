@@ -46,7 +46,16 @@ internal class RequestResponseLoggerMiddleware
             }
             catch(Exception ex)
             {
-                _diagnosticContext.SetException(ex);
+                if (ex.GetType().Name == "AutoMapperMappingException")
+                {
+                    _diagnosticContext.SetException(new NotImplementedException(ex.ToString()));
+                }
+                else
+                {
+                    _diagnosticContext.SetException(ex);
+                }
+
+                context.Response.Body = newBodyStream;
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
