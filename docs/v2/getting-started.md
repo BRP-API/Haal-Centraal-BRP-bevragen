@@ -20,9 +20,9 @@ Download de [OAS3 specificatie]({{ site.mainBranchUrl }}/specificatie/genereerva
 
 De [functionele documentatie](./features-overzicht) van de {{ site.apiname }} vind je in het [features overzicht](./features-overzicht).
 
-## Probeer en test de API in de proefomgeving
+## Probeer en test de API in de demo omgeving
 
-Je kunt de {{ site.apiname }} uitproberen op de proefomgeving met de volgende url: [{{ site.proefProxyUrl }}]. Hiervoor heb je een apikey nodig.
+Je kunt de {{ site.apiname }} uitproberen op de demo omgeving met de volgende url: [{{ site.proefProxyUrl }}]. Hiervoor heb je een apikey nodig.
 
 - Vraag een apikey aan bij de product owner [{{ site.PO-email }}](mailto:{{ site.PO-email }}). 
 - Voeg de apikey toe aan een request met de __X-API-KEY__ header.
