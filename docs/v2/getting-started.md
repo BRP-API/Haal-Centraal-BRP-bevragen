@@ -52,7 +52,7 @@ Optioneel kun je de volgende tools ook op de lokale machine installeren:
 
 ### Gebruik Docker als container engine
 
-- Download het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose.yml){:target="_blank" rel="noopener"}
+- Download het [docker compose bestand]({{ site.mainBranchUrl }}/docker-compose-mock.yml){:target="_blank" rel="noopener"}
 - Start een command prompt window voor de map met het docker-compose.yaml bestand
 - Start de {{ site.apiname }} en de mock met behulp van de volgende statement:
   ```sh
@@ -64,7 +64,7 @@ Optioneel kun je de volgende tools ook op de lokale machine installeren:
 - Valideer dat de {{ site.apiname }} mock draait met behulp van de volgende curl statement:
   ```sh
 
-  curl --location --request POST 'http://localhost:5001/haalcentraal/api/brp/personen' \
+  curl --location --request POST 'http://localhost:5010/haalcentraal/api/brp/personen' \
   --header 'Content-Type: application/json' \
   --data-raw '{
       "type": "RaadpleegMetBurgerservicenummer",
