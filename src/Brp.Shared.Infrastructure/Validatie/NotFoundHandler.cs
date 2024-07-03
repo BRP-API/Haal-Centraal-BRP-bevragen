@@ -6,12 +6,16 @@ namespace Brp.Shared.Infrastructure.Validatie;
 
 public static class NotFoundHandler
 {
-    public static async ValueTask<bool> HandleNotFound(this HttpContext context)
+    public static async ValueTask<bool> HandleNotFound(this HttpContext context, System.IO.Stream? orgBodyStream = null)
     {
         if(context.Response.StatusCode == StatusCodes.Status404NotFound)
         {
             var problemDetails = context.Request.CreateProblemDetailsFor(StatusCodes.Status404NotFound);
 
+            if (orgBodyStream != null)
+            {
+                context.Response.Body = orgBodyStream;
+            }
             await context.Response.WriteProblemDetailsAsync(problemDetails);
 
             return false;

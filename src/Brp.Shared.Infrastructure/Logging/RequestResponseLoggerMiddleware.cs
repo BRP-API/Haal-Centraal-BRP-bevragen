@@ -1,8 +1,8 @@
 ﻿using Brp.Shared.Infrastructure.Http;
+using Brp.Shared.Infrastructure.Json;
 using Brp.Shared.Infrastructure.ProblemDetails;
 using Brp.Shared.Infrastructure.Stream;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
 using Serilog;
 using Serilog.Context;
 
@@ -26,7 +26,7 @@ internal class RequestResponseLoggerMiddleware
     public async Task Invoke(HttpContext context)
     {
         context.Items.Add(MapToEcsKeys.EcsRequestContentType, context.Request.ContentType);
-        _diagnosticContext.Set("RequestHeaders", context.Request.Headers);
+        context.Items.Add("RequestHeaders", context.Request.Headers.ToJsonCompact());
 
         var requestBody = await context.Request.ReadBodyAsync();
         context.Items.Add(MapToEcsKeys.EcsRequestBody, requestBody);
@@ -67,13 +67,11 @@ internal class RequestResponseLoggerMiddleware
             ? await context.Response.ReadBodyAsync()
             : await newBodyStream.ReadAsync(context.Response.UseGzip());
 
-        _diagnosticContext.Set("ResponseHeaders", context.Response.Headers);
+        context.Items.Add("ResponseHeaders", context.Response.Headers.ToJsonCompact());
 
         if(context.Response.StatusCode >= StatusCodes.Status400BadRequest)
         {
             context.Items.Add(MapToEcsKeys.EcsResponseBody, responseBody);
-
-            _diagnosticContext.Set("ResponseBody", JObject.Parse(responseBody), true);
         }
 
         using var bodyStream = responseBody.ToMemoryStream(context.Response.UseGzip());
