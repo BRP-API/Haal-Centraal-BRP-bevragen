@@ -3,18 +3,17 @@ using Brp.Shared.Infrastructure.ProblemDetails;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Serilog;
 
 namespace Brp.Shared.Infrastructure.Validatie;
 
 public static class InvalidJsonHandler
 {
-    public static async ValueTask<bool> HandleRequestBodyIsValidJson(this HttpContext context, string requestBody, IRequestBodyValidator requestBodyValidator, IDiagnosticContext diagnosticContext)
+    public static async ValueTask<bool> HandleRequestBodyIsValidJson(this HttpContext context, string requestBody, IRequestBodyValidator requestBodyValidator)
     {
         try
         {
             // catch invalid JSON
-            var input = JObject.Parse(requestBody);
+            JObject.Parse(requestBody);
 
             var result = requestBodyValidator.ValidateRequestBody(requestBody);
 
@@ -27,12 +26,10 @@ public static class InvalidJsonHandler
                 return false;
             }
 
-            diagnosticContext.Set("RequestBody", input, true);
+            context.Items.Add("RequestBody", requestBody);
         }
-        catch (JsonReaderException ex)
+        catch (JsonReaderException)
         {
-            diagnosticContext.SetException(ex);
-
             var problemDetails = context.Request.CreateProblemDetails(StatusCodes.Status400BadRequest, "De bevraging bevat een fout.", "Request body is geen geldige JSON.");
 
             await context.Response.WriteProblemDetailsAsync(problemDetails);

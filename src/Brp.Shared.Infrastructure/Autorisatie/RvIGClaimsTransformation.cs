@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Brp.Shared.Infrastructure.Json;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Linq;
-using Serilog;
 using System.Security.Claims;
 
 namespace Brp.Shared.Infrastructure.Autorisatie;
 
 public class RvIGClaimsTransformation : IClaimsTransformation
 {
-    private readonly IDiagnosticContext _diagnosticContext;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public RvIGClaimsTransformation(IDiagnosticContext diagnosticContext)
+    public RvIGClaimsTransformation(IHttpContextAccessor httpContextAccessor)
     {
-        _diagnosticContext = diagnosticContext;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public Task<ClaimsPrincipal> TransformAsync(ClaimsPrincipal principal)
@@ -29,7 +30,8 @@ public class RvIGClaimsTransformation : IClaimsTransformation
             claims.Add(new Claim(claimKeyValue[0], claimKeyValue[1]));
         }
 
-        _diagnosticContext.Set("Claims", jObject, true);
+        _httpContextAccessor.HttpContext?.Items.Add("Claims", jObject.ToJsonCompact());
+
         principal.AddIdentity(new ClaimsIdentity(claims));
 
         return Task.FromResult(principal);

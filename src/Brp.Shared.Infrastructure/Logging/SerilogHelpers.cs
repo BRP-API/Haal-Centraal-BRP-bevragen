@@ -1,4 +1,5 @@
-﻿using Destructurama;
+﻿using Brp.Shared.Infrastructure.Json;
+using Destructurama;
 using Elastic.CommonSchema.Serilog;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using Serilog;
 using Serilog.Enrichers.Sensitive;
 using Serilog.Events;
@@ -184,47 +186,68 @@ public static class SerilogHelpers
         config.WriteTo.Seq(serverUrl: seqServerUrl);
     }
 
-    private static EcsTextFormatter ConfigureLoggingWithEcsTextFormatter(this LoggerConfiguration config, IServiceProvider serviceProvider)
+    private static EcsTextFormatter<BrpEcsDocument> ConfigureLoggingWithEcsTextFormatter(this LoggerConfiguration config, IServiceProvider serviceProvider)
     {
         var httpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
         config.Enrich.WithEcsHttpContext(httpContextAccessor);
 
-        EcsTextFormatterConfiguration ecsTextFormatterConfig = new()
+        EcsTextFormatterConfiguration<BrpEcsDocument> ecsTextFormatterConfig = new ()
         {
             MapCustom = (ecs, logEvent) =>
             {
-                httpContextAccessor?.HttpContext?.MapHttpContextItemToEcsHttpProperty(MapToEcsKeys.EcsRequestContentType, ecs);
-                httpContextAccessor?.HttpContext?.MapHttpContextItemToEcsHttpProperty(MapToEcsKeys.EcsRequestBody, ecs);
-                httpContextAccessor?.HttpContext?.MapHttpContextItemToEcsHttpProperty(MapToEcsKeys.EcsResponseBody, ecs);
+                httpContextAccessor?.HttpContext?.Items.MapToBrpEcsDocument(ecs);
 
                 return ecs;
             }
         };
 
-        return new EcsTextFormatter(ecsTextFormatterConfig);
+        return new EcsTextFormatter<BrpEcsDocument>(ecsTextFormatterConfig);
     }
 
-    private static void MapHttpContextItemToEcsHttpProperty(this HttpContext httpContext, string key, Elastic.CommonSchema.EcsDocument ecs)
+    private static void MapToBrpEcsDocument(this IDictionary<object, object?> dict, BrpEcsDocument ecs)
     {
-        if (httpContext.Items[key] is not string val)
+        foreach(var key in dict.Keys)
         {
-            return;
-        }
+            object? value = null;
+            if (dict[key] is string val)
+            {
+                try
+                {
+                    value = JObject.Parse(val).ToDictionary();
+                }
+                catch (Exception)
+                {
+                    value = val;
+                }
+            }
 
-        ecs.Http ??= new Elastic.CommonSchema.Http();
-        switch (key)
-        {
-            case MapToEcsKeys.EcsRequestContentType:
-                ecs.Http.RequestMimeType = val;
-                break;
-            case MapToEcsKeys.EcsRequestBody:
-                ecs.Http.RequestBodyContent = val;
-                break;
-            case MapToEcsKeys.EcsResponseBody:
-                ecs.Http.ResponseBodyContent = val;
-                break;
-            default:
-                break;
+            switch (key)
+            {
+                case "Autorisatie":
+                    ecs.Brp.Autorisatie = value;
+                    break;
+                case "Claims":
+                    ecs.Brp.Claims = value;
+                    break;
+                case "Protocollering":
+                    ecs.Brp.Protocollering = value;
+                    break;
+                case "RequestHeaders":
+                    ecs.Brp.RequestHeaders = value;
+                    break;
+                case MapToEcsKeys.EcsRequestBody:
+                    ecs.Brp.RequestBody = value;
+                    break;
+                case "ResponseHeaders":
+                    ecs.Brp.ResponseHeaders = value;
+                    break;
+                case MapToEcsKeys.EcsResponseBody:
+                    ecs.Brp.ResponseBody = value;
+                    break;
+                case "Unauthorized":
+                    ecs.Brp.Unauthorized = value;
+                    break;
+            }
         }
     }
 
