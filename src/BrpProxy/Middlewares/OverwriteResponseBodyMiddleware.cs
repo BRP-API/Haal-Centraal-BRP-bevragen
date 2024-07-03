@@ -48,7 +48,7 @@ namespace BrpProxy.Middlewares
 
                 requestBody = await context.Request.ReadBodyAsync();
 
-                if (!await context.HandleRequestBodyIsValidJson(requestBody, new DummyRequestBodyValidationService(), _diagnosticContext))
+                if (!await context.HandleRequestBodyIsValidJson(requestBody, new DummyRequestBodyValidationService()))
                 {
                     return;
                 }
