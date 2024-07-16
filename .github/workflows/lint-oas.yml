@@ -23,8 +23,6 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm ci
-      - name: lint OAS
-        run: npm run oas:lint
       - name: resolve OAS
         run: npm run oas:resolve
       - name: lint resolved OAS
