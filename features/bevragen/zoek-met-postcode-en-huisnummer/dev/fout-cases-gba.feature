@@ -325,3 +325,31 @@ Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden
     | zoeken met parameter uit ander zoektype   | voornamen   | Pietje     |
     | typfout in naam optionele parameter       | huisleter   | A          |
     | zoeken met niet gespecificeerde parameter | bestaatNiet | een waarde |
+
+Regel: De geboortedatum is een datum string geformatteerd volgens de [ISO 8601 date format](https://www.w3.org/QA/Tips/iso-date)
+
+  @fout-case
+  Abstract Scenario: Een ongeldig datum is opgegeven als geboortedatum waarde
+    Als gba personen wordt gezocht met de volgende parameters
+    | naam          | waarde                              |
+    | type          | ZoekMetPostcodeEnHuisnummer         |
+    | postcode      | 2628HJ                              |
+    | huisnummer    | 2                                   |
+    | geboortedatum | <geboortedatum>                     |
+    | fields        | burgerservicenummer                 |
+    Dan heeft de response een object met de volgende gegevens
+    | naam     | waarde                                                      |
+    | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
+    | title    | Een of meerdere parameters zijn niet correct.               |
+    | status   | 400                                                         |
+    | detail   | De foutieve parameter(s) zijn: geboortedatum.               |
+    | code     | paramsValidation                                            |
+    | instance | /haalcentraal/api/brp/personen                              |
+    En heeft het object de volgende 'invalidParams' gegevens
+    | code | name          | reason                        |
+    | date | geboortedatum | Waarde is geen geldige datum. |
+
+    Voorbeelden:
+    | geboortedatum |
+    | 19830526      |
+    | 26 mei 1983   |

@@ -33,7 +33,7 @@ paths:
         1.  Raadpleeg met burgerservicenummer
         2.  Zoek met geslachtsnaam en geboortedatum
         3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
-        4.  Zoek met postcode en huisnummer
+        4.  Zoek met postcode, huisnummer en geboortedatum
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
         6.  Zoek met nummeraanduiding identificatie
         7.  Zoek met adresseerbaarobject identificatie
@@ -257,6 +257,12 @@ components:
               $ref: '#/components/schemas/Huisnummertoevoeging'
             postcode:
               $ref: '#/components/schemas/Postcode'
+            geboortedatum:
+              description: |
+                Je kunt alleen zoeken met een volledige geboortedatum.
+              type: string
+              format: date
+              example: '1964-09-24'
     StraatFilter:
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** 

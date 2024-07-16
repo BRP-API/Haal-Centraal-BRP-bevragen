@@ -32,7 +32,7 @@
       "post": {
         "operationId": "Personen",
         "summary": "Zoek personen",
-        "description": "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n1.  Raadpleeg met burgerservicenummer\n2.  Zoek met geslachtsnaam en geboortedatum\n3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n4.  Zoek met postcode en huisnummer\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n6.  Zoek met nummeraanduiding identificatie\n7.  Zoek met adresseerbaarobject identificatie\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\nGebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.\n",
+        "description": "Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.\n\n1.  Raadpleeg met burgerservicenummer\n2.  Zoek met geslachtsnaam en geboortedatum\n3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving\n4.  Zoek met postcode, huisnummer en geboortedatum\n5.  Zoek met straat, huisnummer en gemeente van inschrijving\n6.  Zoek met nummeraanduiding identificatie\n7.  Zoek met adresseerbaarobject identificatie\n\nDefault krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.\n\nGebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.\n",
         "requestBody": {
           "content": {
             "application/json; charset=utf-8": {
@@ -322,6 +322,12 @@
               },
               "postcode": {
                 "$ref": "#/components/schemas/Postcode"
+              },
+              "geboortedatum": {
+                "description": "Je kunt alleen zoeken met een volledige geboortedatum.\n",
+                "type": "string",
+                "format": "date",
+                "example": "1964-09-24"
               }
             }
           }
