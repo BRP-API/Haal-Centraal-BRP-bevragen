@@ -14,7 +14,7 @@ paths:
         1.  Raadpleeg met burgerservicenummer
         2.  Zoek met geslachtsnaam en geboortedatum
         3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
-        4.  Zoek met postcode en huisnummer
+        4.  Zoek met postcode, huisnummer en geboortedatum
         5.  Zoek met straat, huisnummer en gemeente van inschrijving
         6.  Zoek met nummeraanduiding identificatie
 
