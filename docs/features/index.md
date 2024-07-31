@@ -4,7 +4,7 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4803 scenarios (0 failed, 4803 passed)
+Totaal: 4803 scenarios (1 failed, 4802 passed)
 
 ## GBA v    2.2.1-2024051501
 
