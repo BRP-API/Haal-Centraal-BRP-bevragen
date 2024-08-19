@@ -30,6 +30,7 @@ components:
       maxLength: 200
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+      example: "Pieter Jan"
     Voorvoegsel:
       type: string
       pattern: ^[a-zA-Z \']{1,10}$
