@@ -421,10 +421,9 @@ components:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
-            value:
-              code: JV
-              omschrijving: jonkvrouw
-              soort: predicaat
+            code: JH
+            omschrijving: jonkheer
+            soort: predicaat
     Voorvoegsel:
       type: string
       pattern: ^[a-zA-Z \']{1,10}$

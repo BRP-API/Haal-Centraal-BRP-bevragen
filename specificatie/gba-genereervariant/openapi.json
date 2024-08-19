@@ -560,11 +560,9 @@
               }
             },
             "example": {
-              "value": {
-                "code": "JV",
-                "omschrijving": "jonkvrouw",
-                "soort": "predicaat"
-              }
+              "code": "JH",
+              "omschrijving": "jonkheer",
+              "soort": "predicaat"
             }
           }
         ]

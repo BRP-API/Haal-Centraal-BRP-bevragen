@@ -548,10 +548,9 @@ components:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
-            value:
-              code: JV
-              omschrijving: jonkvrouw
-              soort: predicaat
+            code: JH
+            omschrijving: jonkheer
+            soort: predicaat
     Voorvoegsel:
       type: string
       pattern: ^[a-zA-Z \']{1,10}$
@@ -574,7 +573,7 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
       description: |
         Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
-      example: Pieter Jan de Vries
+      example: jonkheer Pieter Jan de Vries
     NaamBasis:
       type: object
       properties:
