@@ -534,6 +534,7 @@ components:
       maxLength: 200
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+      example: Pieter Jan
     AdellijkeTitelPredicaatSoort:
       type: string
       enum:
