@@ -29,9 +29,9 @@ Stuur een mail naar [info@RvIG](mailto:info@rvig) voor een kennismakingmakingsge
 * Lees de [Getting started](./v2/getting-started)
 
 ## Heb je meer nodig?
-Gebruik BRP Personen in combinatie met (een van de) andere functies van de BRP API:
+Gebruik BRP Personen in combinatie met andere functies van de BRP API:
 
-* [BRP Historie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
+* [BRP Verblijfplaatshistorie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
 * [BRP Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
 * [BRP Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
 
