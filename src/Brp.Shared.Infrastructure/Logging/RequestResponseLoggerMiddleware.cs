@@ -26,7 +26,7 @@ internal class RequestResponseLoggerMiddleware
     public async Task Invoke(HttpContext context)
     {
         context.Items.Add(MapToEcsKeys.EcsRequestContentType, context.Request.ContentType);
-        context.Items.Add("RequestHeaders", context.Request.Headers.ToJsonCompact());
+        context.Items.Add(LogConstants.RequestHeaders, context.Request.Headers);
 
         var requestBody = await context.Request.ReadBodyAsync();
         context.Items.Add(MapToEcsKeys.EcsRequestBody, requestBody);
@@ -67,7 +67,7 @@ internal class RequestResponseLoggerMiddleware
             ? await context.Response.ReadBodyAsync()
             : await newBodyStream.ReadAsync(context.Response.UseGzip());
 
-        context.Items.Add("ResponseHeaders", context.Response.Headers.ToJsonCompact());
+        context.Items.Add(LogConstants.ResponseHeaders, context.Response.Headers);
 
         if(context.Response.StatusCode >= StatusCodes.Status400BadRequest)
         {
