@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.Extensions.Hosting;
+using Brp.Shared.Infrastructure.Logging;
 
 namespace Brp.Shared.Infrastructure.Autorisatie;
 
@@ -23,8 +24,9 @@ public static class SetupAuthenticationHelpers
         }
         if (authority.StartsWith("http:"))
         {
-            logger.Warning($"Schema van authority url '{authority}' is NIET https. RequireHttpsMetadata wordt gezet op false (Is dit een DEV omgeving?)");
+            logger.Warning("Schema van authority url '{Authority}' is NIET https. RequireHttpsMetadata wordt gezet op false (Is dit een DEV omgeving?)", authority);
         }
+
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -57,14 +59,14 @@ public static class SetupAuthenticationHelpers
 
     private static Task LogAuthenticationFailedReason(AuthenticationFailedContext context)
     {
-        context.HttpContext.Items.Add("AuthenticationFailedException", context.Exception);
+        context.HttpContext.GetAutorisatieLog().Exceptie = context.Exception;
 
         return Task.CompletedTask;
     }
 
     private static Task LogAuthorizationFailed(ForbiddenContext context)
     {
-        context.HttpContext.Items.Add("Forbidden", "for some reason");
+        context.HttpContext.GetAutorisatieLog().NietGeauthentiseerd = "Forbidden for unknown reason";
 
         return Task.CompletedTask;
     }
