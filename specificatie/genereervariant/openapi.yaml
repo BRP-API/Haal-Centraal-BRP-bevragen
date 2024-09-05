@@ -1495,6 +1495,11 @@ components:
     GezagNietTeBepalen:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              type: string
+              pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,200}$
     Gezag:
       type: array
       items:
