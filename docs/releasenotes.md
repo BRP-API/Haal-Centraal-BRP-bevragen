@@ -5,6 +5,10 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## Versie 2.3.0
+- Optionele parameter geboortedatum toegevoegd voor operatie ZoekMetPostcodeEnHuisnummer
+- Probleem opgelost zodat verblijfplaats en adressering correct ook geleverd wanneer en adres in Nederland is geregistreerd als 'verblijfplaats buitenland'
+
 ## Versie 2.2.0
 
 - gezagsrelaties van een persoon bevragen (met behulp van raadpleeg met burgerservicenummer)
