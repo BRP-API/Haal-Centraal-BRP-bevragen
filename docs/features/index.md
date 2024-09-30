@@ -4,11 +4,13 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4803 scenarios (0 failed, 4803 passed)
+Totaal: 4818 scenarios (4 failed, 4814 passed)
 
 ## GBA v    2.2.1-2024051501
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 373 scenarios (373 passed)
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen-gba.html){:target="_blank" rel="noopener"}: 375 scenarios (2 failed, 373 passed)
+    - features/bevragen/zoek-met-postcode-en-huisnummer/dev/fout-cases-gba.feature:354
+    - features/bevragen/zoek-met-postcode-en-huisnummer/dev/fout-cases-gba.feature:355
 - [Persoon beperkt](./test-report-persoon-beperkt-gba.html){:target="_blank" rel="noopener"}: 220 scenarios (220 passed)
 - [Persoon](./test-report-persoon-gba.html){:target="_blank" rel="noopener"}: 530 scenarios (530 passed)
   - [adressering](./test-report-persoon-adressering-gba.html){:target="_blank" rel="noopener"}: 110 scenarios (110 passed)
@@ -34,7 +36,8 @@ Totaal: 4803 scenarios (0 failed, 4803 passed)
 
 ## Proxy v2.2.0
 
-- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 222 scenarios (222 passed)
+- [Zoeken en raadplegen](./test-report-zoeken-en-raadplegen.html){:target="_blank" rel="noopener"}: 235 scenarios (1 failed, 234 passed)
+    - features/bevragen/zoek-met-postcode-en-huisnummer/dev/overzicht-gba.feature:188
 - [Persoon beperkt](./test-report-persoon-beperkt.html){:target="_blank" rel="noopener"}: 365 scenarios (365 passed)
 - [Persoon](./test-report-persoon.html){:target="_blank" rel="noopener"}: 227 scenarios (227 passed)
   - [adressering](./test-report-persoon-adressering.html){:target="_blank" rel="noopener"}: 534 scenarios (534 passed)
