@@ -257,15 +257,29 @@ public static class SerilogHelpers
                 case LogConstants.Autorisatie:
                 case LogConstants.RequestHeaders:
                 case LogConstants.ResponseHeaders:
-                    diagnosticContext.Set(key, JObject.Parse(item.Value!.ToJsonCompact()), true);
+                    try
+                    {
+                        diagnosticContext.Set(key, JObject.Parse(item.Value!.ToJsonCompact()), true);
+                    }
+                    catch
+                    {
+                        diagnosticContext.Set("error", $"destructuring voorbereiding gefaald voor '{key}'");
+                    }
                     break;
                 case MapToEcsKeys.EcsRequestBody:
                 case MapToEcsKeys.EcsResponseBody:
                     var val = item.Value as string;
                     if (!string.IsNullOrWhiteSpace(val))
                     {
-                        // remove 'ecs.' from property name
-                        diagnosticContext.Set(key[4..], JObject.Parse(val!), true);
+                        try
+                        {
+                            // remove 'ecs.' from property name
+                            diagnosticContext.Set(key[4..], JObject.Parse(val!), true);
+                        }
+                        catch
+                        {
+                            diagnosticContext.Set("error", $"destructuring voorbereiding gefaald voor {key[4..]}");
+                        }
                     }
                     break;
                 case LogConstants.Protocollering:
