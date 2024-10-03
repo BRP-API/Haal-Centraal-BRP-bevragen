@@ -2,6 +2,7 @@
 using Destructurama;
 using Elastic.CommonSchema;
 using Elastic.CommonSchema.Serilog;
+using Elastic.Serilog.Enrichers.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
