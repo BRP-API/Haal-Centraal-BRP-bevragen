@@ -60,7 +60,7 @@ Optioneel kun je de volgende tools ook op de lokale machine installeren:
   docker-compose -f docker-compose-mock.yml up -d
 
   ```
-  De {{ site.apiname }} mock is nu te benaderen via de url: *http://localhost:5001/haalcentraal/api/brp/personen*
+  De {{ site.apiname }} mock is nu te benaderen via de url: *http://localhost:5010/haalcentraal/api/brp/personen*
 - Valideer dat de {{ site.apiname }} mock draait met behulp van de volgende curl statement:
   ```sh
 
@@ -91,11 +91,11 @@ Optioneel kun je de volgende tools ook op de lokale machine installeren:
                 -f .k8s/brppersonenmock-service.yaml 
 
   ```
-  De {{ site.apiname }} mock is nu te benaderen via de url: *http://localhost:5001/haalcentraal/api/brp/personen*
+  De {{ site.apiname }} mock is nu te benaderen via de url: *http://localhost:5010/haalcentraal/api/brp/personen*
 - Valideer dat de {{ site.apiname }} mock draait met behulp van de volgende curl statement:
   ```sh
 
-  curl --location --request POST 'http://localhost:5001/haalcentraal/api/brp/personen' \
+  curl --location --request POST 'http://localhost:5010/haalcentraal/api/brp/personen' \
   --header 'Content-Type: application/json' \
   --data-raw '{
       "type": "RaadpleegMetBurgerservicenummer",
