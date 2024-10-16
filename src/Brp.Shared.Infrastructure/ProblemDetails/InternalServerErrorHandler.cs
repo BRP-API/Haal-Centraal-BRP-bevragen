@@ -9,6 +9,8 @@ public static class InternalServerErrorHandler
     {
         var problemDetails = context.Request.CreateProblemDetailsFor(StatusCodes.Status500InternalServerError);
 
+        context.Response.Clear();
+
         await context.Response.WriteProblemDetailsAsync(problemDetails);
     }
 }
