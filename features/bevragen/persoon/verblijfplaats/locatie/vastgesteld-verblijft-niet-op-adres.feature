@@ -40,7 +40,7 @@ Functionaliteit: leveren 'indicatie vastgesteld verblijft niet op adres' veld bi
       | verblijfplaats                         | datumVan              | 2000-04-23 | 23 april 2000    |
       | verblijfplaats                         | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
       | verblijfplaatsBinnenland               | datumVan              | 2000-04-23 | 23 april 2000    |
-      | verblijverblijfplaatsBinnenlandfplaats | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
+      | verblijfplaatsBinnenland               | datumIngangGeldigheid | 2022-02-22 | 22 februari 2022 |
 
     Abstract Scenario: gevraagde persoon verblijft niet meer op de geregistreerde locatie en één of meerdere verblijfadres velden wordt gevraagd
       Als personen wordt gezocht met de volgende parameters
