@@ -28,7 +28,43 @@ jobs:
           echo -e '## Vanaf versie 2.3\n' >> user-stories-prod.md
           cat issues-tmp.md >> user-stories-prod.md
           echo -e '\n' >> user-stories-prod.md
-          
+
+      - name: List 'v2.2' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v2.2" label:"User Story"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          echo -e '## Vanaf versie 2.2\n' >> user-stories-prod.md
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
+
+      - name: List 'v2.1' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v2.1" label:"User Story"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          echo -e '## Vanaf versie 2.1\n' >> user-stories-prod.md
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
+
+      - name: List 'v2.0' user stories
+        uses: lee-dohm/select-matching-issues@v1.2.0
+        with:
+          format: list
+          query:  label:"v2.0" label:"User Story"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: issues-tmp.md
+      - run: |
+          echo -e '## Vanaf versie 2.0\n' >> user-stories-prod.md
+          cat issues-tmp.md >> user-stories-prod.md
+          echo -e '\n' >> user-stories-prod.md
+
       - name: List 'v1.3' user stories
         uses: lee-dohm/select-matching-issues@v1.2.0
         with:
