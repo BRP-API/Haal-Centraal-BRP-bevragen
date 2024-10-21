@@ -4,7 +4,7 @@ title: Features test overzicht
 ---
 # Features test overzicht
 
-Totaal: 4803 scenarios (0 failed, 4803 passed)
+Totaal: 4816 scenarios (13 failed, 4803 passed)
 
 ## GBA v    2.2.1-2024051501
 
@@ -27,7 +27,11 @@ Totaal: 4803 scenarios (0 failed, 4803 passed)
   - [partner](./test-report-persoon-partner-gba.html){:target="_blank" rel="noopener"}: 54 scenarios (54 passed)
   - [rni](./test-report-persoon-rni-gba.html){:target="_blank" rel="noopener"}: 71 scenarios (71 passed)
   - [uitsluiting kiesrecht](./test-report-persoon-uitsluiting-kiesrecht-gba.html){:target="_blank" rel="noopener"}: 20 scenarios (20 passed)
-  - [verblijfplaats](./test-report-persoon-verblijfplaats-gba.html){:target="_blank" rel="noopener"}: 80 scenarios (80 passed)
+  - [verblijfplaats](./test-report-persoon-verblijfplaats-gba.html){:target="_blank" rel="noopener"}: 84 scenarios (4 failed, 80 passed)
+    - features/bevragen/persoon/verblijfplaats/dev/fields-gba.feature:358
+    - features/bevragen/persoon/verblijfplaats/dev/fields-gba.feature:359
+    - features/bevragen/persoon/verblijfplaats/dev/fields-gba.feature:390
+    - features/bevragen/persoon/verblijfplaats/dev/fields-gba.feature:391
   - [verblijfstitel](./test-report-persoon-verblijfstitel-gba.html){:target="_blank" rel="noopener"}: 11 scenarios (11 passed)
   - [verificatie](./test-report-persoon-verificatie-gba.html){:target="_blank" rel="noopener"}: 13 scenarios (13 passed)
 
@@ -53,6 +57,15 @@ Totaal: 4803 scenarios (0 failed, 4803 passed)
   - [partner](./test-report-persoon-partner.html){:target="_blank" rel="noopener"}: 150 scenarios (150 passed)
   - [rni](./test-report-persoon-rni.html){:target="_blank" rel="noopener"}: 48 scenarios (48 passed)
   - [uitsluiting kiesrecht](./test-report-persoon-uitsluiting-kiesrecht.html){:target="_blank" rel="noopener"}: 26 scenarios (26 passed)
-  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}: 226 scenarios (226 passed)
+  - [verblijfplaats](./test-report-persoon-verblijfplaats.html){:target="_blank" rel="noopener"}: 235 scenarios (9 failed, 226 passed)
+    - features/bevragen/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature:40
+    - features/bevragen/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature:41
+    - features/bevragen/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature:66
+    - features/bevragen/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature:67
+    - features/bevragen/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature:95
+    - features/bevragen/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature:96
+    - features/bevragen/persoon/verblijfplaats/locatie/vastgesteld-verblijft-niet-op-adres.feature:42
+    - features/bevragen/persoon/verblijfplaats/locatie/vastgesteld-verblijft-niet-op-adres.feature:43
+    - features/bevragen/persoon/verblijfplaats/locatie/vastgesteld-verblijft-niet-op-adres.feature:70
   - [verblijfstitel](./test-report-persoon-verblijfstitel.html){:target="_blank" rel="noopener"}: 50 scenarios (50 passed)
   - [verificatie](./test-report-persoon-verificatie.html){:target="_blank" rel="noopener"}: 17 scenarios (17 passed)
