@@ -7,7 +7,7 @@ v1SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/
 v2SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/genereervariant/openapi.yaml
 v2DevSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/develop/specificatie/genereervariant/openapi.yaml
 v2GbaSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/gba-genereervariant/openapi.yaml
-onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/240610%20deelname%20BRP%20API%20v2.6.ppsx
+onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/241003%20deelname%20BRP%20API%20v2.8.ppsx
 proefProxyUrl: https://demo-omgeving.haalcentraal.nl
 persoonFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-Persoon.csv
 persoonBeperktFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-PersoonBeperkt.csv

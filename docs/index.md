@@ -17,7 +17,7 @@ De {{ site.apiname }} biedt naast persoonsgegevens uit de BRP ook informatieprod
 De BRP API Personen voorziet beter in klantbehoeften, waardoor klanten minder persoonsgegevens hoeven te verwerken. De juridische grondslag hiervoor is het [Experimentbesluit Dataminimalisatie](https://zoek.officielebekendmakingen.nl/stb-2024-96.html). In dit experiment worden de voorbereidingen getroffen voor een stucturele wetswijziging.
 
 ## Planning en Roadmap
-De BRP API is live sinds mei 2023 en bestaat uit de onderdelen Personen, [Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"} en [Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}. Rond 1 juli 2024 wordt [Verblijfplaatshistorie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"} verwacht, waarmee de verblijfplaatsen van een persoon kunnen worden opgevraagd op een peildatum of in een bepaalde periode. 
+De BRP API is live sinds mei 2023 en bestaat uit de onderdelen Personen, [Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"} en [Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}. Rond 1 september 2024 wordt [Verblijfplaatshistorie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"} verwacht, waarmee de verblijfplaatsen van een persoon kunnen worden opgevraagd op een peildatum of in een bepaalde periode. 
 
 ## Aansluiten en voorwaarden
 Gemeenten en andere afnemers van de BRP met een autorisatiebesluit mogen deelnemen aan het experiment en de BRP API gebruiken. Iedere deelnemer sluit een convenant met RvIG waarin de afspraken voor deelname zijn vastgelegd. Voor de technische aansluiting is een API Gateway nodig. Aansluiten kan via Diginetwerk met gebruik van een TLS verbinding (PKIO certificaat) en een OAuth 2.0 token (OAuth 2.0 client credentials flow).
@@ -29,9 +29,9 @@ Stuur een mail naar [info@RvIG](mailto:info@rvig) voor een kennismakingmakingsge
 * Lees de [Getting started](./v2/getting-started)
 
 ## Heb je meer nodig?
-Gebruik BRP Personen in combinatie met (een van de) andere functies van de BRP API:
+Gebruik BRP Personen in combinatie met andere functies van de BRP API:
 
-* [BRP Historie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
+* [BRP Verblijfplaatshistorie]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-historie-bevragen){:target="_blank" rel="noopener"}
 * [BRP Reisdocumenten]({{ site.pagesBaseUrl }}/Haal-Centraal-Reisdocumenten-bevragen){:target="_blank" rel="noopener"}
 * [BRP Bewoning]({{ site.pagesBaseUrl }}/Haal-Centraal-BRP-bewoning){:target="_blank" rel="noopener"}
 

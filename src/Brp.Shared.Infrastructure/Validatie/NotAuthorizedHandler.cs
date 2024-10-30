@@ -1,5 +1,6 @@
 ﻿using Brp.Shared.Infrastructure.Autorisatie;
 using Brp.Shared.Infrastructure.Http;
+using Brp.Shared.Infrastructure.Logging;
 using Brp.Shared.Infrastructure.ProblemDetails;
 using Microsoft.AspNetCore.Http;
 
@@ -17,7 +18,7 @@ public static class NotAuthorizedHandler
         var reason = authorisationResult.Errors[0]?.Reason;
         if (!string.IsNullOrWhiteSpace(reason))
         {
-            httpContext.Items.Add("Unauthorized", reason);
+            httpContext.GetAutorisatieLog().NietGeautoriseerd = reason;
         }
 
         var problemDetails = httpContext.Request.CreateProblemDetailsFor(authorisationResult);

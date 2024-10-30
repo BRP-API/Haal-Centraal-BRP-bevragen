@@ -179,6 +179,12 @@ components:
               $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
             postcode:
               $ref: 'verblijfplaats.yaml#/components/schemas/Postcode'
+            geboortedatum:
+              description: |
+                Je kunt alleen zoeken met een volledige geboortedatum.
+              type: string
+              format: date
+              example: "1964-09-24"
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
       required:
         - straat
