@@ -302,6 +302,7 @@ components:
           type: boolean
         indicatieGezagMinderjarige:
           type: boolean
+          deprecated: true
     PersoonInOnderzoekBeperkt:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn.
