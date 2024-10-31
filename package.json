@@ -23,8 +23,7 @@
     "specs:report": "node scripts/generate-cucumber-report.js",
     "specs:summary": "node scripts/parse-summary.js",
     "specs:verify": "bash scripts/specs-verify.sh",
-    "pre-commit": "npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated",
-    "prepare": "husky install"
+    "pre-commit": "npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated"
   },
   "repository": {
     "type": "git",
