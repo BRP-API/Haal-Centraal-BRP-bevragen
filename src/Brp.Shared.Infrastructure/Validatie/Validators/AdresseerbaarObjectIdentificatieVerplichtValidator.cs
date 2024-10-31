@@ -6,7 +6,7 @@ namespace Brp.Shared.Infrastructure.Validatie.Validators;
 public class AdresseerbaarObjectIdentificatieVerplichtValidator : AbstractValidator<JObject>
 {
     const string RequiredErrorMessage = "required||Parameter is verplicht.";
-    const string AdresseerbaarObjectIdentificatiePattern = @"^[0-9]{16}$";
+    const string AdresseerbaarObjectIdentificatiePattern = @"^(?!0{16})[0-9]{16}$";
     const string AdresseerbaarObjectIdentificatiePatternErrorMessage = $"pattern||Waarde voldoet niet aan patroon {AdresseerbaarObjectIdentificatiePattern}.";
 
     public AdresseerbaarObjectIdentificatieVerplichtValidator()
