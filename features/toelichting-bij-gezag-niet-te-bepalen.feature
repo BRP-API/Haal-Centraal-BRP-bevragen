@@ -8,7 +8,7 @@ Functionaliteit: Toelichting bij gezag niet te bepalen
 
   Regel: Een toelichting wordt geleverd als het gezag van een gevraagde kind niet kan worden bepaald
 
-    Scenario: Het gezag van gevraagde kind kan niet worden bepaald
+    Scenario: Het gezag van het gevraagde kind kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000012'
       * wiens gezag niet kan worden bepaald om de volgende reden
       | reden                                                                |
