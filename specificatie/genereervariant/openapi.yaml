@@ -817,6 +817,7 @@ components:
           type: boolean
         indicatieGezagMinderjarige:
           type: boolean
+          deprecated: true
     UitsluitingKiesrecht:
       type: object
       properties:

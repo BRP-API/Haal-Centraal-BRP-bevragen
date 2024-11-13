@@ -1137,7 +1137,8 @@
             "type": "boolean"
           },
           "indicatieGezagMinderjarige": {
-            "type": "boolean"
+            "type": "boolean",
+            "deprecated": true
           }
         }
       },
