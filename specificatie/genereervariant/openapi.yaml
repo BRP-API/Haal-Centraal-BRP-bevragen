@@ -817,6 +817,7 @@ components:
           type: boolean
         indicatieGezagMinderjarige:
           type: boolean
+          deprecated: true
     UitsluitingKiesrecht:
       type: object
       properties:
@@ -1503,6 +1504,8 @@ components:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
         - type: object
           properties:
+            minderjarige:
+              $ref: '#/components/schemas/Minderjarige'
             toelichting:
               type: string
               pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$

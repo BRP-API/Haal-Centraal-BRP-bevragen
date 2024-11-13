@@ -1148,6 +1148,9 @@
           {
             "type": "object",
             "properties": {
+              "minderjarige": {
+                "$ref": "#/components/schemas/Minderjarige"
+              },
               "toelichting": {
                 "type": "string",
                 "pattern": "^[a-zA-Z0-9À-ž \\/\\;\\:\\.\\-\\?\\(\\)]{1,400}$"
