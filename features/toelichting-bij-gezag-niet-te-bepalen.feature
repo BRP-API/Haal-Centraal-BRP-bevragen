@@ -1,6 +1,6 @@
 #language: nl
 
-Functionaliteit: Toelichting bij gezag niet te bepalen
+Functionaliteit: Leveren van een toelichting als het gezag van een persoon niet kan worden bepaald
 
   Als consumer van de BRP API
   wil ik een toelichting als het gezag voor een kind niet kan worden bepaald
