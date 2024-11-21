@@ -714,9 +714,12 @@ components:
       type: object
       required:
         - type
+        - minderjarige
       properties:
         type:
           type: string
+        minderjarige:
+          $ref: '#/components/schemas/Minderjarige'
       discriminator:
         propertyName: type
         mapping:
@@ -740,13 +743,6 @@ components:
           $ref: '#/components/schemas/Burgerservicenummer'
       required:
         - burgerservicenummer
-    Minderjarige:
-      type: object
-      properties:
-        burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
-      required:
-        - burgerservicenummer
     TweehoofdigOuderlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -758,8 +754,6 @@ components:
                 $ref: '#/components/schemas/GezagOuder'
               minItems: 2
               maxItems: 2
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     EenhoofdigOuderlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -767,8 +761,6 @@ components:
           properties:
             ouder:
               $ref: '#/components/schemas/GezagOuder'
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     Meerderjarige:
       type: object
       properties:
@@ -783,8 +775,6 @@ components:
               $ref: '#/components/schemas/GezagOuder'
             derde:
               $ref: '#/components/schemas/Meerderjarige'
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     Voogdij:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -796,21 +786,30 @@ components:
                 $ref: '#/components/schemas/Meerderjarige'
               minItems: 0
               maxItems: 2
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
+    Toelichting:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
     TijdelijkGeenGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
     GezagNietTeBepalen:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
         - type: object
           properties:
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
             toelichting:
-              type: string
-              pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
+              $ref: '#/components/schemas/Toelichting'
+    Minderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+      required:
+        - burgerservicenummer
     Gezag:
       type: array
       items:

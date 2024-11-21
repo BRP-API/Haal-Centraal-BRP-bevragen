@@ -2056,11 +2056,15 @@
       "AbstractGezagsrelatie": {
         "type": "object",
         "required": [
-          "type"
+          "type",
+          "minderjarige"
         ],
         "properties": {
           "type": {
             "type": "string"
+          },
+          "minderjarige": {
+            "$ref": "#/components/schemas/Minderjarige"
           }
         },
         "discriminator": {
@@ -2100,17 +2104,6 @@
           "burgerservicenummer"
         ]
       },
-      "Minderjarige": {
-        "type": "object",
-        "properties": {
-          "burgerservicenummer": {
-            "$ref": "#/components/schemas/Burgerservicenummer"
-          }
-        },
-        "required": [
-          "burgerservicenummer"
-        ]
-      },
       "TweehoofdigOuderlijkGezag": {
         "allOf": [
           {
@@ -2126,9 +2119,6 @@
                 },
                 "minItems": 2,
                 "maxItems": 2
-              },
-              "minderjarige": {
-                "$ref": "#/components/schemas/Minderjarige"
               }
             }
           }
@@ -2144,9 +2134,6 @@
             "properties": {
               "ouder": {
                 "$ref": "#/components/schemas/GezagOuder"
-              },
-              "minderjarige": {
-                "$ref": "#/components/schemas/Minderjarige"
               }
             }
           }
@@ -2173,9 +2160,6 @@
               },
               "derde": {
                 "$ref": "#/components/schemas/Meerderjarige"
-              },
-              "minderjarige": {
-                "$ref": "#/components/schemas/Minderjarige"
               }
             }
           }
@@ -2196,18 +2180,27 @@
                 },
                 "minItems": 0,
                 "maxItems": 2
-              },
-              "minderjarige": {
-                "$ref": "#/components/schemas/Minderjarige"
               }
             }
           }
         ]
       },
+      "Toelichting": {
+        "type": "string",
+        "pattern": "^[a-zA-Z0-9À-ž \\/\\;\\:\\.\\-\\?\\(\\)]{1,400}$"
+      },
       "TijdelijkGeenGezag": {
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractGezagsrelatie"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "toelichting": {
+                "$ref": "#/components/schemas/Toelichting"
+              }
+            }
           }
         ]
       },
@@ -2219,15 +2212,22 @@
           {
             "type": "object",
             "properties": {
-              "minderjarige": {
-                "$ref": "#/components/schemas/Minderjarige"
-              },
               "toelichting": {
-                "type": "string",
-                "pattern": "^[a-zA-Z0-9À-ž \\/\\;\\:\\.\\-\\?\\(\\)]{1,400}$"
+                "$ref": "#/components/schemas/Toelichting"
               }
             }
           }
+        ]
+      },
+      "Minderjarige": {
+        "type": "object",
+        "properties": {
+          "burgerservicenummer": {
+            "$ref": "#/components/schemas/Burgerservicenummer"
+          }
+        },
+        "required": [
+          "burgerservicenummer"
         ]
       },
       "Gezag": {
