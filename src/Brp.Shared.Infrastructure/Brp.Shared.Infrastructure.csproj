@@ -12,8 +12,8 @@
     <PackageReference Include="Destructurama.Attributed" Version="4.0.0" />
     <PackageReference Include="Destructurama.JsonNet" Version="3.0.0" />
     <PackageReference Include="Elastic.Serilog.Enrichers.Web" Version="8.12.2" />
-    <PackageReference Include="FluentValidation" Version="11.10.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.35" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.36" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Enrichers.Sensitive" Version="1.7.3" />
