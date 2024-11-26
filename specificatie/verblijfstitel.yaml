@@ -31,7 +31,7 @@ components:
         * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
       properties:
         aanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         datumEinde:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         datumIngang:

@@ -109,7 +109,7 @@ components:
         huisnummertoevoeging:
           $ref: '#/components/schemas/Huisnummertoevoeging'
         aanduidingBijHuisnummer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
@@ -126,7 +126,7 @@ components:
         regel3:
           $ref: '#/components/schemas/Regel3'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
     VerblijfadresLocatie:
@@ -148,7 +148,7 @@ components:
         huisnummertoevoeging:
           $ref: '#/components/schemas/Huisnummertoevoeging'
         aanduidingBijHuisnummer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
@@ -156,7 +156,7 @@ components:
         locatiebeschrijving:
           $ref: '#/components/schemas/Locatiebeschrijving'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         regel1:
           $ref: '#/components/schemas/Regel1'
         regel2:
@@ -219,7 +219,7 @@ components:
             verblijfadres:
               $ref: "#/components/schemas/VerblijfadresBinnenland"
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             adresseerbaarObjectIdentificatie:
               $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
             nummeraanduidingIdentificatie:
@@ -245,7 +245,7 @@ components:
             datumVan:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             verblijfadres:
               $ref: "#/components/schemas/VerblijfadresLocatie"
             datumIngangGeldigheid:
@@ -284,7 +284,7 @@ components:
               $ref: 'datum.yaml#/components/schemas/GbaDatum'
               deprecated: true
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             naamOpenbareRuimte:
               $ref: '#/components/schemas/NaamOpenbareRuimte'
     VerblijfplaatsBuitenlandInOnderzoek:

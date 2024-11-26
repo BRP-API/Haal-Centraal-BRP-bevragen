@@ -16,7 +16,7 @@ components:
         type:
           type: string
         redenOpname:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
       discriminator:
         propertyName: type
         mapping:
@@ -35,7 +35,7 @@ components:
             datumIngangGeldigheid:
               $ref: 'datum.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitBekendInOnderzoek'
     BehandeldAlsNederlander:
@@ -85,9 +85,9 @@ components:
         datumIngangGeldigheid:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         nationaliteit:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         redenOpname:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
             $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     BijzonderNederlanderschapInOnderzoek:

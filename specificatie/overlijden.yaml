@@ -28,9 +28,9 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         plaats:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/OverlijdenInOnderzoek'
     OverlijdenInOnderzoek:

@@ -17,9 +17,9 @@ components:
         - type: object
           properties:
             land:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             plaats:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
     GeboorteBasis:
       type: object
       properties:
@@ -43,9 +43,9 @@ components:
         - type: object
           properties:
             land:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             plaats:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/GeboorteInOnderzoek'
     GeboorteInOnderzoek:

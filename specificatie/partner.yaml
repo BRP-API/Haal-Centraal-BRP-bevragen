@@ -31,9 +31,9 @@ components:
         burgerservicenummer:
           $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         soortVerbintenis:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         naam:
           $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
         geboorte:
@@ -82,9 +82,9 @@ components:
         datum:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         plaats:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
     AangaanHuwelijkPartnerschapInOnderzoek:

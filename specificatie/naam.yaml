@@ -44,7 +44,7 @@ components:
       description: |
         Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
       allOf:
-        - $ref: 'common.yaml#/components/schemas/Waardetabel'
+        - $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         - properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
@@ -69,7 +69,7 @@ components:
         - $ref: '#/components/schemas/GbaNaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
     NaamBasis:
       type: object
       properties:
@@ -125,7 +125,7 @@ components:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:
             aanduidingNaamgebruik:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NaamPersoonInOnderzoek'
     NaamPersoonBeperkt:

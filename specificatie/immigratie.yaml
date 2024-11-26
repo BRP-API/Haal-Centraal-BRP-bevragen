@@ -23,7 +23,7 @@ components:
         datumVestigingInNederland:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         landVanwaarIngeschreven:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
     Immigratie:
       type: object
       description: |
@@ -33,7 +33,7 @@ components:
         datumVestigingInNederland:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         landVanwaarIngeschreven:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         vanuitVerblijfplaatsOnbekend:
           $ref: '#/components/schemas/VanuitVerblijfplaatsOnbekend'
         indicatieVestigingVanuitBuitenland:

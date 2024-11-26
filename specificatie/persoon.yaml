@@ -73,7 +73,7 @@ components:
       description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
       properties:
         deelnemer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         omschrijvingVerdrag:
           $ref: '#/components/schemas/OmschrijvingVerdrag'
         categorie:
@@ -88,7 +88,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         persoonInOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         naam:
@@ -96,7 +96,7 @@ components:
         opschortingBijhouding:
           $ref: 'opschortingbijhouding.yaml#/components/schemas/GbaOpschortingBijhouding'
         gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         verblijfplaats:
           $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
         rni:
@@ -117,7 +117,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoekBeperkt'
         leeftijd:
@@ -146,7 +146,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         persoonInOnderzoek:
           $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
         gezagInOnderzoek:
@@ -172,13 +172,13 @@ components:
         immigratie:
           $ref: 'immigratie.yaml#/components/schemas/GbaImmigratie'
         gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         datumInschrijvingInGemeente:
           $ref: 'datum.yaml#/components/schemas/GbaDatum'
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
           deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'
@@ -216,7 +216,7 @@ components:
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         uitsluitingKiesrecht:
@@ -242,7 +242,7 @@ components:
         immigratie:
           $ref: 'immigratie.yaml#/components/schemas/Immigratie'
         gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         datumInschrijvingInGemeente:
           $ref: 'datum.yaml#/components/schemas/AbstractDatum'
         adressering:
@@ -250,7 +250,7 @@ components:
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
           deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'

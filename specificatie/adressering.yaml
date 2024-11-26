@@ -64,7 +64,7 @@ components:
         adresregel3:
           $ref: "#/components/schemas/Adresregel3"
         land:
-          $ref: "common.yaml#/components/schemas/Waardetabel"
+          $ref: "brp/waardetabel-v1.yaml#/components/schemas/Waardetabel"
         indicatieVastgesteldVerblijftNietOpAdres:
           $ref: 'verblijfplaats.yaml#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
     Adressering:
