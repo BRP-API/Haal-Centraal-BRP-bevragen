@@ -1,24 +1,13 @@
-.DS_Store
 
 node_modules
 
-# swagger-codegen-cli
-.swagger-codegen
-.swagger-codegen-ignore
-specificatie/**/README.md
+test-reports
 
-*.suo
+c*.suo
 *.user
 
-[Bb]in/
+[Dd]ebug/
+[Rr]elease/
 [Oo]bj/
 
-.vs
-
-Data/
-
-src/config/Database
-
-docs/features/test-result*.*
-
-elastic
+.vs/

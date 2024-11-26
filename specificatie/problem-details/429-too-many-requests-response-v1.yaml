@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: 429 Too Many Requests Response type definitie
+  description: |
+    Definitie voor Too Many Requests Response, voor het leveren van de 'teveel requests' foutmelding 
+  version: 1.0.0
+  contact: {}
+components:
+  responses:
+    '429':
+      description: Too Many Requests
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+            title: Too many request
+            status: 429
+            detail: The user has sent too many requests in a given amount of time (rate limiting).
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: tooManyRequests

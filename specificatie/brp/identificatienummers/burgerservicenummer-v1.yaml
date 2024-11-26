@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: burgerservicenummer
+  description: |
+    Definitie voor burgerservicenummer, een identificatienummer van een persoon geregistreerd in de BRP
+  version: 1.0.0
+components:
+  schemas:
+    Burgerservicenummer:
+      type: string
+      pattern: ^[0-9]{9}$
+      example: "555555021"

@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info:
+  title: waardetabel type definitie
+  version: 1.0.0
+components:
+  schemas:
+    Waardetabel:
+      type: object
+      properties:
+        code:
+          type: string
+          pattern: ^[a-zA-Z0-9 \.]+$
+          example: '6030'
+        omschrijving:
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \'\.\-\(\),]{1,200}$
+          example: Nederland

@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: adresseerbaar object identificatie type definitie
+  version: 1.0.0
+components:
+  schemas:
+    AdresseerbaarObjectIdentificatie:
+      type: string
+      pattern: ^[0-9]{16}$
+      description: |
+        De identificatiecode van een adresseerbaar object.
+      example: "0226010000038820"

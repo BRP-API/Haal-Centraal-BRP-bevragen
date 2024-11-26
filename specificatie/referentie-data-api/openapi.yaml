@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info: 
+  title: referentie implementatie van data api contract mbv OAS 3.1
+  description: |
+    Dit document specificeert het API contract van een data API mbv OAS 3.1.
+    Dit document kan worden gebruikt als referentie voor het opstellen van API contracten voor data APIs.
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.example.com
+    description: |
+      De server waarop de API draait.
+tags:
+  - name: Data API
+    description: |
+      API voor het stellen van data vragen.
+
+paths:
+  /data-api:
+    get:
+      operationId: getDataApiNotSecure
+      summary: Haal data niet-secure op
+      description: |
+        Parameters worden bij een GET request opgenomen als query string parameters in een URL.
+        URLs worden standaard gelogd en als query string parameters (privacy) gevoelige informatie bevat, dan worden deze ook gelogd wat kan leiden tot het lekken van gevoelige informatie.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataApiResponse'
+        '400':
+          $ref: '../problem-details/400-bad-request-response-v1.yaml#/components/responses/400'
+        '401':
+          $ref: '../problem-details/401-unauthorized-response-v1.yaml#/components/responses/401'
+        '403':
+          $ref: '../problem-details/403-forbidden-response-v1.yaml#/components/responses/403'
+        '404':
+          $ref: '../problem-details/404-not-found-response-v1.yaml#/components/responses/404'
+        '409':
+          $ref: '../problem-details/409-conflict-response-v1.yaml#/components/responses/409'
+        '410':
+          $ref: '../problem-details/410-gone-response-v1.yaml#/components/responses/410'
+        '412':
+          $ref: '../problem-details/412-precondition-failed-response-v1.yaml#/components/responses/412'
+        '415':
+          $ref: '../problem-details/415-unsupported-media-type-response-v1.yaml#/components/responses/415'
+        '429':
+          $ref: '../problem-details/429-too-many-requests-response-v1.yaml#/components/responses/429'
+        '500':
+          $ref: '../problem-details/500-internal-server-error-response-v1.yaml#/components/responses/500'
+        '503':
+          $ref: '../problem-details/503-service-unavailable-response-v1.yaml#/components/responses/503'
+        default:
+          $ref: '../problem-details/500-internal-server-error-response-v1.yaml#/components/responses/500'
+      tags:
+        - Data API
+
+    post:
+      operationId: getDataApiSecure
+      summary: Haal data secure op
+      description: |
+        Parameters worden bij een POST request opgenomen in de body van het request.
+        Hierdoor worden de parameters niet gelogd en is de privacy gevoelige informatie beter beschermd.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataApiRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataApiResponse'
+        '400':
+          $ref: '../problem-details/400-bad-request-response-v1.yaml#/components/responses/400'
+        '401':
+          $ref: '../problem-details/401-unauthorized-response-v1.yaml#/components/responses/401'
+        '403':
+          $ref: '../problem-details/403-forbidden-response-v1.yaml#/components/responses/403'
+        '404':
+          $ref: '../problem-details/404-not-found-response-v1.yaml#/components/responses/404'
+        '409':
+          $ref: '../problem-details/409-conflict-response-v1.yaml#/components/responses/409'
+        '410':
+          $ref: '../problem-details/410-gone-response-v1.yaml#/components/responses/410'
+        '412':
+          $ref: '../problem-details/412-precondition-failed-response-v1.yaml#/components/responses/412'
+        '415':
+          $ref: '../problem-details/415-unsupported-media-type-response-v1.yaml#/components/responses/415'
+        '429':
+          $ref: '../problem-details/429-too-many-requests-response-v1.yaml#/components/responses/429'
+        '500':
+          $ref: '../problem-details/500-internal-server-error-response-v1.yaml#/components/responses/500'
+        '501':
+          $ref: '../problem-details/501-not-implemented-response-v1.yaml#/components/responses/501'
+        '503':
+          $ref: '../problem-details/503-service-unavailable-response-v1.yaml#/components/responses/503'
+        default:
+          $ref: '../problem-details/500-internal-server-error-response-v1.yaml#/components/responses/500'
+      tags:
+        - Data API
+
+components: 
+  schemas:
+    DataApiRequest:
+      type: object
+      properties:
+        adresseerbaarObjectIdentificatie:
+          $ref: '../brp-api/query-parameters/adresseerbaar-object-identificatie-filter-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
+        datum:
+          $ref: '../brp-api/query-parameters/datum-filter-v1.yaml#/components/schemas/DatumFilter'
+
+    DataApiResponse:
+      type: object
+      properties:
+        adresseerbaarObjectIdentificatie:
+          $ref: '../brp/adres/adresseerbaar-object-identificatie-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatie'
+        burgerservicenummer:
+          $ref: '../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
+        geboorteBasis:
+          $ref: '../brp/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
+        geslachtsaanduiding:
+          $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
+        indicatieGeheim:
+          $ref: '../brp/geheim/indicatie-geheim-v1.yaml#/components/schemas/IndicatieGeheim'
+        InOnderzoek:
+          $ref: '../brp/in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        naamBasis:
+          $ref: '../brp/naam/naam-basis-v1.yaml#/components/schemas/NaamBasis'

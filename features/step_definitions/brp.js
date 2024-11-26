@@ -8,6 +8,12 @@ const persoonTypeMap = new Map([
 
 ]);
 
+function toDbPersoonType(naam) {
+    return persoonTypeMap.has(naam)
+        ? persoonTypeMap.get(naam)
+        : naam;
+}
+
 const collectionNameMap = new Map([
     ['bewoner', 'bewoners'],
     ['bewoning', 'bewoningen'],
@@ -53,6 +59,12 @@ const tableNameMap = new Map([
 
 ]);
 
+function toDbTableName(naam) {
+    return tableNameMap.has(naam)
+        ? tableNameMap.get(naam)
+        : naam;
+}
+
 const columnNameMap = new Map([
 
     ['anummer (01.10)', 'a_nr'],
@@ -72,13 +84,15 @@ const columnNameMap = new Map([
     ['geslachtsaanduiding (04.10)', 'geslachts_aand'],
 
     ['nationaliteit (05.10)', 'nationaliteit_code'],
-    ['reden opname (63.10)', 'nl_nat_verkrijg_reden'],
 
     ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', 'relatie_start_datum'],
     ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', 'relatie_start_plaats'],
     ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', 'relatie_start_land_code'],
 
     ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', 'relatie_eind_datum'],
+    ['plaats ontbinding huwelijk/geregistreerd partnerschap (07.20)', 'relatie_eind_plaats'],
+    ['land ontbinding huwelijk/geregistreerd partnerschap (07.30)', 'relatie_eind_land_code'],
+    ['reden ontbinding huwelijk/geregistreerd partnerschap (07.40)', 'relatie_eind_reden'],
 
     ['datum overlijden (08.10)', 'overlijden_datum'],
     ['plaats overlijden (08.20)', 'overlijden_plaats'],
@@ -204,9 +218,18 @@ const columnNameMap = new Map([
 
 ]);
 
+function toDbColumnName(naam) {
+    return columnNameMap.has(naam)
+        ? columnNameMap.get(naam)
+        : naam;
+}
+
 module.exports = {
     columnNameMap,
     persoonTypeMap,
     tableNameMap,
     toCollectieNaam,
+    toDbPersoonType,
+    toDbTableName,
+    toDbColumnName
 };

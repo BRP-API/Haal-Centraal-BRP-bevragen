@@ -1,0 +1,15 @@
+name: Toevoegen localhost naam
+description: Voeg een host naam toe voor localhost in het /etc/hosts bestand
+
+inputs:
+  host-name:
+    description: de naam dat moet worden toegevoegd voor localhost (127.0.0.1)
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Add a host name to /etc/hosts
+      run: |
+        sudo echo '127.0.0.1 ${{ inputs.host-name }}' | sudo tee -a /etc/hosts
+      shell: bash

@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: 412 Precondition failed Response type definitie
+  description: |
+    Definitie voor Precondition failed Response, voor het leveren van de 'ongeldig preconditie' foutmelding 
+  version: 1.0.0
+  contact: {}
+components:
+  responses:
+    '412':
+      description: Precondition failed
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.13
+            title: Precondition Failed
+            status: 412
+            detail: The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: preconditionFailed

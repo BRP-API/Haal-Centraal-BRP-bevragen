@@ -1,4 +1,4 @@
-const { toDateOrString } = require("./calcDate");
+const { toDateOrString } = require("./brpDatum");
 
 function setPropertyValue(obj, propertyName, propertyValue, dateAsDate) {
     if(propertyName === 'periode') {
@@ -86,4 +86,8 @@ function setObjectPropertiesFrom(obj, dataTable, dateAsDate = false) {
     }
 }
 
-module.exports = { createObjectFrom, mapRowToProperty }
+module.exports = {
+    createObjectFrom,
+    createObjectArrayFrom,
+    setObjectPropertiesFrom
+};
