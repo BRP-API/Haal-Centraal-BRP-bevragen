@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: datum type definitie
+  description: |
+    datum conform LO BRP
+  version: 1.0.0
+components:
+  schemas:
+    GbaDatum:
+      type: string
+      pattern: ^[0-9]{8}$
+      example: '20180700'

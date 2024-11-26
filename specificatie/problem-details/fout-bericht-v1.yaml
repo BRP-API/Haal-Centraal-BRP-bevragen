@@ -1,0 +1,37 @@
+openapi: 3.1.0
+info:
+  title: fout bericht type definitie
+  description: |
+    Definitie voor Foutbericht, een JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+  version: 1.0.0
+components:
+  schemas:
+    Foutbericht:
+      type: object
+      description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+      properties:
+        type:
+          description: Link naar meer informatie over deze fout
+          type: string
+          format: uri
+        title:
+          description: Beschrijving van de fout
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \.\-]{1,80}$
+        status:
+          type: integer
+          minimum: 100
+          maximum: 600
+          description: Http status code
+        detail:
+          description: Details over de fout
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \.\-\(\),]{1,200}$
+        instance:
+          description: Uri van de aanroep die de fout heeft veroorzaakt
+          type: string
+          format: uri
+        code:
+          description: Systeemcode die het type fout aangeeft
+          type: string
+          pattern: ^[a-zA-Z0-9]{1,25}$

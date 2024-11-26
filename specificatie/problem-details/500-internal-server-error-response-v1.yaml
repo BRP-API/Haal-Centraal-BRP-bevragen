@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: 500 Internal Server Error Response type definitie
+  description: |
+    Definitie voor Internal Server Error Response, voor het leveren van de 'onverwachte server fout' foutmelding 
+  version: 1.0.0
+  contact: {}
+components:
+  responses:
+    '500':
+      description: Internal Server Error
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+            title: Interne server fout.
+            status: 500
+            detail: The server encountered an unexpected condition which prevented it from fulfilling the request.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: serverError

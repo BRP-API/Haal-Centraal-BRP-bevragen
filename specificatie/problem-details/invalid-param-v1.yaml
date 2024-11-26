@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info:
+  title: invalid params type definitie
+  description: |
+    Definitie voor InvalidParams, voor het leveren van details over fouten in een opgegeven parameter
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    InvalidParam:
+      type: object
+      description: Details over fouten in opgegeven parameters
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+        name:
+          description: Naam van de parameter
+          type: string
+          pattern: ^[a-zA-Z0-9\._]{1,30}$
+          example: huisnummer
+        code:
+          description: Systeemcode die het type fout aangeeft
+          type: string
+          pattern: ^[a-zA-Z0-9]{1,25}$
+          example: integer
+        reason:
+          description: Beschrijving van de fout op de parameterwaarde
+          type: string
+          pattern: ^[a-zA-Z0-9\., ]{1,80}$
+          example: Waarde is geen geldig getal.

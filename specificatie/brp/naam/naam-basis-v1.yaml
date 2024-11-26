@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info:
+  title: naam basis type definitie
+  version: 1.0.0
+components:
+  schemas:
+    NaamBasis:
+      type: object
+      properties:
+        voornamen:
+          $ref: 'voornamen-v1.yaml#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: 'adellijke-titel-predicaat-v1.yaml#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: 'voorvoegsel-v1.yaml#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: 'geslachtsnaam-v1.yaml#/components/schemas/Geslachtsnaam'

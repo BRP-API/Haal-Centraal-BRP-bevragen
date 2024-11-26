@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: voorvoegsel type definitie
+  version: 1.0.0
+components:
+  schemas:
+    Voorvoegsel:
+      type: string
+      pattern: ^[a-zA-Z \']{1,10}$
+      maxLength: 10
+      example: de

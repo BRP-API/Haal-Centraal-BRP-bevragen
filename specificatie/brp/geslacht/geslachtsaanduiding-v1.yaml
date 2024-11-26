@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: geslachtsaanduiding type definitie
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    Geslachtsaanduiding:
+      allOf:
+        - $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        - example:
+            code: M
+            omschrijving: man

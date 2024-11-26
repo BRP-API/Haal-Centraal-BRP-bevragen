@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: 
+  title: datum query parameter type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    DatumFilter:
+      type: string
+      format: date
+      example: "1964-09-24"

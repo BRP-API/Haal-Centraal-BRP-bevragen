@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: voornamen type definitie
+  version: 1.0.0
+components:
+  schemas:
+    Voornamen:
+      description: |
+        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
+      maxLength: 200
+      example: Pieter Jan

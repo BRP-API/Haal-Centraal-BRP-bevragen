@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: 406 Not Acceptable Response type definitie
+  description: |
+    Definitie voor Not Acceptable Response, voor het leveren van 'niet ondersteund gevraagde contenttype' foutmelding 
+  version: 1.0.0
+  contact: {}
+components:
+  responses:
+    '406':
+      description: Not Acceptable
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7
+            title: Gevraagde contenttype wordt niet ondersteund.
+            status: 406
+            detail: The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to thr accept headers sent in the request
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: notAcceptable
