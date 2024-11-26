@@ -1,52 +1,40 @@
 {
-  "name": "haal-centraal-brp-bevragen",
+  "name": "brp-shared",
   "version": "1.0.0",
-  "description": "BRP Bevragen is een Haal Centraal API voor het zoeken en raadplegen van ingeschreven natuurlijke personen voor alle binnengemeentelijke afnemers in NL. De informatie die de API levert is herleidbaar naar het LO GBA 3.10.",
+  "description": "",
   "main": "index.js",
   "directories": {
-    "doc": "docs",
-    "test": "test"
+    "test": "tests"
   },
   "scripts": {
-    "nswag:gen": "bash scripts/nswag-gen.sh",
-    "oas:generate-client": "openapi-generator-cli generate -i ./specificatie/genereervariant/openapi.yaml --global-property=modelTests=false,apiTests=false,modelDocs=false,apiDocs=false",
-    "oas:generate-java-client": "npm run oas:generate-client -- -o ./code/java -g java --additional-properties=dateLibrary=java8,java8=true,optionalProjectFile=false,optionalAssemblyInfo=false",
-    "oas:generate-netcore-client": "npm run oas:generate-client -- -o ./code/netcore -g csharp-netcore --additional-properties=optionalProjectFile=false,optionalAssemblyInfo=false",
-    "oas:generate-net-client": "npm run oas:generate-client -- -o ./code/net -g csharp --additional-properties=optionalProjectFile=false,optionalAssemblyInfo=false",
-    "oas:generate-python-client": "npm run oas:generate-client -- -o ./code/python -g python --additional-properties=optionalProjectFile=false,optionalAssemblyInfo=false",
-    "oas:lint": "bash scripts/lint-oas.sh",
-    "oas:lint-genereervariant": "bash scripts/lint-oas-genereervariant.sh",
-    "oas:resolve": "bash scripts/resolve-oas.sh",
-    "unstage-generated": "git reset HEAD ./specificatie/genereervariant/openapi.* ./specificatie/gba-genereervariant/openapi.*",
-    "rollback-generated": "git checkout ./specificatie/genereervariant/openapi.* ./specificatie/gba-genereervariant/openapi.*",
-    "db:update-waarde-tabellen": "node scripts/upsert-landelijk-tabel-data.js",
-    "specs:report": "node scripts/generate-cucumber-report.js",
-    "specs:summary": "node scripts/parse-summary.js",
-    "specs:verify": "bash scripts/specs-verify.sh",
-    "pre-commit": "npm run oas:resolve && npm run oas:lint-genereervariant && npm run unstage-generated"
+    "oas:lint": "bash scripts/oas-lint.sh",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cz:commit": "cz"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BRP-API/Haal-Centraal-BRP-bevragen.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues"
-  },
-  "homepage": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^11.0.1",
-    "@openapitools/openapi-generator-cli": "^2.15.3",
-    "@redocly/cli": "^1.25.11",
-    "@stoplight/spectral-cli": "^6.14.0",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@cucumber/cucumber": "^11.1.0",
+    "@redocly/cli": "^1.25.13",
+    "@stoplight/spectral-cli": "^6.14.2",
     "axios": "^1.7.7",
     "chai": "^4.5.0",
-    "csv-parse": "^5.5.6",
-    "cucumber-html-reporter": "^7.2.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "deep-equal-in-any-order": "^2.0.6",
-    "mvn-dl": "^6.1.1",
-    "nswag": "^14.1.0",
-    "pg": "^8.13.1"
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "multiple-cucumber-html-reporter": "^3.8.0",
+    "nswag": "^14.2.0",
+    "pg": "^8.13.1",
+    "winston": "^3.17.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

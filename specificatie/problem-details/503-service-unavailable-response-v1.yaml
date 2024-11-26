@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: 503 Service Unavailable type definitie
+  description: |
+    Definitie voor Service Unavailable Response, voor het leveren van de 'niet beschikbaar' foutmelding 
+  version: 1.0.0
+  contact: {}
+components:
+  responses:
+    '503':
+      description: Service Unavailable
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+            title: Bronservice BRP is tijdelijk niet beschikbaar.
+            status: 503
+            detail: The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: notAvailable

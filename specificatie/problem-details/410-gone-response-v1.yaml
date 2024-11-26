@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: 410 Gone Response type definitie
+  description: |
+    Definitie voor Gone Response, voor het leveren van de 'resource is verwijderd op de server' foutmelding 
+  version: 1.0.0
+  contact: {}
+components:
+  responses:
+    '410':
+      description: Gone
+      content:
+        application/problem+json:
+          schema:
+            $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+          example:
+            type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+            title: Gone
+            status: 410
+            detail: The requested resource is no longer available at the server and no forwarding address is known
+            instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+            code: gone

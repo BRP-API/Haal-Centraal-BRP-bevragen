@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: periode type definitie
+  version: 1.0.0
+  contact: {}
+components: 
+  schemas:
+    Periode:
+      type: object
+      properties:
+        datumVan:
+          type: string
+          format: date
+          description: |
+            De begindatum van de periode.
+          example: 2020-01-01
+        datumTot:
+          type: string
+          format: date
+          description: |
+            De einddatum van de periode.
+          example: 2021-01-01

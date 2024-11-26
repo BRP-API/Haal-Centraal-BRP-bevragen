@@ -1,0 +1,13 @@
+name: Zet run bash script permission
+description: Zet run permission voor een bash script of voor alle bash scripts in een map
+
+inputs:
+  path-bash-file-or-folder:
+    description: pad van een bash script of pad van een bash script map. Voeg /* toe in geval van een script map
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: sudo chmod +x ${{ inputs.path-bash-file-or-folder }}
+      shell: bash

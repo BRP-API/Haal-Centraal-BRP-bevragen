@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: Geheim
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    GeheimhoudingPersoonsgegevens:
+      description: |
+        Indicatie dat persoonsgegevens niet mogen worden verstrekt aan derden / maatschappelijke instellingen.
+      type: boolean

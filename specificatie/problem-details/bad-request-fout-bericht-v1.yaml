@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: bad request foutbericht type definitie
+  description: |
+    Definitie voor BadRequestFoutbericht, voor het leveren van input validatie foutmeldingen 
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    BadRequestFoutbericht:
+      allOf:
+      - $ref: 'fout-bericht-v1.yaml#/components/schemas/Foutbericht'
+      - type: object
+        properties:
+          invalidParams:
+            description: |
+              Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
+            type: array
+            items:
+              $ref: 'invalid-param-v1.yaml#/components/schemas/InvalidParam'

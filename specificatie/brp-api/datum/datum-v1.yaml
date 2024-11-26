@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info: 
+  title: datum type definitie
+  description: datum conform ISO-8601 te gebruiken als bijv. peildatum, datumVan en datumTot
+  version: 1.0.0
+components: 
+  schemas:
+    Datum:
+      type: string
+      format: date
+      example: 1964-09-24
+      description: |
+        Datum conform ISO-8601

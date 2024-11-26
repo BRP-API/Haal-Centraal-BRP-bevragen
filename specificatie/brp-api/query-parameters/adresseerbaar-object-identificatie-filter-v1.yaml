@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: 
+  title: adresseerbaar object identificatie query parameter type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    AdresseerbaarObjectIdentificatieFilter:
+      type: string
+      pattern: ^(?!0{16})[0-9]{16}$
+      description: |
+        De identificatiecode van een adresseerbaar object uitgezonderd de standaardwaarde (0000000000000000)
+      example: '0226010000038820'

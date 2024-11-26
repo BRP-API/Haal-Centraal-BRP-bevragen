@@ -1,46 +1,16 @@
-const { toDateOrString } = require("./calcDate");
-
-function getGbaPersoonType(persoonType) {
-    switch(persoonType) {
-        case 'persoon':
-            return 'P';
-        case 'kind':
-            return 'K';
-        case 'partner':
-            return 'R';
-        case '1':
-            return '1';
-        case '2':
-            return '2';
-        default:
-            return undefined;
-    }
-}
-
-function createCollectieDataFromArray(persoonType, data, stapelNr=0) {
-    const gbaPersoonType = getGbaPersoonType(persoonType);
-
-    return gbaPersoonType !== undefined
-        ? [
-            [ 'stapel_nr', stapelNr+''],
-            [ 'volg_nr', '0'],
-            [ 'persoon_type', gbaPersoonType]
-          ].concat(data)
-        : [
-            [ 'stapel_nr', stapelNr+''],
-            [ 'volg_nr', '0']
-          ].concat(data);
-}
+const { toDateOrString } = require('./brpDatum');
 
 function createArrayFrom(dataTable, columnNameMap) {
     let retval = [];
 
     if(dataTable.raw()[0][0] === "naam") {
         dataTable.hashes().forEach(function(row) {
-            const propertyName = columnNameMap.get(row.naam);
+            if(row.naam !== 'pl_id') {
+                const propertyName = columnNameMap.get(row.naam);
 
-            if(row.waarde !== undefined && row.waarde !== '') {
-                retval.push([ propertyName, toDateOrString(row.waarde, false) ]);
+                if(row.waarde !== undefined && row.waarde !== '') {
+                    retval.push([ propertyName, toDateOrString(row.waarde, false) ]);
+                }
             }
         });
     }
@@ -55,16 +25,29 @@ function fromHash(hash, columnNameMap) {
     let retval = [];
 
     Object.keys(hash).forEach(function(key) {
-        retval.push([ columnNameMap.get(key), toDateOrString(hash[key], false) ]);
+        if(key !== 'pl_id') {
+            retval.push([ columnNameMap.get(key), toDateOrString(hash[key], false) ]);
+        }
     });
 
     return retval;
 }
 
-function createVoorkomenDataFromArray(data) {
-    return [
-        [ 'volg_nr', '0']
-    ].concat(data);
+function getPlId(dataTable) {
+    if(dataTable === undefined) {
+        return undefined;
+    }
+    
+    if(dataTable.raw()[0][0] === "naam") {
+        return dataTable.hashes().find(row => row.naam === 'pl_id')?.waarde;
+    }
+    else {
+        return dataTable.hashes()[0]['pl_id'];
+    }
 }
 
-module.exports = { createCollectieDataFromArray, createArrayFrom, createVoorkomenDataFromArray }
+module.exports = {
+    createArrayFrom,
+    fromHash,
+    getPlId
+}

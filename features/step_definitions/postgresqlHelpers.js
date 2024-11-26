@@ -1,10 +1,72 @@
+const {
+    deleteStatement,
+    insertIntoAdresStatement,
+    insertIntoAutorisatieStatement,
+    insertIntoGemeenteStatement,
+    insertIntoPersoonlijstStatement,
+    insertIntoStatement,
+    queryRowCountStatement,
+    queryLastRowStatement } = require('./parameterizedSqlStatementFactory');
+const { tableNameMap } = require('./brp');
+
 function noSqlData(sqlData) {
     return sqlData === undefined ||
-           (sqlData.length === 1 && Object.keys(sqlData[0]).length === 0);
+        (sqlData.length === 1 && Object.keys(sqlData[0]).length === 0);
 }
 
-async function executeSqlStatements(sqlData, pool, tableNameMap, logSqlStatements) {
+function mustLog(result) {
+    return (result.rowCount === null || result.rowCount === 0) && global.scenario.tags.some(t => ['@protocollering'].includes(t));
+}
+
+async function ExecuteAndLogStatement(client, sqlStatement) {
+    global.logger.info('execute', sqlStatement);
+
+    try {
+        const result = await client.query(sqlStatement);
+
+        if(mustLog(result)) {
+            global.logger.warn(`${global.scenario.name}. 0 rows affected`, sqlStatement);
+        }
+    
+        return result;
+    }
+    catch(ex) {
+        global.logger.error(`exception in ${global.scenario.name}`, sqlStatement, ex);
+        throw ex;
+    }
+}
+
+async function ExecuteAndLogDeleteStatement(client, tabelNaam, id=undefined) {
+    return await ExecuteAndLogStatement(client, deleteStatement(tabelNaam, id));
+}
+
+function getAdresId(sqlData, adresIndex) {
+    const adressenData = sqlData.find(e => Object.keys(e).includes('adres'));
+
+    for(const key of Object.keys(adressenData.adres)) {
+        if(adressenData.adres[key].index === adresIndex) {
+            return adressenData.adres[key].data?.find(elem => elem[0] === 'adres_id')[1];
+        }
+    }
+    return undefined;
+}
+
+function setAdresIdForVerblijfplaatsen(sqlDataElement, sqlData) {
+    if(sqlDataElement['verblijfplaats'] === undefined) {
+        return;
+    }
+
+    for(const verblijfplaatsElem of sqlDataElement['verblijfplaats']) {
+        let adresIdElem = verblijfplaatsElem.find(elem => elem[0] === 'adres_id');
+        if(adresIdElem !== undefined) {
+            adresIdElem[1] = getAdresId(sqlData, Number(adresIdElem[1])) + '';
+        }
+    }
+}
+
+async function executeSqlStatements(sqlContext, sqlData, pool) {
     if (pool === undefined || noSqlData(sqlData)) {
+        global.logger.info('geen pool of geen sqlData');
         return;
     }
 
@@ -12,60 +74,89 @@ async function executeSqlStatements(sqlData, pool, tableNameMap, logSqlStatement
     try {
         await client.query('BEGIN');
 
-        let adres_id;
         for(const sqlDataElement of sqlData) {
-            if(adres_id !== undefined && sqlDataElement['adres'] === undefined) {
-                sqlDataElement.ids = {
-                    adres_id: adres_id
-                }
-            }
+            setAdresIdForVerblijfplaatsen(sqlDataElement, sqlData);
 
-            await executeSql(client, sqlDataElement, tableNameMap, logSqlStatements);
-
-            if(sqlDataElement.ids.adres_id !== undefined){
-                adres_id = sqlDataElement.ids.adres_id;
-            }
+            await executeSql(client, sqlDataElement);
         }
 
         await client.query('COMMIT');
     }
     catch(ex) {
-        console.log(ex);
+        global.logger.error(ex);
         await client.query('ROLLBACK');
     }
     finally {
-        if(client !== undefined){
-            client.release();
-        }
+        client?.release();
     }
 }
 
-async function rollbackSqlStatements(sqlData, pool, tableNameMap, logSqlStatements) {
+async function deleteAllRowsInAllTables(client) {
+    global.logger.debug('delete all rows in all tables');
+
+    const aggregateRoots = ['adres'];
+
+    for(const [key] of tableNameMap) {
+        if(aggregateRoots.includes(key)) {
+            continue;
+        }
+
+        await ExecuteAndLogDeleteStatement(client, key);
+    }
+
+    for(const key of aggregateRoots) {
+        await ExecuteAndLogDeleteStatement(client, key)
+    }
+}
+
+async function deleteInsertedRows(client, sqlData) {
+    global.logger.debug('delete inserted rows');
+
+    if(sqlData === undefined) {
+        return;
+    }
+
+    let adresData = [];
+
+    for(const sqlDataElement of sqlData) {
+        if (sqlDataElement['adres'] !== undefined) {
+            adresData.push(sqlDataElement);
+        }
+        else {
+            await deleteRecords(client, sqlDataElement, true);
+        }
+    }
+
+    for(const adrData of adresData) {
+        await deleteAdresRij(client, adrData);
+    }
+    await deleteGemeenteRijen(client, sqlData.find(el => el['gemeente'] !== undefined));
+    await deleteAutorisatieRecords(client, sqlData.find(el => el['autorisatie'] !== undefined));
+    await deleteProtocolleringRecords(client);
+}
+
+async function rollbackSqlStatements(sqlContext, sqlData, pool) {
+    if(sqlData === undefined) {
+        return;
+    }
+    if(!sqlContext.cleanup) {
+        return;
+    }
+
+    const deleteIndividualRecords = sqlContext.deleteIndividualRecords;
 
     const client = await pool.connect();
+
     try {
-        let adresData = [];
-
-        for(const sqlDataElement of sqlData) {
-            if (equals(sqlDataElement, ['adres', 'ids'])) {
-                adresData.push(sqlDataElement);
-            }
-            else {
-                if(adresData.find(adrData => adrData.ids.adres_id === sqlDataElement.ids.adres_id)) {
-                    sqlDataElement.ids.adres_id = undefined;
-                }
-
-                await deleteRecords(client, sqlDataElement, tableNameMap, logSqlStatements);
-            }
+        if(deleteIndividualRecords) {
+            await deleteInsertedRows(client, sqlData);
         }
-
-        for(const adrData of adresData) {
-            await deleteAdresRecord(client, adrData, tableNameMap, logSqlStatements);
+        else {
+            await deleteAllRowsInAllTables(client);
         }
-        await deleteAutorisatieRecords(client, tableNameMap, logSqlStatements);
     }
     catch(ex) {
-        console.log(ex.stack);
+        global.logger.error(ex.stack);
     }
     finally {
         if(client !== undefined) {
@@ -74,260 +165,224 @@ async function rollbackSqlStatements(sqlData, pool, tableNameMap, logSqlStatemen
     }
 }
 
-function logIf(sqlStatement, logSqlStatements) {
-    if(logSqlStatements) {
-        console.log(sqlStatement);
+function getElementValue(data, elementName) {
+    const elem = data.find(e => e[0] === elementName);
+
+    return elem !== undefined
+        ? Number(elem[1])
+        : undefined;
+}
+
+async function deleteAdresRij(client, sqlData) {
+    const adresData = sqlData?.adres;
+    if(adresData === undefined) {
+        return;
+    }
+
+    for(const key of Object.keys(adresData)) {
+        const id = getElementValue(adresData[key].data, 'adres_id');
+        if(id === undefined) {
+            continue;
+        }
+
+        await ExecuteAndLogDeleteStatement(client, 'adres', id);
     }
 }
 
-async function executeSql(client, sqlData, tableNameMap, logSqlStatements) {
-    let plId = undefined;
-    let adresId = undefined;
-    let autorisatieId = undefined;
+async function deleteAutorisatieRecords(client, sqlData) {
+    if(sqlData === undefined || sqlData['autorisatie'] === undefined) {
+        return;
+    }
+    const autorisatieData = sqlData['autorisatie']; 
 
-    if(sqlData.ids !== undefined && sqlData.ids.adres_id !== undefined) {
-        adresId = sqlData.ids.adres_id;
+    for(const rowData of autorisatieData) {
+        const id = getElementValue(rowData, 'afnemer_code');
+        if(id === undefined) {
+            continue;
+        }
+
+        await ExecuteAndLogDeleteStatement(client, 'autorisatie', id);
     }
-    if(sqlData['autorisatie'] !== undefined) {
-        const sqlStatement = insertIntoAutorisatieStatement(sqlData['autorisatie'][0]);
-        logIf(sqlStatement, logSqlStatements);
-        const res = await client.query(sqlStatement);
-        autorisatieId = res.rows[0]['autorisatie_id'];
+}
+
+async function deleteGemeenteRijen(client, sqlData) {
+    if(sqlData === undefined || sqlData['gemeente'] === undefined) {
+        return;
     }
-    if(sqlData['adres'] !== undefined) {
-        const sqlStatement = insertIntoAdresStatement(sqlData['adres'][0]);
-        logIf(sqlStatement, logSqlStatements);
-        const res = await client.query(sqlStatement);
-        adresId = res.rows[0]['adres_id'];
+    const gemeenteData = sqlData['gemeente'];
+
+    for(const key of Object.keys(gemeenteData)) {
+        const id = getElementValue(gemeenteData[key].data, 'gemeente_code');
+        if(id === undefined) {
+            continue;
+        }
+
+        await ExecuteAndLogDeleteStatement(client, 'gemeente', id);
     }
-    if(sqlData['inschrijving'] !== undefined) {
-        const sqlStatement = insertIntoPersoonlijstStatement(sqlData['inschrijving'][0]);
-        logIf(sqlStatement, logSqlStatements);
-        const res = await client.query(sqlStatement);
+}
+
+async function deleteProtocolleringRecords(client) {
+    await ExecuteAndLogDeleteStatement(client, 'protocollering', undefined);
+}
+
+async function deleteRecords(client, sqlData, deleteIndividualRecords = true) {
+    const inschrijvingData = sqlData?.inschrijving;
+    if(inschrijvingData === undefined) {
+        return;
+    }
+
+    const id = deleteIndividualRecords
+        ? getElementValue(inschrijvingData[0], 'pl_id')
+        : undefined;
+
+    // bijhouden van reeds opgeschoonde tabellen, zodat deze niet opnieuw wordt opgeschoond met als gevolg rowCount == 0
+    let opgeschoondeTabellen = [];
+    for(const key of Object.keys(sqlData)) {
+        const tabelNaam = key.replace(/-\w*/g, '');
+
+        if(['autorisatie', 'ouder', 'kind', 'partner'].includes(tabelNaam)) {
+            continue;
+        }
+
+        if(tableNameMap.has(tabelNaam) && !opgeschoondeTabellen.includes(tabelNaam)) {
+            opgeschoondeTabellen.push(tabelNaam);
+            await ExecuteAndLogDeleteStatement(client, tabelNaam, id);
+        }
+    }
+}
+
+async function insertAdressen(client, sqlData) {
+    const adresData = sqlData['adres'];
+    if(adresData === undefined) {
+        return;
+    }
+
+    for(const key of Object.keys(adresData)) {
+        const res = await ExecuteAndLogStatement(client,
+                                                 insertIntoAdresStatement(adresData[key].data));
+
+        adresData[key].data.push(['adres_id', res.rows[0]['adres_id']]);
+    }
+}
+
+async function insertAutorisatieRijen(client, sqlData) {
+    const autorisatieData = sqlData['autorisatie']; 
+    if(autorisatieData === undefined) {
+        return;
+    }
+
+    for(const rowData of autorisatieData) {
+        const res = await ExecuteAndLogStatement(client, insertIntoAutorisatieStatement(rowData));
+
+        rowData.push(['autorisatie_id', res.rows[0]['autorisatie_id']]);
+    }
+}
+
+async function insertGemeenten(client, sqlData) {
+    const gemeenteData = sqlData['gemeente'];
+    if(gemeenteData === undefined) {
+        return;
+    }
+
+    for(const key of Object.keys(gemeenteData)) {
+        await ExecuteAndLogStatement(client, insertIntoGemeenteStatement(gemeenteData[key].data));
+    }
+}
+
+async function insertInschrijvingRij(client, sqlData) {
+    const inschrijvingData = sqlData['inschrijving'];
+    if(inschrijvingData === undefined) {
+        return;
+    }
+
+    let plId;
+
+    for(const rowData of inschrijvingData) {
+        const res = await ExecuteAndLogStatement(client, insertIntoPersoonlijstStatement(rowData));
+
         plId = res.rows[0]['pl_id'];
+        rowData.push(['pl_id', plId]);
     }
+
+    return plId;
+}
+
+async function executeSql(client, sqlData) {
+    await insertAutorisatieRijen(client, sqlData);
+    await insertGemeenten(client, sqlData);
+    await insertAdressen(client, sqlData);
+    const plId = await insertInschrijvingRij(client, sqlData);
 
     for(const key of Object.keys(sqlData)) {
-        if (['inschrijving', 'adres', 'ids', 'autorisatie'].includes(key)) {
+        if (['inschrijving', 'gemeente', 'adres', 'ids', 'autorisatie'].includes(key)) {
             continue;
         }
 
         for(const rowData of sqlData[key]) {
-            const data = createStatementData(key, plId, adresId, rowData);
+            const data = createStatementData(key, plId, rowData);
 
-            const name = key.replace(/-\d$/, "");
-            const sqlStatement = insertIntoStatement(name, data, tableNameMap);
-            logIf(sqlStatement, logSqlStatements);
-            await client.query(sqlStatement);
+            const name = key.replace(/-\d/g, '');
+
+            await ExecuteAndLogStatement(client, insertIntoStatement(name, data));
         }
     }
-
-    sqlData.ids = {
-        autorisatie_id: autorisatieId,
-        adres_id: adresId,
-        pl_id: plId
-    };
 }
 
-function createStatementData(key, plId, adresId, rowData) {
-    if(key === 'verblijfplaats') {
-        if(adresId === undefined) {
-            return [
-                [ 'pl_id', plId ]
-            ].concat(rowData);
-        }
-        return [
-            [ 'pl_id', plId ],
-            [ 'adres_id', adresId ]
-        ].concat(rowData);
-    }
-
+function createStatementData(key, plId, rowData) {
     return [
         [ 'pl_id', plId ]
     ].concat(rowData);
 }
 
-function insertIntoAutorisatieStatement(data) {
-    let statement = {
-        text: 'INSERT INTO public.lo3_autorisatie(autorisatie_id',
-        values: []
-    };
-
-    data.forEach(function(row) {
-        statement.text += `,${row[0]}`;
-        statement.values.push(row[1]);
-    });
-
-    statement.text += ') VALUES((SELECT COALESCE(MAX(autorisatie_id), 0)+1 FROM public.lo3_autorisatie)';
-    statement.values.forEach(function(_value, index) {
-        statement.text += `,$${index+1}`;
-    });
-    statement.text += ') RETURNING *';
-
-    return statement;
-}
-
-function insertIntoAdresStatement(data) {
-    let statement = {
-        text: 'INSERT INTO public.lo3_adres(adres_id',
-        values: []
-    };
-
-    data.forEach(function(row) {
-        statement.text += `,${row[0]}`;
-        statement.values.push(row[1]);
-    });
-
-    statement.text += ') VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres)';
-    statement.values.forEach(function(_value, index) {
-        statement.text += `,$${index+1}`;
-    });
-    statement.text += ') RETURNING *';
-
-    return statement;
-}
-
-function insertIntoPersoonlijstStatement(data) {
-    let statement = {
-        text: 'INSERT INTO public.lo3_pl(pl_id,mutatie_dt',
-        values: []
-    };
-
-    data.forEach(function(row) {
-        statement.text += `,${row[0]}`;
-        statement.values.push(row[1]);
-    });
-
-    statement.text += ') VALUES((SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl),current_timestamp';
-    statement.values.forEach(function(_value, index) {
-        statement.text += `,$${index+1}`;
-    });
-    statement.text += ') RETURNING *';
-
-    return statement;
-}
-
-function insertIntoStatement(tabelNaam, data, tableNameMap) {
-    let tableName = tableNameMap.get(tabelNaam);
-    if(tableName === undefined) {
-        tableName = tabelNaam;
-    }
-    let statement = {
-        text: `INSERT INTO public.${tableName}(`,
-        values: []
-    };
-
-    data.forEach(function(row, index) {
-        statement.text += index === 0
-            ? `${row[0]}`
-            : `,${row[0]}`;
-        statement.values.push(row[1]);
-    });
-
-    statement.text += ') VALUES(';
-    statement.values.forEach(function(_value, index) {
-        statement.text += index === 0
-            ? `$${index+1}`
-            : `,$${index+1}`;
-    });
-    statement.text += ')';
-
-    return statement;
-}
-
-function equals(sqlData, adresData) {
-    return Object.keys(sqlData).length === adresData.length &&
-           Object.keys(sqlData).every((v, i) => v === adresData[i])
-}
-
-async function deleteRecords(client, sqlData, tableNameMap, logSqlStatements) {
-    if(sqlData.ids === undefined) {
-        return;
+async function queryRowCount(pool, tableName, filter = undefined) {
+    if(pool === undefined) {
+        return undefined;
     }
 
-    let adresid;
-    for(const [key] of tableNameMap) {
-        let id;
-        switch(key)
-        {
-            case 'adres':
-                adresid = sqlData.ids.adres_id;
-                break;
-            case 'autorisatie':
-                id = sqlData.ids.autorisatie_id;
-                break;
-            case 'protocollering':
-                break;
-            default:
-                id = sqlData.ids.pl_id;
-                break;
-        }
-        if(id !== undefined) {
-            const sqlStatement = createDeleteStatement(key, id, tableNameMap);
-            logIf(sqlStatement, logSqlStatements);
-            await client.query(sqlStatement);
-        }
+    const statement = queryRowCountStatement(tableName, filter);
+    global.logger.info('execute', statement);
+
+    const client = await pool.connect();
+
+    try {
+        const res = await client.query(statement);
+
+        return res.rows[0]['count'];
     }
-    if(adresid !== undefined) {
-        const sqlStatement = createDeleteStatement('adres', adresid, tableNameMap);
-        logIf(sqlStatement, logSqlStatements);
-        await client.query(sqlStatement);
+    catch(ex) {
+        global.logger.error(ex.stack);
+    }
+    finally {
+        client.release();
     }
 }
 
-function createDeleteStatement(tabelNaam, id, tableNameMap) {
-    let naamId;
-    
-    switch(tabelNaam) {
-        case 'adres':
-            naamId = 'adres_id';
-            break;
-        case 'autorisatie':
-            naamId = 'autorisatie_id';
-            break;
-        default:
-            naamId = 'pl_id';
-            break;
+async function queryLastRow(pool, tableName, orderByColumnName, filter = undefined) {
+    if(pool === undefined) {
+        return undefined;
     }
 
-    const statement = {
-        text: `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${naamId}=$1`,
-        values: [id]
-    };
+    const statement = queryLastRowStatement(tableName, orderByColumnName, filter);
+    global.logger.info('execute', statement);
 
-    return statement;
-}
+    const client = await pool.connect();
 
-async function deleteAdresRecord(client, sqlData, tableNameMap, logSqlStatements) {
-    if(sqlData === undefined || sqlData.ids === undefined) {
-        return;
+    try {
+        const res = await client.query(statement);
+
+        return res.rows[0];
     }
-
-    const id = sqlData.ids.adres_id;
-
-    if(id !== undefined) {
-        const sqlStatement = createDeleteStatement('adres', id, tableNameMap);
-        logIf(sqlStatement, logSqlStatements);
-        await client.query(sqlStatement);
+    catch(ex) {
+        global.logger.error(ex.stack);
     }
-}
-
-async function deleteAutorisatieRecords(client, tableNameMap, logSqlStatements) {
-    const statement = {
-        text: `DELETE FROM public.${tableNameMap.get('autorisatie')} WHERE afnemer_code=$1`,
-        values: [8]
-    };
-
-    logIf(statement, logSqlStatements);
-
-    await client.query(statement);
+    finally {
+        client.release();
+    }
 }
 
 module.exports = {
-    noSqlData,
     executeSqlStatements,
     rollbackSqlStatements,
-    insertIntoPersoonlijstStatement,
-    insertIntoAdresStatement,
-    insertIntoStatement
+    queryRowCount,
+    queryLastRow
 }

@@ -1,0 +1,23 @@
+openapi: 3.1.0
+info:
+  title: adellijke titel/predicaat type definitie
+  version: 1.0.0
+components:
+  schemas:
+    AdellijkeTitelPredicaatSoort:
+      type: string
+      enum:
+        - titel
+        - predicaat
+    AdellijkeTitelPredicaatType:
+      description: |
+        Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
+      allOf:
+        - $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        - properties:
+            soort:
+              $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
+          example:
+            code: JV
+            omschrijving: jonkvrouw
+            soort: predicaat
