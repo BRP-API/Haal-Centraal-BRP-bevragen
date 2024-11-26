@@ -413,6 +413,7 @@ components:
       maxLength: 200
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+      example: Pieter Jan
     AdellijkeTitelPredicaatSoort:
       type: string
       enum:
@@ -427,10 +428,9 @@ components:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
-            value:
-              code: JV
-              omschrijving: jonkvrouw
-              soort: predicaat
+            code: JH
+            omschrijving: jonkheer
+            soort: predicaat
     Voorvoegsel:
       type: string
       pattern: ^[a-zA-Z \']{1,10}$
