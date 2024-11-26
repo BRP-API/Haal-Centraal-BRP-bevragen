@@ -6,96 +6,38 @@ info:
 paths: {}
 components:
   schemas:
-    Geslachtsnaam:
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
-      description: |
-        De achternaam van een persoon.
-      example: "Vries"
-    VolledigeNaam:
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
-      description: |
-        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
-      example: "Pieter Jan de Vries"
     Voorletters:
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.]{1,40}$
       description: |
         De voorletters van de persoon, afgeleid van de voornamen.
       example: "P.J."
-    Voornamen:
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
-      maxLength: 200
-      description: |
-        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
-    Voorvoegsel:
-      type: string
-      pattern: ^[a-zA-Z \']{1,10}$
-      maxLength: 10
-      example: "de"
-    AdellijkeTitelPredicaatSoort:
-      type: string
-      enum:
-        - titel
-        - predicaat
-    AdellijkeTitelPredicaatType:
-      description: |
-        Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
-      allOf:
-        - $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
-        - properties:
-            soort:
-              $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
-          example:
-            value:
-              code: "JV"
-              omschrijving: "jonkvrouw"
-              soort: "predicaat"
-    GbaNaamBasis:
-      type: object
-      properties:
-        voornamen:
-          $ref: '#/components/schemas/Voornamen'
-        adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
-        voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
-        geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
-    GbaNaamPersoon:
-      allOf:
-        - $ref: '#/components/schemas/GbaNaamBasis'
-        - properties:
-            aanduidingNaamgebruik:
-              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
     NaamBasis:
       type: object
       properties:
         voornamen:
-          $ref: '#/components/schemas/Voornamen'
+          $ref: 'brp/naam/voornamen-v1.yaml#/components/schemas/Voornamen'
         adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+          $ref: 'brp/naam/adellijke-titel-predicaat-v1.yaml#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
+          $ref: 'brp/naam/voorvoegsel-v1.yaml#/components/schemas/Voorvoegsel'
         geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
+          $ref: 'brp/naam/geslachtsnaam-v1.yaml#/components/schemas/Geslachtsnaam'
         voorletters:
           $ref: '#/components/schemas/Voorletters'
         volledigeNaam:
-          $ref: '#/components/schemas/VolledigeNaam'
+          $ref: 'brp-api/naam/volledige-naam-v1.yaml#/components/schemas/VolledigeNaam'
     NaamGerelateerde:
       type: object
       properties:
         voornamen:
-          $ref: '#/components/schemas/Voornamen'
+          $ref: 'brp/naam/voornamen-v1.yaml#/components/schemas/Voornamen'
         adellijkeTitelPredicaat:
-          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+          $ref: 'brp/naam/adellijke-titel-predicaat-v1.yaml#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
-          $ref: '#/components/schemas/Voorvoegsel'
+          $ref: 'brp/naam/voorvoegsel-v1.yaml#/components/schemas/Voorvoegsel'
         geslachtsnaam:
-          $ref: '#/components/schemas/Geslachtsnaam'
+          $ref: 'brp/naam/geslachtsnaam-v1.yaml#/components/schemas/Geslachtsnaam'
         voorletters:
           $ref: '#/components/schemas/Voorletters'
         inOnderzoek:

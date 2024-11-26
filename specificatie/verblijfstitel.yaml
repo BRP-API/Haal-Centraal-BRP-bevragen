@@ -6,22 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    GbaVerblijfstitel:
-      type: object
-      description: |
-        Gegevens over de verblijfsrechtelijke status van de persoon.
-        * **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
-        * **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
-        * **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
-      properties:
-        aanduiding:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        datumEinde:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        datumIngang:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     Verblijfstitel:
       type: object
       description: |
@@ -33,9 +17,9 @@ components:
         aanduiding:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         datumEinde:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         datumIngang:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
     VerblijfstitelInOnderzoek:

@@ -6,30 +6,11 @@ info:
 paths: {}
 components:
   schemas:
-    GbaPartner:
-      type: object
-      properties:
-        burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        soortVerbintenis:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        aangaanHuwelijkPartnerschap:
-          $ref: '#/components/schemas/GbaAangaanHuwelijkPartnerschap'
-        ontbindingHuwelijkPartnerschap:
-          $ref: "#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
     Partner:
       type: object
       properties:
         burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+          $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         geslacht:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         soortVerbintenis:
@@ -57,20 +38,6 @@ components:
               type: boolean
             soortVerbintenis:
               type: boolean
-    GbaAangaanHuwelijkPartnerschap:
-      type: object
-      description: |
-        Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.
-        * **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
-        * **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
-        * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        plaats:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
     AangaanHuwelijkPartnerschap:
       type: object
       description: |
@@ -80,7 +47,7 @@ components:
         * **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
       properties:
         datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         land:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         plaats:
@@ -100,11 +67,6 @@ components:
               type: boolean
             plaats:
               type: boolean
-    GbaOntbindingHuwelijkPartnerschap:
-      type: object
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
     OntbindingHuwelijkPartnerschap:
       type: object
       description: |
@@ -112,7 +74,7 @@ components:
         * **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.
       properties:
         datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         inOnderzoek:
           $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapInOnderzoek'
     OntbindingHuwelijkPartnerschapInOnderzoek:

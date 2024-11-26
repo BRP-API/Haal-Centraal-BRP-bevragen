@@ -6,28 +6,9 @@ info:
 paths: {}
 components:
   schemas:
-    GbaGeboorteBeperkt:
-      type: object
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-    GbaGeboorte:
-      allOf:
-        - $ref: '#/components/schemas/GbaGeboorteBeperkt'
-        - type: object
-          properties:
-            land:
-              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
-            plaats:
-              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
-    GeboorteBasis:
-      type: object
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
     GeboorteBeperkt:
       allOf:
-        - $ref: '#/components/schemas/GeboorteBasis'
+        - $ref: 'brp-api/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
         - type: object
           properties:
             inOnderzoek:
@@ -39,7 +20,7 @@ components:
         * **land** - land waar de persoon is geboren. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
         * **plaats** - gemeente waar de persoon is geboren. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of als de persoon is geboren buiten Nederland de omschrijving van een buitenlandse plaatsnaam of aanduiding.
       allOf:
-        - $ref: '#/components/schemas/GeboorteBasis'
+        - $ref: 'brp-api/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
         - type: object
           properties:
             land:

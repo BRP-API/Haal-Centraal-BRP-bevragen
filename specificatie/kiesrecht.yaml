@@ -6,23 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    GbaUitsluitingKiesrecht:
-      type: object
-      properties:
-        uitgeslotenVanKiesrecht:
-          type: boolean
-          example: true
-        einddatum:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-    GbaEuropeesKiesrecht:
-      type: object
-      description: |
-        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.
-      properties:
-        aanduiding:
-          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
-        einddatumUitsluiting:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
     UitsluitingKiesrecht:
       type: object
       properties:
@@ -30,7 +13,7 @@ components:
           type: boolean
           example: true
         einddatum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
     EuropeesKiesrecht:
       type: object
       description: |
@@ -39,4 +22,4 @@ components:
         aanduiding:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         einddatumUitsluiting:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

@@ -6,17 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    GbaOverlijden:
-        type: object
-        properties:
-          datum:
-            $ref: 'datum.yaml#/components/schemas/GbaDatum'
-          land:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
-          plaats:
-            $ref: 'common.yaml#/components/schemas/Waardetabel'
-          inOnderzoek:
-            $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     Overlijden:
       description: |
         Gegevens over het overlijden.
@@ -26,7 +15,7 @@ components:
       type: object
       properties:
         datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         land:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         plaats:

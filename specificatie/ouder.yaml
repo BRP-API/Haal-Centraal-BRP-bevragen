@@ -10,26 +10,6 @@ components:
       type: string
       pattern: ^[1|2]$
       example: "1"
-    GbaOuder:
-      type: object
-      description: |
-        Gegevens over de ouder van de persoon.
-        * **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.
-      properties:
-        burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        ouderAanduiding:
-          $ref: '#/components/schemas/OuderAanduiding'
-        datumIngangFamilierechtelijkeBetrekking:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
     Ouder:
       description: |
         Gegevens over de ouder van de persoon.
@@ -38,13 +18,13 @@ components:
       type: object
       properties:
         burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+          $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         geslacht:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         ouderAanduiding:
           $ref: '#/components/schemas/OuderAanduiding'
         datumIngangFamilierechtelijkeBetrekking:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         naam:
           $ref: 'naam.yaml#/components/schemas/NaamGerelateerde'
         inOnderzoek:

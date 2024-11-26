@@ -14,16 +14,6 @@ components:
       type: boolean
       description: |
         Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
-    GbaImmigratie:
-      type: object
-      description: |
-        Gegevens over het het immigratie van een persoon.
-          * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
-      properties:
-        datumVestigingInNederland:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        landVanwaarIngeschreven:
-          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
     Immigratie:
       type: object
       description: |
@@ -31,7 +21,7 @@ components:
           * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.
       properties:
         datumVestigingInNederland:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         landVanwaarIngeschreven:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         vanuitVerblijfplaatsOnbekend:
