@@ -1,12 +1,12 @@
 #language: nl
 
-Functionaliteit: Leveren van een toelichting als het gezag van een persoon niet kan worden bepaald
+Functionaliteit: Leveren van een toelichting en de burgerservicenummer van het kind als het gezag van een kind niet kan worden bepaald
 
   Als consumer van de BRP API
-  wil ik een toelichting als het gezag voor een kind niet kan worden bepaald
-  zodat ik weet wat de reden is dat het gezag voor het kind niet kan worden bepaald
+  wil ik een toelichting en de burgerservicenummer van het kind als het gezag voor een kind niet kan worden bepaald
+  zodat ik weet wat de reden is dat het gezag voor het kind niet kan worden bepaald en welk kind het betreft
 
-  Regel: Een toelichting wordt geleverd als het gezag van een gevraagde kind niet kan worden bepaald
+  Regel: Een toelichting en de burgerservicenummer van het kind worden geleverd als het gezag van een gevraagde kind niet kan worden bepaald
 
     Scenario: Het gezag van het gevraagde kind kan niet worden bepaald
       Gegeven de persoon met burgerservicenummer '000000012'
@@ -41,7 +41,7 @@ Functionaliteit: Leveren van een toelichting als het gezag van een persoon niet 
       | minderjarige.burgerservicenummer | 000000024                                                                                                     |
       | toelichting                      | gezag is niet te bepalen omdat de volgende relevante gegevens ontbreken: verblijfplaats van bevraagde persoon |
 
-  Regel: Een toelichting wordt geleverd als het gezag van een kind dat verblijft op het gevraagde adres niet kan worden bepaald
+  Regel: Een toelichting en de burgerservicenummer van het kind worden geleverd als het gezag van een kind dat verblijft op het gevraagde adres niet kan worden bepaald
 
     Scenario: Het gezag van een kind dat verblijft op het gevraagde adres kan niet worden bepaald
       Gegeven adres 'A1' heeft de volgende gegevens
