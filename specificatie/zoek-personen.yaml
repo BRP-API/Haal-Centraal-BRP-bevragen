@@ -19,7 +19,8 @@ paths:
         6.  Zoek met nummeraanduiding identificatie
         7.  Zoek met adresseerbaarobject identificatie
 
-        Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
+        Bij zoeken krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
+        Bij raadplegen met burgerservicenummer kun je wel een persoon terugkrijgen die is overleden.
         
         Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
       requestBody:
