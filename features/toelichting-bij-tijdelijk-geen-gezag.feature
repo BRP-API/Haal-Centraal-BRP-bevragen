@@ -3,7 +3,7 @@
 Functionaliteit: Leveren van de burgerservicenummer van het kind als een kind tijdelijk geen gezag heeft
 
   Als consumer van de BRP API
-  wil ik de burgerservicenummer van het kind als een kind tijdelijk geen gezag heeft
+  wil ik het burgerservicenummer van het kind als een kind tijdelijk geen gezag heeft
   zodat ik weet welk kind tijdelijk geen gezag heeft
 
   Regel: De burgerservicenummer van het kind wordt geleverd als het gevraagde kind tijdelijk geen gezag heeft
