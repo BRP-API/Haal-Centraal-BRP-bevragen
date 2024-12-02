@@ -3,7 +3,7 @@
 Functionaliteit: Leveren van een toelichting en de burgerservicenummer van het kind als het gezag van een kind niet kan worden bepaald
 
   Als consumer van de BRP API
-  wil ik een toelichting en de burgerservicenummer van het kind als het gezag voor een kind niet kan worden bepaald
+  wil ik een toelichting en het burgerservicenummer van het kind als het gezag voor een kind niet kan worden bepaald
   zodat ik weet wat de reden is dat het gezag voor het kind niet kan worden bepaald en welk kind het betreft
 
   Regel: Een toelichting en de burgerservicenummer van het kind worden geleverd als het gezag van een gevraagde kind niet kan worden bepaald
