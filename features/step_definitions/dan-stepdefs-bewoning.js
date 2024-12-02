@@ -41,6 +41,14 @@ Then(/^heeft de bewoner de volgende '(\w*)' gegevens$/, function (gegevensgroep,
                                                                   dataTable);
 });
 
+Then(/^heeft de mogelijke bewoner de volgende '(\w*)' gegevens$/, function (gegevensgroep, dataTable) {
+    createObjectVeldInLastSubCollectieObjectInLastCollectieObject(this.context,
+                                                                  'bewoning',
+                                                                  'mogelijkeBewoner',
+                                                                  gegevensgroep,
+                                                                  dataTable);
+});
+
 Then(/^heeft de response een bewoning met (\d*) bewoners en (\d*) mogelijke bewoners$/, function (aantalBewoners, aantalMogelijkeBewoners) {
     this.context?.response?.status?.should.equal(200, `response body: ${JSON.stringify(this.context.response.data, null, '\t')}`);
 
