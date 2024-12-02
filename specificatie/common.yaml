@@ -227,7 +227,7 @@ components:
         type:
           type: string
           format: uri
-          example: "https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer"
+          example: "https://www.vng.nl/realisatie/api/v1/validaties/integer"
         name:
           type: string
           pattern: ^[a-zA-Z0-9\.,_]{1,30}$
