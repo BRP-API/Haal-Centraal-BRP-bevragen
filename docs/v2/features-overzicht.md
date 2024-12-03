@@ -39,7 +39,7 @@ Je kunt de volgende zoekoperaties gebruiken om een persoon met niet-uniek identi
 Het resultaat van de zoek operaties is een lijst van personen die voldoen aan de opgegeven parameters. Bij de "zoek met adresseerbaar object identificatie" operatie kunnen van de gevonden personen ook de gezagsrelaties worden gevraagd.
 
 ### Vinden van overleden personen
-Standaard wordt alleen personen gevonden die in leven zijn. Om ook overleden personen te kunnen vinden, moet de inclusiefOverleden parameter met waarde true worden opgegeven.
+Standaard worden alleen personen gevonden die in leven zijn. Om ook overleden personen te kunnen vinden, moet de inclusiefOverleden parameter met waarde true worden opgegeven.
 Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'. Zie de [overlijden overzicht](./features/persoon-beperkt/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 ## Raadplegen van personen
