@@ -36,8 +36,10 @@ Je kunt de volgende zoekoperaties gebruiken om een persoon met niet-uniek identi
   - [fout cases](./features/zoek-met-nummeraanduiding-identificatie/fout-cases.feature)
 - zoek met adresseerbaar object identificatie
 
-Het resultaat van de "zoek met adresseerbaar object identificatie" operatie is een GezagPersoonBeperkt collectie/lijst, en bevat naast de PersoonBeperkt lijst ook de gezagsrelaties van alle personen die op dit adres wonen. Het resultaat van alle andere operaties is een PersoonBeperkt collectie/lijst. Standaard bevat deze lijst alleen personen die in leven zijn. Om een overleden persoon te zoeken, moet de inclusiefOverledenPersonen parameter op true worden gezet. 
+Het resultaat van de zoek operaties is een lijst van personen die voldoen aan de opgegeven parameters. Bij de "zoek met adresseerbaar object identificatie" operatie kan van de gevonden personen ook de gezagsrelaties worden gevraagd.
 
+### Vinden van overleden personen
+Standaard wordt alleen personen gevonden die in leven zijn. Om ook overleden personen te kunnen vinden, moet de inclusiefOverleden parameter met waarde true worden opgegeven.
 Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'. Zie de [overlijden overzicht](./features/persoon-beperkt/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 ## Raadplegen van personen
@@ -48,8 +50,10 @@ Als het burgerservicenummer van de te bevragen personen bekend is, kan de volgen
   - [overzicht](./features/raadpleeg-met-burgerservicenummer/overzicht.feature)
   - [fout cases](./features/raadpleeg-met-burgerservicenummer/fout-cases.feature)
 
-Het resultaat van deze operatie is een Persoon collectie/lijst.
+Het resultaat van deze operatie is een lijst van personen wiens burgerservicenummer overeenkomen met de opgegeven burgerservicenummers.
 
+### Raadplegen van overleden personen
+De "raadpleeg met burgerservicenummer" operatie levert de personen wiens burgerservicenummer overeenkomen met de opgegeven burgerservicenummers. Dit kunnen ook personen zijn die zijn overleden.
 Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'.  Zie de [overlijden overzicht](./features/persoon/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 ## Filteren van de velden van de gevonden personen
