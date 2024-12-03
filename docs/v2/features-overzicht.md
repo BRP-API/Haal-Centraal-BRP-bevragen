@@ -50,7 +50,7 @@ Als het burgerservicenummer van de te bevragen personen bekend is, kan de volgen
   - [overzicht](./features/raadpleeg-met-burgerservicenummer/overzicht.feature)
   - [fout cases](./features/raadpleeg-met-burgerservicenummer/fout-cases.feature)
 
-Het resultaat van deze operatie is een lijst van personen wiens burgerservicenummer overeenkomen met de opgegeven burgerservicenummers.
+Het resultaat van deze operatie is een lijst van personen van wie het burgerservicenummer overeenkomen met de opgegeven burgerservicenummers.
 
 ### Raadplegen van overleden personen
 De "raadpleeg met burgerservicenummer" operatie levert de personen van wie het burgerservicenummer overeenkomt met de opgegeven burgerservicenummers. Dit kunnen ook personen zijn die zijn overleden.
