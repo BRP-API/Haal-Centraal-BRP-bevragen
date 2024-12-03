@@ -36,7 +36,7 @@ Je kunt de volgende zoekoperaties gebruiken om een persoon met niet-uniek identi
   - [fout cases](./features/zoek-met-nummeraanduiding-identificatie/fout-cases.feature)
 - zoek met adresseerbaar object identificatie
 
-Het resultaat van de zoek operaties is een lijst van personen die voldoen aan de opgegeven parameters. Bij de "zoek met adresseerbaar object identificatie" operatie kan van de gevonden personen ook de gezagsrelaties worden gevraagd.
+Het resultaat van de zoek operaties is een lijst van personen die voldoen aan de opgegeven parameters. Bij de "zoek met adresseerbaar object identificatie" operatie kunnen van de gevonden personen ook de gezagsrelaties worden gevraagd.
 
 ### Vinden van overleden personen
 Standaard wordt alleen personen gevonden die in leven zijn. Om ook overleden personen te kunnen vinden, moet de inclusiefOverleden parameter met waarde true worden opgegeven.
