@@ -53,7 +53,7 @@ Als het burgerservicenummer van de te bevragen personen bekend is, kan de volgen
 Het resultaat van deze operatie is een lijst van personen wiens burgerservicenummer overeenkomen met de opgegeven burgerservicenummers.
 
 ### Raadplegen van overleden personen
-De "raadpleeg met burgerservicenummer" operatie levert de personen wiens burgerservicenummer overeenkomen met de opgegeven burgerservicenummers. Dit kunnen ook personen zijn die zijn overleden.
+De "raadpleeg met burgerservicenummer" operatie levert de personen van wie het burgerservicenummer overeenkomt met de opgegeven burgerservicenummers. Dit kunnen ook personen zijn die zijn overleden.
 Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code 'O' en omschrijving 'overlijden'.  Zie de [overlijden overzicht](./features/persoon/overlijden/overzicht.feature) feature voor meer informatie over dit veld.
 
 ## Filteren van de velden van de gevonden personen
