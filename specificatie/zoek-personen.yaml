@@ -21,6 +21,7 @@ paths:
 
         Bij zoeken krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
         Bij raadplegen met burgerservicenummer kun je wel een persoon terugkrijgen die is overleden.
+        Zie [Vinden van overleden personen](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#vinden-van-overleden-personen) en [Raadplegen van overleden personen](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#raadplegen-van-overleden-personen) voor meer informatie.
         
         Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
       requestBody:
