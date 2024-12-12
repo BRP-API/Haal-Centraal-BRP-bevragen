@@ -165,7 +165,7 @@ In het volgende feature bestand zijn de bovenstaande regels geïllustreerd aan d
 
 ## Vragen om gezag over een minderjarige
 
-Je kan om het gezag over een minderjarige vragen met fields "gezag". Je kan hier niet vragen om alleen specifieke velden binnen gezag -zoals "gezag.minderjarige", je krijgt bij gezag alles of niets.
+Je kan om het gezag over een minderjarige vragen met fields "gezag". Je kan hier niet vragen om alleen specifieke velden binnen gezag, zoals "gezag.minderjarige", je krijgt bij gezag alles of niets.
 
 Gezag kan alleen gevraagd worden bij de zoekoperaties RaadpleegMetBurgerservicenummer en ZoekMetAdresseerbaarObjectIdentificatie. Gezag vragen met ZoekMetAdresseerbaarObjectIdentificatie kan gebruikt worden om de gezagsrelaties van alle bewoners van een adres (verblijfsobject) te krijgen.
 
