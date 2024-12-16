@@ -310,7 +310,7 @@ Bijvoorbeeld
 
 ### GezagNietTeBepalen
 
-Dit type gezag betekent dat de API niet met zekerheid kan bepalen wie het gezag heeft over de minderjarige. Dit kan om veel verschillende redenen het geval zijn. Het gezag bevat in dit geval het burgerservicenummer van de minderjarige en een toelichting van de reden dat het gezag niet te bepalen is.
+Dit type gezag betekent dat de API niet met zekerheid kan bepalen wie het gezag heeft over de minderjarige. Dit kan om veel verschillende redenen het geval zijn. Het gezag bevat in dit geval het burgerservicenummer van de minderjarige en een toelichting met de reden dat het gezag niet te bepalen is.
 
 Bijvoorbeeld
 ```
