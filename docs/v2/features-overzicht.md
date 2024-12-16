@@ -236,7 +236,7 @@ Dit type gezag betekent dat de juridische ouder en iemand anders - geen ouder - 
 
 Dit kan voorkomen wanneer de ouder en diens (ex) partner het gezag hebben. Het gezag bevat in dit geval de burgerservicenummers van de minderjarige, van de ouder en van de (ex)partner die het gezag hebben. De niet-ouder (partner) met gezag wordt een "derde" genoemd.
 
-Dit type gezag kan ook voorkomen wanneer er een gerechtelijke uitspraak over is gedaan, waarbij het gezag aan de ouder en iemand anders is toegewezen. In dat geval weten we niet wie die andere persoon of instelling is die het gezag heeft. Het gezag bevat in dit geval de burgerservicenummers van de minderjarige en van de ouder die het gezag heeft.
+Dit type gezag kan ook voorkomen wanneer er een gerechtelijke uitspraak over het gezag is gedaan, waarbij het gezag aan de ouder en iemand anders is toegewezen. In de BRP is op dit moment niet bekend wie die andere persoon of instelling is die het gezag heeft. Het gezag bevat in dit geval de burgerservicenummers van de minderjarige en van de ouder die het gezag heeft.
 
 Bijvoorbeeld bij gezamenlijk gezag van de ouder en diens partner
 ```
