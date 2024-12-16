@@ -175,7 +175,7 @@ Je kan ook gezag vragen van een meerderjarige. Dan krijg je als antwoord over wi
 
 Gezag geeft in de API een lijst. Hierin kunnen 0, 1 of meerdere gezagvoorkomens geleverd worden.
 
-Wanneer je het gezag vraagt van een minderjarige heeft het antwoord altijd exact 1 item gezag, tenzij de minderjarige is overleden.
+Wanneer je het gezag vraagt van een minderjarige heeft het antwoord altijd exact 1 item gezag, tenzij de minderjarige is overleden. Dan wordt geen informatie over gezag geleverd.
 
 Wanneer je het gezag vraagt van een meerderjarige kan het antwoord 0 (de persoon heeft over niemand gezag), 1 of meerdere items krijgen. Bijvoorbeeld wanneer de persoon gezag heeft over meerdere kinderen. Elk gezagvoorkomen (elk item in de lijst gezag) geeft dan het gezag over één minderjarige.
 
