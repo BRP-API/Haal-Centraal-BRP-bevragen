@@ -260,7 +260,7 @@ Bijvoorbeeld bij gezamenlijk gezag van de ouder en diens partner
 
 Dit type gezag betekent dat een niet-ouder het gezag heeft over de minderjarige. Dit kan voorkomen wanneer er een gerechtelijke uitspraak is gedaan over het gezag. In dat geval weten we niet wie het gezag heeft. Dat kan een voogdijinstelling zijn of een of meerdere personen.
 
-Voogdij kan ook voorkomen wanneer de ouder is overleden of onbevoegd is tot gezag. De (ex)partner van de ouder krijgt dan (onder bepaalde condities) van rechtswege het gezag. De niet-ouder (partner) met gezag wordt dan geleverd als "derde".
+Voogdij kan ook voorkomen wanneer de ouder is overleden of onbevoegd is tot gezag. De (ex)partner van de ouder krijgt dan (onder bepaalde condities) het gezag. De niet-ouder (partner) met gezag noemen we een "derde".
 
 Bijvoorbeeld bij voogdij na gerechtelijke uitspraak
 ```
