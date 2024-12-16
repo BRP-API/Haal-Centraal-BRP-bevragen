@@ -294,7 +294,7 @@ Bijvoorbeeld bij voogdij van rechtswege voor de (ex)partner
 
 ### TijdelijkGeenGezag
 
-Dit type gezag betekent dat op dit moment niemand het gezag heeft over de minderjarige. Dit moet een zeer tijdelijke situatie zijn. Bijvoorbeeld direct na het overlijden van ouder zolang er nog geen voogdij is aangewezen. Het gezag bevat in dit geval het burgerservicenummer van de minderjarige.
+Dit type gezag betekent dat op dit moment niemand het gezag heeft over de minderjarige. Dit moet een zeer tijdelijke situatie zijn. Bijvoorbeeld direct na het overlijden van ouder zolang er nog geen voogd is aangewezen. Het gezag bevat in dit geval alleen het burgerservicenummer van de minderjarige.
 
 Bijvoorbeeld
 ```
