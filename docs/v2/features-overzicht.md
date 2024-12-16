@@ -179,7 +179,7 @@ Wanneer je het gezag vraagt van een minderjarige heeft het antwoord altijd exact
 
 Wanneer je het gezag vraagt van een meerderjarige kan het antwoord 0 (de persoon heeft over niemand gezag), 1 of meerdere items krijgen. Bijvoorbeeld wanneer de persoon gezag heeft over meerdere kinderen. Elk gezagvoorkomen (elk item in de lijst gezag) geeft dan het gezag over één minderjarige.
 
-Elk geleverd gezag kan één de volgende types hebben
+Elk geleverd gezag kan één van de volgende types zijn:
 - TweehoofdigOuderlijkGezag
 - EenhoofdigOuderlijkGezag
 - GezamenlijkGezag
