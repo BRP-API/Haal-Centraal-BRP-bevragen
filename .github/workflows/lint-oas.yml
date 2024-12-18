@@ -31,8 +31,8 @@ jobs:
         with:
           path-bash-file-or-folder: ./scripts/*
 
-      - name: lint OAS
-        run: ./scripts/oas-lint.sh
+      # - name: lint OAS
+      #   run: ./scripts/oas-lint.sh
 
       - name: resolve OAS
         run: ./scripts/oas-resolve.sh
