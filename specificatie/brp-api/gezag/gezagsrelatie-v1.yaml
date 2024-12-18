@@ -77,6 +77,10 @@ components:
     TijdelijkGeenGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'
 
     GezagNietTeBepalen:
       allOf:
