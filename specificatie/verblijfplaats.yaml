@@ -109,7 +109,7 @@ components:
         huisnummertoevoeging:
           $ref: '#/components/schemas/Huisnummertoevoeging'
         aanduidingBijHuisnummer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         postcode:
           $ref: '#/components/schemas/Postcode'
         woonplaats:
@@ -126,7 +126,7 @@ components:
         regel3:
           $ref: '#/components/schemas/Regel3'
         land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
     VerblijfadresLocatie:
@@ -136,35 +136,6 @@ components:
           $ref: '#/components/schemas/Locatiebeschrijving'
         inOnderzoek:
           $ref: "#/components/schemas/VerblijfadresLocatieInOnderzoek"
-    GbaVerblijfplaatsBeperkt:
-      type: object
-      properties:
-        straat:
-          $ref: '#/components/schemas/Straat'
-        huisnummer:
-          $ref: '#/components/schemas/Huisnummer'
-        huisletter:
-          $ref: '#/components/schemas/Huisletter'
-        huisnummertoevoeging:
-          $ref: '#/components/schemas/Huisnummertoevoeging'
-        aanduidingBijHuisnummer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        postcode:
-          $ref: '#/components/schemas/Postcode'
-        woonplaats:
-          $ref: '#/components/schemas/Woonplaats'
-        locatiebeschrijving:
-          $ref: '#/components/schemas/Locatiebeschrijving'
-        land:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        regel1:
-          $ref: '#/components/schemas/Regel1'
-        regel2:
-          $ref: '#/components/schemas/Regel2'
-        regel3:
-          $ref: '#/components/schemas/Regel3'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     AbstractVerblijfplaats:
       type: object
       description: |
@@ -198,9 +169,9 @@ components:
           verblijfadres:
             $ref: "#/components/schemas/VerblijfadresBuitenland"
           datumVan:
-            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
           datumIngangGeldigheid:
-            $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+            $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             deprecated: true
           inOnderzoek:
             $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
@@ -219,15 +190,15 @@ components:
             verblijfadres:
               $ref: "#/components/schemas/VerblijfadresBinnenland"
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             adresseerbaarObjectIdentificatie:
               $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
             nummeraanduidingIdentificatie:
               $ref: '#/components/schemas/NummeraanduidingIdentificatie'
             datumVan:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
               deprecated: true
             indicatieVastgesteldVerblijftNietOpAdres:
               $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
@@ -243,13 +214,13 @@ components:
         - type: object
           properties:
             datumVan:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             verblijfadres:
               $ref: "#/components/schemas/VerblijfadresLocatie"
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
               deprecated: true
             indicatieVastgesteldVerblijftNietOpAdres:
               $ref: '#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
@@ -261,32 +232,12 @@ components:
         - type: object
           properties:
             datumVan:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
               deprecated: true
             inOnderzoek:
               $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
-    GbaVerblijfplaats:
-      allOf:
-        - $ref: '#/components/schemas/GbaVerblijfplaatsBeperkt'
-        - type: object
-          properties:
-            adresseerbaarObjectIdentificatie:
-              $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
-            nummeraanduidingIdentificatie:
-              $ref: '#/components/schemas/NummeraanduidingIdentificatie'
-            datumAanvangAdresBuitenland:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
-            datumAanvangAdreshouding:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
-            datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
-              deprecated: true
-            functieAdres:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
-            naamOpenbareRuimte:
-              $ref: '#/components/schemas/NaamOpenbareRuimte'
     VerblijfplaatsBuitenlandInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'

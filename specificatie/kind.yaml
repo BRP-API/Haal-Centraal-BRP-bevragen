@@ -6,22 +6,11 @@ info:
 paths: {}
 components:
   schemas:
-    GbaKind:
-      type: object
-      properties:
-        burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
-        inOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
     Kind:
       type: object
       properties:
         burgerservicenummer:
-          $ref: 'persoon.yaml#/components/schemas/Burgerservicenummer'
+          $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         inOnderzoek:
           $ref: '#/components/schemas/KindInOnderzoek'
         naam:

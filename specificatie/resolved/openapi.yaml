@@ -7,7 +7,7 @@ info:
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
     Zie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.
-  version: 2.3.0
+  version: 2.4.0
   contact:
     url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
@@ -38,9 +38,7 @@ paths:
         6.  Zoek met nummeraanduiding identificatie
         7.  Zoek met adresseerbaarobject identificatie
 
-        Bij zoeken krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
-        Bij raadplegen met burgerservicenummer kun je wel een persoon terugkrijgen die is overleden.
-        Zie [Vinden van overleden personen](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#vinden-van-overleden-personen) en [Raadplegen van overleden personen](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#raadplegen-van-overleden-personen) voor meer informatie.
+        Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
 
         Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
       requestBody:
@@ -52,15 +50,6 @@ paths:
         '200':
           description: |
             Zoekactie geslaagd
-          headers:
-            warning:
-              $ref: '#/components/headers/warning'
-            X-Rate-Limit-Limit:
-              $ref: '#/components/headers/X_Rate_Limit_Limit'
-            X-Rate-Limit-Remaining:
-              $ref: '#/components/headers/X_Rate_Limit_Remaining'
-            X-Rate-Limit-Reset:
-              $ref: '#/components/headers/X_Rate_Limit_Reset'
           content:
             application/json; charset=utf-8:
               schema:
@@ -82,7 +71,7 @@ paths:
         '503':
           $ref: '#/components/responses/503'
         default:
-          $ref: '#/components/responses/default'
+          $ref: '#/components/responses/500'
       tags:
         - Personen
 components:
@@ -340,31 +329,30 @@ components:
       description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
       properties:
         type:
+          description: Link naar meer informatie over deze fout
           type: string
           format: uri
-          description: Link naar meer informatie over deze fout
         title:
+          description: Beschrijving van de fout
           type: string
           pattern: ^[a-zA-Z0-9À-ž \.\-]{1,80}$
-          description: Beschrijving van de fout
         status:
           type: integer
           minimum: 100
           maximum: 600
           description: Http status code
         detail:
-          type: string
-          pattern: ^[a-zA-Z0-9À-ž \.\-\(\)\,]{1,200}$
           description: Details over de fout
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \.\-\(\),]{1,200}$
         instance:
+          description: Uri van de aanroep die de fout heeft veroorzaakt
           type: string
           format: uri
-          description: Uri van de aanroep die de fout heeft veroorzaakt
         code:
+          description: Systeemcode die het type fout aangeeft
           type: string
           pattern: ^[a-zA-Z0-9]{1,25}$
-          description: Systeemcode die het type fout aangeeft
-          minLength: 1
     PersonenQueryResponse:
       type: object
       required:
@@ -400,6 +388,10 @@ components:
           DatumOnbekend: '#/components/schemas/DatumOnbekend'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
+      example:
+        type: Datum
+        datum: '2018-07-01'
+        langFormaat: 1 juli 2018
     VolledigeDatum:
       description: Datum conform iso8601
       allOf:
@@ -412,10 +404,9 @@ components:
       required:
         - datum
       example:
-        value:
-          type: Datum
-          datum: '2018-07-01'
-          langFormaat: 1 juli 2018
+        type: Datum
+        datum: '2018-07-01'
+        langFormaat: 1 juli 2018
     DatumOnbekend:
       description: representatie voor een volledig onbekend datum
       allOf:
@@ -428,10 +419,9 @@ components:
       required:
         - onbekend
       example:
-        value:
-          type: DatumOnbekend
-          onbekend: true
-          langFormaat: onbekend
+        type: DatumOnbekend
+        onbekend: true
+        langFormaat: onbekend
     Jaar:
       type: integer
       format: int32
@@ -448,10 +438,9 @@ components:
       required:
         - jaar
       example:
-        value:
-          type: JaarDatum
-          jaar: 2018
-          langFormaat: 2018
+        type: JaarDatum
+        jaar: 2018
+        langFormaat: 2018
     Maand:
       type: integer
       format: int32
@@ -471,16 +460,17 @@ components:
         - jaar
         - maand
       example:
-        value:
-          type: JaarMaandDatum
-          jaar: 2018
-          maand: 7
-          langFormaat: juli 2018
+        type: JaarMaandDatum
+        jaar: 2018
+        maand: 7
+        langFormaat: juli 2018
     GeboorteBasis:
       type: object
       properties:
         datum:
           $ref: '#/components/schemas/AbstractDatum'
+          description: |
+            Datum waarop de persoon is geboren.
     InOnderzoek:
       type: object
       properties:
@@ -513,7 +503,7 @@ components:
           example: '6030'
         omschrijving:
           type: string
-          pattern: ^[a-zA-Z0-9À-ž \'\,\(\)\.\-]{1,200}$
+          pattern: ^[a-zA-Z0-9À-ž \'\.\-\(\),]{1,200}$
           example: Nederland
     PersoonInOnderzoekBeperkt:
       description: |
@@ -537,11 +527,11 @@ components:
       minimum: 0
       maximum: 150
     Voornamen:
+      description: |
+        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
       maxLength: 200
-      description: |
-        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
       example: Pieter Jan
     AdellijkeTitelPredicaatSoort:
       type: string
@@ -557,8 +547,8 @@ components:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
-            code: JH
-            omschrijving: jonkheer
+            code: JV
+            omschrijving: jonkvrouw
             soort: predicaat
     Voorvoegsel:
       type: string
@@ -582,7 +572,7 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
       description: |
         Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
-      example: jonkheer Pieter Jan de Vries
+      example: Pieter Jan de Vries
     NaamBasis:
       type: object
       properties:
@@ -1414,9 +1404,12 @@ components:
       type: object
       required:
         - type
+        - minderjarige
       properties:
         type:
           type: string
+        minderjarige:
+          $ref: '#/components/schemas/Minderjarige'
       discriminator:
         propertyName: type
         mapping:
@@ -1440,13 +1433,6 @@ components:
           $ref: '#/components/schemas/Burgerservicenummer'
       required:
         - burgerservicenummer
-    Minderjarige:
-      type: object
-      properties:
-        burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
-      required:
-        - burgerservicenummer
     TweehoofdigOuderlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -1458,8 +1444,6 @@ components:
                 $ref: '#/components/schemas/GezagOuder'
               minItems: 2
               maxItems: 2
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     EenhoofdigOuderlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -1467,8 +1451,6 @@ components:
           properties:
             ouder:
               $ref: '#/components/schemas/GezagOuder'
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     Meerderjarige:
       type: object
       properties:
@@ -1483,8 +1465,6 @@ components:
               $ref: '#/components/schemas/GezagOuder'
             derde:
               $ref: '#/components/schemas/Meerderjarige'
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     Voogdij:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -1496,14 +1476,26 @@ components:
                 $ref: '#/components/schemas/Meerderjarige'
               minItems: 0
               maxItems: 2
-            minderjarige:
-              $ref: '#/components/schemas/Minderjarige'
     TijdelijkGeenGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
+    Toelichting:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
     GezagNietTeBepalen:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
+    Minderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+      required:
+        - burgerservicenummer
     Gezag:
       type: array
       items:
@@ -1825,29 +1817,28 @@ components:
                 * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: '#/components/schemas/GezagPersoonBeperkt'
-    InvalidParams:
+    InvalidParam:
       type: object
       description: Details over fouten in opgegeven parameters
       properties:
         type:
           type: string
           format: uri
-          example: https://www.vng.nl/realisatie/api/v1/validaties/integer
+          example: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
         name:
-          type: string
-          pattern: ^[a-zA-Z0-9\.,_]{1,30}$
           description: Naam van de parameter
+          type: string
+          pattern: ^[a-zA-Z0-9\._]{1,30}$
           example: huisnummer
         code:
-          type: string
-          pattern: ^[a-zA-Z0-9\.,_]{1,25}$
           description: Systeemcode die het type fout aangeeft
-          minLength: 1
+          type: string
+          pattern: ^[a-zA-Z0-9]{1,25}$
           example: integer
         reason:
-          type: string
-          pattern: ^[a-zA-Z0-9\.,_ ]{1,80}$
           description: Beschrijving van de fout op de parameterwaarde
+          type: string
+          pattern: ^[a-zA-Z0-9\., ]{1,80}$
           example: Waarde is geen geldig getal.
     BadRequestFoutbericht:
       allOf:
@@ -1855,10 +1846,11 @@ components:
         - type: object
           properties:
             invalidParams:
-              description: Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
+              description: |
+                Foutmelding per fout in een parameter. Alle gevonden fouten worden één keer teruggemeld.
               type: array
               items:
-                $ref: '#/components/schemas/InvalidParams'
+                $ref: '#/components/schemas/InvalidParam'
   responses:
     '400':
       description: Bad Request
@@ -1969,25 +1961,3 @@ components:
             detail: The service is currently unable to handle the request due to a temporary overloading or maintenance of the server.
             instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
             code: notAvailable
-    default:
-      description: Er is een onverwachte fout opgetreden
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/Foutbericht'
-  headers:
-    warning:
-      schema:
-        type: string
-        maxLength: 500
-        description: zie RFC 7234. In het geval een major versie wordt uitgefaseerd, gebruiken we warn-code 299 ("Miscellaneous Persistent Warning") en het API end-point (inclusief versienummer) als de warn-agent van de warning, gevolgd door de warn-text met de human-readable waarschuwing
-        example: '299 https://service.../api/.../v1 "Deze versie van de API is verouderd en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie hier de documentatie: https://omgevingswet.../api/.../v1".'
-    X_Rate_Limit_Limit:
-      schema:
-        type: integer
-    X_Rate_Limit_Remaining:
-      schema:
-        type: integer
-    X_Rate_Limit_Reset:
-      schema:
-        type: integer

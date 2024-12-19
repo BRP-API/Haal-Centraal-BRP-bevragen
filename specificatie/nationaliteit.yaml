@@ -16,7 +16,7 @@ components:
         type:
           type: string
         redenOpname:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
       discriminator:
         propertyName: type
         mapping:
@@ -33,9 +33,9 @@ components:
         - type: object
           properties:
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             nationaliteit:
-              $ref: 'common.yaml#/components/schemas/Waardetabel'
+              $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitBekendInOnderzoek'
     BehandeldAlsNederlander:
@@ -44,7 +44,7 @@ components:
         - type: object
           properties:
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
     VastgesteldNietNederlander:
@@ -53,7 +53,7 @@ components:
         - type: object
           properties:
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/BijzonderNederlanderschapInOnderzoek'
     Staatloos:
@@ -64,7 +64,7 @@ components:
         - type: object
           properties:
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/StaatloosInOnderzoek'
     NationaliteitOnbekend:
@@ -73,23 +73,9 @@ components:
         - type: object
           properties:
             datumIngangGeldigheid:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
             inOnderzoek:
               $ref: '#/components/schemas/NationaliteitOnbekendInOnderzoek'
-    GbaNationaliteit:
-      type: object
-      properties:
-        aanduidingBijzonderNederlanderschap:
-          type: string
-          pattern: ^(B|V)$
-        datumIngangGeldigheid:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        nationaliteit:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        redenOpname:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        inOnderzoek:
-            $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
     BijzonderNederlanderschapInOnderzoek:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/InOnderzoek'

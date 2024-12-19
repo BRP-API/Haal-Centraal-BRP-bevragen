@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: personen query response type definitie
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    PersonenQueryResponse:
+      type: object
+      required:
+        - type
+      discriminator:
+        propertyName: type
+        mapping:
+          ZoekMetGeslachtsnaamEnGeboortedatum: '#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatumResponse'
+          ZoekMetNaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijvingResponse'
+          RaadpleegMetBurgerservicenummer: '#/components/schemas/RaadpleegMetBurgerservicenummerResponse'
+          ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummerResponse'
+          ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse'
+          ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatieResponse'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatieResponse'
+      properties:
+        type:
+          type: string
+    RaadpleegMetBurgerservicenummerResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'persoon.yaml#/components/schemas/Persoon'
+    ZoekMetGeslachtsnaamEnGeboortedatumResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+    ZoekMetNaamEnGemeenteVanInschrijvingResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+    ZoekMetPostcodeEnHuisnummerResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+    ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+    ZoekMetNummeraanduidingIdentificatieResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+    ZoekMetAdresseerbaarObjectIdentificatieResponse:
+      allOf:
+        - $ref: '#/components/schemas/PersonenQueryResponse'
+        - type: object
+          properties:
+            personen:
+              type: array
+              description: |
+                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+              items:
+                $ref: 'gezag.yaml#/components/schemas/GezagPersoonBeperkt'

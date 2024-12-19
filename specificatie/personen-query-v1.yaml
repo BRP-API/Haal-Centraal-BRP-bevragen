@@ -1,0 +1,168 @@
+openapi: 3.1.0
+info:
+  title: personen query type definitie
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    InclusiefOverledenPersonen:
+      description: |
+        Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.
+      type: boolean
+      example: true
+    PersonenQuery:
+      type: object
+      required:
+        - type
+        - fields
+      discriminator:
+        propertyName: type
+        mapping:
+          ZoekMetGeslachtsnaamEnGeboortedatum: '#/components/schemas/ZoekMetGeslachtsnaamEnGeboortedatum'
+          ZoekMetNaamEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetNaamEnGemeenteVanInschrijving'
+          RaadpleegMetBurgerservicenummer: '#/components/schemas/RaadpleegMetBurgerservicenummer'
+          ZoekMetPostcodeEnHuisnummer: '#/components/schemas/ZoekMetPostcodeEnHuisnummer'
+          ZoekMetStraatHuisnummerEnGemeenteVanInschrijving: '#/components/schemas/ZoekMetStraatHuisnummerEnGemeenteVanInschrijving'
+          ZoekMetNummeraanduidingIdentificatie: '#/components/schemas/ZoekMetNummeraanduidingIdentificatie'
+          ZoekMetAdresseerbaarObjectIdentificatie: '#/components/schemas/ZoekMetAdresseerbaarObjectIdentificatie'
+      properties:
+        type:
+          type: string
+        fields:
+          description: |
+            Hiermee kun je de velden opgeven die je wenst te ontvangen.
+            
+            Velden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.
+            Opgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.
+            
+            Meer details over hoe fields werkt lees je in het [feature overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#filteren-van-de-velden-van-de-gevonden-personen).
+            Stel je fields eenvoudig samen met de [fields tool](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/fields){:target="_blank" rel="noopener"}.
+          type: array
+          maxItems: 130
+          minItems: 1
+          items:
+            $ref: 'filter.yaml#/components/schemas/Field'
+        gemeenteVanInschrijving:
+          $ref: 'persoon.yaml#/components/schemas/GemeenteVanInschrijving'
+    RaadpleegMetBurgerservicenummer:
+      required:
+        - burgerservicenummer
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: array
+              items:
+                $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
+              minItems: 1
+              maxItems: 20
+    ZoekMetGeslachtsnaamEnGeboortedatum:
+      required:
+        - geslachtsnaam
+        - geboortedatum
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            inclusiefOverledenPersonen:
+              $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            geboortedatum:
+              description: |
+                Je kunt alleen zoeken met een volledige geboortedatum.
+              type: string
+              format: date
+              example: "1964-09-24"
+            geslachtsnaam:
+              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
+            geslacht:
+              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
+            voorvoegsel:
+              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
+            voornamen:
+              $ref: 'filter.yaml#/components/schemas/VoornamenOptioneelFilter'
+    ZoekMetNaamEnGemeenteVanInschrijving:
+      required:
+        - geslachtsnaam
+        - gemeenteVanInschrijving
+        - voornamen
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            inclusiefOverledenPersonen:
+              $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            geslacht:
+              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
+            geslachtsnaam:
+              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
+            voorvoegsel:
+              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
+            voornamen:
+              $ref: 'filter.yaml#/components/schemas/VoornamenVerplichtFilter'
+    ZoekMetPostcodeEnHuisnummer:
+      required:
+        - postcode
+        - huisnummer
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            inclusiefOverledenPersonen:
+              $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            huisletter:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
+            huisnummer:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
+            huisnummertoevoeging:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
+            postcode:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Postcode'
+            geboortedatum:
+              description: |
+                Je kunt alleen zoeken met een volledige geboortedatum.
+              type: string
+              format: date
+              example: "1964-09-24"
+    ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
+      required:
+        - straat
+        - huisnummer
+        - gemeenteVanInschrijving
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            inclusiefOverledenPersonen:
+              $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            huisletter:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
+            huisnummer:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
+            huisnummertoevoeging:
+              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
+            straat:
+              $ref: 'filter.yaml#/components/schemas/StraatFilter'
+    ZoekMetNummeraanduidingIdentificatie:
+      required:
+        - nummeraanduidingIdentificatie
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            inclusiefOverledenPersonen:
+              $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            nummeraanduidingIdentificatie:
+              $ref: 'verblijfplaats.yaml#/components/schemas/NummeraanduidingIdentificatie'
+    ZoekMetAdresseerbaarObjectIdentificatie:
+      required:
+        - adresseerbaarObjectIdentificatie
+      allOf:
+        - $ref: '#/components/schemas/PersonenQuery'
+        - type: object
+          properties:
+            inclusiefOverledenPersonen:
+              $ref: '#/components/schemas/InclusiefOverledenPersonen'
+            adresseerbaarObjectIdentificatie:
+              $ref: 'verblijfplaats.yaml#/components/schemas/AdresseerbaarObjectIdentificatie'

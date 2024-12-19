@@ -24,21 +24,21 @@ Given(/^landelijke tabel "([\w\-]*)" heeft de volgende waarden$/, function (_tab
     // doe nog niets
 });
 
-Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
-    if(this.context.sqlData === undefined) {
-        this.context.sqlData = [];
-    }
-    this.context.sqlData.push({});
+// Given(/^(?:de|een) persoon met burgerservicenummer '(\d*)' heeft de volgende gegevens$/, function (burgerservicenummer, dataTable) {
+//     if(this.context.sqlData === undefined) {
+//         this.context.sqlData = [];
+//     }
+//     this.context.sqlData.push({});
 
-    let sqlData = this.context.sqlData.at(-1);
+//     let sqlData = this.context.sqlData.at(-1);
 
-    sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
-    sqlData["persoon"] = [
-        createCollectieDataFromArray("persoon", [
-            ['burger_service_nr', burgerservicenummer]
-        ]).concat(createArrayFrom(dataTable, columnNameMap))
-    ];
-});
+//     sqlData["inschrijving"] = [[[ 'geheim_ind', '0' ]]];
+//     sqlData["persoon"] = [
+//         createCollectieDataFromArray("persoon", [
+//             ['burger_service_nr', burgerservicenummer]
+//         ]).concat(createArrayFrom(dataTable, columnNameMap))
+//     ];
+// });
 
 function createPersoonMetGegevensgroep(burgerservicenummer, gegevensgroep, dataTable) {
     if(this.context.sqlData === undefined) {
@@ -384,11 +384,11 @@ async function handleRequest(context, dataTable) {
     }
 }
 
-When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
-    this.context.proxyAanroep = true
+// When(/^personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
+//     this.context.proxyAanroep = true
 
-    await handleRequest(this.context, dataTable)
-});
+//     await handleRequest(this.context, dataTable)
+// });
 
 When(/^gba personen wordt gezocht met de volgende parameters$/, async function (dataTable) {
     this.context.proxyAanroep = false;
@@ -736,23 +736,23 @@ Then(/^heeft (?:de|het) '(.*)' ?(?:alleen)? de volgende '(.*)' gegevens$/, funct
     }
 });
 
-After({tags: 'not @fout-case'}, async function() {
-    if (this.context.verifyResponse === undefined ||
-        !this.context.verifyResponse) {
-        return;
-    }
+// After({tags: 'not @fout-case'}, async function() {
+//     if (this.context.verifyResponse === undefined ||
+//         !this.context.verifyResponse) {
+//         return;
+//     }
 
-    this.context.response.status.should.equal(200, `response body: ${JSON.stringify(this.context.response.data, null, '\t')}`);
+//     this.context.response.status.should.equal(200, `response body: ${JSON.stringify(this.context.response.data, null, '\t')}`);
 
-    const actual = this.context?.response?.data.personen !== undefined
-        ? stringifyValues(this.context.response.data.personen)
-        : [];
-    const expected = this.context.expected !== undefined
-        ? this.context.expected
-        : [];
+//     const actual = this.context?.response?.data.personen !== undefined
+//         ? stringifyValues(this.context.response.data.personen)
+//         : [];
+//     const expected = this.context.expected !== undefined
+//         ? this.context.expected
+//         : [];
 
-    actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, '\t')}\nexpected: ${JSON.stringify(expected, null, '\t')}`);
-});
+//     actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, null, '\t')}\nexpected: ${JSON.stringify(expected, null, '\t')}`);
+// });
 
 After({tags: '@fout-case'}, async function() {
     this.context.response.status.should.not.equal(200, `response body: ${JSON.stringify(this.context.response.data, null, '\t')}`);
@@ -779,19 +779,19 @@ Before(function() {
     }
 });
 
-After(async function() {
-    if (pool === undefined ||
-        !this.context.sql.cleanup ||
-        noSqlData(this.context.sqlData)) {
-        return;
-    }
+// After(async function() {
+//     if (pool === undefined ||
+//         !this.context.sql.cleanup ||
+//         noSqlData(this.context.sqlData)) {
+//         return;
+//     }
 
-    await rollbackSqlStatements(this.context.sqlData, pool, tableNameMap, logSqlStatements);
+//     await rollbackSqlStatements(this.context.sqlData, pool, tableNameMap, logSqlStatements);
 
-    if(this.context.gezagDataPath !== undefined) {
-        fs.writeFileSync(this.context.gezagDataPath, JSON.stringify([], null, '\t'));
-    }
-});
+//     if(this.context.gezagDataPath !== undefined) {
+//         fs.writeFileSync(this.context.gezagDataPath, JSON.stringify([], null, '\t'));
+//     }
+// });
 
 function getNextStapelNr(sqlData, relatie) {
     let stapelNr = 0;
