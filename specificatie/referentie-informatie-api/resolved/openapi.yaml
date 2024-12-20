@@ -392,12 +392,16 @@ components:
                 $ref: '#/components/schemas/Meerderjarige'
               minItems: 0
               maxItems: 2
-    TijdelijkGeenGezag:
-      allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
     Toelichting:
       type: string
       pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
+    TijdelijkGeenGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
     GezagNietTeBepalen:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
