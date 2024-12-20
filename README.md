@@ -1,7 +1,6 @@
 # Haal Centraal BRP Personen Bevragen
 
 ![lint oas](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/lint-oas/badge.svg)
-![ci](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/workflows/ci/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 
