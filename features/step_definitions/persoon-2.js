@@ -56,6 +56,10 @@ function aanvullenPersoon(persoon, dataTable) {
     mapDataTableToEntiteit(persoon.persoon.at(-1), dataTable);
 }
 
+function aanvullenPartner(persoon, dataTable) {
+    mapDataTableToEntiteit(persoon.partner.at(-1), dataTable);
+}
+
 function aanvullenGezagsverhouding(persoon, dataTable) {
     if(!persoon.gezagsverhouding) {
         persoon.gezagsverhouding = [];
@@ -121,8 +125,8 @@ function createPartner(persoon, dataTable) {
     ];
 }
 
-function wijzigPartner(persoon, dataTable) {
-    const partnerData = createPersoonType('partner', dataTable, 0);
+function wijzigPartner(persoon, dataTable, isCorrectie = false, mergeProperties = false) {
+    let partnerData = createPersoonType('partner', dataTable, 0);
 
     let partner;
     Object.keys(persoon).forEach(property => {
@@ -130,18 +134,27 @@ function wijzigPartner(persoon, dataTable) {
             persoon[property].at(-1).burger_service_nr === partnerData.burger_service_nr) {
                 partner = persoon[property];
         }
-    })
-
+    });
+    
     if(!partner) {
         global.logger.warn(`geen partner met bsn ${partnerData.burger_service_nr} gevonden`, persoon);
         return;
     }
-
-    partner.forEach(p => {
-        p.volg_nr = Number(p.volg_nr) + 1 + '';
-    });
+    
+    if(mergeProperties) {
+        let oldPartner = partner[0];
+        let mergedPartner = {...oldPartner, ...partnerData};
+        partnerData = mergedPartner;
+    }
 
     partnerData.stapel_nr = partner.at(-1).stapel_nr;
+    
+    partner.forEach(p => {
+        p.volg_nr = Number(p.volg_nr) + 1 + '';
+        if(isCorrectie && p.volg_nr === '1') {
+            p.onjuist_ind = 'O';
+        }
+    });
 
     partner.push(partnerData);
 }
@@ -176,6 +189,17 @@ function createVerblijfplaats(persoon, dataTable) {
     persoon.verblijfplaats.push(verblijfplaats);
 }
 
+function wijzigVerblijfplaats(persoon, dataTable, isCorrectie) {
+    persoon.verblijfplaats?.forEach(p => {
+        p.volg_nr = Number(p.volg_nr) + 1 + '';
+        if(isCorrectie && p.volg_nr === '1') {
+            p.onjuist_ind = 'O';
+        }
+    });
+
+    createVerblijfplaats(persoon, dataTable);
+}
+
 function createOverlijden(persoon, dataTable) {
     if(!persoon.overlijden) {
         persoon.overlijden = [];
@@ -203,6 +227,7 @@ module.exports = {
     createGezagsverhouding,
     aanvullenGezagsverhouding,
     createVerblijfplaats,
+    wijzigVerblijfplaats,
     createOverlijden,
     aanvullenInschrijving
 }
