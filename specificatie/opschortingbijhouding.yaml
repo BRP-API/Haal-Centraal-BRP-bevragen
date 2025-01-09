@@ -12,16 +12,7 @@ components:
         * **reden** - wordt gevuld met waarden voor 'Reden_Opschorting_Bijhouding' in 'tabelwaarden.csv'.
       properties:
         reden:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-    GbaOpschortingBijhouding:
-      allOf:
-        - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
-        - type: object
-          description: |
-            * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
-          properties:
-            datum:
-              $ref: 'datum.yaml#/components/schemas/GbaDatum'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
     OpschortingBijhouding:
       allOf:
         - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
@@ -30,4 +21,4 @@ components:
             * **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.
           properties:
             datum:
-              $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+              $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

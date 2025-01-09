@@ -64,7 +64,7 @@ components:
         adresregel3:
           $ref: "#/components/schemas/Adresregel3"
         land:
-          $ref: "common.yaml#/components/schemas/Waardetabel"
+          $ref: "brp/waardetabel-v1.yaml#/components/schemas/Waardetabel"
         indicatieVastgesteldVerblijftNietOpAdres:
           $ref: 'verblijfplaats.yaml#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
     Adressering:
@@ -105,11 +105,11 @@ components:
         gebruikInLopendeTekst:
           type: boolean
         datumIngangOnderzoekPersoon:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         datumIngangOnderzoekPartner:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         datumIngangOnderzoekVerblijfplaats:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
     AdresseringInOnderzoekBeperkt:
       description: |
         Geeft aan welke gegevens over de adressering in onderzoek zijn.
@@ -124,4 +124,4 @@ components:
         land:
           type: boolean
         datumIngangOnderzoekVerblijfplaats:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

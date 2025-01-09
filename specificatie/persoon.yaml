@@ -11,12 +11,6 @@ components:
         Het A-nummer van de persoon
       type: string
       pattern: ^[0-9]{10}$
-    Burgerservicenummer:
-      type: string
-      pattern: ^[0-9]{9}$
-      example: "555555021"
-    GbaGeheimhoudingPersoonsgegevens:
-      type: integer
     GeheimhoudingPersoonsgegevens:
       description: |
         Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
@@ -54,18 +48,11 @@ components:
       description: |
         Omschrijving van de verificatie van de rni-gegevens
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
-    GbaVerificatie:
-      type: object
-      properties:
-        datum:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        omschrijving:
-          $ref: '#/components/schemas/OmschrijvingVerificatie'
     Verificatie:
       type: object
       properties:
         datum:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         omschrijving:
           $ref: '#/components/schemas/OmschrijvingVerificatie'
     RniDeelnemer:
@@ -73,51 +60,24 @@ components:
       description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
       properties:
         deelnemer:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         omschrijvingVerdrag:
           $ref: '#/components/schemas/OmschrijvingVerdrag'
         categorie:
           $ref: '#/components/schemas/Categorie'
-    GbaPersoonBeperkt:
-      type: object
-      properties:
-        burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorteBeperkt'
-        geheimhoudingPersoonsgegevens:
-          $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
-        geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        persoonInOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/GbaNaamBasis'
-        opschortingBijhouding:
-          $ref: 'opschortingbijhouding.yaml#/components/schemas/GbaOpschortingBijhouding'
-        gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        verblijfplaats:
-          $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
-        rni:
-          type: array
-          items:
-            $ref: '#/components/schemas/RniDeelnemer'
-        verificatie:
-          $ref: '#/components/schemas/GbaVerificatie'
     PersoonBeperkt:
       type: object
       description: |
         * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
       properties:
         burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         geboorte:
           $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoekBeperkt'
         leeftijd:
@@ -134,74 +94,6 @@ components:
             $ref: '#/components/schemas/RniDeelnemer'
         verificatie:
           $ref: '#/components/schemas/Verificatie'
-    GbaPersoon:
-      type: object
-      properties:
-        aNummer:
-          $ref: '#/components/schemas/ANummer'
-        burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        datumEersteInschrijvingGBA:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        geheimhoudingPersoonsgegevens:
-          $ref: '#/components/schemas/GbaGeheimhoudingPersoonsgegevens'
-        geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        persoonInOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        gezagInOnderzoek:
-          $ref: 'gba-inonderzoek.yaml#/components/schemas/GbaInOnderzoek'
-        uitsluitingKiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/GbaUitsluitingKiesrecht'
-        europeesKiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/GbaEuropeesKiesrecht'
-        naam:
-          $ref: 'naam.yaml#/components/schemas/GbaNaamPersoon'
-        nationaliteiten:
-          type: array
-          items:
-            $ref: 'nationaliteit.yaml#/components/schemas/GbaNationaliteit'
-        geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/GbaGeboorte'
-        opschortingBijhouding:
-          $ref: 'opschortingbijhouding.yaml#/components/schemas/GbaOpschortingBijhouding'
-        overlijden:
-          $ref: 'overlijden.yaml#/components/schemas/GbaOverlijden'
-        verblijfplaats:
-          $ref: 'verblijfplaats.yaml#/components/schemas/GbaVerblijfplaats'
-        immigratie:
-          $ref: 'immigratie.yaml#/components/schemas/GbaImmigratie'
-        gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-        datumInschrijvingInGemeente:
-          $ref: 'datum.yaml#/components/schemas/GbaDatum'
-        indicatieCurateleRegister:
-          $ref: '#/components/schemas/IndicatieCurateleRegister'
-        indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
-          deprecated: true
-        gezag:
-          $ref: 'gezag.yaml#/components/schemas/Gezag'
-        verblijfstitel:
-          $ref: 'verblijfstitel.yaml#/components/schemas/GbaVerblijfstitel'
-        kinderen:
-          type: array
-          items:
-            $ref: 'kind.yaml#/components/schemas/GbaKind'
-        ouders:
-          type: array
-          items:
-            $ref: 'ouder.yaml#/components/schemas/GbaOuder'
-        partners:
-          type: array
-          items:
-            $ref: 'partner.yaml#/components/schemas/GbaPartner'
-        rni:
-          type: array
-          items:
-            $ref: '#/components/schemas/RniDeelnemer'
-        verificatie:
-          $ref: '#/components/schemas/GbaVerificatie'
     Persoon:
       type: object
       description: |
@@ -212,11 +104,11 @@ components:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
         datumEersteInschrijvingGBA:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         geheimhoudingPersoonsgegevens:
           $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         uitsluitingKiesrecht:
@@ -242,15 +134,15 @@ components:
         immigratie:
           $ref: 'immigratie.yaml#/components/schemas/Immigratie'
         gemeenteVanInschrijving:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         datumInschrijvingInGemeente:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         adressering:
           $ref: 'adressering.yaml#/components/schemas/Adressering'
         indicatieCurateleRegister:
           $ref: '#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
-          $ref: 'common.yaml#/components/schemas/Waardetabel'
+          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
           deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'
@@ -283,11 +175,11 @@ components:
       type: object
       properties:
         datumIngangOnderzoekPersoon:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         datumIngangOnderzoekGemeente:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         datumIngangOnderzoekGezag:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         burgerservicenummer:
           type: boolean
         geslacht:
@@ -310,7 +202,7 @@ components:
       type: object
       properties:
         datumIngangOnderzoekPersoon:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         burgerservicenummer:
           type: boolean
         geslacht:
@@ -321,4 +213,4 @@ components:
       type: object
       properties:
         datumIngangOnderzoek:
-          $ref: 'datum.yaml#/components/schemas/AbstractDatum'
+          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

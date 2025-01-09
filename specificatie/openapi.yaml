@@ -11,7 +11,7 @@ info:
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
     Zie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.
-  version: 2.3.0
+  version: 2.4.0
   contact:
     url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
@@ -24,4 +24,53 @@ externalDocs:
   url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
 paths:
   /personen:
-    $ref: 'zoek-personen.yaml#/paths/~1personen'
+    post:
+      operationId: Personen
+      summary: Zoek personen
+      description: |
+        Zoek personen met één van de onderstaande verplichte combinaties van parameters en vul ze evt. aan met optionele parameters.
+
+        1.  Raadpleeg met burgerservicenummer
+        2.  Zoek met geslachtsnaam en geboortedatum
+        3.  Zoek met geslachtsnaam, voornamen en gemeente van inschrijving
+        4.  Zoek met postcode en huisnummer
+        5.  Zoek met straat, huisnummer en gemeente van inschrijving
+        6.  Zoek met nummeraanduiding identificatie
+        7.  Zoek met adresseerbaarobject identificatie
+
+        Default krijg je personen terug die nog in leven zijn, tenzij je de inclusiefoverledenpersonen=true opgeeft.
+        
+        Gebruik de fields parameter om alleen die gegevens op te vragen die je nodig hebt en waarvoor je geautoriseerd bent.
+      requestBody:
+        content:
+          'application/json; charset=utf-8':
+            schema:
+              $ref: 'personen-query-v1.yaml#/components/schemas/PersonenQuery'
+      responses:
+        '200':
+          description: |
+                        Zoekactie geslaagd
+          content:
+            'application/json; charset=utf-8':
+              schema:
+                $ref: 'personen-query-response-v1.yaml#/components/schemas/PersonenQueryResponse'
+        '400':
+          $ref: 'problem-details/400-bad-request-response-v1.yaml#/components/responses/400'
+        '401':
+          $ref: 'problem-details/401-unauthorized-response-v1.yaml#/components/responses/401'
+        '403':
+          $ref: 'problem-details/403-forbidden-response-v1.yaml#/components/responses/403'
+        '406':
+          $ref: 'problem-details/406-not-acceptable-response-v1.yaml#/components/responses/406'
+        '415':
+          $ref: 'problem-details/415-unsupported-media-type-response-v1.yaml#/components/responses/415'
+        '429':
+          $ref: 'problem-details/429-too-many-requests-response-v1.yaml#/components/responses/429'
+        '500':
+          $ref: 'problem-details/500-internal-server-error-response-v1.yaml#/components/responses/500'
+        '503':
+          $ref: 'problem-details/503-service-unavailable-response-v1.yaml#/components/responses/503'
+        'default':
+          $ref: 'problem-details/500-internal-server-error-response-v1.yaml#/components/responses/500'
+      tags:
+        - Personen
