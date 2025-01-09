@@ -5,6 +5,10 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## Versie 2.4.0
+- Bij gezag type GezagNietTeBepalen wordt nu een toelichting gegeven.
+- Bij gezag type GezagNietTeBepalen en TijdelijkGeenGezag wordt nu de minderjarige gegeven.
+
 ## Versie 2.3.0
 - Nieuwe optionele parameter geboortedatum voor operatie ZoekMetPostcodeEnHuisnummer. Hiermee kan je het aantal resultaten beperken wanneer er veel personen op hetzelfde adres staan ingeschreven.
 - Probleem opgelost zodat verblijfplaats en adressering ook worden geleverd wanneer een verblijfadres in Nederland is geregistreerd als 'verblijfplaats buitenland'.
