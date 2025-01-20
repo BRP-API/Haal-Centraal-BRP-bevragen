@@ -80,7 +80,7 @@ components:
         - type: object
           properties:
             toelichting:
-              $ref: '../../gezag/toelichting-v1.yaml#/components/schemas/Toelichting'
+              $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'
 
     GezagNietTeBepalen:
       allOf:
@@ -88,4 +88,4 @@ components:
         - type: object
           properties:
             toelichting:
-              $ref: '../../gezag/toelichting-v1.yaml#/components/schemas/Toelichting'
+              $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'

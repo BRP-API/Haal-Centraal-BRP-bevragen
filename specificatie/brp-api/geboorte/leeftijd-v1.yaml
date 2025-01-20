@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: leeftijd type definitie
+  version: 2.0.0
+paths: {}
+components:
+  schemas:
+    Leeftijd:
+      type: integer
+      description: |
+        Leeftijd in jaren op het moment van bevragen.
+      example: 34
+      minimum: 0
+      maximum: 150
