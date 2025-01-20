@@ -1426,11 +1426,18 @@ components:
           - burgerservicenummer: '999998882'
         minderjarige:
           burgerservicenummer: '999998894'
+    NaamVolledigeNaam:
+      type: object
+      properties:
+        volledigeNaam:
+          $ref: '#/components/schemas/VolledigeNaam'
     GezagOuder:
       type: object
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
       required:
         - burgerservicenummer
     TweehoofdigOuderlijkGezag:
@@ -1456,6 +1463,8 @@ components:
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
     GezamenlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -1498,6 +1507,10 @@ components:
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
+        leeftijd:
+          $ref: '#/components/schemas/Leeftijd'
       required:
         - burgerservicenummer
     Gezag:
