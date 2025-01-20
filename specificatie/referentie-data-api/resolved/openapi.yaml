@@ -121,6 +121,8 @@ components:
           $ref: '#/components/schemas/GeboorteBasis'
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslachtsaanduiding'
+        gezagsrelatie:
+          $ref: '#/components/schemas/AbstractGezagsrelatie'
         indicatieGeheim:
           $ref: '#/components/schemas/IndicatieGeheim'
         InOnderzoek:
@@ -194,24 +196,32 @@ components:
         - example:
             code: M
             omschrijving: man
-    IndicatieGeheim:
-      description: |
-        Gegevens over het mogen verstrekken van persoonsgegevens aan derden / maatschappelijke instellingen.
-      type: integer
-      minimum: 0
-      maximum: 7
-    InOnderzoek:
+    AbstractGezagsrelatie:
       type: object
       required:
-        - aanduidingGegevensInOnderzoek
-        - datumIngangOnderzoek
+        - type
+        - minderjarige
       properties:
-        aanduidingGegevensInOnderzoek:
+        type:
           type: string
-          pattern: ^[0-9]{6}$
-          example: '100000'
-        datumIngangOnderzoek:
-          $ref: '#/components/schemas/GbaDatum'
+        minderjarige:
+          $ref: '#/components/schemas/Minderjarige'
+      discriminator:
+        propertyName: type
+        mapping:
+          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
+          Voogdij: '#/components/schemas/Voogdij'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+      example:
+        type: TweehoofdigOuderlijkGezag
+        ouders:
+          - burgerservicenummer: '999998870'
+          - burgerservicenummer: '999998882'
+        minderjarige:
+          burgerservicenummer: '999998894'
     Voornamen:
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
@@ -258,6 +268,112 @@ components:
           $ref: '#/components/schemas/Voorvoegsel'
         geslachtsnaam:
           $ref: '#/components/schemas/Geslachtsnaam'
+    GezagOuder:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamBasis'
+        geslacht:
+          $ref: '#/components/schemas/Geslachtsaanduiding'
+      required:
+        - burgerservicenummer
+    TweehoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/GezagOuder'
+              minItems: 2
+              maxItems: 2
+    EenhoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuder'
+    Meerderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamBasis'
+        geslacht:
+          $ref: '#/components/schemas/Geslachtsaanduiding'
+    GezamenlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuder'
+            derde:
+              $ref: '#/components/schemas/Meerderjarige'
+    Voogdij:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: '#/components/schemas/Meerderjarige'
+              minItems: 0
+              maxItems: 2
+    Toelichting:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
+    TijdelijkGeenGezag:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
+    GezagNietTeBepalen:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
+    Minderjarige:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamBasis'
+        geslacht:
+          $ref: '#/components/schemas/Geslachtsaanduiding'
+        geboorte:
+          $ref: '#/components/schemas/GeboorteBasis'
+      required:
+        - burgerservicenummer
+    IndicatieGeheim:
+      description: |
+        Gegevens over het mogen verstrekken van persoonsgegevens aan derden / maatschappelijke instellingen.
+      type: integer
+      minimum: 0
+      maximum: 7
+    InOnderzoek:
+      type: object
+      required:
+        - aanduidingGegevensInOnderzoek
+        - datumIngangOnderzoek
+      properties:
+        aanduidingGegevensInOnderzoek:
+          type: string
+          pattern: ^[0-9]{6}$
+          example: '100000'
+        datumIngangOnderzoek:
+          $ref: '#/components/schemas/GbaDatum'
     InvalidParam:
       type: object
       description: Details over fouten in opgegeven parameters

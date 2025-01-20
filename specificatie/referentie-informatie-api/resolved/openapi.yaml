@@ -342,11 +342,24 @@ components:
       type: string
       pattern: ^[0-9]{9}$
       example: '555555021'
+    VolledigeNaam:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
+      description: |
+        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
+      example: Pieter Jan de Vries
+    NaamVolledigeNaam:
+      type: object
+      properties:
+        volledigeNaam:
+          $ref: '#/components/schemas/VolledigeNaam'
     GezagOuder:
       type: object
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
       required:
         - burgerservicenummer
     TweehoofdigOuderlijkGezag:
@@ -372,6 +385,8 @@ components:
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
     GezamenlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -409,19 +424,24 @@ components:
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+    Leeftijd:
+      type: integer
+      description: |
+        Leeftijd in jaren op het moment van bevragen.
+      example: 34
+      minimum: 0
+      maximum: 150
     Minderjarige:
       type: object
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
+        leeftijd:
+          $ref: '#/components/schemas/Leeftijd'
       required:
         - burgerservicenummer
-    VolledigeNaam:
-      type: string
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
-      description: |
-        Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
-      example: Pieter Jan de Vries
     InvalidParam:
       type: object
       description: Details over fouten in opgegeven parameters
