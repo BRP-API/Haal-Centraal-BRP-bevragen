@@ -1,9 +1,0 @@
-@Api_HostAdres = http://localhost:5020
-
-POST {{Api_HostAdres}}/api/v1/opvragenBevoegdheidTotGezag
-Accept: application/json
-Content-Type: application/json
-
-{
-    "bsn": "000000024"
-}
