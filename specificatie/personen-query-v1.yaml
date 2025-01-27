@@ -125,6 +125,8 @@ components:
               type: string
               format: date
               example: "1964-09-24"
+            geslachtsnaam:
+              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
       required:
         - straat
