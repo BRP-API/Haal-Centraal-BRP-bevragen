@@ -254,6 +254,8 @@ components:
               type: string
               format: date
               example: '1964-09-24'
+            geslachtsnaam:
+              $ref: '#/components/schemas/GeslachtsnaamFilter'
     StraatFilter:
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** 

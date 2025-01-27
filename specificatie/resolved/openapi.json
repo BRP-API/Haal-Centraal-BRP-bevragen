@@ -314,6 +314,9 @@
                 "type": "string",
                 "format": "date",
                 "example": "1964-09-24"
+              },
+              "geslachtsnaam": {
+                "$ref": "#/components/schemas/GeslachtsnaamFilter"
               }
             }
           }
