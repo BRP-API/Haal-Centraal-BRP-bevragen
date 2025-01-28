@@ -64,13 +64,17 @@ Deze Overeenkomst wordt beheerst door en geïnterpreteerd in overeenstemming met
 
 
 **FAQ**
+
 *1. Wat gebeurt er met mijn auteursrecht als ik bijdraag?*
+
 Wanneer je een bijdrage levert aan dit project, draag je het auteursrecht van jouw bijdrage over aan de oorspronkelijke maker van het project, de RvIG. Dit zorgt ervoor dat het project en al zijn onderdelen consistent kunnen worden beheerd en verspreid onder de EUPL.
 
 *2. Waarom wordt het auteursrecht overgedragen?*
+
 Het overdragen van het auteursrecht stelt de Project Owner in staat om het project als geheel te beheren en, indien nodig, licentievoorwaarden te wijzigen of commerciële opties te overwegen zonder juridische complicaties. Je bijdrage blijft altijd open source en valt onder de EUPL.
 
 *3. Hoe bevestig ik dat ik akkoord ga met de overdracht?*
+
 Door een bijdrage in te dienen (bijvoorbeeld via een pull request), bevestig je dat je akkoord gaat met de voorwaarden van de Contributor License Agreement (CLA). Je stemt er automatisch mee in om alle rechten, titels en belangen met betrekking tot het auteursrecht van bijdragen over te dragen aan de oorspronkelijke maker van het project, de RvIG.
 
 
