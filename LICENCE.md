@@ -39,6 +39,7 @@ De Bijdrager stemt ermee in om alle rechten, titels en belangen met betrekking t
 *3. Vertegenwoordigingen en Garanties van de Bijdrager*
 
 De Bijdrager verklaart en garandeert dat:
+
 3.1 De Bijdrage het oorspronkelijke werk van de Bijdrager is en geen inbreuk maakt op rechten van derden, inclusief intellectuele eigendomsrechten.
 
 3.2 De Bijdrager de wettelijke bevoegdheid heeft om deze Overeenkomst aan te gaan en de hierin toegekende rechten over te dragen.
