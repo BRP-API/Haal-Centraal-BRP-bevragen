@@ -7,7 +7,7 @@ Licensed under the [EUPL](https://interoperable-europe.ec.europa.eu/collection/e
 **Licentie en auteursrecht**
 Deze software is gepubliceerd onder de European Union Public License (EUPL). Bijdragen aan dit project worden eigendom van de oorspronkelijke maker van de BRP API (de Rijksdienst voor Identiteitsgegevens RvIG) en vallen automatisch onder de EUPL-licentie. Door bij te dragen ga je akkoord met deze voorwaarden:
 1. Dit project wordt beheerd door de oorspronkelijke maker RvIG, die het auteursrecht bezit over alle bijdragen aan het project. Door bij te dragen aan de BRP API bevestig je dat jouw bijdrage jouw eigen originele werk is.
-2. Je draagt automatisch het auteursrecht van jouw bijdrage over aan de RvIG, zodat alle bijdragen onder een consistente licentie (EUPL) kunnen worden beheerd en verspreid. Lees hieronder de [Contributor License Agreement (CLA)] die van toepassing is op alle bijdragen.
+2. Je draagt automatisch het auteursrecht van jouw bijdrage over aan de RvIG, zodat alle bijdragen onder een consistente licentie (EUPL) kunnen worden beheerd en verspreid. Lees hieronder de Contributor License Agreement (CLA) die van toepassing is op alle bijdragen.
 
 
 **Bijdragerslicentieovereenkomst (CLA)**
