@@ -56,6 +56,7 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](.
 
 ## Licentie
 
-Copyright &copy; RvIG 2022
-Licensed under the [EUPL]({{ masterBranchUrl }}/LICENCE.md){:target="_blank" rel="noopener"}
-Auteursrecht Bijdragen: Bijdragen aan dit project worden eigendom van de oorspronkelijke maker en vallen onder de EUPL-licentie. Lees meer over de [licentie en auteursrecht]({{ masterBranchUrl }}/LICENCE.md){:target="_blank" rel="noopener"}
+* Copyright &copy; RvIG 2022
+* Licensed under the [EUPL]({{ masterBranchUrl }}/LICENCE.md){:target="_blank" rel="noopener"}
+* Auteursrecht Bijdragen: Bijdragen aan dit project worden eigendom van de oorspronkelijke maker en vallen onder de EUPL-licentie.
+  Lees meer over de [licentie en auteursrecht]({{ masterBranchUrl }}/LICENCE.md){:target="_blank" rel="noopener"}
