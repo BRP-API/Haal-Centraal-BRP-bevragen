@@ -4,7 +4,7 @@ repoUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
 mainBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
 devBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
 v1SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/v1.3.1/specificatie/genereervariant/openapi.yaml
-v2SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/genereervariant/openapi.yaml
+v2SpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/resolved/openapi.yaml
 v2DevSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/develop/specificatie/genereervariant/openapi.yaml
 v2GbaSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/gba-genereervariant/openapi.yaml
 onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/241003%20deelname%20BRP%20API%20v2.8.ppsx

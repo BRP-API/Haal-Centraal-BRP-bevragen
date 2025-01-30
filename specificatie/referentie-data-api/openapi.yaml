@@ -125,6 +125,8 @@ components:
           $ref: '../brp/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
         geslachtsaanduiding:
           $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
+        gezagsrelatie:
+          $ref: '../brp/gezag/gezagsrelatie-v1.yaml#/components/schemas/AbstractGezagsrelatie'
         indicatieGeheim:
           $ref: '../brp/geheim/indicatie-geheim-v1.yaml#/components/schemas/IndicatieGeheim'
         InOnderzoek:

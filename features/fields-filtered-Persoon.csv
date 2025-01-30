@@ -29,7 +29,6 @@ immigratie.indicatieVestigingVanuitBuitenland
 immigratie.landVanwaarIngeschreven
 immigratie.vanuitVerblijfplaatsOnbekend
 indicatieCurateleRegister
-indicatieGezagMinderjarige
 kinderen
 kinderen.burgerservicenummer
 kinderen.geboorte
@@ -98,7 +97,6 @@ uitsluitingKiesrecht
 uitsluitingKiesrecht.einddatum
 uitsluitingKiesrecht.uitgeslotenVanKiesrecht
 verblijfplaats
-verblijfplaats.datumIngangGeldigheid
 verblijfplaats.datumVan
 verblijfplaats.verblijfadres
 verblijfplaats.verblijfadres.land

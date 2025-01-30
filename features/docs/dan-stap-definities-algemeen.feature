@@ -1,6 +1,6 @@
 #language: nl
 
-@skip-verify
+@stap-documentatie @skip-verify
 Functionaliteit: Geen javascript fout bij ongeldig response
 
   Scenario: naam veld in de response heeft de waarde null
