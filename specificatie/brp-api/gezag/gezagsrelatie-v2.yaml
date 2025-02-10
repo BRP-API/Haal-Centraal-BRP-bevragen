@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: gezagsrelatie type definitie
+  version: 2.0.0
+paths: {}
+components:
+  schemas:
+    Gezagsrelatie:
+      type: object
+      required:
+        - type
+        - minderjarige
+      properties:
+        type:
+          type: string
+        minderjarige:
+          $ref: 'minderjarige-v1.yaml#/components/schemas/Minderjarige'
+      discriminator:
+        propertyName: type
+        mapping:
+          GezamenlijkOuderlijkGezag: '#/components/schemas/GezamenlijkOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezagV2'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezagV2'
+          Voogdij: '#/components/schemas/VoogdijV2'
+          TijdelijkGeenGezag: 'gezagsrelatie-v1.yaml#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: 'gezagsrelatie-v1.yaml#/components/schemas/GezagNietTeBepalen'
+      example:
+        type: 'GezamenlijkOuderlijkGezag'
+        ouders:
+          - burgerservicenummer: '999998870'
+          - burgerservicenummer: '999998882'
+        minderjarige:
+          burgerservicenummer: '999998894'
+
+    GezamenlijkOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+              minItems: 2
+              maxItems: 2
+
+    EenhoofdigOuderlijkGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+
+    GezamenlijkGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+            derde:
+              $ref: 'derde-v1.yaml#/components/schemas/Derde'
+
+    VoogdijV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: 'derde-v1.yaml#/components/schemas/BekendeDerde'
+              minItems: 0
+              maxItems: 2

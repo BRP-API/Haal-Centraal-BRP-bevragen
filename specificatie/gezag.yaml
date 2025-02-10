@@ -6,13 +6,6 @@ info:
 paths: {}
 components:
   schemas:
-    GbaGezagPersoonBeperkt:
-      allOf:
-        - $ref: 'persoon.yaml#/components/schemas/GbaPersoonBeperkt'
-        - type: object
-          properties:
-            gezag:
-              $ref: "#/components/schemas/Gezag"
     GezagPersoonBeperkt:
       allOf:
         - $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
@@ -20,8 +13,17 @@ components:
           properties:
             gezag:
               $ref: "#/components/schemas/Gezag"
+              deprecated: true
+            gezagsrelaties:
+              $ref: "#/components/schemas/Gezagsrelaties"
     Gezag:
       type: array
       items: 
         $ref: 'brp-api/gezag/gezagsrelatie-v1.yaml#/components/schemas/AbstractGezagsrelatie'
+      minItems: 0
+
+    Gezagsrelaties:
+      type: array
+      items:
+        $ref: 'brp-api/gezag/gezagsrelatie-v2.yaml#/components/schemas/Gezagsrelatie'
       minItems: 0
