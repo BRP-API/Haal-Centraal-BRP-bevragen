@@ -1426,20 +1426,38 @@ components:
           - burgerservicenummer: '999998882'
         minderjarige:
           burgerservicenummer: '999998894'
+    AbstractGezagOuder:
+      type: object
+      required:
+        - type
+        - naam
+      properties:
+        type:
+          type: string
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
+      discriminator:
+        propertyName: type
+        mapping:
+          OuderZonderBsn: '#/components/schemas/GezagOuderZonderBsn'
+          OuderMetBsn: '#/components/schemas/GezagOuderMetBsn'
+    GezagOuderZonderBsn:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagOuder'
+    GezagOuderMetBsn:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagOuder'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: '#/components/schemas/Burgerservicenummer'
+      required:
+        - burgerservicenummer
     NaamVolledigeNaam:
       type: object
       properties:
         volledigeNaam:
           $ref: '#/components/schemas/VolledigeNaam'
-    GezagOuder:
-      type: object
-      properties:
-        burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
-        naam:
-          $ref: '#/components/schemas/NaamVolledigeNaam'
-      required:
-        - burgerservicenummer
     TweehoofdigOuderlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -1448,7 +1466,7 @@ components:
             ouders:
               type: array
               items:
-                $ref: '#/components/schemas/GezagOuder'
+                $ref: '#/components/schemas/AbstractGezagOuder'
               minItems: 2
               maxItems: 2
     EenhoofdigOuderlijkGezag:
@@ -1457,7 +1475,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: '#/components/schemas/GezagOuder'
+              $ref: '#/components/schemas/AbstractGezagOuder'
     Meerderjarige:
       type: object
       properties:
@@ -1471,7 +1489,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: '#/components/schemas/GezagOuder'
+              $ref: '#/components/schemas/AbstractGezagOuder'
             derde:
               $ref: '#/components/schemas/Meerderjarige'
     Voogdij:
@@ -1517,6 +1535,110 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/AbstractGezagsrelatie'
+      minItems: 0
+    Gezagsrelatie:
+      type: object
+      required:
+        - type
+        - minderjarige
+      properties:
+        type:
+          type: string
+        minderjarige:
+          $ref: '#/components/schemas/Minderjarige'
+      discriminator:
+        propertyName: type
+        mapping:
+          GezamenlijkOuderlijkGezag: '#/components/schemas/GezamenlijkOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezagV2'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezagV2'
+          Voogdij: '#/components/schemas/VoogdijV2'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+      example:
+        type: GezamenlijkOuderlijkGezag
+        ouders:
+          - burgerservicenummer: '999998870'
+          - burgerservicenummer: '999998882'
+        minderjarige:
+          burgerservicenummer: '999998894'
+    GezagOuder:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
+      required:
+        - naam
+    GezamenlijkOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/GezagOuder'
+              minItems: 2
+              maxItems: 2
+    EenhoofdigOuderlijkGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuder'
+    Derde:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          BekendeDerde: '#/components/schemas/BekendeDerde'
+          OnbekendeDerde: '#/components/schemas/OnbekendeDerde'
+    BekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: '#/components/schemas/Burgerservicenummer'
+            naam:
+              $ref: '#/components/schemas/NaamVolledigeNaam'
+      required:
+        - burgerservicenummer
+    OnbekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
+    GezamenlijkGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuder'
+            derde:
+              $ref: '#/components/schemas/Derde'
+    VoogdijV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: '#/components/schemas/BekendeDerde'
+              minItems: 0
+              maxItems: 2
+    Gezagsrelaties:
+      type: array
+      items:
+        $ref: '#/components/schemas/Gezagsrelatie'
       minItems: 0
     VerblijfstitelInOnderzoek:
       description: |
@@ -1752,6 +1874,9 @@ components:
           deprecated: true
         gezag:
           $ref: '#/components/schemas/Gezag'
+          deprecated: true
+        gezagsrelaties:
+          $ref: '#/components/schemas/Gezagsrelaties'
         verblijfstitel:
           $ref: '#/components/schemas/Verblijfstitel'
         kinderen:
@@ -1823,6 +1948,9 @@ components:
           properties:
             gezag:
               $ref: '#/components/schemas/Gezag'
+              deprecated: true
+            gezagsrelaties:
+              $ref: '#/components/schemas/Gezagsrelaties'
     ZoekMetAdresseerbaarObjectIdentificatieResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
