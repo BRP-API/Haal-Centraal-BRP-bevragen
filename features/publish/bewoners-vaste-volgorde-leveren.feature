@@ -6,6 +6,7 @@ Functionaliteit: leveren van de (mogelijke) bewoners van een bewoning periode in
       | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
       |                 0800 |                         0800010000000001 |
 
+  @info-api @data-api
   Regel: de (mogelijke) bewoners worden oplopend gesorteerd op basis van datum aanvang adreshouding zodat de eerste (mogelijke) bewoner op het adres als eerste in de (mogelijke) bewoners lijst staat.
 
     @info-api @valideer-volgorde

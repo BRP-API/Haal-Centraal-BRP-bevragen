@@ -10,6 +10,7 @@ Functionaliteit: Leveren van de volledige naam van een (mogelijke) bewoner
       | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
       |                 0800 |                         0800010000000001 |
 
+@info-api @data-api
 Regel: de volledige naam wordt samengesteld door het achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam. Zie de [volledige naam feature]() voor de 'volledige naam' specificaties
 
 @info-api

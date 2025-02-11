@@ -41,7 +41,7 @@ function toScenarioSection(element, tags) {
   }
   markdown += `### ${element.keyword}: ${element.name}\n\n`;
   element.steps.forEach(step => {
-    markdown += `- ${step.keyword.replace('*', "En")} ${step.text}\n`;
+    markdown += `- ${step.keyword.replace(/\*/g, "-")} ${step.text}\n`.replace("- -", "  -");
     if (step.dataTable) {
       markdown += '\n';
       markdown += toTable(step.dataTable);
@@ -62,7 +62,7 @@ function toAbstractScenarioSection(element, tags) {
   const escapedName = element.name.replace(/</g, lt).replace(/>/g, gt);
       markdown += `### ${element.keyword}: ${escapedName}\n\n`;
       element.steps.forEach(step => {
-        markdown += `- ${step.keyword.replace('*', "En")} ${step.text.replace(/</g, lt).replace(/>/g, gt)}\n`;
+        markdown += `- ${step.keyword.replace(/\*/g, "-")} ${step.text.replace(/</g, lt).replace(/>/g, gt)}\n`.replace("- -", "  -");
         if (step.dataTable) {
           markdown += '\n';
           markdown += toTable(step.dataTable);
@@ -123,7 +123,7 @@ function astToMarkdown(gherkinAST, tags) {
       if (element.keyword === 'Achtergrond') {
         markdown += `## ${element.keyword}\n\n`;
         element.steps.forEach(step => {
-          markdown += `- ${step.keyword}: ${step.text}\n`;
+          markdown += `- ${step.keyword.replace(/\*/g, "-")} ${step.text}\n`.replace("- -", "  -");
           if (step.dataTable) {
             markdown += '\n';
             markdown += toTable(step.dataTable);

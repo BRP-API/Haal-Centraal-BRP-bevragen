@@ -2,6 +2,7 @@
 
 Functionaliteit: volledige naam bepaling
 
+@info-api
 Regel: de volledige naam wordt samengesteld door het achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam.
 
 @info-api
@@ -23,6 +24,7 @@ Abstract Scenario: gevraagde persoon heeft <scenario>
   | een punt karakter in zijn geslachtsnaam | Lisanty Teresita del niño Jesús Virgen | De las      | do Livramento de La Salete Jansz. | Lisanty Teresita del niño Jesús Virgen De las do Livramento de La Salete Jansz. |
   | naamketen                               |                                        |             | Obbadah                           | Obbadah                                                                         |
 
+@info-api
 Regel: een geslachtsnaam met standaard waarde (.) wordt niet meegenomen in het samenstellen van de volledige naam
 
 @info-api
@@ -36,6 +38,7 @@ Scenario: gevraagde persoon heeft een geslachtsnaam met standaard waarde
   | volledigeNaam    |
   | Dian Marini Maya |
 
+@data-api
 Regel: voor de volledige naam bepaling moet de data-api de velden geslacht, voornamen, adellijkeTitelPredicaat, voorvoegsel en geslachtsnaam leveren
 
 @data-api
