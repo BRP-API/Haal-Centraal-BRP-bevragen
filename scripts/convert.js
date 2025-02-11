@@ -1,100 +1,60 @@
 const fs = require('fs').promises;
-const { parse } = require('gherkin-io');
+const path = require('path');
+const { convertGherkinToMarkdown } = require('./convert-feature-file');
 
 let tags = [];
 
 process.argv.forEach(function (val, index, array) {
   if (index >= 4) {
-    tags.push(val.replace('@',''));
+    tags.push(val.replace('@', ''));
   }
 });
 
-async function convertGherkinToMarkdown(inputPath, outputPath, tags) {
+async function processDirectory(inputDir, outputDir, tags) {
   try {
-    const featureFileContent = await fs.readFile(inputPath, 'utf8');
+    await fs.mkdir(outputDir, { recursive: true });
 
-    const document = await parse(featureFileContent, inputPath);
-
-    const gherkinAST = JSON.parse(JSON.stringify(document));
-
-    function astToMarkdown(gherkinAST) {
-      let markdown = '';
-
-      const feature = gherkinAST.feature;
-      markdown += `# ${feature.name}\n\n`;
-
-      if (feature.description) {
-        markdown += `${feature.description}\n\n`;
+    const files = await fs.readdir(inputDir);
+    for (const file of files) {
+      const inputFilePath = path.join(inputDir, file);
+      const outputFilePath = path.join(outputDir, `${path.basename(file, '.feature')}.feature.md`);
+      if (path.extname(file) === '.feature') {
+        await convertGherkinToMarkdown(inputFilePath, outputFilePath, tags);
       }
-
-      if (feature.elements && Array.isArray(feature.elements)) {
-        feature.elements.forEach(element => {
-          if (element.keyword === 'Achtergrond') {
-            markdown += `## ${element.keyword}\n\n`;
-            element.steps.forEach(step => {
-              markdown += `- ${step.keyword}: ${step.text}\n`;
-              if (step.dataTable) {
-                markdown += '  ```\n';
-                step.dataTable.rows.forEach(row => {
-                  markdown += `  | ${row.cells.map(cell => cell.value).join(' | ')} |\n`;
-                });
-                markdown += '  ```\n';
-              }
-            });
-            markdown += '\n';
-          } else if (element.keyword === 'Regel') {
-            markdown += `## ${element.keyword}: ${element.name}\n\n`;
-            if (element.elements && Array.isArray(element.elements)) {
-              element.elements.forEach(ruleElement => {
-
-                // Convert Regular Scenario
-                if (ruleElement.keyword === 'Scenario') {
-                  let scenarioTags = ruleElement.tags;
-                  scenarioTags.forEach(tag => {
-                    if (tags.includes(tag.name)) {
-                      markdown += `### ${ruleElement.keyword}: ${ruleElement.name}\n\n`;
-                      ruleElement.steps.forEach(step => {
-                        markdown += `- ${step.keyword}: ${step.text}\n`;
-                        if (step.dataTable) {
-                          markdown += '  ```\n';
-                          step.dataTable.rows.forEach(row => {
-                            markdown += `  | ${row.cells.map(cell => cell.value).join(' | ')} |\n`;
-                          });
-                          markdown += '  ```\n';
-                        }
-                      });
-                      markdown += '\n';
-                    }
-                  })
-                }
-
-                //TODO: Convert Abstract Scenario
-              });
-            }
-          }
-        });
-      }
-
-      return markdown;
     }
-
-    const markdownContent = astToMarkdown(gherkinAST);
-
-    await fs.writeFile(outputPath, markdownContent);
-
-    console.log(`Markdown file generated successfully in ${outputPath}`);
   } catch (error) {
-    console.error('Error converting Gherkin to Markdown:', error);
+    console.error('Error processing directory:', error);
   }
 }
 
-convertGherkinToMarkdown(process.argv[2], process.argv[3], tags);
+async function main() {
+  const inputPath = process.argv[2];
+  const outputPath = process.argv[3];
 
+  try {
+    const stats = await fs.stat(inputPath);
+    if (stats.isDirectory()) {
+      await processDirectory(inputPath, outputPath, tags);
+    } else if (stats.isFile()) {
+      await convertGherkinToMarkdown(inputPath, outputPath, tags);
+    } else {
+      console.error('Input path is neither a file nor a directory');
+    }
+  } catch (error) {
+    console.error('Error processing input path:', error);
+  }
+}
 
-// Example usage: <input-filepath> <output-filepath> [..tags]
+main();
 
-// node scripts/convert.js features/publish/volledige-naam-bepaling.feature output-volledige-naam-bepaling.md @info-api @data-api
-
-// node scripts/convert.js features/publish/volledige-naam-leveren.feature output-volledige-naam-leveren.md @data-api @info-api
-
-// node scripts/convert.js features/publish/bewoners-vaste-volgorde-leveren.feature output-bewoners-vaste-volgorde.md @info-api
+/**
+ * Convert files:
+ * node scripts/convert.js <input-file-path> <output-file-path> <...tags>
+ * For example:
+ * node scripts/convert.js features/publish/volledige-naam-bepaling.feature features/published/volledige-naam-bepaling.md @info-api @data-api
+ * 
+ * Convert directories:
+ * node scripts/convert.js <input-directory-path> <output-directory-path> <...tags>
+ * For example:
+ * node scripts/convert.js features/publish features/published @info-api @data-api
+ */
