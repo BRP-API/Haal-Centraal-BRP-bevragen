@@ -1,10 +1,13 @@
 const fs = require('fs').promises;
 const { parse } = require('gherkin-io');
 
+const lt = "\`<";
+const gt = "\>`";
+
 function toTable(dataTable) {
   let markdown = '';
   dataTable.rows.forEach((row, index) => {
-    markdown += `| ${row.cells.map(cell => cell.value.replace(/</g, '\`<').replace(/>/g, '>\`')).join(' | ')} |\n`;
+    markdown += `| ${row.cells.map(cell => cell.value.replace(/</g, lt).replace(/>/g, gt)).join(' | ')} |\n`;
     if (index === 0) {
       markdown += `| ${row.cells.map(() => '---').join(' | ')} |\n`;
     }
@@ -12,7 +15,7 @@ function toTable(dataTable) {
   return markdown;
 }
 
-function toExamples(examples) {
+function toExamplesTable(examples) {
   let markdown = '';
   examples.forEach(example => {
     markdown += `#### ${example.keyword}\n\n`;
@@ -26,6 +29,82 @@ function toExamples(examples) {
       markdown += '\n';
     });
   });
+  return markdown;
+}
+
+function toScenarioSection(element, tags) {
+  let markdown = '';
+  let elementTags = element.tags.map(tag => tag.name);
+  const matchingTags = elementTags.filter(tag => tags.includes(tag));
+  if (matchingTags.length === 0) {
+    return '';
+  }
+  markdown += `### ${element.keyword}: ${element.name}\n\n`;
+  element.steps.forEach(step => {
+    markdown += `- ${step.keyword.replace('*', "En")} ${step.text}\n`;
+    if (step.dataTable) {
+      markdown += '\n';
+      markdown += toTable(step.dataTable);
+      markdown += '\n';
+    }
+  });
+  markdown += '\n';
+  return markdown;
+}
+
+function toAbstractScenarioSection(element, tags) {
+  let markdown = '';
+  let elementTags = element.tags.map(tag => tag.name);
+  const matchingTags = elementTags.filter(tag => tags.includes(tag));
+  if (matchingTags.length === 0) {
+    return '';
+  }
+  const escapedName = element.name.replace(/</g, lt).replace(/>/g, gt);
+      markdown += `### ${element.keyword}: ${escapedName}\n\n`;
+      element.steps.forEach(step => {
+        markdown += `- ${step.keyword.replace('*', "En")} ${step.text.replace(/</g, lt).replace(/>/g, gt)}\n`;
+        if (step.dataTable) {
+          markdown += '\n';
+          markdown += toTable(step.dataTable);
+          markdown += '\n';
+        }
+      });
+
+      if (element.examples) {
+        markdown += '\n';
+        markdown += toExamplesTable(element.examples);
+        markdown += '\n';
+      }
+
+      markdown += '\n';
+  return markdown;
+}
+
+function toRuleSection(element, tags) {
+  let markdown = '';
+  let elementTags = element.tags.map(tag => tag.name);
+  const matchingTags = elementTags.filter(tag => tags.includes(tag));
+  if (matchingTags.length === 0) {
+    return '';
+  }
+
+  markdown += `## ${element.keyword}: ${element.name}\n\n`;
+
+  if (element.elements && Array.isArray(element.elements)) {
+    element.elements.forEach(ruleElement => {
+
+      // Convert Regular Scenario
+      if (ruleElement.keyword === 'Scenario') {
+        markdown += toScenarioSection(ruleElement, tags);
+      }
+
+      // Convert Abstract Scenario
+      if (ruleElement.keyword === 'Abstract Scenario') {
+        markdown += toAbstractScenarioSection(ruleElement, tags);
+      }
+    });
+  }
+
   return markdown;
 }
 
@@ -53,57 +132,8 @@ function astToMarkdown(gherkinAST, tags) {
         });
         markdown += '\n';
       } else if (element.keyword === 'Regel') {
-        markdown += `## ${element.keyword}: ${element.name}\n\n`;
-        if (element.elements && Array.isArray(element.elements)) {
-          element.elements.forEach(ruleElement => {
-
-            // Convert Regular Scenario
-            if (ruleElement.keyword === 'Scenario') {
-              let scenarioTags = ruleElement.tags;
-              scenarioTags.forEach(tag => {
-                if (tags.includes(tag.name)) {
-                  markdown += `### ${ruleElement.keyword}: ${ruleElement.name}\n\n`;
-                  ruleElement.steps.forEach(step => {
-                    markdown += `- ${step.keyword.replace('*', "En")} ${step.text}\n`;
-                    if (step.dataTable) {
-                      markdown += '\n';
-                      markdown += toTable(step.dataTable);
-                      markdown += '\n';
-                    }
-                  });
-                  markdown += '\n';
-                }
-              })
-            }
-
-            // Convert Abstract Scenario
-            if (ruleElement.keyword === 'Abstract Scenario') {
-              let scenarioTags = ruleElement.tags;
-              scenarioTags.forEach(tag => {
-                if (tags.includes(tag.name)) {
-                  const escapedName = ruleElement.name.replace(/</g, '\`<').replace(/>/g, '>\`');
-                  markdown += `### ${ruleElement.keyword}: ${escapedName}\n\n`;
-                  ruleElement.steps.forEach(step => {
-                    markdown += `- ${step.keyword.replace('*', "En")} ${step.text}\n`;
-                    if (step.dataTable) {
-                      markdown += '\n';
-                      markdown += toTable(step.dataTable);
-                      markdown += '\n';
-                    }
-                  });
-
-                  if (ruleElement.examples) {
-                    markdown += '\n';
-                    markdown += toExamples(ruleElement.examples);
-                    markdown += '\n';
-                  }
-
-                  markdown += '\n';
-                }
-              })
-            }
-          });
-        }
+        // Convert Rule
+        markdown += toRuleSection(element, tags);
       }
     });
   }
