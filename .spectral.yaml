@@ -1,4 +1,2 @@
 extends:
   - spectral:oas
-rules:
-  oas3-unused-component: off # warn is the default value
