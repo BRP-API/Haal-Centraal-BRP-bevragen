@@ -146,6 +146,9 @@ components:
           deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'
+          deprecated: true
+        gezagsrelaties:
+          $ref: 'gezag.yaml#/components/schemas/Gezagsrelaties'
         verblijfstitel:
           $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
         kinderen:

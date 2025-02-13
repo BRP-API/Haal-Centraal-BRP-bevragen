@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: gezagsrelatie type definitie
-  version: 2.0.0
+  version: 1.0.0
 paths: {}
 components:
   schemas:
@@ -40,7 +40,7 @@ components:
             ouders:
               type: array
               items:
-                $ref: 'gezagouder-v1.yaml#/components/schemas/GezagOuder'
+                $ref: 'gezagouder-v1.yaml#/components/schemas/AbstractGezagOuder'
               minItems: 2
               maxItems: 2
 
@@ -50,7 +50,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: 'gezagouder-v1.yaml#/components/schemas/GezagOuder'
+              $ref: 'gezagouder-v1.yaml#/components/schemas/AbstractGezagOuder'
 
     GezamenlijkGezag:
       allOf:
@@ -58,7 +58,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: 'gezagouder-v1.yaml#/components/schemas/GezagOuder'
+              $ref: 'gezagouder-v1.yaml#/components/schemas/AbstractGezagOuder'
             derde:
               $ref: 'meerderjarige-v1.yaml#/components/schemas/Meerderjarige'
 
