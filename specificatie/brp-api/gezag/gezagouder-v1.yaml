@@ -1,16 +1,36 @@
 openapi: 3.1.0
 info:
   title: gezagouder type definitie
-  version: 2.0.0
+  version: 1.0.0
 paths: {}
 components:
   schemas:
-    GezagOuder:
+    AbstractGezagOuder:
       type: object
+      required: 
+        -  type
+        -  naam
       properties:
-        burgerservicenummer:
-          $ref: '../../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
+        type:
+         type: string
         naam:
           $ref: '../naam/volledige-naam-v1.yaml#/components/schemas/NaamVolledigeNaam'
+      discriminator:
+        propertyName: type
+        mapping:
+          OuderZonderBsn: '#/components/schemas/GezagOuderZonderBsn'
+          OuderMetBsn: '#/components/schemas/GezagOuderMetBsn'
+
+    GezagOuderZonderBsn:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagOuder'
+
+    GezagOuderMetBsn:
+      allOf:
+        - $ref: '#/components/schemas/AbstractGezagOuder'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: '../../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
       required: 
         -  burgerservicenummer
