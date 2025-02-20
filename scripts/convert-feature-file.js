@@ -112,6 +112,7 @@ function astToMarkdown(gherkinAST, tags) {
   let markdown = '';
 
   const feature = gherkinAST.feature;
+  markdown += `---\nlayout: page-with-side-nav\ntitle: ${feature.name}\n---\n\n`;
   markdown += `# ${feature.keyword}: ${feature.name}\n\n`;
 
   if (feature.description) {
