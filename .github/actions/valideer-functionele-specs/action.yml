@@ -1,0 +1,21 @@
+name: Valideer functionele specs en publiceer validatie summary in workflow job summary
+description: |
+  Valideer de functionele requirements gespecificeerd in Gherkin feature bestanden door het uitvoeren van ./scripts/specs-verify.sh.
+  Genereer een summary van de validatie door het uitvoeren van ./scripts/generate-step-summary.js.
+  Publiceer de summary in de worfklow job summary.
+
+runs:
+  using: composite
+  steps:
+    - name: Valideer functionele specs
+      run: ./scripts/specs-verify.sh
+      shell: bash
+    - name: Genereer validatie summary
+      run: |
+          node ./scripts/generate-step-summary.js
+      shell: bash
+    - name: Publiceer validatie summary in de worfklow job summary
+      run: |
+          echo "### Cucumber Test Reports" >> $GITHUB_STEP_SUMMARY
+          cat ./test-reports/cucumber-js/step-summary.txt >> $GITHUB_STEP_SUMMARY
+      shell: bash

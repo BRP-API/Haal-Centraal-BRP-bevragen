@@ -5,7 +5,6 @@ title: Haal Centraal BRP Personen
 # {{ site.apiname }}
 
 ![lint oas]({{ site.repoUrl }}/workflows/lint-oas/badge.svg)
-![ci]({{ site.repoUrl}}/workflows/ci/badge.svg)
 
 API voor het zoeken en raadplegen van actuele personen, partners, ouders en kinderen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI).
 De {{ site.apiname }} biedt naast persoonsgegevens uit de BRP ook informatieproducten:
@@ -56,5 +55,7 @@ Maak je nog gebruik van versie 1.3.1? Bekijk de specificaties met [Swagger UI](.
 
 ## Licentie
 
-Copyright &copy; RvIG 2022
-Licensed under the [EUPL]({{ masterBranchUrl }}/LICENCE.md){:target="_blank" rel="noopener"}
+* Copyright &copy; RvIG 2022
+* Licensed under the [EUPL](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md)
+* Auteursrecht Bijdragen: Bijdragen aan dit project worden eigendom van de oorspronkelijke maker en vallen onder de EUPL-licentie.
+  Lees meer over de [licentie en auteursrecht](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/LICENCE.md)

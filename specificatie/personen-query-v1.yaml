@@ -156,7 +156,7 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             nummeraanduidingIdentificatie:
-              $ref: 'verblijfplaats.yaml#/components/schemas/NummeraanduidingIdentificatie'
+              $ref: 'brp-api/query-parameters/nummeraanduiding-identificatie-filter-v1.yaml#/components/schemas/NummeraanduidingIdentificatieFilter'
     ZoekMetAdresseerbaarObjectIdentificatie:
       required:
         - adresseerbaarObjectIdentificatie
@@ -167,4 +167,4 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             adresseerbaarObjectIdentificatie:
-              $ref: 'verblijfplaats.yaml#/components/schemas/AdresseerbaarObjectIdentificatie'
+              $ref: 'brp-api/query-parameters/adresseerbaar-object-identificatie-filter-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatieFilter'

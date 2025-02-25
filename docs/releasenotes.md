@@ -5,9 +5,15 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## Versie 2.5.0
+-	Voorheen mochten er bij alle zoekopdrachten maximaal 10 personen worden gevonden. Bij zoeken op adres is dit nu uitgebreid naar maximaal 30 personen. 
+-	Bij gezag wordt nu voor ouders en derden naast burgerservicenummer ook de naam geleverd. Voor minderjarigen wordt nu naast het burgerservicenummer naam en leeftijd geleverd.
+-	Bij gezag wordt nu een toelichting geleverd wanneer over de minderjarige tijdelijk niemand gezag uitoefent.
+
+
 ## Versie 2.4.0
 - Bij gezag type GezagNietTeBepalen wordt nu een toelichting gegeven.
-- Bij gezag type GezagNietTeBepalen en TijdelijkGeenGezag wordt nu de minderjarige gegeven.
+- Bij gezag type GezagNietTeBepalen en TijdelijkGeenGezag werd voorheen alleen het type geleverd. Nu worden ook gegevens over de minderjarige gegeven.
 
 ## Versie 2.3.0
 - Nieuwe optionele parameter geboortedatum voor operatie ZoekMetPostcodeEnHuisnummer. Hiermee kan je het aantal resultaten beperken wanneer er veel personen op hetzelfde adres staan ingeschreven.

@@ -1,0 +1,63 @@
+# .github/workflows/preview.yml
+name: Deploy PR previews
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configuration for preview
+        run: |
+          sed -i 's|baseurl:.*|baseurl: /Haal-Centraal-BRP-bevragen/pr-preview/pr-${{ github.event.number }}|' docs/_config.yml
+          sed -i 's|v2SpecUrl:.*|v2SpecUrl: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.head_ref }}/specificatie/resolved/openapi.yaml|' docs/_config.yml
+
+      - name: Build
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./docs
+          destination: ./docs/_site
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./docs/_site/
+          preview-branch: master
+          umbrella-dir: docs/pr-preview
+          pages-base-path: docs
+
+  remove-preview-on-close:
+    if: ${{ github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Remove preview folder
+        run: rm -rf docs/pr-preview/pr-${{ github.event.number }}
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs/pr-preview/pr-${{ github.event.number }}
+          git commit -m "Remove PR preview folder for PR #${{ github.event.number }}"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push origin master
