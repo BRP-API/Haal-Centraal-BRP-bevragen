@@ -279,11 +279,11 @@ components:
               $ref: '#/components/schemas/Huisnummertoevoeging'
             straat:
               $ref: '#/components/schemas/StraatFilter'
-    NummeraanduidingIdentificatie:
-      description: |
-        Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+    NummeraanduidingIdentificatieFilter:
       type: string
-      pattern: ^[0-9]{16}$
+      pattern: ^(?!0{16})[0-9]{16}$
+      description: |
+        De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       example: '0518200000366054'
     ZoekMetNummeraanduidingIdentificatie:
       required:
@@ -295,12 +295,12 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             nummeraanduidingIdentificatie:
-              $ref: '#/components/schemas/NummeraanduidingIdentificatie'
-    AdresseerbaarObjectIdentificatie:
+              $ref: '#/components/schemas/NummeraanduidingIdentificatieFilter'
+    AdresseerbaarObjectIdentificatieFilter:
       type: string
-      pattern: ^[0-9]{16}$
+      pattern: ^(?!0{16})[0-9]{16}$
       description: |
-        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+        De identificatiecode van een adresseerbaar object uitgezonderd de standaardwaarde (0000000000000000)
       example: '0226010000038820'
     ZoekMetAdresseerbaarObjectIdentificatie:
       required:
@@ -312,7 +312,7 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             adresseerbaarObjectIdentificatie:
-              $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+              $ref: '#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
     Field:
       description: |
         Het pad naar een gewenst veld in punt-gescheiden formaat. Bijvoorbeeld "burgerservicenummer", "geboorte.datum", "partners.naam.voornamen".
@@ -1167,6 +1167,18 @@ components:
           $ref: '#/components/schemas/Woonplaats'
         inOnderzoek:
           $ref: '#/components/schemas/VerblijfadresBinnenlandInOnderzoek'
+    AdresseerbaarObjectIdentificatie:
+      type: string
+      pattern: ^[0-9]{16}$
+      description: |
+        De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.
+      example: '0226010000038820'
+    NummeraanduidingIdentificatie:
+      description: |
+        Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+      type: string
+      pattern: ^[0-9]{16}$
+      example: '0518200000366054'
     AdresInOnderzoek:
       allOf:
         - $ref: '#/components/schemas/InOnderzoek'
