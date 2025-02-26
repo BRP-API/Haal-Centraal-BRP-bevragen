@@ -7,7 +7,7 @@ info:
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
     Zie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.
-  version: 2.6.0
+  version: 2.7.0
   contact:
     url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
@@ -1424,6 +1424,9 @@ components:
           type: string
         minderjarige:
           $ref: '#/components/schemas/Minderjarige'
+        inOnderzoek:
+          type: boolean
+          description: Geeft aan dat de gezagsrelatie in onderzoek is.
       discriminator:
         propertyName: type
         mapping:
@@ -1531,6 +1534,127 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/AbstractGezagsrelatie'
+      minItems: 0
+    Gezagsrelatie:
+      type: object
+      required:
+        - type
+        - minderjarige
+      properties:
+        type:
+          type: string
+        minderjarige:
+          $ref: '#/components/schemas/Minderjarige'
+        inOnderzoek:
+          type: boolean
+          description: Geeft aan dat de gezagsrelatie in onderzoek is.
+      discriminator:
+        propertyName: type
+        mapping:
+          GezamenlijkOuderlijkGezag: '#/components/schemas/GezamenlijkOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezagV2'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezagV2'
+          Voogdij: '#/components/schemas/VoogdijV2'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezagV2'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalenV2'
+      example:
+        type: GezamenlijkOuderlijkGezag
+        ouders:
+          - burgerservicenummer: '999998870'
+          - burgerservicenummer: '999998882'
+        minderjarige:
+          burgerservicenummer: '999998894'
+    GezagOuderV2:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
+      required:
+        - naam
+    GezamenlijkOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: '#/components/schemas/GezagOuderV2'
+              minItems: 2
+              maxItems: 2
+    EenhoofdigOuderlijkGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuderV2'
+    Derde:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          BekendeDerde: '#/components/schemas/BekendeDerde'
+          OnbekendeDerde: '#/components/schemas/OnbekendeDerde'
+    BekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: '#/components/schemas/Burgerservicenummer'
+            naam:
+              $ref: '#/components/schemas/NaamVolledigeNaam'
+      required:
+        - burgerservicenummer
+    OnbekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
+    GezamenlijkGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: '#/components/schemas/GezagOuderV2'
+            derde:
+              $ref: '#/components/schemas/Derde'
+    VoogdijV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: '#/components/schemas/BekendeDerde'
+              minItems: 0
+              maxItems: 2
+    TijdelijkGeenGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
+    GezagNietTeBepalenV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '#/components/schemas/Toelichting'
+    Gezagsrelaties:
+      type: array
+      items:
+        $ref: '#/components/schemas/Gezagsrelatie'
       minItems: 0
     VerblijfstitelInOnderzoek:
       description: |
@@ -1766,6 +1890,9 @@ components:
           deprecated: true
         gezag:
           $ref: '#/components/schemas/Gezag'
+          deprecated: true
+        gezagsrelaties:
+          $ref: '#/components/schemas/Gezagsrelaties'
         verblijfstitel:
           $ref: '#/components/schemas/Verblijfstitel'
         kinderen:
@@ -1837,6 +1964,9 @@ components:
           properties:
             gezag:
               $ref: '#/components/schemas/Gezag'
+              deprecated: true
+            gezagsrelaties:
+              $ref: '#/components/schemas/Gezagsrelaties'
     ZoekMetAdresseerbaarObjectIdentificatieResponse:
       allOf:
         - $ref: '#/components/schemas/PersonenQueryResponse'
