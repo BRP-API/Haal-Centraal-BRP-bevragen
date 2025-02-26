@@ -3,7 +3,7 @@
   "info": {
     "title": "BRP API Personen",
     "description": "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.\n",
-    "version": "2.6.0",
+    "version": "2.7.0",
     "contact": {
       "url": "https://brp-api.github.io/Haal-Centraal-BRP-bevragen"
     },
@@ -2283,8 +2283,8 @@
             "EenhoofdigOuderlijkGezag": "#/components/schemas/EenhoofdigOuderlijkGezagV2",
             "GezamenlijkGezag": "#/components/schemas/GezamenlijkGezagV2",
             "Voogdij": "#/components/schemas/VoogdijV2",
-            "TijdelijkGeenGezag": "#/components/schemas/TijdelijkGeenGezag",
-            "GezagNietTeBepalen": "#/components/schemas/GezagNietTeBepalen"
+            "TijdelijkGeenGezag": "#/components/schemas/TijdelijkGeenGezagV2",
+            "GezagNietTeBepalen": "#/components/schemas/GezagNietTeBepalenV2"
           }
         },
         "example": {
@@ -2302,7 +2302,7 @@
           }
         }
       },
-      "schemas-GezagOuder": {
+      "GezagOuderV2": {
         "type": "object",
         "properties": {
           "burgerservicenummer": {
@@ -2327,7 +2327,7 @@
               "ouders": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/schemas-GezagOuder"
+                  "$ref": "#/components/schemas/GezagOuderV2"
                 },
                 "minItems": 2,
                 "maxItems": 2
@@ -2345,7 +2345,7 @@
             "type": "object",
             "properties": {
               "ouder": {
-                "$ref": "#/components/schemas/schemas-GezagOuder"
+                "$ref": "#/components/schemas/GezagOuderV2"
               }
             }
           }
@@ -2406,7 +2406,7 @@
             "type": "object",
             "properties": {
               "ouder": {
-                "$ref": "#/components/schemas/schemas-GezagOuder"
+                "$ref": "#/components/schemas/GezagOuderV2"
               },
               "derde": {
                 "$ref": "#/components/schemas/Derde"
@@ -2430,6 +2430,36 @@
                 },
                 "minItems": 0,
                 "maxItems": 2
+              }
+            }
+          }
+        ]
+      },
+      "TijdelijkGeenGezagV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Gezagsrelatie"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "toelichting": {
+                "$ref": "#/components/schemas/Toelichting"
+              }
+            }
+          }
+        ]
+      },
+      "GezagNietTeBepalenV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Gezagsrelatie"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "toelichting": {
+                "$ref": "#/components/schemas/Toelichting"
               }
             }
           }
