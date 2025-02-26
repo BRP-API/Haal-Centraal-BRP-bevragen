@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/style.css">
+    
+
+    <title></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/">
+          <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/haal_centraal_zon_geel_RGB.png" width="238px">
+        </a>
+        <span class="navbar-text">BRP API Personen</span>
+        
+          <a class="navbar-brand-right" href="http://www.rvig.nl/" target="_blank">
+            <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/BZK_RIG_Logo_online_ex_pos_nl.png" width="238px">
+          </a>
+        
+      </nav>
+      <div style="height: 0px; border-top: 1px solid #b1b1b1;box-shadow: 0 -5px 5px -5px #7c7c7c;"></div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="text-align: right;">
+        <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Starten met Haal Centraal
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/starten-met-haal-centraal">Startgids</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/transitieplan">Transitieplan</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/security">Security</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Aansluiten op API's
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/aansluiten-op-apis">Aansluiten op API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://lvbag.github.io/BAG-Gemeentelijke-wensen-tav-BAG-Bevragingen/">BAG Individuele Bevragingen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/BRK-bevragen/">BRK Bevragen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bevragen/">BRP Persoon (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-historie-bevragen/">BRP Historie (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bewoning/">BRP Bewoning (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-Reisdocumenten-bevragen//">BRP Reisdocumenten (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-tabellen-bevragen/">BRP Tabellen</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-Update-API/">BRP Update API</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/WOZ-bevragen/">WOZ Bevragen (live)</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bijdragen aan API's</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/hoe-kun-je-bijdragen">Bijdragen aan API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/bug_melden">Bug melden</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/verbetervoorstel">Verbetervoorstel</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/gebruikerswens">Gebruikerswens</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/over-haal-centraal">Over Haal Centraal</a>
+<!--        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Over Haal Centraal</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/planning">Planning</a>
+       </div-->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/contact">Contact</a>
+      </li>
+    </ul>
+</div>
+
+      </nav>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+	<div class="header">BRP Personen Bevragen</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/" target="">Main</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/goals-canvas" target="">Goals canvas</a>
+
+    
+  
+	<div class="header">Specificaties v. 2</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/releasenotes" target="">Releasenotes</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/getting-started" target="">Getting started</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/user-stories-prod" target="">User stories</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/redoc" target="">Bevragen API</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/features-overzicht" target="">Features overzicht</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/features/index" target="">Features test overzicht</a>
+
+    
+  
+</nav>
+</div>
+        <div class="col-9"><h1 id="language-nl">language: nl</h1>
+
+<h1 id="functionaliteit-verblijfstitel-velden-vragen-met-fields">Functionaliteit: verblijfstitel velden vragen met fields</h1>
+
+<h3 id="achtergrond">Achtergrond:</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> landelijke tabel “Verblijfstitel” heeft de volgende waarden</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>omschrijving</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>00</td>
+          <td>Onbekend</td>
+        </tr>
+        <tr>
+          <td>37</td>
+          <td>Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-een-verblijfstitel-wordt-alleen-geleverd-wanneer-die-nog-geldig-is">Regel: een verblijfstitel wordt alleen geleverd wanneer die nog geldig is</h2>
+
+<ul>
+  <li>een verblijfstitel wordt geleverd wanneer Datum einde verblijfstitel (39.20) leeg is of een datum in de toekomst heeft</li>
+  <li>een verblijfstitel wordt NIET geleverd wanneer Datum einde verblijfstitel (39.20) vandaag is of een datum in het verleden heeft</li>
+</ul>
+
+<h3 id="scenario-persoon-heeft-geen-verblijfstitel">Scenario: persoon heeft geen verblijfstitel</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000309’ heeft de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>geslachtsnaam (02.40)</td>
+          <td>Jansen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000309</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>verblijfstitel.aanduiding</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon zonder gegevens</p>
+  </li>
+</ul>
+
+<h3 id="scenario-verblijfstitel-heeft-geen-datum-einde">Scenario: verblijfstitel heeft geen datum einde</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000103’ heeft de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>aanduiding verblijfstitel (39.10)</th>
+          <th>datum ingang verblijfstitel (39.30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>37</td>
+          <td>20210315</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000103</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>verblijfstitel.aanduiding</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met alleen de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>aanduiding.code</td>
+          <td>37</td>
+        </tr>
+        <tr>
+          <td>aanduiding.omschrijving</td>
+          <td>Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="abstract-scenario-verblijfstitel-heeft-titel">Abstract Scenario: verblijfstitel heeft &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000115’ heeft de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>aanduiding verblijfstitel (39.10)</th>
+          <th>datum einde verblijfstitel (39.20)</th>
+          <th>datum ingang verblijfstitel (39.30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>37</td>
+          <td>&lt;datumEinde&gt;</td>
+          <td>20210315</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000115</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>verblijfstitel.aanduiding</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met alleen de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>aanduiding.code</td>
+          <td>37</td>
+        </tr>
+        <tr>
+          <td>aanduiding.omschrijving</td>
+          <td>Vw 2000 art. 8, onder e, gemeenschapsonderdaan econ. niet-actief, arbeid spec.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>datumEinde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>datum einde in de toekomst</td>
+      <td>20350315</td>
+    </tr>
+    <tr>
+      <td>datum einde is morgen</td>
+      <td>morgen</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="abstract-scenario-verblijfstitel-heeft-titel-1">Abstract Scenario: verblijfstitel heeft &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000127’ heeft de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>aanduiding verblijfstitel (39.10)</th>
+          <th>datum einde verblijfstitel (39.20)</th>
+          <th>datum ingang verblijfstitel (39.30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>37</td>
+          <td>&lt;datumEinde&gt;</td>
+          <td>20210315</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000127</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer,verblijfstitel.aanduiding.code</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000127</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-1">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>datumEinde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>datum einde is vandaag</td>
+      <td>vandaag</td>
+    </tr>
+    <tr>
+      <td>datum einde in het verleden</td>
+      <td>20220315</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-verblijfstitel-met-aanduiding-98-geen-verblijfstitel-meer-wordt-niet-opgenomen">Regel: een verblijfstitel met aanduiding 98 “geen verblijfstitel (meer)” wordt niet opgenomen</h2>
+
+<h3 id="scenario-vervallen-verblijfstitel">Scenario: vervallen verblijfstitel</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000139’ heeft de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>aanduiding verblijfstitel (39.10)</th>
+          <th>datum ingang verblijfstitel (39.30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>98</td>
+          <td>20210315</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000139</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer,verblijfstitel.aanduiding</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000139</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-een-verblijfstitel-met-onbekende-aanduiding-wordt-wel-geleverd">Regel: Een verblijfstitel met onbekende aanduiding wordt wel geleverd</h2>
+
+<h3 id="scenario-persoon-heeft-verblijfstitel-maar-het-is-nog-onbekend-welke">Scenario: persoon heeft verblijfstitel maar het is nog onbekend welke</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000140’ heeft de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>aanduiding verblijfstitel (39.10)</th>
+          <th>datum ingang verblijfstitel (39.30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>00</td>
+          <td>20210714</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000140</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>verblijfstitel</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met alleen de volgende ‘verblijfstitel’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>aanduiding.code</td>
+          <td>00</td>
+        </tr>
+        <tr>
+          <td>aanduiding.omschrijving</td>
+          <td>Onbekend</td>
+        </tr>
+        <tr>
+          <td>datumIngang.type</td>
+          <td>Datum</td>
+        </tr>
+        <tr>
+          <td>datumIngang.datum</td>
+          <td>2021-07-14</td>
+        </tr>
+        <tr>
+          <td>datumIngang.langFormaat</td>
+          <td>14 juli 2021</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+</div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
