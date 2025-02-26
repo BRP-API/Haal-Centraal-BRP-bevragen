@@ -25,8 +25,8 @@ components:
           EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezagV2'
           GezamenlijkGezag: '#/components/schemas/GezamenlijkGezagV2'
           Voogdij: '#/components/schemas/VoogdijV2'
-          TijdelijkGeenGezag: 'gezagsrelatie-v1.yaml#/components/schemas/TijdelijkGeenGezag'
-          GezagNietTeBepalen: 'gezagsrelatie-v1.yaml#/components/schemas/GezagNietTeBepalen'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezagV2'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalenV2'
       example:
         type: 'GezamenlijkOuderlijkGezag'
         ouders:
@@ -43,7 +43,7 @@ components:
             ouders:
               type: array
               items:
-                $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+                $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuderV2'
               minItems: 2
               maxItems: 2
 
@@ -53,7 +53,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuderV2'
 
     GezamenlijkGezagV2:
       allOf:
@@ -61,7 +61,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuderV2'
             derde:
               $ref: 'derde-v1.yaml#/components/schemas/Derde'
 
@@ -76,3 +76,19 @@ components:
                 $ref: 'derde-v1.yaml#/components/schemas/BekendeDerde'
               minItems: 0
               maxItems: 2
+
+    TijdelijkGeenGezagV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '../../gezag/toelichting-v1.yaml#/components/schemas/Toelichting'
+
+    GezagNietTeBepalenV2:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: '../../gezag/toelichting-v1.yaml#/components/schemas/Toelichting'
