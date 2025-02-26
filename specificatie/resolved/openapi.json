@@ -2091,53 +2091,6 @@
           }
         }
       },
-      "AbstractGezagOuder": {
-        "type": "object",
-        "required": [
-          "type",
-          "naam"
-        ],
-        "properties": {
-          "type": {
-            "type": "string"
-          },
-          "naam": {
-            "$ref": "#/components/schemas/NaamVolledigeNaam"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "OuderZonderBsn": "#/components/schemas/GezagOuderZonderBsn",
-            "OuderMetBsn": "#/components/schemas/GezagOuderMetBsn"
-          }
-        }
-      },
-      "GezagOuderZonderBsn": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AbstractGezagOuder"
-          }
-        ]
-      },
-      "GezagOuderMetBsn": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AbstractGezagOuder"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "burgerservicenummer": {
-                "$ref": "#/components/schemas/Burgerservicenummer"
-              }
-            }
-          }
-        ],
-        "required": [
-          "burgerservicenummer"
-        ]
-      },
       "NaamVolledigeNaam": {
         "type": "object",
         "properties": {
@@ -2145,6 +2098,20 @@
             "$ref": "#/components/schemas/VolledigeNaam"
           }
         }
+      },
+      "GezagOuder": {
+        "type": "object",
+        "properties": {
+          "burgerservicenummer": {
+            "$ref": "#/components/schemas/Burgerservicenummer"
+          },
+          "naam": {
+            "$ref": "#/components/schemas/NaamVolledigeNaam"
+          }
+        },
+        "required": [
+          "burgerservicenummer"
+        ]
       },
       "TweehoofdigOuderlijkGezag": {
         "allOf": [
@@ -2157,7 +2124,7 @@
               "ouders": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/AbstractGezagOuder"
+                  "$ref": "#/components/schemas/GezagOuder"
                 },
                 "minItems": 2,
                 "maxItems": 2
@@ -2175,7 +2142,7 @@
             "type": "object",
             "properties": {
               "ouder": {
-                "$ref": "#/components/schemas/AbstractGezagOuder"
+                "$ref": "#/components/schemas/GezagOuder"
               }
             }
           }
@@ -2201,7 +2168,7 @@
             "type": "object",
             "properties": {
               "ouder": {
-                "$ref": "#/components/schemas/AbstractGezagOuder"
+                "$ref": "#/components/schemas/GezagOuder"
               },
               "derde": {
                 "$ref": "#/components/schemas/Meerderjarige"
@@ -2300,6 +2267,10 @@
           },
           "minderjarige": {
             "$ref": "#/components/schemas/Minderjarige"
+          },
+          "inOnderzoek": {
+            "type": "boolean",
+            "description": "Geeft aan dat de gezagsrelatie in onderzoek is."
           }
         },
         "discriminator": {
@@ -2328,7 +2299,7 @@
           }
         }
       },
-      "GezagOuder": {
+      "schemas-GezagOuder": {
         "type": "object",
         "properties": {
           "burgerservicenummer": {
@@ -2353,7 +2324,7 @@
               "ouders": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/GezagOuder"
+                  "$ref": "#/components/schemas/schemas-GezagOuder"
                 },
                 "minItems": 2,
                 "maxItems": 2
@@ -2371,7 +2342,7 @@
             "type": "object",
             "properties": {
               "ouder": {
-                "$ref": "#/components/schemas/GezagOuder"
+                "$ref": "#/components/schemas/schemas-GezagOuder"
               }
             }
           }
@@ -2432,7 +2403,7 @@
             "type": "object",
             "properties": {
               "ouder": {
-                "$ref": "#/components/schemas/GezagOuder"
+                "$ref": "#/components/schemas/schemas-GezagOuder"
               },
               "derde": {
                 "$ref": "#/components/schemas/Derde"

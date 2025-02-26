@@ -1441,38 +1441,20 @@ components:
           - burgerservicenummer: '999998882'
         minderjarige:
           burgerservicenummer: '999998894'
-    AbstractGezagOuder:
-      type: object
-      required:
-        - type
-        - naam
-      properties:
-        type:
-          type: string
-        naam:
-          $ref: '#/components/schemas/NaamVolledigeNaam'
-      discriminator:
-        propertyName: type
-        mapping:
-          OuderZonderBsn: '#/components/schemas/GezagOuderZonderBsn'
-          OuderMetBsn: '#/components/schemas/GezagOuderMetBsn'
-    GezagOuderZonderBsn:
-      allOf:
-        - $ref: '#/components/schemas/AbstractGezagOuder'
-    GezagOuderMetBsn:
-      allOf:
-        - $ref: '#/components/schemas/AbstractGezagOuder'
-        - type: object
-          properties:
-            burgerservicenummer:
-              $ref: '#/components/schemas/Burgerservicenummer'
-      required:
-        - burgerservicenummer
     NaamVolledigeNaam:
       type: object
       properties:
         volledigeNaam:
           $ref: '#/components/schemas/VolledigeNaam'
+    GezagOuder:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/NaamVolledigeNaam'
+      required:
+        - burgerservicenummer
     TweehoofdigOuderlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -1481,7 +1463,7 @@ components:
             ouders:
               type: array
               items:
-                $ref: '#/components/schemas/AbstractGezagOuder'
+                $ref: '#/components/schemas/GezagOuder'
               minItems: 2
               maxItems: 2
     EenhoofdigOuderlijkGezag:
@@ -1490,7 +1472,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: '#/components/schemas/AbstractGezagOuder'
+              $ref: '#/components/schemas/GezagOuder'
     Meerderjarige:
       type: object
       properties:
@@ -1504,7 +1486,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: '#/components/schemas/AbstractGezagOuder'
+              $ref: '#/components/schemas/GezagOuder'
             derde:
               $ref: '#/components/schemas/Meerderjarige'
     Voogdij:
@@ -1561,6 +1543,9 @@ components:
           type: string
         minderjarige:
           $ref: '#/components/schemas/Minderjarige'
+        inOnderzoek:
+          type: boolean
+          description: Geeft aan dat de gezagsrelatie in onderzoek is.
       discriminator:
         propertyName: type
         mapping:
@@ -1577,7 +1562,7 @@ components:
           - burgerservicenummer: '999998882'
         minderjarige:
           burgerservicenummer: '999998894'
-    GezagOuder:
+    schemas-GezagOuder:
       type: object
       properties:
         burgerservicenummer:
@@ -1594,7 +1579,7 @@ components:
             ouders:
               type: array
               items:
-                $ref: '#/components/schemas/GezagOuder'
+                $ref: '#/components/schemas/schemas-GezagOuder'
               minItems: 2
               maxItems: 2
     EenhoofdigOuderlijkGezagV2:
@@ -1603,7 +1588,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: '#/components/schemas/GezagOuder'
+              $ref: '#/components/schemas/schemas-GezagOuder'
     Derde:
       type: object
       required:
@@ -1636,7 +1621,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: '#/components/schemas/GezagOuder'
+              $ref: '#/components/schemas/schemas-GezagOuder'
             derde:
               $ref: '#/components/schemas/Derde'
     VoogdijV2:
