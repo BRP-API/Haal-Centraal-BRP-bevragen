@@ -43,7 +43,7 @@ components:
             ouders:
               type: array
               items:
-                $ref: 'gezagouder-v1.yaml#/components/schemas/AbstractGezagOuder'
+                $ref: 'gezagouder-v1.yaml#/components/schemas/GezagOuder'
               minItems: 2
               maxItems: 2
 
@@ -53,7 +53,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: 'gezagouder-v1.yaml#/components/schemas/AbstractGezagOuder'
+              $ref: 'gezagouder-v1.yaml#/components/schemas/GezagOuder'
 
     GezamenlijkGezag:
       allOf:
@@ -61,7 +61,7 @@ components:
         - type: object
           properties:
             ouder:
-              $ref: 'gezagouder-v1.yaml#/components/schemas/AbstractGezagOuder'
+              $ref: 'gezagouder-v1.yaml#/components/schemas/GezagOuder'
             derde:
               $ref: 'meerderjarige-v1.yaml#/components/schemas/Meerderjarige'
 

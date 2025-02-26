@@ -5,32 +5,12 @@ info:
 paths: {}
 components:
   schemas:
-    AbstractGezagOuder:
+    GezagOuder:
       type: object
-      required: 
-        -  type
-        -  naam
       properties:
-        type:
-         type: string
+        burgerservicenummer:
+          $ref: '../../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         naam:
           $ref: '../naam/volledige-naam-v1.yaml#/components/schemas/NaamVolledigeNaam'
-      discriminator:
-        propertyName: type
-        mapping:
-          OuderZonderBsn: '#/components/schemas/GezagOuderZonderBsn'
-          OuderMetBsn: '#/components/schemas/GezagOuderMetBsn'
-
-    GezagOuderZonderBsn:
-      allOf:
-        - $ref: '#/components/schemas/AbstractGezagOuder'
-
-    GezagOuderMetBsn:
-      allOf:
-        - $ref: '#/components/schemas/AbstractGezagOuder'
-        - type: object
-          properties:
-            burgerservicenummer:
-              $ref: '../../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
       required: 
         -  burgerservicenummer

@@ -112,7 +112,7 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
       | de personen ingeschreven op adres 'A1' wordt gevraagd |
 
   @data-api
-  Regel: gezagsrelaties opgevraagd via de gezag-api worden één op één doorgeleverd. Omschrijving voor het geslacht veld wordt toegevoegd
+  Regel: gezag en/of gezagsrelaties opgevraagd via de gezag-api worden één op één doorgeleverd. Omschrijving voor het geslacht veld wordt toegevoegd
 
     @data-api
     Abstract Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders zonder burgerservicenummer
@@ -120,7 +120,7 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
         | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
         | Jan               | Jansen                | M                           |
         | Jeanine           | Albers                | V                           |
-      Als <zoek methode>
+      Als het 'gezagsrelaties' veld van <zoek methode>
       Dan heeft de response een persoon
       En heeft de persoon een gezagsrelatie
         | type                      |
@@ -134,11 +134,9 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
         | Jeanine        | Albers             | V             | vrouw                 |
 
       Voorbeelden:
-      | zoek methode                                                                        |
-      | het 'gezagsrelaties' veld van 'Gerda' wordt gevraagd                                |
-      | het 'gezag' veld van 'Gerda' wordt gevraagd                                         |
-      | het 'gezagsrelaties' veld van de personen ingeschreven op adres 'A1' wordt gevraagd |
-      | het 'gezag' veld van de personen ingeschreven op adres 'A1' wordt gevraagd          |
+      | zoek methode                                          |
+      | 'Gerda' wordt gevraagd                                |
+      | de personen ingeschreven op adres 'A1' wordt gevraagd |
       
     @data-api
     Abstract Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders waarvan één zonder burgerservicenummer
@@ -148,7 +146,7 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
       * heeft de volgende persoon als ouder
         | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
         | 000000024                   | Jeanine           | Albers                | V                           |
-      Als <zoek methode>
+      Als het 'gezagsrelaties' veld van <zoek methode>
       Dan heeft de response een persoon
       En heeft de persoon een gezagsrelatie
         | type                      |
@@ -164,14 +162,55 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
         | 000000024           | Jeanine        | Albers             | V             | vrouw                 |
 
       Voorbeelden:
-      | zoek methode                                                                        |
-      | het 'gezagsrelaties' veld van 'Gerda' wordt gevraagd                                |
-      | het 'gezag' veld van 'Gerda' wordt gevraagd                                         |
-      | het 'gezagsrelaties' veld van de personen ingeschreven op adres 'A1' wordt gevraagd |
-      | het 'gezag' veld van de personen ingeschreven op adres 'A1' wordt gevraagd          |
+      | zoek methode                                          |
+      | 'Gerda' wordt gevraagd                                |
+      | de personen ingeschreven op adres 'A1' wordt gevraagd |
+
+    @data-api @deprecated
+    Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders zonder burgerservicenummer
+      * heeft de volgende personen zonder burgerservicenummer als ouder
+        | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+        | Jan               | Jansen                | M                           |
+        | Jeanine           | Albers                | V                           |
+      Als het 'gezag' veld van <zoek methode>
+      Dan heeft de response een persoon
+      En heeft de persoon een gezag
+        | type               | toelichting                                                   |
+        | GezagNietTeBepalen | Van één of beide ouders is de burgerservicenummer niet bekend |
+      * met minderjarige
+        | burgerservicenummer | naam.volledigeNaam | leeftijd |
+        | 000000012           | Gerda Jansen       | 2        |
+
+      Voorbeelden:
+      | zoek methode                                          |
+      | 'Gerda' wordt gevraagd                                |
+      | de personen ingeschreven op adres 'A1' wordt gevraagd |
+      
+    @data-api @deprecated
+    Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders waarvan één zonder burgerservicenummer
+      * heeft de volgende persoon zonder burgerservicenummer als ouder
+        | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+        | Jan               | Jansen                | M                           |
+      * heeft de volgende persoon als ouder
+        | burgerservicenummer (01.20) | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+        | 000000024                   | Jeanine           | Albers                | V                           |
+      Als het 'gezag' veld van <zoek methode>
+      Dan heeft de response een persoon
+      En heeft de persoon een gezag
+        | type               | toelichting                                                   |
+        | GezagNietTeBepalen | Van één of beide ouders is de burgerservicenummer niet bekend |
+      * met minderjarige
+        | burgerservicenummer | naam.volledigeNaam | leeftijd |
+        | 000000012           | Gerda Jansen       | 2        |
+
+      Voorbeelden:
+      | zoek methode                                          |
+      | 'Gerda' wordt gevraagd                                |
+      | de personen ingeschreven op adres 'A1' wordt gevraagd |
+
 
   @gezag-api
-  Regel: de velden van de gezagshouder(s) en de minderjarige worden door de gezag-api uit de persoonslijst van de minderjarige gehaald
+  Regel: de velden van de gezagshouder(s) en de minderjarige worden door de gezag-api uit de persoonslijst van de minderjarige gehaald. De gezag-api levert voor elke bevraging zowel de oude (gezag veld) als de nieuwe (gezagsrelaties veld) gezagsverhouding variant
 
     @gezag-api
     Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders zonder burgerservicenummer
@@ -193,6 +232,12 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
         | naam.voornamen | naam.geslachtsnaam | geslacht.code |
         | Jan            | Jansen             | M             |
         | Jeanine        | Albers             | V             |
+      En heeft de persoon een gezag
+        | type               | toelichting                                                   |
+        | GezagNietTeBepalen | Van één of beide ouders is de burgerservicenummer niet bekend |
+      * met minderjarige
+        | burgerservicenummer | naam.volledigeNaam | leeftijd |
+        | 000000012           | Gerda Jansen       | 2        |
 
     @gezag-api
     Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders waarvan één zonder burgerservicenummer
@@ -216,3 +261,9 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
       * met nog een ouder
         | burgerservicenummer | naam.voornamen | naam.geslachtsnaam | geslacht.code |
         | 000000024           | Jeanine        | Albers             | V             |
+      En heeft de persoon een gezag
+        | type               | toelichting                                                   |
+        | GezagNietTeBepalen | Van één of beide ouders is de burgerservicenummer niet bekend |
+      * met minderjarige
+        | burgerservicenummer | naam.volledigeNaam | leeftijd |
+        | 000000012           | Gerda Jansen       | 2        |
