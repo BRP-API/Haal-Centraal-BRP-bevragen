@@ -114,6 +114,8 @@ components:
           $ref: '../brp-api/query-parameters/adresseerbaar-object-identificatie-filter-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
         datum:
           $ref: '../brp-api/query-parameters/datum-filter-v1.yaml#/components/schemas/DatumFilter'
+        nummeraanduidingIdentificatie:
+          $ref: '../brp-api/query-parameters/nummeraanduiding-identificatie-filter-v1.yaml#/components/schemas/NummeraanduidingIdentificatieFilter'
 
     InformatieApiResponse:
       type: object

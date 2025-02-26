@@ -110,6 +110,8 @@ components:
           $ref: '#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
         datum:
           $ref: '#/components/schemas/DatumFilter'
+        nummeraanduidingIdentificatie:
+          $ref: '#/components/schemas/NummeraanduidingIdentificatieFilter'
     DataApiResponse:
       type: object
       properties:
@@ -206,6 +208,9 @@ components:
           type: string
         minderjarige:
           $ref: '#/components/schemas/Minderjarige'
+        inOnderzoek:
+          type: boolean
+          description: Geeft aan dat de gezagsrelatie in onderzoek is.
       discriminator:
         propertyName: type
         mapping:
@@ -418,6 +423,12 @@ components:
       type: string
       format: date
       example: '1964-09-24'
+    NummeraanduidingIdentificatieFilter:
+      type: string
+      pattern: ^(?!0{16})[0-9]{16}$
+      description: |
+        De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+      example: '0518200000366054'
   responses:
     '400':
       description: Bad Request
