@@ -12,7 +12,7 @@ Functionaliteit: gezagsrelatie bij minderjarige met één of twee ouders zonder 
       * is ingeschreven op adres 'A1' op 'vandaag - 2 jaar'
       
   @info-api
-  Regel: een minderjarige geboren (of erkend) na 1-1-2023 met twee ouders heeft gezamenlijk ouderlijk gezag ongeacht of één of beide ouders geen burgerservicenummer hebben
+  Regel: een minderjarige geboren (of erkend) na 1-1-2023 met twee ouders heeft gezamenlijk ouderlijk gezag ongeacht of één of beide ouders een burgerservicenummer hebben
 
     @info-api
     Abstract Scenario: minderjarige geboren na 1-1-2023 heeft twee ouders zonder burgerservicenummer
