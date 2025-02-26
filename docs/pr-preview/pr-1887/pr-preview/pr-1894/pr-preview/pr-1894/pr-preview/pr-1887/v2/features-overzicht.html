@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/style.css">
+    
+
+    <title></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/">
+          <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/haal_centraal_zon_geel_RGB.png" width="238px">
+        </a>
+        <span class="navbar-text">BRP API Personen</span>
+        
+          <a class="navbar-brand-right" href="http://www.rvig.nl/" target="_blank">
+            <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/BZK_RIG_Logo_online_ex_pos_nl.png" width="238px">
+          </a>
+        
+      </nav>
+      <div style="height: 0px; border-top: 1px solid #b1b1b1;box-shadow: 0 -5px 5px -5px #7c7c7c;"></div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="text-align: right;">
+        <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Starten met Haal Centraal
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/starten-met-haal-centraal">Startgids</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/transitieplan">Transitieplan</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/security">Security</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Aansluiten op API's
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/aansluiten-op-apis">Aansluiten op API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://lvbag.github.io/BAG-Gemeentelijke-wensen-tav-BAG-Bevragingen/">BAG Individuele Bevragingen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/BRK-bevragen/">BRK Bevragen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bevragen/">BRP Persoon (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-historie-bevragen/">BRP Historie (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bewoning/">BRP Bewoning (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-Reisdocumenten-bevragen//">BRP Reisdocumenten (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-tabellen-bevragen/">BRP Tabellen</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-Update-API/">BRP Update API</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/WOZ-bevragen/">WOZ Bevragen (live)</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bijdragen aan API's</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/hoe-kun-je-bijdragen">Bijdragen aan API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/bug_melden">Bug melden</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/verbetervoorstel">Verbetervoorstel</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/gebruikerswens">Gebruikerswens</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/over-haal-centraal">Over Haal Centraal</a>
+<!--        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Over Haal Centraal</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/planning">Planning</a>
+       </div-->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/contact">Contact</a>
+      </li>
+    </ul>
+</div>
+
+      </nav>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+	<div class="header">BRP Personen Bevragen</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/" target="">Main</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/goals-canvas" target="">Goals canvas</a>
+
+    
+  
+	<div class="header">Specificaties v. 2</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/releasenotes" target="">Releasenotes</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/getting-started" target="">Getting started</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/user-stories-prod" target="">User stories</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/redoc" target="">Bevragen API</a>
+
+	
+	<a class="nav-link active" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/features-overzicht" target="">Features overzicht</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/features/index" target="">Features test overzicht</a>
+
+    
+  
+</nav>
+</div>
+        <div class="col-9"><h1 id="brp-api-personen-web-api-features">BRP API Personen Web API Features</h1>
+
+<p>Met de BRP API Personen Web API kun je  gegevens van actuele personen in de basisregistratie personen (BRP) voor jouw applicatie zoeken en raadplegen met hun identificerende gegevens.</p>
+
+<p>In de BRP worden personen uniek geïdentificeerd met behulp van hun burgerservicenummer. Is het burgerservicenummer van de te raadplegen persoon/personen bekend, dan moet jouw applicatie de <a href="#raadplegen-van-personen">Raadpleeg persoon met burgerservicenummer</a> operatie gebruiken om de betreffende persoon/personen te raadplegen.</p>
+
+<p>Is het burgerservicenummer van de te raadplegen persoon/personen niet bekend, dan kun je deze laten opzoeken met de <a href="#zoeken-van-personen">Zoek persoon</a> operaties.</p>
+
+<h2 id="algemene-verordening-gegevensbescherming-avg">Algemene Verordening Gegevensbescherming (AVG)</h2>
+
+<p>De BRP bevragen API is ontworpen conform de REST principes. Om ook aan de AVG te conformeren zijn er concessies gedaan aan het toepassen van de REST principes. De belangrijkste concessie is dat de POST methode en niet de GET methode wordt gebruikt om personen te bevragen. Dit zorgt er voor dat er geen <a href="https://piwikpro.nl/blog/pii-niet-pii-en-persoonsgegevens/">persoonlijk identificeerbare informatie (PII)</a> terecht komen in de url van een request en daardoor ook niet in server logs.</p>
+
+<h2 id="zoeken-van-personen">Zoeken van personen</h2>
+
+<p>Je kunt de volgende zoekoperaties gebruiken om een persoon met niet-uniek identificerende persoonsgegevens te vinden:</p>
+
+<ul>
+  <li>zoek met geslachtsnaam en geboortedatum
+    <ul>
+      <li><a href="./features/zoek-met-geslachtsnaam-en-geboortedatum/overzicht.feature">overzicht</a></li>
+      <li><a href="./features/zoek-met-geslachtsnaam-en-geboortedatum/fout-cases.feature">fout cases</a></li>
+    </ul>
+  </li>
+  <li>zoek met geslachtsnaam, voornamen en gemeente van inschrijving
+    <ul>
+      <li><a href="./features/zoek-met-geslachtsnaam-voornamen-en-gemeente-van-inschrijving/overzicht.feature">overzicht</a></li>
+      <li><a href="./features/zoek-met-geslachtsnaam-voornamen-en-gemeente-van-inschrijving/fout-cases.feature">fout cases</a></li>
+    </ul>
+  </li>
+  <li>zoek met postcode en huisnummer
+    <ul>
+      <li><a href="./features/zoek-met-postcode-en-huisnummer/overzicht.feature">overzicht</a></li>
+      <li><a href="./features/zoek-met-postcode-en-huisnummer/fout-cases.feature">fout cases</a></li>
+    </ul>
+  </li>
+  <li>zoek met straat, huisnummer en gemeente van inschrijving
+    <ul>
+      <li><a href="./features/zoek-met-straatnaam-huisnummer-en-gemeente-van-inschrijving/overzicht.feature">overzicht</a></li>
+      <li><a href="./features/zoek-met-straatnaam-huisnummer-en-gemeente-van-inschrijving/fout-cases.feature">fout cases</a></li>
+    </ul>
+  </li>
+  <li>zoek met nummeraanduiding identificatie
+    <ul>
+      <li><a href="./features/zoek-met-nummeraanduiding-identificatie/overzicht.feature">overzicht</a></li>
+      <li><a href="./features/zoek-met-nummeraanduiding-identificatie/fout-cases.feature">fout cases</a></li>
+    </ul>
+  </li>
+  <li>zoek met adresseerbaar object identificatie</li>
+</ul>
+
+<p>Het resultaat van de zoek operaties is een lijst van personen die voldoen aan de opgegeven parameters. Bij de “zoek met adresseerbaar object identificatie” operatie kunnen van de gevonden personen ook de gezagsrelaties worden gevraagd.</p>
+
+<h3 id="vinden-van-overleden-personen">Vinden van overleden personen</h3>
+<p>Standaard worden alleen personen gevonden die in leven zijn. Om ook overleden personen te kunnen vinden, moet de inclusiefOverleden parameter met waarde true worden opgegeven.
+Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code ‘O’ en omschrijving ‘overlijden’. Zie de <a href="./features/persoon-beperkt/overlijden/overzicht.feature">overlijden overzicht</a> feature voor meer informatie over dit veld.</p>
+
+<h2 id="raadplegen-van-personen">Raadplegen van personen</h2>
+
+<p>Als het burgerservicenummer van de te bevragen personen bekend is, kan de volgende operatie worden gebruikt om gegevens van de persoon te raadplegen:</p>
+
+<ul>
+  <li>raadpleeg met burgerservicenummer
+    <ul>
+      <li><a href="./features/raadpleeg-met-burgerservicenummer/overzicht.feature">overzicht</a></li>
+      <li><a href="./features/raadpleeg-met-burgerservicenummer/fout-cases.feature">fout cases</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Het resultaat van deze operatie is een lijst van personen van wie het burgerservicenummer overeenkomen met de opgegeven burgerservicenummers.</p>
+
+<h3 id="raadplegen-van-overleden-personen">Raadplegen van overleden personen</h3>
+<p>De “raadpleeg met burgerservicenummer” operatie levert de personen van wie het burgerservicenummer overeenkomt met de opgegeven burgerservicenummers. Dit kunnen ook personen zijn die zijn overleden.
+Voor overleden personen wordt altijd het opschortingBijhouding veld geleverd met reden code ‘O’ en omschrijving ‘overlijden’.  Zie de <a href="./features/persoon/overlijden/overzicht.feature">overlijden overzicht</a> feature voor meer informatie over dit veld.</p>
+
+<h2 id="filteren-van-de-velden-van-de-gevonden-personen">Filteren van de velden van de gevonden personen</h2>
+
+<p>Elke bevraging moet verplicht een fields parameter bevatten om aan te geven welke velden van de gevonden persoon/personen geleverd moet worden. Om de privacy van de gevraagde personen te beschermen mag een afnemer uitsluitend die velden vragen waarvoor hij doelbinding heeft en wat op dat moment nodig is voor de uit te voeren taak.
+Bijkomend voordeel van deze data minimalisatie is dat er ook wordt bijgedragen aan verduurzaming. Hoe minder velden er worden gevraagd, hoe minder de server en het netwerk worden belast.</p>
+
+<p>Een veld wordt gevraagd door het volledige pad van het betreffende veld op te geven in de fields parameter. Het volledige pad van een veld is de samenvoeging van de naam van het veld en de namen van zijn ‘ouder’ velden met een ‘.’ karakter tussen de veld namen. Voorbeelden van volledige paden zijn:</p>
+
+<ul>
+  <li>geboorte.datum (volledig pad van het geboortedatum veld van een persoon)</li>
+  <li>kinderen.naam.voornamen (volledig pad van het voornamen veld van de kinderen van een persoon)</li>
+</ul>
+
+<p>Zie de <a href="./features/fields.feature">fields</a> en de <a href="./features/fields-fout-cases.feature">fields fout cases</a> feature bestanden voor meer informatie en voorbeelden van het gebruik van veldpaden en de fields parameter.</p>
+
+<p>Het <a href="https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-PersoonBeperkt.csv" target="_blank" rel="noopener">fields-filtered-PersoonBeperkt.csv</a> bestand bevat een overzicht van de toegestane fields waarden voor de Zoek personen operaties. Voor de Raadpleeg persoon operatie is de overzicht van toegestane fields waarden te vinden in het <a href="https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-Persoon.csv" target="_blank" rel="noopener">fields-filtered-Persoon.csv</a> bestand.</p>
+
+<p>Wil je dit snel en foutloos doen? Stel dan je fields eenvoudig samen met de <a href="./fields" target="_blank" rel="noopener">fields tool</a>.</p>
+
+<h3 id="filteren-van-datum-en-waardetabel-velden">Filteren van datum en waardetabel velden</h3>
+
+<p>De BRP API Personen Web API kent de volgende datum types:</p>
+
+<ul>
+  <li>VolledigeDatum</li>
+  <li>DatumOnbekend</li>
+  <li>JaarDatum</li>
+  <li>JaarMaandDatum</li>
+</ul>
+
+<p>en de volgende waardetabel types:</p>
+
+<ul>
+  <li>Waardetabel</li>
+  <li>AdellijkeTitelPredicaatType</li>
+</ul>
+
+<p>Bij het vragen van één of meerdere velden van deze types worden altijd alle velden van het gevraagde type geleverd. In het <a href="./features/fields.feature">fields</a> feature bestand vind je voorbeelden hiervan onder de volgende rules:</p>
+
+<ul>
+  <li><a href="./features/fields.feature#rule-het-vragen-van-één-of-meerdere-velden-van-een-waardetabel-veld-levert-alle-velden-van-de-waardetabel-veld">Regel: Het vragen van één of meerdere velden van een ‘waardetabel’ veld levert alle velden van de ‘waardetabel’ veld</a></li>
+  <li><a href="./features/fields.feature#rule-het-vragen-van-één-of-meerdere-velden-van-een-datum-veld-levert-alle-velden-van-de-datum-veld">Regel: Het vragen van één of meerdere velden van een ‘datum’ veld levert alle velden van de ‘datum’ veld</a></li>
+</ul>
+
+<h3 id="standaard-geleverde-velden">Standaard geleverde velden</h3>
+
+<p>De volgende velden worden indien van toepassing automatisch geleverd:</p>
+
+<ul>
+  <li>geheimhoudingPersoonsgegevens</li>
+  <li>inOnderzoek</li>
+  <li>opschortingBijhouding</li>
+  <li>rni</li>
+  <li>verificatie</li>
+  <li>indicatieVastgesteldVerblijftNietOpAdres</li>
+</ul>
+
+<p>Automatisch geleverde velden mogen niet worden gevraagd met de fields parameter.</p>
+
+<h3 id="filteren-van-verblijfplaats-velden">Filteren van verblijfplaats velden</h3>
+
+<p>Voor verblijfplaats zijn er twee autorisatie profielen:</p>
+
+<ul>
+  <li>geautoriseerd voor zowel verblijfplaats binnenland (Adres en Locatie) en verblijfplaats buitenland gegevens</li>
+  <li>geautoriseerd voor alleen verblijfplaats binnenland (Adres en Locatie) gegevens</li>
+</ul>
+
+<p>Afnemers die geautoriseerd zijn voor alleen verblijfplaats binnenland gegevens kunnen hierdoor de standaard veld paden van verblijfplaats niet gebruiken om alleen verblijfplaats binnenland velden te vragen. Met deze veld paden worden namelijk zowel verblijfplaats binnenland als verblijfplaats buitenland gevraagd.</p>
+
+<p>Afnemers die niet geautoriseerd zijn voor verblijfplaats buitenland gegevens moeten daarom de <strong>verblijfplaatsBinnenland</strong> fields alias gebruiken om aan te geven dat alleen verblijfplaats binnenland gegevens wordt gevraagd.</p>
+
+<p>Het gebruik van de <strong>verblijfplaatsBinnenland</strong> fields alias is beschreven in de volgende feature bestanden:</p>
+
+<ul>
+  <li><a href="./features/persoon/verblijfplaats/fields-alias.feature">verblijfplaats fields alias</a></li>
+  <li><a href="./features/persoon/verblijfplaats/fields-alias-fout-cases.feature">verblijfplaats fields alias fout cases</a></li>
+</ul>
+
+<h3 id="filteren-van-adresregels-velden">Filteren van adresregels velden</h3>
+
+<p>De adresregelvelden van een persoon worden samengesteld uit de verblijfplaatsvelden van een persoon. Om de adresregelvelden te kunnen vragen moet de afnemer minimaal geautoriseerd zijn voor de verblijfplaatsvelden waarmee de adresregelvelden worden samengesteld.</p>
+
+<p>Dit betekent dat de twee autorisatieprofielen van verblijfplaats ook gelden voor het vragen van adresregelvelden. Afnemers die niet geautoriseerd zijn voor het vragen van adresregels van een verblijfplaats buitenland moeten daarom de <strong>adresseringBinnenland</strong> fields alias gebruiken om aan te geven dat alleen adresregels voor verblijfplaats binnenland worden gevraagd.</p>
+
+<p>Het gebruik van de <strong>adresseringBinnenland</strong> fields alias is beschreven in de volgende feature bestanden:</p>
+
+<ul>
+  <li><a href="./features/persoon/adressering/adres-regels/fields-alias.feature">adresregels fields alias</a></li>
+  <li><a href="./features/persoon/adressering/adres-regels/fields-alias-fout-cases.feature">adresregels fields alias fout cases</a></li>
+</ul>
+
+<h3 id="filteren-van-partner-velden">Filteren van partner velden</h3>
+
+<p>Bij het vragen van de partners van een persoon worden de gevraagde gegevens van actuele partners (= niet ontbonden huwelijk/geregistreerd partnerschap) geleverd. Heeft de persoon alleen ontbonden huwelijk/geregistreerd partnerschappen, dan worden alleen de gevraagde gegevens van het meest recente ontbonden huwelijk/geregistreerd partnerschap geleverd.</p>
+
+<p>In het volgende feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario’s/voorbeelden:</p>
+
+<ul>
+  <li><a href="./features/persoon/partner/overzicht.feature">partnervelden vragen met fields</a></li>
+</ul>
+
+<h3 id="filteren-van-nationaliteitvelden">Filteren van nationaliteitvelden</h3>
+
+<p>De BRP API Personen Web API kent de volgende nationaliteit types:</p>
+
+<ul>
+  <li>Nationaliteit</li>
+  <li>Staatloos</li>
+  <li>BehandeldAlsNederlander</li>
+  <li>VastgesteldNietNederlander</li>
+  <li>Onbekend</li>
+</ul>
+
+<p>Er wordt alleen gegevens van actuele (= niet beëindigde) nationaliteiten geleverd.</p>
+
+<p>In het volgend feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario’s/voorbeelden:</p>
+
+<ul>
+  <li><a href="./features/persoon/nationaliteit/overzicht.feature">nationaliteitvelden vragen met fields</a></li>
+</ul>
+
+<h3 id="filteren-van-verblijfstitelvelden">Filteren van verblijfstitelvelden</h3>
+
+<p>Wanneer velden van de verblijfstitel wordt gevraagd, dan worden de gevraagde gegevens geleverd als de verblijfstitel niet is beëindigd. Gegevens van een verblijfstitel worden ook niet geleverd als de aanduiding gelijk is aan ‘geen verblijfstitel (meer)’.</p>
+
+<p>In het volgende feature bestand zijn de bovenstaande regels geïllustreerd aan de hand van scenario’s/voorbeelden:</p>
+
+<ul>
+  <li><a href="./features/persoon/verblijfstitel/overzicht.feature">verblijfstitelvelden vragen met fields</a></li>
+</ul>
+
+<h2 id="eén-of-meer-gevraagde-velden-zijn-in-onderzoek">Eén of meer gevraagde velden zijn in onderzoek</h2>
+
+<p>Om een afnemer te informeren dat één of meer gevraagde velden in onderzoek zijn, worden de bijbehorende inOnderzoek en datumIngangOnderzoek velden ook geleverd.
+Wanneer één of meer velden waaruit een andere veld wordt afgeleid (bijv. de adressering velden) in onderzoek zijn, dan is het afgeleide veld ook in onderzoek en wordt het inOnderzoekveld van het afgeleide veld ook geleverd.
+In het <a href="./features/in-onderzoek.feature">in onderzoek</a> featurebestand zijn de regels beschreven wanneer de inOnderzoekvelden wel/niet worden geleverd.</p>
+
+<h3 id="vastgesteld-verblijft-niet-op-adres">Vastgesteld verblijft niet op adres</h3>
+
+<p>Wanneer tijdens onderzoek is vastgesteld dat een persoon niet meer verblijft op het geregistreerde adres en verblijfplaatsgegevens en/of adresregels van de betreffende persoon worden gevraagd, dan wordt het <strong>indicatieVastgesteldVerblijftNietOpAdres</strong> veld met waarde true meegeleverd.</p>
+
+<p>De functionaliteit van het <strong>indicatieVastgesteldVerblijftNietOpAdres</strong> veld is beschreven in de volgende feature bestanden:</p>
+<ul>
+  <li><a href="./features/persoon/verblijfplaats/adres/vastgesteld-verblijft-niet-op-adres.feature">vastgesteld verblijft niet op adres (verblijfplaats binnenland)</a></li>
+  <li><a href="./features/persoon/verblijfplaats/locatie/vastgesteld-verblijft-niet-op-adres.feature">vastgesteld verblijft niet op adres (locatie)</a></li>
+  <li><a href="./features/persoon/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature">vastgesteld verblijft niet op adres (adresregels vragen bij personen raadplegen)</a></li>
+  <li><a href="./features/persoon-beperkt/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature">vastgesteld verblijft niet op adres (adresregels vragen bij personen zoeken)</a></li>
+</ul>
+
+<h2 id="geennullfalse-waarde-leeg-object-waarde-en-standaard-waarde">Geen/null/false waarde, leeg object waarde en standaard waarde</h2>
+
+<p>Om de payload van een response klein te houden, is er voor gekozen om velden met de volgende waarden niet te leveren in de response:</p>
+
+<ul>
+  <li>niet gevraagde velden. Deze velden hebben <em>null</em> als waarde.</li>
+  <li>gevraagde velden die de gevraagde persoon niet heeft. Deze velden hebben <em>null</em> als waarde. Voorbeeld: naam.voorvoegsel veld wordt gevraagd voor een persoon die geen voorvoegsel in zijn naam heeft.</li>
+  <li>gevraagde velden hebben de <em>false</em> waarde. Voorbeeld: indicatieCurateleRegister veld wordt gevraagd voor een persoon die niet onder curatele is gesteld.</li>
+  <li>gevraagde velden is een groep velden die de persoon niet heeft. Voorbeeld: verblijfstitel velden wordt gevraagd voor een persoon die geen verblijfstitel heeft</li>
+  <li>gevraagde velden heeft de <strong>standaard</strong> waarde. In de BRP wordt de standaard waarde gebruikt om aan te geven dat een gegeven onbekend is. Voorbeeld: geboorte.plaats veld wordt gevraagd voor een persoon waarvan de geboorteplaats onbekend is</li>
+  <li>gevraagde velden hebben geen aanduiding “in onderzoek”.</li>
+</ul>
+</div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
