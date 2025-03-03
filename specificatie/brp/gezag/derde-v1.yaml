@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info:
+  title: derde type definitie
+  version: 2.0.0
+paths: {}
+components:
+  schemas:
+    Derde:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          Derde: '#/components/schemas/BekendeDerde'
+          OnbekendeDerde: '#/components/schemas/OnbekendeDerde'
+            
+    BekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: '../identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
+            naam:
+              $ref: '../naam/naam-basis-v1.yaml#/components/schemas/NaamBasis'
+            geslacht:
+              $ref: '../geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
+
+    OnbekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
