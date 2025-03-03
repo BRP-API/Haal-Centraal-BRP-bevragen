@@ -2062,6 +2062,10 @@
           },
           "minderjarige": {
             "$ref": "#/components/schemas/Minderjarige"
+          },
+          "inOnderzoek": {
+            "type": "boolean",
+            "description": "Geeft aan dat de gezagsrelatie in onderzoek is."
           }
         },
         "discriminator": {
@@ -2147,16 +2151,48 @@
           }
         ]
       },
-      "Meerderjarige": {
+      "Derde": {
         "type": "object",
+        "required": [
+          "type"
+        ],
         "properties": {
-          "burgerservicenummer": {
-            "$ref": "#/components/schemas/Burgerservicenummer"
-          },
-          "naam": {
-            "$ref": "#/components/schemas/NaamVolledigeNaam"
+          "type": {
+            "type": "string"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "Derde": "#/components/schemas/BekendeDerde",
+            "OnbekendeDerde": "#/components/schemas/OnbekendeDerde"
           }
         }
+      },
+      "BekendeDerde": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Derde"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "burgerservicenummer": {
+                "$ref": "#/components/schemas/Burgerservicenummer"
+              },
+              "naam": {
+                "$ref": "#/components/schemas/NaamVolledigeNaam"
+              }
+            }
+          }
+        ]
+      },
+      "OnbekendeDerde": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Derde"
+          }
+        ]
       },
       "GezamenlijkGezag": {
         "allOf": [
@@ -2170,7 +2206,7 @@
                 "$ref": "#/components/schemas/GezagOuder"
               },
               "derde": {
-                "$ref": "#/components/schemas/Meerderjarige"
+                "$ref": "#/components/schemas/Derde"
               }
             }
           }
@@ -2187,7 +2223,7 @@
               "derden": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Meerderjarige"
+                  "$ref": "#/components/schemas/BekendeDerde"
                 },
                 "minItems": 0,
                 "maxItems": 2
