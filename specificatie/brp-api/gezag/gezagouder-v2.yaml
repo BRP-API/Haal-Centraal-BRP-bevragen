@@ -5,7 +5,7 @@ info:
 paths: {}
 components:
   schemas:
-    GezagOuderV2:
+    GezagOuder:
       type: object
       properties:
         burgerservicenummer:

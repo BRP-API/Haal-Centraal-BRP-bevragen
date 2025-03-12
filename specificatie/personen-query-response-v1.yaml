@@ -99,4 +99,4 @@ components:
               description: |
                 * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
-                $ref: 'gezag.yaml#/components/schemas/GezagPersoonBeperkt'
+                $ref: 'gezag-persoon-beperkt-v2.yaml#/components/schemas/GezagPersoonBeperkt'
