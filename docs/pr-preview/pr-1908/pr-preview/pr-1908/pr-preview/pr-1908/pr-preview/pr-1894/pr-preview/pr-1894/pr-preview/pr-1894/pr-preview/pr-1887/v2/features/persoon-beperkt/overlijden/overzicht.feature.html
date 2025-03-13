@@ -1,0 +1,347 @@
+s (8 sloc) 138 Bytes
+---
+layout: default
+---
+<div class="container">
+    <div class="row">
+        <div class="col-12"><h1 id="language-nl">language: nl</h1>
+
+<h1 id="functionaliteit-persoon-beperkt-overlijden">Functionaliteit: Persoon beperkt: overlijden</h1>
+
+<p>Wanneer een consumer van de BRP API personen zoekt inclusief overleden personen</p>
+<ul>
+  <li><strong>Dan</strong> wil de consumer worden geattendeerd welke van de gevonden personen zijn overleden zonder expliciet om overlijden gegevens te vragen met de fields parameter</li>
+</ul>
+
+<h2 id="regel-opschorting-bijhouding-met-reden-o-wordt-altijd-geleverd-bij-een-gevonden-overleden-persoon-is-overleden-ook-als-het-niet-met-fields-is-gevraagd">Regel: opschorting bijhouding met reden “O” wordt altijd geleverd bij een gevonden overleden persoon is overleden. Ook als het niet met fields is gevraagd</h2>
+
+<h3 id="abstract-scenario-sub-titel-van-een-niet-overleden-persoon">Abstract Scenario: &lt;sub titel&gt; van een niet-overleden persoon</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000152’ heeft de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>geslachtsnaam (02.40)</th>
+          <th>geboortedatum (03.10)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jansen</td>
+          <td>19630405</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetGeslachtsnaamEnGeboortedatum</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>geboortedatum</td>
+          <td>1963-04-05</td>
+        </tr>
+        <tr>
+          <td>inclusiefOverledenPersonen</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>&lt;fields&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000152</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>sub titel</th>
+      <th>fields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>opschorting bijhouding velden wordt niet gevraagd</td>
+      <td>burgerservicenummer</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="scenario-opschorting-bijhouding-gegevens-wordt-niet-gevraagd-van-een-overleden-persoon">Scenario: opschorting bijhouding gegevens wordt niet gevraagd van een overleden persoon</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000152’ heeft de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>geslachtsnaam (02.40)</th>
+          <th>geboortedatum (03.10)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jansen</td>
+          <td>19630405</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> de persoon heeft de volgende ‘inschrijving’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>reden opschorting bijhouding (67.20)</td>
+          <td>O</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetGeslachtsnaamEnGeboortedatum</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>geboortedatum</td>
+          <td>1963-04-05</td>
+        </tr>
+        <tr>
+          <td>inclusiefOverledenPersonen</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000152</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft de persoon de volgende ‘opschortingBijhouding’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>reden.code</td>
+          <td>O</td>
+        </tr>
+        <tr>
+          <td>reden.omschrijving</td>
+          <td>overlijden</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-leeftijd-veld-wordt-niet-geleverd-voor-overleden-personen">Regel: leeftijd veld wordt niet geleverd voor overleden personen</h2>
+
+<h3 id="scenario-leeftijd-wordt-gevraagd-van-een-overleden-persoon">Scenario: leeftijd wordt gevraagd van een overleden persoon</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000152’ heeft de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>geslachtsnaam (02.40)</th>
+          <th>geboortedatum (03.10)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jansen</td>
+          <td>19630405</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> de persoon heeft de volgende ‘overlijden’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>datum overlijden (08.10)</th>
+          <th>plaats overlijden (08.20)</th>
+          <th>land overlijden (08.30)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>20020701</td>
+          <td>0518</td>
+          <td>6030</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> de persoon heeft de volgende ‘inschrijving’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>reden opschorting bijhouding (67.20)</td>
+          <td>O</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetGeslachtsnaamEnGeboortedatum</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>geboortedatum</td>
+          <td>1963-04-05</td>
+        </tr>
+        <tr>
+          <td>inclusiefOverledenPersonen</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>leeftijd</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met alleen de volgende ‘opschortingBijhouding’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>reden.code</td>
+          <td>O</td>
+        </tr>
+        <tr>
+          <td>reden.omschrijving</td>
+          <td>overlijden</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+</div>
+    </div>
+</div>
+  
