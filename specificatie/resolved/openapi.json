@@ -3,7 +3,7 @@
   "info": {
     "title": "BRP API Personen",
     "description": "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.\n",
-    "version": "2.5.0",
+    "version": "2.6.0",
     "contact": {
       "url": "https://brp-api.github.io/Haal-Centraal-BRP-bevragen"
     },
@@ -314,6 +314,9 @@
                 "type": "string",
                 "format": "date",
                 "example": "1964-09-24"
+              },
+              "geslachtsnaam": {
+                "$ref": "#/components/schemas/GeslachtsnaamFilter"
               }
             }
           }
@@ -2059,6 +2062,10 @@
           },
           "minderjarige": {
             "$ref": "#/components/schemas/Minderjarige"
+          },
+          "inOnderzoek": {
+            "type": "boolean",
+            "description": "Geeft aan dat de gezagsrelatie in onderzoek is."
           }
         },
         "discriminator": {
@@ -2144,16 +2151,48 @@
           }
         ]
       },
-      "Meerderjarige": {
+      "Derde": {
         "type": "object",
+        "required": [
+          "type"
+        ],
         "properties": {
-          "burgerservicenummer": {
-            "$ref": "#/components/schemas/Burgerservicenummer"
-          },
-          "naam": {
-            "$ref": "#/components/schemas/NaamVolledigeNaam"
+          "type": {
+            "type": "string"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "Derde": "#/components/schemas/BekendeDerde",
+            "OnbekendeDerde": "#/components/schemas/OnbekendeDerde"
           }
         }
+      },
+      "BekendeDerde": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Derde"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "burgerservicenummer": {
+                "$ref": "#/components/schemas/Burgerservicenummer"
+              },
+              "naam": {
+                "$ref": "#/components/schemas/NaamVolledigeNaam"
+              }
+            }
+          }
+        ]
+      },
+      "OnbekendeDerde": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Derde"
+          }
+        ]
       },
       "GezamenlijkGezag": {
         "allOf": [
@@ -2167,7 +2206,7 @@
                 "$ref": "#/components/schemas/GezagOuder"
               },
               "derde": {
-                "$ref": "#/components/schemas/Meerderjarige"
+                "$ref": "#/components/schemas/Derde"
               }
             }
           }
@@ -2184,7 +2223,7 @@
               "derden": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Meerderjarige"
+                  "$ref": "#/components/schemas/BekendeDerde"
                 },
                 "minItems": 0,
                 "maxItems": 2
