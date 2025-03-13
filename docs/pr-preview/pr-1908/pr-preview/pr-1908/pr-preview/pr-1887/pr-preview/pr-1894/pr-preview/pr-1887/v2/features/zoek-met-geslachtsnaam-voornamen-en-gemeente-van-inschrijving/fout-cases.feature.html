@@ -1,0 +1,1890 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/style.css">
+    
+
+    <title></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/">
+          <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/haal_centraal_zon_geel_RGB.png" width="238px">
+        </a>
+        <span class="navbar-text">BRP API Personen</span>
+        
+          <a class="navbar-brand-right" href="http://www.rvig.nl/" target="_blank">
+            <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/BZK_RIG_Logo_online_ex_pos_nl.png" width="238px">
+          </a>
+        
+      </nav>
+      <div style="height: 0px; border-top: 1px solid #b1b1b1;box-shadow: 0 -5px 5px -5px #7c7c7c;"></div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="text-align: right;">
+        <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Starten met Haal Centraal
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/starten-met-haal-centraal">Startgids</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/transitieplan">Transitieplan</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/security">Security</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Aansluiten op API's
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/aansluiten-op-apis">Aansluiten op API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://lvbag.github.io/BAG-Gemeentelijke-wensen-tav-BAG-Bevragingen/">BAG Individuele Bevragingen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/BRK-bevragen/">BRK Bevragen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bevragen/">BRP Persoon (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-historie-bevragen/">BRP Historie (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bewoning/">BRP Bewoning (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-Reisdocumenten-bevragen//">BRP Reisdocumenten (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-tabellen-bevragen/">BRP Tabellen</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-Update-API/">BRP Update API</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/WOZ-bevragen/">WOZ Bevragen (live)</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bijdragen aan API's</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/hoe-kun-je-bijdragen">Bijdragen aan API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/bug_melden">Bug melden</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/verbetervoorstel">Verbetervoorstel</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/gebruikerswens">Gebruikerswens</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/over-haal-centraal">Over Haal Centraal</a>
+<!--        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Over Haal Centraal</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/planning">Planning</a>
+       </div-->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/contact">Contact</a>
+      </li>
+    </ul>
+</div>
+
+      </nav>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+	<div class="header">BRP Personen Bevragen</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/" target="">Main</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/goals-canvas" target="">Goals canvas</a>
+
+    
+  
+	<div class="header">Specificaties v. 2</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/releasenotes" target="">Releasenotes</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/getting-started" target="">Getting started</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/user-stories-prod" target="">User stories</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/redoc" target="">Bevragen API</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/features-overzicht" target="">Features overzicht</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/features/index" target="">Features test overzicht</a>
+
+    
+  
+</nav>
+</div>
+        <div class="col-9"><p>#language: nl</p>
+
+<h1 id="functionaliteit-zoek-met-geslachtsnaam-voornamen-en-gemeente-van-inschrijving---fout-cases">Functionaliteit: Zoek met geslachtsnaam, voornamen en gemeente van inschrijving - fout cases</h1>
+
+<h2 id="regel-geslachtsnaam-voornamen-en-gemeentevaninschrijving-zijn-verplichte-parameters">Regel: Geslachtsnaam, voornamen en gemeenteVanInschrijving zijn verplichte parameters</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="scenario-de-voornamen-geslachtsnaam-en-gemeentevaninschrijving-parameters-zijn-niet-opgegeven">Scenario: De voornamen, geslachtsnaam en gemeenteVanInschrijving parameters zijn niet opgegeven</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: gemeenteVanInschrijving, geslachtsnaam, voornamen.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>required</td>
+          <td>gemeenteVanInschrijving</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>geslachtsnaam</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>voornamen</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="scenario-alleen-de-geslachtsnaam-parameter-is-niet-opgegeven">Scenario: Alleen de geslachtsnaam parameter is niet opgegeven</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0518</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: geslachtsnaam.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>required</td>
+          <td>geslachtsnaam</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="scenario-alleen-de-voornamen-parameter-is-niet-opgegeven">Scenario: Alleen de voornamen parameter is niet opgegeven</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0518</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: voornamen.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>required</td>
+          <td>voornamen</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="scenario-alleen-de-gemeentevaninschrijving-parameter-is-niet-opgegeven">Scenario: Alleen de gemeenteVanInschrijving parameter is niet opgegeven</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: gemeenteVanInschrijving.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>required</td>
+          <td>gemeenteVanInschrijving</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="scenario-een-lege-string-is-opgegeven-als-voornamen-geslachtsnaam-en-gemeente-van-inschrijving-waarde">Scenario: Een lege string is opgegeven als voornamen, geslachtsnaam en gemeente van inschrijving waarde</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: gemeenteVanInschrijving, geslachtsnaam, voornamen.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>required</td>
+          <td>gemeenteVanInschrijving</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>geslachtsnaam</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+        <tr>
+          <td>required</td>
+          <td>voornamen</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-titel">Abstract Scenario: &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>&lt;voornamen&gt;</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>&lt;geslachtsnaam&gt;</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>&lt;gemeente van inschrijving&gt;</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: &lt;foutieve parameter&gt;.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>required</td>
+          <td>&lt;foutieve parameter&gt;</td>
+          <td>Parameter is verplicht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>voornamen</th>
+      <th>geslachtsnaam</th>
+      <th>gemeente van inschrijving</th>
+      <th>foutieve parameter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Een lege string is opgegeven als voornamen waarde</td>
+      <td> </td>
+      <td>Jansen</td>
+      <td>0518</td>
+      <td>voornamen</td>
+    </tr>
+    <tr>
+      <td>Een lege string is opgegeven als geslachtsnaam waarde</td>
+      <td>Jan</td>
+      <td> </td>
+      <td>0518</td>
+      <td>geslachtsnaam</td>
+    </tr>
+    <tr>
+      <td>Een lege string is opgegeven als gemeente van inschrijving waarde</td>
+      <td>Jan</td>
+      <td>Jansen</td>
+      <td> </td>
+      <td>gemeenteVanInschrijving</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-geslachtsnaam-is-een-string-bestaande-uit-minimaal-1-en-maximaal-200-karakters-deze-karakters-kunnen-zijn">Regel: Een geslachtsnaam is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:</h2>
+
+<ul>
+  <li>kleine letters (a-z)</li>
+  <li>hoofdletters (A-Z)</li>
+  <li>diakrieten (À-ž)</li>
+  <li>spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (‘)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-titel-1">Abstract Scenario: &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>&lt;geslachtsnaam&gt;</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: geslachtsnaam.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>geslachtsnaam</td>
+          <td>Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž .-']{1,200}$|^[a-zA-Z0-9À-ž .-']{3,199}*{1}$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-1">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>geslachtsnaam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>De opgegeven geslachtsnaam is meer dan 200 karakters lang</td>
+      <td>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</td>
+    </tr>
+    <tr>
+      <td>De opgegeven geslachtsnaam bevat ongeldige karakters</td>
+      <td>&lt;script&gt;alert(‘hello world’);&lt;/script&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-geslachtsnaam-met-wildcard-is-een-string-bestaande-uit-minimaal-3-en-maximaal-199-karakters-eindigend-met-de--karakter-de-overige-karakters-kunnen-zijn">Regel: Een geslachtsnaam met wildcard is een string bestaande uit minimaal 3 en maximaal 199 karakters, eindigend met de “*” karakter. De overige karakters kunnen zijn:</h2>
+
+<ul>
+  <li>kleine letters (a-z)</li>
+  <li>hoofdletters (A-Z)</li>
+  <li>diakrieten (À-ž)</li>
+  <li>spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (‘)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-de--wildcard-karakter-staat-niet-aan-het-eind-in-de-geslachtsnaam-parameter">Abstract Scenario: De “*” wildcard karakter staat niet aan het eind in de geslachtsnaam parameter</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>&lt;geslachtsnaam filter&gt;</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: geslachtsnaam.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>geslachtsnaam</td>
+          <td>Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž .-']{1,200}$|^[a-zA-Z0-9À-ž .-']{3,199}*{1}$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-2">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>geslachtsnaam filter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>*sen</td>
+    </tr>
+    <tr>
+      <td>*SEN</td>
+    </tr>
+    <tr>
+      <td>Jan*sen</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-voornamen-waarde-is-een-string-bestaande-uit-minimaal-1-en-maximaal-200-karakters-deze-karakters-kunnen-zijn">Regel: Een voornamen waarde is een string bestaande uit minimaal 1 en maximaal 200 karakters. Deze karakters kunnen zijn:</h2>
+
+<ul>
+  <li>kleine letters (a-z)</li>
+  <li>hoofdletters (A-Z)</li>
+  <li>diakrieten (À-ž)</li>
+  <li>spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (‘)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-titel-2">Abstract Scenario: &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>&lt;voornamen&gt;</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: voornamen.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>voornamen</td>
+          <td>Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž .-']{1,200}$|^[a-zA-Z0-9À-ž .-']{3,199}*{1}$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-3">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>voornamen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>De opgegeven voornamen is meer dan 199 karakters lang</td>
+      <td>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</td>
+    </tr>
+    <tr>
+      <td>De opgegeven voornamen bevat ongeldige karakters</td>
+      <td>&lt;script&gt;alert(‘hello world’);&lt;/script&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-voornamen-waarde-met-wildcard-is-een-string-bestaande-uit-minimaal-1-en-maximaal-199-karakters-eindigend-met-de--karakter-de-overige-karakters-kunnen-zijn">Regel: Een voornamen waarde met wildcard is een string bestaande uit minimaal 1 en maximaal 199 karakters, eindigend met de “*” karakter. De overige karakters kunnen zijn:</h2>
+
+<ul>
+  <li>kleine letters (a-z)</li>
+  <li>hoofdletters (A-Z)</li>
+  <li>diakrieten (À-ž)</li>
+  <li>spatie ( ), punt (.), min (-) en de enkele aanhalingsteken (‘)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-de--wildcard-is-opgegeven-als-eerste-karakter-in-de-voornamen-parameter">Abstract Scenario: De “*” wildcard is opgegeven als eerste karakter in de voornamen parameter</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>&lt;voornamen&gt;</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: voornamen.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>voornamen</td>
+          <td>Waarde voldoet niet aan patroon ^[a-zA-Z0-9À-ž .-']{1,200}$|^[a-zA-Z0-9À-ž .-']{3,199}*{1}$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-4">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>voornamen met wildcard</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>*iet</td>
+    </tr>
+    <tr>
+      <td>*ETER</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-gemeentevaninschrijving-waarde-bestaat-uit-4-cijfers">Regel: Een gemeenteVanInschrijving waarde bestaat uit 4 cijfers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-titel-3">Abstract Scenario: &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>&lt;gemeente code&gt;</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: gemeenteVanInschrijving.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>gemeenteVanInschrijving</td>
+          <td>Waarde voldoet niet aan patroon ^[0-9]{4}$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-5">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>gemeente code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>De opgegeven gemeenteVanInschrijving waarde is minder dan 4 cijfers lang</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <td>De opgegeven gemeenteVanInschrijving waarde is meer dan 4 cijfers lang</td>
+      <td>12345</td>
+    </tr>
+    <tr>
+      <td>De opgegeven gemeenteVanInschrijving waarde bevat ongeldige karakters</td>
+      <td>&lt;script&gt;alert(‘hello world’);&lt;/script&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-voorvoegsel-waarde-is-een-string-bestaande-uit-minimaal-1-en-maximaal-10-karakters-deze-karakters-kunnen-zijn">Regel: Een voorvoegsel waarde is een string bestaande uit minimaal 1 en maximaal 10 karakters. Deze karakters kunnen zijn:</h2>
+
+<ul>
+  <li>kleine letters (a-z)</li>
+  <li>hoofdletters (A-Z)</li>
+  <li>spatie ( ) en de enkele aanhalingsteken (‘)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="scenario-een-ongeldige-waarde-is-opgegeven-voor-de-voorvoegsel-parameter">Scenario: Een ongeldige waarde is opgegeven voor de ‘voorvoegsel’ parameter</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>voorvoegsel</td>
+          <td>&lt;script&gt;alert(‘hello world’);&lt;/script&gt;</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: voorvoegsel.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>voorvoegsel</td>
+          <td>Waarde voldoet niet aan patroon ^[a-zA-Z ']{1,10}$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-de-geslacht-waarde-is-één-karakter-lang-en-kan-één-van-de-volgende-karakters-zijn-m-m-v-v-o-o">Regel: De geslacht waarde is één karakter lang en kan één van de volgende karakters zijn: M, m, V, v, O, o</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-een-ongeldige-waarde-is-opgegeven-voor-de-geslacht-parameter">Abstract Scenario: Een ongeldige waarde is opgegeven voor de ‘geslacht’ parameter</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>geslacht</td>
+          <td>&lt;geslacht&gt;</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: geslacht.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>pattern</td>
+          <td>geslacht</td>
+          <td>Waarde voldoet niet aan patroon ^([Mm]|[Vv]|[Oo])$.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-6">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>geslacht</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>N</td>
+    </tr>
+    <tr>
+      <td>&lt;script&gt;alert(‘hello world’);&lt;/script&gt;</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-inclusiefoverledenpersonen-is-een-boolean-true-of-false-waarde">Regel: inclusiefOverledenPersonen is een boolean (true of false waarde)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-een-ongeldig-waarde-is-opgegeven-voor-de-inclusiefoverledenpersonen-parameter">Abstract Scenario: Een ongeldig waarde is opgegeven voor de ‘inclusiefOverledenPersonen’ parameter</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>inclusiefOverledenPersonen</td>
+          <td>&lt;inclusief overleden personen&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: inclusiefOverledenPersonen.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>boolean</td>
+          <td>inclusiefOverledenPersonen</td>
+          <td>Waarde is geen boolean.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-7">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>inclusief overleden personen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>geen boolean</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-alleen-gespecificeerde-parameters-bij-het-opgegeven-zoektype-mogen-worden-gebruikt">Regel: Alleen gespecificeerde parameters bij het opgegeven zoektype mogen worden gebruikt</h2>
+
+<p><code class="language-plaintext highlighter-rouge">@fout-case</code></p>
+<h3 id="abstract-scenario-titel-4">Abstract Scenario: &lt;titel&gt;</h3>
+
+<ul>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>ZoekMetNaamEnGemeenteVanInschrijving</td>
+        </tr>
+        <tr>
+          <td>voornamen</td>
+          <td>Jan</td>
+        </tr>
+        <tr>
+          <td>geslachtsnaam</td>
+          <td>Jansen</td>
+        </tr>
+        <tr>
+          <td>gemeenteVanInschrijving</td>
+          <td>0599</td>
+        </tr>
+        <tr>
+          <td>&lt;parameter&gt;</td>
+          <td><waarde></waarde></td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>burgerservicenummer</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een object met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1</td>
+        </tr>
+        <tr>
+          <td>title</td>
+          <td>Een of meerdere parameters zijn niet correct.</td>
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>detail</td>
+          <td>De foutieve parameter(s) zijn: &lt;parameter&gt;.</td>
+        </tr>
+        <tr>
+          <td>code</td>
+          <td>paramsValidation</td>
+        </tr>
+        <tr>
+          <td>instance</td>
+          <td>/haalcentraal/api/brp/personen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft het object de volgende ‘invalidParams’ gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>name</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>unknownParam</td>
+          <td>&lt;parameter&gt;</td>
+          <td>Parameter is niet verwacht.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-8">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>titel</th>
+      <th>parameter</th>
+      <th>waarde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>zoeken met parameter uit ander zoektype</td>
+      <td>postcode</td>
+      <td>1234AB</td>
+    </tr>
+    <tr>
+      <td>typfout in naam optionele parameter</td>
+      <td>voorvoegsels</td>
+      <td>van der</td>
+    </tr>
+    <tr>
+      <td>zoeken met niet gespecificeerde parameter</td>
+      <td>bestaatNiet</td>
+      <td>een waarde</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
