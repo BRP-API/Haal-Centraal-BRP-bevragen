@@ -6,12 +6,12 @@ title: Haal Centraal BRP Personen Bevragen
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
 ## Versie 2.6.0
-- Bij zoeken op postcode en huisnummer is de optionele parameter geslachtsnaam toegevoegd
-- Bij het bepalen van gezag voor een minderjarige met ongehuwde ouders wordt de geboortemoeder nu bepaald op basis van het geslacht van de ouders
-- Wanneer gegevens voor het bepalen van gezag in onderzoek staan wordt nu niet meer "gezag niet te bepalen" geleverd, maar wordt gezag geleverd met indicatie inOnderzoek
+- Zoeken op postcode en huisnummer is uitgebreid met de optionele parameter geslachtsnaam.
+- Bij het bepalen van gezag voor een minderjarige met ongehuwde ouders wordt de geboortemoeder nu bepaald op basis van het geslacht van de ouders. De verwachting is dat het aantal uitspraken "gezag niet te bepalen" met ongeveer 40% zal afnemen.
+- Wanneer gegevens voor het bepalen van gezag in onderzoek staan wordt nu niet meer "gezag niet te bepalen" geleverd, maar wordt gezag geleverd met indicatie inOnderzoek.
 - Bij gezamenlijk gezag wordt nu expliciet aangegeven wanneer het onbekend is wie de derde is die gezag heeft. Dit wordt aangegeven in veld "type".
-- Enkele verbeteringen zijn aangebracht in de validatie van parameters
-- Enkele verbeteringen zijn aangebracht aan het bepalen van gezag over een minderjarige
+- Enkele verbeteringen zijn aangebracht in de validatie van parameters.
+- Enkele verbeteringen zijn aangebracht aan het bepalen van gezag over een minderjarige.
 
 ## Versie 2.5.0
 -	Voorheen mochten er bij alle zoekopdrachten maximaal 10 personen worden gevonden. Bij zoeken op adres is dit nu uitgebreid naar maximaal 30 personen. 
