@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/style.css">
+    
+
+    <title></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/">
+          <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/haal_centraal_zon_geel_RGB.png" width="238px">
+        </a>
+        <span class="navbar-text">BRP API Personen</span>
+        
+          <a class="navbar-brand-right" href="http://www.rvig.nl/" target="_blank">
+            <img src="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/assets/img/BZK_RIG_Logo_online_ex_pos_nl.png" width="238px">
+          </a>
+        
+      </nav>
+      <div style="height: 0px; border-top: 1px solid #b1b1b1;box-shadow: 0 -5px 5px -5px #7c7c7c;"></div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="text-align: right;">
+        <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Starten met Haal Centraal
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/starten-met-haal-centraal">Startgids</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/transitieplan">Transitieplan</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/security">Security</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Aansluiten op API's
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/aansluiten-op-apis">Aansluiten op API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://lvbag.github.io/BAG-Gemeentelijke-wensen-tav-BAG-Bevragingen/">BAG Individuele Bevragingen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/BRK-bevragen/">BRK Bevragen (live)</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bevragen/">BRP Persoon (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-historie-bevragen/">BRP Historie (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-bewoning/">BRP Bewoning (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-Reisdocumenten-bevragen//">BRP Reisdocumenten (live)</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-tabellen-bevragen/">BRP Tabellen</a>
+          <a class="dropdown-item" href="https://brp-api.github.io/Haal-Centraal-BRP-Update-API/">BRP Update API</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://kadaster.github.io/WOZ-bevragen/">WOZ Bevragen (live)</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bijdragen aan API's</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/hoe-kun-je-bijdragen">Bijdragen aan API's</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/bug_melden">Bug melden</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/verbetervoorstel">Verbetervoorstel</a>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/gebruikerswens">Gebruikerswens</a>
+       </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/over-haal-centraal">Over Haal Centraal</a>
+<!--        <a class="nav-link dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Over Haal Centraal</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://vng-realisatie.github.io/Haal-Centraal/planning">Planning</a>
+       </div-->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://vng-realisatie.github.io/Haal-Centraal/contact">Contact</a>
+      </li>
+    </ul>
+</div>
+
+      </nav>
+    </div>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+	<div class="header">BRP Personen Bevragen</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/" target="">Main</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/goals-canvas" target="">Goals canvas</a>
+
+    
+  
+	<div class="header">Specificaties v. 2</div>
+	<nav class="nav flex-column">
+    
+      
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/releasenotes" target="">Releasenotes</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/getting-started" target="">Getting started</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/user-stories-prod" target="">User stories</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/redoc" target="">Bevragen API</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/v2/features-overzicht" target="">Features overzicht</a>
+
+	
+	<a class="nav-link" href="/Haal-Centraal-BRP-bevragen/pr-preview/pr-1887/features/index" target="">Features test overzicht</a>
+
+    
+  
+</nav>
+</div>
+        <div class="col-9"><p>#language: nl</p>
+
+<h1 id="functionaliteit-nationaliteit-velden-vragen-met-fields">Functionaliteit: nationaliteit velden vragen met fields</h1>
+
+<h2 id="regel-een-nationaliteit-heeft-de-type-nationaliteit-wanneer-de-waarde-van-nationaliteit-0510-ongelijk-is-aan-0000-0002-0499-0500">Regel: een nationaliteit heeft de type ‘Nationaliteit’ wanneer de waarde van ‘nationaliteit (05.10)’ ongelijk is aan 0000, 0002, 0499, 0500</h2>
+
+<h3 id="abstract-scenario-waarde-van-nationaliteit-0510-is-gelijk-aan-code">Abstract Scenario: waarde van ‘nationaliteit (05.10)’ is gelijk aan ‘&lt;code&gt;’</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nationaliteit (05.10)</td>
+          <td>&lt;code&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>Nationaliteit</td>
+        </tr>
+        <tr>
+          <td>nationaliteit.code</td>
+          <td>&lt;code&gt;</td>
+        </tr>
+        <tr>
+          <td>nationaliteit.omschrijving</td>
+          <td>&lt;omschrijving&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>code</th>
+      <th>omschrijving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0001</td>
+      <td>Nederlandse</td>
+    </tr>
+    <tr>
+      <td>0263</td>
+      <td>Surinaamse</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-nationaliteit-heeft-de-type-staatloos-wanneer-de-waarde-van-nationaliteit-0510-gelijk-is-aan-0499">Regel: een nationaliteit heeft de type ‘Staatloos’ wanneer de waarde van ‘nationaliteit (05.10)’ gelijk is aan 0499</h2>
+
+<h3 id="scenario-waarde-van-nationaliteit-0510-is-gelijk-aan-0499">Scenario: waarde van ‘nationaliteit (05.10)’ is gelijk aan ‘0499’</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nationaliteit (05.10)</td>
+          <td>0499</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>Staatloos</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-een-nationaliteit-heeft-de-type-behandeldalsnederlander-wanneer-de-waarde-van-nationaliteit-0510-gelijk-is-aan-0002-of-als-de-waarde-van-bijzonder-nederlanderschap-6510-gelijk-is-aan-b">Regel: een nationaliteit heeft de type ‘BehandeldAlsNederlander’ wanneer de waarde van ‘nationaliteit (05.10)’ gelijk is aan 0002 of als de waarde van ‘bijzonder Nederlanderschap (65.10)’ gelijk is aan ‘B’</h2>
+
+<h3 id="abstract-scenario-waarde-van-element-is-gelijk-aan-">Abstract Scenario: waarde van ‘&lt;element&gt;’ is gelijk aan ‘<code>'</code></h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&lt;element&gt;</td>
+          <td><code></code></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>BehandeldAlsNederlander</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-1">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>element</th>
+      <th>code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bijzonder Nederlanderschap (65.10)</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <td>nationaliteit (05.10)</td>
+      <td>0002</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-nationaliteit-heeft-de-type-vastgesteldnietnederlander-wanneer-de-waarde-van-nationaliteit-0510-gelijk-is-aan-0500-of-als-de-waarde-van-bijzonder-nederlanderschap-6510-gelijk-is-aan-v">Regel: een nationaliteit heeft de type ‘VastgesteldNietNederlander’ wanneer de waarde van ‘nationaliteit (05.10)’ gelijk is aan 0500 of als de waarde van ‘bijzonder Nederlanderschap (65.10)’ gelijk is aan ‘V’</h2>
+
+<h3 id="abstract-scenario-waarde-van-element-is-gelijk-aan--1">Abstract Scenario: waarde van ‘&lt;element&gt;’ is gelijk aan ‘<code>'</code></h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&lt;element&gt;</td>
+          <td><code></code></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>VastgesteldNietNederlander</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h4 id="voorbeelden-2">Voorbeelden:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>element</th>
+      <th>code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bijzonder Nederlanderschap (65.10)</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>nationaliteit (05.10)</td>
+      <td>0500</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="regel-een-nationaliteit-heeft-de-type-onbekend-wanneer-de-waarde-van-nationaliteit-0510-gelijk-is-aan-0000">Regel: een nationaliteit heeft de type ‘Onbekend’ wanneer de waarde van ‘nationaliteit (05.10)’ gelijk is aan 0000</h2>
+
+<h3 id="scenario-waarde-van-nationaliteit-0510-is-gelijk-aan-0000">Scenario: waarde van ‘nationaliteit (05.10)’ is gelijk aan ‘0000’</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nationaliteit (05.10)</td>
+          <td>0000</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>NationaliteitOnbekend</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-een-persoon-kan-meerdere-actuele-nationaliteiten-hebben">Regel: een persoon kan meerdere actuele nationaliteiten hebben</h2>
+
+<h3 id="scenario-persoon-heeft-meerdere-nationaliteiten">Scenario: persoon heeft meerdere nationaliteiten</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nationaliteit (05.10)</td>
+          <td>0263</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> de persoon heeft nog een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nationaliteit (05.10)</td>
+          <td>0455</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon met een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>Nationaliteit</td>
+        </tr>
+        <tr>
+          <td>nationaliteit.code</td>
+          <td>0263</td>
+        </tr>
+        <tr>
+          <td>nationaliteit.omschrijving</td>
+          <td>Surinaamse</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> heeft de persoon een ‘nationaliteit’ met alleen de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>Nationaliteit</td>
+        </tr>
+        <tr>
+          <td>nationaliteit.code</td>
+          <td>0455</td>
+        </tr>
+        <tr>
+          <td>nationaliteit.omschrijving</td>
+          <td>Montenegrijnse</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="regel-een-beëindigde-nationaliteit-wordt-niet-geleverd">Regel: een beëindigde nationaliteit wordt niet geleverd</h2>
+
+<h3 id="scenario-persoon-heeft-alleen-een-beëindigde-nationaliteit">Scenario: persoon heeft alleen een beëindigde nationaliteit</h3>
+
+<ul>
+  <li>
+    <p><strong>Gegeven</strong> de persoon met burgerservicenummer ‘000000012’ heeft een ‘nationaliteit’ met de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>nationaliteit (05.10)</td>
+          <td>0001</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>En</strong> de ‘nationaliteit’ is gewijzigd naar de volgende gegevens</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>reden beëindigen (64.10)</td>
+          <td>410</td>
+        </tr>
+        <tr>
+          <td>datum ingang geldigheid (85.10)</td>
+          <td>morgen</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Als</strong> personen wordt gezocht met de volgende parameters</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>naam</th>
+          <th>waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>type</td>
+          <td>RaadpleegMetBurgerservicenummer</td>
+        </tr>
+        <tr>
+          <td>burgerservicenummer</td>
+          <td>000000012</td>
+        </tr>
+        <tr>
+          <td>fields</td>
+          <td>nationaliteiten</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p><strong>Dan</strong> heeft de response een persoon zonder ‘nationaliteit’ gegevens</p>
+  </li>
+</ul>
+
+</div>
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
