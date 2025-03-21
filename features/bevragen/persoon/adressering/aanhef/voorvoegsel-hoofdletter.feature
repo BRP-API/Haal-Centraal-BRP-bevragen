@@ -1,6 +1,8 @@
 # language: nl
 
-Functionaliteit: Het juiste gebruik van hoodfletters in de voorvoegsels bij het opstellen van de aanhef 
+Functionaliteit: Het juiste gebruik van hoofdletters in de voorvoegsels bij het opstellen van de aanhef 
+
+  Regel: Hoofdlettergebruik
 
   Abstract Scenario: hoofdlettergebruik in voorvoegsels bij aanduidingNaamgebruik "<naamgebruik>", geslacht "<geslacht>" en <voorbeeld>
     Gegeven de persoon met burgerservicenummer '000000139' heeft de volgende gegevens
