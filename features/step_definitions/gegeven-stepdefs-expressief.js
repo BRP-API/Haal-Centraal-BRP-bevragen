@@ -15,14 +15,25 @@ const { createPersoon,
         aanvullenInschrijving,
         createOverlijden
 } = require('./persoon-2');
+const { createAdres } = require('./adres-2');
 const { toDbColumnName } = require('./brp');
 
-const { toBRPDate } = require('./brpDatum');
+const { toDateOrString, toBRPDate } = require('./brpDatum');
 
 function getPersoon(context, aanduiding) {
     return !aanduiding
         ? context.data.personen.at(-1)
         : context.data.personen.find(p => p.id === `persoon-${aanduiding}`);
+}
+
+function getAdres(context, aanduiding) {
+    return !aanduiding
+        ? context.data.adressen.at(-1)
+        : context.data.adressen.find(a => a.id === `adres-${aanduiding}`);
+}
+
+function getAdresIndex(context, aanduiding) {
+    return context.data.adressen.findIndex(a => a.id === `adres-${aanduiding}`);
 }
 
 function getBsn(persoon) {
@@ -88,11 +99,18 @@ function createOntbindingPartnerschap(context, aanduiding, dataTable) {
  * Expressieve Gegeven-stappen voor Persoon
  */
 
+function dataTableHasColumn(dataTable, columnName) {
+    return dataTable?.raw()[0].includes(columnName);
+}
+
+
 function gegevenDePersoonMetBsn(context, aanduiding, burgerservicenummer, dataTable) {
-    const data = [
-        ['burgerservicenummer (01.20)', burgerservicenummer],
-    ];
-    if (aanduiding) {
+    const data = [];
+
+    if (burgerservicenummer) {
+        data.push(['burgerservicenummer (01.20)', burgerservicenummer]);
+    }
+    if (aanduiding && !dataTableHasColumn(dataTable, 'geslachtsnaam (02.40)')) {
         data.push(['geslachtsnaam (02.40)', aanduiding]);
     }
 
@@ -103,22 +121,121 @@ function gegevenDePersoonMetBsn(context, aanduiding, burgerservicenummer, dataTa
     );
 }
 
+Given(/^(?:de )?persoon '([a-zA-Z0-9]*)'$/, function (aanduiding, dataTable) {
+    gegevenDePersoonMetBsn(this.context, aanduiding, undefined, dataTable);
+
+    global.logger.info(`gegeven persoon '${aanduiding}'`, getPersoon(this.context, aanduiding));
+});
+
 Given(/^(?:de persoon(?: '(.*)')? )?met burgerservicenummer '(\d*)'$/, function (aanduiding, burgerservicenummer) {
     gegevenDePersoonMetBsn(this.context, aanduiding, burgerservicenummer, undefined);
 });
 
-function wijzigPersoonContext(context, aanduiding) {
-    const persoonId = `persoon-${aanduiding}`;
-    const index = context.data.personen.findIndex(element => element.id === persoonId);
+Given(/^adres '([a-zA-Z0-9]*)'$/, function (aanduiding, dataTable) {
+    createAdres(this.context, aanduiding, dataTable);
 
-    if (index !== -1) {
-        const [element] = context.data.personen.splice(index, 1);
-        context.data.personen.push(element);
+    global.logger.info(`gegeven adres '${aanduiding}'`, getAdres(this.context, aanduiding));
+});
+
+function getJaar(jaar) {
+    if(!jaar) {
+        return '0000';
+    }
+    return jaar;
+}
+
+function getMaand(maand) {
+    switch(maand) {
+        case 'januari':
+            return '01';
+        case 'februari':
+            return '02';
+        case 'maart':
+            return '03';
+        case 'april':
+            return '04';
+        case 'mei':
+            return '05';
+        case 'juni':
+            return '06';
+        case 'juli':
+            return '07';
+        case 'augustus':
+            return '08';
+        case 'september':
+            return '09';
+        case 'oktober':
+            return '10';
+        case 'november':
+            return '11';
+        case 'december':
+            return '12';
+        default:
+            return '00';
     }
 }
 
-Given(/^persoon '(.*)'$/, function (aanduiding) {
-    wijzigPersoonContext(this.context, aanduiding);
+function getDag(dag) {
+    if(!dag) {
+        return '00';
+    }
+    else if (dag.length === 1) {
+        return '0' + dag;
+    }
+
+    return dag;
+}
+
+function gegevenPersonenZijnIngeschrevenOpAdres(context, aanduidingAdres, aanduidingPersoon, datumAanvangAdreshouding) {
+    const data = [
+        ['adres_id', getAdresIndex(context, aanduidingAdres) + ''],
+        ['functie adres (10.10)', 'W'],
+        ['datum aanvang adreshouding (10.30)', datumAanvangAdreshouding]
+    ];
+
+    createVerblijfplaats(getPersoon(context, aanduidingPersoon),
+                         arrayOfArraysToDataTable(data));
+}
+
+Given(/^(?:persoon |personen )?'([a-zA-Z0-9, ]*)' (?:is|zijn) ingeschreven op adres '([a-zA-Z0-9]*)' op '(?:(\d{1,2}) )?(?:(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december) )?(\d{4})'$/, function (persoonAanduidingen, adresAanduiding, dag, maand, jaar) {
+    const aanduidingen = persoonAanduidingen.replace(' en ', ',').split(',').map(aanduiding => aanduiding.trim());
+    for(const persoonAanduiding of aanduidingen) {
+        gegevenPersonenZijnIngeschrevenOpAdres(this.context, adresAanduiding, persoonAanduiding, getJaar(jaar) + getMaand(maand) + getDag(dag));
+    }
+
+    global.logger.info(`gegeven persoon|personen '${persoonAanduidingen}' is|zijn ingeschreven op adres '${adresAanduiding}' op '${dag} ${maand} ${jaar}'`, getPersoon(this.context, aanduidingen[0]));
+});
+
+Given(/^(?:persoon |personen )?'([a-zA-Z0-9, ]*)' (?:is|zijn) ingeschreven op adres '([a-zA-Z0-9]*)' op een onbekende datum$/, function (persoonAanduidingen, adresAanduiding) {
+    const aanduidingen = persoonAanduidingen.replace(' en ', ',').split(',').map(aanduiding => aanduiding.trim());
+    for(const persoonAanduiding of aanduidingen) {
+        gegevenPersonenZijnIngeschrevenOpAdres(this.context, adresAanduiding, persoonAanduiding, '00000000');
+    }
+
+    global.logger.info(`gegeven persoon|personen '${persoonAanduidingen}' is|zijn ingeschreven op adres '${adresAanduiding}' op een onbekende datum`, getPersoon(this.context, aanduidingen[0]));
+});
+
+Given(/^(?:persoon |personen )?'([a-zA-Z0-9, ]*)' (?:is|zijn) (?:(gisteren|vandaag|morgen) )?(\d*) jaar geleden ingeschreven op adres '([a-zA-Z0-9]*)'$/, function (persoonAanduidingen, dag, aantalJaren, adresAanduiding) {
+    const date = !dag
+        ? toDateOrString(`vandaag - ${aantalJaren} jaar`, false)
+        : toDateOrString(`${dag} - ${aantalJaren} jaar`, false);
+
+    const aanduidingen = persoonAanduidingen.replace(' en ', ',').split(',').map(aanduiding => aanduiding.trim());
+    for(const persoonAanduiding of aanduidingen) {
+        gegevenPersonenZijnIngeschrevenOpAdres(this.context, adresAanduiding, persoonAanduiding, date);
+    }
+
+    global.logger.info(`gegeven persoon|personen '${persoonAanduidingen}' is|zijn ${dag} ${aantalJaren} jaar geleden ingeschreven op adres '${adresAanduiding}'`, getPersoon(this.context, aanduidingen[0]));
+});
+
+Given(/^heeft de volgende persoon zonder burgerservicenummer als ouder ([1-2])$/, function (ouderType, dataTable) {
+    createOuder(
+        getPersoon(this.context, undefined),
+        ouderType,
+        dataTable
+    );
+
+    global.logger.info(`heeft de volgende persoon zonder burgerservicenummer als ouder ${ouderType}`, getPersoon(this.context, undefined));
 });
 
 Given(/^is minderjarig/, function () {

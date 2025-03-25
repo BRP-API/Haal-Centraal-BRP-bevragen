@@ -16,7 +16,7 @@ function createInsertIntoPersoonslijstStatement(inschrijving) {
 
     statementText += ') VALUES(';
 
-    statementText += '(SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl)';
+    statementText += `(SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.${tableName})`;
 
     statementText += ',' + 'current_timestamp';
 
@@ -32,6 +32,38 @@ function createInsertIntoPersoonslijstStatement(inschrijving) {
     return {
         text: statementText,
         categorie: 'inschrijving',
+        values: values
+    };
+}
+
+function createInsertIntoAdresStatement(adres) {
+    const tableName = toDbTableName('adres');
+
+    let statementText = `INSERT INTO public.${tableName}(`;
+    let values = [];
+
+    statementText += 'adres_id';
+
+    Object.keys(adres).forEach(key => {
+        statementText += ',' + key;
+    });
+
+    statementText += ') VALUES(';
+
+    statementText += `(SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.${tableName})`;
+
+    Object.keys(adres).forEach((key,index) => {
+        values.push(adres[key]);
+        statementText += ',' + `$${index+1}`;
+    });
+
+    statementText += ')';
+
+    statementText += ' RETURNING *';
+
+    return {
+        text: statementText,
+        categorie: 'adres',
         values: values
     };
 }
@@ -67,6 +99,23 @@ function createInsertIntoStatement(entityNaam, entity) {
     };
 }
 
+function generateAdresSqlStatements(adressen) {
+    let sqlStatements = [];
+
+    adressen?.forEach(adres => {
+        let adresStatements = {
+            stap: adres.id,
+            statements: []
+        };
+
+        adresStatements.statements.push(createInsertIntoAdresStatement(adres.adres));
+
+        sqlStatements.push(adresStatements);
+    });
+
+    return sqlStatements;
+}
+
 function generateSqlStatementsFrom(data) {
     if(!data) {
         global.logger.warn('no data to generate sql statements');
@@ -74,10 +123,11 @@ function generateSqlStatementsFrom(data) {
     }
 
     let sqlStatements = {
-        personen: []
+        personen: [],
+        adressen: generateAdresSqlStatements(data.adressen)
     };
 
-    data.personen.forEach(persoon => {
+    data.personen?.forEach(persoon => {
         let persoonStatements = {
             stap: persoon.id,
             statements: []

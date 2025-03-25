@@ -145,6 +145,12 @@ function createBasicAuthorizationHeader(afnemerId, gemeenteCode) {
     ]
 }
 
+async function createAuthorizationHeader(context, afnemerId, gemeenteCode) {
+    return context.oAuth.enable
+        ? await createBearerAuthorizationHeader(afnemerId, gemeenteCode, context.oAuth)
+        : createBasicAuthorizationHeader(afnemerId, gemeenteCode);
+}
+
 function addDefaultAutorisatieSettings(context, afnemerID) {
     let sqlData = context.sqlData;
     if(sqlData === undefined) {
@@ -169,7 +175,7 @@ async function sendRequest(config) {
     }
 }
 
-async function sendBevragenRequest(baseUrl, url, extraHeaders, dataTable, httpMethod) {
+async function sendBevragenRequest(context, baseUrl, url, extraHeaders, dataTable, httpMethod) {
     const config = {
         method: httpMethod,
         url: url ? `/${url}` : '',
@@ -178,7 +184,12 @@ async function sendBevragenRequest(baseUrl, url, extraHeaders, dataTable, httpMe
         headers: createHeaders(dataTable, extraHeaders)
     };
 
-    global.logger.debug(config);
+    global.logger.info('request headers', config.headers);
+    global.logger.info('request body', config.data);
+
+    if(context.isStapDocumentatieScenario) {
+        return;
+    }
 
     return await sendRequest(config);
 }
@@ -188,14 +199,26 @@ async function handleRequest(context, endpoint, dataTable, httpMethod='post') {
     const gemeenteCode = context.gemeenteCode;
     const url = context.baseUrl;
 
-    const authzHeader = context.oAuth.enable
-        ? await createBearerAuthorizationHeader(afnemerId, gemeenteCode, context.oAuth)
-        : createBasicAuthorizationHeader(afnemerId, gemeenteCode);
-    if(authzHeader === undefined) {
+    const extraHeaders = context.isStapDocumentatieScenario
+        ? [
+            {
+                naam: 'stap-documentatie-scenario',
+                waarde: 'true'
+            }
+        ]
+        : await createAuthorizationHeader(context, afnemerId, gemeenteCode);
+
+    if(extraHeaders === undefined) {
         return;
     }
+    if(context.addAcceptGezagVersionHeader) {
+        extraHeaders.push({
+            naam: 'accept-gezag-version',
+            waarde: '2'
+        });
+    }
 
-    context.response = await sendBevragenRequest(url, endpoint, authzHeader, dataTable, httpMethod);
+    context.response = await sendBevragenRequest(context, url, endpoint, extraHeaders, dataTable, httpMethod);
 }
 
 module.exports = {
