@@ -51,10 +51,17 @@ Before(function({ pickle }) {
     }
 
     this.context.baseUrl = this.context.apiUrl;
+
+    const tags = pickle.tags.map((t) => t.name);
+    this.context.isStapDocumentatieScenario = tags.includes('@stap-documentatie');
+    this.context.isIntegratieScenario = tags.includes('@integratie');
+    this.context.isDeprecatedScenario = tags.includes('@deprecated');
+    this.context.isDataApiScenario = tags.includes('@data-api');
 });
 
-After(async function({ pickle }) {
-    if(pickle.tags.map((t) => t.name).includes('@stap-documentatie')) {
+After(async function() {
+    if (this.context.isStapDocumentatieScenario &&
+        !this.context.isIntegratieScenario) {
         return;
     }
     if(this.context.data) {

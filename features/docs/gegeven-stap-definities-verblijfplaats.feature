@@ -1,8 +1,6 @@
-#language: nl
-
+# language: nl
 @stap-documentatie
 Functionaliteit: Verblijfplaats gegeven stap definities
-
   Om scenarios voor de BRP APIs te kunnen schrijven wordt in deze feature beschreven welke sql statements worden gegenereerd/uitgevoerd voor een Gegeven stap.
   Deze sql statements staan in de tabel van de  'Dan zijn de gegenereerde SQL statements' stap. Elke rij in de tabel geeft aan
   - bij welk gegeven stap (stap kolom geeft de stap aan binnen de scenario. 1 = 1e stap, 2 = 2e stap etc) de SQL statement hoort
@@ -18,13 +16,140 @@ Functionaliteit: Verblijfplaats gegeven stap definities
     En de 2e 'SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl' statement heeft als resultaat '10000'
     En de 3e 'SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl' statement heeft als resultaat '10001'
 
+  @integratie
+  Scenario: is ingeschreven in de BRP
+    Gegeven persoon 'P1' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000012 | Jansen                |
+    * is ingeschreven in de BRP
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | volg_nr | inschrijving_gemeente_code |
+      |     1 |       0 |                       0518 |
+
+  @integratie
+  Scenario: is niet ingeschreven in de BRP
+    Gegeven persoon 'P1' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000012 | Jansen                |
+    * is niet ingeschreven in de BRP
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | volg_nr | inschrijving_gemeente_code |
+      |     1 |       0 |                       1999 |
+
+  @integratie
+  Abstract Scenario: persoon '[persoon aanduiding]' is ingeschreven op adres '[adres aanduiding]' op [<datum type>]
+    Gegeven adres 'A1'
+      | gemeentecode (92.10) |
+      |                 0518 |
+    En persoon 'P1' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000012 | Jansen                |
+    En <stap>
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | adres_id | volg_nr | adres_functie | adreshouding_start_datum |
+      |     1 |        1 |       0 | W             | <datum>                  |
+
+    Voorbeelden:
+      | stap                                                              | datum    | datum type       |
+      | persoon 'P1' is ingeschreven op adres 'A1' op '1 januari 2021'    | 20210101 | datum            |
+      | 'P1' is ingeschreven op adres 'A1' op '1 januari 2021'            | 20210101 | datum            |
+      | persoon 'P1' is ingeschreven op adres 'A1' op 'februari 2022'     | 20220200 | jaar maand datum |
+      | 'P1' is ingeschreven op adres 'A1' op 'februari 2022'             | 20220200 | jaar maand datum |
+      | persoon 'P1' is ingeschreven op adres 'A1' op '2023'              | 20230000 | jaar datum       |
+      | 'P1' is ingeschreven op adres 'A1' op '2023'                      | 20230000 | jaar datum       |
+      | persoon 'P1' is ingeschreven op adres 'A1' op een onbekende datum | 00000000 | onbekende datum  |
+      | 'P1' is ingeschreven op adres 'A1' op een onbekende datum         | 00000000 | onbekende datum  |
+
+  @integratie
+  Abstract Scenario: personen '[persoon aanduidingen]' zijn ingeschreven op adres '[adres aanduiding]' op [<datum type>]
+    Gegeven adres 'A1'
+      | gemeentecode (92.10) |
+      |                 0518 |
+    Gegeven persoon 'P1' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000012 | Jansen                |
+    En persoon 'P2' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000024 | Albers                |
+    En <stap>
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | adres_id | volg_nr | adres_functie | adreshouding_start_datum |
+      |     1 |        1 |       0 | W             | <datum>                  |
+    En heeft de persoon 'P2' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | adres_id | volg_nr | adres_functie | adreshouding_start_datum |
+      |     2 |        1 |       0 | W             | <datum>                  |
+
+    Voorbeelden:
+      | stap                                                                 | datum    | datum type       |
+      | personen 'P1,P2' zijn ingeschreven op adres 'A1' op '1 januari 2021' | 20210101 | datum            |
+      | 'P1,P2' zijn ingeschreven op adres 'A1' op '1 januari 2021'          | 20210101 | datum            |
+      | personen 'P1, P2' zijn ingeschreven op adres 'A1' op 'februari 2022' | 20220200 | jaar maand datum |
+      | 'P1, P2' zijn ingeschreven op adres 'A1' op 'februari 2022'          | 20220200 | jaar maand datum |
+      | personen 'P1 en P2' zijn ingeschreven op adres 'A1' op '2023'        | 20230000 | jaar datum       |
+      | 'P1 en P2' zijn ingeschreven op adres 'A1' op '2023'                 | 20230000 | jaar datum       |
+      | 'P1 en P2' zijn ingeschreven op adres 'A1' op een onbekende datum    | 00000000 | onbekende datum  |
+
+  @integratie
+  Abstract Scenario: persoon '[persoon aanduiding]' is [gisteren, vandaag of morgen] [aantal] jaar geleden ingeschreven op adres '[adres aanduiding]'
+    Gegeven adres 'A1'
+      | gemeentecode (92.10) |
+      |                 0518 |
+    En persoon 'P1' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000012 | Jansen                |
+    En <stap>
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | adres_id | volg_nr | adres_functie | adreshouding_start_datum |
+      |     1 |        1 |       0 | W             | <datum>                  |
+
+    Voorbeelden:
+      | stap                                                       | datum             |
+      | persoon 'P1' is 2 jaar geleden ingeschreven op adres 'A1'  | vandaag - 2 jaar  |
+      | 'P1' is 2 jaar geleden ingeschreven op adres 'A1'          | vandaag - 2 jaar  |
+      | 'P1' is vandaag 2 jaar geleden ingeschreven op adres 'A1'  | vandaag - 2 jaar  |
+      | 'P1' is gisteren 1 jaar geleden ingeschreven op adres 'A1' | gisteren - 1 jaar |
+      | 'P1' is morgen 3 jaar geleden ingeschreven op adres 'A1'   | morgen - 3 jaar   |
+
+  @integratie
+  Abstract Scenario: personen '[persoon aanduidingen]' zijn [gisteren, vandaag of morgen] [aantal] jaar geleden ingeschreven op adres '[adres aanduiding]'
+    Gegeven adres 'A1'
+      | gemeentecode (92.10) |
+      |                 0518 |
+    En persoon 'P1' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000012 | Jansen                |
+    En persoon 'P2' heeft de volgende gegevens
+      | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
+      |                   000000024 | Albers                |
+    En <stap>
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | adres_id | volg_nr | adres_functie | adreshouding_start_datum |
+      |     1 |        1 |       0 | W             | <datum>                  |
+    En heeft de persoon 'P2' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | adres_id | volg_nr | adres_functie | adreshouding_start_datum |
+      |     2 |        1 |       0 | W             | <datum>                  |
+
+    Voorbeelden:
+      | stap                                                                       | datum             |
+      | personen 'P1,P2' zijn 2 jaar geleden ingeschreven op adres 'A1'            | vandaag - 2 jaar  |
+      | 'P1, P2' zijn 2 jaar geleden ingeschreven op adres 'A1'                    | vandaag - 2 jaar  |
+      | personen 'P1 en P2' zijn vandaag 2 jaar geleden ingeschreven op adres 'A1' | vandaag - 2 jaar  |
+      | 'P1, P2' zijn gisteren 1 jaar geleden ingeschreven op adres 'A1'           | gisteren - 1 jaar |
+      | 'P1 en P2' zijn morgen 3 jaar geleden ingeschreven op adres 'A1'           | morgen - 3 jaar   |
+
   Scenario: de persoon met burgerservicenummer '[bsn]' is ingeschreven op adres '[identificatie]' met de volgende gegevens
     Gegeven adres 'A1' heeft de volgende gegevens
     | straatnaam (11.10) |
     | Boterdiep          |
     En de persoon met burgerservicenummer '000000012' is ingeschreven op adres 'A1' met de volgende gegevens
-    | datum aanvang adreshouding (10.30) |
-    | 20230102                           |
+      | datum aanvang adreshouding (10.30) |
+      |                           20230102 |
     Dan zijn de gegenereerde SQL statements
     | stap | categorie      | text                                                                                                                                                  | values                 |
     | 1    | adres-A1       | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres),$1) RETURNING *                 | Boterdiep              |
