@@ -7,3 +7,11 @@ npx cucumber-js -f json:./test-reports/cucumber-js/step-definitions/test-result-
                 --tags "not @integratie" \
                 --tags "not @skip-verify" \
                 > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/step-definitions/test-result-integratie.json \
+                -f summary:./test-reports/cucumber-js/step-definitions/test-result-integratie-summary.txt \
+                -f summary \
+                features/docs \
+                --tags "@integratie" \
+                --tags "not @skip-verify" \
+                > /dev/null

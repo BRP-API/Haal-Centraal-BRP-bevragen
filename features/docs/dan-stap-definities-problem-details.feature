@@ -24,7 +24,7 @@ Functionaliteit: Problem Details dan stap definities
     | naam         | waarde                   |
     | content-type | application/problem+json |
     En de response status is gelijk aan 400
-    Dan heeft de response de volgende gegevens
+    Dan heeft de response een foutmelding
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
@@ -33,7 +33,7 @@ Functionaliteit: Problem Details dan stap definities
     | code     | paramsValidation                                            |
     | instance | /api/brp/personen                                           |
 
-  Scenario: Dan heeft de response invalidParams met de volgende gegevens
+  Scenario: Dan de volgende invalidParams foutmeldingen
     Gegeven de response body is gelijk aan
     """
     {
@@ -51,7 +51,7 @@ Functionaliteit: Problem Details dan stap definities
       ]
     }
     """
-    Dan heeft de response invalidParams met de volgende gegevens
+    Dan parameter foutmeldingen
     | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
     | required | geslachtsnaam | Parameter is verplicht. |
@@ -85,7 +85,7 @@ Functionaliteit: Problem Details dan stap definities
     | naam         | waarde                   |
     | content-type | application/problem+json |
     En de response status is gelijk aan 400
-    Dan heeft de response de volgende gegevens
+    Dan heeft de response een foutmelding
     | naam     | waarde                                                      |
     | type     | https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1 |
     | title    | Een of meerdere parameters zijn niet correct.               |
@@ -93,7 +93,7 @@ Functionaliteit: Problem Details dan stap definities
     | detail   | De foutieve parameter(s) zijn: type.                        |
     | code     | paramsValidation                                            |
     | instance | /api/brp/personen                                           |
-    En heeft de response invalidParams met de volgende gegevens
+    En parameter foutmeldingen
     | code     | name          | reason                  |
     | required | geboortedatum | Parameter is verplicht. |
     | required | geslachtsnaam | Parameter is verplicht. |
