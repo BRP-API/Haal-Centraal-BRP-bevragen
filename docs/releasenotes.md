@@ -5,7 +5,7 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
-## Versie 2.6.0
+## Versie 2.6.0 (18 maart 2025)
 - Zoeken op postcode en huisnummer is uitgebreid met de optionele parameter geslachtsnaam.
 - Bij het bepalen van gezag voor een minderjarige met ongehuwde ouders wordt de geboortemoeder nu bepaald op basis van het geslacht van de ouders. De verwachting is dat het aantal uitspraken "gezag niet te bepalen" met tenminste 30% zal afnemen.
 - Wanneer gegevens voor het bepalen van gezag in onderzoek staan wordt nu niet meer "gezag niet te bepalen" geleverd, maar wordt gezag geleverd met indicatie inOnderzoek.
@@ -13,40 +13,37 @@ title: Haal Centraal BRP Personen Bevragen
 - Enkele verbeteringen zijn aangebracht in de validatie van parameters.
 - Enkele verbeteringen zijn aangebracht aan het bepalen van gezag over een minderjarige.
 
-## Versie 2.5.0
+## Versie 2.5.0 (31 januari 2025)
 -	Voorheen mochten er bij alle zoekopdrachten maximaal 10 personen worden gevonden. Bij zoeken op adres is dit nu uitgebreid naar maximaal 30 personen. 
 -	Bij gezag wordt nu voor ouders en derden naast burgerservicenummer ook de naam geleverd. Voor minderjarigen wordt nu naast het burgerservicenummer naam en leeftijd geleverd.
 -	Bij gezag wordt nu een toelichting geleverd wanneer over de minderjarige tijdelijk niemand gezag uitoefent.
 
 
-## Versie 2.4.0
+## Versie 2.4.0 (6 januari 2025)
 - Bij gezag type GezagNietTeBepalen wordt nu een toelichting gegeven.
 - Bij gezag type GezagNietTeBepalen en TijdelijkGeenGezag werd voorheen alleen het type geleverd. Nu worden ook gegevens over de minderjarige gegeven.
 
-## Versie 2.3.0
+## Versie 2.3.0 (20 september 2024)
 - Nieuwe optionele parameter geboortedatum voor operatie ZoekMetPostcodeEnHuisnummer. Hiermee kan je het aantal resultaten beperken wanneer er veel personen op hetzelfde adres staan ingeschreven.
 - Probleem opgelost zodat verblijfplaats en adressering ook worden geleverd wanneer een verblijfadres in Nederland is geregistreerd als 'verblijfplaats buitenland'.
 
-## Versie 2.2.0
+## Versie 2.2.0 (29 april 2024)
 
 - gezagsrelaties van een persoon bevragen (met behulp van raadpleeg met burgerservicenummer)
 - gezagsrelaties van de personen bevragen die op een adresseerbaar object staan ingeschreven (met behulp van zoek met adresseerbaar object)
+- de API levert vanaf nu ook “informatievragen” (bewerkte BRP gegevens)
 
 Gebruik de [personen-mock](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/pkgs/container/personen-mock) om gezag lokaal uit te proberen
 
-## Versie 2.1.0
+## Versie 2.1.0 (8 juni 2023)
 
 - veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan: (pull request #1713)
   - verblijfplaats (binnenland en locatie)
   - adressering
 
-## Versie 2.0.21
+In deze versie is alleen de "BRP Personen proxy" gewijzigd.
 
-### Fixed
-
-- Fields waarde 'naam.geslachtsnaam' resulteert in 500 internal server error (issue #1710)
-
-## Versie 2.0.0
+## Versie 2.0.0 (1 juni 2023)
 
 - de raadpleeg- en zoeken-endpoints zijn nu samengevoegd in 1 endpoint
 - het request is gewijzigd van GET naar POST, waarbij alle parameters verplaatst zijn van de querystring in de url naar de requestbody
