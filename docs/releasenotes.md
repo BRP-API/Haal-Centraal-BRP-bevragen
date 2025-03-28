@@ -37,7 +37,7 @@ Gebruik de [personen-mock](https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
 
 ## Versie 2.1.0 (8 juni 2023)
 
-- veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan: (pull request #1713)
+- veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan: 
   - verblijfplaats (binnenland en locatie)
   - adressering
 
