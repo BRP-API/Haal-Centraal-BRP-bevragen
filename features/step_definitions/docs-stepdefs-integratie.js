@@ -1,7 +1,10 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
+const { queryRowCount } = require('./postgresqlHelpers');
 const { execute, truncate, select } = require('./postgresqlHelpers-2');
 const { generateSqlStatementsFrom } = require('./sqlStatementsFactory');
 const { assert } = require('chai');
+const deepEqualInAnyOrder = require('deep-equal-in-any-order');
+const should = require('chai').use(deepEqualInAnyOrder).should();
 
 Given(/de tabel '(.*)' bevat geen rijen/, async function (tabelNaam) {
     await truncate(tabelNaam);
@@ -29,3 +32,10 @@ function validateResult(results){
         }
     })
 }
+
+Then(/^zijn er geen rijen in tabel '([a-z0-9_]*)'$/, async function (tabelNaam) {
+    const actual = await queryRowCount(global.pool, tabelNaam);
+
+    should.exist(actual);
+    actual.should.equal('0');
+});

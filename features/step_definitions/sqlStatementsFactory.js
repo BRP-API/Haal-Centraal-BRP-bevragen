@@ -116,6 +116,10 @@ function generateAdresSqlStatements(adressen) {
     return sqlStatements;
 }
 
+function getBsn(persoon) {
+    return persoon.persoon.at(-1).burger_service_nr;
+}
+
 function generateSqlStatementsFrom(data) {
     if(!data) {
         global.logger.warn('no data to generate sql statements');
@@ -133,27 +137,32 @@ function generateSqlStatementsFrom(data) {
             statements: []
         };
 
-        Object.keys(persoon).forEach(key => {
-            let statement;
-            switch(key) {
-                case 'id':
-                    break;
-                case 'inschrijving':
-                    statement = createInsertIntoPersoonslijstStatement(persoon.inschrijving);
-                    break;
-                default:
-                    persoon[key].forEach(p => {
-                        persoonStatements.statements.push(createInsertIntoStatement(key, p));
-                    });
-                    break;
-            }
+        if(getBsn(persoon) === undefined) {
+            global.logger.info('persoon zonder burgerservicenummer. Geen sql statements generatie', persoon);
+        }
+        else {
+            Object.keys(persoon).forEach(key => {
+                let statement;
+                switch(key) {
+                    case 'id':
+                        break;
+                    case 'inschrijving':
+                        statement = createInsertIntoPersoonslijstStatement(persoon.inschrijving);
+                        break;
+                    default:
+                        persoon[key].forEach(p => {
+                            persoonStatements.statements.push(createInsertIntoStatement(key, p));
+                        });
+                        break;
+                }
 
-            if(statement) {
-                persoonStatements.statements.push(statement);
-            }
-        });
+                if(statement) {
+                    persoonStatements.statements.push(statement);
+                }
+            });
 
-        sqlStatements.personen.push(persoonStatements);
+            sqlStatements.personen.push(persoonStatements);
+        }
     });
 
     return sqlStatements;
