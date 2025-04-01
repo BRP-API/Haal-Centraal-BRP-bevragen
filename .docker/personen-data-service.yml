@@ -1,0 +1,28 @@
+services:
+  personen-data-service:
+    container_name: personen-data-service
+    image: ghcr.io/brp-api/personen-data-service:latest
+    environment:
+      - Database__Host=postgres
+      - Database__Username=root
+      - Database__Password=root
+      - Database__Database=rvig_haalcentraal_testdata
+      - HaalcentraalApi__MaxSearchResults=10
+      - ASPNETCORE_URLS=http://+;
+      - Ecs__Path=/var/log/personen-data-service.json
+      - Ecs__SecuredPath=/var/log/personen-data-service-secured.json
+      - Serilog__MinimumLevel__Default=Warning
+      - Serilog__MinimumLevel__Override__Serilog=Information
+      - WebApi__Url=http://brp-api-gezag:8080/api/v1
+      - ProtocolleringAuthorization__UseAuthorizationChecks=false
+      - ProtocolleringAuthorization__UseProtocollering=false
+    ports:
+      - "8000:80"
+    volumes:
+      - ../test-data/logs:/var/log
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network
