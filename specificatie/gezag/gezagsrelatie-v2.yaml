@@ -5,7 +5,12 @@ info:
 paths: {}
 components:
   schemas:
-    AbstractGezagsrelatie:
+    Gezag:
+      type: array
+      items:
+        $ref: '#/components/schemas/Gezagsrelatie'
+      minItems: 0
+    Gezagsrelatie:
       type: object
       required:
         - type
@@ -37,7 +42,7 @@ components:
 
     TweehoofdigOuderlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouders:
@@ -49,7 +54,7 @@ components:
 
     EenhoofdigOuderlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouder:
@@ -57,7 +62,7 @@ components:
 
     GezamenlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouder:
@@ -67,7 +72,7 @@ components:
 
     Voogdij:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             derden:
@@ -79,7 +84,7 @@ components:
 
     TijdelijkGeenGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             toelichting:
@@ -87,7 +92,7 @@ components:
 
     GezagNietTeBepalen:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             toelichting:
