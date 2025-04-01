@@ -1,11 +1,12 @@
 # language: nl
-@stap-documentatie
+@integratie @stap-documentatie
 Functionaliteit: Adres gegeven stap definities
 
   Achtergrond:
     Gegeven de 1e 'SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres' statement heeft als resultaat '4999'
     Gegeven de 2e 'SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres' statement heeft als resultaat '5000'
     Gegeven de 3e 'SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres' statement heeft als resultaat '5001'
+    Gegeven de tabel 'lo3_adres' bevat geen rijen
 
   @integratie
   Abstract Scenario: adres '[adres aanduiding]'

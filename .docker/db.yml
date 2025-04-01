@@ -3,19 +3,18 @@ version: '3.7'
 services:
   postgres:
     container_name: db
-    image: postgres:11.21-alpine
+    image: postgres:14.11-alpine
     restart: always
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
+      - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - 5432:5432
     volumes:
-      # - ../src/config/Database:/var/lib/postgresql/data
       - ./scripts/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     security_opt:
       - no-new-privileges:true
-    # read_only: true
     networks:
       - brp-api-network
   
@@ -30,7 +29,6 @@ services:
       - 5433:80
     security_opt:
       - no-new-privileges:true
-    # read_only: true
     networks:
       - brp-api-network
 
