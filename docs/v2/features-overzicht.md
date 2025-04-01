@@ -163,6 +163,168 @@ In het volgende feature bestand zijn de bovenstaande regels geïllustreerd aan d
 
 - [verblijfstitelvelden vragen met fields](./features/persoon/verblijfstitel/overzicht.feature)
 
+## Vragen om de gezagsrelaties van een persoon
+
+Je kan om het gezag over een persoon vragen met fields "gezag". Je kan hier niet vragen om alleen specifieke velden binnen gezag, zoals "gezag.minderjarige", je krijgt bij gezag alles of niets.
+
+Gezag kan alleen gevraagd worden bij de zoekoperaties RaadpleegMetBurgerservicenummer en ZoekMetAdresseerbaarObjectIdentificatie. Gezag vragen met ZoekMetAdresseerbaarObjectIdentificatie kan gebruikt worden om de gezagsrelaties van alle bewoners van een adres (verblijfsobject) te krijgen.
+
+Je kan gezag vragen van een minderjarige. Dan krijg je als antwoord wie er gezag heeft over deze minderjarige. Bijvoorbeeld de ouders van deze minderjarige.
+
+Je kan ook gezag vragen van een meerderjarige. Dan krijg je als antwoord over wie deze meerderjarige gezag heeft. Bijvoorbeeld over de kinderen van deze meerderjarige. Je krijgt dan alleen informatie over het gezag dat deze persoon wel heeft. Er wordt geen informatie geleverd over kinderen van de persoon waar deze geen gezag (meer) over heeft.
+
+Gezag geeft in de API een lijst. Hierin kunnen 0, 1 of meerdere gezagvoorkomens geleverd worden.
+
+Wanneer je het gezag vraagt van een minderjarige heeft het antwoord altijd exact 1 item gezag, tenzij de minderjarige is overleden. Dan wordt geen informatie over gezag geleverd.
+
+Wanneer je het gezag vraagt van een meerderjarige kan het antwoord 0 (de persoon heeft over niemand gezag), 1 of meerdere items krijgen. Bijvoorbeeld wanneer de persoon gezag heeft over meerdere kinderen. Elk gezagvoorkomen (elk item in de lijst gezag) geeft dan het gezag over één minderjarige.
+
+Elk geleverd gezag kan één van de volgende types zijn:
+- TweehoofdigOuderlijkGezag
+- EenhoofdigOuderlijkGezag
+- GezamenlijkGezag
+- Voogdij
+- TijdelijkGeenGezag
+- GezagNietTeBepalen
+
+### TweehoofdigOuderlijkGezag
+
+Dit type gezag betekent dat beide juridische ouders het gezag hebben over de minderjarige. Het gezag bevat TweehoofdigOuderlijkGezag de burgerservicenummers van de minderjarige en van beide ouders.
+
+Bijvoorbeeld
+```
+  "gezag": [
+    {
+      "type": "TweehoofdigOuderlijkGezag",
+      "ouders": [
+        {
+          "burgerservicenummer": "999999357"
+        },
+        {
+          "burgerservicenummer": "999999345"
+        }
+      ],
+      "minderjarige": {
+          "burgerservicenummer": "999999412"
+      }
+    }
+  ]
+```
+
+### EenhoofdigOuderlijkGezag
+
+Dit type gezag betekent dat één juridische ouder het gezag heeft over de minderjarige. Dit kan voorkomen wanneer er maar één ouder is, maar ook wanneer alleen één van beide ouders het gezag heeft. Het gezag bevat bij EenhoofdigOuderlijkGezag de burgerservicenummers van de minderjarige en van de ouder die het gezag heeft.
+
+Bijvoorbeeld
+```
+  "gezag": [
+    {
+      "type": "EenhoofdigOuderlijkGezag",
+      "ouder": {
+        "burgerservicenummer": "999970124"
+      },
+      "minderjarige": {
+        "burgerservicenummer": "999970185"
+      }
+    }
+  ]
+```
+
+### GezamenlijkGezag
+
+Dit type gezag betekent dat de juridische ouder en iemand anders - geen ouder - het gezag hebben over de minderjarige. 
+
+Dit kan voorkomen wanneer de ouder en diens (ex) partner het gezag hebben. Het gezag bevat in dit geval de burgerservicenummers van de minderjarige, van de ouder en van de (ex)partner die het gezag hebben. De niet-ouder (partner) met gezag wordt een "derde" genoemd.
+
+Dit type gezag kan ook voorkomen wanneer er een gerechtelijke uitspraak over het gezag is gedaan, waarbij het gezag aan de ouder en iemand anders is toegewezen. In de BRP is op dit moment niet bekend wie die andere persoon of instelling is die het gezag heeft. Het gezag bevat in dit geval de burgerservicenummers van de minderjarige en van de ouder die het gezag heeft.
+
+Bijvoorbeeld bij gezamenlijk gezag van de ouder en diens partner
+```
+  "gezag": [
+    {
+      "type": "GezamenlijkGezag",
+      "ouder": {
+        "burgerservicenummer": "999970124"
+      },
+      "derde": {
+        "burgerservicenummer": "999970136"
+      },
+      "minderjarige": {
+        "burgerservicenummer": "999970161"
+      }
+    }
+  ]
+```
+
+### Voogdij
+
+Dit type gezag betekent dat een niet-ouder het gezag heeft over de minderjarige. Dit kan voorkomen wanneer er een gerechtelijke uitspraak is gedaan over het gezag. In dat geval weten we niet wie het gezag heeft. Dat kan een voogdijinstelling zijn of een of meerdere personen.
+
+Voogdij kan ook voorkomen wanneer de ouder is overleden of onbevoegd is tot gezag. De (ex)partner van de ouder krijgt dan (onder bepaalde condities) het gezag. De niet-ouder (partner) met gezag noemen we een "derde".
+
+Bijvoorbeeld bij voogdij na gerechtelijke uitspraak
+```
+  "gezag": [
+    {
+      "type": "Voogdij",
+      "derden": [],
+      "minderjarige": {
+        "burgerservicenummer": "999999515"
+      }
+    }
+  ]
+```
+
+Bijvoorbeeld bij voogdij van rechtswege voor de (ex)partner
+```
+  "gezag": [
+    {
+      "type": "Voogdij",
+      "derden": [
+        {
+          "burgerservicenummer": "999970203"
+        }
+      ],
+      "minderjarige": {
+        "burgerservicenummer": "999970215"
+      }
+    }
+  ]
+```
+
+### TijdelijkGeenGezag
+
+Dit type gezag betekent dat op dit moment niemand het gezag heeft over de minderjarige. Dit moet een zeer tijdelijke situatie zijn. Bijvoorbeeld direct na het overlijden van ouder zolang er nog geen voogd is aangewezen. Het gezag bevat in dit geval alleen het burgerservicenummer van de minderjarige.
+
+Bijvoorbeeld
+```
+  "gezag": [
+    {
+      "type": "TijdelijkGeenGezag",
+      "minderjarige": {
+        "burgerservicenummer": "999970227"
+      }
+    }
+  ]
+```
+
+### GezagNietTeBepalen
+
+Dit type gezag betekent dat de API niet met zekerheid kan bepalen wie het gezag heeft over de minderjarige. Dit kan om veel verschillende redenen het geval zijn. Het gezag bevat in dit geval het burgerservicenummer van de minderjarige en een toelichting met de reden dat het gezag niet te bepalen is.
+
+Bijvoorbeeld
+```
+  "gezag": [
+    {
+      "type": "GezagNietTeBepalen",
+      "minderjarige": {
+        "burgerservicenummer": "999995273"
+      },
+      "toelichting": "gezag is niet te bepalen omdat minderjarige in het buitenland is geboren."
+    }
+  ]
+```
+
 ## Eén of meer gevraagde velden zijn in onderzoek
 
 Om een afnemer te informeren dat één of meer gevraagde velden in onderzoek zijn, worden de bijbehorende inOnderzoek en datumIngangOnderzoek velden ook geleverd.
