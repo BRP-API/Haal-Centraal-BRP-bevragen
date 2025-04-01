@@ -15,6 +15,7 @@ Functionaliteit: leveren van de volledige naam van de minderjarige, ouder(s) en 
     * is in Nederland geboren
     * is ingeschreven in de BRP
 
+  @info-api
   Regel: de volledige naam wordt samengesteld door het achter elkaar plaatsen van voornamen, voorvoegsels en geslachtsnaam
 
     Abstract Scenario: gezag over gevraagde persoon is gezamenlijk gezag en de minderjarige in de gezagsrelatie heeft <naam omschrijving>
