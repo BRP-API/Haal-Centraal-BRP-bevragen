@@ -12,6 +12,8 @@ components:
           $ref: '../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         naam:
           $ref: '#/components/schemas/Naam'
+        geslacht:
+          $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
       required:
         - naam
     Naam:
@@ -19,13 +21,10 @@ components:
       type: object
       properties:
         voornamen:
-          type: string
+          $ref: '../brp/naam/voornamen-v1.yaml#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '../brp/naam/adellijke-titel-predicaat-v1.yaml#/components/schemas/AdellijkeTitelPredicaatType'
         voorvoegsel:
-          type: string
+          $ref: '../brp/naam/voorvoegsel-v1.yaml#/components/schemas/Voorvoegsel'
         geslachtsnaam:
-          type: string
-        titel_predicaat:
-          type: string
-        geslacht:
-          type: string
-          enum: [ 'F', 'M' ]
+          $ref: '../brp/naam/geslachtsnaam-v1.yaml#/components/schemas/Geslachtsnaam'
