@@ -178,9 +178,6 @@ components:
     Adres:
       description: |
         Gegevens over het adres van een persoon.
-        * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
-        * **functieAdres** - wordt gevuld met waarden voor 'Functie_Adres' in 'tabelwaarden.csv'.
-        * **aanduidingBijHuisnummer** - wordt gevuld met waarden voor 'Aanduiding_Bij_Huisnummer' in 'tabelwaarden.csv'.
         * **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.
         * **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
       allOf:
@@ -206,8 +203,6 @@ components:
               $ref: "#/components/schemas/AdresInOnderzoek"
     Locatie:
       description: |
-        * **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.
-        * **functieAdres** - wordt gevuld met waarden voor 'Functie_Adres' in 'tabelwaarden.csv'.
         * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
       allOf:
         - $ref: '#/components/schemas/AbstractVerblijfplaats'

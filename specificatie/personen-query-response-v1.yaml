@@ -30,8 +30,6 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/Persoon'
     ZoekMetGeslachtsnaamEnGeboortedatumResponse:
@@ -41,8 +39,6 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNaamEnGemeenteVanInschrijvingResponse:
@@ -52,8 +48,6 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetPostcodeEnHuisnummerResponse:
@@ -63,8 +57,6 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijvingResponse:
@@ -74,8 +66,6 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetNummeraanduidingIdentificatieResponse:
@@ -85,8 +75,6 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
     ZoekMetAdresseerbaarObjectIdentificatieResponse:
@@ -96,7 +84,5 @@ components:
           properties:
             personen:
               type: array
-              description: |
-                * **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
               items:
                 $ref: 'gezag.yaml#/components/schemas/GezagPersoonBeperkt'
