@@ -15,6 +15,15 @@ function getPersoonBsn(context, aanduiding) {
     return getPersoon(context, aanduiding).persoon.at(-1).burger_service_nr;
 }
 
+function getAdres(context, aanduiding) {
+    return !aanduiding
+        ? context.data.adressen.at(-1)
+        : context.data.adressen.find(a => a.id === `adres-${aanduiding}`);
+}
+
+function getAdresseerbaarObjectIdentificatie(context, aanduiding) {
+    return getAdres(context, aanduiding).adres.verblijf_plaats_ident_code;
+}
 const { addDefaultAutorisatieSettings,
         handleRequest } = require('./requestHelpers');
 
@@ -260,7 +269,26 @@ When(/^'([a-zA-Z0-9.]*)' wordt gevraagd van personen gezocht met burgerservicenu
 When(/^'([a-zA-Z0-9.]*)' wordt gevraagd (?:van personen gezocht met burgerservicenummer )?van '([a-zA-Z0-9]*)'$/, async function (fields, persoonAanduiding) {
     global.logger.info(`als '${fields} wordt gevraagd van personen gezocht met burgerserservicenummer van '${persoonAanduiding}'`);
 
+    if(this.context.isGezagApiAanroep) {
+        let requestBody = {
+            burgerservicenummer: getPersoonBsn(this.context, persoonAanduiding),
+        };
+    
+        await handleRequestWithParameters(this.context,
+            'gezag',
+            objectToDataTable(requestBody));
+    }
+    else {
+        await handleRequestWithParameters(this.context,
+            'personen',
+            createDataTableForRaadpleegMetBurgerservicenummer(getPersoonBsn(this.context, persoonAanduiding), fields, undefined));
+    }
+});
+
+When('{string} wordt gevraagd van personen gezocht met adresseerbaar object identificatie van {string}', async function (fields, adresAanduiding) {
+    global.logger.info(`als '${fields} wordt gevraagd van personen gezocht met adresseerbaar object identificatie van '${adresAanduiding}'`);
+
     await handleRequestWithParameters(this.context,
         'personen',
-        createDataTableForRaadpleegMetBurgerservicenummer(getPersoonBsn(this.context, persoonAanduiding), fields, undefined));
+        createDataTableForZoekMetAdresseerbaarObjectIdentificatie(getAdresseerbaarObjectIdentificatie(this.context, adresAanduiding), fields, undefined));
 });

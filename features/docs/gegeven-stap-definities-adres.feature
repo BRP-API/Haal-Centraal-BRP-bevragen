@@ -1,5 +1,5 @@
 # language: nl
-@stap-documentatie
+@integratie @stap-documentatie
 Functionaliteit: Adres gegeven stap definities
 
   Achtergrond:

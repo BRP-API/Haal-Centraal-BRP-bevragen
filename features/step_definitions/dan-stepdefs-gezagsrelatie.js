@@ -5,24 +5,27 @@ const { createCollectieObjectMetSubCollectieObject,
         createSubCollectieObjectenInLastCollectieObject,
         createSubSubCollectieObjectInLastSubCollectieObjectInLastCollectieObject,
         createSubSubCollectieObjectenInLastSubCollectieObjectInLastCollectieObject } = require('./dataTable2ObjectFactory');
+const { setObjectPropertiesFrom } = require('./dataTable2Object');
+const { getBsn,
+        getGeslachtsnaam,
+        getVoornamen,
+        getGeboortedatum,
+        getPersoon } = require('./contextHelpers');
 
-function getPersoon(context, aanduiding) {
-    return !aanduiding
-        ? context.data.personen.at(-1)
-        : context.data.personen.find(p => p.id === `persoon-${aanduiding}`);
-}
+function getLeeftijd(persoon) {
+    const geboortedatum = getGeboortedatum(persoon);
+    const jaar = parseInt(geboortedatum.substring(0, 4), 10);
+    const maand = parseInt(geboortedatum.substring(4, 6), 10) - 1; // 0-based in JavaScript
+    const dag = parseInt(geboortedatum.substring(6, 8), 10);
 
+    const vandaag = new Date();
 
-function getBsn(persoon) {
-    return persoon.persoon.at(-1).burger_service_nr;
-}
-
-function getGeslachtsnaam(persoon) {
-    return persoon.persoon.at(-1).geslachts_naam;
-}
-
-function getVoornamen(persoon) {
-    return persoon.persoon.at(-1).voor_naam;
+    let leeftijd = vandaag.getFullYear() - jaar;
+    if (vandaag.getMonth() < maand ||
+        (vandaag.getMonth() === maand && vandaag.getDate() < dag)) {
+        leeftijd--;
+    }
+    return leeftijd + '';
 }
 
 Then(/^heeft de response een persoon met een 'gezag' met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
@@ -62,22 +65,48 @@ function setProperty(obj, key, value) {
     }
 }
 
-function createGezagspersoon(context, aanduiding) {
+function createGezagspersoon(context, aanduiding, isMinderjarige = false) {
     const persoon = getPersoon(context, aanduiding);
 
     let retval = {};
 
     setProperty(retval, 'burgerservicenummer', getBsn(persoon));
 
-    if(!context.isDeprecatedScenario) {
+    global.logger.info(`isAllApiScenario: ${context.isAllApiScenario}, isInfoApiScenario: ${context.isInfoApiScenario}, isDataApiScenario: ${context.isDataApiScenario}, isGezagApiScenario: ${context.isGezagApiScenario}`);
+    global.logger.info(`isInfoApiAanroep: ${context.isInfoApiAanroep}, isDataApiAanroep: ${context.isDataApiAanroep}, isGezagApiAanroep: ${context.isGezagApiAanroep}`);
+    if((context.isAllApiScenario || context.isInfoApiScenario) && context.isInfoApiAanroep) {
         retval.naam = {};
 
-        if(!context.isDataApiScenario) {
-            setProperty(retval.naam, 'volledigeNaam', getGeslachtsnaam(persoon));
+        setProperty(retval.naam, 'volledigeNaam', getGeslachtsnaam(persoon));
+
+        if(isMinderjarige) {
+            setProperty(retval, 'leeftijd', getLeeftijd(persoon));
         }
-        else {
+    }
+    if((context.isAllApiScenario || context.isDataApiScenario) && context.isDataApiAanroep) {
+        retval.naam = {};
+
+        setProperty(retval.naam, 'voornamen', getVoornamen(persoon));
+        setProperty(retval.naam, 'geslachtsnaam', getGeslachtsnaam(persoon));
+
+        if(isMinderjarige) {
+            retval.geboorte = {};
+
+            setProperty(retval.geboorte, 'datum', getGeboortedatum(persoon));
+        }
+    }
+    if((context.isAllApiScenario || context.isGezagApiScenario) && context.isGezagApiAanroep) {
+        if(!context.isDeprecatedScenario) {
+            retval.naam = {};
+
             setProperty(retval.naam, 'voornamen', getVoornamen(persoon));
             setProperty(retval.naam, 'geslachtsnaam', getGeslachtsnaam(persoon));
+
+            if(isMinderjarige) {
+                retval.geboorte = {};
+
+                setProperty(retval.geboorte, 'datum', getGeboortedatum(persoon));
+            }
         }
     }
 
@@ -98,7 +127,7 @@ function createDerde(context, aanduiding) {
 function createPersoonMetGezag(context, type, aanduidingMinderjarige, aanduidingMeerderjarige1, aanduidingMeerderjarige2, toelichting = undefined) {
     let gezag = {
         type: type,
-        minderjarige: createGezagspersoon(context, aanduidingMinderjarige)
+        minderjarige: createGezagspersoon(context, aanduidingMinderjarige, true)
     };
 
     switch(type) {
@@ -137,9 +166,14 @@ function createPersoonMetGezag(context, type, aanduidingMinderjarige, aanduiding
             break;
     }
 
-    return {
+    let retval = {
         gezag: [gezag]
-    };
+    }
+    if(context.isGezagApiAanroep) {
+        retval.burgerservicenummer = getBsn(getPersoon(context, aanduidingMinderjarige));
+    }
+    
+    return retval;
 }
 
 Then(/^is het gezag over '(\w*)' (eenhoofdig ouderlijk gezag|gezamenlijk gezag) met ouder '(\w*)'(?: en een onbekende derde)?$/, function (aanduidingMinderjarige, type, aanduidingOuder) {
@@ -178,7 +212,7 @@ Then(/^is het gezag over '(\w*)' voogdij(?: met derde '(\w*)')?$/, function (aan
     this.context.expected = expected;
 });
 
-Then(/^is het gezag over '(\w*)' (niet te bepalen|tijdelijk geen gezag) met de toelichting '([\w. ]*)'$/, function (aanduidingMinderjarige, type, toelichting) {
+Then(/^is het gezag over '(\w*)' (niet te bepalen|tijdelijk geen gezag) met de toelichting '([\wé. ]*)'$/, function (aanduidingMinderjarige, type, toelichting) {
     this.context.verifyResponse = true;
 
     global.logger.info(`Dan is het gezag over '${aanduidingMinderjarige}' ${type} met de toelichting '${toelichting}'`);
@@ -188,4 +222,18 @@ Then(/^is het gezag over '(\w*)' (niet te bepalen|tijdelijk geen gezag) met de t
     };
 
     this.context.expected = expected;
+});
+
+Then(/^heeft de (minderjarige|ouder|derde) de volgende gegevens$/, function (type, dataTable) {
+    let expected = this.context.expected.personen.at(-1).gezag.at(-1);
+
+    setObjectPropertiesFrom(expected[type], dataTable);
+});
+
+Then(/^heeft de (minderjarige|ouder|derde) geen (\w*)$/, function (type, property) {
+    let expected = this.context.expected.personen.at(-1).gezag.at(-1);
+
+    if(expected[type][property]) {
+        delete expected[type][property];
+    }
 });
