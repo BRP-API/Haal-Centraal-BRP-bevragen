@@ -1496,8 +1496,6 @@ components:
               $ref: '#/components/schemas/Burgerservicenummer'
             naam:
               $ref: '#/components/schemas/NaamVolledigeNaam'
-      required:
-        - burgerservicenummer
     OnbekendeDerde:
       allOf:
         - $ref: '#/components/schemas/Derde'

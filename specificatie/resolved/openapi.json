@@ -2185,9 +2185,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "burgerservicenummer"
         ]
       },
       "OnbekendeDerde": {

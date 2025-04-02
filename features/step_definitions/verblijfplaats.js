@@ -74,8 +74,8 @@ function createPersoonMetVerblijfplaats(context, burgerservicenummer, dataTable)
     createVerblijfplaatsVoorkomen(sqlData, undefined, dataTable, undefined, false);
 }
 
-function createWoonadres(context, adresId, dataTable) {
-    let sqlData = context.sqlData.at(-1);
+function createWoonadres(context, adresId, dataTable, index=-1) {
+    let sqlData = context.sqlData.at(index);
 
     createVerblijfplaatsVoorkomen(sqlData, getAdresIndex(context, adresId), dataTable, true, false);
 }

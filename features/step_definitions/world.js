@@ -5,7 +5,10 @@ function setContextProperties(parameters, context) {
         if(!parameters.hasOwnProperty(key)) continue;
         if(key === "__proto__" || key === "constructor") continue;
 
-        if(typeof(parameters[key]) === 'object') {
+        if(Array.isArray(parameters[key])) {
+            context[key] = parameters[key];
+        }
+        else if(typeof(parameters[key]) === 'object') {
             if(context[key] === undefined) {
                 context[key] = {};
             }
@@ -97,6 +100,8 @@ class World {
         this.context.gezagDataPath = './test-data/GezagMock/test-data.json';
         this.context.logFileToAssert = './test-data/logs/brp-proxy.json';
         this.context.downstreamApiDataPath = './test-data/DownstreamApi';
+
+        this.addAcceptGezagVersionHeader = false;
 
         configureSqlSettings(this.context);
         configureOAuthSettings(this.context);
