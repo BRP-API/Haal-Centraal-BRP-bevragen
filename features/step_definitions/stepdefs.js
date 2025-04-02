@@ -56,7 +56,13 @@ Before(function({ pickle }) {
     this.context.isStapDocumentatieScenario = tags.includes('@stap-documentatie');
     this.context.isIntegratieScenario = tags.includes('@integratie');
     this.context.isDeprecatedScenario = tags.includes('@deprecated');
+    this.context.isAllApiScenario = !tags.includes('@info-api') && !tags.includes('@data-api') && !tags.includes('@gezag-api');
+    this.context.isInfoApiScenario = tags.includes('@info-api');
     this.context.isDataApiScenario = tags.includes('@data-api');
+    this.context.isGezagApiScenario = tags.includes('@gezag-api');
+    this.context.isInfoApiAanroep = this.context.parameters.api === 'info-api';
+    this.context.isDataApiAanroep = this.context.parameters.api === 'data-api';
+    this.context.isGezagApiAanroep = this.context.parameters.api === 'gezag-api';
 });
 
 After(async function() {

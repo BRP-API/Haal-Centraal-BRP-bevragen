@@ -7,6 +7,27 @@ Functionaliteit: Ouder gegeven stap definities
     Gegeven de 1e 'SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres' statement heeft als resultaat '4999'
     En de 1e 'SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl' statement heeft als resultaat '9999'
 
+  @integratie
+  Abstract Scenario: heeft '[aanduiding]' als ouder [1 of 2]
+    Gegeven de persoon 'P2' zonder burgerservicenummer
+    En de persoon 'P1' met burgerservicenummer '000000036'
+    * heeft 'P2' als ouder <ouder type>
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl'
+      | pl_id | geheim_ind |
+      |     1 |          0 |
+    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam |
+      |     1 |         0 |       0 |            P |         000000036 |             P1 |
+    En heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | geslachts_naam |
+      |     1 |         0 |       0 | <ouder type> |             P2 |
+
+    Voorbeelden:
+      | ouder type |
+      |          1 |
+      |          2 |
+
   Abstract Scenario: de persoon met burgerservicenummer '[bsn]' heeft een ouder '[ouder-type]' met de volgende gegevens
     Gegeven de persoon met burgerservicenummer '000000012' heeft een ouder '<ouder-type>' met de volgende gegevens
     | naam                  | waarde |
