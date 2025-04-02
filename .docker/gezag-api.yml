@@ -1,0 +1,17 @@
+services:
+  brp-api-gezag:
+    image: ghcr.io/brp-api/brp-api-gezag:latest
+    environment:
+      - LOGGING_LEVEL_GEZAG=DEBUG
+      - SPRING_PROFILES_ACTIVE=prd # [pre, prd]
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/rvig_haalcentraal_testdata
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "8080:8080"
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network

@@ -56,11 +56,11 @@ function vergelijkActualMetExpected(context, inAnyOrder = true) {
 }
 
 function valideer200Response(context, inAnyOrder = true) {
+    context.response?.status?.should.equal(200, `response body: ${JSON.stringify(context.response?.data, undefined, '\t')}`);
+
     if (!verifyResponse(context)) {
         return;
     }
-
-    context.response.status?.should.equal(200, `response body: ${JSON.stringify(context.response.data, undefined, '\t')}`);
 
     should.exist(context.response?.data, 'geen response body');
 

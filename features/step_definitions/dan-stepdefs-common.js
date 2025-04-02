@@ -25,8 +25,8 @@ Then(/^heeft de response (\d*) (\w*)$/, function (aantal, naamCollectieObject) {
     }
 });
 
-Then(/^heeft de response geen (\w*)$/, function (naamCollectieObject) {
+Then(/^heeft de response geen personen$/, function () {
     this.context.verifyResponse = true;
 
-    createCollectieObjecten(this.context, naamCollectieObject);
+    createCollectieObjecten(this.context, 'personen');
 });
