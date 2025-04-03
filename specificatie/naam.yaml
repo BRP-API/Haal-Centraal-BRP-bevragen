@@ -62,7 +62,6 @@ components:
     NaamPersoon:
       description: |
         Gegevens over de naam van de persoon.
-        * **aanduidingNaamgebruik** - wordt gevuld met waarden voor 'Naamgebruik' in 'tabelwaarden.csv'.
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
         - properties:

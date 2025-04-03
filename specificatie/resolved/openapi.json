@@ -862,7 +862,6 @@
       },
       "OpschortingBijhoudingBasis": {
         "type": "object",
-        "description": "* **reden** - wordt gevuld met waarden voor 'Reden_Opschorting_Bijhouding' in 'tabelwaarden.csv'.\n",
         "properties": {
           "reden": {
             "$ref": "#/components/schemas/Waardetabel"
@@ -1007,7 +1006,6 @@
       },
       "PersoonBeperkt": {
         "type": "object",
-        "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
         "properties": {
           "burgerservicenummer": {
             "$ref": "#/components/schemas/Burgerservicenummer"
@@ -1057,7 +1055,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/PersoonBeperkt"
                 }
@@ -1076,7 +1073,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/PersoonBeperkt"
                 }
@@ -1141,7 +1137,7 @@
       },
       "EuropeesKiesrecht": {
         "type": "object",
-        "description": "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.\n",
+        "description": "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.\n",
         "properties": {
           "aanduiding": {
             "$ref": "#/components/schemas/Waardetabel"
@@ -1170,7 +1166,7 @@
         ]
       },
       "NaamPersoon": {
-        "description": "Gegevens over de naam van de persoon.\n* **aanduidingNaamgebruik** - wordt gevuld met waarden voor 'Naamgebruik' in 'tabelwaarden.csv'.\n",
+        "description": "Gegevens over de naam van de persoon.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/NaamBasis"
@@ -1734,7 +1730,7 @@
         ]
       },
       "Adres": {
-        "description": "Gegevens over het adres van een persoon.\n* **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.\n* **functieAdres** - wordt gevuld met waarden voor 'Functie_Adres' in 'tabelwaarden.csv'.\n* **aanduidingBijHuisnummer** - wordt gevuld met waarden voor 'Aanduiding_Bij_Huisnummer' in 'tabelwaarden.csv'.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n",
+        "description": "Gegevens over het adres van een persoon.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractVerblijfplaats"
@@ -1873,7 +1869,7 @@
         ]
       },
       "Locatie": {
-        "description": "* **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.\n* **functieAdres** - wordt gevuld met waarden voor 'Functie_Adres' in 'tabelwaarden.csv'.\n* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n",
+        "description": "* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractVerblijfplaats"
@@ -2164,7 +2160,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "Derde": "#/components/schemas/BekendeDerde",
+            "BekendeDerde": "#/components/schemas/BekendeDerde",
             "OnbekendeDerde": "#/components/schemas/OnbekendeDerde"
           }
         }
@@ -2414,7 +2410,7 @@
         ]
       },
       "Ouder": {
-        "description": "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
+        "description": "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n",
         "type": "object",
         "properties": {
           "burgerservicenummer": {
@@ -2561,7 +2557,6 @@
       },
       "Persoon": {
         "type": "object",
-        "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
         "properties": {
           "aNummer": {
             "$ref": "#/components/schemas/ANummer"
@@ -2675,7 +2670,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/Persoon"
                 }
@@ -2694,7 +2688,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/PersoonBeperkt"
                 }
@@ -2713,7 +2706,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/PersoonBeperkt"
                 }
@@ -2732,7 +2724,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/PersoonBeperkt"
                 }
@@ -2766,7 +2757,6 @@
             "properties": {
               "personen": {
                 "type": "array",
-                "description": "* **geslacht** - wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
                 "items": {
                   "$ref": "#/components/schemas/GezagPersoonBeperkt"
                 }

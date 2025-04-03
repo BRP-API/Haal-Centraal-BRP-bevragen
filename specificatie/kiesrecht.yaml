@@ -17,7 +17,7 @@ components:
     EuropeesKiesrecht:
       type: object
       description: |
-        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.
+        * **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.
       properties:
         aanduiding:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
