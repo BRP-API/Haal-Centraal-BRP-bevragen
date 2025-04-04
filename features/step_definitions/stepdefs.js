@@ -63,6 +63,8 @@ Before(function({ pickle }) {
     this.context.isInfoApiAanroep = this.context.parameters.api === 'info-api';
     this.context.isDataApiAanroep = this.context.parameters.api === 'data-api';
     this.context.isGezagApiAanroep = this.context.parameters.api === 'gezag-api';
+
+    global.logger.info(`scenario '${pickle.name}' met tags ${JSON.stringify(tags)}`);
 });
 
 After(async function() {
