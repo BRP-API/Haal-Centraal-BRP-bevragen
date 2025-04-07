@@ -19,7 +19,7 @@ components:
         type:
           type: string
         minderjarige:
-          $ref: 'minderjarige-v1.yaml#/components/schemas/Minderjarige'
+          $ref: 'minderjarige-v2.yaml#/components/schemas/Minderjarige'
         inOnderzoek:
           type: boolean
           description: Geeft aan dat de gezagsrelatie in onderzoek is.
