@@ -11,20 +11,8 @@ components:
         burgerservicenummer:
           $ref: '../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         naam:
-          $ref: '#/components/schemas/Naam'
+          $ref: './naam-v1.yaml#/components/schemas/Naam'
         geslacht:
           $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
       required:
         - naam
-    Naam:
-      description: Benodigde properties om een volledige naam te construeren.
-      type: object
-      properties:
-        voornamen:
-          $ref: '../brp/naam/voornamen-v1.yaml#/components/schemas/Voornamen'
-        adellijkeTitelPredicaat:
-          $ref: '../brp/naam/adellijke-titel-predicaat-v1.yaml#/components/schemas/AdellijkeTitelPredicaatType'
-        voorvoegsel:
-          $ref: '../brp/naam/voorvoegsel-v1.yaml#/components/schemas/Voorvoegsel'
-        geslachtsnaam:
-          $ref: '../brp/naam/geslachtsnaam-v1.yaml#/components/schemas/Geslachtsnaam'
