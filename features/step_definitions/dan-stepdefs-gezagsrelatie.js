@@ -72,8 +72,7 @@ function createGezagspersoon(context, aanduiding, isMinderjarige = false) {
 
     setProperty(retval, 'burgerservicenummer', getBsn(persoon));
 
-    global.logger.info(`isAllApiScenario: ${context.isAllApiScenario}, isInfoApiScenario: ${context.isInfoApiScenario}, isDataApiScenario: ${context.isDataApiScenario}, isGezagApiScenario: ${context.isGezagApiScenario}`);
-    global.logger.info(`isInfoApiAanroep: ${context.isInfoApiAanroep}, isDataApiAanroep: ${context.isDataApiAanroep}, isGezagApiAanroep: ${context.isGezagApiAanroep}`);
+    global.logger.info(`isAllApiScenario: ${context.isAllApiScenario}, isInfoApiScenario: ${context.isInfoApiScenario}, isDataApiScenario: ${context.isDataApiScenario}, isGezagApiScenario: ${context.isGezagApiScenario}, isInfoApiAanroep: ${context.isInfoApiAanroep}, isDataApiAanroep: ${context.isDataApiAanroep}, isGezagApiAanroep: ${context.isGezagApiAanroep}`);
     if((context.isAllApiScenario || context.isInfoApiScenario) && context.isInfoApiAanroep) {
         retval.naam = {};
 
@@ -179,8 +178,6 @@ function createPersoonMetGezag(context, type, aanduidingMinderjarige, aanduiding
 Then(/^is het gezag over '(\w*)' (eenhoofdig ouderlijk gezag|gezamenlijk gezag) met ouder '(\w*)'(?: en een onbekende derde)?$/, function (aanduidingMinderjarige, type, aanduidingOuder) {
     this.context.verifyResponse = true;
 
-    global.logger.info(`Dan is het gezag over '${aanduidingMinderjarige}' ${type} met ouder '${aanduidingOuder}'( en een onbekende derde)`);
-
     const expected = {
         personen: [ createPersoonMetGezag(this.context, type, aanduidingMinderjarige, aanduidingOuder) ]
     };
@@ -197,13 +194,10 @@ Then(/^is het gezag over '(\w*)' (gezamenlijk gezag|gezamenlijk ouderlijk gezag)
 
     this.context.expected = expected;
 
-    global.logger.info(`Dan is het gezag over '${aanduidingMinderjarige}' ${type} met ouder '${aanduidingMeerderjarige1}' en derde '${aanduidingMeerderjarige2}'`, this.context.expected);
 });
        
 Then(/^is het gezag over '(\w*)' voogdij(?: met derde '(\w*)')?$/, function (aanduidingMinderjarige, aanduidingMeerderjarige) {
     this.context.verifyResponse = true;
-
-    global.logger.info(`Dan is het gezag over '${aanduidingMinderjarige}' voogdij (met derde '${aanduidingMeerderjarige}')`);
 
     const expected = {
         personen: [ createPersoonMetGezag(this.context, 'voogdij', aanduidingMinderjarige, aanduidingMeerderjarige, undefined) ]
@@ -214,8 +208,6 @@ Then(/^is het gezag over '(\w*)' voogdij(?: met derde '(\w*)')?$/, function (aan
 
 Then(/^is het gezag over '(\w*)' (niet te bepalen|tijdelijk geen gezag) met de toelichting '([\wé. ]*)'$/, function (aanduidingMinderjarige, type, toelichting) {
     this.context.verifyResponse = true;
-
-    global.logger.info(`Dan is het gezag over '${aanduidingMinderjarige}' ${type} met de toelichting '${toelichting}'`);
 
     const expected = {
         personen: [ createPersoonMetGezag(this.context, type, aanduidingMinderjarige, undefined, undefined, toelichting) ]

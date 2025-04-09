@@ -1,6 +1,6 @@
 const { World } = require('./world');
 const { Pool } = require('pg');
-const { setWorldConstructor, setDefaultTimeout, Before, After, AfterAll } = require('@cucumber/cucumber');
+const { setWorldConstructor, setDefaultTimeout, Before, After, AfterAll, AfterStep } = require('@cucumber/cucumber');
 const { valideer200Response, valideerProblemDetailsResponse } = require('./responseHelpers');
 const { rollbackSqlStatements } = require('./postgresqlHelpers');
 const { rollback } = require('./postgresqlHelpers-2');
@@ -55,7 +55,7 @@ Before(function({ pickle }) {
     const tags = pickle.tags.map((t) => t.name);
     this.context.isStapDocumentatieScenario = tags.includes('@stap-documentatie');
     this.context.isIntegratieScenario = tags.includes('@integratie');
-    this.context.isDeprecatedScenario = tags.includes('@deprecated');
+    this.context.isDeprecatedScenario = tags.includes('@deprecated') || this.context.parameters.tagScenariosAsDeprecated ? this.context.parameters.tagScenariosAsDeprecated : false;
     this.context.isAllApiScenario = !tags.includes('@info-api') && !tags.includes('@data-api') && !tags.includes('@gezag-api');
     this.context.isInfoApiScenario = tags.includes('@info-api');
     this.context.isDataApiScenario = tags.includes('@data-api');
@@ -64,7 +64,21 @@ Before(function({ pickle }) {
     this.context.isDataApiAanroep = this.context.parameters.api === 'data-api';
     this.context.isGezagApiAanroep = this.context.parameters.api === 'gezag-api';
 
-    global.logger.info(`scenario '${pickle.name}' met tags ${JSON.stringify(tags)}`);
+    global.logger.info(`scenario '${pickle.name}' met tags ${JSON.stringify(tags)} (deprecated: ${this.context.isDeprecatedScenario})`);
+});
+
+AfterStep(function({ pickleStep }) {
+    switch(pickleStep.type) {
+        case 'Context':
+            global.logger.info(`Gegeven ${pickleStep.text}`, this.context.data);
+            break;
+        case 'Action':
+            global.logger.info(`Als ${pickleStep.text}`);
+            break;
+        case 'Outcome':
+            global.logger.info(`Dan ${pickleStep.text}`, this.context.response?.data);
+            break;
+    }
 });
 
 After(async function() {

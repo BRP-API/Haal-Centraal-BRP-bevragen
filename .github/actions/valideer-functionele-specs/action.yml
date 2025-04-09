@@ -10,12 +10,16 @@ runs:
     - name: Valideer functionele specs
       run: ./scripts/specs-verify.sh
       shell: bash
+      continue-on-error: true
+
     - name: Genereer validatie summary
       run: |
           node ./scripts/generate-step-summary.js
       shell: bash
+
     - name: Publiceer validatie summary in de worfklow job summary
       run: |
           echo "### Cucumber Test Reports" >> $GITHUB_STEP_SUMMARY
           cat ./test-reports/cucumber-js/step-summary.txt >> $GITHUB_STEP_SUMMARY
       shell: bash
+

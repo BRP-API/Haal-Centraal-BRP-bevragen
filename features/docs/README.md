@@ -31,6 +31,7 @@ De GezagApi profiel is als volgt gedefinieerd:
 | api                         | context waarin de scenarios moet worden uitgevoerd. Deze wordt in de automation gebruikt bij het opbouwen van de verwachte Gezag response voor de info/data/gezag api|
 | logger.level                | kan worden gezet op 'info' om te kunnen zien welke sql statements zijn uitgevoerd |
 | addAcceptGezagVersionHeader | hiermee wordt aangegeven of de accept-gezag-version header moet worden meegestuurd met een request |
+| tagScenariosAsDeprecated    | hiermee wordt aangegeven dat alle in een profiel context uit te voeren scenarios worden uitgevoerd als zijnde deprecated scenarios |
 | tags                        | geeft aan welke scenarios moet worden uitgevoerd. Bij het aanroepen van Cucumber met de GezagApi profiel worden alle scenarios uitgevoerd die zijn getagd met @gezag-api, óf die niet zijn getagd met @info-api, @data-api én @gezag-api |
 
 Het uitvoeren van documentatie features met de GezagApi profiel ziet er als volgt uit:
