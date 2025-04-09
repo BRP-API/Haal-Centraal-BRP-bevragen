@@ -120,6 +120,19 @@ describe('insertIntoPersoonlijstStatement', () => {
     
         validate(insertIntoPersoonlijstStatement(input), expected);
     });
+
+    test("met pl_id", () => {
+        const input = [
+            ["pl_id", 100],
+            ["geheim_ind", "0"]
+        ];
+        const expected = {
+            text: 'INSERT INTO public.lo3_pl(pl_id,mutatie_dt,geheim_ind) VALUES(100,current_timestamp,$1) RETURNING *',
+            values: ['0']
+        };
+    
+        validate(insertIntoPersoonlijstStatement(input), expected);
+    });
 });
 
 describe('insertIntoStatement', () => {
