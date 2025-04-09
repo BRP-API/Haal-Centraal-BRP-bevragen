@@ -23,23 +23,12 @@ function addParameterizedValues(statement) {
     });
 }
 
-function addSqlGeneratedColumnNames(sqlData, statement) {
-    if(sqlData !== undefined) {
-        sqlData.forEach(function(row, index) {
+function addSqlGeneratedColumns(sqlData, statement, isValue = false) {
+    if (sqlData !== undefined) {
+        sqlData.forEach((row, index) => {
             statement.text += index === 0
-            ? `${row[0]}`
-            : `,${row[0]}`;
-        });
-        statement.text += ',';
-    }
-}
-
-function addSqlGeneratedColumnValues(sqlData, statement) {
-    if(sqlData !== undefined) {
-        sqlData.forEach(function(row, index) {
-            statement.text += index === 0
-            ? `${row[1]}`
-            : `,${row[1]}`;
+                ? `${row[isValue ? 1 : 0]}`
+                : `,${row[isValue ? 1 : 0]}`;
         });
         statement.text += ',';
     }
@@ -53,12 +42,12 @@ function insertIntoStatementMetSqlGeneratedData(tabelNaam, data, sqlGeneratedDat
         values: []
     };
 
-    addSqlGeneratedColumnNames(sqlGeneratedData, statement);
+    addSqlGeneratedColumns(sqlGeneratedData, statement);
     addColumnNamesAndValues(data, statement);
 
     statement.text += ') VALUES(';
 
-    addSqlGeneratedColumnValues(sqlGeneratedData, statement);
+    addSqlGeneratedColumns(sqlGeneratedData, statement, true);
     addParameterizedValues(statement);
 
     statement.text += ')';
@@ -70,79 +59,59 @@ function insertIntoStatement(tabelNaam, data) {
     return insertIntoStatementMetSqlGeneratedData(tabelNaam, data);
 }
 
-function insertIntoAutorisatieStatement(data) {
-    let statement = insertIntoStatementMetSqlGeneratedData(
-        'autorisatie',
-        data,
-        [
-            ['autorisatie_id', '(SELECT COALESCE(MAX(autorisatie_id), 0)+1 FROM public.lo3_autorisatie)']
-        ]
-    );
+function insertIntoStatementMetSqlGeneratedDataReturning(tabelNaam, data, sqlGeneratedPrimaryKey) {
+    const statement = insertIntoStatementMetSqlGeneratedData(tabelNaam, data, sqlGeneratedPrimaryKey);
+
     statement.text += ' RETURNING *';
 
     return statement;
+}
+
+function insertIntoAutorisatieStatement(data) {
+    return insertIntoStatementMetSqlGeneratedDataReturning('autorisatie', data, [
+        ['autorisatie_id', '(SELECT COALESCE(MAX(autorisatie_id), 0)+1 FROM public.lo3_autorisatie)']
+    ]);
 }
 
 function insertIntoGemeenteStatement(data) {
-    return insertIntoStatement(
-        'gemeente',
-        data);
+    return insertIntoStatementMetSqlGeneratedData('gemeente', data);
 }
 
 function insertIntoAdresStatement(data) {
-    let statement = insertIntoStatementMetSqlGeneratedData(
-        'adres',
-        data,
-        [
-            ['adres_id', '(SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres)']
-        ]
-    );
-    statement.text += ' RETURNING *';
-
-    return statement;
+    return insertIntoStatementMetSqlGeneratedDataReturning('adres', data, [
+        ['adres_id', '(SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres)']
+    ]);
 }
 
 function insertIntoPersoonlijstStatement(data) {
     let sqlGeneratedData = [];
-    if(data[0][0] === 'pl_id'){
+    if (data[0][0] === 'pl_id') {
         sqlGeneratedData.push(['pl_id', data[0][1]]);
         data.shift();
     }
-    else{
+    else {
         sqlGeneratedData.push(['pl_id', '(SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl)']);
-
     }
     sqlGeneratedData.push(['mutatie_dt', 'current_timestamp']);
 
-    let statement = insertIntoStatementMetSqlGeneratedData(
-        'inschrijving',
-        data,
-        sqlGeneratedData
-    );
-    statement.text += ' RETURNING *';
-
-    return statement;
+    return insertIntoStatementMetSqlGeneratedDataReturning('inschrijving', data, sqlGeneratedData);
 }
 
 function queryStatement(tabelNaam, selectFilter, whereFilter) {
-    let tableName = toDbTabelNaam(tabelNaam);
+    const tableName = toDbTabelNaam(tabelNaam);
 
-    let statement = {
+    const statement = {
         text: `SELECT ${selectFilter} FROM public.${tableName}`,
         values: []
     };
 
-    if(whereFilter !== undefined) {
-        Object.keys(whereFilter).forEach(function(key, index) {
-            if(index === 0) {
-                statement.text += ' WHERE';
-            }
-            else {
-                statement.text += ' AND';
-            }
-            statement.text += ` ${key}=$${index+1}`;
+    if (whereFilter) {
+        const whereClauses = Object.keys(whereFilter).map((key, index) => {
             statement.values.push(whereFilter[key]);
+            return `${key}=$${index + 1}`;
         });
+
+        statement.text += ` WHERE ${whereClauses.join(' AND ')}`;
     }
 
     return statement;
@@ -160,27 +129,19 @@ function queryLastRowStatement(tabelNaam, orderByColumnName, filter = undefined)
     return statement;
 }
 
+const tabelPrimaryKeyMap = {
+    adres: 'adres_id',
+    autorisatie: 'afnemer_code',
+    gemeente: 'gemeente_code',
+    default: 'pl_id'
+};
+
 function deleteStatement(tabelNaam, id = undefined) {
-    let paramName;
-    
-    switch(tabelNaam) {
-        case 'adres':
-            paramName = 'adres_id';
-            break;
-        case 'autorisatie':
-            paramName = 'afnemer_code';
-            break;
-        case 'gemeente':
-            paramName = 'gemeente_code';
-            break;
-        default:
-            paramName = 'pl_id';
-            break;
-    }
+    const primaryKeyName = tabelPrimaryKeyMap[tabelNaam] || tabelPrimaryKeyMap.default;
 
     const statement = {
         text: id !== undefined
-            ? `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${paramName}=$1`
+            ? `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${primaryKeyName}=$1`
             : `DELETE FROM public.${tableNameMap.get(tabelNaam)}`,
         values: id !== undefined
             ? [id]

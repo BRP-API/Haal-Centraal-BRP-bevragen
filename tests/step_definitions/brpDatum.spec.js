@@ -1,20 +1,20 @@
 const should = require('chai').should();
-const { toDateOrString } = require('../../features/step_definitions/brpDatum');
+const { toDateOrString, toBRPDate } = require('../../features/step_definitions/brpDatum');
 
 function toISODate(date) {
     return date.toISOString().slice(0, 10);
 }
 
-function toBRPDate(date) {
+function toBRPFormat(date) {
     return toISODate(date).replace(/-/g, '');
 }
 
 function toJaarMaandDatum(date) {
-    return toBRPDate(date).slice(0, -2) + '00';
+    return toBRPFormat(date).slice(0, -2) + '00';
 }
 
 function toJaarDatum(date) {
-    return toBRPDate(date).slice(0, -4) + '0000';
+    return toBRPFormat(date).slice(0, -4) + '0000';
 }
 
 describe('toDateOrString', () => {
@@ -28,7 +28,7 @@ describe('toDateOrString', () => {
     test("vandaag (BRP formaat)", () => {
         const expected = new Date();
     
-        toDateOrString('vandaag', false).should.equal(toBRPDate(expected));
+        toDateOrString('vandaag', false).should.equal(toBRPFormat(expected));
     });
     
     test("gisteren (ISO formaat)", () => {
@@ -42,7 +42,7 @@ describe('toDateOrString', () => {
         const expected = new Date();
         expected.setDate(expected.getDate() - 1);
     
-        toDateOrString('gisteren', false).should.equal(toBRPDate(expected));
+        toDateOrString('gisteren', false).should.equal(toBRPFormat(expected));
     });
     
     test("morgen (ISO formaat)", () => {
@@ -56,7 +56,7 @@ describe('toDateOrString', () => {
         const expected = new Date();
         expected.setDate(expected.getDate() + 1);
     
-        toDateOrString('morgen', false).should.equal(toBRPDate(expected));
+        toDateOrString('morgen', false).should.equal(toBRPFormat(expected));
     });
     
     test("vandaag - 1 jaar (ISO formaat)", () => {
@@ -70,7 +70,7 @@ describe('toDateOrString', () => {
         const expected = new Date();
         expected.setFullYear(expected.getFullYear() - 1);
     
-        toDateOrString('vandaag - 1 jaar', false).should.equal(toBRPDate(expected));
+        toDateOrString('vandaag - 1 jaar', false).should.equal(toBRPFormat(expected));
     });
     
     test("gisteren - 2 jaar (ISO formaat)", () => {
@@ -86,7 +86,7 @@ describe('toDateOrString', () => {
         expected.setDate(expected.getDate() - 1);
         expected.setFullYear(expected.getFullYear() - 2);
     
-        toDateOrString('gisteren - 2 jaar', false).should.equal(toBRPDate(expected));
+        toDateOrString('gisteren - 2 jaar', false).should.equal(toBRPFormat(expected));
     });
     
     test("morgen - 3 jaar (ISO formaat)", () => {
@@ -102,7 +102,7 @@ describe('toDateOrString', () => {
         expected.setDate(expected.getDate() + 1);
         expected.setFullYear(expected.getFullYear() - 3);
     
-        toDateOrString('morgen - 3 jaar', false).should.equal(toBRPDate(expected));
+        toDateOrString('morgen - 3 jaar', false).should.equal(toBRPFormat(expected));
     });
     
     test("deze maand", () => {
@@ -261,5 +261,20 @@ describe('toDateOrString', () => {
     
         toDateOrString('2000-01-01', false).should.equal('2000-01-01');
     }));
-    
+
+    test("4 jaar geleden (BRP formaat)", (() => {
+        toDateOrString('4 jaar geleden', false).should.equal(toDateOrString('vandaag - 4 jaar', false));
+    }));
+
+    test("4 jaar geleden", (() => {
+        toDateOrString('4 jaar geleden', true).should.equal(toDateOrString('vandaag - 4 jaar', true));
+    }));
+
+    test("toBrpDate met single digit maand en dag", (() => {
+        toBRPDate(1,2,2023).should.equal('20230201');
+    }));
+
+    test("toBrpDate met double digit maand en dag", (() => {
+        toBRPDate(10,12,2023).should.equal('20231210');
+    }));
 });

@@ -99,7 +99,7 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
         """
       Dan is het gezag over 'Bert' gezamenlijk ouderlijk gezag met ouder 'Gerda' en ouder 'Aart'
 
-    @gezag-api
+    @gezag-api @nieuw
     Scenario: gezamenlijk gezag van twee ouders wordt verwacht
       Gegeven de persoon 'Bert' heeft de volgende gegevens
         | geboortedatum (03.10) |
@@ -257,7 +257,7 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
         """
       Dan is het gezag over 'Bert' gezamenlijk ouderlijk gezag met ouder 'Jeanette' en ouder 'Aart'
 
-    @gezag-api
+    @gezag-api @nieuw
     Scenario: ouder zonder bsn
       Gegeven de persoon 'Bert' heeft de volgende gegevens
         | geboortedatum (03.10) |

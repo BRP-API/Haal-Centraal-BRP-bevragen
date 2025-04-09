@@ -53,15 +53,17 @@ Functionaliteit: Verblijfplaats gegeven stap definities
       |     1 |        1 |       0 | W             | <datum>                  |
 
     Voorbeelden:
-      | stap                                                              | datum    | datum type       |
-      | persoon 'P1' is ingeschreven op adres 'A1' op '1 januari 2021'    | 20210101 | datum            |
-      | 'P1' is ingeschreven op adres 'A1' op '1 januari 2021'            | 20210101 | datum            |
-      | persoon 'P1' is ingeschreven op adres 'A1' op 'februari 2022'     | 20220200 | jaar maand datum |
-      | 'P1' is ingeschreven op adres 'A1' op 'februari 2022'             | 20220200 | jaar maand datum |
-      | persoon 'P1' is ingeschreven op adres 'A1' op '2023'              | 20230000 | jaar datum       |
-      | 'P1' is ingeschreven op adres 'A1' op '2023'                      | 20230000 | jaar datum       |
-      | persoon 'P1' is ingeschreven op adres 'A1' op een onbekende datum | 00000000 | onbekende datum  |
-      | 'P1' is ingeschreven op adres 'A1' op een onbekende datum         | 00000000 | onbekende datum  |
+      | stap                                                              | datum    | datum type                 |
+      | persoon 'P1' is op 1 januari 2021 ingeschreven op adres 'A1'      | 20210101 | datum                      |
+      | 'P1' is op 1 januari 2021 ingeschreven op adres 'A1'              | 20210101 | datum                      |
+      | persoon 'P1' is in februari 2022 ingeschreven op adres 'A1'       | 20220200 | jaar maand datum           |
+      | 'P1' is in februari 2022 ingeschreven op adres 'A1'               | 20220200 | jaar maand datum           |
+      | persoon 'P1' is in 2023 ingeschreven op adres 'A1'                | 20230000 | jaar datum                 |
+      | 'P1' is in 2023 ingeschreven op adres 'A1'                        | 20230000 | jaar datum                 |
+      | persoon 'P1' is op een onbekende datum ingeschreven op adres 'A1' | 00000000 | onbekende datum            |
+      | 'P1' is op een onbekende datum ingeschreven op adres 'A1'         | 00000000 | onbekende datum            |
+      | persoon 'P1' is op 01-01-2021 ingeschreven op adres 'A1'          | 20210101 | datum in dd-mm-yyyy format |
+      | 'P1' is op 01-01-2021 ingeschreven op adres 'A1'                  | 20210101 | datum in dd-mm-yyyy format |
 
   @integratie
   Abstract Scenario: personen '[persoon aanduidingen]' zijn ingeschreven op adres '[adres aanduiding]' op [<datum type>]
@@ -84,14 +86,16 @@ Functionaliteit: Verblijfplaats gegeven stap definities
       |     2 |        1 |       0 | W             | <datum>                  |
 
     Voorbeelden:
-      | stap                                                                 | datum    | datum type       |
-      | personen 'P1,P2' zijn ingeschreven op adres 'A1' op '1 januari 2021' | 20210101 | datum            |
-      | 'P1,P2' zijn ingeschreven op adres 'A1' op '1 januari 2021'          | 20210101 | datum            |
-      | personen 'P1, P2' zijn ingeschreven op adres 'A1' op 'februari 2022' | 20220200 | jaar maand datum |
-      | 'P1, P2' zijn ingeschreven op adres 'A1' op 'februari 2022'          | 20220200 | jaar maand datum |
-      | personen 'P1 en P2' zijn ingeschreven op adres 'A1' op '2023'        | 20230000 | jaar datum       |
-      | 'P1 en P2' zijn ingeschreven op adres 'A1' op '2023'                 | 20230000 | jaar datum       |
-      | 'P1 en P2' zijn ingeschreven op adres 'A1' op een onbekende datum    | 00000000 | onbekende datum  |
+      | stap                                                               | datum    | datum type                 |
+      | personen 'P1,P2' zijn op 1 januari 2021 ingeschreven op adres 'A1' | 20210101 | datum                      |
+      | 'P1,P2' zijn op 1 januari 2021 ingeschreven op adres 'A1'          | 20210101 | datum                      |
+      | personen 'P1, P2' zijn in februari 2022 ingeschreven op adres 'A1' | 20220200 | jaar maand datum           |
+      | 'P1, P2' zijn in februari 2022 ingeschreven op adres 'A1'          | 20220200 | jaar maand datum           |
+      | personen 'P1 en P2' zijn in 2023 ingeschreven op adres 'A1'        | 20230000 | jaar datum                 |
+      | 'P1 en P2' zijn in 2023 ingeschreven op adres 'A1'                 | 20230000 | jaar datum                 |
+      | 'P1 en P2' zijn op een onbekende datum ingeschreven op adres 'A1'  | 00000000 | onbekende datum            |
+      | personen 'P1,P2' zijn op 01-01-2021 ingeschreven op adres 'A1'     | 20210101 | datum in dd-mm-yyyy format |
+      | 'P1,P2' zijn op 01-01-2021 ingeschreven op adres 'A1'              | 20210101 | datum in dd-mm-yyyy format |
 
   @integratie
   Abstract Scenario: persoon '[persoon aanduiding]' is [gisteren, vandaag of morgen] [aantal] jaar geleden ingeschreven op adres '[adres aanduiding]'

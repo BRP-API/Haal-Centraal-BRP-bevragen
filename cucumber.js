@@ -32,6 +32,7 @@ module.exports = {
     worldParameters: {
       apiUrl: 'http://localhost:5002/haalcentraal/api',
       api: 'info-api',
+      tagScenariosAsDeprecated: true,
       logger: {
         level: 'warn'
       },
@@ -54,6 +55,7 @@ module.exports = {
     worldParameters: {
       apiUrl: 'http://localhost:8000/haalcentraal/api',
       api: 'data-api',
+      tagScenariosAsDeprecated: true,
       logger: {
         level: 'warn'
       },
@@ -76,6 +78,7 @@ module.exports = {
     worldParameters: {
       apiUrl: 'http://localhost:8080/api/v1/opvragenBevoegdheidTotGezag',
       api: 'gezag-api',
+      tagScenariosAsDeprecated: true,
       logger: {
         level: 'warn'
       },

@@ -1,35 +1,10 @@
-function toDay(dayText) {
-    switch(dayText) {
-        case "gisteren":
-            return -1;
-        case "morgen":
-            return 1;
-        default:
-            return 0;
-    }
-}
+const dayMapping = { gisteren: -1, morgen: 1, vandaag: 0 };
+const monthMapping = { "vorige maand": -1, "volgende maand": 1, "deze maand": 0 };
+const yearMapping = { "vorig jaar": -1, "volgend jaar": 1, "dit jaar": 0 };
 
-function toMonth(monthText) {
-    switch(monthText) {
-        case "vorige maand":
-            return -1;
-        case "volgende maand":
-            return 1;
-        default:
-            return 0;
-    }
-}
-
-function toYear(yearText) {
-    switch(yearText) {
-        case "vorig jaar":
-            return -1;
-        case "volgend jaar":
-            return 1;
-        default:
-            return 0;
-    }
-}
+const toDay = (dayText) => dayMapping[dayText] || 0;
+const toMonth = (monthText) => monthMapping[monthText] || 0;
+const toYear = (yearText) => yearMapping[yearText] || 0;
 
 const dagRegex = /^(?<dag>gisteren|vandaag|morgen)( - (?<jaarOffset>\d+) jaar)?$/;
 const maandRegex = /^(?<maand>vorige maand|deze maand|volgende maand)( - (?<jaarOffset>\d+) jaar)?$/;
