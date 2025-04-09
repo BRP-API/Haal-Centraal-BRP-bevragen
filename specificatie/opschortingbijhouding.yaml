@@ -8,8 +8,6 @@ components:
   schemas:
     OpschortingBijhoudingBasis:
       type: object
-      description: |
-        * **reden** - wordt gevuld met waarden voor 'Reden_Opschorting_Bijhouding' in 'tabelwaarden.csv'.
       properties:
         reden:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'

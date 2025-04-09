@@ -37,7 +37,7 @@ module.exports = {
       },
       addAcceptGezagVersionHeader: false
     },
-    tags: '@deprecated and ((not @gezag-api and not @data-api) or @info-api)'
+    tags: 'not @skip-verify and ((@deprecated and ((not @data-api and not @gezag-api) or @info-api)) or (not @deprecated and not @nieuw and ((not @data-api and not @gezag-api) or @info-api)))'
   },
   DataApi: {
     worldParameters: {
@@ -55,11 +55,11 @@ module.exports = {
       apiUrl: 'http://localhost:8000/haalcentraal/api',
       api: 'data-api',
       logger: {
-        level: 'info'
+        level: 'warn'
       },
       addAcceptGezagVersionHeader: false
     },
-    tags: '@deprecated and ((not @gezag-api and not @info-api) or @data-api)'
+    tags: 'not @skip-verify and ((@deprecated and ((not @gezag-api and not @info-api) or @data-api)) or (not @deprecated and not @nieuw and ((not @gezag-api and not @info-api) or @data-api)))'
   },
   GezagApi: {
     worldParameters: {
@@ -81,6 +81,6 @@ module.exports = {
       },
       addAcceptGezagVersionHeader: false
     },
-    tags: '@deprecated and ((not @data-api and not @info-api) or @gezag-api)'
+    tags: 'not @skip-verify and ((@deprecated and ((not @data-api and not @info-api) or @gezag-api)) or (not @deprecated and not @nieuw and ((not @data-api and not @info-api) or @gezag-api)))'
   }
 }
