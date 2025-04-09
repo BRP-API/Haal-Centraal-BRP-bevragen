@@ -85,4 +85,4 @@ components:
             personen:
               type: array
               items:
-                $ref: 'gezag.yaml#/components/schemas/GezagPersoonBeperkt'
+                $ref: 'gezag-persoon-beperkt-v2.yaml#/components/schemas/GezagPersoonBeperkt'
