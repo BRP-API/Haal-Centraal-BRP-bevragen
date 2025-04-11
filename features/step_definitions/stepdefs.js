@@ -87,7 +87,7 @@ After(async function() {
         return;
     }
     if(this.context.data) {
-        await rollback(this.context.sql, this.context.sqlData);
+        await rollback(this.context.sql, this.context.data);
     }
     else {
         await rollbackSqlStatements(this.context.sql, this.context.sqlData, global.pool);
