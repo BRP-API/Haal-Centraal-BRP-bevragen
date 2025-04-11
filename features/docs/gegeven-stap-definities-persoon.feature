@@ -1,5 +1,4 @@
-#language: nl
-
+# language: nl
 @stap-documentatie
 Functionaliteit: Persoon, Inschrijving gegeven stap definities
 
@@ -13,12 +12,12 @@ Functionaliteit: Persoon, Inschrijving gegeven stap definities
       | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
       |                   000000012 | Jansen                |
     Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
-    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl'
+    Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
       | pl_id | geheim_ind |
-      |     1 |          0 |
-    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
+      |    P1 |          0 |
+    En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
       | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam |
-      |     1 |         0 |       0 |            P |         000000012 |         Jansen |
+      |    P1 |         0 |       0 |            P |         000000012 |         Jansen |
 
     Voorbeelden:
       | stap                                       |
