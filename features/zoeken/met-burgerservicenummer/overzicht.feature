@@ -1,7 +1,8 @@
 # language: nl
 Functionaliteit: gegevens raadplegen van een persoon
 
-  Als consumer wil ik de actuele gegevens van één of meerdere personen kunnen raadplegen door het opgeven van zijn/hun burgerservicenummer
+  Als consumer
+  wil ik de actuele gegevens van één of meerdere personen kunnen raadplegen door het opgeven van zijn/hun burgerservicenummer
 
     Achtergrond:
       Gegeven de persoon 'Robin' met burgerservicenummer '000000024'
@@ -18,7 +19,7 @@ Functionaliteit: gegevens raadplegen van een persoon
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin, Saskia en Gerda'
       Dan worden 'Robin, Saskia en Gerda' gevonden
 
-  Regel: de optionele 'gemeenteVanInschrijving' parameter wordt gebruikt om de zoek criteria aan te scherpen
+  Regel: de optionele 'gemeenteVanInschrijving' parameter kan worden gebruikt om de zoek criteria aan te scherpen
 
     Scenario: de opgegeven gemeente van inschrijving komt overeen met de gemeente van inschrijving van de persoon
       Gegeven adres 'A1'
