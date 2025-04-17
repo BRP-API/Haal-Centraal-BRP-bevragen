@@ -5,7 +5,7 @@ const { getAdres,
 const { arrayOfArraysToDataTable } = require('./dataTableFactory');
 const { createVerblijfplaats } = require('./persoon-2');
 
-function gegevenPersonenZijnIngeschrevenOpAdres(context, aanduidingAdres, aanduidingPersoon, datumAanvangAdreshouding) {
+function gegevenPersonenZijnIngeschrevenOpAdres(context, aanduidingAdres, aanduidingPersoon, datumAanvangAdreshouding, dataTable = undefined) {
     const data = [
         ['adres_id', getAdresIndex(context, aanduidingAdres) + ''],
         ['gemeente van inschrijving (09.10)', getAdres(context, aanduidingAdres).adres.gemeente_code],
@@ -14,7 +14,7 @@ function gegevenPersonenZijnIngeschrevenOpAdres(context, aanduidingAdres, aandui
     ];
 
     createVerblijfplaats(getPersoon(context, aanduidingPersoon),
-                         arrayOfArraysToDataTable(data));
+                         arrayOfArraysToDataTable(data, dataTable));
 }
 
 function gegevenPersonenZijnOpDatumIngeschrevenOpAdres(persoonAanduidingen, datum, adresAanduiding) {
@@ -22,6 +22,12 @@ function gegevenPersonenZijnOpDatumIngeschrevenOpAdres(persoonAanduidingen, datu
         gegevenPersonenZijnIngeschrevenOpAdres(this.context, adresAanduiding, persoonAanduiding, datum);
     }
     global.logger.info(`gegeven persoon|personen '${persoonAanduidingen}' is|zijn op '${datum}' ingeschreven op adres '${adresAanduiding}'`, getPersoon(this.context, persoonAanduidingen[0]));
+}
+
+function gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens(persoonAanduidingen, datum, adresAanduiding, dataTable) {
+    for(const persoonAanduiding of persoonAanduidingen) {
+        gegevenPersonenZijnIngeschrevenOpAdres(this.context, adresAanduiding, persoonAanduiding, datum, dataTable);
+    }
 }
 
 Given('persoon/personen {aanduidingen} is/zijn op/in {dd maand yyyy datum} ingeschreven op adres {string}', gegevenPersonenZijnOpDatumIngeschrevenOpAdres);
@@ -32,3 +38,12 @@ Given('persoon/personen {aanduidingen} is/zijn op {dd-mm-yyyy datum} ingeschreve
 Given('{aanduidingen} is/zijn op {dd-mm-yyyy datum} ingeschreven op adres {string}', gegevenPersonenZijnOpDatumIngeschrevenOpAdres);
 Given('persoon/personen {aanduidingen} is/zijn {vandaag, gisteren of morgen x jaar geleden} ingeschreven op adres {string}', gegevenPersonenZijnOpDatumIngeschrevenOpAdres);
 Given('{aanduidingen} is/zijn {vandaag, gisteren of morgen x jaar geleden} ingeschreven op adres {string}', gegevenPersonenZijnOpDatumIngeschrevenOpAdres);
+
+Given('persoon/personen {aanduidingen} is/zijn op/in {dd maand yyyy datum} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('{aanduidingen} is/zijn op/in {dd maand yyyy datum} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('persoon/personen {aanduidingen} is/zijn op {onbekende datum} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('{aanduidingen} is/zijn op {onbekende datum} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('persoon/personen {aanduidingen} is/zijn op {dd-mm-yyyy datum} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('{aanduidingen} is/zijn op {dd-mm-yyyy datum} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('persoon/personen {aanduidingen} is/zijn {vandaag, gisteren of morgen x jaar geleden} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
+Given('{aanduidingen} is/zijn {vandaag, gisteren of morgen x jaar geleden} ingeschreven op adres {string} met de volgende gegevens', gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens);
