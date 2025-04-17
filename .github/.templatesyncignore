@@ -1,4 +1,8 @@
-.github/workflows/*.*
+.github/workflows/lint-oas.yml
+scripts/generate-step-summary.js
+scripts/containers-start.sh
+scripts/containers-stop.sh
+scripts/specs-verify.sh
 scripts/oas-lint-resolved.sh
 scripts/oas-lint.sh
 scripts/oas-resolve.sh
