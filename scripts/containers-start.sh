@@ -7,3 +7,9 @@ if [ "$MODE" = "ci" ]; then
 else
     docker compose -f .docker/db.yml up -d
 fi
+
+docker compose \
+    -f .docker/gezag-api.yml \
+    -f .docker/personen-data-service.yml \
+    -f .docker/personen-informatie-service.yml \
+    up -d
