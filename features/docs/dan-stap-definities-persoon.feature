@@ -1,5 +1,4 @@
-#language: nl
-
+# language: nl
 @stap-documentatie
 Functionaliteit: Persoon dan stap definities
 
@@ -57,6 +56,25 @@ Functionaliteit: Persoon dan stap definities
     | heeft de response nog een persoon met de volgende gegevens        |
     | heeft de response nog een persoon met alleen de volgende gegevens |
 
+  Abstract Scenario: Dan wordt '[aanduiding]' gevonden
+    Gegeven de persoon 'P1' met burgerservicenummer '000000012'
+    En de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "burgerservicenummer": "000000012"
+          }
+        ]
+      }
+      """
+    Dan <stap definitie met hetzelfde gedrag>
+
+    Voorbeelden:
+      | stap definitie met hetzelfde gedrag |
+      | wordt 'P1' gevonden                 |
+      | wordt alleen 'P1' gevonden          |
+
   Scenario: Dan heeft de response een persoon met de volgende gegevens (meerdere personen)
     Gegeven de response body is gelijk aan
     """
@@ -78,6 +96,58 @@ Functionaliteit: Persoon dan stap definities
     En heeft de response nog een persoon met de volgende gegevens
     | naam                | waarde    |
     | burgerservicenummer | 000000013 |
+
+  Abstract Scenario: Dan wordt '[aanduiding] en [aanduiding]' gevonden
+    Gegeven de persoon 'P1' met burgerservicenummer '000000012'
+    En de persoon 'P2' met burgerservicenummer '000000013'
+    En de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "burgerservicenummer": "000000012"
+          },
+          {
+            "burgerservicenummer": "000000013"
+          }
+        ]
+      }
+      """
+    Dan <stap definitie met hetzelfde gedrag>
+
+    Voorbeelden:
+      | stap definitie met hetzelfde gedrag |
+      | worden 'P1, P2' gevonden            |
+      | worden 'P1 en P2' gevonden          |
+      | worden alleen 'P1 en P2' gevonden   |
+
+  Scenario: Dan wordt '[aanduiding], [aanduiding] en [aanduiding]' gevonden
+    Gegeven de persoon 'P1' met burgerservicenummer '000000012'
+    En de persoon 'P2' met burgerservicenummer '000000013'
+    En de persoon 'P3' met burgerservicenummer '000000014'
+    En de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "burgerservicenummer": "000000012"
+          },
+          {
+            "burgerservicenummer": "000000013"
+          },
+          {
+            "burgerservicenummer": "000000014"
+          }
+        ]
+      }
+      """
+    Dan <stap definitie met hetzelfde gedrag>
+
+    Voorbeelden:
+      | stap definitie met hetzelfde gedrag   |
+      | worden 'P1, P2, P3' gevonden          |
+      | worden 'P1, P2 en P3' gevonden        |
+      | worden alleen 'P1, P2 en P3' gevonden |
 
   Abstract Scenario: Dan heeft de response een persoon met (alleen) de volgende '[gegevensgroep]' gegevens
     Gegeven de response body is gelijk aan

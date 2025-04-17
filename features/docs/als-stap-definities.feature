@@ -24,5 +24,12 @@ Functionaliteit: als stap definities
       | gemeenteVanInschrijving |
       |                    0518 |
 
+  Scenario: personen zoeken met burgerservicenummer van '[persoon aanduiding]' en optionele parameters
+    Gegeven de persoon 'Gerda' met burgerservicenummer '000000012'
+    En de persoon 'Saskia' met burgerservicenummer '000000013'
+    Als 'gezag' wordt gevraagd van personen gezocht met burgerservicenummer van 'Gerda en Saskia' en parameters
+      | gemeenteVanInschrijving |
+      |                    0518 |
+
   Scenario: personen zoeken met burgerservicenummer zonder opgeven van burgerservicenummer
     Als 'gezag' wordt gevraagd van personen gezocht met burgerservicenummer ''

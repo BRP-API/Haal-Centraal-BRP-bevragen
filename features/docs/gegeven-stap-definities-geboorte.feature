@@ -6,12 +6,12 @@ Functionaliteit: Geboorte gegeven stap definities
     Gegeven de persoon 'Jansen' met burgerservicenummer '000000012'
     * is <datum> geboren
     Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
-    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl'
-      | pl_id | geheim_ind |
-      |     1 |          0 |
-    Dan heeft de persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
-      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum     |
-      |     1 |         0 |       0 | P            |         000000012 | Jansen         | <yyyymmdd formaat> |
+    Dan heeft persoon 'Jansen' de volgende rij in tabel 'lo3_pl'
+      | pl_id  | geheim_ind |
+      | Jansen |          0 |
+    En heeft persoon 'Jansen' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id  | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum     |
+      | Jansen |         0 |       0 | P            |         000000012 | Jansen         | <yyyymmdd formaat> |
 
     Voorbeelden:
       | datum                  | yyyymmdd formaat       |
