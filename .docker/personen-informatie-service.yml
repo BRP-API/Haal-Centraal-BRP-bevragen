@@ -1,0 +1,28 @@
+services:
+
+  personen-informatie-service:
+    container_name: personen-informatie-service
+    image: ghcr.io/brp-api/personen-informatie-service:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:5000
+      - Ecs__Path=/var/log/personen-informatie-service.json
+      - Ecs__SecuredPath=/var/log/personen-informatie-service-secured.json
+      # - Ecs__FileSizeLimitBytes=1048576
+      # - Ecs__RetainedFileCountLimit=5
+      - Routes__0__DownstreamScheme=http
+      - Routes__0__DownstreamHostAndPorts__0__Host=personen-data-service
+      - Routes__0__DownstreamHostAndPorts__0__Port=80
+      # - Routes__0__DownstreamHostAndPorts__0__Host=host.docker.internal
+      # - Routes__0__DownstreamHostAndPorts__0__Port=33346
+      # - Serilog__MinimumLevel__Override__BrpProxy=Debug
+    ports:
+      - "5002:5000"
+    volumes:
+      - ../test-data/logs:/var/log
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network
