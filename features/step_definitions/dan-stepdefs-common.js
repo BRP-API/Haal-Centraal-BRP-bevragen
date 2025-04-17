@@ -30,3 +30,9 @@ Then(/^heeft de response geen personen$/, function () {
 
     createCollectieObjecten(this.context, 'personen');
 });
+
+Then('worden er geen personen gevonden', function () {
+    this.context.verifyResponse = true;
+
+    createCollectieObjecten(this.context, 'personen');
+})
