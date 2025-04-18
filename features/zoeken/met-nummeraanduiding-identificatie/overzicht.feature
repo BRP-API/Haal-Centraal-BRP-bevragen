@@ -5,7 +5,7 @@ Functionaliteit: zoek personen met de nummeraanduiding identificatie van een adr
 
   Regel: personen ingeschreven op het gezochte adres worden gevonden
 
-    Scenario: één persoon staat ingeschreven op het gezochte adres
+    Scenario: één persoon staat ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
         |                 0599 |                           0599200000219679 |
@@ -14,7 +14,7 @@ Functionaliteit: zoek personen met de nummeraanduiding identificatie van een adr
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met nummeraanduiding identificatie van 'A1'
       Dan wordt 'Robin' gevonden
 
-    Scenario: meerdere personen staan ingeschreven op het gezochte adres
+    Scenario: meerdere personen staan ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
         |                 0518 |                           0518200000617227 |
@@ -25,14 +25,14 @@ Functionaliteit: zoek personen met de nummeraanduiding identificatie van een adr
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met nummeraanduiding identificatie van 'A1'
       Dan worden 'Robin en Saskia' gevonden
 
-    Scenario: niemand staat ingeschreven op het gezochte adres
+    Scenario: niemand staat ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode nummeraanduiding (11.90) |
         |                 0518 |                           0518200000617227 |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met nummeraanduiding identificatie van 'A1'
       Dan worden er geen personen gevonden
 
-  Regel: overleden personen ingeschreven op het gezochte adres worden niet gevonden
+  Regel: overleden personen ingeschreven op het adres waarmee wordt gezocht, worden niet gevonden
 
     Scenario: een overleden persoon staat ingeschreven op het gezochte adres
       Gegeven adres 'A1'
