@@ -4,7 +4,7 @@ Functionaliteit: zoek personen met de adresseerbaar object identificatie van een
   Als consumer
   wil ik personen vinden door het opgeven van de adresseerbaar object identificatie van het adres waar zij staan ingeschreven
 
-  Regel: personen ingeschreven op het gezochte adres worden gevonden
+  Regel: personen ingeschreven op het adres waarmee wordt gezocht worden gevonden
 
     Scenario: één persoon staat ingeschreven op het gezochte adres
       Gegeven adres 'A1'
