@@ -47,7 +47,7 @@ Functionaliteit: zoek personen met de adresseerbaar object identificatie van een
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met adresseerbaar object identificatie van 'A1'
       Dan wordt alleen 'Robin' gevonden
 
-  Regel: de optionele 'gemeenteVanInschrijving' parameter kan worden gebruikt om de zoek criteria aan te scherpen
+  Regel: de optionele 'gemeenteVanInschrijving' parameter kan worden gebruikt om de zoekcriteria aan te scherpen
 
     Scenario: de opgegeven gemeente van inschrijving komt overeen met de gemeente van inschrijving van de persoon
       Gegeven adres 'A1'
