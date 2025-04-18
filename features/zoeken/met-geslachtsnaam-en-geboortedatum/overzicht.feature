@@ -32,7 +32,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'os' en geboortedatum '1983-05-26'
       Dan wordt 'Marjan' gevonden
 
-    Abstract Scenario: geslachtsnaam van personen komen deels oveereen met de opgegeven geslachtsnaam
+    Abstract Scenario: geslachtsnaam van personen komen deels overeen met de opgegeven geslachtsnaam
       Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
       * heeft de volgende gegevens
         | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
