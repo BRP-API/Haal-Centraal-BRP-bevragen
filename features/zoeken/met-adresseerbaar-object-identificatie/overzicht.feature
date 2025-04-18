@@ -2,7 +2,7 @@
 Functionaliteit: zoek personen met de adresseerbaar object identificatie van een adres
 
   Als consumer
-  wil ik de personen vinden door het opgeven van de adresseerbaar object identificatie van het adres waar zij staan ingeschreven
+  wil ik personen vinden door het opgeven van de adresseerbaar object identificatie van het adres waar zij staan ingeschreven
 
   Regel: personen ingeschreven op het gezochte adres worden gevonden
 
