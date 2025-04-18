@@ -2,7 +2,7 @@
 Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
 
   Als consumer
-  wil ik de personen vinden door het opgeven van hun geslachtsnaam en geboortedatum
+  wil ik personen vinden door het opgeven van hun geslachtsnaam en geboortedatum
 
   Regel: personen worden gevonden als hun geboortedatum én hun geslachtsnaam overeenkomen met de opgegeven geboortedatum en geslachtsnaamhun (niet-hoofdlettergevoelig)
 
