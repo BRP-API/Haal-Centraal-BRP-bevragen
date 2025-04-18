@@ -35,7 +35,7 @@ Functionaliteit: leveren van de aanhef van een persoon
         | vrouw     | V        | Geachte mevrouw Groenen |
         | onbekend  | O        | Geachte J.R. Groenen    |
 
-  Regel: de voorvoegsel begint met een hoofdletter behalve wanneer er voorletter aan voorafgaan (geslacht O)
+  Regel: het voorvoegsel begint met een hoofdletter behalve wanneer er één of meer voorletters aan voorafgaan (geslacht O)
 
     Abstract Scenario: persoon met voornamen, voorvoegsel en geslachtsnaam heeft geslacht <voorbeeld>
       Gegeven de persoon 'Robin' met burgerservicenummer '000000140'
