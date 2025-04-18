@@ -4,9 +4,9 @@ Functionaliteit: zoek personen met de adresseerbaar object identificatie van een
   Als consumer
   wil ik personen vinden door het opgeven van de adresseerbaar object identificatie van het adres waar zij staan ingeschreven
 
-  Regel: personen ingeschreven op het adres waarmee wordt gezocht worden gevonden
+  Regel: personen worden gevonden die staan ingeschreven op het adres waarmee wordt gezocht 
 
-    Scenario: één persoon staat ingeschreven op het gezochte adres
+    Scenario: één persoon staat ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
         |                 0599 |                         0599010000219679 |
@@ -15,7 +15,7 @@ Functionaliteit: zoek personen met de adresseerbaar object identificatie van een
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met adresseerbaar object identificatie van 'A1'
       Dan wordt 'Robin' gevonden
 
-    Scenario: meerdere personen staan ingeschreven op het gezochte adres
+    Scenario: meerdere personen staan ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
         |                 0518 |                         0518200000617227 |
@@ -26,16 +26,16 @@ Functionaliteit: zoek personen met de adresseerbaar object identificatie van een
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met adresseerbaar object identificatie van 'A1'
       Dan worden 'Robin en Saskia' gevonden
 
-    Scenario: niemand staat ingeschreven op het gezochte adres
+    Scenario: niemand staat ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
         |                 0518 |                         0518200000617227 |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met adresseerbaar object identificatie van 'A1'
       Dan worden er geen personen gevonden
 
-  Regel: overleden personen ingeschreven op het gezochte adres worden niet gevonden
+  Regel: overleden personen die staan ingeschreven op het adres waarmee wordt gezocht, worden niet gevonden
 
-    Scenario: een overleden persoon staat ingeschreven op het gezochte adres
+    Scenario: een overleden persoon staat ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1'
         | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
         |                 0518 |                         0518200000617227 |
