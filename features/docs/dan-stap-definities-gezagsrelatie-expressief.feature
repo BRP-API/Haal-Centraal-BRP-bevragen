@@ -530,3 +530,29 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
         }
         """
       Dan is het gezag over 'Bert' niet te bepalen met de toelichting 'dit is de reden dat het gezag niet te bepalen is.'
+
+    @info-api
+    Scenario: gezag niet te bepalen wordt verwacht met dubbele punt in toelichting
+      Gegeven de response body is gelijk aan
+        """
+        {
+              "personen": [
+                {
+                  "gezag": [
+                    {
+                      "type": "GezagNietTeBepalen",
+                      "minderjarige": {
+                        "burgerservicenummer": "000000036",
+                        "naam": {
+                          "volledigeNaam": "Jansen"
+                        },
+                        "leeftijd": 2
+                      },
+                      "toelichting": "dit is de reden dat het gezag niet te bepalen is. Het gaat om de volgende gegevens: geboortedatum"
+                    }
+                  ]
+                }
+              ]
+            }
+        """
+      Dan is het gezag over 'Bert' niet te bepalen met de toelichting 'dit is de reden dat het gezag niet te bepalen is. Het gaat om de volgende gegevens: geboortedatum'
