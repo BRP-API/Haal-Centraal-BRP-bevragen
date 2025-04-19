@@ -228,6 +228,7 @@ module.exports = {
     columnNameMap,
     persoonTypeMap,
     tableNameMap,
+    collectionNameMap,
     toCollectieNaam,
     toDbPersoonType,
     toDbTableName,
