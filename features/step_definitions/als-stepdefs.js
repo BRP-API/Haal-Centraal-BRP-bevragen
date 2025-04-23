@@ -46,6 +46,12 @@ function mapEndpointToRelativeUrl(context, endpoint) {
 }
 
 function copyPrimaryKeyValues(context, sqlStatements) {
+    for(const autorisatie of sqlStatements.autorisaties) {
+        let input = context.data.autorisaties.find(a => a.id === autorisatie.stap);
+        if(input) {
+            input.autorisatieId = autorisatie.autorisatieId;
+        }
+    }
     for(const adres of sqlStatements.adressen) {
         let input = context.data.adressen.find(a => a.id === adres.stap);
         if(input) {

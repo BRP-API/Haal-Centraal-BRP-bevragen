@@ -101,3 +101,8 @@ defineParameterType({
         return toDateOrString(`${jaar} jaar - ${aantalJaren} jaar`, false);
     }
 });
+
+defineParameterType({
+    name: 'relatieve datum',
+    regexp: /(gisteren|vandaag|morgen|deze maand|vorige maand|volgende maand)/
+});

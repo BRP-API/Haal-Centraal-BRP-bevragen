@@ -1,71 +1,70 @@
 const { toDbTableName } = require('./brp');
 
-function createInsertIntoPersoonslijstStatement(inschrijving) {
-    const tableName = toDbTableName('inschrijving');
+function createAndReturnInsertedStatement(entityName, primaryKey, entity, additionalColumns = {}) {
+    const tableName = toDbTableName(entityName);
 
     let statementText = `INSERT INTO public.${tableName}(`;
     let values = [];
 
-    statementText += 'pl_id';
+    // Add primary key and additional columns
+    statementText += primaryKey;
+    Object.keys(additionalColumns).forEach(column => {
+        statementText += `,${column}`;
+    });
 
-    statementText += ',' + 'mutatie_dt';
-
-    Object.keys(inschrijving).forEach(key => {
-        statementText += ',' + key;
+    // Add entity columns
+    Object.keys(entity).forEach(key => {
+        statementText += `,${key}`;
     });
 
     statementText += ') VALUES(';
 
-    statementText += `(SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.${tableName})`;
+    // Add primary key value
+    statementText += `(SELECT COALESCE(MAX(${primaryKey}), 0)+1 FROM public.${tableName})`;
 
-    statementText += ',' + 'current_timestamp';
-
-    Object.keys(inschrijving).forEach((key,index) => {
-        values.push(inschrijving[key]);
-        statementText += ',' + `$${index+1}`;
+    // Add additional column values
+    Object.values(additionalColumns).forEach(value => {
+        statementText += `,${value}`;
     });
 
-    statementText += ')';
+    // Add entity values
+    Object.keys(entity).forEach((key, index) => {
+        values.push(entity[key]);
+        statementText += `,$${index + 1}`;
+    });
 
-    statementText += ' RETURNING *';
+    statementText += ') RETURNING *';
 
     return {
         text: statementText,
-        categorie: 'inschrijving',
+        categorie: entityName,
         values: values
     };
 }
 
+function createInsertIntoPersoonslijstStatement(inschrijving) {
+    return createAndReturnInsertedStatement(
+        'inschrijving',
+        'pl_id',
+        inschrijving,
+        { mutatie_dt: 'current_timestamp' }
+    );
+}
+
 function createInsertIntoAdresStatement(adres) {
-    const tableName = toDbTableName('adres');
+    return createAndReturnInsertedStatement(
+        'adres',
+        'adres_id',
+        adres
+    );
+}
 
-    let statementText = `INSERT INTO public.${tableName}(`;
-    let values = [];
-
-    statementText += 'adres_id';
-
-    Object.keys(adres).forEach(key => {
-        statementText += ',' + key;
-    });
-
-    statementText += ') VALUES(';
-
-    statementText += `(SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.${tableName})`;
-
-    Object.keys(adres).forEach((key,index) => {
-        values.push(adres[key]);
-        statementText += ',' + `$${index+1}`;
-    });
-
-    statementText += ')';
-
-    statementText += ' RETURNING *';
-
-    return {
-        text: statementText,
-        categorie: 'adres',
-        values: values
-    };
+function createInsertAutorisatieIntoStatement(autorisatie) {
+    return createAndReturnInsertedStatement(
+        'autorisatie',
+        'autorisatie_id',
+        autorisatie
+    );
 }
 
 function createInsertIntoStatement(entityNaam, entity) {
@@ -116,6 +115,23 @@ function generateAdresSqlStatements(adressen) {
     return sqlStatements;
 }
 
+function generateAutorisatieSqlStatements(autorisaties) {
+    let sqlStatements = [];
+
+    autorisaties?.forEach(autorisatie => {
+        let autorisatieStatements = {
+            stap: autorisatie.id,
+            statements: []
+        };
+
+        autorisatieStatements.statements.push(createInsertAutorisatieIntoStatement(autorisatie.autorisatie));
+
+        sqlStatements.push(autorisatieStatements);
+    });
+
+    return sqlStatements;
+}
+
 function getBsn(persoon) {
     return persoon.persoon.at(-1).burger_service_nr;
 }
@@ -128,7 +144,8 @@ function generateSqlStatementsFrom(data) {
 
     let sqlStatements = {
         personen: [],
-        adressen: generateAdresSqlStatements(data.adressen)
+        adressen: generateAdresSqlStatements(data.adressen),
+        autorisaties: generateAutorisatieSqlStatements(data.autorisaties)
     };
 
     data.personen?.forEach(persoon => {
