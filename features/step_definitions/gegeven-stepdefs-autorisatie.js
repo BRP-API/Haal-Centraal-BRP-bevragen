@@ -19,3 +19,37 @@ Given(/^de geauthenticeerde consumer heeft de volgende 'claim' gegevens$/, funct
         ? dataTable.hashes().find(param => param.naam === 'gemeenteCode')?.waarde
         : dataTable.hashes()[0].gemeenteCode;
 });
+
+function mapFieldsToAdHocRubrieken(fields) {
+    switch(fields) {
+        case 'gezag':
+            return '10120 81180 PAGZ01'; // burgerservicenummer, adresseerbaarObjectIdentificatie, gezag
+        default:
+            return '';
+    }
+}
+
+Given('een nieuwe/bestaande afnemer met indicatie {string} is geautoriseerd voor het vragen van {string}', function (afnemerCode, fields) {
+    if(!this.context.data) {
+        this.context.data = {};
+    }
+    if(!this.context.data.autorisaties) {
+        this.context.data.autorisaties = [];
+    }
+
+    const autorisatie = {
+        autorisatie: {
+            afnemer_code: afnemerCode,
+            geheimhouding_ind: 0,
+            verstrekkings_beperking: 0,
+            afnemer_naam: 'Haal Centraal',
+            adres_vraag_bevoegdheid: 1,
+            ad_hoc_medium: 'N',
+            tabel_regel_start_datum: 20201128,
+            ad_hoc_rubrieken: mapFieldsToAdHocRubrieken(fields)
+        },
+        id: `autorisatie-${afnemerCode}`
+    }
+
+    this.context.data.autorisaties.push(autorisatie);
+});

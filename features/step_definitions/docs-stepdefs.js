@@ -166,7 +166,8 @@ function mapRowToSqlStatement(list, row) {
 function dataTableToSqlStatements(dataTable) {
     let retval = {
         personen: [],
-        adressen: []
+        adressen: [],
+        autorisaties: []
     }
 
     dataTable.hashes().forEach(row => {

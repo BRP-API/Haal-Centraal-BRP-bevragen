@@ -206,7 +206,7 @@ Then(/^is het gezag over '(\w*)' voogdij(?: met derde '(\w*)')?$/, function (aan
     this.context.expected = expected;
 });
 
-Then(/^is het gezag over '(\w*)' (niet te bepalen|tijdelijk geen gezag) met de toelichting '([\wé. ]*)'$/, function (aanduidingMinderjarige, type, toelichting) {
+Then(/^is het gezag over '(\w*)' (niet te bepalen|tijdelijk geen gezag) met de toelichting '([\wé.: ]*)'$/, function (aanduidingMinderjarige, type, toelichting) {
     this.context.verifyResponse = true;
 
     const expected = {

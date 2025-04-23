@@ -30,6 +30,10 @@ function getGeboortedatum(persoon) {
     return persoon.persoon.at(-1).geboorte_datum;
 }
 
+function getGeslachtsaanduiding(persoon) {
+    return persoon.persoon.at(-1).geslachts_aand;
+}
+
 module.exports = {
     getAdres,
     getAdresIndex,
@@ -37,5 +41,6 @@ module.exports = {
     getVoornamen,
     getGeslachtsnaam,
     getGeboortedatum,
+    getGeslachtsaanduiding,
     getPersoon
 };

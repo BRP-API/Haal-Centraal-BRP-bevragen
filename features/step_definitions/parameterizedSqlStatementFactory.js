@@ -131,7 +131,7 @@ function queryLastRowStatement(tabelNaam, orderByColumnName, filter = undefined)
 
 const tabelPrimaryKeyMap = {
     adres: 'adres_id',
-    autorisatie: 'afnemer_code',
+    autorisatie: 'autorisatie_id',
     gemeente: 'gemeente_code',
     default: 'pl_id'
 };
