@@ -58,6 +58,17 @@ async function executeAdresStatements(client, statements) {
     return pkId;
 }
 
+async function executeAutorisatieStatements(client, statements) {
+    let pkAutorisatieId;
+
+    for(const statement of statements) {
+        const result = await executeAndLogStatement(client, statement);
+        pkAutorisatieId = result.rows[0]['autorisatie_id'];
+    }
+
+    return pkAutorisatieId;
+}
+
 async function select(tableName, objecten) {
     if(!objecten) {
         global.logger.info('geen objecten');
@@ -148,6 +159,9 @@ async function execute(sqlStatements) {
     try {
         await client.query('BEGIN');
 
+        for(let autorisatie of sqlStatements.autorisaties) {
+            autorisatie.autorisatieId = await executeAutorisatieStatements(client, autorisatie.statements);
+        }
         for(let adres of sqlStatements.adressen) {
             adres.adresId = await executeAdresStatements(client, adres.statements);
         }
@@ -226,8 +240,20 @@ async function deleteInsertedAdresRows(client, adressen) {
     }
 }
 
+async function deleteInsertedAutorisatieRows(client, autorisaties) {
+    if(!autorisaties) {
+        return;
+    }
+
+    for(const autorisatie of autorisaties) {
+        if(autorisatie.autorisatieId) {
+            await executeAndLogDeleteStatement(client, 'autorisatie', autorisatie.autorisatieId);
+        }
+    }
+}
+
 async function deleteInsertedRows(client, sqlData) {
-    global.logger.debug('delete inserted rows');
+    global.logger.info('delete inserted rows', sqlData);
 
     if(!sqlData) {
         return;
@@ -235,6 +261,7 @@ async function deleteInsertedRows(client, sqlData) {
 
     await deleteInsertedPersoonRows(client, sqlData.personen);
     await deleteInsertedAdresRows(client, sqlData.adressen);
+    await deleteInsertedAutorisatieRows(client, sqlData.autorisaties);
 }
 
 async function rollback(sqlContext, sqlData) {
