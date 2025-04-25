@@ -85,5 +85,19 @@ module.exports = {
       addAcceptGezagVersionHeader: false
     },
     tags: 'not @skip-verify and ((@deprecated and ((not @data-api and not @info-api) or @gezag-api)) or (not @deprecated and not @nieuw and ((not @data-api and not @info-api) or @gezag-api)))'
+  },
+  AenP: {
+    worldParameters: {
+      apiUrl: 'http://localhost:8080/haalcentraal/api',
+      api: 'autorisatie-en-protocollering',
+      logger: {
+        level: 'info'
+      },
+      oAuth: {
+        enable: true
+      },
+      addAcceptGezagVersionHeader: false
+    },
+    tags: 'not @skip-verify and not @deprecated and not @gezag-api and not @data-api'
   }
 }
