@@ -14,5 +14,7 @@ components:
           $ref: './naam-v1.yaml#/components/schemas/Naam'
         geslacht:
           $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
-      required: 
+        geboorte:
+          $ref: '../brp/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
+      required:
         - naam
