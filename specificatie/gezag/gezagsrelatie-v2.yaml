@@ -59,6 +59,8 @@ components:
           properties:
             ouder:
               $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+      required:
+        - ouder
 
     GezamenlijkGezag:
       allOf:
@@ -89,6 +91,8 @@ components:
           properties:
             toelichting:
               $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'
+      required:
+        - toelichting
 
     GezagNietTeBepalen:
       allOf:
@@ -97,3 +101,5 @@ components:
           properties:
             toelichting:
               $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'
+      required:
+        - toelichting
