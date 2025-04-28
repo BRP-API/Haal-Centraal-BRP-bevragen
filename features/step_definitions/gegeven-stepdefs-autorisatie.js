@@ -29,12 +29,17 @@ function mapFieldsToAdHocRubrieken(fields) {
     }
 }
 
-Given('een nieuwe/bestaande afnemer met indicatie {string} is geautoriseerd voor het vragen van {string}', function (afnemerCode, fields) {
-    if(!this.context.data) {
-        this.context.data = {};
+function createAfnemerAutorisatie(context, afnemerCode, gemeenteCode, fields) {
+    context.afnemerID = afnemerCode;
+    if(gemeenteCode) {
+        context.gemeenteCode = gemeenteCode;
     }
-    if(!this.context.data.autorisaties) {
-        this.context.data.autorisaties = [];
+
+    if(!context.data) {
+        context.data = {};
+    }
+    if(!context.data.autorisaties) {
+        context.data.autorisaties = [];
     }
 
     const autorisatie = {
@@ -51,5 +56,13 @@ Given('een nieuwe/bestaande afnemer met indicatie {string} is geautoriseerd voor
         id: `autorisatie-${afnemerCode}`
     }
 
-    this.context.data.autorisaties.push(autorisatie);
+    context.data.autorisaties.push(autorisatie);
+}
+
+Given('een nieuwe/bestaande afnemer met indicatie {string} is geautoriseerd voor het vragen van {string}', function (afnemerCode, fields) {
+    createAfnemerAutorisatie(this.context, afnemerCode, undefined, fields);
+});
+
+Given('een nieuwe/bestaande afnemer met indicatie {string} en gemeente code {string} is geautoriseerd voor het vragen van {string}', function (afnemerCode, gemeenteCode, fields) {
+    createAfnemerAutorisatie(this.context, afnemerCode, gemeenteCode, fields);
 });
