@@ -3,7 +3,7 @@
 @info-api
 Functionaliteit: leveren van de aanhef van een persoon
   Als consumer
-  wil ik de aanhef (introducerende zin van een brief of e-matching) van een persoon kunnen vragen
+  wil ik de aanhef (introducerende zin van een brief of e-mail) van een persoon kunnen vragen
   zodat ik de persoon op de juiste en consistente manier kan aanschrijven
 
   De volgende afkortingen worden gebruikt in deze specificatie:

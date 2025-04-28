@@ -69,8 +69,8 @@ Functionaliteit: zoek personen met de adresseerbaar object identificatie van een
       En de persoon 'Robin' met burgerservicenummer '00000024'
       En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1' met de volgende gegevens
         | gemeente van inschrijving (09.10) |
-        | 0518                              |
+        | 0599                              |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met adresseerbaar object identificatie van 'A1' en parameters
         | gemeenteVanInschrijving |
-        |                    0599 |
+        |                    0518 |
       Dan worden er geen personen gevonden
