@@ -17,4 +17,5 @@ components:
         geboorte:
           $ref: '../brp/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
       required:
+        - burgerservicenummer
         - naam
