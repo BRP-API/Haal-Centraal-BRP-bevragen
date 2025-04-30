@@ -229,3 +229,17 @@ Then(/^heeft de (minderjarige|ouder|derde) geen (\w*)$/, function (type, propert
         delete expected[type][property];
     }
 });
+
+Then('is er geen gezag over {string}', function (aanduidingMinderjarige) {
+    this.context.verifyResponse = true;
+
+    const expected = {
+        personen: [
+            {
+                gezag: []
+            }
+        ]
+    };
+
+    this.context.expected = expected;
+});

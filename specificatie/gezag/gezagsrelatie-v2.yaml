@@ -1,0 +1,105 @@
+openapi: 3.1.0
+info:
+  title: gezagsrelatie type definitie
+  version: 2.0.0
+paths: {}
+components:
+  schemas:
+    Gezag:
+      type: array
+      items:
+        $ref: '#/components/schemas/Gezagsrelatie'
+      minItems: 0
+    Gezagsrelatie:
+      type: object
+      required:
+        - type
+        - minderjarige
+      properties:
+        type:
+          type: string
+        minderjarige:
+          $ref: 'minderjarige-v2.yaml#/components/schemas/Minderjarige'
+        inOnderzoek:
+          type: boolean
+          description: Geeft aan dat de gezagsrelatie in onderzoek is.
+      discriminator:
+        propertyName: type
+        mapping:
+          GezamenlijkOuderlijkGezag: '#/components/schemas/GezamenlijkOuderlijkGezag'
+          EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
+          GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
+          Voogdij: '#/components/schemas/Voogdij'
+          TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
+          GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
+      example:
+        type: 'GezamenlijkOuderlijkGezag'
+        ouders:
+          - burgerservicenummer: '999998870'
+          - burgerservicenummer: '999998882'
+        minderjarige:
+          burgerservicenummer: '999998894'
+
+    GezamenlijkOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouders:
+              type: array
+              items:
+                $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+              minItems: 2
+              maxItems: 2
+
+    EenhoofdigOuderlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+      required:
+        - ouder
+
+    GezamenlijkGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            ouder:
+              $ref: 'gezagouder-v2.yaml#/components/schemas/GezagOuder'
+            derde:
+              $ref: 'derde-v2.yaml#/components/schemas/Derde'
+
+    Voogdij:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            derden:
+              type: array
+              items:
+                $ref: 'derde-v2.yaml#/components/schemas/BekendeDerde'
+              minItems: 0
+              maxItems: 2
+
+    TijdelijkGeenGezag:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'
+      required:
+        - toelichting
+
+    GezagNietTeBepalen:
+      allOf:
+        - $ref: '#/components/schemas/Gezagsrelatie'
+        - type: object
+          properties:
+            toelichting:
+              $ref: 'toelichting-v1.yaml#/components/schemas/Toelichting'
+      required:
+        - toelichting

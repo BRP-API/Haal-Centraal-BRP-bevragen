@@ -556,3 +556,18 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
             }
         """
       Dan is het gezag over 'Bert' niet te bepalen met de toelichting 'dit is de reden dat het gezag niet te bepalen is. Het gaat om de volgende gegevens: geboortedatum'
+
+  Regel: Dan is er geen gezag
+
+    Scenario: gevraagde persoon heeft geen gezagsrelaties
+      Gegeven de response body is gelijk aan
+        """
+        {
+          "personen": [
+            {
+              "gezag": []
+            }
+          ]
+        }
+        """
+      Dan is er geen gezag over 'Bert'
