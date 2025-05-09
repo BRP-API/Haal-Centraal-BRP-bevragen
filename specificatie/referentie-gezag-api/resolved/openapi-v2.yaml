@@ -5,7 +5,7 @@ info:
     De Gezagsmodule kan worden bevraagd op basis van één of meerdere BSNs
     - Gezag bepalen: input bsn(s) 
     Het antwoord van de Gezagsmodule komt in de vorm van een lijst met daarin de BSN minderjarige, Soort Gezagt tussen relatie met meerderjarige en BSN meerderjarige
-  version: '1.0'
+  version: '2.0'
   contact:
     url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
@@ -31,11 +31,15 @@ paths:
         - Is de persoon minderjarig dan wordt het gezag van de ouder(s) over deze persoon teruggegeven.
       operationId: opvragenBevoegdheidTotGezag
       parameters:
-        - name: OIN
-          in: header
-          required: true
+        - in: header
+          name: Accept-Gezag-Version
           schema:
-            type: string
+            type: integer
+            enum:
+              - 2
+            default: 2
+          required: true
+          x-version-param: true
       requestBody:
         content:
           application/json:
@@ -80,16 +84,11 @@ components:
           $ref: '#/components/schemas/Burgerservicenummer'
         gezag:
           $ref: '#/components/schemas/Gezag'
-    Gezag:
-      type: array
-      items:
-        $ref: '#/components/schemas/AbstractGezagsrelatie'
-      minItems: 0
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
       example: '555555021'
-    AbstractGezagsrelatie:
+    Gezagsrelatie:
       type: object
       required:
         - type
@@ -105,29 +104,97 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          GezamenlijkOuderlijkGezag: '#/components/schemas/GezamenlijkOuderlijkGezag'
           EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
           GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
           Voogdij: '#/components/schemas/Voogdij'
           TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
           GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
       example:
-        type: TweehoofdigOuderlijkGezag
+        type: GezamenlijkOuderlijkGezag
         ouders:
           - burgerservicenummer: '999998870'
           - burgerservicenummer: '999998882'
         minderjarige:
           burgerservicenummer: '999998894'
+    Voornamen:
+      description: |
+        De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
+      maxLength: 200
+      example: Pieter Jan
+    Waardetabel:
+      type: object
+      properties:
+        code:
+          type: string
+          pattern: ^[a-zA-Z0-9 \.]+$
+          example: '6030'
+        omschrijving:
+          type: string
+          pattern: ^[a-zA-Z0-9À-ž \'\.\-\(\),]{1,200}$
+          example: Nederland
+    AdellijkeTitelPredicaatSoort:
+      type: string
+      enum:
+        - titel
+        - predicaat
+    AdellijkeTitelPredicaatType:
+      description: |
+        Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
+      allOf:
+        - $ref: '#/components/schemas/Waardetabel'
+        - properties:
+            soort:
+              $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
+          example:
+            code: JV
+            omschrijving: jonkvrouw
+            soort: predicaat
+    Voorvoegsel:
+      type: string
+      pattern: ^[a-zA-Z \']{1,10}$
+      maxLength: 10
+      example: de
+    Geslachtsnaam:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
+      description: |
+        De achternaam van een persoon.
+      example: Vries
+    Naam:
+      description: Benodigde properties om een volledige naam te construeren. Het construeren wordt gedaan door een andere service.
+      type: object
+      properties:
+        voornamen:
+          $ref: '#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '#/components/schemas/Geslachtsnaam'
+    Geslachtsaanduiding:
+      allOf:
+        - $ref: '#/components/schemas/Waardetabel'
+        - example:
+            code: M
+            omschrijving: man
     GezagOuder:
       type: object
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/Naam'
+        geslacht:
+          $ref: '#/components/schemas/Geslachtsaanduiding'
       required:
-        - burgerservicenummer
-    TweehoofdigOuderlijkGezag:
+        - naam
+    GezamenlijkOuderlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouders:
@@ -138,11 +205,13 @@ components:
               maxItems: 2
     EenhoofdigOuderlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouder:
               $ref: '#/components/schemas/GezagOuder'
+      required:
+        - ouder
     Derde:
       type: object
       required:
@@ -162,14 +231,18 @@ components:
           properties:
             burgerservicenummer:
               $ref: '#/components/schemas/Burgerservicenummer'
-      required:
-        - burgerservicenummer
+            naam:
+              $ref: '#/components/schemas/Naam'
+            geslacht:
+              $ref: '#/components/schemas/Geslachtsaanduiding'
+          required:
+            - naam
     OnbekendeDerde:
       allOf:
         - $ref: '#/components/schemas/Derde'
     GezamenlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouder:
@@ -178,7 +251,7 @@ components:
               $ref: '#/components/schemas/Derde'
     Voogdij:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             derden:
@@ -192,22 +265,49 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
     TijdelijkGeenGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+      required:
+        - toelichting
     GezagNietTeBepalen:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+      required:
+        - toelichting
+    GbaDatum:
+      type: string
+      pattern: ^[0-9]{8}$
+      example: '20180700'
+    GeboorteBasis:
+      type: object
+      properties:
+        datum:
+          $ref: '#/components/schemas/GbaDatum'
+          description: |
+            Datum waarop de persoon is geboren.
     Minderjarige:
       type: object
       properties:
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
+        naam:
+          $ref: '#/components/schemas/Naam'
+        geslacht:
+          $ref: '#/components/schemas/Geslachtsaanduiding'
+        geboorte:
+          $ref: '#/components/schemas/GeboorteBasis'
       required:
         - burgerservicenummer
+        - naam
+    Gezag:
+      type: array
+      items:
+        $ref: '#/components/schemas/Gezagsrelatie'
+      minItems: 0
