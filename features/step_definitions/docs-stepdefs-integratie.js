@@ -62,7 +62,7 @@ function validateResult(results) {
         if (item.result.rows.length > 0) {
             assert.containsAllKeys(item.result.rows[0], Object.keys(item.row));
         } else {
-            assert.fail(undefined, undefined, 'No matching records found!', item.row);
+            assert.fail(undefined, undefined, 'No matching records found!');
         }
     })
 }
