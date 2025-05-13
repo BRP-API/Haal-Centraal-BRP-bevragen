@@ -42,10 +42,15 @@ function defineDateParameterType(name, regexp, transformer) {
 
 defineParameterType({
     name: 'aanduidingen',
-    regexp: /'([a-zA-Z0-9, ]*)'/,
+    regexp: /'([a-zA-Z0-9À-ž-, ]*)'/,
     transformer(aanduidingen) {
         return aanduidingen.replace(' en ', ',').split(',').map(aanduiding => aanduiding.trim());
     }
+});
+
+defineParameterType({
+    name: 'aanduiding',
+    regexp: /'([a-zA-Z0-9À-ž-]*)'/
 });
 
 defineParameterType({
@@ -106,3 +111,12 @@ defineParameterType({
     name: 'relatieve datum',
     regexp: /(gisteren|vandaag|morgen|deze maand|vorige maand|volgende maand)/
 });
+
+defineParameterType({
+    name: 'tijdelijk geen gezag of niet te bepalen',
+    regexp: /(tijdelijk geen gezag|niet te bepalen)/,
+});
+
+defineParameterType({
+    name: 'toelichting',
+    regexp: /[a-zA-Z0-9À-ž /;:.\-?()]{1,400}/});
