@@ -189,6 +189,15 @@ async function deleteAdresRij(client, sqlData) {
     }
 }
 
+function deleteAutorisatieStatement(id) {
+    const statement = {
+        text: `DELETE FROM public.lo3_autorisatie WHERE afnemer_code=$1`,
+        values: [id]
+    };
+
+    return statement;
+}
+
 async function deleteAutorisatieRecords(client, sqlData) {
     if(sqlData === undefined || sqlData['autorisatie'] === undefined) {
         return;
@@ -201,7 +210,7 @@ async function deleteAutorisatieRecords(client, sqlData) {
             continue;
         }
 
-        await ExecuteAndLogDeleteStatement(client, 'autorisatie', id);
+        await ExecuteAndLogStatement(client, deleteAutorisatieStatement(id));
     }
 }
 

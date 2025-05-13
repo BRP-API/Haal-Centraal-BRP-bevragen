@@ -63,6 +63,21 @@ function configureOAuthSettings(context) {
                 clientSecret: 'secret',
                 scopes: [ '000000099000000080000' ],
                 resourceServer: 'ResourceServer02'
+            },
+            {
+                afnemerID: '000009',
+                gemeenteCode: '0900',
+                clientId: 'client met gemeentecode (eigen gemeente, bestaand gezag afnemer)',
+                clientSecret: 'secret',
+                scopes: [ '000000099000000090000' ],
+                resourceServer: 'ResourceServer02'
+            },
+            {
+                afnemerID: '000009',
+                clientId: 'client zonder gemeentecode (bestaand gezag afnemer)',
+                clientSecret: 'secret',
+                scopes: [ '000000099000000090000' ],
+                resourceServer: 'ResourceServer02'
             }
         ]
     }

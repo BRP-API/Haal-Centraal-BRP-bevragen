@@ -227,6 +227,17 @@ function createGezagsverhouding(persoon, dataTable) {
     persoon.gezagsverhouding.push(gezagsverhouding);
 }
 
+function wijzigGezagsverhouding (persoon, dataTable, isCorrectie) {
+    persoon.gezagsverhouding?.forEach(p => {
+      p.volg_nr = Number(p.volg_nr) + 1 + '';
+      if(isCorrectie && p.volg_nr === '1') {
+          p.onjuist_ind = 'O';
+      }
+    });
+  
+    createGezagsverhouding(persoon, dataTable);
+  };
+
 function createVerblijfplaats(persoon, dataTable) {
     if (!persoon.verblijfplaats) {
         persoon.verblijfplaats = [];
@@ -280,6 +291,7 @@ module.exports = {
     createPartner,
     wijzigPartner,
     createGezagsverhouding,
+    wijzigGezagsverhouding,
     aanvullenGezagsverhouding,
     createVerblijfplaats,
     wijzigVerblijfplaats,

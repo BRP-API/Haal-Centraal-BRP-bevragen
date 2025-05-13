@@ -110,6 +110,8 @@ async function getOAuthAccessToken(accessTokenUrl, oAuthSettings) {
 }
 
 async function createBearerAuthorizationHeader(afnemerId, gemeenteCode, oAuthSettings) {
+    global.logger.info(`createBearerAuthorizationHeader. afnemer: ${afnemerId}, gemeente: ${gemeenteCode}`);
+
     const oAuthClientSettings = oAuthSettings.clients.find(client => client.afnemerID === afnemerId && client.gemeenteCode === gemeenteCode);
     if(oAuthClientSettings === undefined) {
         global.logger.warn(`geen oAuthSettings gevonden voor afnemerId '${afnemerId}' en gemeenteCode: '${gemeenteCode}'`);
@@ -184,8 +186,7 @@ async function sendBevragenRequest(context, baseUrl, url, extraHeaders, dataTabl
         headers: createHeaders(dataTable, extraHeaders)
     };
 
-    global.logger.info('request headers', config.headers);
-    global.logger.info('request body', config.data);
+    global.logger.info('request', config);
 
     if(context.isStapDocumentatieScenario) {
         return;

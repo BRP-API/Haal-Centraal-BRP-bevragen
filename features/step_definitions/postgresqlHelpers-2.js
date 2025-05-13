@@ -182,21 +182,28 @@ async function execute(sqlStatements) {
 }
 
 function selectStatement(tabelNaam, columns, values) {
-    values = values.map((v) => toDateOrString(v));
+    // Converteer een waarde in values naar datum als het een datum is
+    const processedValues = values.map(toDateOrString);
 
     let counter = 0;
     const whereColumns = columns.map((column, index) => {
-        return values[index].length == 0 ?
-            column + ` IS NULL` :
-            column + `=$${++counter}`;
+        const value = processedValues[index];
+        if (!value || value.length === 0) {
+            return `${column} IS NULL`;
+        } else if (column === 'akte_nr') {
+            return `${column} LIKE $${++counter}`;
+        } else {
+            return `${column} = $${++counter}`;
+        }
     });
-    
-    values = values.filter(v => v.length > 0);
-    
+
+    // Uitfilteren van lege waarden voor de parameterized query
+    const filteredValues = processedValues.filter(v => v && v.length > 0);
+
     return {
-        text: `SELECT ${columns.join()} FROM public.${tabelNaam} WHERE ${whereColumns.join(` AND `)}`,
+        text: `SELECT ${columns.join(', ')} FROM public.${tabelNaam} WHERE ${whereColumns.join(' AND ')}`,
         categorie: tabelNaam,
-        values: values
+        values: filteredValues
     };
 }
 

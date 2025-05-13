@@ -31,6 +31,15 @@ function gegevenVondelingIsOpDatumGeboren(datum) {
     global.logger.info(`is ${datum} als vondeling geboren`, getPersoon(this.context, undefined));
 }
 
+function gegevenDePersoonIsGeborenOp(context, aanduiding, datum) {
+    aanvullenPersoon(
+        getPersoon(context, aanduiding),
+        arrayOfArraysToDataTable([
+            ['geboortedatum (03.10)', datum]
+        ])
+    );
+}
+
 function gegevenPersoonIsOpDatumGeboren(datum) {
     aanvullenPersoon(
         getPersoon(this.context, undefined),
@@ -77,3 +86,7 @@ Given('is {vandaag, gisteren of morgen - x jaar} als vondeling geboren', gegeven
 Given('is {deze-, vorige- of volgende maand - x jaar} als vondeling geboren', gegevenVondelingIsOpDatumGeboren);
 Given('is {dit-, vorig- of volgend jaar - x jaar} als vondeling geboren', gegevenVondelingIsOpDatumGeboren);
 Given('is {dd maand yyyy datum} als vondeling geboren', gegevenVondelingIsOpDatumGeboren);
+
+module.exports = {
+    gegevenDePersoonIsGeborenOp
+};
