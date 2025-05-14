@@ -47,32 +47,46 @@ function setProperty(obj, key, value) {
     }
 }
 
-Then('wordt/worden (alleen ){aanduidingen} gevonden', function(persoonAanduidingen) {
-    this.context.verifyResponse = true;
+function initExpected(context) {
+    context.verifyResponse = true;
 
-    const expected = { personen: [] };
+    if(!context.expected) {
+        context.expected = { personen: [] };
+    }   
+}
 
-    for(const persoonAanduiding of persoonAanduidingen) {
-        const persoon = getPersoon(this.context, persoonAanduiding);
+function createExpectedPersoon(context, persoonAanduiding) {
+    const persoon = getPersoon(context, persoonAanduiding);
 
-        let target = {
+    const expected = {
             id: persoonAanduiding // tijdelijk persoonAanduiding toevoegen om in volgende dan stap definities de correcte expected persoon te kunnen vinden
-        };
+    };
 
-        if (this.context.isStapDocumentatieScenario ||
-            this.context.fieldsHasBurgerservicenummer) {
-            setProperty(target, 'burgerservicenummer', getBsn(persoon));
-        }
-
-        expected.personen.push(target);
+    if (context.isStapDocumentatieScenario ||
+        context.fieldsHasBurgerservicenummer) {
+        setProperty(expected, 'burgerservicenummer', getBsn(persoon));
     }
 
-    this.context.expected = expected;
+    context.expected.personen.push(expected);
+
+    return expected;
+}
+
+Then('wordt/worden (alleen ){aanduidingen} gevonden', function(persoonAanduidingen) {
+    initExpected(this.context);
+
+    for(const persoonAanduiding of persoonAanduidingen) {
+        createExpectedPersoon(this.context, persoonAanduiding);
+    }
 });
 
 Then('heeft {string} de volgende {string} gegevens', function (persoonAanduiding, naamObjectProperty, dataTable) {
+    initExpected(this.context);
+
     let persoon = this.context.expected.personen.find(p => p.id === persoonAanduiding);
-    if(persoon) {
-        persoon[naamObjectProperty] = createObjectFrom(dataTable, true);
+    if(!persoon) {
+        persoon = createExpectedPersoon(this.context, persoonAanduiding);
     }
+
+    persoon[naamObjectProperty] = createObjectFrom(dataTable, true);
 });

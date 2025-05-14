@@ -17,15 +17,14 @@ Functionaliteit: leveren van de aanhef van een persoon
   Regel: de aanhef van een persoon zonder partner wordt als volgt samengesteld: GA VV GN. Wanneer een persoon geen voorvoegsel heeft, wordt de overbodige spatie niet opgenomen
 
     Abstract Scenario: persoon met voornamen, geslachtsnaam en geen voorvoegsel heeft geslacht <voorbeeld>
-      Gegeven de persoon 'Jo' met burgerservicenummer '000000141'
+      Gegeven de persoon 'Jo'
       * heeft de volgende gegevens
         | naam                        | waarde     |
         | geslachtsaanduiding (04.10) | <geslacht> |
         | voornamen (02.10)           | Jo Rene    |
         | geslachtsnaam (02.40)       | Groenen    |
       Als 'adressering.aanhef' wordt gevraagd van personen gezocht met burgerservicenummer van 'Jo'
-      Dan wordt 'Jo' gevonden
-      En heeft 'Jo' de volgende 'adressering' gegevens
+      Dan heeft 'Jo' de volgende 'adressering' gegevens
         | aanhef   |
         | <aanhef> |
 
@@ -38,7 +37,7 @@ Functionaliteit: leveren van de aanhef van een persoon
   Regel: het voorvoegsel begint met een hoofdletter behalve wanneer er één of meer voorletters aan voorafgaan (geslacht O)
 
     Abstract Scenario: persoon met voornamen, voorvoegsel en geslachtsnaam heeft geslacht <voorbeeld>
-      Gegeven de persoon 'Robin' met burgerservicenummer '000000140'
+      Gegeven de persoon 'Robin'
       * heeft de volgende gegevens
         | naam                        | waarde      |
         | geslachtsaanduiding (04.10) | <geslacht>  |
@@ -46,8 +45,7 @@ Functionaliteit: leveren van de aanhef van een persoon
         | voorvoegsel (02.30)         | van         |
         | geslachtsnaam (02.40)       | Puffelen    |
       Als 'adressering.aanhef' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin'
-      Dan wordt 'Robin' gevonden
-      En heeft 'Robin' de volgende 'adressering' gegevens
+      Dan heeft 'Robin' de volgende 'adressering' gegevens
         | aanhef   |
         | <aanhef> |
 
@@ -65,7 +63,7 @@ Functionaliteit: leveren van de aanhef van een persoon
     | N                      | GA VV GN-VP GP |
 
     Abstract Scenario: persoon met partner heeft aanduiding naamgebruik '<naamgebruik>'
-      Gegeven de persoon 'Joan' met burgerservicenummer '000000142'
+      Gegeven de persoon 'Joan'
       En heeft de volgende gegevens
         | naam                           | waarde          |
         | geslachtsaanduiding (04.10)    | V               |
@@ -79,8 +77,7 @@ Functionaliteit: leveren van de aanhef van een persoon
         | geslachtsnaam (02.40) | <partner geslachtsnaam> |
       En 'Joan' en 'Jan' zijn met elkaar gehuwd
       Als 'adressering.aanhef' wordt gevraagd van personen gezocht met burgerservicenummer van 'Joan'
-      Dan wordt 'Joan' gevonden
-      En heeft 'Joan' de volgende 'adressering' gegevens
+      Dan heeft 'Joan' de volgende 'adressering' gegevens
         | aanhef   |
         | <aanhef> |
 

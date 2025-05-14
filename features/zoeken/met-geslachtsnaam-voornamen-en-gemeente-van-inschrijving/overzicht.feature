@@ -5,14 +5,12 @@ Functionaliteit: zoek personen met geslachtsnaam, voornamen en gemeente van insc
   wil ik personen kunnen vinden door het opgeven van de gemeente waar ze zijn ingeschreven én hun geslachtsnaam en voornamen
 
   Achtergrond:
-    Gegeven adres 'A1'
-      | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-      |                 0599 |                         0599010000219679 |
+    Gegeven adres 'A1' in gemeente 'Rotterdam'
 
   Regel: personen worden gevonden als zij staan ingeschreven in de opgegeven gemeente én hun geslachtsnaam en voornamen komen exact overeen met de opgegeven geslachtsnaam en voornamen (niet hoofdlettergevoelig)
 
     Abstract Scenario: geslachtsnaam, voornamen en gemeente waar personen zijn ingeschreven komen exact overeen met de opgegeven geslachtsnaam, voornamen en gemeente van inschrijving parameters
-      Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
+      Gegeven de persoon 'Pieter'
       * heeft de volgende gegevens
         | geslachtsnaam (02.40) | voornamen (02.10) |
         | Maassen               | Pieter            |
@@ -27,7 +25,7 @@ Functionaliteit: zoek personen met geslachtsnaam, voornamen en gemeente van insc
         | MAASSEN       | pieter    |
 
     Scenario: de te vinden persoon heeft een geslachtsnaam van twee karakters lang
-      Gegeven de persoon 'Miriam' met burgerservicenummer '000000025'
+      Gegeven de persoon 'Miriam'
       * heeft de volgende gegevens
         | geslachtsnaam (02.40) | voornamen (02.10) |
         | Os                    | Miriam            |
@@ -38,7 +36,7 @@ Functionaliteit: zoek personen met geslachtsnaam, voornamen en gemeente van insc
   Regel: de optionele 'voorvoegsel' parameter (niet hoofdlettergevoelig) kan worden gebruikt om de zoek criteria aan te scherpen
 
     Scenario: geslachtsnaam, voorvoegsel, voornamen en gemeente waar de personen zijn ingeschreven komen overeen met de opgegeven geslachtsnaam, voorvoegsel, voornamen en gemeente van inschrijving parameters
-      Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
+      Gegeven de persoon 'Pieter'
       * heeft de volgende gegevens
         | geslachtsnaam (02.40) | voorvoegsel (02.30) | voornamen (02.10) |
         | Maassen               | van                 | Pieter            |
@@ -58,11 +56,11 @@ Functionaliteit: zoek personen met geslachtsnaam, voornamen en gemeente van insc
 
     @info-api
     Scenario: geslachtsnaam, voornamen en de gemeente waar de overleden persoon staat ingeschreven komen overeen met de opgegeven geslachtsnaam, voornamen en gemeente van inschrijving parameters
-      Gegeven de persoon 'Jan' met burgerservicenummer '000000026'
+      Gegeven de persoon 'Jan'
       * heeft de volgende gegevens
         | geslachtsnaam (02.40) | voornamen (02.10) |
         | Jansen                | Jan               |
-      En 'Jan' is 5 jaar geleden ingeschreven op adres 'A1'
+      En 'Jan' is op 13-04-1998 ingeschreven op adres 'A1'
       En 'Jan' is op 23-02-2022 overleden
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Jansen', voornamen 'Jan' en gemeente van inschrijving '0599' en parameters
         | inclusiefOverledenPersonen |

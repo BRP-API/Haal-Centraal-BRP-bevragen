@@ -5,9 +5,9 @@ Functionaliteit: gegevens raadplegen van een persoon
   wil ik de actuele gegevens van één of meer personen kunnen raadplegen door het opgeven van zijn/hun burgerservicenummer
 
     Achtergrond:
-      Gegeven de persoon 'Robin' met burgerservicenummer '000000024'
-      En de persoon 'Saskia' met burgerservicenummer '000000025'
-      En de persoon 'Gerda' met burgerservicenummer '000000026'
+      Gegeven de persoon 'Robin'
+      En de persoon 'Saskia'
+      En de persoon 'Gerda'
 
   Regel: een persoon moet worden gezocht met zijn burgerservicenummer om zijn actuele gegevens te kunnen raadplegen
 
@@ -19,28 +19,20 @@ Functionaliteit: gegevens raadplegen van een persoon
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin, Saskia en Gerda'
       Dan worden 'Robin, Saskia en Gerda' gevonden
 
-  Regel: de optionele 'gemeenteVanInschrijving' parameter kan worden gebruikt om de zoek criteria aan te scherpen
+  Regel: om uitsluitend binnengemeentelijk te zoeken moet de optionele 'gemeenteVanInschrijving' parameter worden gebruikt
 
     Scenario: de opgegeven gemeente van inschrijving komt overeen met de gemeente van inschrijving van de persoon
-      Gegeven adres 'A1'
-        | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-        | 0599                 | 0599010051001502                         |
-      En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1' met de volgende gegevens
-        | gemeente van inschrijving (09.10) |
-        | 0599                              |
+      Gegeven adres 'A1' in gemeente 'Rotterdam'
+      En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1'
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin' en parameters
         | gemeenteVanInschrijving |
         |                    0599 |
       Dan wordt 'Robin' gevonden
 
     Scenario: de opgegeven gemeente van inschrijving komt niet overeen met de gemeente van inschrijving van de persoon
-      Gegeven adres 'A1'
-        | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-        | 0599                 | 0599010051001502                         |
-      En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1' met de volgende gegevens
-        | gemeente van inschrijving (09.10) |
-        | 0518                              |
+      Gegeven adres 'A1' in gemeente 'Rotterdam'
+      En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1'
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin' en parameters
         | gemeenteVanInschrijving |
-        |                    0599 |
+        |                    0518 |
       Dan worden er geen personen gevonden

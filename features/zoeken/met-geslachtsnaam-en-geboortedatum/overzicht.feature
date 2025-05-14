@@ -7,14 +7,14 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Regel: personen worden gevonden als hun geboortedatum én hun geslachtsnaam overeenkomen met de opgegeven geboortedatum en geslachtsnaamhun (niet-hoofdlettergevoelig)
 
     Abstract Scenario: geslachtsnaam en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam en geboortedatum
-      Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
+      Gegeven de op 26-05-1983 geboren 'Pieter'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-        |              19830526 | Maassen               | Pieter            |
-      En de persoon 'Jan' met burgerservicenummer '000000025'
+        | geslachtsnaam (02.40) | voornamen (02.10) |
+        | Maassen               | Pieter            |
+      En de op 26-05-1983 geboren 'Jan'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
-        |              19830526 | Maassen               | Jan Peter         | van                 |
+        | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+        | Maassen               | Jan Peter         | van                 |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam '<geslachtsnaam>' en geboortedatum '1983-05-26'
       Dan worden 'Pieter en Jan' gevonden
 
@@ -25,26 +25,26 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | MAASSEN       |
 
     Abstract Scenario: de te vinden persoon heeft een geslachtsnaam van twee karakters lang
-      Gegeven de persoon 'Marjan' met burgerservicenummer '000000026'
+      Gegeven de op 26-05-1983 geboren 'Marjan'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-        |              19830526 | Os                    | Marjan            |
+        | geslachtsnaam (02.40) | voornamen (02.10) |
+        | Os                    | Marjan            |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'os' en geboortedatum '1983-05-26'
       Dan wordt 'Marjan' gevonden
 
     Abstract Scenario: geslachtsnaam van personen komen gedeeltelijk overeen met de opgegeven geslachtsnaam
-      Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
+      Gegeven de op 26-05-1983 geboren 'Pieter'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-        |              19830526 | Maassen               | Pieter            |
-      En de persoon 'Jan' met burgerservicenummer '000000025'
+        | geslachtsnaam (02.40) | voornamen (02.10) |
+        | Maassen               | Pieter            |
+      En de op 26-05-1983 geboren 'Jan'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
-        |              19830526 | Maassen               | Jan Peter         | van                 |
-      En de persoon 'Petra' met burgerservicenummer '000000026'
+        | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+        | Maassen               | Jan Peter         | van                 |
+      En de op 26-05-1983 geboren 'Petra'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-        |              19830526 | Jansen                | Petra             |
+        | geslachtsnaam (02.40) | voornamen (02.10) |
+        | Jansen                | Petra             |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam '<geslachtsnaam>' en geboortedatum '1983-05-26'
       Dan worden er geen personen gevonden
 
@@ -57,10 +57,10 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Regel: personen met diakrieten in hun geslachtsnaam kunnen ook worden gevonden als het diakrietloos variant van de geslachtsnaam wordt opgegeven
 
     Abstract Scenario: de te vinden persoon heef diakrieten in zijn geslachtsnaam
-      Gegeven de persoon 'Albertus' met burgerservicenummer '000000024'
+      Gegeven de op 26-05-1983 geboren 'Albertus'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | geslachtsnaam (diakrieten) | voornamen (02.10) |
-        |              19830526 | Kaster                | Käster                     | Albertus Johannes |
+        | geslachtsnaam (02.40) | geslachtsnaam (diakrieten) |
+        | Kaster                | Käster                     |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam '<geslachtsnaam>' en geboortedatum '1983-05-26'
       Dan worden 'Albertus' gevonden
 
@@ -72,14 +72,14 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Regel: de optionele 'voornamen' en 'voorvoegsels' parameters (niet hoofdlettergevoelig) kunnen worden gebruikt om de zoek criteria aan te scherpen
 
     Abstract Scenario: de geslachtsnaam, voornamen en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, voornamen en geboortedatum
-      Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
+      Gegeven de op 26-05-1983 geboren 'Pieter'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-        |              19830526 | Maassen               | Pieter            |
-      En de persoon 'Jan' met burgerservicenummer '000000025'
+        | geslachtsnaam (02.40) | voornamen (02.10) |
+        | Maassen               | Pieter            |
+      En de op 26-05-1983 geboren 'Jan'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
-        |              19830526 | Maassen               | Jan Peter         | van                 |
+        | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+        | Maassen               | Jan Peter         | van                 |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam '<geslachtsnaam>' en geboortedatum '1983-05-26' en parameters
         | voornamen   |
         | <voornamen> |
@@ -93,14 +93,14 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | maassen       | jan peter | Jan                |
 
     Abstract Scenario: de geslachtsnaam, voorvoegsels en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, voorvoegsels en geboortedatum
-      Gegeven de persoon 'Pieter' met burgerservicenummer '000000024'
+      Gegeven de op 26-05-1983 geboren 'Pieter'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) |
-        |              19830526 | Maassen               | Pieter            |
-      En de persoon 'Jan' met burgerservicenummer '000000025'
+        | geslachtsnaam (02.40) | voornamen (02.10) |
+        | Maassen               | Pieter            |
+      En de op 26-05-1983 geboren 'Jan'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
-        |              19830526 | Maassen               | Jan Peter         | van                 |
+        | geslachtsnaam (02.40) | voornamen (02.10) | voorvoegsel (02.30) |
+        | Maassen               | Jan Peter         | van                 |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam '<geslachtsnaam>' en geboortedatum '1983-05-26' en parameters
         | voorvoegsel    |
         | <voorvoegsels> |
@@ -115,14 +115,14 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Regel: de optionele 'geslacht' parameter (niet hoofdlettergevoelig) kan worden gebruikt om de zoek criteria aan te scherpen
 
     Abstract Scenario: geslachtsnaam, geslacht en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, geslacht en geboortedatum
-      Gegeven de persoon 'Aedel' met burgerservicenummer '000000027'
+      Gegeven de op 26-05-1983 geboren vrouw 'Adele'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
-        |              19830526 | V                           |
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Aedel' en geboortedatum '1983-05-26' en parameters
+        | geslachtsnaam (02.40) |
+        | Maassen               |
+      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Maassen' en geboortedatum '1983-05-26' en parameters
         | geslacht              |
         | <geslachtsaanduiding> |
-      Dan wordt alleen 'Aedel' gevonden
+      Dan wordt alleen 'Adele' gevonden
 
       Voorbeelden:
         | geslachtsaanduiding |
@@ -132,19 +132,13 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Regel: de optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om overleden personen te kunnen vinden
 
     Scenario: geslachtsnaam en geboortedatum van een overleden persoon komen exact overeen en de optionele 'inclusiefOverledenPersonen' parameter is niet opgegeven
-      Gegeven de persoon 'Jansen' met burgerservicenummer '000000028'
-      * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
+      Gegeven de op 26-05-1983 geboren 'Jansen'
       En 'Jansen' is overleden
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Jansen' en geboortedatum '1983-05-26'
       Dan worden er geen personen gevonden
 
     Scenario: geslachtsnaam en geboortedatum van een overleden persoon komen exact overeen en de optionele 'inclusiefOverledenPersonen' parameter is opgegeven
-      Gegeven de persoon 'Jansen' met burgerservicenummer '000000028'
-      * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
+      Gegeven de op 26-05-1983 geboren 'Jansen'
       En 'Jansen' is op 23-03-2023 overleden
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Jansen' en geboortedatum '1983-05-26' en parameters
         | inclusiefOverledenPersonen |
@@ -154,52 +148,39 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | reden.code | reden.omschrijving | datum.datum | datum.langFormaat | datum.type |
         | O          | overlijden         |  2023-03-23 |     23 maart 2023 | Datum      |
 
-  Regel: de optionele 'gemeenteVanInschrijving' parameter kan worden gebruikt om de zoek criteria aan te scherpen
+  Regel: om uitsluitend binnengemeentelijk te zoeken moet de optionele 'gemeenteVanInschrijving' parameter worden gebruikt
 
     Scenario: geslachtsnaam, geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, geboortedatum maar de personen staan niet ingeschreven in de opgegeven gemeente
-      Gegeven adres 'A1'
-        | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-        |                 0599 |                         0599010051001502 |
-      En de persoon 'Aedel' met burgerservicenummer '000000024'
+      Gegeven adres 'A1' in gemeente 'Rotterdam'
+      En de op 26-05-1983 geboren 'Adele'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
-      En 'Aedel' is 3 jaar geleden ingeschreven op adres 'A1'
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Aedel' en geboortedatum '1983-05-26' en parameters
+        | geslachtsnaam (02.40) |
+        | Maassen               |
+      En 'Adele' is 3 jaar geleden ingeschreven op adres 'A1'
+      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Maassen' en geboortedatum '1983-05-26' en parameters
         | gemeenteVanInschrijving |
         |                    0518 |
       Dan worden er geen personen gevonden
 
     Scenario: geslachtsnaam, geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, geboortedatum maar de personen staan ingeschreven in de opgegeven gemeente
-      Gegeven adres 'A1'
-        | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
-        |                 0599 |                         0599010051001502 |
-      En de persoon 'Aedel' met burgerservicenummer '000000024'
+      Gegeven adres 'A1' in gemeente 'Rotterdam'
+      En de op 26-05-1983 geboren 'Adele'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
-      En 'Aedel' is 3 jaar geleden ingeschreven op adres 'A1'
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Aedel' en geboortedatum '1983-05-26' en parameters
+        | geslachtsnaam (02.40) |
+        | Maassen               |
+      En 'Adele' is 3 jaar geleden ingeschreven op adres 'A1'
+      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Maassen' en geboortedatum '1983-05-26' en parameters
         | gemeenteVanInschrijving |
         |                    0599 |
-      Dan wordt 'Aedel' gevonden
+      Dan wordt 'Adele' gevonden
 
   Regel: wildcard matching (niet hoofdlettergevoelig) kan worden toegepast voor de geslachtsnaam en voornamen parameters
         Voor wildcard matching moet minimaal 3 letters  worden opgegeven, gevolgd door de wildcard teken (*)
 
     Scenario: geslachtsnaam van personen komen overeen met de opgegeven geslachtsnaam met wildcard matching
-      Gegeven de persoon 'Groen' met burgerservicenummer '000000024'
-      * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
-      En de persoon 'Groot' met burgerservicenummer '000000025'
-      * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
-      En de persoon 'Groenlo' met burgerservicenummer '000000026'
-      * heeft de volgende gegevens
-        | geboortedatum (03.10) |
-        |              19830526 |
+      Gegeven de op 26-05-1983 geboren 'Groen'
+      En de op 26-05-1983 geboren 'Groot'
+      En de op 26-05-1983 geboren 'Groenlo'
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam '<geslachtsnaam filter>' en geboortedatum '1983-05-26'
       Dan worden 'Groen, Groot en Groenlo' gevonden
 
@@ -210,10 +191,10 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | GRO*                 |
 
     Scenario: voornamen van personen komen overeen met de opgegeven voornamen met wildcard matching
-      Gegeven de persoon 'Maassen' met burgerservicenummer '000000024'
+      Gegeven de op 26-05-1983 geboren 'Maassen'
       * heeft de volgende gegevens
-        | geboortedatum (03.10) | voornamen (02.10) |
-        |              19830526 | Jan Peter         |
+        | voornamen (02.10) |
+        | Jan Peter         |
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Maassen' en geboortedatum '1983-05-26' en parameters
         | voornamen          |
         | <voornamen filter> |
