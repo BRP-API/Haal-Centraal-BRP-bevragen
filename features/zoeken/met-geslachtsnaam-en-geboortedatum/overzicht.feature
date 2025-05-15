@@ -54,7 +54,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | jans          |
         | MAAS          |
 
-  Regel: personen met diakrieten in hun geslachtsnaam kunnen ook worden gevonden als het diakrietloos variant van de geslachtsnaam wordt opgegeven
+  Regel: personen met diakrieten in hun geslachtsnaam kunnen ook worden gevonden als de diakrietloze variant van de geslachtsnaam wordt opgegeven
 
     Abstract Scenario: de te vinden persoon heef diakrieten in zijn geslachtsnaam
       Gegeven de op 26-05-1983 geboren 'Albertus'
@@ -69,7 +69,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | Käster        |
         | Kaster        |
 
-  Regel: de optionele 'voornamen' en 'voorvoegsels' parameters (niet hoofdlettergevoelig) kunnen worden gebruikt om de zoek criteria aan te scherpen
+  Regel: de optionele 'voornamen' en 'voorvoegsels' parameters (niet hoofdlettergevoelig) kunnen worden gebruikt om de zoekcriteria aan te scherpen
 
     Abstract Scenario: de geslachtsnaam, voornamen en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, voornamen en geboortedatum
       Gegeven de op 26-05-1983 geboren 'Pieter'
@@ -112,7 +112,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | maassen       | VAN          |
         | MAASSEN       | Van          |
 
-  Regel: de optionele 'geslacht' parameter (niet hoofdlettergevoelig) kan worden gebruikt om de zoek criteria aan te scherpen
+  Regel: de optionele 'geslacht' parameter (niet hoofdlettergevoelig) kan worden gebruikt om de zoekcriteria aan te scherpen
 
     Abstract Scenario: geslachtsnaam, geslacht en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, geslacht en geboortedatum
       Gegeven de op 26-05-1983 geboren vrouw 'Adele'
@@ -162,7 +162,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         |                    0518 |
       Dan worden er geen personen gevonden
 
-    Scenario: geslachtsnaam, geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, geboortedatum maar de personen staan ingeschreven in de opgegeven gemeente
+    Scenario: geslachtsnaam en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam en geboortedatum, maar de personen staan ingeschreven in de opgegeven gemeente
       Gegeven adres 'A1' in gemeente 'Rotterdam'
       En de op 26-05-1983 geboren 'Adele'
       * heeft de volgende gegevens
@@ -177,7 +177,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Regel: wildcard matching (niet hoofdlettergevoelig) kan worden toegepast voor de geslachtsnaam en voornamen parameters
         Voor wildcard matching moet minimaal 3 letters  worden opgegeven, gevolgd door de wildcard teken (*)
 
-    Scenario: geslachtsnaam van personen komen overeen met de opgegeven geslachtsnaam met wildcard matching
+    Scenario: geslachtsnaam van personen komt overeen met de opgegeven geslachtsnaam met wildcard matching
       Gegeven de op 26-05-1983 geboren 'Groen'
       En de op 26-05-1983 geboren 'Groot'
       En de op 26-05-1983 geboren 'Groenlo'
