@@ -69,65 +69,36 @@ function gegevenDePersonenZijnGehuwdGecorrigeerd(context, aanduiding1, aanduidin
     );
 }
 
-Given(/^'(.*)' en '(.*)' zijn met elkaar gehuwd$/, function (aanduiding1, aanduiding2) {
-    const datumHuwelijk = 'gisteren - 20 jaar';
-    const plaatsHuwelijk = '0518';
-    const landHuwelijk = '6030';
+function gegevenDePersonenZijnGehuwdOfGeregistreerdPartnerschap(context, aanduiding1, aanduiding2, datumVerbintenis, plaatsVerbintenis, landVerbintenis, soortVerbintenis, dataTable) {
+    const verbintenisData = arrayOfArraysToDataTable([
+        ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', datumVerbintenis],
+        ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', plaatsVerbintenis],
+        ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', landVerbintenis],
+        ['soort verbintenis (15.10)', soortVerbintenis]
+    ], dataTable);
 
-    const huwelijkData = arrayOfArraysToDataTable([
-        ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', datumHuwelijk],
-        ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', plaatsHuwelijk],
-        ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', landHuwelijk],
-        ['soort verbintenis (15.10)', VerbintenisSoort.Huwelijk]
-    ]);
+    gegevenDePersonenZijnGehuwd(context, aanduiding1, aanduiding2, verbintenisData);
+}
 
-    gegevenDePersonenZijnGehuwd(this.context, aanduiding1, aanduiding2, huwelijkData);
+Given('{aanduiding} en {aanduiding} zijn (met elkaar ){soort verbintenis}', function (aanduiding1, aanduiding2, soortVerbintenis) {
+    gegevenDePersonenZijnGehuwdOfGeregistreerdPartnerschap(this.context, aanduiding1, aanduiding2,
+         'gisteren - 20 jaar', '0518', '6030', soortVerbintenis);
 });
 
-Given(/^'(.*)' en '(.*)' zijn een geregistreerd partnerschap aangegaan op (\d*)-(\d*)-(\d*)$/, function (aanduiding1, aanduiding2, dag, maand, jaar) {
-    const datumHuwelijk = toBRPDate(dag, maand, jaar);
-    const plaatsHuwelijk = '0518';
-    const landHuwelijk = '6030';
+function gegevenDePersonenZijnOpDatumGehuwdOfGeregistreerdPartnerschap(aanduiding1, aanduiding2, datumVerbintenis, soortVerbintenis) {
+    gegevenDePersonenZijnGehuwdOfGeregistreerdPartnerschap(this.context, aanduiding1, aanduiding2,
+         datumVerbintenis, '0518', '6030', soortVerbintenis);
+}
 
-    const huwelijkData = arrayOfArraysToDataTable([
-        ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', datumHuwelijk],
-        ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', plaatsHuwelijk],
-        ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', landHuwelijk],
-        ['soort verbintenis (15.10)', VerbintenisSoort.GeregistreerdPartnerschap]
-    ]);
-
-    gegevenDePersonenZijnGehuwd(this.context, aanduiding1, aanduiding2, huwelijkData);
+Given('{aanduiding} en {aanduiding} zijn (met elkaar ){vandaag, gisteren of morgen x jaar geleden} {soort verbintenis}', gegevenDePersonenZijnOpDatumGehuwdOfGeregistreerdPartnerschap);
+Given('{aanduiding} en {aanduiding} zijn (met elkaar ){vandaag, gisteren of morgen - x jaar} {soort verbintenis}', gegevenDePersonenZijnOpDatumGehuwdOfGeregistreerdPartnerschap);
+Given('{aanduiding} en {aanduiding} zijn (met elkaar ){relatieve datum} {soort verbintenis}', gegevenDePersonenZijnOpDatumGehuwdOfGeregistreerdPartnerschap);
+Given('{aanduiding} en {aanduiding} zijn {soort verbintenis} {dd-mm-yyyy datum}', function(aanduiding1, aanduiding2, soortVerbintenis, datum) {
+    gegevenDePersonenZijnGehuwdOfGeregistreerdPartnerschap(this.context, aanduiding1, aanduiding2,
+         datum, '0518', '6030', soortVerbintenis);
 });
 
-Given(/^'(.*)' en '(.*)' zijn (?!met elkaar)(.*) een geregistreerd partnerschap aangegaan$/, function (aanduiding1, aanduiding2, relatieveDatum) {
-    const plaatsHuwelijk = '0518';
-    const landHuwelijk = '6030';
-
-    const huwelijkData = arrayOfArraysToDataTable([
-        ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', relatieveDatum],
-        ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', plaatsHuwelijk],
-        ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', landHuwelijk],
-        ['soort verbintenis (15.10)', VerbintenisSoort.GeregistreerdPartnerschap]
-    ]);
-
-    gegevenDePersonenZijnGehuwd(this.context, aanduiding1, aanduiding2, huwelijkData);
-});
-
-Given(/^'(.*)' en '(.*)' zijn (?!met elkaar)(.*) gehuwd$/, function (aanduiding1, aanduiding2, relatieveDatum) {
-    const plaatsHuwelijk = '0518';
-    const landHuwelijk = '6030';
-
-    const huwelijkData = arrayOfArraysToDataTable([
-        ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', relatieveDatum],
-        ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', plaatsHuwelijk],
-        ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', landHuwelijk],
-        ['soort verbintenis (15.10)', VerbintenisSoort.Huwelijk]
-    ]);
-
-    gegevenDePersonenZijnGehuwd(this.context, aanduiding1, aanduiding2, huwelijkData);
-});
-
-Given(/^'(.*)' en '(.*)' zijn met elkaar gehuwd met de volgende gegevens$/, function (aanduiding1, aanduiding2, dataTable) {
+Given('{aanduiding} en {aanduiding} zijn (met elkaar ){soort verbintenis} met de volgende gegevens', function (aanduiding1, aanduiding2, soortVerbintenis, dataTable) {
     gegevenDePersonenZijnGehuwd(this.context, aanduiding1, aanduiding2, dataTable);
 });
 
