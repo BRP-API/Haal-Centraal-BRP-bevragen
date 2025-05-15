@@ -33,6 +33,24 @@ Functionaliteit: Adres gegeven stap definities
       | adres_id | gemeente_code | verblijf_plaats_ident_code |
       |       A2 |          0800 |           0800010011067001 |
 
+  @integratie
+  Scenario: adres {adres aanduiding} in gemeente {gemeente naam}
+    Gegeven adres 'A1' in gemeente '\'s-Gravenhage'
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft adres 'A1' de volgende rij in tabel 'lo3_adres'
+      | adres_id | gemeente_code | verblijf_plaats_ident_code | nummer_aand_ident_code |
+      |       A1 |          0518 |           0518010051001502 |       0518200000617227 |
+
+  @integratie
+  Scenario: adres {adres aanduiding} in gemeente {gemeente naam} heeft de volgende gegevens
+    Gegeven adres 'A1' in gemeente '\'s-Gravenhage' heeft de volgende gegevens
+      | postcode (11.60) | huisnummer (11.20) | aanduiding bij huisnummer (11.50) |
+      |           2628HJ |                  2 | to                                |
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft adres 'A1' de volgende rij in tabel 'lo3_adres'
+      | adres_id | gemeente_code | verblijf_plaats_ident_code | nummer_aand_ident_code | postcode | huis_nr | huis_nr_aand |
+      |       A1 |          0518 |           0518010051001502 |       0518200000617227 |   2628HJ |       2 |           to |
+
   Scenario: adres '[identificatie]' heeft de volgende gegevens
     Gegeven adres 'A1' heeft de volgende gegevens
     | straatnaam (11.10) |
