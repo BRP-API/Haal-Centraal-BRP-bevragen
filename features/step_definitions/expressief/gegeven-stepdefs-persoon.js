@@ -61,11 +61,13 @@ Given(/^(?:de persoon(?: '(.*)')? )?zonder burgerservicenummer$/, function (aand
 
 function gegevenDePersoon(context, persoonAanduiding, burgerservicenummer, geboortedatum, geboortelandCode, geslachtsaanduiding, dataTable) {
     const data = [
-        ['geslachtsnaam (02.40)', persoonAanduiding],
-        ['geboortedatum (03.10)', geboortedatum]
+        ['geslachtsnaam (02.40)', persoonAanduiding]
     ];
     if(burgerservicenummer) {
         data.push(['burgerservicenummer (01.20)', burgerservicenummer]);
+    }
+    if(geboortedatum) {
+        data.push(['geboortedatum (03.10)', geboortedatum]);
     }
     if(geslachtsaanduiding) {
         data.push(['geslachtsaanduiding (04.10)', geslachtsaanduiding]);
@@ -97,6 +99,7 @@ async function gegevenDeMeerderjarigePersoonZonderBsn(geslachtsAanduiding, perso
 Given('de {vandaag, gisteren of morgen x jaar geleden} in (de )(het ){string} geboren {geslachtsaanduiding}( ){string} met burgerservicenummer {string}', gegevenDeOpDatumInLandGeborenPersoon);
 Given('de {dd maand yyyy datum} in (de )(het ){string} geboren {geslachtsaanduiding}( ){string} met burgerservicenummer {string}', gegevenDeOpDatumInLandGeborenPersoon);
 Given('de {onbekende datum} in (de )(het ){string} geboren {geslachtsaanduiding}( ){string} met burgerservicenummer {string}', gegevenDeOpDatumInLandGeborenPersoon);
+Given('de {dd-mm-yyyy datum} in (de )(het ){string} geboren {geslachtsaanduiding}( ){string} met burgerservicenummer {string}', gegevenDeOpDatumInLandGeborenPersoon);
 
 Given('de meerderjarige {geslachtsaanduiding}( ){string} zonder burgerservicenummer', gegevenDeMeerderjarigePersoonZonderBsn);
 
@@ -107,6 +110,11 @@ function gegevenDeOpDatumInNederlandGeborenPersoonMetGegenereerdeBsn(geboortedat
 Given('de {vandaag, gisteren of morgen x jaar geleden} geboren {geslachtsaanduiding}( ){string}', gegevenDeOpDatumInNederlandGeborenPersoonMetGegenereerdeBsn);
 Given('de {dd maand yyyy datum} geboren {geslachtsaanduiding}( ){string}', gegevenDeOpDatumInNederlandGeborenPersoonMetGegenereerdeBsn);
 Given('de {onbekende datum} geboren {geslachtsaanduiding}( ){string}', gegevenDeOpDatumInNederlandGeborenPersoonMetGegenereerdeBsn);
+Given('de {dd-mm-yyyy datum} geboren {geslachtsaanduiding}( ){string}', gegevenDeOpDatumInNederlandGeborenPersoonMetGegenereerdeBsn);
+
+Given('de persoon {aanduiding}', function (aanduiding) {
+    gegevenDePersoon(this.context, aanduiding, genereerBurgerservicenummer(this.context), undefined, undefined, undefined, undefined);
+});
 
 module.exports = {
     gegevenDePersoon

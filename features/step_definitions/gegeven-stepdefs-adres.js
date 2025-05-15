@@ -5,7 +5,7 @@ const { createAdres,
         adressenSamenvoegen,
         splitsAdres } = require('./adres');
 
-Given(/^adres '(.*)' heeft de volgende gegevens$/, function (adresId, dataTable) {
+Given(/^adres '([a-zA-Z0-9\-]*)' heeft de volgende gegevens$/, function (adresId, dataTable) {
     createAdres(this.context, adresId, dataTable);
 });
 

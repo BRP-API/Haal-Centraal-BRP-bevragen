@@ -7,6 +7,24 @@ Functionaliteit: Persoon, Inschrijving gegeven stap definities
     En de 2e 'SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl' statement heeft als resultaat '10000'
 
   @integratie
+  Scenario: de persoon '{aanduiding}'
+    Gegeven de persoon 'P1'
+    En de persoon 'P2'
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
+      | pl_id | geheim_ind |
+      | P1    |          0 |
+    En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam |
+      | P1    |         0 |       0 | P            |         000000012 | P1             |
+    En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl'
+      | pl_id | geheim_ind |
+      | P2    |          0 |
+    En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam |
+      | P2    |         0 |       0 | P            |         000000024 | P2             |
+
+  @integratie
   Abstract Scenario: (de) persoon '[persoon aanduiding]' heeft de volgende gegevens
     Gegeven <stap>
       | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
@@ -54,6 +72,7 @@ Functionaliteit: Persoon, Inschrijving gegeven stap definities
       | vandaag 5 jaar geleden | man           | vandaag - 5 jaar | M                   |
       | op 21 januari 2021     | vrouw         |         20210121 | V                   |
       | op een onbekende datum |               |         00000000 |                     |
+      | op 21-01-2021          | man           |         20210121 | M                   |
 
   @integratie
   Scenario: de {datum} geboren {geslacht type} '{persoon aanduiding}'
@@ -111,6 +130,7 @@ Functionaliteit: Persoon, Inschrijving gegeven stap definities
       | op 21 januari 2021     | de 'Verenigde Staten van Amerika'   | vrouw         |         20210121 |              6014 | V                   |         | buitenlandse geboorteakte |
       | op een onbekende datum | het 'Verenigde Arabische Republiek' | man           |         00000000 |              9047 | M                   |         | buitenlandse geboorteakte |
       | in februari 2021       | 'België'                            |               |         20210200 |              5010 |                     |         | buitenlandse geboorteakte |
+      | op 21-01-2021          | 'Madeira-eilanden'                  | man           |         20210121 |              7087 | M                   |         | buitenlandse geboorteakte |
 
   @integratie
   Abstract Scenario: de meerderjarige {geslacht type} '{persoon aanduiding}' zonder burgerservicenummer
