@@ -115,20 +115,75 @@ function createKind(persoon, dataTable) {
     ];
 }
 
+function createKindMetAanduiding(persoon, aanduiding, dataTable) {
+    const stapelNr = getNextStapelNr(persoon, 'kind');
+
+    persoon[`kind-${aanduiding}`] = [
+        createPersoonType('kind', dataTable, stapelNr - 1)
+    ];
+}
+
 function wijzigKind(persoon, dataTable, isCorrectie = false, kindBsn = null) {
+    let kindData = createPersoonType('kind', dataTable, 0);
+    
+    let kind;
+    
     Object.keys(persoon).forEach(property => {
         if (property.startsWith('kind')) {
-            if (persoon[property][0].burger_service_nr === kindBsn) {
-                persoon[property].forEach(p => {
-                    p.volg_nr = Number(p.volg_nr) + 1 + '';
-                    if (isCorrectie && p.volg_nr === '1') {
-                        p.onjuist_ind = 'O';
-                    }
-                });
-                persoon[property].push(createPersoonType('kind', dataTable, 0));
+            if (persoon[property][0].burger_service_nr === kindBsn || persoon[property].at(-1).burger_service_nr === kindData.burger_service_nr) {
+               kind = persoon[property]
             }
         }
     });
+
+    if (!kind) {
+        // wanneer het kind niet gevonden wordt op burgerservicenummer, dan wordt het laatst opgevoerde kind (zonder burgerservicenummer) gezocht
+        Object.keys(persoon).forEach(property => {
+            if (property.startsWith('kind')) {
+                if (!persoon[property].at(-1).burger_service_nr || !kindData.burger_service_nr) {
+                    kind = persoon[property];
+                }
+            }
+        });
+    }
+
+    if (!kind) {
+        global.logger.warn(`geen kind met bsn ${kindData.burger_service_nr} gevonden`, persoon);
+        return;
+    }
+
+    kindData.stapel_nr = kind.at(-1).stapel_nr;
+
+    kind.forEach(p => {
+        p.volg_nr = Number(p.volg_nr) + 1 + '';
+        if (isCorrectie && p.volg_nr === '1') {
+            p.onjuist_ind = 'O';
+        }
+    });
+
+    Object.keys(kindData).forEach(property => {
+        if (!kindData[property]) {
+            delete kindData[property];
+        }
+    });
+
+    kind.push(kindData);
+}
+
+function wijzigKindMetAanduiding(persoon, aanduiding, dataTable, isCorrectie = false) {
+    const type = `kind-${aanduiding}`;
+    let actueleKind = persoon[type].at(-1);
+    const stapelnr = actueleKind.stapel_nr;
+
+    if(isCorrectie) {
+        actueleKind.onjuist_ind = 'O';
+    }
+
+    persoon[type].forEach(p => {
+        p.volg_nr = Number(p.volg_nr) + 1 + '';
+    });
+
+    persoon[type].push(createPersoonType('kind', dataTable, stapelnr));
 }
 
 function createOuder(persoon, ouderType, dataTable) {
@@ -160,6 +215,14 @@ function createPartner(persoon, dataTable) {
     ];
 }
 
+function createPartnerMetAanduiding(persoon, aanduiding, dataTable) {
+    const stapelNr = getNextStapelNr(persoon, 'partner');
+
+    persoon[`partner-${aanduiding}`] = [
+        createPersoonType('partner', dataTable, stapelNr - 1)
+    ];
+}
+
 /**
  * Wijzigt de partnergegevens van een persoon.
  * 
@@ -182,6 +245,16 @@ function wijzigPartner(persoon, dataTable, isCorrectie = false, mergeProperties 
             }
         }
     });
+
+    if (!partner) {
+        Object.keys(persoon).forEach(property => {
+            if (property.startsWith('partner')) {
+                if (!persoon[property].at(-1).burger_service_nr || !partnerData.burger_service_nr) {
+                    partner = persoon[property];
+                }
+            }
+        });
+    }
 
     if (!partner) {
         global.logger.warn(`geen partner met bsn ${partnerData.burger_service_nr} gevonden`, persoon);
@@ -210,6 +283,22 @@ function wijzigPartner(persoon, dataTable, isCorrectie = false, mergeProperties 
     });
 
     partner.push(partnerData);
+}
+
+function wijzigPartnerMetAanduiding(persoon, aanduiding, dataTable, isCorrectie = false) {
+    const type = `partner-${aanduiding}`;
+    let actuelePartner = persoon[type].at(-1);
+    const stapelnr = actuelePartner.stapel_nr;
+
+    if(isCorrectie) {
+        actuelePartner.onjuist_ind = 'O';
+    }
+
+    persoon[type].forEach(p => {
+        p.volg_nr = Number(p.volg_nr) + 1 + '';
+    });
+
+    persoon[type].push(createPersoonType('partner', dataTable, stapelnr));
 }
 
 function createGezagsverhouding(persoon, dataTable) {
@@ -285,11 +374,15 @@ module.exports = {
     wijzigPersoon,
     wijzigGeadopteerdPersoon,
     createKind,
+    createKindMetAanduiding,
     wijzigKind,
+    wijzigKindMetAanduiding,
     createOuder,
     wijzigOuder,
     createPartner,
+    createPartnerMetAanduiding,
     wijzigPartner,
+    wijzigPartnerMetAanduiding,
     createGezagsverhouding,
     wijzigGezagsverhouding,
     aanvullenGezagsverhouding,
