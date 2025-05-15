@@ -3,7 +3,7 @@ Functionaliteit: zoek personen met de nummeraanduiding identificatie van een adr
   Als consumer
   wil ik de personen vinden door het opgeven van de nummeraanduiding identificatie van het adres waar zij staan ingeschreven
 
-  Regel: personen ingeschreven op het gezochte adres worden gevonden
+  Regel: personen ingeschreven op het adres waarmee wordt gezocht, worden gevonden
 
     Scenario: één persoon staat ingeschreven op het adres waarmee wordt gezocht
       Gegeven adres 'A1' in gemeente 'Rotterdam'
