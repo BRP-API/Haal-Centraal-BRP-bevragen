@@ -19,24 +19,28 @@ function gegevenEenAdresInGemeente(context, aanduiding, gemeenteCode, dataTable)
     ], dataTable));
 }
 
-Given('adres {aanduiding} in gemeente {string}', async function (aanduiding, omschrijvingGemeente) {
-    let gemeenteCode = omschrijvingGemeente
-        ? await selectFirstOrDefault('lo3_gemeente', ['gemeente_code'], 'gemeente_naam', omschrijvingGemeente, undefined)
+async function getGemeentecode(gemeentenaam) {
+    const gemeentecode = gemeentenaam
+        ? await selectFirstOrDefault('lo3_gemeente', ['gemeente_code'], 'gemeente_naam', gemeentenaam, undefined)
         : undefined;
-    if (!gemeenteCode) {
-        global.logger.error(`Geen gemeente gevonden met naam ${omschrijvingGemeente}`);
-        return;
+
+    if (!gemeentecode) {
+        global.logger.error(`Geen gemeente gevonden met naam ${gemeentenaam}`);
     }
-    gegevenEenAdresInGemeente(this.context, aanduiding, gemeenteCode, undefined);
+
+    return gemeentecode;
+}
+
+Given('adres {aanduiding} in gemeente {string}', async function (aanduiding, gemeentenaam) {
+    const gemeentecode = await getGemeentecode(gemeentenaam);
+    if(gemeentecode) {
+        gegevenEenAdresInGemeente(this.context, aanduiding, gemeentecode, undefined);
+    }
 });
 
-Given('adres {aanduiding} in gemeente {string} heeft de volgende gegevens', async function (aanduiding, omschrijvingGemeente, dataTable) {
-    let gemeenteCode = omschrijvingGemeente
-        ? await selectFirstOrDefault('lo3_gemeente', ['gemeente_code'], 'gemeente_naam', omschrijvingGemeente, undefined)
-        : undefined;
-    if (!gemeenteCode) {
-        global.logger.error(`Geen gemeente gevonden met naam ${omschrijvingGemeente}`);
-        return;
+Given('adres {aanduiding} in gemeente {string} heeft de volgende gegevens', async function (aanduiding, gemeentenaam, dataTable) {
+    const gemeentecode = await getGemeentecode(gemeentenaam);
+    if(gemeentecode) {
+        gegevenEenAdresInGemeente(this.context, aanduiding, gemeentecode, dataTable);
     }
-    gegevenEenAdresInGemeente(this.context, aanduiding, gemeenteCode, dataTable);
 });
