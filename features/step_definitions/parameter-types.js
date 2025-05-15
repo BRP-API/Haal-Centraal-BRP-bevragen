@@ -153,4 +153,13 @@ defineParameterType({
 
 defineParameterType({
     name: 'toelichting',
-    regexp: /[a-zA-Z0-9À-ž /;:.\-?()]{1,400}/});
+    regexp: /'([a-zA-Z0-9À-ž /;:.\-?()]{1,400})'/
+});
+
+defineParameterType({
+    name: 'soort verbintenis',
+    regexp: /(gehuwd|een geregistreerd partnerschap aangegaan)/,
+    transformer(soortRelatie) {
+        return soortRelatie === 'gehuwd' ? 'H' : 'P';
+    }
+});

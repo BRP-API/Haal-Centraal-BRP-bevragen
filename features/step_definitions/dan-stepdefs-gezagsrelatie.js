@@ -210,7 +210,7 @@ Then(/^is het gezag over '([a-zA-Z0-9À-ž-]*)' voogdij(?: met derde '([a-zA-Z0-
     initExpected(this.context, 'voogdij', aanduidingMinderjarige, aanduidingMeerderjarige);
 });
 
-Then('is het gezag over {aanduiding} {tijdelijk geen gezag of niet te bepalen} met de toelichting \'{toelichting}\'', function (aanduidingMinderjarige, type, toelichting) {
+Then('is het gezag over {aanduiding} {tijdelijk geen gezag of niet te bepalen} met de toelichting {toelichting}', function (aanduidingMinderjarige, type, toelichting) {
     initExpected(this.context, type, aanduidingMinderjarige, undefined, undefined, toelichting);
 });
 
