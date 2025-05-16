@@ -1,10 +1,9 @@
 # language: nl
-@stap-documentatie
+@stap-documentatie @integratie
 Functionaliteit: gegevens opgeven met waardentabel
 
   Regel: heeft {object soort} met de volgende gegevens
 
-    @integratie
     Abstract Scenario: heeft <relatie> met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * heeft een <relatie> met de volgende gegevens
@@ -26,7 +25,6 @@ Functionaliteit: gegevens opgeven met waardentabel
         | ouder 1 |            1 |
         | ouder 2 |            2 |
 
-    @integratie
     Abstract Scenario: heeft <relatie> met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * heeft een <relatie> 'P2' met de volgende gegevens
@@ -48,7 +46,6 @@ Functionaliteit: gegevens opgeven met waardentabel
         | partner | R            |
         | kind    | K            |
 
-    @integratie
     Abstract Scenario: meerdere van zelfde object soort: heeft <relatie> met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * heeft een <relatie> 'P2' met de volgende gegevens
@@ -75,7 +72,6 @@ Functionaliteit: gegevens opgeven met waardentabel
         | partner | R            |
         | kind    | K            |
 
-    @integratie
     Abstract Scenario: meerdere van verschillende object soort: heeft <relatie> met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * heeft een ouder 1 met de volgende gegevens
@@ -114,7 +110,6 @@ Functionaliteit: gegevens opgeven met waardentabel
 
   Regel: {object soort} is {gewijzigd of gecorrigeerd} naar de volgende gegevens
 
-    @integratie
     Abstract Scenario: ouder <ouder type> is <soort wijziging> naar de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * heeft een ouder <ouder type> met de volgende gegevens
@@ -143,7 +138,6 @@ Functionaliteit: gegevens opgeven met waardentabel
         |          2 | gewijzigd       |         |
         |          2 | gecorrigeerd    | O       |
 
-    @integratie
     Abstract Scenario: <object soort wijziging> is <soort wijziging> naar de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * heeft een <relatie soort> 'P2' met de volgende gegevens
@@ -269,7 +263,6 @@ Functionaliteit: gegevens opgeven met waardentabel
 
   Regel: is ingeschreven op adres {string} met de volgende gegevens
 
-    @integratie
     Scenario: is ingeschreven op adres {string} met de volgende gegevens
       Gegeven adres 'A1'
         | gemeentecode (92.10) | straatnaam (11.10) |
@@ -286,7 +279,6 @@ Functionaliteit: gegevens opgeven met waardentabel
 
   Regel: is ingeschreven op een buitenlands adres met de volgende gegevens
 
-    @integratie
     Scenario: is ingeschreven op een buitenlands adres met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       En is ingeschreven op een buitenlands adres met de volgende gegevens
@@ -300,7 +292,6 @@ Functionaliteit: gegevens opgeven met waardentabel
 
   Regel: is overleden met de volgende gegevens
 
-    @integratie
     Scenario: is overleden met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * is overleden met de volgende gegevens
@@ -315,7 +306,6 @@ Functionaliteit: gegevens opgeven met waardentabel
 
   Regel: is ingeschreven met de volgende gegevens
 
-    @integratie
     Scenario: is ingeschreven met de volgende gegevens
       Gegeven de persoon 'P1' met burgerservicenummer '000000012'
       * is ingeschreven met de volgende gegevens
