@@ -2245,6 +2245,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "toelichting"
         ]
       },
       "GezagNietTeBepalen": {
@@ -2260,6 +2263,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "toelichting"
         ]
       },
       "Minderjarige": {

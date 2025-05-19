@@ -1515,6 +1515,8 @@ components:
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+      required:
+        - toelichting
     GezagNietTeBepalen:
       allOf:
         - $ref: '#/components/schemas/Gezagsrelatie'
@@ -1522,6 +1524,8 @@ components:
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+      required:
+        - toelichting
     Minderjarige:
       type: object
       properties:
