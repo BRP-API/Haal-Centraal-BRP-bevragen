@@ -19,20 +19,3 @@ Functionaliteit: gegevens raadplegen van een persoon
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin, Saskia en Gerda'
       Dan worden 'Robin, Saskia en Gerda' gevonden
 
-  Regel: om uitsluitend binnengemeentelijk te zoeken moet de optionele 'gemeenteVanInschrijving' parameter worden gebruikt
-
-    Scenario: de opgegeven gemeente van inschrijving komt overeen met de gemeente van inschrijving van de persoon
-      Gegeven adres 'A1' in gemeente 'Rotterdam'
-      En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1'
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin' en parameters
-        | gemeenteVanInschrijving |
-        |                    0599 |
-      Dan wordt 'Robin' gevonden
-
-    Scenario: de opgegeven gemeente van inschrijving komt niet overeen met de gemeente van inschrijving van de persoon
-      Gegeven adres 'A1' in gemeente 'Rotterdam'
-      En 'Robin' is 3 jaar geleden ingeschreven op adres 'A1'
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin' en parameters
-        | gemeenteVanInschrijving |
-        |                    0518 |
-      Dan worden er geen personen gevonden

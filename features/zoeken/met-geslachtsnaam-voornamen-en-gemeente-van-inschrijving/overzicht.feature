@@ -1,11 +1,12 @@
 # language: nl
 Functionaliteit: zoek personen met geslachtsnaam, voornamen en gemeente van inschrijving
-
   Als consumer
   wil ik personen kunnen vinden door het opgeven van de gemeente waar ze zijn ingeschreven én hun geslachtsnaam en voornamen
 
   Achtergrond:
-    Gegeven adres 'A1' in gemeente 'Rotterdam'
+    Gegeven adres 'A1'
+      | gemeentecode (92.10) |
+      |                 0599 |
 
   Regel: personen worden gevonden als zij staan ingeschreven in de opgegeven gemeente én hun geslachtsnaam en voornamen komen exact overeen met de opgegeven geslachtsnaam en voornamen (niet hoofdlettergevoelig)
 
@@ -51,21 +52,3 @@ Functionaliteit: zoek personen met geslachtsnaam, voornamen en gemeente van insc
         | van          |
         | Van          |
         | VAN          |
-
-  Regel: de optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om overleden personen te kunnen vinden
-
-    @info-api
-    Scenario: geslachtsnaam, voornamen en de gemeente waar de overleden persoon staat ingeschreven komen overeen met de opgegeven geslachtsnaam, voornamen en gemeente van inschrijving parameters
-      Gegeven de persoon 'Jan'
-      * heeft de volgende gegevens
-        | geslachtsnaam (02.40) | voornamen (02.10) |
-        | Jansen                | Jan               |
-      En 'Jan' is op 13-04-1998 ingeschreven op adres 'A1'
-      En 'Jan' is op 23-02-2022 overleden
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Jansen', voornamen 'Jan' en gemeente van inschrijving '0599' en parameters
-        | inclusiefOverledenPersonen |
-        | true                       |
-      Dan wordt 'Jan' gevonden
-      En heeft 'Jan' de volgende 'opschortingBijhouding' gegevens
-        | reden.code | reden.omschrijving | datum.datum | datum.langFormaat | datum.type |
-        | O          | overlijden         |  2022-02-23 |  23 februari 2022 | Datum      |

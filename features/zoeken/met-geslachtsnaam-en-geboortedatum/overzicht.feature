@@ -4,7 +4,7 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
   Als consumer
   wil ik personen vinden door het opgeven van hun geslachtsnaam en geboortedatum
 
-  Regel: personen worden gevonden als hun geboortedatum én hun geslachtsnaam overeenkomen met de opgegeven geboortedatum en geslachtsnaamhun (niet-hoofdlettergevoelig)
+  Regel: personen worden gevonden als hun geboortedatum én hun geslachtsnaam overeenkomen met de opgegeven geboortedatum en geslachtsnaam (niet-hoofdlettergevoelig)
 
     Abstract Scenario: geslachtsnaam en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam en geboortedatum
       Gegeven de op 26-05-1983 geboren 'Pieter'
@@ -128,51 +128,6 @@ Functionaliteit: zoek personen met geslachtsnaam en geboortedatum
         | geslachtsaanduiding |
         | v                   |
         | V                   |
-
-  Regel: de optionele 'inclusiefOverledenPersonen' parameter moet worden opgegeven om overleden personen te kunnen vinden
-
-    Scenario: geslachtsnaam en geboortedatum van een overleden persoon komen exact overeen en de optionele 'inclusiefOverledenPersonen' parameter is niet opgegeven
-      Gegeven de op 26-05-1983 geboren 'Jansen'
-      En 'Jansen' is overleden
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Jansen' en geboortedatum '1983-05-26'
-      Dan worden er geen personen gevonden
-
-    Scenario: geslachtsnaam en geboortedatum van een overleden persoon komen exact overeen en de optionele 'inclusiefOverledenPersonen' parameter is opgegeven
-      Gegeven de op 26-05-1983 geboren 'Jansen'
-      En 'Jansen' is op 23-03-2023 overleden
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Jansen' en geboortedatum '1983-05-26' en parameters
-        | inclusiefOverledenPersonen |
-        | true                       |
-      Dan wordt 'Jansen' gevonden
-      En heeft 'Jansen' de volgende 'opschortingBijhouding' gegevens
-        | reden.code | reden.omschrijving | datum.datum | datum.langFormaat | datum.type |
-        | O          | overlijden         |  2023-03-23 |     23 maart 2023 | Datum      |
-
-  Regel: om uitsluitend binnengemeentelijk te zoeken moet de optionele 'gemeenteVanInschrijving' parameter worden gebruikt
-
-    Scenario: geslachtsnaam, geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam, geboortedatum maar de personen staan niet ingeschreven in de opgegeven gemeente
-      Gegeven adres 'A1' in gemeente 'Rotterdam'
-      En de op 26-05-1983 geboren 'Adele'
-      * heeft de volgende gegevens
-        | geslachtsnaam (02.40) |
-        | Maassen               |
-      En 'Adele' is 3 jaar geleden ingeschreven op adres 'A1'
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Maassen' en geboortedatum '1983-05-26' en parameters
-        | gemeenteVanInschrijving |
-        |                    0518 |
-      Dan worden er geen personen gevonden
-
-    Scenario: geslachtsnaam en geboortedatum van personen komen exact overeen met de opgegeven geslachtsnaam en geboortedatum, maar de personen staan ingeschreven in de opgegeven gemeente
-      Gegeven adres 'A1' in gemeente 'Rotterdam'
-      En de op 26-05-1983 geboren 'Adele'
-      * heeft de volgende gegevens
-        | geslachtsnaam (02.40) |
-        | Maassen               |
-      En 'Adele' is 3 jaar geleden ingeschreven op adres 'A1'
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met geslachtsnaam 'Maassen' en geboortedatum '1983-05-26' en parameters
-        | gemeenteVanInschrijving |
-        |                    0599 |
-      Dan wordt 'Adele' gevonden
 
   Regel: wildcard matching (niet hoofdlettergevoelig) kan worden toegepast voor de geslachtsnaam en voornamen parameters
         Voor wildcard matching moet minimaal 3 letters  worden opgegeven, gevolgd door de wildcard teken (*)

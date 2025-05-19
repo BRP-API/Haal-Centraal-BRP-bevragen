@@ -23,7 +23,7 @@ Functionaliteit: leveren van de aanhef van een persoon
         | geslachtsaanduiding (04.10) | <geslacht> |
         | voornamen (02.10)           | Jo Rene    |
         | geslachtsnaam (02.40)       | Groenen    |
-      Als 'adressering.aanhef' wordt gevraagd van personen gezocht met burgerservicenummer van 'Jo'
+      Als 'adressering.aanhef' wordt gevraagd van 'Jo'
       Dan heeft 'Jo' de volgende 'adressering' gegevens
         | aanhef   |
         | <aanhef> |
@@ -44,7 +44,7 @@ Functionaliteit: leveren van de aanhef van een persoon
         | voornamen (02.10)           | Robin Melle |
         | voorvoegsel (02.30)         | van         |
         | geslachtsnaam (02.40)       | Puffelen    |
-      Als 'adressering.aanhef' wordt gevraagd van personen gezocht met burgerservicenummer van 'Robin'
+      Als 'adressering.aanhef' wordt gevraagd van 'Robin'
       Dan heeft 'Robin' de volgende 'adressering' gegevens
         | aanhef   |
         | <aanhef> |
@@ -75,19 +75,19 @@ Functionaliteit: leveren van de aanhef van een persoon
         | naam                  | waarde                  |
         | voorvoegsel (02.30)   | <partner voorvoegsel>   |
         | geslachtsnaam (02.40) | <partner geslachtsnaam> |
-      En 'Joan' en 'Jan' zijn met elkaar gehuwd
-      Als 'adressering.aanhef' wordt gevraagd van personen gezocht met burgerservicenummer van 'Joan'
+      En 'Joan' en 'Jan' zijn met elkaar <verbintenis>
+      Als 'adressering.aanhef' wordt gevraagd van 'Joan'
       Dan heeft 'Joan' de volgende 'adressering' gegevens
         | aanhef   |
         | <aanhef> |
 
       Voorbeelden:
-        | naamgebruik | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | aanhef                                 |
-        | E           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld            |
-        | E           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen                |
-        | P           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw Van Velzen             |
-        | P           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenink               |
-        | V           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw Van Velzen-in het Veld |
-        | V           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenink-Groenen       |
-        | N           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld-van Velzen |
-        | N           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen-Groenink       |
+        | naamgebruik | voorvoegsel | geslachtsnaam | partner voorvoegsel | partner geslachtsnaam | aanhef                                 | verbintenis                 |
+        | E           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld            | gehuwd                                   |
+        | E           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen                | een geregistreerd partnerschap aangegaan |
+        | P           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw Van Velzen             | gehuwd                                   |
+        | P           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenink               | een geregistreerd partnerschap aangegaan |
+        | V           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw Van Velzen-in het Veld | gehuwd                                   |
+        | V           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenink-Groenen       | een geregistreerd partnerschap aangegaan |
+        | N           | in het      | Veld          | van                 | Velzen                | Geachte mevrouw In het Veld-van Velzen | gehuwd                                   |
+        | N           |             | Groenen       |                     | Groenink              | Geachte mevrouw Groenen-Groenink       | een geregistreerd partnerschap aangegaan |

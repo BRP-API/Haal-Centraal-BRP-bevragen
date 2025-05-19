@@ -5,24 +5,18 @@ Functionaliteit: zoek personen met postcode en huisnummer
   wil ik personen vinden door het opgeven van de postcode en huisnummer van het adres waar zij staan ingeschreven
 
   Achtergrond:
-    Gegeven adres 'A1' in gemeente 'Rotterdam' heeft de volgende gegevens
+    Gegeven adres 'A1'
       | postcode (11.60) | huisnummer (11.20) |
       |           2628HJ |                  2 |
-    En adres 'A2' in gemeente 'Rotterdam' heeft de volgende gegevens
+    En adres 'A2'
       | postcode (11.60) | huisnummer (11.20) | huisletter (11.30) |
       |           2628HJ |                  2 | A                  |
-    En adres 'A3' in gemeente 'Rotterdam' heeft de volgende gegevens
+    En adres 'A3'
       | postcode (11.60) | huisnummer (11.20) | huisnummertoevoeging (11.40) |
       |           2628HJ |                  2 | III                          |
-    En adres 'A4' in gemeente 'Rotterdam' heeft de volgende gegevens
+    En adres 'A4'
       | postcode (11.60) | huisnummer (11.20) | aanduiding bij huisnummer (11.50) |
       |           2628HJ |                  2 | to                                |
-    En adres 'A5' in gemeente 'Rotterdam' heeft de volgende gegevens
-      | postcode (11.60) | huisnummer (11.20) |
-      |           2629HJ |                  2 |
-    En adres 'A6' in gemeente 'Rijnsaterwoude' heeft de volgende gegevens
-      | postcode (11.60) | huisnummer (11.20) |
-      |           2630HJ |                  2 |
     En de persoon 'Jan'
     * 'Jan' is 5 jaar geleden ingeschreven op adres 'A1'
     En de persoon 'Piet'
@@ -31,11 +25,6 @@ Functionaliteit: zoek personen met postcode en huisnummer
     * 'Kees' is 3 jaar geleden ingeschreven op adres 'A3'
     En de persoon 'Gerda'
     * 'Gerda' is 2 jaar geleden ingeschreven op adres 'A4'
-    En de persoon 'Saskia'
-    * 'Saskia' is op 17-10-2020 ingeschreven op adres 'A5'
-    * 'Saskia' is op 05-04-2023 overleden
-    En de persoon 'Henk'
-    * 'Henk' is 1 jaar geleden ingeschreven op adres 'A6'
 
   Regel: personen worden gevonden als de postcode en huisnummer van het adres waar zij staan ingeschreven overeenkomen met de opgegeven postcode (niet hoofdlettergevoelig) en huisnummer
 
@@ -77,27 +66,3 @@ Functionaliteit: zoek personen met postcode en huisnummer
         | III                  |
         | iii                  |
         | Iii                  |
-
-  Regel: om uitsluitend binnengemeentelijk te zoeken moet de optionele 'gemeenteVanInschrijving' parameter worden gebruikt
-
-    Abstract Scenario: de postcode, huisnummer en gemeente van inschrijving van het adres van personen komen overeen met de opgegeven postcode, huisnummer en gemeente van inschrijving
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met postcode '2630HJ' en huisnummer '2' en parameters
-        | gemeenteVanInschrijving |
-        |                    0601 |
-      Dan wordt 'Henk' gevonden
-
-  Regel: de optionele 'inclusiefOverledenPersonen' parameter moet worden gebruikt om overleden personen ingeschreven op een adres te kunnen vinden
-
-    Scenario: de postcode en huisnummer van het adres van een overleden persoon komen overeen met de opgegeven postcode en huisnummer en de optionele 'inclusiefOverledenPersonen' parameter is niet opgegeven
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met postcode '2629HJ' en huisnummer '2'
-      Dan worden er geen personen gevonden
-
-    @info-api
-    Scenario: de postcode en huisnummer van het adres van een overleden persoon komen overeen met de opgegeven postcode en huisnummer en de optionele 'inclusiefOverledenPersonen' parameter is opgegeven
-      Als 'burgerservicenummer' wordt gevraagd van personen gezocht met postcode '2629HJ' en huisnummer '2' en parameters
-        | inclusiefOverledenPersonen |
-        | true                       |
-      Dan wordt 'Saskia' gevonden
-      En heeft 'Saskia' de volgende 'opschortingBijhouding' gegevens
-        | reden.code | reden.omschrijving | datum.datum | datum.langFormaat | datum.type |
-        | O          | overlijden         |  2023-04-05 |      5 april 2023 | Datum      |
