@@ -7,14 +7,6 @@ Functionaliteit: Persoon, Inschrijving, Verblijfplaats gegeven stap definities
     En de 2e 'SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl' statement heeft als resultaat '10000'
     En de 3e 'SELECT COALESCE(MAX(pl_id), 0)+1 FROM public.lo3_pl' statement heeft als resultaat '10001'
 
-  Scenario: adres '[adres aanduiding]'
-    Gegeven adres 'A1'
-      | straatnaam (11.10) |
-      | Boterdiep          |
-    Dan zijn de gegenereerde SQL statements
-      | stap     | categorie | text                                                                                                                                  | values    |
-      | adres-A1 | adres     | INSERT INTO public.lo3_adres(adres_id,straat_naam) VALUES((SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres),$1) RETURNING * | Boterdiep |
-
   Scenario: persoon '[persoon aanduiding]' heeft de volgende gegevens
     Gegeven persoon 'P1' heeft de volgende gegevens
       | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
