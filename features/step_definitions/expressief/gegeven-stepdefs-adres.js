@@ -3,20 +3,42 @@ const { createAdres } = require('../adres-2');
 const { selectFirstOrDefault } = require('../postgresqlHelpers-2');
 const { arrayOfArraysToDataTable } = require('../dataTableFactory');
 
+function dataTableHasColumn(dataTable, columnName) {
+    return dataTable?.raw()[0].includes(columnName);
+}
+
 Given('adres {aanduiding}', function (aanduiding, dataTable) {
-    createAdres(this.context, aanduiding, dataTable);
+    gegevenEenAdres(this.context, aanduiding, dataTable);
 });
 
-function gegevenEenAdresInGemeente(context, aanduiding, gemeenteCode, dataTable) {
-    const gemCode =  gemeenteCode.padStart(4, '0');
-    const adresseerbaarObjectId = `${gemCode}010051001502`;
-    const nummeraanduidingId = `${gemCode}200000617227`;
+function gegevenEenAdres(context, aanduiding, dataTable) {
+    gegevenEenAdresInGemeente(context, aanduiding, '0518', dataTable);
+}
 
-    createAdres(context, aanduiding, arrayOfArraysToDataTable([
-        ['gemeentecode (92.10)', gemeenteCode],
-        ['identificatiecode verblijfplaats (11.80)', adresseerbaarObjectId],
-        ['identificatiecode nummeraanduiding (11.90)', nummeraanduidingId],
-    ], dataTable));
+function gegevenEenAdresInGemeente(context, aanduiding, gemeenteCode, dataTable) {
+    const adresData = [];
+
+    const gemCode =  gemeenteCode.padStart(4, '0');
+    if(!dataTableHasColumn(dataTable, 'gemeentecode (92.10)')) {
+        adresData.push(['gemeentecode (92.10)', gemeenteCode]);
+    }
+    if(!dataTableHasColumn(dataTable, 'identificatiecode verblijfplaats (11.80)')) {
+        adresData.push(['identificatiecode verblijfplaats (11.80)', `${gemCode}010051001502`]);
+    }
+    if(!dataTableHasColumn(dataTable, 'identificatiecode nummeraanduiding (11.90)')) {
+        adresData.push(['identificatiecode nummeraanduiding (11.90)', `${gemCode}200000617227`]);
+    }
+    if(!dataTableHasColumn(dataTable, 'postcode (11.60)')) {
+        adresData.push(['postcode (11.60)', '1234AB']);
+    }
+    if(!dataTableHasColumn(dataTable, 'huisnummer (11.20)')) {
+        adresData.push(['huisnummer (11.20)', '321']);
+    }
+    if(!dataTableHasColumn(dataTable, 'straatnaam (11.10)')) {
+        adresData.push(['straatnaam (11.10)', 'Hoofdstraat']);
+    }
+
+    createAdres(context, aanduiding, arrayOfArraysToDataTable(adresData, dataTable));
 }
 
 async function getGemeentecode(gemeentenaam) {
