@@ -27,7 +27,7 @@ Functionaliteit: Binnengemeentelijk zoeken
         | nummeraanduiding identificatie van 'A1'     |
         | postcode en huisnummer van 'A1'             |
 
-    Abstract Scenario: de opgegeven gemeente van inschrijving komt overeen met de gemeente van inschrijving van personen die matchen met de overige opgegeven zoek criteria
+    Abstract Scenario: de opgegeven gemeente van inschrijving komt niet overeen met de gemeente van inschrijving van personen die matchen met de overige opgegeven zoek criteria
       Als 'burgerservicenummer' wordt gevraagd van personen gezocht met adresseerbaar object identificatie van 'A1' en parameters
         | gemeenteVanInschrijving |
         |                    0518 |
