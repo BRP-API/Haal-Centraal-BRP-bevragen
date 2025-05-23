@@ -42,9 +42,9 @@ components:
           maxItems: 130
           minItems: 1
           items:
-            $ref: 'filter.yaml#/components/schemas/Field'
+            $ref: 'brp-api/query-parameters/field-v1.yaml#/components/schemas/Field'
         gemeenteVanInschrijving:
-          $ref: 'persoon.yaml#/components/schemas/GemeenteVanInschrijving'
+          $ref: 'brp-api/query-parameters/gemeente-van-inschrijving-filter-v1.yaml#/components/schemas/GemeenteVanInschrijving'
     RaadpleegMetBurgerservicenummer:
       required:
         - burgerservicenummer
@@ -71,17 +71,15 @@ components:
             geboortedatum:
               description: |
                 Je kunt alleen zoeken met een volledige geboortedatum.
-              type: string
-              format: date
-              example: "1964-09-24"
+              $ref: 'brp-api/query-parameters/datum-filter-v1.yaml#/components/schemas/DatumFilter'
             geslachtsnaam:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
+              $ref: 'brp-api/query-parameters/geslachtsnaam-filter-v1.yaml#/components/schemas/GeslachtsnaamFilter'
             geslacht:
-              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
+              $ref: 'brp-api/query-parameters/geslacht-filter-v1.yaml#/components/schemas/GeslachtFilter'
             voorvoegsel:
-              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
+              $ref: 'brp-api/query-parameters/voorvoegsel-filter-v1.yaml#/components/schemas/VoorvoegselFilter'
             voornamen:
-              $ref: 'filter.yaml#/components/schemas/VoornamenOptioneelFilter'
+              $ref: 'brp-api/query-parameters/voornamen-optioneel-filter-v1.yaml#/components/schemas/VoornamenOptioneelFilter'
     ZoekMetNaamEnGemeenteVanInschrijving:
       required:
         - geslachtsnaam
@@ -94,13 +92,13 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             geslacht:
-              $ref: 'filter.yaml#/components/schemas/GeslachtFilter'
+              $ref: 'brp-api/query-parameters/geslacht-filter-v1.yaml#/components/schemas/GeslachtFilter'
             geslachtsnaam:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
+              $ref: 'brp-api/query-parameters/geslachtsnaam-filter-v1.yaml#/components/schemas/GeslachtsnaamFilter'
             voorvoegsel:
-              $ref: 'filter.yaml#/components/schemas/VoorvoegselFilter'
+              $ref: 'brp-api/query-parameters/voorvoegsel-filter-v1.yaml#/components/schemas/VoorvoegselFilter'
             voornamen:
-              $ref: 'filter.yaml#/components/schemas/VoornamenVerplichtFilter'
+              $ref: 'brp-api/query-parameters/voornamen-verplicht-filter-v1.yaml#/components/schemas/VoornamenVerplichtFilter'
     ZoekMetPostcodeEnHuisnummer:
       required:
         - postcode
@@ -112,21 +110,19 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             huisletter:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
+              $ref: 'brp/adres/huisletter-v1.yaml#/components/schemas/Huisletter'
             huisnummer:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
+              $ref: 'brp/adres/huisnummer-v1.yaml#/components/schemas/Huisnummer'
             huisnummertoevoeging:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
+              $ref: 'brp/adres/huisnummertoevoeging-v1.yaml#/components/schemas/Huisnummertoevoeging'
             postcode:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Postcode'
+              $ref: 'brp/adres/postcode-v1.yaml#/components/schemas/Postcode'
             geboortedatum:
               description: |
                 Je kunt alleen zoeken met een volledige geboortedatum.
-              type: string
-              format: date
-              example: "1964-09-24"
+              $ref: 'brp-api/query-parameters/datum-filter-v1.yaml#/components/schemas/DatumFilter'
             geslachtsnaam:
-              $ref: 'filter.yaml#/components/schemas/GeslachtsnaamFilter'
+              $ref: 'brp-api/query-parameters/geslachtsnaam-filter-v1.yaml#/components/schemas/GeslachtsnaamFilter' 
     ZoekMetStraatHuisnummerEnGemeenteVanInschrijving:
       required:
         - straat
@@ -139,13 +135,13 @@ components:
             inclusiefOverledenPersonen:
               $ref: '#/components/schemas/InclusiefOverledenPersonen'
             huisletter:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisletter'
+              $ref: 'brp/adres/huisletter-v1.yaml#/components/schemas/Huisletter'
             huisnummer:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummer'
+              $ref: 'brp/adres/huisnummer-v1.yaml#/components/schemas/Huisnummer'
             huisnummertoevoeging:
-              $ref: 'verblijfplaats.yaml#/components/schemas/Huisnummertoevoeging'
+              $ref: 'brp/adres/huisnummertoevoeging-v1.yaml#/components/schemas/Huisnummertoevoeging'
             straat:
-              $ref: 'filter.yaml#/components/schemas/StraatFilter'
+              $ref: 'brp-api/query-parameters/straat-filter-v1.yaml#/components/schemas/StraatFilter'
     ZoekMetNummeraanduidingIdentificatie:
       required:
         - nummeraanduidingIdentificatie

@@ -6,162 +6,103 @@ info:
 paths: {}
 components:
   schemas:
-    ANummer:
-      description: |
-        Het A-nummer van de persoon
-      type: string
-      pattern: ^[0-9]{10}$
-    GeheimhoudingPersoonsgegevens:
-      description: |
-        Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.
-      type: boolean
-    GemeenteVanInschrijving:
-      description: |
-        Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
-      type: string
-      pattern: ^[0-9]{4}$
-      example: "0518"
-    IndicatieCurateleRegister:
-      type: boolean
-      description: |
-        Geeft aan dat de persoon onder curatele is gesteld.
-      example: true
-    Leeftijd:
-      type: integer
-      description: |
-        Leeftijd in jaren op het moment van bevragen.
-      example: 34
-      minimum: 0
-      maximum: 150
-    OmschrijvingVerdrag:
-      type: string
-      description: |
-        Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
-    Categorie:
-      type: string
-      description: Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
-      pattern: ^[a-zA-Z0-9À-ž \.\-\'\/]{1,40}$
-      example: Verblijfplaats
-    OmschrijvingVerificatie:
-      type: string
-      description: |
-        Omschrijving van de verificatie van de rni-gegevens
-      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
-    Verificatie:
-      type: object
-      properties:
-        datum:
-          $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
-        omschrijving:
-          $ref: '#/components/schemas/OmschrijvingVerificatie'
-    RniDeelnemer:
-      type: object
-      description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
-      properties:
-        deelnemer:
-          $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
-        omschrijvingVerdrag:
-          $ref: '#/components/schemas/OmschrijvingVerdrag'
-        categorie:
-          $ref: '#/components/schemas/Categorie'
     PersoonBeperkt:
       type: object
       properties:
         burgerservicenummer:
           $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/GeboorteBeperkt'
+          $ref: 'brp-api/geboorte/geboorte-beperkt-v1.yaml#/components/schemas/GeboorteBeperkt'
         geheimhoudingPersoonsgegevens:
-          $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
+          $ref: 'brp-api/geheim/geheimhouding-persoonsgegevens-v1.yaml#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoekBeperkt'
         leeftijd:
-          $ref: '#/components/schemas/Leeftijd'
+          $ref: 'brp-api/geboorte/leeftijd-v1.yaml#/components/schemas/Leeftijd'
         naam:
-          $ref: 'naam.yaml#/components/schemas/NaamPersoonBeperkt'
+          $ref: 'brp-api/naam/naam-persoon-beperkt-v1.yaml#/components/schemas/NaamPersoonBeperkt'
         opschortingBijhouding:
-          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
+          $ref: 'brp-api/opschorting-bijhouding/opschorting-bijhouding-v1.yaml#/components/schemas/OpschortingBijhouding'
         adressering:
-          $ref: 'adressering.yaml#/components/schemas/AdresseringBeperkt'
+          $ref: 'brp-api/adressering/adressering-beperkt-v1.yaml#/components/schemas/AdresseringBeperkt'
         rni:
           type: array
           items:
-            $ref: '#/components/schemas/RniDeelnemer'
+            $ref: 'brp/rni/rni-deelnemer-v1.yaml#/components/schemas/RniDeelnemer'
         verificatie:
-          $ref: '#/components/schemas/Verificatie'
+          $ref: 'brp-api/verificatie/verificatie-v1.yaml#/components/schemas/Verificatie'
     Persoon:
       type: object
       properties:
         aNummer:
-          $ref: '#/components/schemas/ANummer'
+          $ref: 'brp/identificatienummers/anummer-v1.yaml#/components/schemas/ANummer'
         burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+          $ref: 'brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         datumEersteInschrijvingGBA:
           $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         geheimhoudingPersoonsgegevens:
-          $ref: '#/components/schemas/GeheimhoudingPersoonsgegevens'
+          $ref: 'brp-api/geheim/geheimhouding-persoonsgegevens-v1.yaml#/components/schemas/GeheimhoudingPersoonsgegevens'
         geslacht:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         inOnderzoek:
           $ref: '#/components/schemas/PersoonInOnderzoek'
         uitsluitingKiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/UitsluitingKiesrecht'
+          $ref: 'brp-api/kiesrecht/uitsluiting-kiesrecht-v1.yaml#/components/schemas/UitsluitingKiesrecht'
         europeesKiesrecht:
-          $ref: 'kiesrecht.yaml#/components/schemas/EuropeesKiesrecht'
+          $ref: 'brp-api/kiesrecht/europees-kiesrecht-v1.yaml#/components/schemas/EuropeesKiesrecht'
         leeftijd:
-          $ref: '#/components/schemas/Leeftijd'
+          $ref: 'brp-api/geboorte/leeftijd-v1.yaml#/components/schemas/Leeftijd'
         naam:
-          $ref: 'naam.yaml#/components/schemas/NaamPersoon'
+          $ref: 'brp-api/naam/naam-persoon-v1.yaml#/components/schemas/NaamPersoon'
         nationaliteiten:
           type: array
           items:
-            $ref: 'nationaliteit.yaml#/components/schemas/AbstractNationaliteit'
+            $ref: 'brp-api/nationaliteit/nationaliteit-polymorf-v1.yaml#/components/schemas/AbstractNationaliteit'
         geboorte:
-          $ref: 'geboorte.yaml#/components/schemas/Geboorte'
+          $ref: 'brp-api/geboorte/geboorte-v1.yaml#/components/schemas/Geboorte'
         opschortingBijhouding:
-          $ref: 'opschortingbijhouding.yaml#/components/schemas/OpschortingBijhouding'
+          $ref: 'brp-api/opschorting-bijhouding/opschorting-bijhouding-v1.yaml#/components/schemas/OpschortingBijhouding'
         overlijden:
-          $ref: 'overlijden.yaml#/components/schemas/Overlijden'
+          $ref: 'brp-api/overlijden/overlijden-v1.yaml#/components/schemas/Overlijden'
         verblijfplaats:
-          $ref: 'verblijfplaats.yaml#/components/schemas/AbstractVerblijfplaats'
+          $ref: 'brp-api/verblijfplaats/verblijfplaats-polymorf-v1.yaml#/components/schemas/AbstractVerblijfplaats'
         immigratie:
-          $ref: 'immigratie.yaml#/components/schemas/Immigratie'
+          $ref: 'brp-api/immigratie/immigratie-v1.yaml#/components/schemas/Immigratie'
         gemeenteVanInschrijving:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
         datumInschrijvingInGemeente:
           $ref: 'brp-api/datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
         adressering:
-          $ref: 'adressering.yaml#/components/schemas/Adressering'
+          $ref: 'brp-api/adressering/adressering-v1.yaml#/components/schemas/Adressering'
         indicatieCurateleRegister:
-          $ref: '#/components/schemas/IndicatieCurateleRegister'
+          $ref: 'brp/indicatie-curatele-register-v1.yaml#/components/schemas/IndicatieCurateleRegister'
         indicatieGezagMinderjarige:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
           deprecated: true
         gezag:
           $ref: 'gezag.yaml#/components/schemas/Gezag'
         verblijfstitel:
-          $ref: 'verblijfstitel.yaml#/components/schemas/Verblijfstitel'
+          $ref: 'brp-api/verblijfstitel/verblijfstitel-v1.yaml#/components/schemas/Verblijfstitel'
         kinderen:
           type: array
           items:
-            $ref: 'kind.yaml#/components/schemas/Kind'
+            $ref: 'brp-api/kind/kind-v1.yaml#/components/schemas/Kind'
         ouders:
           type: array
           items:
-            $ref: 'ouder.yaml#/components/schemas/Ouder'
+            $ref: 'brp-api/ouder/ouder-v1.yaml#/components/schemas/Ouder'
         partners:
           type: array
           items:
-            $ref: 'partner.yaml#/components/schemas/Partner'
+            $ref: 'brp-api/partner/partner-v1.yaml#/components/schemas/Partner'
         rni:
           type: array
           items:
-            $ref: '#/components/schemas/RniDeelnemer'
+            $ref: 'brp/rni/rni-deelnemer-v1.yaml#/components/schemas/RniDeelnemer'
         verificatie:
-          $ref: '#/components/schemas/Verificatie'
+          $ref: 'brp-api/verificatie/verificatie-v1.yaml#/components/schemas/Verificatie'
     PersoonInOnderzoek:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn.
