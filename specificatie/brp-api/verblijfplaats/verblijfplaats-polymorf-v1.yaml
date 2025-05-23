@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: verblijfplaats (polymorf)
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    AbstractVerblijfplaats:
+      type: object
+      description: |
+        Gegevens over het verblijf of de woonlocatie van een persoon.
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        datumIngangGeldigheid:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+          description: |
+            datum waarop de gegevens over de verblijfplaats geldig zijn geworden.
+          deprecated: true
+      discriminator:
+        propertyName: type
+        mapping:
+          VerblijfplaatsBuitenland: 'verblijfplaats-buitenland-v1.yaml#/components/schemas/VerblijfplaatsBuitenland'
+          Adres: 'adres-v1.yaml#/components/schemas/Adres'
+          VerblijfplaatsOnbekend: 'verblijfplaats-onbekend-v1.yaml#/components/schemas/VerblijfplaatsOnbekend'
+          Locatie: 'locatie-v1.yaml#/components/schemas/Locatie'

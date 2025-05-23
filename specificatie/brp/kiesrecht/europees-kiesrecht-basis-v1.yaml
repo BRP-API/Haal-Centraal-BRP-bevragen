@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info: 
+  title: europees kiesrecht (basis)
+  version: 1.0.0
+components: 
+  schemas: 
+    EuropeesKiesrechtBasis:
+      type: object
+      properties:
+        aanduiding:
+          description: |
+            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

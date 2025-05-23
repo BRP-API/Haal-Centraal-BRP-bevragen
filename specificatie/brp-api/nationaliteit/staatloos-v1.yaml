@@ -1,0 +1,26 @@
+openapi: 3.1.0
+info: 
+  title: staatloos
+  version: 1.0.0
+  contact: {}
+components: 
+  schemas:
+    Staatloos:
+      allOf:
+        - $ref: 'nationaliteit-polymorf-v1.yaml#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/StaatloosInOnderzoek'
+
+    StaatloosInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
+              type: boolean
+            redenOpname:
+              type: boolean

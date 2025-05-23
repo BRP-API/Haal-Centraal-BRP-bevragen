@@ -1,0 +1,15 @@
+openapi: 3.1.0
+info: 
+  title: verblijfstitel
+  version: 1.0.0
+components: 
+  schemas:
+    VerblijfstitelBasis:
+      description: |
+        Gegevens over de verblijfsrechtelijke status van de persoon.
+      type: object
+      properties:
+        aanduiding:
+          description: |
+            Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

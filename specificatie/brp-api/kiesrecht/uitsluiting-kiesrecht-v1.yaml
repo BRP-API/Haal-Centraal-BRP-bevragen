@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info: 
+  title: uitsluiting kiesrecht
+  version: 1.0.0
+components: 
+  schemas:
+    UitsluitingKiesrecht:
+      allOf: 
+        - $ref: '../../brp/kiesrecht/uitsluiting-kiesrecht-basis-v1.yaml#/components/schemas/UitsluitingKiesrechtBasis'
+        - type: object
+          properties:
+            einddatum:
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

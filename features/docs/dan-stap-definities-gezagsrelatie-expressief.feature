@@ -559,6 +559,7 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
 
   Regel: Dan heeft '{aanduidingMinderjarige}' geen gezaghouder
 
+    @info-api @data-api
     Scenario: gevraagde persoon heeft geen gezagsrelaties
       Gegeven de response body is gelijk aan
         """
@@ -572,8 +573,23 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
         """
       Dan heeft 'Bert' geen gezaghouder
 
+    @gezag-api
+    Scenario: gevraagde persoon heeft geen gezagsrelaties
+      Gegeven de response body is gelijk aan
+        """
+        {
+          "personen": [
+            {
+              "burgerservicenummer": "000000036",
+              "gezag": []
+            }
+          ]
+        }
+        """
+      Dan heeft 'Bert' geen gezaghouder
+
   Regel: De response kan meerdere gezagsrelaties bevatten
-    
+
     @deprecated @gezag-api
     Scenario: meerdere gezagsrelaties van één persoon
       Gegeven de response body is gelijk aan

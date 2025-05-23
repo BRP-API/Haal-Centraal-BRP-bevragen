@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: woonplaats
+  version: 1.0.0
+components:
+  schemas:
+    Woonplaats:
+      description: |
+        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
+      title: woonplaats naam
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž, \(\)\.\-\']{1,80}$
+      example: Duiven

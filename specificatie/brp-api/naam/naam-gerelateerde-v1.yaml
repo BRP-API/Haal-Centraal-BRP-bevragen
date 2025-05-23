@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info:
+  title: naam gerelateerde type definities
+  version: 2.0.0
+  contact: {}
+components:
+  schemas:
+    NaamGerelateerde:
+      type: object
+      properties:
+        voornamen:
+          $ref: '../../brp/naam/voornamen-v1.yaml#/components/schemas/Voornamen'
+        adellijkeTitelPredicaat:
+          $ref: '../../brp/naam/adellijke-titel-predicaat-v1.yaml#/components/schemas/AdellijkeTitelPredicaatType'
+        voorvoegsel:
+          $ref: '../../brp/naam/voorvoegsel-v1.yaml#/components/schemas/Voorvoegsel'
+        geslachtsnaam:
+          $ref: '../../brp/naam/geslachtsnaam-v1.yaml#/components/schemas/Geslachtsnaam'
+        voorletters:
+          $ref: 'voorletters-v1.yaml#/components/schemas/Voorletters'
+        inOnderzoek:
+          $ref: '#/components/schemas/NaamInOnderzoek'
+
+    NaamInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de naam in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            voornamen:
+              type: boolean
+            adellijkeTitelPredicaat:
+              type: boolean
+            voorvoegsel:
+              type: boolean
+            geslachtsnaam:
+              type: boolean
+            voorletters:
+              type: boolean

@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: indicatie vastgesteld verblijft niet op adres
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    IndicatieVastgesteldVerblijftNietOpAdres:
+      description: |
+        Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.
+      type: boolean

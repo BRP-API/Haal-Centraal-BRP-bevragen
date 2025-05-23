@@ -239,6 +239,10 @@ Then('heeft {aanduiding} geen gezaghouder', function (aanduidingMinderjarige) {
         ]
     };
 
+    if(this.context.isGezagApiAanroep) {
+        expected.personen[0].burgerservicenummer = getBsn(getPersoon(this.context, aanduidingMinderjarige));
+    }
+
     this.context.expected = expected;
 });
 

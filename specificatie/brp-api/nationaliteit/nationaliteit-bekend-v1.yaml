@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info: 
+  title: nationaliteit bekend
+  version: 1.0.0
+  contact: {}
+components: 
+  schemas:
+    NationaliteitBekend:
+      allOf:
+        - $ref: 'nationaliteit-polymorf-v1.yaml#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            nationaliteit:
+              description: |
+                wordt gevuld met waarden uit de landelijke tabel 'Nationaliteiten'.
+              $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/NationaliteitBekendInOnderzoek'
+
+    NationaliteitBekendInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.
+      allOf:
+        - $ref: 'nationaliteit-polymorf-v1.yaml#/components/schemas/NationaliteitInOnderzoek'
+        - type: object
+          properties:
+            nationaliteit:
+              type: boolean

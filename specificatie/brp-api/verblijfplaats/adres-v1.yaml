@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: Adres
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    Adres:
+      description: |
+        Gegevens over het adres van een persoon.
+      allOf:
+        - $ref : 'verblijfplaats-polymorf-v1.yaml#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            verblijfadres:
+              $ref: "#/components/schemas/VerblijfadresBinnenland"
+            functieAdres:
+              $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+            adresseerbaarObjectIdentificatie:
+              $ref: '../../brp/adres/adresseerbaar-object-identificatie-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatie'
+            nummeraanduidingIdentificatie:
+              $ref: '../../brp/adres/nummeraanduiding-identificatie-v1.yaml#/components/schemas/NummeraanduidingIdentificatie'
+            datumVan:
+              description: |
+                de datum van aangifte of ambtshalve melding van verblijf en adres.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            indicatieVastgesteldVerblijftNietOpAdres:
+              $ref: 'indicatie-vastgesteld-verblijft-niet-op-adres-v1.yaml#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
+            inOnderzoek:
+              $ref: "#/components/schemas/AdresInOnderzoek"
+
+    AdresInOnderzoek:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+              deprecated: true
+            nummeraanduidingIdentificatie:
+              type: boolean
+            adresseerbaarObjectIdentificatie:
+              type: boolean
+            functieAdres:
+              type: boolean
+
+    VerblijfadresBinnenland:
+      type: object
+      properties:
+        officieleStraatnaam:
+          $ref: '../../brp/adres/straatnaam-officieel-v1.yaml#/components/schemas/OfficieleStraatnaam'
+        korteStraatnaam:
+          $ref: '../../brp/adres/straatnaam-kort-v1.yaml#/components/schemas/KorteStraatnaam'
+        huisnummer:
+          $ref: '../../brp/adres/huisnummer-v1.yaml#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '../../brp/adres/huisletter-v1.yaml#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '../../brp/adres/huisnummertoevoeging-v1.yaml#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '../../brp/adres/postcode-v1.yaml#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '../../brp/adres/woonplaats-v1.yaml#/components/schemas/Woonplaats'
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfadresBinnenlandInOnderzoek"
+
+    VerblijfadresBinnenlandInOnderzoek:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanduidingBijHuisnummer:
+              type: boolean
+            huisletter:
+              type: boolean
+            huisnummer:
+              type: boolean
+            huisnummertoevoeging:
+              type: boolean
+            officieleStraatnaam:
+              type: boolean
+            postcode:
+              type: boolean
+            korteStraatnaam:
+              type: boolean
+            woonplaats:
+              type: boolean

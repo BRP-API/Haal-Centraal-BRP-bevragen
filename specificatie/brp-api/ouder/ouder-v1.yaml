@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info: 
+  title: ouder
+  version: 1.0.0
+components: 
+  schemas:
+    Ouder:
+      allOf: 
+        - $ref: '../../brp/ouder/ouder-basis-v1.yaml#/components/schemas/OuderBasis'
+        - type: object
+          properties:
+            datumIngangFamilierechtelijkeBetrekking:
+              description: |
+                De datum waarop de familierechtelijke betrekking is ontstaan.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            naam:
+              $ref: '../naam/naam-gerelateerde-v1.yaml#/components/schemas/NaamGerelateerde'
+            inOnderzoek:
+              $ref: '#/components/schemas/OuderInOnderzoek'
+            geboorte:
+              $ref: '../geboorte/geboorte-v1.yaml#/components/schemas/Geboorte'
+
+    OuderInOnderzoek:
+      description: |
+        Geeft aan welke gegevens van de de ouder in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            datumIngangFamilierechtelijkeBetrekking:
+              type: boolean
+            geslacht:
+              type: boolean

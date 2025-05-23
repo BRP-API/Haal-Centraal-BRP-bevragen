@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info: 
+  title: partner type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    Partner:
+      allOf: 
+        - $ref: '../../brp/partner/partner-basis-v1.yaml#/components/schemas/PartnerBasis'
+        - type: object
+          properties:
+            naam:
+              $ref: '../naam/naam-gerelateerde-v1.yaml#/components/schemas/NaamGerelateerde'
+            geboorte:
+              $ref: '../geboorte/geboorte-v1.yaml#/components/schemas/Geboorte'
+            inOnderzoek:
+              $ref: '#/components/schemas/PartnerInOnderzoek'
+            aangaanHuwelijkPartnerschap:
+              $ref: 'aangaan-huwelijk-partnerschap-v1.yaml#/components/schemas/AangaanHuwelijkPartnerschap'
+            ontbindingHuwelijkPartnerschap:
+              $ref: 'ontbinding-huwelijk-partnerschap-v1.yaml#/components/schemas/OntbindingHuwelijkPartnerschap'
+
+    PartnerInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het huwelijk of het partnerschap in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: boolean
+            geslacht:
+              type: boolean
+            soortVerbintenis:
+              type: boolean

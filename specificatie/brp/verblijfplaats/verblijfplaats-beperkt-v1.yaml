@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info: 
+  title: verblijfplaats beperkt
+  version: 1.0.0
+components: 
+  schemas:
+    GbaVerblijfplaatsBeperkt:
+      type: object
+      properties:
+        straat:
+          $ref: '../adres/straatnaam-kort-v1.yaml#/components/schemas/KorteStraatnaam'
+        huisnummer:
+          $ref: '../adres/huisnummer-v1.yaml#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '../adres/huisletter-v1.yaml#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '../adres/huisnummertoevoeging-v1.yaml#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '../adres/postcode-v1.yaml#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '../adres/woonplaats-v1.yaml#/components/schemas/Woonplaats'
+        locatiebeschrijving:
+          $ref: '../locatie/locatiebeschrijving-v1.yaml#/components/schemas/Locatiebeschrijving'
+        land:
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        regel1:
+          $ref: '../adres-buitenland/regel1-v1.yaml#/components/schemas/Regel1'
+        regel2:
+          $ref: '../adres-buitenland/regel2-v1.yaml#/components/schemas/Regel2'
+        regel3:
+          $ref: '../adres-buitenland/regel3-v1.yaml#/components/schemas/Regel3'
+        inOnderzoek:
+          $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'

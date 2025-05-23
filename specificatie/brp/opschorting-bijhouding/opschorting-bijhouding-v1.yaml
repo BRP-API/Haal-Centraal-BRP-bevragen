@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: opschorting bijhouding 
+  version: 1.0.0
+components:
+  schemas:
+    GbaOpschortingBijhouding:
+      allOf:
+        - $ref: 'opschorting-bijhouding-basis-v1.yaml#/components/schemas/OpschortingBijhoudingBasis'
+        - type: object
+          properties:
+            datum:
+              description: Datum waarop de bijhouding is gestaakt
+              $ref: '../datum-v1.yaml#/components/schemas/GbaDatum'

@@ -110,27 +110,77 @@ components:
           $ref: '#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
         datum:
           $ref: '#/components/schemas/DatumFilter'
+        field:
+          $ref: '#/components/schemas/Field'
+        gemeenteVanInschrijving:
+          $ref: '#/components/schemas/GemeenteVanInschrijving'
+        geslacht:
+          $ref: '#/components/schemas/GeslachtFilter'
+        geslachtsnaam:
+          $ref: '#/components/schemas/GeslachtsnaamFilter'
         nummeraanduidingIdentificatie:
           $ref: '#/components/schemas/NummeraanduidingIdentificatieFilter'
+        straat:
+          $ref: '#/components/schemas/StraatFilter'
+        voornamenOptioneel:
+          $ref: '#/components/schemas/VoornamenOptioneelFilter'
+        voornamenVerplicht:
+          $ref: '#/components/schemas/VoornamenVerplichtFilter'
+        voorvoegsel:
+          $ref: '#/components/schemas/VoorvoegselFilter'
     DataApiResponse:
       type: object
       properties:
         adresseerbaarObjectIdentificatie:
           $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+        anummer:
+          $ref: '#/components/schemas/ANummer'
         burgerservicenummer:
           $ref: '#/components/schemas/Burgerservicenummer'
         geboorteBasis:
           $ref: '#/components/schemas/GeboorteBasis'
+        geboorte:
+          $ref: '#/components/schemas/GbaGeboorte'
         geslachtsaanduiding:
           $ref: '#/components/schemas/Geslachtsaanduiding'
         gezagsrelatie:
           $ref: '#/components/schemas/AbstractGezagsrelatie'
+        immigratie:
+          $ref: '#/components/schemas/GbaImmigratie'
         indicatieGeheim:
           $ref: '#/components/schemas/IndicatieGeheim'
         InOnderzoek:
           $ref: '#/components/schemas/InOnderzoek'
+        europeesKiesrecht:
+          $ref: '#/components/schemas/GbaEuropeesKiesrecht'
+        uitsluitingKiesrecht:
+          $ref: '#/components/schemas/GbaUitsluitingKiesrecht'
+        kind:
+          $ref: '#/components/schemas/GbaKind'
+        naam:
+          $ref: '#/components/schemas/GbaNaamPersoon'
         naamBasis:
           $ref: '#/components/schemas/NaamBasis'
+        nationaliteit:
+          $ref: '#/components/schemas/GbaNationaliteit'
+        opschorting:
+          $ref: '#/components/schemas/GbaOpschortingBijhouding'
+        ouder:
+          $ref: '#/components/schemas/GbaOuder'
+        overlijden:
+          $ref: '#/components/schemas/GbaOverlijden'
+        partner:
+          $ref: '#/components/schemas/GbaPartner'
+        rni:
+          $ref: '#/components/schemas/RniDeelnemer'
+        verblijfplaats:
+          $ref: '#/components/schemas/GbaVerblijfplaats'
+        verblijfplaatsBeperkt:
+          $ref: '#/components/schemas/GbaVerblijfplaatsBeperkt'
+        verblijfstitel:
+          $ref: '#/components/schemas/GbaVerblijfstitel'
+        verificatie:
+          $ref: '#/components/schemas/GbaVerificatie'
     Foutbericht:
       type: object
       description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
@@ -166,6 +216,11 @@ components:
       description: |
         De identificatiecode van een adresseerbaar object.
       example: '0226010000038820'
+    ANummer:
+      description: |
+        Het A-nummer van de persoon
+      type: string
+      pattern: ^[0-9]{10}$
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
@@ -192,6 +247,15 @@ components:
           type: string
           pattern: ^[a-zA-Z0-9À-ž \'\.\-\(\),]{1,200}$
           example: Nederland
+    GbaGeboorte:
+      allOf:
+        - $ref: '#/components/schemas/GeboorteBasis'
+        - type: object
+          properties:
+            land:
+              $ref: '#/components/schemas/Waardetabel'
+            plaats:
+              $ref: '#/components/schemas/Waardetabel'
     Geslachtsaanduiding:
       allOf:
         - $ref: '#/components/schemas/Waardetabel'
@@ -378,6 +442,20 @@ components:
           $ref: '#/components/schemas/GeboorteBasis'
       required:
         - burgerservicenummer
+    ImmigratieBasis:
+      type: object
+      properties:
+        landVanwaarIngeschreven:
+          description: |
+            het land waar de persoon woonde voor (her)vestiging in Nederland.
+          $ref: '#/components/schemas/Waardetabel'
+    GbaImmigratie:
+      allOf:
+        - $ref: '#/components/schemas/ImmigratieBasis'
+        - type: object
+          properties:
+            datumVestigingInNederland:
+              $ref: '#/components/schemas/GbaDatum'
     IndicatieGeheim:
       description: |
         Gegevens over het mogen verstrekken van persoonsgegevens aan derden / maatschappelijke instellingen.
@@ -396,6 +474,368 @@ components:
           example: '100000'
         datumIngangOnderzoek:
           $ref: '#/components/schemas/GbaDatum'
+    EuropeesKiesrechtBasis:
+      type: object
+      properties:
+        aanduiding:
+          description: |
+            Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.
+          $ref: '#/components/schemas/Waardetabel'
+    GbaEuropeesKiesrecht:
+      allOf:
+        - $ref: '#/components/schemas/EuropeesKiesrechtBasis'
+        - type: object
+          properties:
+            einddatumUitsluiting:
+              $ref: '#/components/schemas/GbaDatum'
+    UitsluitingKiesrechtBasis:
+      type: object
+      properties:
+        uitgeslotenVanKiesrecht:
+          type: boolean
+          example: true
+    GbaUitsluitingKiesrecht:
+      allOf:
+        - $ref: '#/components/schemas/UitsluitingKiesrechtBasis'
+        - type: object
+          properties:
+            einddatum:
+              $ref: '#/components/schemas/GbaDatum'
+    KindBasis:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+    GbaKind:
+      allOf:
+        - $ref: '#/components/schemas/KindBasis'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/InOnderzoek'
+            naam:
+              $ref: '#/components/schemas/NaamBasis'
+            geboorte:
+              $ref: '#/components/schemas/GbaGeboorte'
+    GbaNaamPersoon:
+      allOf:
+        - $ref: '#/components/schemas/NaamBasis'
+        - properties:
+            aanduidingNaamgebruik:
+              $ref: '#/components/schemas/Waardetabel'
+    GbaNationaliteit:
+      type: object
+      properties:
+        aanduidingBijzonderNederlanderschap:
+          type: string
+          pattern: ^(B|V)$
+        datumIngangGeldigheid:
+          $ref: '#/components/schemas/GbaDatum'
+        nationaliteit:
+          $ref: '#/components/schemas/Waardetabel'
+        redenOpname:
+          $ref: '#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: '#/components/schemas/InOnderzoek'
+    OpschortingBijhoudingBasis:
+      type: object
+      description: |
+        Gegevens over het (gedeeltelijk) stoppen van de bijhouding van de persoonsgegevens
+      properties:
+        reden:
+          description: Omschrijving reden opschorting bijhouding
+          $ref: '#/components/schemas/Waardetabel'
+    GbaOpschortingBijhouding:
+      allOf:
+        - $ref: '#/components/schemas/OpschortingBijhoudingBasis'
+        - type: object
+          properties:
+            datum:
+              description: Datum waarop de bijhouding is gestaakt
+              $ref: '#/components/schemas/GbaDatum'
+    OuderAanduiding:
+      type: string
+      pattern: ^[1|2]$
+      example: '1'
+    OuderBasis:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        geslacht:
+          description: |
+            wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+          $ref: '#/components/schemas/Waardetabel'
+        ouderAanduiding:
+          $ref: '#/components/schemas/OuderAanduiding'
+    GbaOuder:
+      allOf:
+        - $ref: '#/components/schemas/OuderBasis'
+        - type: object
+          properties:
+            datumIngangFamilierechtelijkeBetrekking:
+              description: |
+                De datum waarop de familierechtelijke betrekking is ontstaan.
+              $ref: '#/components/schemas/GbaDatum'
+            naam:
+              $ref: '#/components/schemas/NaamBasis'
+            geboorte:
+              $ref: '#/components/schemas/GbaGeboorte'
+            inOnderzoek:
+              $ref: '#/components/schemas/InOnderzoek'
+    OverlijdenBasis:
+      type: object
+      properties:
+        land:
+          description: |
+            land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+          $ref: '#/components/schemas/Waardetabel'
+        plaats:
+          description: |
+            gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten".
+          $ref: '#/components/schemas/Waardetabel'
+    GbaOverlijden:
+      allOf:
+        - $ref: '#/components/schemas/OverlijdenBasis'
+      type: object
+      properties:
+        datum:
+          description: |
+            datum waarop de persoon is overleden.
+          $ref: '#/components/schemas/GbaDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/InOnderzoek'
+    PartnerBasis:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '#/components/schemas/Burgerservicenummer'
+        geslacht:
+          description: |
+            wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+          $ref: '#/components/schemas/Waardetabel'
+        soortVerbintenis:
+          $ref: '#/components/schemas/Waardetabel'
+    AangaanHuwelijkPartnerschapBasis:
+      type: object
+      properties:
+        land:
+          description: |
+            Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+          $ref: '#/components/schemas/Waardetabel'
+        plaats:
+          description: |
+            De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+          $ref: '#/components/schemas/Waardetabel'
+    GbaAangaanHuwelijkPartnerschap:
+      allOf:
+        - $ref: '#/components/schemas/AangaanHuwelijkPartnerschapBasis'
+        - type: object
+          properties:
+            datum:
+              description: |
+                De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+              $ref: '#/components/schemas/GbaDatum'
+    GbaOntbindingHuwelijkPartnerschap:
+      type: object
+      properties:
+        datum:
+          $ref: '#/components/schemas/GbaDatum'
+    GbaPartner:
+      allOf:
+        - $ref: '#/components/schemas/PartnerBasis'
+        - type: object
+          properties:
+            naam:
+              $ref: '#/components/schemas/NaamBasis'
+            geboorte:
+              $ref: '#/components/schemas/GbaGeboorte'
+            aangaanHuwelijkPartnerschap:
+              $ref: '#/components/schemas/GbaAangaanHuwelijkPartnerschap'
+            ontbindingHuwelijkPartnerschap:
+              $ref: '#/components/schemas/GbaOntbindingHuwelijkPartnerschap'
+            inOnderzoek:
+              $ref: '#/components/schemas/InOnderzoek'
+    OmschrijvingVerdrag:
+      type: string
+      description: |
+        Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+    Categorie:
+      type: string
+      description: Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
+      pattern: ^[a-zA-Z0-9À-ž \.\-\'\/]{1,40}$
+      example: Verblijfplaats
+    RniDeelnemer:
+      type: object
+      description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
+      properties:
+        deelnemer:
+          $ref: '#/components/schemas/Waardetabel'
+        omschrijvingVerdrag:
+          $ref: '#/components/schemas/OmschrijvingVerdrag'
+        categorie:
+          $ref: '#/components/schemas/Categorie'
+    KorteStraatnaam:
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG), zo nodig verkort tot maximaal 24 tekens, of de straatnaam van een niet-BAG adres.
+      type: string
+      maxLength: 24
+    Huisnummer:
+      description: |
+        Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+      type: integer
+      minimum: 1
+      maximum: 99999
+      example: 14
+    Huisletter:
+      description: |
+        Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z]{1}$
+      example: a
+    Huisnummertoevoeging:
+      description: |
+        Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z0-9 \-]{1,4}$
+      example: bis
+    Postcode:
+      description: |
+        De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+      type: string
+      pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+      example: 2341SX
+    Woonplaats:
+      description: |
+        Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
+      title: woonplaats naam
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž, \(\)\.\-\']{1,80}$
+      example: Duiven
+    Locatiebeschrijving:
+      type: string
+      maxLength: 35
+      description: |
+        Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
+      example: Naast de derde brug
+    Regel1:
+      type: string
+      maxLength: 40
+      description: |
+        Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.
+      example: 1600 Pennsylvania Avenue NW
+    Regel2:
+      type: string
+      maxLength: 50
+      description: |
+        Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.
+      example: Washington, DC 20500
+    Regel3:
+      type: string
+      maxLength: 35
+      description: |
+        Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+      example: Selangor
+    GbaVerblijfplaatsBeperkt:
+      type: object
+      properties:
+        straat:
+          $ref: '#/components/schemas/KorteStraatnaam'
+        huisnummer:
+          $ref: '#/components/schemas/Huisnummer'
+        huisletter:
+          $ref: '#/components/schemas/Huisletter'
+        huisnummertoevoeging:
+          $ref: '#/components/schemas/Huisnummertoevoeging'
+        aanduidingBijHuisnummer:
+          $ref: '#/components/schemas/Waardetabel'
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        woonplaats:
+          $ref: '#/components/schemas/Woonplaats'
+        locatiebeschrijving:
+          $ref: '#/components/schemas/Locatiebeschrijving'
+        land:
+          $ref: '#/components/schemas/Waardetabel'
+        regel1:
+          $ref: '#/components/schemas/Regel1'
+        regel2:
+          $ref: '#/components/schemas/Regel2'
+        regel3:
+          $ref: '#/components/schemas/Regel3'
+        inOnderzoek:
+          $ref: '#/components/schemas/InOnderzoek'
+    NummeraanduidingIdentificatie:
+      description: |
+        Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
+      type: string
+      pattern: ^[0-9]{16}$
+      example: '0518200000366054'
+    OfficieleStraatnaam:
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).
+      type: string
+      maxLength: 80
+    GbaVerblijfplaats:
+      allOf:
+        - $ref: '#/components/schemas/GbaVerblijfplaatsBeperkt'
+        - type: object
+          properties:
+            adresseerbaarObjectIdentificatie:
+              $ref: '#/components/schemas/AdresseerbaarObjectIdentificatie'
+            nummeraanduidingIdentificatie:
+              $ref: '#/components/schemas/NummeraanduidingIdentificatie'
+            datumAanvangAdresBuitenland:
+              $ref: '#/components/schemas/GbaDatum'
+            datumAanvangAdreshouding:
+              $ref: '#/components/schemas/GbaDatum'
+            datumIngangGeldigheid:
+              $ref: '#/components/schemas/GbaDatum'
+              deprecated: true
+            functieAdres:
+              $ref: '#/components/schemas/Waardetabel'
+            naamOpenbareRuimte:
+              $ref: '#/components/schemas/OfficieleStraatnaam'
+    VerblijfstitelBasis:
+      description: |
+        Gegevens over de verblijfsrechtelijke status van de persoon.
+      type: object
+      properties:
+        aanduiding:
+          description: |
+            Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.
+          $ref: '#/components/schemas/Waardetabel'
+    GbaVerblijfstitel:
+      allOf:
+        - $ref: '#/components/schemas/VerblijfstitelBasis'
+        - type: object
+          properties:
+            datumEinde:
+              description: |
+                Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+              $ref: '#/components/schemas/GbaDatum'
+            datumIngang:
+              description: |
+                Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+              $ref: '#/components/schemas/GbaDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/InOnderzoek'
+    VerificatieBasis:
+      type: object
+      properties:
+        omschrijving:
+          type: string
+          description: |
+            Omschrijving van de verificatie van de rni-gegevens
+          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+    GbaVerificatie:
+      allOf:
+        - $ref: '#/components/schemas/VerificatieBasis'
+        - type: object
+          properties:
+            datum:
+              $ref: '#/components/schemas/GbaDatum'
     InvalidParam:
       type: object
       description: Details over fouten in opgegeven parameters
@@ -440,12 +880,59 @@ components:
       type: string
       format: date
       example: '1964-09-24'
+    Field:
+      description: |
+        Het pad naar een gewenst veld in punt-gescheiden formaat. Bijvoorbeeld "burgerservicenummer", "geboorte.datum", "partners.naam.voornamen".
+      type: string
+      pattern: ^[a-zA-Z0-9\._]{1,200}$
+    GemeenteVanInschrijving:
+      description: |
+        Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
+      type: string
+      pattern: ^[0-9]{4}$
+      example: '0518'
+    GeslachtFilter:
+      description: |
+        Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
+      type: string
+      pattern: ^([Mm]|[Vv]|[Oo])$
+      example: V
+    GeslachtsnaamFilter:
+      description: |
+        De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
+      example: Vries
     NummeraanduidingIdentificatieFilter:
       type: string
       pattern: ^(?!0{16})[0-9]{16}$
       description: |
         De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       example: '0518200000366054'
+    StraatFilter:
+      description: |
+        Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** 
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \-\'\.]{1,80}$|^[a-zA-Z0-9À-ž \-\'\.]{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž \-\'\.]{7,79}$
+      example: Tulpstraat
+    VoornamenOptioneelFilter:
+      description: |
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
+      example: Dirk
+    VoornamenVerplichtFilter:
+      description: |
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
+      example: Dirk
+    VoorvoegselFilter:
+      description: |
+        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z \']{1,10}$
+      example: de
   responses:
     '400':
       description: Bad Request
