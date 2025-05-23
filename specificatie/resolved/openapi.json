@@ -130,6 +130,11 @@
         "type": "boolean",
         "example": true
       },
+      "DatumFilter": {
+        "type": "string",
+        "format": "date",
+        "example": "1964-09-24"
+      },
       "GeslachtsnaamFilter": {
         "description": "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "type": "string",
@@ -171,9 +176,7 @@
               },
               "geboortedatum": {
                 "description": "Je kunt alleen zoeken met een volledige geboortedatum.\n",
-                "type": "string",
-                "format": "date",
-                "example": "1964-09-24"
+                "$ref": "#/components/schemas/DatumFilter"
               },
               "geslachtsnaam": {
                 "$ref": "#/components/schemas/GeslachtsnaamFilter"
@@ -311,9 +314,7 @@
               },
               "geboortedatum": {
                 "description": "Je kunt alleen zoeken met een volledige geboortedatum.\n",
-                "type": "string",
-                "format": "date",
-                "example": "1964-09-24"
+                "$ref": "#/components/schemas/DatumFilter"
               },
               "geslachtsnaam": {
                 "$ref": "#/components/schemas/GeslachtsnaamFilter"
@@ -678,7 +679,7 @@
         ]
       },
       "GeheimhoudingPersoonsgegevens": {
-        "description": "Gegevens mogen niet worden verstrekt aan derden / maatschappelijke instellingen.\n",
+        "description": "Indicatie dat persoonsgegevens niet mogen worden verstrekt aan derden / maatschappelijke instellingen.\n",
         "type": "boolean"
       },
       "Waardetabel": {
@@ -875,9 +876,9 @@
           },
           {
             "type": "object",
-            "description": "* **datum**: de datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n",
             "properties": {
               "datum": {
+                "description": "De datum waarop de bijhouding van de persoonsgegevens is gestaakt.\n",
                 "$ref": "#/components/schemas/AbstractDatum"
               }
             }
@@ -888,13 +889,31 @@
         "type": "string",
         "maxLength": 40,
         "description": "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
-        "example": "Kappeyne v d Cappellostr 26A-3"
+        "examples": [
+          {
+            "binnenlandsAdres": null,
+            "value": "Kappeyne v d Cappellostr 26A-3"
+          },
+          {
+            "buitenlandsAdres": null,
+            "value": "1600 Pennsylvania Avenue NW"
+          }
+        ]
       },
       "Adresregel2": {
         "type": "string",
         "maxLength": 50,
         "description": "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
-        "example": "1234AA Nootdorp"
+        "examples": [
+          {
+            "binnenlandsAdres": null,
+            "value": "1234AA Nootdorp"
+          },
+          {
+            "buitenlandsAdres": null,
+            "value": "Washington, DC 20500"
+          }
+        ]
       },
       "Adresregel3": {
         "type": "string",
@@ -1123,29 +1142,53 @@
           }
         }
       },
-      "UitsluitingKiesrecht": {
+      "UitsluitingKiesrechtBasis": {
         "type": "object",
         "properties": {
           "uitgeslotenVanKiesrecht": {
             "type": "boolean",
             "example": true
+          }
+        }
+      },
+      "UitsluitingKiesrecht": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/UitsluitingKiesrechtBasis"
           },
-          "einddatum": {
-            "$ref": "#/components/schemas/AbstractDatum"
+          {
+            "type": "object",
+            "properties": {
+              "einddatum": {
+                "$ref": "#/components/schemas/AbstractDatum"
+              }
+            }
+          }
+        ]
+      },
+      "EuropeesKiesrechtBasis": {
+        "type": "object",
+        "properties": {
+          "aanduiding": {
+            "description": "Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement. Wordt gevuld met waarden voor 'Europees_Kiesrecht' in 'tabelwaarden.csv'.\n",
+            "$ref": "#/components/schemas/Waardetabel"
           }
         }
       },
       "EuropeesKiesrecht": {
-        "type": "object",
-        "description": "* **aanduiding** - Geeft aan of persoon een oproep moet ontvangen voor verkiezingen voor het Europees parlement.\n",
-        "properties": {
-          "aanduiding": {
-            "$ref": "#/components/schemas/Waardetabel"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EuropeesKiesrechtBasis"
           },
-          "einddatumUitsluiting": {
-            "$ref": "#/components/schemas/AbstractDatum"
+          {
+            "type": "object",
+            "properties": {
+              "einddatumUitsluiting": {
+                "$ref": "#/components/schemas/AbstractDatum"
+              }
+            }
           }
-        }
+        ]
       },
       "NaamPersoonInOnderzoek": {
         "allOf": [
@@ -1185,7 +1228,6 @@
       },
       "AbstractNationaliteit": {
         "type": "object",
-        "description": "* **redenOpname** - De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld met waarden uit de landelijke tabel 'Reden opnemen/beëindigen nationaliteit'.\n",
         "required": [
           "type"
         ],
@@ -1194,7 +1236,11 @@
             "type": "string"
           },
           "redenOpname": {
+            "description": "De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld met waarden uit de landelijke tabel 'Reden opnemen/beëindigen nationaliteit'.\n",
             "$ref": "#/components/schemas/Waardetabel"
+          },
+          "datumIngangGeldigheid": {
+            "$ref": "#/components/schemas/AbstractDatum"
           }
         },
         "discriminator": {
@@ -1208,7 +1254,7 @@
           }
         }
       },
-      "NationaliteitBekendInOnderzoek": {
+      "NationaliteitInOnderzoek": {
         "description": "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.\n",
         "allOf": [
           {
@@ -1220,9 +1266,6 @@
               "type": {
                 "type": "boolean"
               },
-              "nationaliteit": {
-                "type": "boolean"
-              },
               "redenOpname": {
                 "type": "boolean"
               }
@@ -1230,8 +1273,23 @@
           }
         ]
       },
+      "NationaliteitBekendInOnderzoek": {
+        "description": "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.\n",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/NationaliteitInOnderzoek"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "nationaliteit": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
       "NationaliteitBekend": {
-        "description": "* **nationaliteit** - wordt gevuld met waarden uit de landelijke tabel 'Nationaliteiten'.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractNationaliteit"
@@ -1239,10 +1297,8 @@
           {
             "type": "object",
             "properties": {
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum"
-              },
               "nationaliteit": {
+                "description": "wordt gevuld met waarden uit de landelijke tabel 'Nationaliteiten'.\n",
                 "$ref": "#/components/schemas/Waardetabel"
               },
               "inOnderzoek": {
@@ -1253,6 +1309,7 @@
         ]
       },
       "BijzonderNederlanderschapInOnderzoek": {
+        "description": "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/InOnderzoek"
@@ -1278,9 +1335,6 @@
           {
             "type": "object",
             "properties": {
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum"
-              },
               "inOnderzoek": {
                 "$ref": "#/components/schemas/BijzonderNederlanderschapInOnderzoek"
               }
@@ -1296,9 +1350,6 @@
           {
             "type": "object",
             "properties": {
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum"
-              },
               "inOnderzoek": {
                 "$ref": "#/components/schemas/BijzonderNederlanderschapInOnderzoek"
               }
@@ -1307,6 +1358,7 @@
         ]
       },
       "StaatloosInOnderzoek": {
+        "description": "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/InOnderzoek"
@@ -1325,7 +1377,6 @@
         ]
       },
       "Staatloos": {
-        "description": "* **redenOpname** : De reden op grond waarvan de persoon de nationaliteit gekregen heeft.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractNationaliteit"
@@ -1333,9 +1384,6 @@
           {
             "type": "object",
             "properties": {
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum"
-              },
               "inOnderzoek": {
                 "$ref": "#/components/schemas/StaatloosInOnderzoek"
               }
@@ -1344,6 +1392,7 @@
         ]
       },
       "NationaliteitOnbekendInOnderzoek": {
+        "description": "Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/InOnderzoek"
@@ -1369,9 +1418,6 @@
           {
             "type": "object",
             "properties": {
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum"
-              },
               "inOnderzoek": {
                 "$ref": "#/components/schemas/NationaliteitOnbekendInOnderzoek"
               }
@@ -1422,6 +1468,19 @@
           }
         ]
       },
+      "OverlijdenBasis": {
+        "type": "object",
+        "properties": {
+          "land": {
+            "description": "land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          },
+          "plaats": {
+            "description": "gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel \"Gemeenten\".\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          }
+        }
+      },
       "OverlijdenInOnderzoek": {
         "description": "Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.\n",
         "allOf": [
@@ -1445,17 +1504,16 @@
         ]
       },
       "Overlijden": {
-        "description": "Gegevens over het overlijden.\n* **datum** - datum waarop de persoon is overleden.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n* **plaats** - gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel \"Gemeenten\".\n",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/OverlijdenBasis"
+          }
+        ],
         "type": "object",
         "properties": {
           "datum": {
+            "description": "datum waarop de persoon is overleden.\n",
             "$ref": "#/components/schemas/AbstractDatum"
-          },
-          "land": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "plaats": {
-            "$ref": "#/components/schemas/Waardetabel"
           },
           "inOnderzoek": {
             "$ref": "#/components/schemas/OverlijdenInOnderzoek"
@@ -1471,6 +1529,11 @@
         "properties": {
           "type": {
             "type": "string"
+          },
+          "datumIngangGeldigheid": {
+            "$ref": "#/components/schemas/AbstractDatum",
+            "description": "datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n",
+            "deprecated": true
           }
         },
         "discriminator": {
@@ -1481,14 +1544,6 @@
             "VerblijfplaatsOnbekend": "#/components/schemas/VerblijfplaatsOnbekend",
             "Locatie": "#/components/schemas/Locatie"
           }
-        },
-        "example": {
-          "type": "Adres",
-          "functieAdres": {
-            "code": "W",
-            "omschrijving": "woonadres"
-          },
-          "adresseerbaarObjectIdentificatie": 226010000038820
         }
       },
       "Regel1": {
@@ -1576,7 +1631,6 @@
         ]
       },
       "VerblijfplaatsBuitenland": {
-        "description": "* **gemeenteVanInschrijving** - wordt gevuld met waarden uit de landelijke tabel 'Gemeenten'.\n* **land** - land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractVerblijfplaats"
@@ -1589,10 +1643,6 @@
               },
               "datumVan": {
                 "$ref": "#/components/schemas/AbstractDatum"
-              },
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum",
-                "deprecated": true
               },
               "inOnderzoek": {
                 "$ref": "#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek"
@@ -1615,7 +1665,7 @@
         "description": "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
         "title": "woonplaats naam",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9À-ž \\(\\)\\,\\.\\-\\']{1,80}$",
+        "pattern": "^[a-zA-Z0-9À-ž, \\(\\)\\.\\-\\']{1,80}$",
         "example": "Duiven"
       },
       "VerblijfadresBinnenlandInOnderzoek": {
@@ -1689,7 +1739,7 @@
       "AdresseerbaarObjectIdentificatie": {
         "type": "string",
         "pattern": "^[0-9]{16}$",
-        "description": "De verblijfplaats van de persoon kan een ligplaats, een standplaats of een verblijfsobject zijn.\n",
+        "description": "De identificatiecode van een adresseerbaar object.\n",
         "example": "0226010000038820"
       },
       "NummeraanduidingIdentificatie": {
@@ -1730,7 +1780,7 @@
         ]
       },
       "Adres": {
-        "description": "Gegevens over het adres van een persoon.\n* **datumVan** : de datum van aangifte of ambtshalve melding van verblijf en adres.\n* **datumIngangGeldigheid** : datum waarop de gegevens over de verblijfplaats geldig zijn geworden.\n",
+        "description": "Gegevens over het adres van een persoon.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractVerblijfplaats"
@@ -1751,11 +1801,8 @@
                 "$ref": "#/components/schemas/NummeraanduidingIdentificatie"
               },
               "datumVan": {
+                "description": "de datum van aangifte of ambtshalve melding van verblijf en adres.\n",
                 "$ref": "#/components/schemas/AbstractDatum"
-              },
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum",
-                "deprecated": true
               },
               "indicatieVastgesteldVerblijftNietOpAdres": {
                 "$ref": "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
@@ -1799,10 +1846,6 @@
             "properties": {
               "datumVan": {
                 "$ref": "#/components/schemas/AbstractDatum"
-              },
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum",
-                "deprecated": true
               },
               "inOnderzoek": {
                 "$ref": "#/components/schemas/VerblijfplaatsOnbekendInOnderzoek"
@@ -1869,7 +1912,6 @@
         ]
       },
       "Locatie": {
-        "description": "* **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n",
         "allOf": [
           {
             "$ref": "#/components/schemas/AbstractVerblijfplaats"
@@ -1886,10 +1928,6 @@
               "verblijfadres": {
                 "$ref": "#/components/schemas/VerblijfadresLocatie"
               },
-              "datumIngangGeldigheid": {
-                "$ref": "#/components/schemas/AbstractDatum",
-                "deprecated": true
-              },
               "indicatieVastgesteldVerblijftNietOpAdres": {
                 "$ref": "#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres"
               },
@@ -1900,13 +1938,14 @@
           }
         ]
       },
-      "VanuitVerblijfplaatsOnbekend": {
-        "type": "boolean",
-        "description": "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n"
-      },
-      "IndicatieVestigingVanuitBuitenland": {
-        "type": "boolean",
-        "description": "Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.\n"
+      "ImmigratieBasis": {
+        "type": "object",
+        "properties": {
+          "landVanwaarIngeschreven": {
+            "description": "het land waar de persoon woonde voor (her)vestiging in Nederland.\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          }
+        }
       },
       "ImmigratieInOnderzoek": {
         "allOf": [
@@ -1933,25 +1972,30 @@
         ]
       },
       "Immigratie": {
-        "type": "object",
-        "description": "Gegevens over het het immigratie van een persoon.\n  * **landVanWaarIngeschreven** : het land waar de persoon woonde voor (her)vestiging in Nederland.\n",
-        "properties": {
-          "datumVestigingInNederland": {
-            "$ref": "#/components/schemas/AbstractDatum"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ImmigratieBasis"
           },
-          "landVanwaarIngeschreven": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "vanuitVerblijfplaatsOnbekend": {
-            "$ref": "#/components/schemas/VanuitVerblijfplaatsOnbekend"
-          },
-          "indicatieVestigingVanuitBuitenland": {
-            "$ref": "#/components/schemas/IndicatieVestigingVanuitBuitenland"
-          },
-          "inOnderzoek": {
-            "$ref": "#/components/schemas/ImmigratieInOnderzoek"
+          {
+            "type": "object",
+            "properties": {
+              "datumVestigingInNederland": {
+                "$ref": "#/components/schemas/AbstractDatum"
+              },
+              "vanuitVerblijfplaatsOnbekend": {
+                "description": "Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.\n",
+                "type": "boolean"
+              },
+              "indicatieVestigingVanuitBuitenland": {
+                "description": "Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats\n",
+                "type": "boolean"
+              },
+              "inOnderzoek": {
+                "$ref": "#/components/schemas/ImmigratieInOnderzoek"
+              }
+            }
           }
-        }
+        ]
       },
       "Aanhef": {
         "type": "string",
@@ -2286,6 +2330,16 @@
         },
         "minItems": 0
       },
+      "VerblijfstitelBasis": {
+        "description": "Gegevens over de verblijfsrechtelijke status van de persoon.\n",
+        "type": "object",
+        "properties": {
+          "aanduiding": {
+            "description": "Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          }
+        }
+      },
       "VerblijfstitelInOnderzoek": {
         "description": "Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn.\n",
         "allOf": [
@@ -2309,20 +2363,33 @@
         ]
       },
       "Verblijfstitel": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/VerblijfstitelBasis"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "datumEinde": {
+                "description": "Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n",
+                "$ref": "#/components/schemas/AbstractDatum"
+              },
+              "datumIngang": {
+                "description": "Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n",
+                "$ref": "#/components/schemas/AbstractDatum"
+              },
+              "inOnderzoek": {
+                "$ref": "#/components/schemas/VerblijfstitelInOnderzoek"
+              }
+            }
+          }
+        ]
+      },
+      "KindBasis": {
         "type": "object",
-        "description": "Gegevens over de verblijfsrechtelijke status van de persoon.\n* **datumEinde**: Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.\n* **datumIngang**: Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.\n* **aanduiding** : Verblijfstiteltabel die aangeeft over welke verblijfsrechtelijke status de persoon beschikt. Wordt gevuld met waarden uit de landelijke tabel 'Verblijfstitel'.\n",
         "properties": {
-          "aanduiding": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "datumEinde": {
-            "$ref": "#/components/schemas/AbstractDatum"
-          },
-          "datumIngang": {
-            "$ref": "#/components/schemas/AbstractDatum"
-          },
-          "inOnderzoek": {
-            "$ref": "#/components/schemas/VerblijfstitelInOnderzoek"
+          "burgerservicenummer": {
+            "$ref": "#/components/schemas/Burgerservicenummer"
           }
         }
       },
@@ -2366,26 +2433,45 @@
         }
       },
       "Kind": {
-        "type": "object",
-        "properties": {
-          "burgerservicenummer": {
-            "$ref": "#/components/schemas/Burgerservicenummer"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/KindBasis"
           },
-          "inOnderzoek": {
-            "$ref": "#/components/schemas/KindInOnderzoek"
-          },
-          "naam": {
-            "$ref": "#/components/schemas/NaamGerelateerde"
-          },
-          "geboorte": {
-            "$ref": "#/components/schemas/Geboorte"
+          {
+            "type": "object",
+            "properties": {
+              "inOnderzoek": {
+                "$ref": "#/components/schemas/KindInOnderzoek"
+              },
+              "naam": {
+                "$ref": "#/components/schemas/NaamGerelateerde"
+              },
+              "geboorte": {
+                "$ref": "#/components/schemas/Geboorte"
+              }
+            }
           }
-        }
+        ]
       },
       "OuderAanduiding": {
         "type": "string",
         "pattern": "^[1|2]$",
         "example": "1"
+      },
+      "OuderBasis": {
+        "type": "object",
+        "properties": {
+          "burgerservicenummer": {
+            "$ref": "#/components/schemas/Burgerservicenummer"
+          },
+          "geslacht": {
+            "description": "wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          },
+          "ouderAanduiding": {
+            "$ref": "#/components/schemas/OuderAanduiding"
+          }
+        }
       },
       "OuderInOnderzoek": {
         "description": "Geeft aan welke gegevens van de de ouder in onderzoek zijn.\n",
@@ -2410,29 +2496,42 @@
         ]
       },
       "Ouder": {
-        "description": "Gegevens over de ouder van de persoon.\n* **datumIngangFamilierechtelijkeBetrekking** - De datum waarop de familierechtelijke betrekking is ontstaan.\n",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/OuderBasis"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "datumIngangFamilierechtelijkeBetrekking": {
+                "description": "De datum waarop de familierechtelijke betrekking is ontstaan.\n",
+                "$ref": "#/components/schemas/AbstractDatum"
+              },
+              "naam": {
+                "$ref": "#/components/schemas/NaamGerelateerde"
+              },
+              "inOnderzoek": {
+                "$ref": "#/components/schemas/OuderInOnderzoek"
+              },
+              "geboorte": {
+                "$ref": "#/components/schemas/Geboorte"
+              }
+            }
+          }
+        ]
+      },
+      "PartnerBasis": {
         "type": "object",
         "properties": {
           "burgerservicenummer": {
             "$ref": "#/components/schemas/Burgerservicenummer"
           },
           "geslacht": {
+            "description": "wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.\n",
             "$ref": "#/components/schemas/Waardetabel"
           },
-          "ouderAanduiding": {
-            "$ref": "#/components/schemas/OuderAanduiding"
-          },
-          "datumIngangFamilierechtelijkeBetrekking": {
-            "$ref": "#/components/schemas/AbstractDatum"
-          },
-          "naam": {
-            "$ref": "#/components/schemas/NaamGerelateerde"
-          },
-          "inOnderzoek": {
-            "$ref": "#/components/schemas/OuderInOnderzoek"
-          },
-          "geboorte": {
-            "$ref": "#/components/schemas/Geboorte"
+          "soortVerbintenis": {
+            "$ref": "#/components/schemas/Waardetabel"
           }
         }
       },
@@ -2458,6 +2557,19 @@
           }
         ]
       },
+      "AangaanHuwelijkPartnerschapBasis": {
+        "type": "object",
+        "properties": {
+          "land": {
+            "description": "Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          },
+          "plaats": {
+            "description": "De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n",
+            "$ref": "#/components/schemas/Waardetabel"
+          }
+        }
+      },
       "AangaanHuwelijkPartnerschapInOnderzoek": {
         "description": "Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\n",
         "allOf": [
@@ -2481,22 +2593,23 @@
         ]
       },
       "AangaanHuwelijkPartnerschap": {
-        "type": "object",
-        "description": "Gegevens over de voltrekking van het huwelijk of het aangaan van het geregistreerd partnerschap.\n* **datum** - De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n* **land** - Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.\n* **plaats** - De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel \"Gemeenten\" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.\n",
-        "properties": {
-          "datum": {
-            "$ref": "#/components/schemas/AbstractDatum"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AangaanHuwelijkPartnerschapBasis"
           },
-          "land": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "plaats": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "inOnderzoek": {
-            "$ref": "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
+          {
+            "type": "object",
+            "properties": {
+              "datum": {
+                "description": "De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.\n",
+                "$ref": "#/components/schemas/AbstractDatum"
+              },
+              "inOnderzoek": {
+                "$ref": "#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek"
+              }
+            }
           }
-        }
+        ]
       },
       "OntbindingHuwelijkPartnerschapInOnderzoek": {
         "description": "Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.\n",
@@ -2516,10 +2629,10 @@
       },
       "OntbindingHuwelijkPartnerschap": {
         "type": "object",
-        "description": "Gegevens over de ontbinding van het huwelijk of het geregistreerd partnerschap.\n* **datum** : De datum waarop het huwelijk of het partnerschap is ontbonden.\n",
         "properties": {
           "datum": {
-            "$ref": "#/components/schemas/AbstractDatum"
+            "$ref": "#/components/schemas/AbstractDatum",
+            "description": "De datum waarop het huwelijk of het partnerschap is ontbonden.\n"
           },
           "inOnderzoek": {
             "$ref": "#/components/schemas/OntbindingHuwelijkPartnerschapInOnderzoek"
@@ -2527,33 +2640,31 @@
         }
       },
       "Partner": {
-        "type": "object",
-        "properties": {
-          "burgerservicenummer": {
-            "$ref": "#/components/schemas/Burgerservicenummer"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PartnerBasis"
           },
-          "geslacht": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "soortVerbintenis": {
-            "$ref": "#/components/schemas/Waardetabel"
-          },
-          "naam": {
-            "$ref": "#/components/schemas/NaamGerelateerde"
-          },
-          "geboorte": {
-            "$ref": "#/components/schemas/Geboorte"
-          },
-          "inOnderzoek": {
-            "$ref": "#/components/schemas/PartnerInOnderzoek"
-          },
-          "aangaanHuwelijkPartnerschap": {
-            "$ref": "#/components/schemas/AangaanHuwelijkPartnerschap"
-          },
-          "ontbindingHuwelijkPartnerschap": {
-            "$ref": "#/components/schemas/OntbindingHuwelijkPartnerschap"
+          {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "$ref": "#/components/schemas/NaamGerelateerde"
+              },
+              "geboorte": {
+                "$ref": "#/components/schemas/Geboorte"
+              },
+              "inOnderzoek": {
+                "$ref": "#/components/schemas/PartnerInOnderzoek"
+              },
+              "aangaanHuwelijkPartnerschap": {
+                "$ref": "#/components/schemas/AangaanHuwelijkPartnerschap"
+              },
+              "ontbindingHuwelijkPartnerschap": {
+                "$ref": "#/components/schemas/OntbindingHuwelijkPartnerschap"
+              }
+            }
           }
-        }
+        ]
       },
       "Persoon": {
         "type": "object",
