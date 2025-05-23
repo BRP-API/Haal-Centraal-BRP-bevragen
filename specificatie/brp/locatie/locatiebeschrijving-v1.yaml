@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: locatiebeschrijving
+  version: 1.0.0
+components:
+  schemas:
+    Locatiebeschrijving:
+      type: string
+      maxLength: 35
+      description: |
+        Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
+      example: Naast de derde brug

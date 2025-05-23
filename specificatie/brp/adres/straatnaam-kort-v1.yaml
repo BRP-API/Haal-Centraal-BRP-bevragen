@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: korte straatnaam
+  version: 1.0.0
+components:
+  schemas:
+    KorteStraatnaam:
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG), zo nodig verkort tot maximaal 24 tekens, of de straatnaam van een niet-BAG adres.
+      type: string
+      maxLength: 24

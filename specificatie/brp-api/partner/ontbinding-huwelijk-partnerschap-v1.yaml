@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info: 
+  title: ontbinding huwelijk of partnerschap type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    OntbindingHuwelijkPartnerschap:
+      type: object
+      properties:
+        datum:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+          description: |
+            De datum waarop het huwelijk of het partnerschap is ontbonden.
+        inOnderzoek:
+          $ref: '#/components/schemas/OntbindingHuwelijkPartnerschapInOnderzoek'
+
+    OntbindingHuwelijkPartnerschapInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het onbinden van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean

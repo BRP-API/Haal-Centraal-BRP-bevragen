@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  title: verificatie type definitie
+  version: 2.0.0
+  contact: {}
+components:
+  schemas:
+    OmschrijvingVerificatie:
+      type: string
+      description: |
+        Omschrijving van de verificatie van de rni-gegevens
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+
+    Verificatie:
+      type: object
+      properties:
+        datum:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+        omschrijving:
+          $ref: '#/components/schemas/OmschrijvingVerificatie'

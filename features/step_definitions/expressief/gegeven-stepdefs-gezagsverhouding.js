@@ -22,6 +22,9 @@ function setPersoonOnderCuratele(persoonAanduiding) {
 }
 
 Given('{string} staat onder curatele', setPersoonOnderCuratele);
+Given('staat onder curatele', function() {
+    setPersoonOnderCuratele.call(this, undefined);
+});
 
 const IndicatieGezag = {
     Ouder1: '1',

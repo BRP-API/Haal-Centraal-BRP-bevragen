@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: postcode
+  version: 1.0.0
+components:
+  schemas:
+    Postcode:
+      description: |
+        De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
+      type: string
+      pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
+      example: 2341SX

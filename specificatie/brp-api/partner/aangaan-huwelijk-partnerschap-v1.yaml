@@ -1,0 +1,31 @@
+openapi: 3.1.0
+info: 
+  title: aangaan huwelijk of partnerschap type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    AangaanHuwelijkPartnerschap:
+      allOf: 
+        - $ref: '../../brp/partner/aangaan-huwelijk-partnerschap-basis-v1.yaml#/components/schemas/AangaanHuwelijkPartnerschapBasis'
+        - type: object
+          properties:
+            datum:
+              description: |
+                De datum waarop het huwelijk is voltrokken of het partnerschap is aangegaan.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/AangaanHuwelijkPartnerschapInOnderzoek'
+
+    AangaanHuwelijkPartnerschapInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het voltrekken van het huwelijk of aangaan van het partnerschap in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean

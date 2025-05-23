@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info: 
+  title: ouder
+  version: 1.0.0
+components: 
+  schemas:
+    OuderBasis:
+      type: object
+      properties: 
+        burgerservicenummer:
+          $ref: '../identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
+        geslacht:
+          description: |
+            wordt gevuld met waarden voor 'Geslacht' in 'tabelwaarden.csv'.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        ouderAanduiding:
+          $ref: 'ouder-aanduiding-v1.yaml#/components/schemas/OuderAanduiding'

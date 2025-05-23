@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: huisnummertoevoeging
+  version: 1.0.0
+components:
+  schemas:
+    Huisnummertoevoeging:
+      description: |
+        Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
+      type: string
+      pattern: ^[a-zA-Z0-9 \-]{1,4}$
+      example: bis

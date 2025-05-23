@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: Verificatie
+  version: 1.0.0
+components:
+  schemas:
+    VerificatieBasis:
+      type: object
+      properties:
+        omschrijving:
+          type: string
+          description: |
+            Omschrijving van de verificatie van de rni-gegevens
+          pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$

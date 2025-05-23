@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: 
+  title: voornamen optioneel query parameter type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    VoornamenOptioneelFilter:
+      description: |
+        De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
+      example: "Dirk"

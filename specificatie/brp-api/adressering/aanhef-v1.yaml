@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: aanhef
+  version: 1.0.0
+components:
+  schemas:
+    Aanhef:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Kun je gebruiken als aanhef in een brief gericht aan persoon.
+      example: Hoogwelgeboren heer

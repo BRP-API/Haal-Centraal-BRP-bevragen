@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info: 
+  title: aangaan huwelijk/partnerschap schema definitie
+  version: 1.0.0
+components: 
+  schemas:
+    AangaanHuwelijkPartnerschapBasis:
+      type: object
+      properties:
+        land:
+          description: |
+            Het land waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        plaats:
+          description: |
+            De gemeente waar het huwelijk is voltrokken of het partnerschap is aangegaan. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten" voor een gemeente in Nederland of de omschrijving van een buitenlandse plaats.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

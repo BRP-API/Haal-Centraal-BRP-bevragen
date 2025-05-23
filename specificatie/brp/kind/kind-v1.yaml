@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info: 
+  title: kind
+  version: 1.0.0
+components: 
+  schemas:
+    GbaKind:
+      allOf: 
+        - $ref: 'kind-basis-v1.yaml#/components/schemas/KindBasis'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+            naam:
+              $ref: '../naam/naam-basis-v1.yaml#/components/schemas/NaamBasis'
+            geboorte:
+              $ref: '../geboorte/geboorte-v1.yaml#/components/schemas/GbaGeboorte'

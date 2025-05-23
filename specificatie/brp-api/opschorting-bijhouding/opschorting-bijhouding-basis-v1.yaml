@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: opschorting bijhouding basis type definitie
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    OpschortingBijhoudingBasis:
+      type: object
+      properties:
+        reden:
+          $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'

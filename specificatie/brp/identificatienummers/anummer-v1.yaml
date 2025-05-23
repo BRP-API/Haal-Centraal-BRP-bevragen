@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: a-nummer
+  description: |
+    Definitie voor het a-nummer van een persoon geregistreerd in de BRP
+  version: 1.0.0
+components:
+  schemas:
+    ANummer:
+      description: |
+        Het A-nummer van de persoon
+      type: string
+      pattern: ^[0-9]{10}$

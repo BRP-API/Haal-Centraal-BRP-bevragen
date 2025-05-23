@@ -1,0 +1,27 @@
+openapi: 3.1.0
+info:
+  title: naam persoon beperkt
+  version: 2.0.0
+  contact: {}
+components:
+  schemas:
+    NaamPersoon:
+      description: |
+        Gegevens over de naam van de persoon.
+      allOf:
+        - $ref: 'naam-basis-v1.yaml#/components/schemas/NaamBasis'
+        - properties:
+            aanduidingNaamgebruik:
+              $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+            inOnderzoek:
+              $ref: '#/components/schemas/NaamPersoonInOnderzoek'
+
+    NaamPersoonInOnderzoek:
+      allOf:
+        - $ref: 'naam-gerelateerde-v1.yaml#/components/schemas/NaamInOnderzoek'
+        - type: object
+          properties:
+            aanduidingNaamgebruik:
+              type: boolean
+            volledigeNaam:
+              type: boolean

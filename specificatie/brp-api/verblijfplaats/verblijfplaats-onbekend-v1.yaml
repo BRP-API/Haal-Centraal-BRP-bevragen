@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: verblijfplaats onbekend
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    VerblijfplaatsOnbekend:
+      allOf:
+        - $ref: 'verblijfplaats-polymorf-v1.yaml#/components/schemas/AbstractVerblijfplaats'
+        - type: object
+          properties:
+            datumVan:
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/VerblijfplaatsOnbekendInOnderzoek'
+
+    VerblijfplaatsOnbekendInOnderzoek:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+              deprecated: true

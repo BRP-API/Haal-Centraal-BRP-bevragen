@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: in onderzoek type definitie
+  version: 1.0.0
+components:
+  schemas:
+    InOnderzoek:
+      type: object
+      properties:
+        datumIngangOnderzoek:
+          $ref: 'datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

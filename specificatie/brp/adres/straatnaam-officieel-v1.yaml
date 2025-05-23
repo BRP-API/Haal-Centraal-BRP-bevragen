@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: officiele straatnaam
+  version: 1.0.0
+components:
+  schemas:
+    OfficieleStraatnaam:
+      description: |
+        De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).
+      type: string
+      maxLength: 80

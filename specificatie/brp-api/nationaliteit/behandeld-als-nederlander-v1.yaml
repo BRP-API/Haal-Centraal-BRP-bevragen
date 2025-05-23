@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info: 
+  title: behandeld als nederlander
+  version: 1.0.0
+  contact: {}
+components: 
+  schemas:
+    BehandeldAlsNederlander:
+      allOf:
+        - $ref: 'nationaliteit-polymorf-v1.yaml#/components/schemas/AbstractNationaliteit'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: 'vastgesteld-niet-nederlander-v1.yaml#/components/schemas/BijzonderNederlanderschapInOnderzoek'

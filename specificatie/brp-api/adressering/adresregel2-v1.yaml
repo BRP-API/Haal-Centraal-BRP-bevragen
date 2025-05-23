@@ -1,0 +1,16 @@
+openapi: 3.1.0
+info:
+  title: adresregel 2
+  version: 1.0.0
+components:
+  schemas:
+    Adresregel2:
+      type: string
+      maxLength: 50
+      description: |
+        Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
+      examples:
+        - binnenlandsAdres:
+          value: 1234AA Nootdorp
+        - buitenlandsAdres:
+          value: Washington, DC 20500

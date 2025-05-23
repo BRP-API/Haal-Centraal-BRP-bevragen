@@ -1,0 +1,40 @@
+openapi: 3.1.0
+info: 
+  title: nationaliteit (polymorf)
+  version: 1.0.0
+  contact: {}
+components: 
+  schemas:
+    AbstractNationaliteit:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+        redenOpname:
+          description: |
+            De reden op grond waarvan de persoon de nationaliteit gekregen heeft. Wordt gevuld met waarden uit de landelijke tabel 'Reden opnemen/beëindigen nationaliteit'.
+          $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        datumIngangGeldigheid:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+      discriminator:
+        propertyName: type
+        mapping:
+          Nationaliteit: 'nationaliteit-bekend-v1.yaml#/components/schemas/NationaliteitBekend'
+          BehandeldAlsNederlander: 'behandeld-als-nederlander-v1.yaml#/components/schemas/BehandeldAlsNederlander'
+          VastgesteldNietNederlander: 'vastgesteld-niet-nederlander-v1.yaml#/components/schemas/VastgesteldNietNederlander'
+          Staatloos: 'staatloos-v1.yaml#/components/schemas/Staatloos'
+          NationaliteitOnbekend: 'nationaliteit-onbekend-v1.yaml#/components/schemas/NationaliteitOnbekend'
+
+    NationaliteitInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de nationaliteit in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
+              type: boolean
+            redenOpname:
+              type: boolean

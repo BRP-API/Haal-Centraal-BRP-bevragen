@@ -1,0 +1,10 @@
+openapi: 3.1.0
+info: 
+  title: ouder
+  version: 1.0.0
+components: 
+  schemas:
+    OuderAanduiding:
+      type: string
+      pattern: ^[1|2]$
+      example: '1'

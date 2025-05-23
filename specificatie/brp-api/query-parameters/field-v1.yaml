@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  title: Field query parameter definitie
+  version: 2.0.0
+components:
+  schemas:
+    Field:
+      description: |
+        Het pad naar een gewenst veld in punt-gescheiden formaat. Bijvoorbeeld "burgerservicenummer", "geboorte.datum", "partners.naam.voornamen".
+      type: string
+      pattern: ^[a-zA-Z0-9\._]{1,200}$
