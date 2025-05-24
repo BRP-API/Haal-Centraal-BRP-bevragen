@@ -1,5 +1,5 @@
 const { Given } = require('@cucumber/cucumber');
-const { createVerblijfplaats, wijzigVerblijfplaats } = require('../persoon-2');
+const { createVerblijfplaats, wijzigVerblijfplaats, aanvullenInschrijving } = require('../persoon-2');
 const { getPersoon } = require('../contextHelpers');
 const { arrayOfArraysToDataTable } = require('../dataTableFactory');
 const { toDateOrString, toBRPDate } = require('../brpDatum');
@@ -241,3 +241,34 @@ module.exports = {
     gegevenDePersoonIsIngeschrevenInGemeente,
     gegevenDePersoonIsIngeschrevenInDeBrp
 }
+
+Given('is ingeschreven met een tijdelijke verblijfplaats in Nederland', function () {
+    // Later desgewenst invullen, wanneer we iets doen met tijdelijke verblijfplaats
+});
+
+Given('{vandaag, gisteren of morgen x jaar geleden} is geconstateerd dat {aanduiding} behoort tot de categorie NAVO-militair', function(relatieveDatum, aanduidingPersoon) {
+    const redenOpschorting = 'M';
+
+    const verblijfplaats = arrayOfArraysToDataTable([
+        ['gemeente van inschrijving (09.10)', '0518'],
+        ['land adres buitenland (13.10)', '0000'],
+        ['datum aanvang adres buitenland (13.20)', relatieveDatum],
+        ['aangifte adreshouding (72.10)', 'B']
+    ]);
+
+    const persoon = getPersoon(this.context, aanduidingPersoon)
+
+    if (!persoon.verblijfplaats || persoon.verblijfplaats==[]) {
+        createVerblijfplaats(persoon, verblijfplaats);
+    } else {
+        wijzigVerblijfplaats(persoon, verblijfplaats, false);
+    }
+
+    aanvullenInschrijving(
+        persoon,
+        arrayOfArraysToDataTable([
+            ['datum opschorting bijhouding (67.10)', relatieveDatum],
+            ['reden opschorting bijhouding (67.20)', redenOpschorting]
+        ])
+    );
+});

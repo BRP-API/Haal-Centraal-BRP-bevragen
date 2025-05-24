@@ -112,6 +112,23 @@ defineParameterType({
     regexp: /(gisteren|vandaag|morgen|deze maand|vorige maand|volgende maand)/
 });
 
+function jarigheidGeboorteDatum(omschrijvingLeeftijd) {
+    const omschrijvingLeeftijdMap = new Map([
+        ['minderjarige', 'gisteren - 17 jaar'],
+        ['meerderjarige', 'gisteren - 45 jaar']
+    ]);
+
+    return omschrijvingLeeftijdMap.get(omschrijvingLeeftijd) || omschrijvingLeeftijd
+}
+
+defineParameterType({
+    name: 'meer- of minderjarige',
+    regexp: /(minderjarige|meerderjarige)/,
+    transformer(omschrijvingLeeftijd) {
+        return jarigheidGeboorteDatum(omschrijvingLeeftijd);
+    }
+});
+
 function toGeslachtsaanduiding(omschrijvingGeslacht) {
     const geslachtMap = new Map([
         ['man', 'M'],
