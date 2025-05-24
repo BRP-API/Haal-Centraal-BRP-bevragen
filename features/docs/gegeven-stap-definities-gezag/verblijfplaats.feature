@@ -153,3 +153,18 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
         | Spanje      |      6037 |
         | Duitsland   |      6029 |
         | Afghanistan |      6023 |
+
+    @integratie
+    Scenario: {vandaag, gisteren of morgen x jaar geleden} is geconstateerd dat {aanduiding} behoort tot de categorie NAVO-militair
+      Gegeven de persoon 'P1' met burgerservicenummer '000000012'
+      En 2 jaar geleden is geconstateerd dat 'P1' behoort tot de categorie NAVO-militair
+      Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+      Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
+        | pl_id | geheim_ind | bijhouding_opschort_datum | bijhouding_opschort_reden |
+        | P1    |          0 |            2 jaar geleden | M                         |
+      En heeft persoon 'P1' de volgende rijen in tabel 'lo3_pl_persoon'
+        | pl_id | persoon_type | stapel_nr | volg_nr | burger_service_nr | geslachts_naam |
+        | P1    | P            |         0 |       0 |         000000012 | P1             |
+      En heeft persoon 'P1' de volgende rijen in tabel 'lo3_pl_verblijfplaats'
+        | pl_id | volg_nr | inschrijving_gemeente_code | vertrek_datum  | vertrek_land_code | aangifte_adreshouding_oms |
+        | P1    |       0 |                       0518 | 2 jaar geleden |              0000 | B                         |
