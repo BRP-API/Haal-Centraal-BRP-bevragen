@@ -1,5 +1,5 @@
 # language: nl
-@integratie @stap-documentatie
+@stap-documentatie
 Functionaliteit: Adres gegeven stap definities
 
   Achtergrond:
@@ -8,30 +8,48 @@ Functionaliteit: Adres gegeven stap definities
     Gegeven de 3e 'SELECT COALESCE(MAX(adres_id), 0)+1 FROM public.lo3_adres' statement heeft als resultaat '5001'
 
   @integratie
-  Abstract Scenario: adres '[adres aanduiding]'
-    Gegeven adres 'A1'
+  Scenario: adres '[adres aanduiding]'
+    En adres 'A1'
       | gemeentecode (92.10) |
       |                 0518 |
     Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
-    Dan heeft de adres 'A1' de volgende rij in tabel 'lo3_adres'
+    Dan heeft adres 'A1' de volgende rij in tabel 'lo3_adres'
       | adres_id | gemeente_code |
-      |        1 |          0518 |
+      |       A1 |          0518 |
 
   @integratie
   Scenario: adres '[adres aanduiding]' (meerdere adressen)
-    Gegeven adres 'A1'
+    En adres 'A1'
       | gemeentecode (92.10) |
       |                 0518 |
     Gegeven adres 'A2'
       | gemeentecode (92.10) | identificatiecode verblijfplaats (11.80) |
       |                 0800 |                         0800010011067001 |
     Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
-    Dan heeft de adres 'A1' de volgende rij in tabel 'lo3_adres'
+    Dan heeft adres 'A1' de volgende rij in tabel 'lo3_adres'
       | adres_id | gemeente_code |
-      |        1 |          0518 |
-    En heeft de adres 'A2' de volgende rij in tabel 'lo3_adres'
+      |       A1 |          0518 |
+    En heeft adres 'A2' de volgende rij in tabel 'lo3_adres'
       | adres_id | gemeente_code | verblijf_plaats_ident_code |
-      |        2 |          0800 |           0800010011067001 |
+      |       A2 |          0800 |           0800010011067001 |
+
+  @integratie
+  Scenario: adres {adres aanduiding} in gemeente {gemeente naam}
+    Gegeven adres 'A1' in gemeente '\'s-Gravenhage'
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft adres 'A1' de volgende rij in tabel 'lo3_adres'
+      | adres_id | gemeente_code | verblijf_plaats_ident_code | nummer_aand_ident_code |
+      |       A1 |          0518 |           0518010051001502 |       0518200000617227 |
+
+  @integratie
+  Scenario: adres {adres aanduiding} in gemeente {gemeente naam} heeft de volgende gegevens
+    Gegeven adres 'A1' in gemeente '\'s-Gravenhage' heeft de volgende gegevens
+      | postcode (11.60) | huisnummer (11.20) | aanduiding bij huisnummer (11.50) |
+      |           2628HJ |                  2 | to                                |
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft adres 'A1' de volgende rij in tabel 'lo3_adres'
+      | adres_id | gemeente_code | verblijf_plaats_ident_code | nummer_aand_ident_code | postcode | huis_nr | huis_nr_aand |
+      |       A1 |          0518 |           0518010051001502 |       0518200000617227 |   2628HJ |       2 |           to |
 
   Scenario: adres '[identificatie]' heeft de volgende gegevens
     Gegeven adres 'A1' heeft de volgende gegevens

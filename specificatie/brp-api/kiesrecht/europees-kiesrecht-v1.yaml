@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info: 
+  title: europees kiesrecht
+  version: 1.0.0
+components: 
+  schemas: 
+    EuropeesKiesrecht:
+      allOf: 
+        - $ref: '../../brp/kiesrecht/europees-kiesrecht-basis-v1.yaml#/components/schemas/EuropeesKiesrechtBasis'
+        - type: object
+          properties:
+            einddatumUitsluiting:
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

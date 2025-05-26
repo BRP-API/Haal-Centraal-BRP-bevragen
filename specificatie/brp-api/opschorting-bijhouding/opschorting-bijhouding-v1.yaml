@@ -1,0 +1,16 @@
+openapi: 3.1.0
+info:
+  title: opschorting bijhouding type definitie
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    OpschortingBijhouding:
+      allOf:
+        - $ref: 'opschorting-bijhouding-basis-v1.yaml#/components/schemas/OpschortingBijhoudingBasis'
+        - type: object
+          properties:
+            datum:
+              description: |
+                De datum waarop de bijhouding van de persoonsgegevens is gestaakt.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

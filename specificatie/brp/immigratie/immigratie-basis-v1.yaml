@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info: 
+  title: immigratie basis schema definitie
+  version: 1.0.0
+components: 
+  schemas:
+    ImmigratieBasis:
+      type: object
+      properties:
+        landVanwaarIngeschreven:
+          description: |
+            het land waar de persoon woonde voor (her)vestiging in Nederland.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

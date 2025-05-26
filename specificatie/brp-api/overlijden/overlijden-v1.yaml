@@ -1,0 +1,30 @@
+openapi: 3.1.0
+info: 
+  title: overlijden
+  version: 1.0.0
+components: 
+  schemas:
+    Overlijden:
+      allOf: 
+        - $ref: '../../brp/overlijden/overlijden-basis-v1.yaml#/components/schemas/OverlijdenBasis'
+      type: object
+      properties:
+        datum:
+          description: |
+            datum waarop de persoon is overleden.
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+        inOnderzoek:
+          $ref: '#/components/schemas/OverlijdenInOnderzoek'
+    OverlijdenInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean
+            land:
+              type: boolean
+            plaats:
+              type: boolean

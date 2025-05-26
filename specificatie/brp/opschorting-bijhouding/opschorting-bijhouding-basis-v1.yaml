@@ -1,0 +1,14 @@
+openapi: 3.1.0
+info:
+  title: opschorting bijhouding 
+  version: 1.0.0
+components:
+  schemas:
+    OpschortingBijhoudingBasis:
+      type: object
+      description: |
+        Gegevens over het (gedeeltelijk) stoppen van de bijhouding van de persoonsgegevens
+      properties:
+        reden:
+          description: Omschrijving reden opschorting bijhouding
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

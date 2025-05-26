@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: VerblijfplaatsBuitenland
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    VerblijfadresBuitenland:
+      type: object
+      properties:
+        regel1:
+          $ref: '../../brp/adres-buitenland/regel1-v1.yaml#/components/schemas/Regel1'
+        regel2:
+          $ref: '../../brp/adres-buitenland/regel2-v1.yaml#/components/schemas/Regel2'
+        regel3:
+          $ref: '../../brp/adres-buitenland/regel3-v1.yaml#/components/schemas/Regel3'
+        land:
+          $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        inOnderzoek:
+          $ref: "#/components/schemas/VerblijfadresBuitenlandInOnderzoek"
+
+    VerblijfadresBuitenlandInOnderzoek:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            regel1:
+              type: boolean
+            regel2:
+              type: boolean
+            regel3:
+              type: boolean
+            land:
+              type: boolean
+
+    VerblijfplaatsBuitenland:
+      allOf:
+      - $ref : 'verblijfplaats-polymorf-v1.yaml#/components/schemas/AbstractVerblijfplaats'
+      - type: object
+        properties:
+          verblijfadres:
+            $ref: "#/components/schemas/VerblijfadresBuitenland"
+          datumVan:
+            $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+          inOnderzoek:
+            $ref: '#/components/schemas/VerblijfplaatsBuitenlandInOnderzoek'
+
+    VerblijfplaatsBuitenlandInOnderzoek:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            type:
+              type: boolean
+            datumVan:
+              type: boolean
+            datumIngangGeldigheid:
+              type: boolean
+              deprecated: true

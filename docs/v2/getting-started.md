@@ -7,7 +7,7 @@ title: Getting Started
 Gemeenten en andere organisaties met een autorisatiebesluit kunnen zich aanmelden voor deelname aan het Experiment dataminimalisatie.
 
 1. Bekijk de [functionaliteit en specificaties](#functionaliteit-en-specificaties)
-2. Probeer en test de {{ site.apiname }} [lokaal](#probeer-en-test-de-api-lokaal) of in de [proef omgeving](#probeer-en-test-de-api-in-de-proef-omgeving)
+2. Probeer en test de {{ site.apiname }} [lokaal](#probeer-en-test-de-api-lokaal) 
 3. [Download]({{ site.onboardingUrl }}){:target="_blank" rel="noopener"} en lees het onboardingproces
 
 ## Functionaliteit en specificaties

@@ -1,0 +1,37 @@
+openapi: 3.1.0
+info: 
+  title: immigratie
+  version: 1.0.0
+components: 
+  schemas:
+    Immigratie:
+      allOf: 
+        - $ref: '../../brp/immigratie/immigratie-basis-v1.yaml#/components/schemas/ImmigratieBasis'
+        - type: object
+          properties:
+            datumVestigingInNederland:
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            vanuitVerblijfplaatsOnbekend:
+              description: |
+                Geeft aan dat de persoon zich vanuit het buitenland heeft ingeschreven.
+              type: boolean
+            indicatieVestigingVanuitBuitenland:
+              description: |
+                Geeft aan dat de persoon is teruggekeerd uit een situatie van onbekende verblijfplaats
+              type: boolean
+            inOnderzoek:
+              $ref: '#/components/schemas/ImmigratieInOnderzoek'
+
+    ImmigratieInOnderzoek:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datumVestigingInNederland:
+              type: boolean
+            landVanwaarIngeschreven:
+              type: boolean
+            vanuitVerblijfplaatsOnbekend:
+              type: boolean
+            indicatieVestigingVanuitBuitenland:
+              type: boolean

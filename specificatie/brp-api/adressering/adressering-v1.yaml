@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: adressering
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    Adressering:
+      allOf:
+        - $ref: "adressering-beperkt-v1.yaml#/components/schemas/AdresseringBasis"
+        - properties:
+            aanhef:
+              $ref: "aanhef-v1.yaml#/components/schemas/Aanhef"
+            aanschrijfwijze:
+              $ref: "aanschrijfwijze-v1.yaml#/components/schemas/Aanschrijfwijze"
+            gebruikInLopendeTekst:
+              $ref: "gebruik-in-lopende-tekst-v1.yaml#/components/schemas/GebruikInLopendeTekst"
+            inOnderzoek:
+              $ref: "#/components/schemas/AdresseringInOnderzoek"
+    AdresseringInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de adressering in onderzoek zijn.
+      type: object
+      properties:
+        aanhef:
+          type: boolean
+        adresregel1:
+          type: boolean
+        adresregel2:
+          type: boolean
+        adresregel3:
+          type: boolean
+        land:
+          type: boolean
+        aanschrijfwijze:
+          type: boolean
+        gebruikInLopendeTekst:
+          type: boolean
+        datumIngangOnderzoekPersoon:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekPartner:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+        datumIngangOnderzoekVerblijfplaats:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'

@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info: 
+  title: partner
+  version: 1.0.0
+components: 
+  schemas:
+    GbaPartner:
+      allOf: 
+        - $ref: 'partner-basis-v1.yaml#/components/schemas/PartnerBasis'
+        - type: object
+          properties:
+            naam:
+              $ref: '../naam/naam-basis-v1.yaml#/components/schemas/NaamBasis'
+            geboorte:
+              $ref: '../geboorte/geboorte-v1.yaml#/components/schemas/GbaGeboorte'
+            aangaanHuwelijkPartnerschap:
+              $ref: 'aangaan-huwelijk-partnerschap-v1.yaml#/components/schemas/GbaAangaanHuwelijkPartnerschap'
+            ontbindingHuwelijkPartnerschap:
+              $ref: "ontbinding-huwelijk-partnerschap-v1.yaml#/components/schemas/GbaOntbindingHuwelijkPartnerschap"
+            inOnderzoek:
+              $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'

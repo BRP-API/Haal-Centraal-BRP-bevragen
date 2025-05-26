@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info:
+  title: geboorte beperkt type definitie
+  version: 1.0.0
+components:
+  schemas:
+    GeboorteBeperkt:
+      allOf:
+        - $ref: 'geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
+        - type: object
+          properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/GeboorteInOnderzoekBeperkt'
+
+    GeboorteInOnderzoekBeperkt:
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              type: boolean

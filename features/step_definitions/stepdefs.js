@@ -11,7 +11,18 @@ setWorldConstructor(World);
 // https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/timeouts.md
 setDefaultTimeout(30000);
 
+function persoonAanduidingenVerwijderen(personen) {
+    if(personen) {
+        personen.forEach((persoon) => {
+            delete persoon.id;
+        });
+    }
+}
+
 After({tags: 'not @fout-case'}, function({ pickle }) {
+    // tijdelijk in dan stap toegevoegde persoon aanduiding verwijderen
+    persoonAanduidingenVerwijderen(this.context.expected?.personen);
+
     valideer200Response(this.context, !pickle.tags.map((t) => t.name).includes('@valideer-volgorde'));
 });
 
@@ -70,13 +81,20 @@ Before(function({ pickle }) {
 AfterStep(function({ pickleStep }) {
     switch(pickleStep.type) {
         case 'Context':
+        case 'Unknown':
             global.logger.info(`Gegeven ${pickleStep.text}`, this.context.data);
             break;
         case 'Action':
-            global.logger.info(`Als ${pickleStep.text}`);
+            global.logger.info(`Als ${pickleStep.text}`, {
+                headers: this.context.response?.headers,
+                body: this.context.response?.data
+            });
             break;
         case 'Outcome':
-            global.logger.info(`Dan ${pickleStep.text}`, this.context.response?.data);
+            global.logger.info(`Dan ${pickleStep.text}`, this.context.expected);
+            break;
+        default:
+            global.logger.info(`Unsupported type ${pickleStep.type}`);
             break;
     }
 });
@@ -87,7 +105,7 @@ After(async function() {
         return;
     }
     if(this.context.data) {
-        await rollback(this.context.sql, this.context.sqlData);
+        await rollback(this.context.sql, this.context.data);
     }
     else {
         await rollbackSqlStatements(this.context.sql, this.context.sqlData, global.pool);

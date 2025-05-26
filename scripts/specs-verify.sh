@@ -41,3 +41,19 @@ npx cucumber-js -f json:./test-reports/cucumber-js/step-definitions/test-result-
                 features/docs \
                 -p GezagApiDeprecated \
                 > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-informatie-service.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-informatie-service-summary.txt \
+                -f summary \
+                features/adressering \
+                features/zoeken \
+                -p InfoApi \
+                > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-data-service.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-data-service-summary.txt \
+                -f summary \
+                features/adressering \
+                features/zoeken \
+                -p DataApi \
+                > /dev/null

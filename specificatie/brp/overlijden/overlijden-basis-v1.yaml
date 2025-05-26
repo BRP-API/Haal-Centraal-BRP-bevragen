@@ -1,0 +1,17 @@
+openapi: 3.1.0
+info: 
+  title: overlijden
+  version: 1.0.0
+components: 
+  schemas:
+    OverlijdenBasis:
+      type: object
+      properties:
+        land:
+          description: |
+            land waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel 'Landen'.
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        plaats:
+          description: |
+            gemeente waar de persoon is overleden. Wordt gevuld met waarden uit de landelijke tabel "Gemeenten".
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

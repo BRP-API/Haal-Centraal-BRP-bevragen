@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info: 
+  title: voorvoegsel query parameter type definitie
+  version: 1.0.0
+components: 
+  schemas:
+    VoorvoegselFilter:
+      description: |
+        Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
+      type: string
+      pattern: ^[a-zA-Z \']{1,10}$
+      example: "de"

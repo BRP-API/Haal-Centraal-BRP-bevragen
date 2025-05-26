@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: BRP API Gezag
+  description: >-
+    De Gezagsmodule kan worden bevraagd op basis van één of meerdere BSNs
+
+    - Gezag bepalen: input bsn(s) 
+
+    Het antwoord van de Gezagsmodule komt in de vorm van een lijst met daarin de BSN minderjarige, Soort
+    Gezagt tussen relatie met meerderjarige en BSN meerderjarige
+  version: "2.0"
+  contact:
+    url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+servers:
+  - description: |
+      Proef omgeving
+    url: https://proefomgeving.haalcentraal.nl/
+tags:
+  - name: Personen
+externalDocs:
+  description: BRP API Personen website
+  url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
+paths:
+  /api/v1/opvragenBevoegdheidTotGezag:
+    post:
+      tags:
+        - GezagsmoduleInterface
+      description: >-
+        De volgende situaties kunnen (gelijktijdig) voorkomen:
+
+        - Bij aanwezigheid van juridische kinderen wordt het gezag van deze persoon over diens kinderen teruggegeven. Het kan zijn dat omwille van het reduceren van BRP bevragingen de leeftijd van de kinderen uit de lijst met kinderen van de ouder wordt gebruikt om kinderen die al de leeftijd van 18 hebben bereikt niet te bevragen. dit heeft wel impact op de als minderjarige overleden kinderen; daar wordt dan geen gezagsuitspraak gedaan.
+
+        - Is de persoon minderjarig dan wordt het gezag van de ouder(s) over deze persoon teruggegeven.
+      operationId: opvragenBevoegdheidTotGezag
+      parameters:
+        - in: header
+          name: Accept-Gezag-Version
+          schema:
+            type: integer
+            enum:
+              - 2
+            default: 2 # required for server code generation
+          required: true
+          x-version-param: true # vendor extension (OpenAPI Generator: spring)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GezagRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GezagResponse"
+        "503":
+          description: Gegevensbron niet beschikbaar
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    GezagRequest:
+      type: object
+      properties:
+        burgerservicenummer:
+          type: array
+          items:
+            $ref: "../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer"
+          minItems: 1
+          maxItems: 20
+    GezagResponse:
+      type: object
+      properties:
+        personen:
+          type: array
+          items:
+            $ref: "#/components/schemas/Persoon"
+    Persoon:
+      type: object
+      properties:
+        burgerservicenummer:
+          $ref: '../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
+        gezag:
+          $ref: "../gezag/gezagsrelatie-v2.yaml#/components/schemas/Gezag"

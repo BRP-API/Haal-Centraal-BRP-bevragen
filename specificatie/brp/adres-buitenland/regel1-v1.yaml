@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: regel 1
+  version: 1.0.0
+components:
+  schemas:
+    Regel1:
+      type: string
+      maxLength: 40
+      description: |
+        Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.
+      example: 1600 Pennsylvania Avenue NW

@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: gebruik in lopende tekst
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    GebruikInLopendeTekst:
+      type: string
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
+      description: |
+        Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
+      example: baron Van den Aedel

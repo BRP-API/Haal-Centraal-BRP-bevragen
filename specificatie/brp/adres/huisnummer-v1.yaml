@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: huisnummer
+  version: 1.0.0
+components:
+  schemas:
+    Huisnummer:
+      description: |
+        Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.
+      type: integer
+      minimum: 1
+      maximum: 99999
+      example: 14

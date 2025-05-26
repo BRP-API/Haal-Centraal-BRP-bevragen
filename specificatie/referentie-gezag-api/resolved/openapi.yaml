@@ -99,6 +99,9 @@ components:
           type: string
         minderjarige:
           $ref: '#/components/schemas/Minderjarige'
+        inOnderzoek:
+          type: boolean
+          description: Geeft aan dat de gezagsrelatie in onderzoek is.
       discriminator:
         propertyName: type
         mapping:
@@ -140,11 +143,30 @@ components:
           properties:
             ouder:
               $ref: '#/components/schemas/GezagOuder'
-    Meerderjarige:
+    Derde:
       type: object
+      required:
+        - type
       properties:
-        burgerservicenummer:
-          $ref: '#/components/schemas/Burgerservicenummer'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          BekendeDerde: '#/components/schemas/BekendeDerde'
+          OnbekendeDerde: '#/components/schemas/OnbekendeDerde'
+    BekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
+        - type: object
+          properties:
+            burgerservicenummer:
+              $ref: '#/components/schemas/Burgerservicenummer'
+      required:
+        - burgerservicenummer
+    OnbekendeDerde:
+      allOf:
+        - $ref: '#/components/schemas/Derde'
     GezamenlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -153,7 +175,7 @@ components:
             ouder:
               $ref: '#/components/schemas/GezagOuder'
             derde:
-              $ref: '#/components/schemas/Meerderjarige'
+              $ref: '#/components/schemas/Derde'
     Voogdij:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -162,7 +184,7 @@ components:
             derden:
               type: array
               items:
-                $ref: '#/components/schemas/Meerderjarige'
+                $ref: '#/components/schemas/BekendeDerde'
               minItems: 0
               maxItems: 2
     Toelichting:

@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: adresregel 3
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    Adresregel3:
+      type: string
+      maxLength: 35
+      description: |
+        Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
+      example: Selangor

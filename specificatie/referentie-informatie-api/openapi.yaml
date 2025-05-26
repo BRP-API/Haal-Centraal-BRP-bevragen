@@ -114,12 +114,30 @@ components:
           $ref: '../brp-api/query-parameters/adresseerbaar-object-identificatie-filter-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
         datum:
           $ref: '../brp-api/query-parameters/datum-filter-v1.yaml#/components/schemas/DatumFilter'
+        field:
+          $ref: '../brp-api/query-parameters/field-v1.yaml#/components/schemas/Field'
+        gemeenteVanInschrijving:
+          $ref: '../brp-api/query-parameters/gemeente-van-inschrijving-filter-v1.yaml#/components/schemas/GemeenteVanInschrijving'
+        geslacht:
+          $ref: '../brp-api/query-parameters/geslacht-filter-v1.yaml#/components/schemas/GeslachtFilter'
+        geslachtsnaam:
+          $ref: '../brp-api/query-parameters/geslachtsnaam-filter-v1.yaml#/components/schemas/GeslachtsnaamFilter'
         nummeraanduidingIdentificatie:
           $ref: '../brp-api/query-parameters/nummeraanduiding-identificatie-filter-v1.yaml#/components/schemas/NummeraanduidingIdentificatieFilter'
+        straat:
+          $ref: '../brp-api/query-parameters/straat-filter-v1.yaml#/components/schemas/StraatFilter'
+        voornamenOptioneel:
+          $ref: '../brp-api/query-parameters/voornamen-optioneel-filter-v1.yaml#/components/schemas/VoornamenOptioneelFilter'
+        voornamenVerplicht:
+          $ref: '../brp-api/query-parameters/voornamen-verplicht-filter-v1.yaml#/components/schemas/VoornamenVerplichtFilter'
+        voorvoegsel:
+          $ref: '../brp-api/query-parameters/voorvoegsel-filter-v1.yaml#/components/schemas/VoorvoegselFilter'
 
     InformatieApiResponse:
       type: object
       properties:
+        adressering:
+          $ref: '#/components/schemas/AdresseringResponse'
         datum:
           $ref: '#/components/schemas/DatumsResponse'
         geboorte:
@@ -130,8 +148,38 @@ components:
           $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
         gezagsrelatie:
           $ref: '../brp-api/gezag/gezagsrelatie-v1.yaml#/components/schemas/AbstractGezagsrelatie'
-        volledigeNaam:
-          $ref: '../brp-api/naam/volledige-naam-v1.yaml#/components/schemas/VolledigeNaam'
+        immigratie:
+          $ref: '../brp-api/immigratie/immigratie-v1.yaml#/components/schemas/Immigratie'
+        kiesrecht:
+          $ref: '#/components/schemas/KiesrechtResponse'
+        kind:
+          $ref: '../brp-api/kind/kind-v1.yaml#/components/schemas/Kind'
+        naam:
+          $ref: '#/components/schemas/NaamResponse'
+        nationaliteit:
+          $ref: '../brp-api/nationaliteit/nationaliteit-polymorf-v1.yaml#/components/schemas/AbstractNationaliteit'
+        opschortingBijhouding:
+          $ref: '../brp-api/opschorting-bijhouding/opschorting-bijhouding-v1.yaml#/components/schemas/OpschortingBijhouding'
+        ouder:
+          $ref: '../brp-api/ouder/ouder-v1.yaml#/components/schemas/Ouder'
+        overlijden:
+          $ref: '../brp-api/overlijden/overlijden-v1.yaml#/components/schemas/Overlijden'
+        partner:
+          $ref: '../brp-api/partner/partner-v1.yaml#/components/schemas/Partner'
+        verblijfplaats:
+          $ref: '../brp-api/verblijfplaats/verblijfplaats-polymorf-v1.yaml#/components/schemas/AbstractVerblijfplaats'
+        verblijfstitel:
+          $ref: '../brp-api/verblijfstitel/verblijfstitel-v1.yaml#/components/schemas/Verblijfstitel'
+        verificatie:
+          $ref: '../brp-api/verificatie/verificatie-v1.yaml#/components/schemas/Verificatie'
+
+    AdresseringResponse:
+      type: object
+      properties:
+        adressering:
+          $ref: '../brp-api/adressering/adressering-v1.yaml#/components/schemas/Adressering'
+        beperkt:
+          $ref: '../brp-api/adressering/adressering-beperkt-v1.yaml#/components/schemas/AdresseringBeperkt'
 
     DatumsResponse:
       type: object
@@ -148,3 +196,29 @@ components:
       properties:
         basis:
           $ref: '../brp-api/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
+        beperkt:
+          $ref: '../brp-api/geboorte/geboorte-beperkt-v1.yaml#/components/schemas/GeboorteBeperkt'
+        geboorte:
+          $ref: '../brp-api/geboorte/geboorte-v1.yaml#/components/schemas/Geboorte'
+        leeftijd:
+          $ref: '../brp-api/geboorte/leeftijd-v1.yaml#/components/schemas/Leeftijd'
+
+    KiesrechtResponse:
+      type: object
+      properties:
+        europeesKiesrecht:
+          $ref: '../brp-api/kiesrecht/europees-kiesrecht-v1.yaml#/components/schemas/EuropeesKiesrecht'
+        uitsluitingKiesrecht:
+          $ref: '../brp-api/kiesrecht/uitsluiting-kiesrecht-v1.yaml#/components/schemas/UitsluitingKiesrecht'
+
+    NaamResponse:
+      type: object
+      properties:
+        basis:
+          $ref: '../brp-api/naam/naam-basis-v1.yaml#/components/schemas/NaamBasis'
+        naam:
+          $ref: '../brp-api/naam/naam-persoon-v1.yaml#/components/schemas/NaamPersoon'
+        beperkt:
+          $ref: '../brp-api/naam/naam-persoon-beperkt-v1.yaml#/components/schemas/NaamPersoonBeperkt'
+        volledigeNaam:
+          $ref: '../brp-api/naam/volledige-naam-v1.yaml#/components/schemas/VolledigeNaam'

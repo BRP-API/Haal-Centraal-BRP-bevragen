@@ -1,0 +1,12 @@
+openapi: 3.1.0
+info:
+  title: naam
+  version: 1.0.0
+components:
+  schemas:
+    GbaNaamPersoon:
+      allOf:
+        - $ref: 'naam-basis-v1.yaml#/components/schemas/NaamBasis'
+        - properties:
+            aanduidingNaamgebruik:
+              $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info: 
+  title: verblijfstitel
+  version: 1.0.0
+components: 
+  schemas:
+    Verblijfstitel:
+      allOf: 
+        - $ref: '../../brp/verblijfstitel/verblijfstitel-basis-v1.yaml#/components/schemas/VerblijfstitelBasis'
+        - type: object
+          properties:
+            datumEinde:
+              description: |
+                Datum waarop de geldigheid van de gegevens over de verblijfstitel is beëindigd.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            datumIngang:
+              description: |
+                Datum waarop de gegevens over de verblijfstitel geldig zijn geworden.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/VerblijfstitelInOnderzoek'
+
+    VerblijfstitelInOnderzoek:
+      description: |
+        Geeft aan welke gegevens over de verblijfstitel in onderzoek zijn.
+      allOf:
+        - $ref: '../in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            aanduiding:
+              type: boolean
+            datumEinde:
+              type: boolean
+            datumIngang:
+              type: boolean

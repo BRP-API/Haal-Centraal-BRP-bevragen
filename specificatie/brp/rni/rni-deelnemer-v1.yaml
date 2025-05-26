@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: RNI deelnemer type definities
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    OmschrijvingVerdrag:
+      type: string
+      description: |
+        Omschrijving van het verdrag op basis waarvan een zusterorganisatie in het buitenland de gegevens bij de RNI-deelnemer heeft aangeleverd.
+      pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,50}$
+
+    Categorie:
+      type: string
+      description: Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
+      pattern: ^[a-zA-Z0-9À-ž \.\-\'\/]{1,40}$
+      example: Verblijfplaats
+
+    RniDeelnemer:
+      type: object
+      description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
+      properties:
+        deelnemer:
+          $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        omschrijvingVerdrag:
+          $ref: '#/components/schemas/OmschrijvingVerdrag'
+        categorie:
+          $ref: '#/components/schemas/Categorie'

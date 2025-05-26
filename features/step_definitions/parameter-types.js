@@ -42,10 +42,15 @@ function defineDateParameterType(name, regexp, transformer) {
 
 defineParameterType({
     name: 'aanduidingen',
-    regexp: /'([a-zA-Z0-9, ]*)'/,
+    regexp: /'([a-zA-Z0-9À-ž-, ]*)'/,
     transformer(aanduidingen) {
         return aanduidingen.replace(' en ', ',').split(',').map(aanduiding => aanduiding.trim());
     }
+});
+
+defineParameterType({
+    name: 'aanduiding',
+    regexp: /'([a-zA-Z0-9À-ž-]*)'/
 });
 
 defineParameterType({
@@ -64,7 +69,7 @@ defineDateParameterType(
 
 defineDateParameterType(
     'dd maand yyyy datum',
-    /(?:in )?(?:')?(?:(\d{1,2}) )?(?:(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december) )?(\d{4})(?:')?/,
+    /(?:op )?(?:in )?'?(?:(\d{1,2}) )?(?:(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december) )?(\d{4})'?/,
     (dag, maand, jaar) => getJaar(jaar) + getMaand(maand) + getDag(dag)
 );
 
@@ -99,5 +104,79 @@ defineParameterType({
     regexp: /(dit|vorig|volgend) jaar - (\d{1,2}) jaar/,
     transformer(jaar, aantalJaren) {
         return toDateOrString(`${jaar} jaar - ${aantalJaren} jaar`, false);
+    }
+});
+
+defineParameterType({
+    name: 'relatieve datum',
+    regexp: /(gisteren|vandaag|morgen|deze maand|vorige maand|volgende maand)/
+});
+
+function jarigheidGeboorteDatum(omschrijvingLeeftijd) {
+    const omschrijvingLeeftijdMap = new Map([
+        ['minderjarige', 'gisteren - 17 jaar'],
+        ['meerderjarige', 'gisteren - 45 jaar']
+    ]);
+
+    return omschrijvingLeeftijdMap.get(omschrijvingLeeftijd) || omschrijvingLeeftijd
+}
+
+defineParameterType({
+    name: 'meer- of minderjarige',
+    regexp: /(minderjarige|meerderjarige)/,
+    transformer(omschrijvingLeeftijd) {
+        return jarigheidGeboorteDatum(omschrijvingLeeftijd);
+    }
+});
+
+function toGeslachtsaanduiding(omschrijvingGeslacht) {
+    const geslachtMap = new Map([
+        ['man', 'M'],
+        ['vrouw', 'V']
+    ]);
+
+    return geslachtMap.get(omschrijvingGeslacht) || omschrijvingGeslacht;
+}
+
+defineParameterType({
+    name: 'geslachtsaanduiding',
+    regexp: /(?:(man|vrouw))?/,
+    transformer(geslacht) {
+        if(!geslacht) {
+            return undefined;
+        }
+        return toGeslachtsaanduiding(geslacht);
+    }
+});
+
+defineParameterType({
+    name: 'erkenningstype',
+    regexp: /(?:(bij geboorteaangifte|na geboorteaangifte|bij notariële akte|met gerechtelijke vaststelling ouderschap))?/,
+    transformer(soortErkenning) {
+        const erkenningsMap = {
+            'bij geboorteaangifte': 'B',
+            'na geboorteaangifte': 'C',
+            'bij notariële akte': 'J',
+            'met gerechtelijke vaststelling ouderschap': 'V'
+        };
+        return erkenningsMap[soortErkenning] || 'C';
+    }
+});
+
+defineParameterType({
+    name: 'tijdelijk geen gezag of niet te bepalen',
+    regexp: /(tijdelijk geen gezag|niet te bepalen)/,
+});
+
+defineParameterType({
+    name: 'toelichting',
+    regexp: /'([a-zA-Z0-9À-ž /;:.\-?()]{1,400})'/
+});
+
+defineParameterType({
+    name: 'soort verbintenis',
+    regexp: /(gehuwd|een geregistreerd partnerschap aangegaan)/,
+    transformer(soortRelatie) {
+        return soortRelatie === 'gehuwd' ? 'H' : 'P';
     }
 });

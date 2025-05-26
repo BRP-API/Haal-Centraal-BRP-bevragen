@@ -113,25 +113,75 @@ components:
           $ref: '../brp-api/query-parameters/adresseerbaar-object-identificatie-filter-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatieFilter'
         datum:
           $ref: '../brp-api/query-parameters/datum-filter-v1.yaml#/components/schemas/DatumFilter'
+        field:
+          $ref: '../brp-api/query-parameters/field-v1.yaml#/components/schemas/Field'
+        gemeenteVanInschrijving:
+          $ref: '../brp-api/query-parameters/gemeente-van-inschrijving-filter-v1.yaml#/components/schemas/GemeenteVanInschrijving'
+        geslacht:
+          $ref: '../brp-api/query-parameters/geslacht-filter-v1.yaml#/components/schemas/GeslachtFilter'
+        geslachtsnaam:
+          $ref: '../brp-api/query-parameters/geslachtsnaam-filter-v1.yaml#/components/schemas/GeslachtsnaamFilter'
         nummeraanduidingIdentificatie:
           $ref: '../brp-api/query-parameters/nummeraanduiding-identificatie-filter-v1.yaml#/components/schemas/NummeraanduidingIdentificatieFilter'
+        straat:
+          $ref: '../brp-api/query-parameters/straat-filter-v1.yaml#/components/schemas/StraatFilter'
+        voornamenOptioneel:
+          $ref: '../brp-api/query-parameters/voornamen-optioneel-filter-v1.yaml#/components/schemas/VoornamenOptioneelFilter'
+        voornamenVerplicht:
+          $ref: '../brp-api/query-parameters/voornamen-verplicht-filter-v1.yaml#/components/schemas/VoornamenVerplichtFilter'
+        voorvoegsel:
+          $ref: '../brp-api/query-parameters/voorvoegsel-filter-v1.yaml#/components/schemas/VoorvoegselFilter'
 
     DataApiResponse:
       type: object
       properties:
         adresseerbaarObjectIdentificatie:
           $ref: '../brp/adres/adresseerbaar-object-identificatie-v1.yaml#/components/schemas/AdresseerbaarObjectIdentificatie'
+        anummer:
+          $ref: '../brp/identificatienummers/anummer-v1.yaml#/components/schemas/ANummer'
         burgerservicenummer:
           $ref: '../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         geboorteBasis:
           $ref: '../brp/geboorte/geboorte-basis-v1.yaml#/components/schemas/GeboorteBasis'
+        geboorte:
+          $ref: '../brp/geboorte/geboorte-v1.yaml#/components/schemas/GbaGeboorte'
         geslachtsaanduiding:
           $ref: '../brp/geslacht/geslachtsaanduiding-v1.yaml#/components/schemas/Geslachtsaanduiding'
         gezagsrelatie:
           $ref: '../brp/gezag/gezagsrelatie-v1.yaml#/components/schemas/AbstractGezagsrelatie'
+        immigratie:
+          $ref: '../brp/immigratie/immigratie-v1.yaml#/components/schemas/GbaImmigratie'
         indicatieGeheim:
           $ref: '../brp/geheim/indicatie-geheim-v1.yaml#/components/schemas/IndicatieGeheim'
         InOnderzoek:
           $ref: '../brp/in-onderzoek-v1.yaml#/components/schemas/InOnderzoek'
+        europeesKiesrecht:
+          $ref: '../brp/kiesrecht/europees-kiesrecht-v1.yaml#/components/schemas/GbaEuropeesKiesrecht'
+        uitsluitingKiesrecht:
+          $ref: '../brp/kiesrecht/uitsluiting-kiesrecht-v1.yaml#/components/schemas/GbaUitsluitingKiesrecht'
+        kind:
+          $ref: '../brp/kind/kind-v1.yaml#/components/schemas/GbaKind'
+        naam:
+          $ref: '../brp/naam/naam-v1.yaml#/components/schemas/GbaNaamPersoon'
         naamBasis:
           $ref: '../brp/naam/naam-basis-v1.yaml#/components/schemas/NaamBasis'
+        nationaliteit:
+          $ref: '../brp/nationaliteit/nationaliteit-v1.yaml#/components/schemas/GbaNationaliteit'
+        opschorting:
+          $ref: '../brp/opschorting-bijhouding/opschorting-bijhouding-v1.yaml#/components/schemas/GbaOpschortingBijhouding'
+        ouder:
+          $ref: '../brp/ouder/ouder-v1.yaml#/components/schemas/GbaOuder'
+        overlijden:
+          $ref: '../brp/overlijden/overlijden-v1.yaml#/components/schemas/GbaOverlijden'
+        partner:
+          $ref: '../brp/partner/partner-v1.yaml#/components/schemas/GbaPartner'
+        rni:
+          $ref: '../brp/rni/rni-deelnemer-v1.yaml#/components/schemas/RniDeelnemer'
+        verblijfplaats:
+          $ref: '../brp/verblijfplaats/verblijfplaats-v1.yaml#/components/schemas/GbaVerblijfplaats'
+        verblijfplaatsBeperkt:
+          $ref: '../brp/verblijfplaats/verblijfplaats-beperkt-v1.yaml#/components/schemas/GbaVerblijfplaatsBeperkt'
+        verblijfstitel:
+          $ref: '../brp/verblijfstitel/verblijfstitel-v1.yaml#/components/schemas/GbaVerblijfstitel'
+        verificatie:
+          $ref: '../brp/verificatie/verificatie-v1.yaml#/components/schemas/GbaVerificatie'

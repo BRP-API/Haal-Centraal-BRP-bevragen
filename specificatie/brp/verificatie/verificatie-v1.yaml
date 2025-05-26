@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: Verificatie
+  version: 1.0.0
+components:
+  schemas:
+    GbaVerificatie:
+      allOf: 
+        - $ref: 'verificatie-basis-v1.yaml#/components/schemas/VerificatieBasis'
+        - type: object
+          properties:
+            datum:
+              $ref: '../datum-v1.yaml#/components/schemas/GbaDatum'

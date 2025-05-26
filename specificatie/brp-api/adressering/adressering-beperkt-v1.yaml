@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: adressering beperkt
+  version: 1.0.0
+  contact: {}
+components:
+  schemas:
+    AdresseringBasis:
+      type: object
+      description: ""
+      properties:
+        adresregel1:
+          $ref: 'adresregel1-v1.yaml#/components/schemas/Adresregel1'
+        adresregel2:
+          $ref: 'adresregel2-v1.yaml#/components/schemas/Adresregel2'
+        adresregel3:
+          $ref: 'adresregel3-v1.yaml#/components/schemas/Adresregel3'
+        land:
+          $ref: '../../brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
+        indicatieVastgesteldVerblijftNietOpAdres:
+          $ref: '../verblijfplaats/indicatie-vastgesteld-verblijft-niet-op-adres-v1.yaml#/components/schemas/IndicatieVastgesteldVerblijftNietOpAdres'
+    AdresseringBeperkt:
+      allOf:
+        - $ref: '#/components/schemas/AdresseringBasis'
+        - properties:
+            inOnderzoek:
+              $ref: '#/components/schemas/AdresseringInOnderzoekBeperkt'
+    AdresseringInOnderzoekBeperkt:
+      description: |
+        Geeft aan welke gegevens over de adressering in onderzoek zijn.
+      type: object
+      properties:
+        adresregel1:
+          type: boolean
+        adresregel2:
+          type: boolean
+        adresregel3:
+          type: boolean
+        land:
+          type: boolean
+        datumIngangOnderzoekVerblijfplaats:
+          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
