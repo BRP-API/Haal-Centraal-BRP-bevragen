@@ -105,10 +105,10 @@ Functionaliteit: Erkenning
       | P1    |         0 |       0 | P            | P1             | 1_C____ |
     En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
       | pl_id | stapel_nr | volg_nr | persoon_type | geslachts_naam | geslachts_aand | familie_betrek_start_datum | akte_nr |
-      | P1    |         0 |       0 |            1 | P2             | V              | gisteren - 16 jaar         | 1_A____ |
+      | P1    |         0 |       0 |            1 | P2             | V              | gisteren - 17 jaar         | 1_A____ |
     En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
       | pl_id | stapel_nr | volg_nr | persoon_type | akte_nr | geldigheid_start_datum | geslachts_naam | familie_betrek_start_datum |
-      | P1    |         0 |       1 |            2 | 1_A____ | gisteren - 16 jaar     |                |                            |
+      | P1    |         0 |       1 |            2 | 1_A____ | gisteren - 17 jaar     |                |                            |
     En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
       | pl_id | stapel_nr | volg_nr | persoon_type | akte_nr | geslachts_naam | geboorte_datum     | geslachts_aand | familie_betrek_start_datum |
       | P1    |         0 |       0 |            2 | 1_C____ | P3             | gisteren - 35 jaar | M              |                   20240513 |

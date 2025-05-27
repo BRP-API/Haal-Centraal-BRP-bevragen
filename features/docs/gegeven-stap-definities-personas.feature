@@ -82,8 +82,8 @@ Functionaliteit: persona stap definities
       | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum   | geslachts_aand | relatie_start_datum | relatie_start_plaats | relatie_start_land_code | verbintenis_soort | akte_nr |
       | Piet  |         0 |       0 | R            |         000000101 | Petra          | morgen - 37 jaar | V              | gisteren - 20 jaar  |                 0518 |                    6030 | H                 | 3XA1224 |
 
-  Scenario: de minderjarige persoon {kind} met één ouder {ouder}
-    Gegeven de minderjarige persoon 'Jan' met één ouder 'Petra'
+  Abstract Scenario: de {datum omschrijving} persoon {kind} met één ouder {ouder}
+    Gegeven de <leeftijd omschrijving> persoon 'Jan' met één ouder 'Petra'
     Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
     Dan heeft persoon 'Petra' de volgende rij in tabel 'lo3_pl'
       | pl_id | geheim_ind |
@@ -92,23 +92,33 @@ Functionaliteit: persona stap definities
       | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum   | geslachts_aand | akte_nr |
       | Petra |         0 |       0 | P            |         000000101 | Petra          | morgen - 37 jaar | V              | 1_A____ |
     En heeft persoon 'Petra' de volgende rij in tabel 'lo3_pl_persoon'
-      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum     | geboorte_land_code | akte_nr |
-      | Petra |         0 |       0 | K            |         000000103 | Jan            | gisteren - 16 jaar |               6030 | 1_A____ |
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum  | geboorte_land_code | akte_nr |
+      | Petra |         0 |       0 | K            |         000000103 | Jan            | <geboortedatum> |               6030 | 1_A____ |
     Dan heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl'
       | pl_id | geheim_ind |
       | Jan   |          0 |
     En heeft persoon 'Petra' de volgende rij in tabel 'lo3_pl_persoon'
-      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum     | geboorte_land_code | akte_nr |
-      | Jan   |         0 |       0 | P            |         000000103 | Jan            | gisteren - 16 jaar |               6030 | 1_A____ |
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum  | geboorte_land_code | akte_nr |
+      | Jan   |         0 |       0 | P            |         000000103 | Jan            | <geboortedatum> |               6030 | 1_A____ |
     En heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl_verblijfplaats'
       | pl_id | volg_nr | inschrijving_gemeente_code |
       | Jan   |       0 |                       0518 |
     En heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl_persoon'
       | pl_id | stapel_nr | volg_nr | persoon_type | familie_betrek_start_datum | akte_nr | burger_service_nr | geslachts_naam | geboorte_datum   | geslachts_aand |
-      | Jan   |         0 |       0 |            1 | gisteren - 16 jaar         | 1_A____ |         000000101 | Petra          | morgen - 37 jaar | V              |
+      | Jan   |         0 |       0 |            1 | <geboortedatum>            | 1_A____ |         000000101 | Petra          | morgen - 37 jaar | V              |
     En heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl_persoon'
       | pl_id | stapel_nr | volg_nr | persoon_type | akte_nr | geldigheid_start_datum |
-      | Jan   |         0 |       0 |            2 | 1_A____ | gisteren - 16 jaar     |
+      | Jan   |         0 |       0 |            2 | 1_A____ | <geboortedatum>        |
+
+    Voorbeelden:
+      | leeftijd omschrijving          | geboortedatum      |
+      | minderjarige                   | gisteren - 17 jaar |
+      | meerderjarige                  | gisteren - 45 jaar |
+      |         7 jaar geleden geboren |     7 jaar geleden |
+      |             03-11-2024 geboren |           20241103 |
+      | op 03-11-2024 geboren          |           20241103 |
+      | op 3 november 2024 geboren     |           20241103 |
+      | op een onbekende datum geboren |           00000000 |
 
   Scenario: de minderjarige persoon {kind} met één ouder {ouder} die gehuwd is met {partner}
     Gegeven de minderjarige persoon 'Jan' met één ouder 'Petra' die gehuwd is met 'Paula'
@@ -276,6 +286,31 @@ Functionaliteit: persona stap definities
     En heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl_verblijfplaats'
       | pl_id | volg_nr | inschrijving_gemeente_code | rni_deelnemer |
       | Jan   |       0 |                       1999 |           201 |
+
+  Scenario: de {datum omschrijving} persoon {kind} die als vondeling geboren is
+    Gegeven de <leeftijd omschrijving> persoon 'Jan' die als vondeling geboren is
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl'
+      | pl_id | geheim_ind |
+      | Jan   |          0 |
+    En heeft persoon 'Petra' de volgende rijen in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | geboorte_datum  | geboorte_land_code | familie_betrek_start_datum | akte_nr |
+      | Jan   |         0 |       0 | P            |         000000103 | Jan            | <geboortedatum> |               6030 |                            | 1_A____ |
+      | Jan   |         0 |       0 |            1 |                   | .              |                 |                    | <geboortedatum>            | 1_A____ |
+      | Jan   |         0 |       0 |            2 |                   |                |                 |                    |                            | 1_A____ |
+    En heeft persoon 'Jan' de volgende rij in tabel 'lo3_pl_verblijfplaats'
+      | pl_id | volg_nr | inschrijving_gemeente_code |
+      | Jan   |       0 |                       0518 |
+
+    Voorbeelden:
+      | leeftijd omschrijving          | geboortedatum      |
+      | minderjarige                   | gisteren - 17 jaar |
+      | meerderjarige                  | gisteren - 45 jaar |
+      |         7 jaar geleden geboren |     7 jaar geleden |
+      |             03-11-2024 geboren |           20241103 |
+      | op 03-11-2024 geboren          |           20241103 |
+      | op 3 november 2024 geboren     |           20241103 |
+      | op een onbekende datum geboren |           00000000 |
 
   Scenario: de meerderjarige persoon {persoon}
     Gegeven de meerderjarige persoon 'Jan'
