@@ -42,7 +42,7 @@ describe('deleteStatement', () => {
     test.each(
         [
             ['adres', 'lo3_adres', 'adres_id'],
-            ['autorisatie', 'lo3_autorisatie', 'afnemer_code'],
+            ['autorisatie', 'lo3_autorisatie', 'autorisatie_id'],
             ['gemeente', 'lo3_gemeente', 'gemeente_code'],
             ['gezagsverhouding', 'lo3_pl_gezagsverhouding', 'pl_id'],
             ['inschrijving', 'lo3_pl', 'pl_id'],

@@ -11,6 +11,7 @@ const { toDbColumnName } = require('../brp');
 const { genereerAktenummer } = require('../generators');
 
 const ErkenningsType = {
+    Geboorte: 'A',
     ErkenningBijGeboorteaangifte: 'B',
     ErkenningNaGeboorteaangifte: 'C',
     ErkenningBijNotarieleAkte: 'J',
@@ -57,6 +58,9 @@ Given(/^is erkend door '(.*)' als ouder ([1-2]) met gerechtelijke vaststelling o
     gegevenIsErkendDoorPersoonAlsOuder(this.context, aanduidingOuder, ErkenningsType.GerechtelijkeVaststellingOuderschap, ouderType, ouderData);
 });
 
+Given('{string} is erkend door {string} als ongeboren vrucht op {dd-mm-yyyy datum}', function (aanduidingPersoon, aanduidingOuder, datumErkenning) {
+    gegevenDePersoonIsErkend(this.context, aanduidingPersoon, aanduidingOuder, ErkenningsType.Geboorte, datumErkenning);
+});
 Given('{string} is erkend door {string} bij geboorteaangifte', function (aanduidingPersoon, aanduidingOuder) {
     gegevenDePersoonIsErkend(this.context, aanduidingPersoon, aanduidingOuder, ErkenningsType.ErkenningBijGeboorteaangifte, undefined);
 });

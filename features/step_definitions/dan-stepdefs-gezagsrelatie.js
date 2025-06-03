@@ -7,6 +7,7 @@ const { createCollectieObjectMetSubCollectieObject,
         createSubSubCollectieObjectenInLastSubCollectieObjectInLastCollectieObject } = require('./dataTable2ObjectFactory');
 const { setObjectPropertiesFrom } = require('./dataTable2Object');
 const { getBsn,
+        getGeslachtsaanduiding,
         getGeslachtsnaam,
         getVoornamen,
         getGeboortedatum,
@@ -65,6 +66,25 @@ function setProperty(obj, key, value) {
     }
 }
 
+function setGezagRelatieProperties(persoon, retval, isMinderjarige) {
+    retval.naam = {};
+
+    setProperty(retval.naam, 'voornamen', getVoornamen(persoon));
+    setProperty(retval.naam, 'geslachtsnaam', getGeslachtsnaam(persoon));
+    const geslachtsaanduiding = getGeslachtsaanduiding(persoon);
+    if(geslachtsaanduiding) {
+        retval.geslacht = {};
+
+        setProperty(retval.geslacht, 'code', geslachtsaanduiding);
+    }
+
+    if(isMinderjarige) {
+        retval.geboorte = {};
+
+        setProperty(retval.geboorte, 'datum', getGeboortedatum(persoon));
+    }
+}
+
 function createGezagspersoon(context, aanduiding, isMinderjarige = false) {
     const persoon = getPersoon(context, aanduiding);
 
@@ -83,29 +103,11 @@ function createGezagspersoon(context, aanduiding, isMinderjarige = false) {
         }
     }
     if((context.isAllApiScenario || context.isDataApiScenario) && context.isDataApiAanroep) {
-        retval.naam = {};
-
-        setProperty(retval.naam, 'voornamen', getVoornamen(persoon));
-        setProperty(retval.naam, 'geslachtsnaam', getGeslachtsnaam(persoon));
-
-        if(isMinderjarige) {
-            retval.geboorte = {};
-
-            setProperty(retval.geboorte, 'datum', getGeboortedatum(persoon));
-        }
+        setGezagRelatieProperties(persoon, retval, isMinderjarige);
     }
     if((context.isAllApiScenario || context.isGezagApiScenario) && context.isGezagApiAanroep) {
         if(!context.isDeprecatedScenario) {
-            retval.naam = {};
-
-            setProperty(retval.naam, 'voornamen', getVoornamen(persoon));
-            setProperty(retval.naam, 'geslachtsnaam', getGeslachtsnaam(persoon));
-
-            if(isMinderjarige) {
-                retval.geboorte = {};
-
-                setProperty(retval.geboorte, 'datum', getGeboortedatum(persoon));
-            }
+            setGezagRelatieProperties(persoon, retval, isMinderjarige);
         }
     }
 
@@ -198,15 +200,15 @@ function initExpected(context, type, aanduidingMinderjarige, aanduidingMeerderja
     }
 }
 
-Then(/^is het gezag over '([a-zA-Z0-9À-ž-]*)' (eenhoofdig ouderlijk gezag|gezamenlijk gezag) met ouder '([a-zA-Z0-9À-ž-]*)'(?: en een onbekende derde)?$/, function (aanduidingMinderjarige, type, aanduidingOuder) {
+Then(/^(?:is )?het gezag over '([a-zA-Z0-9À-ž-]*)' (?:is )?(eenhoofdig ouderlijk gezag|gezamenlijk gezag) met ouder '([a-zA-Z0-9À-ž-]*)'(?: en een onbekende derde)?$/, function (aanduidingMinderjarige, type, aanduidingOuder) {
     initExpected(this.context, type, aanduidingMinderjarige, aanduidingOuder);
 });
 
-Then(/^is het gezag over '([a-zA-Z0-9À-ž-]*)' (gezamenlijk gezag|gezamenlijk ouderlijk gezag) met ouder '([a-zA-Z0-9À-ž-]*)' en (?:ouder|derde) '([a-zA-Z0-9À-ž-]*)'$/, function (aanduidingMinderjarige, type, aanduidingMeerderjarige1, aanduidingMeerderjarige2) {
+Then(/^(?:is )?het gezag over '([a-zA-Z0-9À-ž-]*)' (?:is )?(gezamenlijk gezag|gezamenlijk ouderlijk gezag) met ouder '([a-zA-Z0-9À-ž-]*)' en (?:ouder|derde) '([a-zA-Z0-9À-ž-]*)'$/, function (aanduidingMinderjarige, type, aanduidingMeerderjarige1, aanduidingMeerderjarige2) {
     initExpected(this.context, type, aanduidingMinderjarige, aanduidingMeerderjarige1, aanduidingMeerderjarige2);
 });
        
-Then(/^is het gezag over '([a-zA-Z0-9À-ž-]*)' voogdij(?: met derde '([a-zA-Z0-9À-ž-]*)')?$/, function (aanduidingMinderjarige, aanduidingMeerderjarige) {
+Then(/^(?:is )?het gezag over '([a-zA-Z0-9À-ž-]*)' (?:is )?voogdij(?: met derde '([a-zA-Z0-9À-ž-]*)')?$/, function (aanduidingMinderjarige, aanduidingMeerderjarige) {
     initExpected(this.context, 'voogdij', aanduidingMinderjarige, aanduidingMeerderjarige);
 });
 
@@ -248,4 +250,22 @@ Then('heeft {aanduiding} geen gezaghouder', function (aanduidingMinderjarige) {
 
 Then('is het gezag in onderzoek', function () {
     this.context.expected.personen.at(-1).gezag.at(-1).inOnderzoek = "true";
+});
+
+Then('heeft {aanduiding} de volgende gezagsrelaties', function (aanduiding) {
+    this.context.verifyResponse = true;
+
+    if(!this.context.expected) {
+        this.context.expected = {
+            personen: []
+        };
+    }
+
+    let persoon = {
+        gezag: []
+    }
+    if(this.context.isGezagApiAanroep) {
+        persoon.burgerservicenummer = getBsn(getPersoon(this.context, aanduiding));
+    }
+    this.context.expected.personen.push(persoon);
 });

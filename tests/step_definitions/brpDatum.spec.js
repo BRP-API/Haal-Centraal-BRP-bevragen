@@ -120,7 +120,7 @@ describe('toDateOrString', () => {
     
     test("vorige maand", () => {
         let expected = new Date();
-        expected.setMonth(expected.getMonth() - 1);
+        expected.setDate(0); // zet de datum naar de laatste dag van de vorige maand
         expected = expected.getMonth() + 1; // maand is 0-based in javascript, 0=januari,1=februari,...
     
         toDateOrString('vorige maand', true).should.equal(expected+'');
@@ -128,7 +128,7 @@ describe('toDateOrString', () => {
     
     test("vorige maand (BRP formaat)", () => {
         let expected = new Date();
-        expected.setMonth(expected.getMonth() - 1);
+        expected.setDate(0); // zet de datum naar de laatste dag van de vorige maand
     
         toDateOrString('vorige maand', false).should.equal(toJaarMaandDatum(expected));
     });
@@ -157,7 +157,7 @@ describe('toDateOrString', () => {
     
     test("vorige maand - 5 jaar (brp formaat)", () => {
         let expected = new Date();
-        expected.setMonth(expected.getMonth() - 1);
+        expected.setDate(0); // zet de datum naar de laatste dag van de vorige maand
         expected.setFullYear(expected.getFullYear() - 5);
     
         toDateOrString('vorige maand - 5 jaar', false).should.equal(toJaarMaandDatum(expected));
