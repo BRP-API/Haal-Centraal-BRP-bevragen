@@ -7,6 +7,7 @@ components:
     GbaNaamPersoon:
       allOf:
         - $ref: 'naam-basis-v1.yaml#/components/schemas/NaamBasis'
-        - properties:
+        - type: object
+          properties:
             aanduidingNaamgebruik:
               $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'

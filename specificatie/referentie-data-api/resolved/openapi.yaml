@@ -520,7 +520,8 @@ components:
     GbaNaamPersoon:
       allOf:
         - $ref: '#/components/schemas/NaamBasis'
-        - properties:
+        - type: object
+          properties:
             aanduidingNaamgebruik:
               $ref: '#/components/schemas/Waardetabel'
     GbaNationaliteit:
