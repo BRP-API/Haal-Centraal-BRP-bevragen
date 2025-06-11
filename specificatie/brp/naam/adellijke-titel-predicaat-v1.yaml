@@ -14,7 +14,8 @@ components:
         Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
       allOf:
         - $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
-        - properties:
+        - type: object
+          properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
