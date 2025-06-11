@@ -250,3 +250,10 @@ When(/^de gegenereerde sql statements zijn uitgevoerd$/, async function () {
                                this.context.sqlData,
                                global.pool);
 });
+
+Then('is de gezag response body gelijk aan', function (docString) {
+    const expected = JSON.parse(docString);
+    this.context.gezag.should.deep.equalInAnyOrder(expected,
+        `expected: ${JSON.stringify(expected, null, '\t')}\nactual: ${JSON.stringify(this.context.gezag, null, '\t')}`
+    );
+});

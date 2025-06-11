@@ -564,7 +564,8 @@ components:
     Geslachtsaanduiding:
       allOf:
         - $ref: '#/components/schemas/Waardetabel'
-        - example:
+        - type: object
+          example:
             code: M
             omschrijving: man
     AbstractGezagsrelatie:
@@ -805,7 +806,8 @@ components:
         Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
       allOf:
         - $ref: '#/components/schemas/Waardetabel'
-        - properties:
+        - type: object
+          properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
