@@ -48,6 +48,46 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
         |    2 jaar geleden | 'P1' en een derde     |              1D | '{naam}' en een derde          |
         |    2 jaar geleden | 'P2' en een derde     |              2D | '{naam}' en een derde          |
 
+    @integratie
+    Scenario: {relatievedatum} is in een nieuwe gerechtelijke uitspraak het gezag toegewezen aan <gezaghebbende in stapdefinitie>
+      Gegeven de gisteren 45 jaar geleden in 'Nederland' geboren 'P1' met burgerservicenummer '000000012'
+      En de morgen 40 jaar geleden in 'Nederland' geboren 'P2' met burgerservicenummer '000000024'
+      En de gisteren 17 jaar geleden in 'Nederland' geboren 'P3' met burgerservicenummer '000000036'
+      * heeft 'P1' en 'P2' als ouders
+      En 8 jaar geleden is in een gerechtelijke uitspraak het gezag toegewezen aan <gezaghebbende eerste uitspraak>
+      En <relatieve datum> is in een nieuwe gerechtelijke uitspraak het gezag toegewezen aan <gezaghebbende nieuwe uitspraak>
+      Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+      Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
+        | pl_id | geheim_ind |
+        | P1    |          0 |
+      En heeft persoon 'P1' de volgende rijen in tabel 'lo3_pl_persoon'
+        | pl_id | persoon_type | stapel_nr | volg_nr | burger_service_nr | geslachts_naam | geboorte_land_code | akte_nr |
+        | P1    | P            |         0 |       0 |         000000012 | P1             |               6030 | 1_A____ |
+        | P1    | K            |         0 |       0 |         000000036 | P3             |                    | 1_A____ |
+      En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl'
+        | pl_id | geheim_ind |
+        | P2    |          0 |
+      En heeft persoon 'P2' de volgende rijen in tabel 'lo3_pl_persoon'
+        | pl_id | persoon_type | stapel_nr | volg_nr | burger_service_nr | geslachts_naam | geboorte_land_code | akte_nr |
+        | P2    | P            |         0 |       0 |         000000024 | P2             |               6030 | 1_A____ |
+        | P2    | K            |         0 |       0 |         000000036 | P3             |                    | 1_A____ |
+      En heeft persoon 'P3' de volgende rij in tabel 'lo3_pl'
+        | pl_id | geheim_ind |
+        | P3    |          0 |
+      En heeft persoon 'P3' de volgende rijen in tabel 'lo3_pl_persoon'
+        | pl_id | persoon_type | stapel_nr | volg_nr | burger_service_nr | geslachts_naam | geboorte_land_code | akte_nr | familie_betrek_start_datum |
+        | P3    | P            |         0 |       0 |         000000036 | P3             |               6030 | 1_A____ |                            |
+        | P3    |            1 |         0 |       0 |         000000012 | P1             |                    | 1_A____ | gisteren - 17 jaar         |
+        | P3    |            2 |         0 |       0 |         000000024 | P2             |                    | 1_A____ | gisteren - 17 jaar         |
+      En heeft persoon 'P3' de volgende rijen in tabel 'lo3_pl_gezagsverhouding'
+        | pl_id | volg_nr | minderjarig_gezag_ind              | geldigheid_start_datum |
+        | P3    |       1 | <indicatie gezag eerste uitspraak> |         8 jaar geleden |
+        | P3    |       0 | <indicatie gezag nieuwe uitspraak> | <relatieve datum>      |
+
+      Voorbeelden:
+        | relatieve datum   | gezaghebbende eerste uitspraak | gezaghebbende nieuwe uitspraak | indicatie gezag eerste uitspraak | indicatie gezag nieuwe uitspraak | gezaghebbende in stapdefinitie |
+        |    2 jaar geleden | een derde                      | beide ouders                   | D                                |                               12 | beide ouders                   |
+        
   Regel: Curatele wordt vastgelegd in de gezagsverhouding
 
     @integratie
