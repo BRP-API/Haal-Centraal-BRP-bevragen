@@ -15,7 +15,7 @@ services:
       - Db__Database=rvig_haalcentraal_testdata
       - OAuth__Authority=http://identityserver:6000
     ports:
-      - "8080:8080"
+      - "7000:8080"
     volumes:
       - ../test-data/logs:/var/log
       - ./configuration:/app/configuration

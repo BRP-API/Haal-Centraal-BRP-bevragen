@@ -63,6 +63,6 @@ npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-autorisa
                 -f summary \
                 features/adressering \
                 features/zoeken \
-                features/velden-vragen-met-fields \
+                features/input-validatie/velden-vragen-met-fields \
                 -p AenP \
                 > /dev/null

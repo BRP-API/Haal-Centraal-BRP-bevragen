@@ -1,5 +1,6 @@
 services:
   brp-api-gezag:
+    container_name: brp-api-gezag
     image: ghcr.io/brp-api/brp-api-gezag:latest
     environment:
       - LOGGING_LEVEL_GEZAG=DEBUG
