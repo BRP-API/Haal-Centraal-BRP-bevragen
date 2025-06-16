@@ -1,5 +1,5 @@
 # language: nl
-@stap-documentatie
+@stap-documentatie @data-api @info-api 
 Functionaliteit: Gegeven gezagsrelatie stap definities
 
   Achtergrond:
@@ -13,7 +13,9 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       | burgerservicenummer (01.20) | geslachtsnaam (02.40) |
       |                   000000014 | Maassen               |
 
-  @data-api @deprecated
+  Regel: de gezag api mock moet altijd gezag voor de data api leveren ongeacht of een scenario in info-api of data-api context wordt uitgevoerd.
+
+  @deprecated
   Scenario: de persoon heeft een eenhoofdig ouderlijk gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * eenhoofdig ouderlijk gezag over 'P2' met ouder 'P1'
@@ -37,7 +39,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft een eenhoofdig ouderlijk gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * eenhoofdig ouderlijk gezag over 'P2' met ouder 'P1'
@@ -70,7 +72,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: de persoon heeft een gezamenlijk ouderlijk gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezamenlijk ouderlijk gezag over 'P2' met ouder 'P1' en ouder 'P3'
@@ -99,7 +101,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft een gezamenlijk ouderlijk gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezamenlijk ouderlijk gezag over 'P2' met ouder 'P1' en ouder 'P3'
@@ -140,7 +142,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: de persoon heeft een gezamenlijk gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezamenlijk gezag over 'P2' met ouder 'P1' en derde 'P3'
@@ -168,7 +170,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft een gezamenlijk gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezamenlijk gezag over 'P2' met ouder 'P1' en derde 'P3'
@@ -208,7 +210,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: de persoon heeft een gezamenlijk gezagsrelatie met een onbekende derde
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezamenlijk gezag over 'P2' met ouder 'P1' en een onbekende derde
@@ -235,7 +237,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft een gezamenlijk gezagsrelatie met een onbekende derde
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezamenlijk gezag over 'P2' met ouder 'P1' en een onbekende derde
@@ -271,7 +273,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: de persoon heeft een voogdij gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * voogdij over 'P2'
@@ -293,7 +295,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft een voogdij gezagsrelatie
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * voogdij over 'P2'
@@ -321,7 +323,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: de persoon heeft een voogdij gezagsrelatie met een bekende derde
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * voogdij over 'P2' met derde 'P1'
@@ -348,7 +350,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft een voogdij gezagsrelatie met bekende derde
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * voogdij over 'P2' met derde 'P1'
@@ -384,7 +386,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: de persoon heeft tijdelijk geen gezag
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * tijdelijk geen gezag over 'P2' met de toelichting 'tijdelijk geen gezag'
@@ -406,7 +408,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: de persoon heeft tijdelijk geen gezag
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * tijdelijk geen gezag over 'P2' met de toelichting 'tijdelijk geen gezag'
@@ -434,7 +436,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: gezag over de persoon is niet te bepalen
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezag over 'P2' is niet te bepalen met de toelichting 'gezag is niet te bepalen'
@@ -456,7 +458,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: gezag over de persoon is niet te bepalen
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * gezag over 'P2' is niet te bepalen met de toelichting 'gezag is niet te bepalen'
@@ -484,7 +486,6 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api
   Scenario: de persoon heeft geen gezaghouder
     Gegeven 'P1' heeft geen gezaghouder
     Dan is de gezag response body gelijk aan
@@ -497,7 +498,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @deprecated
+  @deprecated
   Scenario: gezag over de persoon is in onderzoek
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * eenhoofdig ouderlijk gezag over 'P2' met ouder 'P1'
@@ -523,7 +524,7 @@ Functionaliteit: Gegeven gezagsrelatie stap definities
       ]
       """
 
-  @data-api @nieuw
+  @nieuw
   Scenario: gezag over de persoon is in onderzoek
     Gegeven 'P1' heeft de volgende gezagsrelaties
     * eenhoofdig ouderlijk gezag over 'P2' met ouder 'P1'
