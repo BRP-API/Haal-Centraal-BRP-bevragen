@@ -91,7 +91,7 @@ module.exports = {
       apiUrl: 'http://localhost:8080/haalcentraal/api',
       api: 'autorisatie-en-protocollering',
       logger: {
-        level: 'info'
+        level: 'warn'
       },
       oAuth: {
         enable: true
