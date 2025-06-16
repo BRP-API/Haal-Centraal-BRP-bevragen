@@ -42,6 +42,14 @@ npx cucumber-js -f json:./test-reports/cucumber-js/step-definitions/test-result-
                 -p GezagApiDeprecated \
                 > /dev/null
 
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-data-service.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-data-service-summary.txt \
+                -f summary \
+                features/adressering \
+                features/zoeken \
+                -p DataApi \
+                > /dev/null
+
 npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-informatie-service.json \
                 -f summary:./test-reports/cucumber-js/personen/test-result-informatie-service-summary.txt \
                 -f summary \
@@ -50,10 +58,11 @@ npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-informat
                 -p InfoApi \
                 > /dev/null
 
-npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-data-service.json \
-                -f summary:./test-reports/cucumber-js/personen/test-result-data-service-summary.txt \
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-autorisatie-protocollering.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-autorisatie-protocollering-summary.txt \
                 -f summary \
                 features/adressering \
                 features/zoeken \
-                -p DataApi \
+                features/velden-vragen-met-fields \
+                -p AenP \
                 > /dev/null

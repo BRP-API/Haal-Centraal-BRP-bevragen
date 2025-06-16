@@ -13,7 +13,7 @@ services:
       - Ecs__SecuredPath=/var/log/personen-data-service-secured.json
       - Serilog__MinimumLevel__Default=Warning
       - Serilog__MinimumLevel__Override__Serilog=Information
-      - WebApi__Url=http://brp-api-gezag:8080/api/v1
+      - WebApi__Url=http://brp-api-gezag:8090/api/v1
       - ProtocolleringAuthorization__UseAuthorizationChecks=false
       - ProtocolleringAuthorization__UseProtocollering=false
     ports:

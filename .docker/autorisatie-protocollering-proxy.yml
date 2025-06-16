@@ -1,0 +1,27 @@
+services:
+  autorisatie-protocollering-proxy:
+    container_name: autorisatie-protocollering
+    image: ghcr.io/brp-api/brp-autorisatie-protocollering:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+      - ASPNETCORE_URLS=http://+:8080
+      - Ecs__Path=/var/log/brp-autorisatie-protocollering.json
+      - Ecs__SecuredPath=/var/log/brp-autorisatie-protocollering-secured.json
+      - Ecs__FileSizeLimitBytes=1073741824
+      - Ecs__RetainedFileCountLimit=10
+      - Db__Host=postgres
+      - Db__Username=root
+      - Db__Password=root
+      - Db__Database=rvig_haalcentraal_testdata
+      - OAuth__Authority=http://identityserver:6000
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../test-data/logs:/var/log
+      - ./configuration:/app/configuration
+    networks:
+      - brp-api-network
+
+networks:
+  brp-api-network:
+    name: brp-api-network
