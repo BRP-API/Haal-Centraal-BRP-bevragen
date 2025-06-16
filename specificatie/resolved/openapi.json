@@ -743,6 +743,7 @@
             "$ref": "#/components/schemas/Waardetabel"
           },
           {
+            "type": "object",
             "properties": {
               "soort": {
                 "$ref": "#/components/schemas/AdellijkeTitelPredicaatSoort"
