@@ -1,6 +1,6 @@
 const { Given } = require('@cucumber/cucumber');
 const { getPersoon } = require('../contextHelpers');
-const { createGezagsverhouding, aanvullenGezagsverhouding } = require('../persoon-2');
+const { createGezagsverhouding, aanvullenGezagsverhouding, wijzigGezagsverhouding } = require('../persoon-2');
 const { arrayOfArraysToDataTable } = require('../dataTableFactory');
 
 Given(/^voor '(.*)' is een gerechtelijke uitspraak over het gezag gedaan met de volgende gegevens$/, function (aanduiding, dataTable) {
@@ -85,6 +85,18 @@ function uitspraakGezagBeideOudersOpDatum(relatieveDatum) {
 
 Given('{dd-mm-yyyy datum} is in een gerechtelijke uitspraak het gezag toegewezen aan beide ouders', uitspraakGezagBeideOudersOpDatum);
 Given('{vandaag, gisteren of morgen x jaar geleden} is in een gerechtelijke uitspraak het gezag toegewezen aan beide ouders', uitspraakGezagBeideOudersOpDatum);
+
+Given('{vandaag, gisteren of morgen x jaar geleden} is in een nieuwe gerechtelijke uitspraak het gezag toegewezen aan beide ouders', function (relatieveDatum) {
+    let indicatieGezag = IndicatieGezag.BeideOuders;
+
+    wijzigGezagsverhouding(
+        getPersoon(this.context, undefined),
+        arrayOfArraysToDataTable([
+            ['indicatie gezag minderjarige (32.10)', indicatieGezag],
+            ['datum ingang geldigheid (85.10)', relatieveDatum],
+        ])
+    )
+});
 
 Given('in een gerechtelijke uitspraak is een {word} tot voogd benoemd', function (gezaghebbende) {
     createGerechtelijkeUitspraak(this.context, undefined, getIndicatieGezagVoorInstellingOfDerde(gezaghebbende));

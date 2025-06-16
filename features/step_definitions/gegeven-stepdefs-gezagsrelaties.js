@@ -99,13 +99,24 @@ function deleteNietDeprecatedGezagsrelatieProperties(context, gezag) {
     }
 }
 
+// De gezag mock moet altijd draaien in de data API context, ongeacht of de scenarios in info/data API context wordt uitgevoerd.
+function createGezagMockContext(context) {
+    return {
+        isInfoApiScenario: false,
+        isDataApiScenario: true,
+        isDataApiAanroep: true,
+        isDeprecatedScenario: context.isDeprecatedScenario,
+        data: context.data
+    };
+}
+
 Given('{aanduiding} heeft de volgende gezagsrelaties', gegevenDePersoonHeeftGezagsrelaties);
 Given('{aanduiding} heeft geen gezaghouder', gegevenDePersoonHeeftGezagsrelaties);
 
 Given('eenhoofdig ouderlijk gezag over {aanduiding} met ouder {aanduiding}', function (minderjarige, ouder) {
     let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'eenhoofdig ouderlijk gezag', minderjarige, ouder);
+    let gezag = createGezag(createGezagMockContext(this.context), 'eenhoofdig ouderlijk gezag', minderjarige, ouder);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
     persoon.gezag.push(gezag);
@@ -114,7 +125,7 @@ Given('eenhoofdig ouderlijk gezag over {aanduiding} met ouder {aanduiding}', fun
 Given('gezamenlijk ouderlijk gezag over {aanduiding} met ouder {aanduiding} en ouder {aanduiding}', function (minderjarige, ouder1, ouder2) {
     let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'gezamenlijk ouderlijk gezag', minderjarige, ouder1, ouder2);
+    let gezag = createGezag(createGezagMockContext(this.context), 'gezamenlijk ouderlijk gezag', minderjarige, ouder1, ouder2);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
     persoon.gezag.push(gezag);
@@ -123,7 +134,7 @@ Given('gezamenlijk ouderlijk gezag over {aanduiding} met ouder {aanduiding} en o
 Given('gezamenlijk gezag over {aanduiding} met ouder {aanduiding} en derde {aanduiding}', function (minderjarige, ouder1, ouder2) {
     let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'gezamenlijk gezag', minderjarige, ouder1, ouder2);
+    let gezag = createGezag(createGezagMockContext(this.context), 'gezamenlijk gezag', minderjarige, ouder1, ouder2);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
     persoon.gezag.push(gezag);
@@ -132,7 +143,7 @@ Given('gezamenlijk gezag over {aanduiding} met ouder {aanduiding} en derde {aand
 Given('gezamenlijk gezag over {aanduiding} met ouder {aanduiding} en een onbekende derde', function (minderjarige, ouder1) {
    let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'gezamenlijk gezag', minderjarige, ouder1);
+    let gezag = createGezag(createGezagMockContext(this.context), 'gezamenlijk gezag', minderjarige, ouder1);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
    persoon.gezag.push(gezag);
@@ -141,7 +152,7 @@ Given('gezamenlijk gezag over {aanduiding} met ouder {aanduiding} en een onbeken
 Given('voogdij over {aanduiding}', function (minderjarige) {
    let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'voogdij', minderjarige);
+    let gezag = createGezag(createGezagMockContext(this.context), 'voogdij', minderjarige);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
    persoon.gezag.push(gezag);
@@ -150,7 +161,7 @@ Given('voogdij over {aanduiding}', function (minderjarige) {
 Given('voogdij over {aanduiding} met derde {aanduiding}', function (minderjarige, ouder1) {
    let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'voogdij', minderjarige, ouder1);
+    let gezag = createGezag(createGezagMockContext(this.context), 'voogdij', minderjarige, ouder1);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
    persoon.gezag.push(gezag);
@@ -159,7 +170,7 @@ Given('voogdij over {aanduiding} met derde {aanduiding}', function (minderjarige
 Given('tijdelijk geen gezag over {aanduiding} met de toelichting {toelichting}', function (minderjarige, toelichting) {
    let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'tijdelijk geen gezag', minderjarige, undefined, undefined, toelichting);
+    let gezag = createGezag(createGezagMockContext(this.context), 'tijdelijk geen gezag', minderjarige, undefined, undefined, toelichting);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
    persoon.gezag.push(gezag);
@@ -168,7 +179,7 @@ Given('tijdelijk geen gezag over {aanduiding} met de toelichting {toelichting}',
 Given('gezag over {aanduiding} is niet te bepalen met de toelichting {toelichting}', function (minderjarige, toelichting) {
    let persoon = this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon);
 
-    let gezag = createGezag(this.context, 'niet te bepalen', minderjarige, undefined, undefined, toelichting);
+    let gezag = createGezag(createGezagMockContext(this.context), 'niet te bepalen', minderjarige, undefined, undefined, toelichting);
     deleteNietDeprecatedGezagsrelatieProperties(this.context, gezag);
 
    persoon.gezag.push(gezag);
