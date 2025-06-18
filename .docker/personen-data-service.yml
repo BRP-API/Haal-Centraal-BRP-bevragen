@@ -1,7 +1,7 @@
 services:
   personen-data-service:
     container_name: personen-data-service
-    image: ghcr.io/brp-api/personen-data-service:latest
+    image: ghcr.io/brp-api/personen-data-service:2.7.0-202506180947
     environment:
       - Database__Host=postgres
       - Database__Username=root
