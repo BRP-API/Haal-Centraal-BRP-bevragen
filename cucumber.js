@@ -65,7 +65,7 @@ module.exports = {
   },
   GezagApi: {
     worldParameters: {
-      apiUrl: 'http://localhost:8080/api/v1/opvragenBevoegdheidTotGezag',
+      apiUrl: 'http://localhost:8090/api/v1/opvragenBevoegdheidTotGezag',
       api: 'gezag-api',
       logger: {
         level: 'warn'
@@ -76,7 +76,7 @@ module.exports = {
   },
   GezagApiDeprecated: {
     worldParameters: {
-      apiUrl: 'http://localhost:8080/api/v1/opvragenBevoegdheidTotGezag',
+      apiUrl: 'http://localhost:8090/api/v1/opvragenBevoegdheidTotGezag',
       api: 'gezag-api',
       tagScenariosAsDeprecated: true,
       logger: {
@@ -88,15 +88,15 @@ module.exports = {
   },
   AenP: {
     worldParameters: {
-      apiUrl: 'http://localhost:8080/haalcentraal/api',
+      apiUrl: 'http://localhost:7000/haalcentraal/api',
       api: 'autorisatie-en-protocollering',
       logger: {
-        level: 'info'
+        level: 'warn'
       },
       oAuth: {
         enable: true
       },
-      addAcceptGezagVersionHeader: false
+      addAcceptGezagVersionHeader: true
     },
     tags: 'not @skip-verify and not @deprecated and not @gezag-api and not @data-api'
   }

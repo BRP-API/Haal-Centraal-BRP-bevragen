@@ -71,6 +71,7 @@ Before(function({ pickle }) {
     this.context.isInfoApiScenario = tags.includes('@info-api');
     this.context.isDataApiScenario = tags.includes('@data-api');
     this.context.isGezagApiScenario = tags.includes('@gezag-api');
+    this.context.isAllApiAanroep = this.context.parameters.api !== 'info-api' && this.context.parameters.api !== 'data-api' && this.context.parameters.api !== 'gezag-api';
     this.context.isInfoApiAanroep = this.context.parameters.api === 'info-api';
     this.context.isDataApiAanroep = this.context.parameters.api === 'data-api';
     this.context.isGezagApiAanroep = this.context.parameters.api === 'gezag-api';
