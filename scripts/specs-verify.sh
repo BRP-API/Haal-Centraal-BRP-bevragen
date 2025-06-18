@@ -42,6 +42,20 @@ npx cucumber-js -f json:./test-reports/cucumber-js/step-definitions/test-result-
                 -p GezagApiDeprecated \
                 > /dev/null
 
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-gezag-service.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-gezag-service-summary.txt \
+                -f summary \
+                features/gezag \
+                -p GezagApi \
+                > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-gezag-service-deprecated.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-gezag-service-deprecated-summary.txt \
+                -f summary \
+                features/gezag \
+                -p GezagApiDeprecated \
+                > /dev/null
+
 npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-data-service.json \
                 -f summary:./test-reports/cucumber-js/personen/test-result-data-service-summary.txt \
                 -f summary \
@@ -64,5 +78,6 @@ npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-autorisa
                 features/adressering \
                 features/zoeken \
                 features/input-validatie/velden-vragen-met-fields \
+                features/gezag \
                 -p AenP \
                 > /dev/null

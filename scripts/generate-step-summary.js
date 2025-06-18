@@ -12,9 +12,11 @@ const fileMap = new Map([
     ["./../test-reports/cucumber-js/step-definitions/test-result-data-api-summary.txt", "docs data api context"],
     ["./../test-reports/cucumber-js/step-definitions/test-result-gezag-api-summary.txt", "docs gezag api context"],
     ["./../test-reports/cucumber-js/step-definitions/test-result-gezag-api-deprecated-summary.txt", "docs gezag api deprecated context"],
+    ["./../test-reports/cucumber-js/personen/test-result-gezag-service-summary.txt", "gezag api"],
+    ["./../test-reports/cucumber-js/personen/test-result-gezag-service-deprecated-summary.txt", "gezag api (deprecated)"],
     ["./../test-reports/cucumber-js/personen/test-result-data-service-summary.txt", "personen data service"],
     ["./../test-reports/cucumber-js/personen/test-result-informatie-service-summary.txt", "personen informatie service"],
-    ["./../test-reports/cucumber-js/personen/test-result-autorisatie-protocollering-summary.txt", "personen autorisatie en protocollering"],
+    ["./../test-reports/cucumber-js/personen/test-result-autorisatie-protocollering-summary.txt", "personen autorisatie en protocollering en end-to-end"],
 ]);
 
 fileMap.forEach((caption, filePath) => {
