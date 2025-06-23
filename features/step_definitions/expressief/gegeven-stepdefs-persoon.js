@@ -60,6 +60,10 @@ Given(/^(?:de persoon(?: '(.*)')? )?zonder burgerservicenummer$/, function (aand
 });
 
 function gegevenDePersoon(context, persoonAanduiding, burgerservicenummer, geboortedatum, geboortelandCode, geslachtsaanduiding, dataTable) {
+    if (getPersoon(context, persoonAanduiding)) {
+        //persoon bestaat al en kan niet nogmaals toegevoegd worden
+        return;
+    }
     const data = [
         ['geslachtsnaam (02.40)', persoonAanduiding]
     ];

@@ -29,6 +29,33 @@ Functionaliteit: Erkenning
       | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | akte_nr | familie_betrek_start_datum | geslachts_aand | geboorte_datum     |
       | P2    |         0 |       0 |            1 |         000000012 | P1             | 1_C____ |                   20230201 | V              | gisteren - 45 jaar |
 
+  Scenario: {kind} is {relatieve datum} erkend door {ouder}
+    Gegeven de gisteren 45 jaar geleden geboren vrouw 'P1'
+    En de morgen 17 jaar geleden geboren 'P2'
+    En 'P2' is 2 jaar geleden erkend door 'P1'
+    Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+    Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
+      | pl_id | geheim_ind |
+      | P1    |          0 |
+    En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | geslachts_naam | geboorte_datum     | burger_service_nr | geslachts_aand | geboorte_land_code | akte_nr |
+      | P1    |         0 |       0 | P            | P1             | gisteren - 45 jaar |         000000012 | V              |               6030 | 1_A____ |
+    En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | akte_nr | geboorte_datum   |
+      | P1    |         0 |       0 | K            |         000000024 | P2             | 1_C____ | morgen - 17 jaar |
+    En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl'
+      | pl_id | geheim_ind |
+      | P2    |          0 |
+    En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | geslachts_naam | geboorte_datum   | burger_service_nr | geboorte_land_code | akte_nr |
+      | P2    |         0 |       1 | P            | P2             | morgen - 17 jaar |         000000024 |               6030 | 1_A____ |
+    En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | geslachts_naam | geboorte_datum   | burger_service_nr | geboorte_land_code | akte_nr |
+      | P2    |         0 |       0 | P            | P2             | morgen - 17 jaar |         000000024 |               6030 | 1_C____ |
+    En heeft persoon 'P2' de volgende rij in tabel 'lo3_pl_persoon'
+      | pl_id | stapel_nr | volg_nr | persoon_type | burger_service_nr | geslachts_naam | akte_nr | familie_betrek_start_datum | geslachts_aand | geboorte_datum     |
+      | P2    |         0 |       0 |            1 |         000000012 | P1             | 1_C____ |             2 jaar geleden | V              | gisteren - 45 jaar |
+
   Scenario: {kind} is erkend door {ouder} bij geboorteaangifte
     Gegeven de gisteren 45 jaar geleden geboren vrouw 'P1'
     En de morgen 17 jaar geleden geboren 'P2'

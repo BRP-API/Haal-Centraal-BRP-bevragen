@@ -19,7 +19,7 @@ function getPersoonGeslachtsnaam(context, aanduiding) {
 }
 
 function getPersoonGeboortedatum(context, aanduiding) {
-    return getGeboortedatum(getPersoon(context, aanduiding));
+    return getGeboortedatum(getPersoon(context, aanduiding)).replace(/^(\d{4})(\d{2})(\d{2})$/, '$1-$2-$3');
 }
 
 function getAdresseerbaarObjectIdentificatie(context, aanduiding) {
@@ -43,7 +43,7 @@ function getStraatnaam(context, aanduiding) {
 }
 
 function getGemeentecode(context, aanduiding) {
-    return getAdres(context, aanduiding).adres.gemeente_code;
+    return getAdres(context, aanduiding).adres.gemeente_code.padStart(4, '0');
 }
 
 const { addDefaultAutorisatieSettings,

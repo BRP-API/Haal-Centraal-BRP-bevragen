@@ -96,7 +96,7 @@ module.exports = {
       oAuth: {
         enable: true
       },
-      addAcceptGezagVersionHeader: false
+      addAcceptGezagVersionHeader: true
     },
     tags: 'not @skip-verify and not @deprecated and not @gezag-api and not @data-api'
   }

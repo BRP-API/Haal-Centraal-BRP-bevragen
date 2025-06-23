@@ -22,6 +22,9 @@ Given('{string} is erkend door {string} {erkenningstype}( )op {int}-{int}-{int}'
     gegevenDePersoonIsErkend(this.context, aanduiding, aanduidingOuder, erkenningstype, toBRPDate(dag, maand, jaar));
 });
 
+Given('{string} is {vandaag, gisteren of morgen x jaar geleden} erkend door {string}', function (aanduiding, datumErkenning, aanduidingOuder) {
+    gegevenDePersoonIsErkend(this.context, aanduiding, aanduidingOuder, ErkenningsType.ErkenningNaGeboorteaangifte, datumErkenning);
+});
 
 Given(/^is erkend door '(.*)' als ouder ([1-2]) met erkenning bij geboorteaangifte$/, function (aanduidingOuder, ouderType) {
     const kind = getPersoon(this.context, null);
