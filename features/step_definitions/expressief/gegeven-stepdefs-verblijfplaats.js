@@ -83,6 +83,14 @@ Given(/^(?:(?:de persoon )?'(.*)' )?is (.*) geëmigreerd naar (.*)$/, async func
         ]),
         false
     );
+
+    aanvullenInschrijving(
+        getPersoon(this.context, aanduiding),
+        arrayOfArraysToDataTable([
+            ['datum opschorting bijhouding (67.10)', brpDatum],
+            ['reden opschorting bijhouding (67.20)', 'E']
+        ])
+    );
 });
 
 Given(/^(?:de persoon(?: '(.*)')? )?is niet geëmigreerd geweest$/, function (_) {
@@ -120,6 +128,14 @@ Given(/^heeft een onbekende verblijfplaats$/, function () {
     } else {
         // Verblijfplaats is al onbekend
     }
+
+    aanvullenInschrijving(
+        persoon,
+        arrayOfArraysToDataTable([
+            ['datum opschorting bijhouding (67.10)', '20250526'],
+            ['reden opschorting bijhouding (67.20)', 'E']
+        ])
+    );
 });
 
 Given(/^heeft een onbekende gemeente van inschrijving$/, function () {
@@ -189,6 +205,14 @@ Given(/^is ingeschreven als niet-ingezetene met een verblijfplaats in België$/,
         arrayOfArraysToDataTable([
             ['gemeente van inschrijving (09.10)', codeVanGemeente],
             ['land adres buitenland (13.10)', codeVanLand]
+        ])
+    );
+
+    aanvullenInschrijving(
+        getPersoon(this.context, undefined),
+        arrayOfArraysToDataTable([
+            ['datum opschorting bijhouding (67.10)', '20230101'],
+            ['reden opschorting bijhouding (67.20)', 'R']
         ])
     );
 });

@@ -57,7 +57,7 @@ function createGezagspersoon(context, aanduiding, isMinderjarige = false) {
     setProperty(retval, 'burgerservicenummer', getBsn(persoon));
 
     global.logger.info(`isAllApiScenario: ${context.isAllApiScenario}, isInfoApiScenario: ${context.isInfoApiScenario}, isDataApiScenario: ${context.isDataApiScenario}, isGezagApiScenario: ${context.isGezagApiScenario}, isInfoApiAanroep: ${context.isInfoApiAanroep}, isDataApiAanroep: ${context.isDataApiAanroep}, isGezagApiAanroep: ${context.isGezagApiAanroep}`);
-    if((context.isAllApiScenario || context.isInfoApiScenario) && context.isInfoApiAanroep) {
+    if((context.isAllApiScenario && context.isAllApiAanroep) || (context.isInfoApiScenario && context.isInfoApiAanroep)) {
         retval.naam = {};
 
         setProperty(retval.naam, 'volledigeNaam', getGeslachtsnaam(persoon));

@@ -114,8 +114,8 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
       En 'P1' is <relatieve datum> geëmigreerd naar <land naam>
       Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
       Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
-        | pl_id | geheim_ind |
-        | P1    |          0 |
+        | pl_id | geheim_ind | bijhouding_opschort_datum | bijhouding_opschort_reden |
+        | P1    |          0 | <relatieve datum>         | E                         |
       En heeft persoon 'P1' de volgende rijen in tabel 'lo3_pl_persoon'
         | pl_id | persoon_type | stapel_nr | volg_nr | burger_service_nr | geslachts_naam |
         | P1    | P            |         0 |       0 |         000000012 | P1             |
@@ -137,8 +137,8 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
       En 'P1' is 1 jaar geleden geïmmigreerd naar Nederland
       Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
       Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
-        | pl_id | geheim_ind |
-        | P1    |          0 |
+        | pl_id | geheim_ind | bijhouding_opschort_datum | bijhouding_opschort_reden |
+        | P1    |          0 |                           |                           |
       En heeft persoon 'P1' de volgende rijen in tabel 'lo3_pl_persoon'
         | pl_id | persoon_type | stapel_nr | volg_nr | burger_service_nr | geslachts_naam |
         | P1    | P            |         0 |       0 |         000000012 | P1             |

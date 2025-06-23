@@ -1,0 +1,17 @@
+name: Genereer en upload test rapportage
+description: |
+  Genereer een test rapportage van de Cucumber tests door het uitvoeren van ./scripts/generate-cucumber-reports.js en upload deze als artifact.
+
+runs:
+  using: composite
+  steps:
+    - name: Genereer test rapportage
+      run: |
+        node ./scripts/generate-cucumber-reports.js
+      shell: bash
+
+    - name: Upload test rapportage
+      uses: actions/upload-artifact@v4
+      with:
+        name: Reports
+        path: test-reports
