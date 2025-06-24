@@ -139,3 +139,22 @@ function getIndicatieGezagVoorInstellingOfDerde(gezaghebbende) {
         ? IndicatieGezag.VoogdijInstelling
         : IndicatieGezag.Derde;
 }
+
+Given('{dd-mm-yyyy datum} is in een gerechtelijke uitspraak de toewijzing van gezag beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{dd-mm-yyyy datum} is in een gerechtelijke uitspraak de voogdij beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{vandaag, gisteren of morgen x jaar geleden} is in een gerechtelijke uitspraak de toewijzing van gezag beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{vandaag, gisteren of morgen x jaar geleden} is in een gerechtelijke uitspraak de voogdij beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{vandaag, gisteren of morgen - x jaar} is in een gerechtelijke uitspraak de toewijzing van gezag beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{vandaag, gisteren of morgen - x jaar} is in een gerechtelijke uitspraak de voogdij beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{relatieve datum} is in een gerechtelijke uitspraak de toewijzing van gezag beëindigd', uitspraakGezagBeeindigdOpDatum);
+Given('{relatieve datum} is in een gerechtelijke uitspraak de voogdij beëindigd', uitspraakGezagBeeindigdOpDatum);
+
+function uitspraakGezagBeeindigdOpDatum(relatieveDatum) {
+    wijzigGezagsverhouding(
+        getPersoon(this.context, undefined),
+        arrayOfArraysToDataTable([
+            ['datum ingang geldigheid (85.10)', relatieveDatum]
+        ]),
+        false
+    );
+}

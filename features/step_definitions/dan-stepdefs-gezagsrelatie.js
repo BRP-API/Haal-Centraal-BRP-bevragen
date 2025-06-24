@@ -126,7 +126,7 @@ Then('heeft de derde geen {word}', function (type, property) {
     deleteGezagsrelatieProperty(this.context, 'derde', property);
 });
 
-Then('heeft {aanduiding} geen gezaghouder', function (aanduidingMinderjarige) {
+Then('heeft {aanduiding} geen gezag(houder)', function (aanduidingMinderjarige) {
     this.context.verifyResponse = true;
 
     const expected = {
