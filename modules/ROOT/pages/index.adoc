@@ -1,8 +1,8 @@
-Welkom bij de {apiname}
----------------------------
+= Welkom bij de {apiname}
 
-Zoek en raadpleeg persoonsinformatie
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+
+== Zoek en raadpleeg persoonsinformatie
 
 API voor het zoeken en raadplegen van informatie uit de basisregistratie
 personen (BRP). De {apiname} heeft drie functies:
@@ -35,8 +35,7 @@ De {apiname} levert naast persoonsgegevens uit de BRP ook:
     van de partner.
   - *link:./personen/documentatie/informatieproducten/voorletters[Voorletters]*.
 
-Getting Started
-~~~~~~~~~~~~~~~
+== Getting Started
 
 Als developer kun je direct aan de slag. Lees in de
 link:./getting-started[Getting Started] hoe je zo snel mogelijk een
@@ -46,8 +45,7 @@ De {apiname} eerst uitproberen? Gebruik de
 link:./how-tos/lokaal-testen[lokaal testen gids] om je eerste API call
 te doen!
 
-Voorwaarden
-~~~~~~~~~~~
+== Voorwaarden
 
 Aansluiten mag alleen met:
 
@@ -57,8 +55,7 @@ Aansluiten mag alleen met:
 4. een aansluiting op https://www.logius.nl/domeinen/infrastructuur/diginetwerk/aansluiten[DigiNetwerk].
 5. een API Gateway.
 
-Documentatie
-~~~~~~~~~~~~
+== Documentatie
 
 De documentatie is alsvolgt opgebouwd:
 
@@ -69,8 +66,7 @@ het gebruik van de {apiname}.
 * Referenties: de specificaties van de {apiname} functies Personen,
 Verblijfplaatshistorie en Bewoning.
 
-Planning en Roadmap
-~~~~~~~~~~~~~~~~~~~
+== Planning en Roadmap
 
 In Q2 wordt het informatieproduct gezag verder verbeterd. Het percentage
 kinderen met de uitspraak ``gezag niet te bepalen'' wordt verder
@@ -82,8 +78,7 @@ De vierde functie van de {apiname} is in ontwikkeling. De
 {apiname} Notificaties is dit jaar gepland voor gebruik door
 gemeenten.
 
-Contact
-~~~~~~~
+== Contact
 
 * Storing melden? +
 Neem contact op met de *RvIG servicedesk*: op werkdagen telefonisch
@@ -102,8 +97,7 @@ een verbeter issue aan]
 ** Developer en customer zero: Melvin Lee, %7B%7BCZ-email%7D%7D
 ** Tester: Frank Samwel, %7B%7BTester-email%7D%7D
 
-Licentie
-~~~~~~~~
+== Licentie
 
 Copyright © RvIG 2024 Licensed under the
 link:{mainBranchUrl}/LICENCE.md[EUPL]
