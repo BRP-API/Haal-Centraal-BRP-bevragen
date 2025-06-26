@@ -1,0 +1,4 @@
+name: haal-centraal-brp-bevragen
+version: ~
+title: Haal-Centraal BRP Bevragen
+start_page: modules/ROOT/pages/index.adoc
