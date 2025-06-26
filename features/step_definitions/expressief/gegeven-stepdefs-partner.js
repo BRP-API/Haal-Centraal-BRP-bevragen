@@ -139,11 +139,13 @@ Given('{aanduiding} en {aanduiding} zijn {vandaag, gisteren of morgen - x jaar} 
 function gegevenGescheidenOpDatum(aanduidingPartner1, aanduidingPartner2, datum) {
     const plaatsScheiding = '0518';
     const landScheiding = '6030';
+    const redenScheiding = 'S';
 
     const scheidingData = arrayOfArraysToDataTable([
         ['datum ontbinding huwelijk/geregistreerd partnerschap (07.10)', datum],
         ['plaats ontbinding huwelijk/geregistreerd partnerschap (07.20)', plaatsScheiding],
         ['land ontbinding huwelijk/geregistreerd partnerschap (07.30)', landScheiding],
+        ['reden ontbinding huwelijk/geregistreerd partnerschap (07.40)', redenScheiding],
         ['soort verbintenis (15.10)', VerbintenisSoort.Huwelijk]
     ]);
 
