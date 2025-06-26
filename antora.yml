@@ -5,21 +5,21 @@ start_page: modules/ROOT/pages/index.adoc
 asciidoc:
   attributes:
     apiname: BRP API
-    PO-email: cathy.dingemanse@rvig.nl
-    CZ-email: melvin.lee@rvig.nl
-    Tester-email: frank.samwel@rvig.nl
-    mainBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
-    baseurl: /Haal-Centraal-BRP-bevragen
-    pagesBaseUrl: https://BRP-API.github.io
-    repoUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
-    devBranchUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
-    PersonenSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/resolved/openapi.yaml
-    BewoningSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bewoning/master/specificatie/resolved/openapi.yaml
-    VerblijfplaatshistorieSpecUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-historie-bevragen/master/specificatie/genereervariant/openapi.yaml
-    onboardingUrl: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/240507%20deelname%20BRP%20API%20v2.4.ppsx
-    proefProxyUrl: https://proefomgeving.haalcentraal.nl
-    persoonFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-Persoon.csv
-    persoonBeperktFieldsCsvUrl: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-PersoonBeperkt.csv
-    PO-naam: Cathy Dingemanse
-    RvIG-email: info@rvig.nl
+    po-email: cathy.dingemanse@rvig.nl
+    cz-email: melvin.lee@rvig.nl
+    tester-email: frank.samwel@rvig.nl
+    main-branch-url: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master
+    base-url: /Haal-Centraal-BRP-bevragen
+    pages-base-url: https://BRP-API.github.io
+    repo-url: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
+    dev-branch-url: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/develop
+    personen-spec-url: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/specificatie/resolved/openapi.yaml
+    bewoning-spec-url: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bewoning/master/specificatie/resolved/openapi.yaml
+    verblijfplaatshistorie-spec-url: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-historie-bevragen/master/specificatie/genereervariant/openapi.yaml
+    onboarding-url: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/blob/master/docs/240507%20deelname%20BRP%20API%20v2.4.ppsx
+    proef-proxy-url: https://proefomgeving.haalcentraal.nl
+    persoon-fields-csv-url: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-Persoon.csv
+    persoon-beperkt-fields-csv-url: https://raw.githubusercontent.com/BRP-API/Haal-Centraal-BRP-bevragen/master/features/fields-filtered-PersoonBeperkt.csv
+    po-naam: Cathy Dingemanse
+    rvig-email: info@rvig.nl
     organisation-url: http://www.rvig.nl

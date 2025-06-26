@@ -93,9 +93,9 @@ deze portal?
 https://github.com/BRP-API/Haal-Centraal-BRP-bevragen/issues/new?assignees=&labels=enhancement&template=enhancement.md&title=[Maak
 een verbeter issue aan]
 * Heb je een vraag? Neem contact op met:
-** Product Owner: Cathy Dingemanse, %7B%7BPO-email%7D%7D
-** Developer en customer zero: Melvin Lee, %7B%7BCZ-email%7D%7D
-** Tester: Frank Samwel, %7B%7BTester-email%7D%7D
+** Product Owner: Cathy Dingemanse, {po-email}
+** Developer en customer zero: Melvin Lee, {cz-email}
+** Tester: Frank Samwel, {tester-email}
 
 == Licentie
 
