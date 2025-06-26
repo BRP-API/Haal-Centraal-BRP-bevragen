@@ -100,4 +100,4 @@ een verbeter issue aan]
 == Licentie
 
 Copyright © RvIG 2024 Licensed under the
-link:{mainBranchUrl}/LICENCE.md[EUPL]
+link:{main-branch-url}/LICENCE.md[EUPL]

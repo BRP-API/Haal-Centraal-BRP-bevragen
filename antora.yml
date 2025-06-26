@@ -1,6 +1,6 @@
 name: haal-centraal-brp-bevragen
 version: ~
-title: Haal-Centraal BRP Bevragen
+title: Personen
 start_page: modules/ROOT/pages/index.adoc
 asciidoc:
   attributes:
