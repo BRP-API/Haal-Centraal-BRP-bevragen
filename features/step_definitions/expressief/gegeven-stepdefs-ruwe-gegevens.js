@@ -5,6 +5,7 @@ const {
         createVerblijfplaats, wijzigVerblijfplaats,
         createOverlijden,
         createGezagsverhouding,
+        wijzigGezagsverhouding,
         createPartnerMetAanduiding,
         wijzigPartnerMetAanduiding,
         createKindMetAanduiding,
@@ -129,6 +130,13 @@ Given('is ingeschreven met de volgende gegevens', function (dataTable) {
 
 Given('heeft de volgende gezagsverhouding gegevens', function (dataTable) {
       createGezagsverhouding(
+        getPersoon(this.context, undefined),
+        dataTable
+      );
+});
+
+Given('gezagsverhouding is gewijzigd naar de volgende gegevens', function (dataTable) {
+      wijzigGezagsverhouding(
         getPersoon(this.context, undefined),
         dataTable
       );
