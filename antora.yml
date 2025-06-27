@@ -1,7 +1,6 @@
 name: brp-api
 version: ~
 title: BRP API
-start_page: modules/ROOT/pages/releasenotes.adoc
 asciidoc:
   attributes:
     apiname: BRP API
