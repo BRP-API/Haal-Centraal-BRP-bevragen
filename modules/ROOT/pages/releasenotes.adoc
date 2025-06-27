@@ -1,0 +1,64 @@
+= Releasenotes
+
+== Versie 2.6.0 (18 maart 2025)
+* Zoeken op postcode en huisnummer is uitgebreid met de optionele parameter geslachtsnaam.
+* Bij het bepalen van gezag voor een minderjarige met ongehuwde ouders wordt de geboortemoeder nu bepaald op basis van het geslacht van de ouders. Het aantal uitspraken "gezag niet te bepalen" is hiermee van 25% naar 14% gedaald.
+* Wanneer gegevens voor het bepalen van gezag in onderzoek staan wordt nu niet meer "gezag niet te bepalen" geleverd, maar wordt gezag geleverd met indicatie inOnderzoek.
+* Bij gezamenlijk gezag wordt nu expliciet aangegeven wanneer het onbekend is wie de derde is die gezag heeft. Dit wordt aangegeven in veld "type".
+* Enkele verbeteringen zijn aangebracht in de validatie van parameters.
+* Enkele verbeteringen zijn aangebracht aan het bepalen van gezag over een minderjarige.
+
+== Versie 2.5.0 (31 januari 2025)
+* Voorheen mochten er bij alle zoekopdrachten maximaal 10 personen worden gevonden. Bij zoeken op adres is dit nu uitgebreid naar maximaal 30 personen.
+* Bij gezag wordt nu voor ouders en derden naast burgerservicenummer ook de naam geleverd. Voor minderjarigen wordt nu naast het burgerservicenummer naam en leeftijd geleverd.
+* Bij gezag wordt nu een toelichting geleverd wanneer over de minderjarige tijdelijk niemand gezag uitoefent.
+
+== Versie 2.4.0 (6 januari 2025)
+* Bij gezag type GezagNietTeBepalen wordt nu een toelichting gegeven.
+* Bij gezag type GezagNietTeBepalen en TijdelijkGeenGezag werd voorheen alleen het type geleverd. Nu worden ook gegevens over de minderjarige gegeven.
+
+== Versie 2.3.0 (20 september 2024)
+* Nieuwe optionele parameter geboortedatum voor operatie ZoekMetPostcodeEnHuisnummer. Hiermee kan je het aantal resultaten beperken wanneer er veel personen op hetzelfde adres staan ingeschreven.
+* Probleem opgelost zodat verblijfplaats en adressering ook worden geleverd wanneer een verblijfadres in Nederland is geregistreerd als 'verblijfplaats buitenland'.
+
+== Versie 2.2.0 (29 april 2024)
+* Gezagsrelaties van een persoon bevragen (met behulp van raadpleeg met burgerservicenummer)
+* Gezagsrelaties van de personen bevragen die op een adresseerbaar object staan ingeschreven (met behulp van zoek met adresseerbaar object)
+* De API levert vanaf nu ook “informatievragen” (bewerkte BRP gegevens)
+* Gebruik de personen-mock om gezag lokaal uit te proberen
+
+== Versie 2.1.0 (8 juni 2023)
+* Veld indicatieVastgesteldVerblijftNietOpAdres is toegevoegd aan:
+    * verblijfplaats (binnenland en locatie)
+    * adressering
+* In deze versie is alleen de "BRP Personen proxy" gewijzigd.
+
+== Versie 2.0.0 (1 juni 2023)
+Wijzigingen ten opzichte van versie 1.3:
+
+* De raadpleeg- en zoeken-endpoints zijn nu samengevoegd in 1 endpoint
+* Het request is gewijzigd van GET naar POST, waarbij alle parameters verplaatst zijn van de querystring in de url naar de requestbody
+* De requestbody is polymorf gedefinieerd, waarbij in parameter 'type' bepaalt welke parameters gebruikt mogen en moeten worden
+* Parameter 'fields' is verplicht (required)
+* Beperkingen voor string-parameters in de request body en string-velden in de response zijn aangescherpt met een reguliere expressie (pattern)
+* In het antwoord zitten geen json-HAL elementen _links en _embedded
+* In het antwoord is veld 'ingeschrevenPersonen' hernoemd naar 'personen'
+* Het antwoord op elke zoekvraag (elk request anders dan raadplegen op burgerservicenummer) bevat maximaal een beperkte set gegevens van de persoon
+* Veld 'reisdocumenten' is verwijderd
+* Alle datums zijn polymorf gedefinieerd: nieuw veld 'type' geeft aan welke velden voor de datum verwacht kunnen worden
+* Alle datums hebben nieuw veld 'langFormaat', waarmee de datum in volledig uitgeschreven formaat wordt geleverd, die direct aan eindgebruikers gepresenteerd kan worden
+* Alle enumeraties zijn omgezet naar Waardetabel type, met 'code' plus 'omschrijving'. Zie https://github.com/VNG-Realisatie/Haal-Centraal-BRP-tabellen-bevragen/blob/master/docs/tabelwaarden.csv voor mogelijke waarden
+* Veld 'geslachtsaanduiding' is hernoemd naar 'geslacht'
+* Groep 'kiesrecht' is gesplitst in 'uitsluitingKiesrecht' en 'europeesKiesrecht'
+* Ook afgeleide gegevens (zoals aanschrijfwijze en leeftijd) zijn opgenomen in 'inOnderzoek'
+* Naamvelden 'aanschrijfwijze', 'aanhef' en 'gebruikInLopendeTekst' zijn verplaatst naar groep 'adressering'
+* Adresregels zijn verplaatst van groep 'verblijfplaats' naar groep 'adressering'
+* Velden 'gemeenteVanInschrijving' en 'datumInschrijvingInGemeente' zijn verplaatst van groep 'verblijfplaats' naar het hoogste niveau ('personen')
+* Velden van de immigratie zijn verplaatst van groep 'verblijfplaats' naar groep 'immigratie'
+* Velden 'indicatieCurateleRegister' en 'indicatieGezagMinderjarige' zijn verplaatst van groep 'gezagsverhouding' naar het hoogste niveau ('personen')
+* De adresvelden van een verblijfplaats zijn gegroepeerd in verblijfplaats groep 'verblijfadres'
+* Groep 'verblijfplaats' is polymorf gedefinieerd, waarbij nieuw veld 'type' aangeeft of het een binnenlands adres, locatie, buitenlands adres of onbekende verblijfplaats is
+* Groep 'nationaliteiten' is polymorf gedefinieerd, waarbij nieuw veld 'type' aangeeft of het een nationaliteit, bijzonder Nederlanderschap, staatloosheid of onbekende nationaliteit betreft
+* Wanneer er geen actuele partner is (zonder ontbinding van het huwelijk of partnerschap), wordt indien van toepassing het laatst ontbonden huwelijk of partnerschap geleverd, inclusief de datum van de ontbinding
+* Wanneer de persoonsgegevens zijn geregistreerd door een RNI deelnemer, worden gegevens daarover opgenomen in groep 'rni'
+* Wanneer voor een niet ingezetene (persoon in RNI) de gegevens zijn geverifieerd, worden gegevens daarover opgenomen in groep 'verificatie'

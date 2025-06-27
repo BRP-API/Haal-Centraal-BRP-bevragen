@@ -1,7 +1,7 @@
-name: haal-centraal-brp-bevragen
+name: brp-api
 version: ~
-title: Personen
-start_page: modules/ROOT/pages/index.adoc
+title: BRP API
+start_page: modules/ROOT/pages/releasenotes.adoc
 asciidoc:
   attributes:
     apiname: BRP API
