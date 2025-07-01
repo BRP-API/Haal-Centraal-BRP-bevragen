@@ -261,6 +261,29 @@ Functionaliteit: gegevens opgeven met waardentabel
         | P1    | R            |         2 |       1 |                   | Hadewich      | Heijliger      | O           |            20250429 |                    |
         | P1    | R            |         2 |       0 |         000000048 | Hadewich      | Heijliger      |             |            20250429 |                    |
 
+
+    Scenario: gezagsverhouding is gewijzigd naar de volgende gegevens
+      Gegeven de persoon 'P1' met burgerservicenummer '000000012'
+      * heeft de volgende gezagsverhouding gegevens
+        | naam                                 | waarde   |
+        | indicatie gezag minderjarige (32.10) |        2 |
+        | ingangsdatum geldigheid (85.10)      | 20211001 |
+      En gezagsverhouding is gewijzigd naar de volgende gegevens
+        | naam                                 | waarde   |
+        | indicatie gezag minderjarige (32.10) |       1D |
+        | ingangsdatum geldigheid (85.10)      | 20241203 |
+      Als de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd
+      Dan heeft persoon 'P1' de volgende rij in tabel 'lo3_pl'
+        | pl_id | geheim_ind |
+        | P1    |          0 |
+      En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_gezagsverhouding'
+        | pl_id | volg_nr | minderjarig_gezag_ind | geldigheid_start_datum |
+        | P1    |       1 |                     2 |               20211001 |
+      En heeft persoon 'P1' de volgende rij in tabel 'lo3_pl_gezagsverhouding'
+        | pl_id | volg_nr | minderjarig_gezag_ind | geldigheid_start_datum |
+        | P1    |       0 |                    1D |               20241203 |
+
+
   Regel: is ingeschreven op adres {string} met de volgende gegevens
 
     Scenario: is ingeschreven op adres {string} met de volgende gegevens

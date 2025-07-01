@@ -4,7 +4,8 @@ const { createCollectieObject,
         createObjectVeldInLastCollectieObject } = require('./dataTable2ObjectFactory')
 const { getBsn,
         getPersoon } = require('./contextHelpers');
-const { createObjectFrom } = require('./dataTable2Object');
+const { createObjectFrom,
+        createObjectArrayFrom } = require('./dataTable2Object');
     
 Then(/^heeft de response ?(?:nog)? een persoon met ?(?:alleen)? de volgende gegevens$/, function (dataTable) {
     this.context.verifyResponse = true;
@@ -62,8 +63,8 @@ function createExpectedPersoon(context, persoonAanduiding) {
             id: persoonAanduiding // tijdelijk persoonAanduiding toevoegen om in volgende dan stap definities de correcte expected persoon te kunnen vinden
     };
 
-    if (context.isStapDocumentatieScenario ||
-        context.fieldsHasBurgerservicenummer) {
+    if ((context.isStapDocumentatieScenario ||
+        context.fieldsHasBurgerservicenummer) && persoon) {
         setProperty(expected, 'burgerservicenummer', getBsn(persoon));
     }
 
@@ -89,4 +90,17 @@ Then('heeft {string} de volgende {string} gegevens', function (persoonAanduiding
     }
 
     persoon[naamObjectProperty] = createObjectFrom(dataTable, true);
+});
+
+Then('heeft {aanduiding} {string} met de volgende gegevens', function (persoonAanduiding, naamObjectProperty, dataTable) {
+    initExpected(this.context);
+
+    let persoon = this.context.expected.personen.find(p => p.id === persoonAanduiding);
+    if(!persoon) {
+        persoon = createExpectedPersoon(this.context, persoonAanduiding);
+    }
+
+    if(['kinderen', 'ouders', 'partners'].includes(naamObjectProperty)) {
+        persoon[naamObjectProperty] = createObjectArrayFrom(dataTable, true);
+    }
 });

@@ -239,3 +239,36 @@ Functionaliteit: Persoon dan stap definities
     | naam          | waarde |
     | geslachtsnaam | Jansen |
     En heeft de persoon geen 'geboorte' gegevens
+
+  Scenario: Dan heeft '[persoon aanduiding]' '[gegevensgroep collectie]' met de volgende gegevens
+    Gegeven de response body is gelijk aan
+      """
+      {
+        "personen": [
+          {
+            "<gegevensgroep collectie>": [
+              {
+                "naam": {
+                  "geslachtsnaam": "Jansen"
+                }
+              },
+              {
+                "naam": {
+                  "geslachtsnaam": "Pietersen"
+                }
+              }
+            ]
+          }
+        ]
+      }
+      """
+    Dan heeft 'Jan' '<gegevensgroep collectie>' met de volgende gegevens
+      | naam.geslachtsnaam |
+      | Jansen             |
+      | Pietersen          |
+
+    Voorbeelden:
+      | gegevensgroep collectie |
+      | kinderen                |
+      | ouders                  |
+      | partners                |
