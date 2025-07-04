@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: gezagouder type definitie
-  version: 1.0.0
+  version: 2.0.0
 paths: {}
 components:
   schemas:
@@ -12,5 +12,5 @@ components:
           $ref: '../../brp/identificatienummers/burgerservicenummer-v1.yaml#/components/schemas/Burgerservicenummer'
         naam:
           $ref: '../naam/volledige-naam-v1.yaml#/components/schemas/NaamVolledigeNaam'
-      required: 
-        -  burgerservicenummer
+      required:
+        - naam
