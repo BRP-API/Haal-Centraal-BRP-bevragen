@@ -4,4 +4,4 @@ Adresregels passen altijd binnen het venster van een vensterenvelop, omdat ze co
 
 Een binnenlandse verblijfplaats bestaat uit twee adresregels, een verblijfplaats in het buitenland bestaat uit drie adresregels (en een land).
 
-Bekijk de link:/personen/features/adressering/adresregels[afleidingsregels Adresregels] als je precies wil weten hoe de adresregels worden samengesteld.
+Bekijk de xref:personen:features/adressering/adresregels/index.adoc[afleidingsregels Adresregels] als je precies wil weten hoe de adresregels worden samengesteld.

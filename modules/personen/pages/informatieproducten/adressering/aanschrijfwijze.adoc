@@ -4,7 +4,8 @@ De *aanschrijfwijze* gebruik je als:
 * de eerste regel(s) van de adressering op een envelop
 * links bovenaan een brief, direct boven het adres.
 
-Wil je weten hoe de aanschrijfwijze precies wordt samengesteld? Lees hier de link:/personen/features/adressering/aanschrijfwijze/niet-adellijk[afleidingsregels voor het bepalen van de aanschrijfwijze]. Bekijk ook de afleidingsregels link:/personen/features/adressering/aanschrijfwijze/adellijk[voor personen van adel] of link:/personen/features/adressering/aanschrijfwijze/hoffelijkheidstitel[personen die gehuwd zijn (geweest) met een persoon van adel].
+Wil je weten hoe de aanschrijfwijze precies wordt samengesteld? 
+Lees hier de xref:personen:features/adressering/aanschrijfwijze/niet-adellijk.adoc[afleidingsregels voor het bepalen van de aanschrijfwijze]. Bekijk ook de afleidingsregels xref:personen:features/adressering/aanschrijfwijze/adellijk.adoc[voor personen van adel] of xref:personen:features/adressering/aanschrijfwijze/hoffelijkheidstitel.adoc[personen die gehuwd zijn (geweest) met een persoon van adel].
 
 Wil je weten welke regels zijn toegepast voor een specifiek persoon? Onderstaande stroomschema's helpen je op weg.
 

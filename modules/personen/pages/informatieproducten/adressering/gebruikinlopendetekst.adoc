@@ -2,7 +2,10 @@
 
 *Gebruik in lopende tekst* kun je gebruiken in een brief. Bijvoorbeeld in de zin: "In uw brief van 12 mei jongstleden hebt u het overlijden van uw vader, de heer In het Veld, aangegeven." is _de heer In het Veld_ opgevraagd met het attribuut gebruikInLopendeTekst.
 
-"Gebruik in lopende tekst" van een persoon wordt samengesteld door geslacht, de voorletters, voorvoegsels, geslachtsnaam, eventuele adellijke titel(s), predicaat, en partnernaam te combineren. Wil je weten hoe "gebruik in lopende tekst" precies wordt samengesteld? Lees hier link:/personen/features/adressering/gebruikinlopendetekst/niet-adellijk[de afleidingsregels voor het bepalen van "gebruik in lopende tekst"]. Bekijk ook de afleidingsregels voor link:/personen/features/adressering/gebruikinlopendetekst/adellijk[personen van adel] of link:/personen/features/adressering/gebruikinlopendetekst/hoffelijkheidstitel[personen die gehuwd zijn (geweest) met een persoon van adel].
+"Gebruik in lopende tekst" van een persoon wordt samengesteld door geslacht, de voorletters, voorvoegsels, geslachtsnaam, eventuele adellijke titel(s), predicaat, en partnernaam te combineren. 
+
+Wil je weten hoe "gebruik in lopende tekst" precies wordt samengesteld? 
+Lees hier xref:personen:features/adressering/gebruikinlopendetekst/niet-adellijk.adoc[de afleidingsregels voor het bepalen van "gebruik in lopende tekst"]. Bekijk ook de afleidingsregels voor xref:personen:features/adressering/gebruikinlopendetekst/adellijk.adoc[personen van adel] of xref:personen:features/adressering/gebruikinlopendetekst/hoffelijkheidstitel.adoc[personen die gehuwd zijn (geweest) met een persoon van adel].
 
 Wil je weten welke regels zijn toegepast voor een specifiek persoon? Onderstaande stroomschema's helpen je op weg.
 

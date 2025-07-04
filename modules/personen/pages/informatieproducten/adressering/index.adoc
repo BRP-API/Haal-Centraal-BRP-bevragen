@@ -20,7 +20,7 @@ Een in de BAG als “Burgemeester Le Fèvre de Montignylaan” opgenomen openbar
 image::brief-binnenland.png[brief binnenland]
 
 == Controleer altijd op overleden personen!
-Voor personen die in een Nederlandse gemeente zijn ingeschreven kun je op overlijden controleren met de opschortingsgegevens die je link:/personen/documentatie/meegeleverde-gegevens[automatisch meegeleverd krijgt]. Let op! Voor personen uit de RNI kun je deze niet gebruiken en moet je op datum overlijden controleren.
+Voor personen die in een Nederlandse gemeente zijn ingeschreven kun je op overlijden controleren met de opschortingsgegevens die je xref:personen:meegeleverde-gegevens.adoc[automatisch meegeleverd krijgt]. Let op! Voor personen uit de RNI kun je deze niet gebruiken en moet je op datum overlijden controleren.
 
 == Autoriseren
 
@@ -35,13 +35,13 @@ De {apiname} Personen biedt gemeenten de mogelijkheid om conform de autorisaties
 
 . geautoriseerd voor ZOWEL adresregels van binnenlandse verblijfplaatsen ALS adresregels van buitenlandse verblijfplaatsen (adresregel1, adresregel2, adresregel3 en land)
 . UITSLUITEND geautoriseerd voor adresregels van binnenlandse verblijfplaatsen (adresregel1 en adresregel2)
-Lees in link:/how-tos/personen-response-filteren[personen-response-filteren] hoe je fields parameter dan moet gebruiken.
+Lees in xref:ROOT:personen-response-filteren.adoc[personen-response-filteren] hoe je fields parameter dan moet gebruiken.
 
 == Leeswijzer afleidingsregels
 De afleidingsregels voor adressering zijn afgestemd met De Hoge Raad van Adel.
 Meer weten? Lees hier hoe de velden van adressering worden afgeleid:
 
-* de link:/personen/documentatie/informatieproducten/adressering/aanschrijfwijze[aanschrijfwijze] van de geadresseerde
-* de link:/personen/documentatie/informatieproducten/adressering/adresregels[adresregels]
-* de link:/personen/documentatie/informatieproducten/adressering/aanhef[aanhef] van de geadresseerde
-* het link:/personen/documentatie/informatieproducten/adressering/gebruikinlopendetekst[gebruik in lopende tekst] als je in de tekst van de brief aan een persoon refereert.
+* de xref:personen:informatieproducten/adressering/aanschrijfwijze.adoc[aanschrijfwijze] van de geadresseerde
+* de xref:personen:informatieproducten/adressering/adresregels.adoc[adresregels]
+* de xref:personen:informatieproducten/adressering/aanhef.adoc[aanhef] van de geadresseerde
+* het xref:personen:informatieproducten/adressering/gebruikinlopendetekst.adoc[gebruik in lopende tekst] als je in de tekst van de brief aan een persoon refereert.
