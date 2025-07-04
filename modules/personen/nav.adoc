@@ -13,5 +13,6 @@
 *** xref:personen:informatieproducten/gezag.adoc[Gezag]
 *** xref:personen:informatieproducten/leeftijd.adoc[Leeftijd]
 *** xref:personen:informatieproducten/volledige-naam.adoc[Volledige naam]
+**** xref:personen:features/volledige-naam/index.adoc[Afleidingsregels]
 *** xref:personen:informatieproducten/voorletters.adoc[Voorletters]
 **** xref:personen:features/voorletters/index.adoc[Afleidingsregels]
