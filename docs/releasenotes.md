@@ -6,7 +6,7 @@ title: Haal Centraal BRP Personen Bevragen
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
 ## versie 2.6.2 (3 juli 2025)
-- Een fout is opgelost waarbij in sommige gevallen niet alle gegevens van ouders of kinderen - zoals geslachtsnaam voorvoegsel - werden geleverd.
+- Een fout is opgelost waarbij in bepaalde gevallen niet alle gegevens van ouders of kinderen - zoals geslachtsnaam voorvoegsel - werden geleverd.
 
 ## Versie 2.6.0 (18 maart 2025)
 - Zoeken op postcode en huisnummer is uitgebreid met de optionele parameter geslachtsnaam.
