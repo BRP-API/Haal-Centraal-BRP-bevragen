@@ -5,6 +5,9 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## versie 2.6.2 (3 juli 2025)
+- Een fout is opgelost waarbij in bepaalde gevallen niet alle gegevens van ouders of kinderen - zoals geslachtsnaam voorvoegsel - werden geleverd.
+
 ## Versie 2.6.0 (18 maart 2025)
 - Zoeken op postcode en huisnummer is uitgebreid met de optionele parameter geslachtsnaam.
 - Bij het bepalen van gezag voor een minderjarige met ongehuwde ouders wordt de geboortemoeder nu bepaald op basis van het geslacht van de ouders. De verwachting is dat het aantal uitspraken "gezag niet te bepalen" met tenminste 30% zal afnemen.
