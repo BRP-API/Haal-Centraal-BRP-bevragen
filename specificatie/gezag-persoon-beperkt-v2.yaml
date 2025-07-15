@@ -1,0 +1,15 @@
+openapi: 3.1.0
+info:
+  title: GezagPersoonBeperkt type definitie
+  version: 2.0.0
+  contact: {}
+paths: {}
+components:
+  schemas:
+    GezagPersoonBeperkt:
+      allOf:
+        - $ref: 'persoon.yaml#/components/schemas/PersoonBeperkt'
+        - type: object
+          properties:
+            gezag:
+              $ref: 'brp-api/gezag/gezagsrelatie-v2.yaml#/components/schemas/Gezag'
