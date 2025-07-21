@@ -7,14 +7,14 @@ components:
     Overlijden:
       allOf: 
         - $ref: '../../brp/overlijden/overlijden-basis-v1.yaml#/components/schemas/OverlijdenBasis'
-      type: object
-      properties:
-        datum:
-          description: |
-            datum waarop de persoon is overleden.
-          $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/OverlijdenInOnderzoek'
+        - type: object
+          properties:
+            datum:
+              description: |
+                datum waarop de persoon is overleden.
+              $ref: '../datum/datum-polymorf-v1.yaml#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/OverlijdenInOnderzoek'
     OverlijdenInOnderzoek:
       description: |
         Geeft aan welke gegevens over het overlijden van de persoon in onderzoek zijn.
