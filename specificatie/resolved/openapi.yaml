@@ -1026,14 +1026,14 @@ components:
     Overlijden:
       allOf:
         - $ref: '#/components/schemas/OverlijdenBasis'
-      type: object
-      properties:
-        datum:
-          description: |
-            datum waarop de persoon is overleden.
-          $ref: '#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/OverlijdenInOnderzoek'
+        - type: object
+          properties:
+            datum:
+              description: |
+                datum waarop de persoon is overleden.
+              $ref: '#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/OverlijdenInOnderzoek'
     AbstractVerblijfplaats:
       type: object
       description: |
@@ -1495,6 +1495,7 @@ components:
     OnbekendeDerde:
       allOf:
         - $ref: '#/components/schemas/Derde'
+        - type: object
     GezamenlijkGezag:
       allOf:
         - $ref: '#/components/schemas/Gezagsrelatie'
