@@ -7,7 +7,7 @@ info:
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
     Zie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.
-  version: 2.6.0
+  version: 2.7.0
   contact:
     url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
@@ -1410,7 +1410,7 @@ components:
       description: |
         Geeft aan dat de persoon onder curatele is gesteld.
       example: true
-    AbstractGezagsrelatie:
+    Gezagsrelatie:
       type: object
       required:
         - type
@@ -1426,14 +1426,14 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          TweehoofdigOuderlijkGezag: '#/components/schemas/TweehoofdigOuderlijkGezag'
+          GezamenlijkOuderlijkGezag: '#/components/schemas/GezamenlijkOuderlijkGezag'
           EenhoofdigOuderlijkGezag: '#/components/schemas/EenhoofdigOuderlijkGezag'
           GezamenlijkGezag: '#/components/schemas/GezamenlijkGezag'
           Voogdij: '#/components/schemas/Voogdij'
           TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
           GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
       example:
-        type: TweehoofdigOuderlijkGezag
+        type: GezamenlijkOuderlijkGezag
         ouders:
           - burgerservicenummer: '999998870'
           - burgerservicenummer: '999998882'
@@ -1452,10 +1452,10 @@ components:
         naam:
           $ref: '#/components/schemas/NaamVolledigeNaam'
       required:
-        - burgerservicenummer
-    TweehoofdigOuderlijkGezag:
+        - naam
+    GezamenlijkOuderlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouders:
@@ -1466,7 +1466,7 @@ components:
               maxItems: 2
     EenhoofdigOuderlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouder:
@@ -1497,7 +1497,7 @@ components:
         - $ref: '#/components/schemas/Derde'
     GezamenlijkGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             ouder:
@@ -1506,7 +1506,7 @@ components:
               $ref: '#/components/schemas/Derde'
     Voogdij:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             derden:
@@ -1520,18 +1520,22 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \/\;\:\.\-\?\(\)]{1,400}$
     TijdelijkGeenGezag:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+      required:
+        - toelichting
     GezagNietTeBepalen:
       allOf:
-        - $ref: '#/components/schemas/AbstractGezagsrelatie'
+        - $ref: '#/components/schemas/Gezagsrelatie'
         - type: object
           properties:
             toelichting:
               $ref: '#/components/schemas/Toelichting'
+      required:
+        - toelichting
     Minderjarige:
       type: object
       properties:
@@ -1546,7 +1550,7 @@ components:
     Gezag:
       type: array
       items:
-        $ref: '#/components/schemas/AbstractGezagsrelatie'
+        $ref: '#/components/schemas/Gezagsrelatie'
       minItems: 0
     VerblijfstitelBasis:
       description: |

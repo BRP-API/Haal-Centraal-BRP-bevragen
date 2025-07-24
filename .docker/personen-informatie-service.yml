@@ -2,7 +2,7 @@ services:
 
   personen-informatie-service:
     container_name: personen-informatie-service
-    image: ghcr.io/brp-api/personen-informatie-service:latest
+    image: ghcr.io/brp-api/personen-informatie-service:2.7.0-202506171651
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:5000
