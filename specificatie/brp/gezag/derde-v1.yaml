@@ -33,3 +33,4 @@ components:
     OnbekendeDerde:
       allOf:
         - $ref: '#/components/schemas/Derde'
+        - type: object
