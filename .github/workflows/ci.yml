@@ -27,6 +27,15 @@ jobs:
         uses: ./.github/actions/zet-run-bash-scripts-permission
         with:
           path-bash-file-or-folder: ./scripts/*
+      
+      - name: Voeg identityserver toe als host naam
+        uses: ./.github/actions/toevoegen-localhost-naam
+        with:
+          host-name: identityserver
+          
+      - name: Set read/write permissions on test-data/IdentityServer folder
+        run: |
+          sudo chmod ugo+rw ./test-data/IdentityServer
 
       - name: Start containers
         run: |
