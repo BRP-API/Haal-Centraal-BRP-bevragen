@@ -6,10 +6,10 @@ info:
 
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
-    Zie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.
+    Zie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.
   version: 2.6.0
   contact:
-    url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
+    url: https://developer.rvig.nl/brp-api/contact/
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
@@ -21,7 +21,7 @@ tags:
   - name: Personen
 externalDocs:
   description: BRP API Personen website
-  url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
+  url: https://developer.rvig.nl/brp-api/overview/
 paths:
   /personen:
     post:
@@ -545,7 +545,8 @@ components:
         Wordt gevuld met waarden uit de landelijke tabel 'Adellijke titel/predicaat'. De property soort geeft aan of het een 'predicaat' of een 'titel' is.
       allOf:
         - $ref: '#/components/schemas/Waardetabel'
-        - properties:
+        - type: object
+          properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
           example:
@@ -1025,14 +1026,14 @@ components:
     Overlijden:
       allOf:
         - $ref: '#/components/schemas/OverlijdenBasis'
-      type: object
-      properties:
-        datum:
-          description: |
-            datum waarop de persoon is overleden.
-          $ref: '#/components/schemas/AbstractDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/OverlijdenInOnderzoek'
+        - type: object
+          properties:
+            datum:
+              description: |
+                datum waarop de persoon is overleden.
+              $ref: '#/components/schemas/AbstractDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/OverlijdenInOnderzoek'
     AbstractVerblijfplaats:
       type: object
       description: |
@@ -1494,6 +1495,7 @@ components:
     OnbekendeDerde:
       allOf:
         - $ref: '#/components/schemas/Derde'
+        - type: object
     GezamenlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
