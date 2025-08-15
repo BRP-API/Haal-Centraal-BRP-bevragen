@@ -1,0 +1,4 @@
+[source,gherkin]
+----
+include::example$features/bevragen/raadpleeg-met-burgerservicenummer/fout-cases.feature[]
+----
