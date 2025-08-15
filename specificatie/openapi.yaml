@@ -13,7 +13,7 @@ info:
     Zie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.
   version: 2.6.0
   contact:
-    url: https://github.com/BRP-API/Haal-Centraal-BRP-bevragen
+    url: https://developer.rvig.nl/brp-api/contact/
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
