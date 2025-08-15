@@ -5,7 +5,7 @@
     "description": "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.\n",
     "version": "2.6.0",
     "contact": {
-      "url": "https://github.com/BRP-API/Haal-Centraal-BRP-bevragen"
+      "url": "https://developer.rvig.nl/brp-api/contact/"
     },
     "license": {
       "name": "European Union Public License, version 1.2 (EUPL-1.2)",
