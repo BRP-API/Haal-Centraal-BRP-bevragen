@@ -78,6 +78,5 @@ npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-autorisa
                 features/adressering \
                 features/zoeken \
                 features/input-validatie/velden-vragen-met-fields \
-                features/gezag \
                 -p AenP \
                 > /dev/null

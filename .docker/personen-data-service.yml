@@ -1,7 +1,7 @@
 services:
   personen-data-service:
     container_name: personen-data-service
-    image: ghcr.io/brp-api/personen-data-service:2.7.0-202506180947
+    image: ghcr.io/brp-api/personen-data-service:2.7.0-202508181259
     environment:
       - Database__Host=postgres
       - Database__Username=root
@@ -14,7 +14,6 @@ services:
       - Serilog__MinimumLevel__Default=Warning
       - Serilog__MinimumLevel__Override__Serilog=Information
       - WebApi__Url=http://brp-api-gezag:8080/api/v1
-      - ProtocolleringAuthorization__UseAuthorizationChecks=false
       - ProtocolleringAuthorization__UseProtocollering=false
     ports:
       - "8000:80"
