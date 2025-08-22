@@ -42,12 +42,18 @@ npx cucumber-js -f json:./test-reports/cucumber-js/step-definitions/test-result-
                 -p GezagApiDeprecated \
                 > /dev/null
 
-npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-informatie-service.json \
-                -f summary:./test-reports/cucumber-js/personen/test-result-informatie-service-summary.txt \
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-gezag-service.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-gezag-service-summary.txt \
                 -f summary \
-                features/adressering \
-                features/zoeken \
-                -p InfoApi \
+                features/gezag \
+                -p GezagApi \
+                > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-gezag-service-deprecated.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-gezag-service-deprecated-summary.txt \
+                -f summary \
+                features/gezag \
+                -p GezagApiDeprecated \
                 > /dev/null
 
 npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-data-service.json \
@@ -56,4 +62,21 @@ npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-data-ser
                 features/adressering \
                 features/zoeken \
                 -p DataApi \
+                > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-informatie-service.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-informatie-service-summary.txt \
+                -f summary \
+                features/adressering \
+                features/zoeken \
+                -p InfoApi \
+                > /dev/null
+
+npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-autorisatie-protocollering.json \
+                -f summary:./test-reports/cucumber-js/personen/test-result-autorisatie-protocollering-summary.txt \
+                -f summary \
+                features/adressering \
+                features/zoeken \
+                features/input-validatie/velden-vragen-met-fields \
+                -p AenP \
                 > /dev/null
