@@ -5,6 +5,15 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## versie 2.7.0 (2 september 2025)
+-	Gezag wordt nu geleverd voor een minderjarige die in het buitenland is geboren of in het buitenland heeft verbleven en die gehuwde ouders heeft.
+-	Gezag kan nu worden geleverd wanneer een ouder geen burgerservicenummer heeft. 
+-	Gezag type “TweehoofdigOuderlijkGezag” is gewijzigd naar “GezamenlijkOuderlijkGezag”.
+-	De validatie van opgegeven fields is verruimd zodat elke waarde als subveld van een datum of waardetabel geaccepteerd wordt.
+-	De validatie van opgegeven fields is aangescherpt zodat het niet meer toegestaan is om een subveld van gezag te vragen.
+-	Afnemers die nu gezag gebruiken blijven gezag ontvangen in de vorm van versie 2.6.2. 
+-	Met de request header 'accept-gezag-version' kunnen bestaande gezag consumers aangeven dat ze nu wel gezag in de gewijzigde vorm willen ontvangen. Daarmee kunnen ze het percentage gezag niet te bepalen antwoorden verlagen, omdat ze dan wel gezag kunnen krijgen zoals gewijzigd in de eerste twee punten.
+
 ## versie 2.6.2 (3 juli 2025)
 - Een fout is opgelost waarbij in bepaalde gevallen niet alle gegevens van ouders of kinderen - zoals geslachtsnaam voorvoegsel - werden geleverd.
 
