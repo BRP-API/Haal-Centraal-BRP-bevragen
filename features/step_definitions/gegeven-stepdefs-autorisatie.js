@@ -20,10 +20,28 @@ Given(/^de geauthenticeerde consumer heeft de volgende 'claim' gegevens$/, funct
         : dataTable.hashes()[0].gemeenteCode;
 });
 
+const elementNrBurgerservicenummer = '10120';
+const elementNrAdresseerbaarObjectIdentificatie = '81180';
+const elementNrDatumAanvangAdresBuitenland = '81320';
+const elementNrDatumAanvangAdreshouding = '81030';
+const elementNrKorteStraatnaam = '81110';
+const elementNrOfficieleStraatnaam = '81115';
+const elementNrGezag = 'PAGZ01';
+
 function mapFieldsToAdHocRubrieken(fields) {
     switch(fields) {
         case 'gezag':
-            return '10120 81180 PAGZ01'; // burgerservicenummer, adresseerbaarObjectIdentificatie, gezag
+            return `${elementNrBurgerservicenummer} ${elementNrAdresseerbaarObjectIdentificatie} ${elementNrGezag}`;
+        case 'verblijfplaats.adresseerbaarObjectIdentificatie':
+            return `${elementNrBurgerservicenummer} ${elementNrAdresseerbaarObjectIdentificatie}`;
+        case 'verblijfplaats.datumVan':
+            return `${elementNrBurgerservicenummer} ${elementNrDatumAanvangAdreshouding} ${elementNrDatumAanvangAdresBuitenland}`;
+        case 'verblijfplaats.verblijfadres.korteStraatnaam':
+            return `${elementNrBurgerservicenummer} ${elementNrKorteStraatnaam} ${elementNrAdresseerbaarObjectIdentificatie}`;
+        case 'verblijfplaats.verblijfadres.officieleStraatnaam':
+            return `${elementNrBurgerservicenummer} ${elementNrOfficieleStraatnaam} ${elementNrAdresseerbaarObjectIdentificatie}`;
+        case 'verblijfplaatsBinnenland.datumVan':
+            return `${elementNrBurgerservicenummer} ${elementNrDatumAanvangAdreshouding} ${elementNrDatumAanvangAdresBuitenland}`;
         default:
             return '';
     }
