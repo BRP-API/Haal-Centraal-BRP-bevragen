@@ -6,13 +6,11 @@ title: Haal Centraal BRP Personen Bevragen
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
 ## versie 2.7.0 (2 september 2025)
--	Gezag wordt nu geleverd voor een minderjarige die in het buitenland is geboren of in het buitenland heeft verbleven en die gehuwde ouders heeft.
--	Gezag kan nu worden geleverd wanneer een ouder geen burgerservicenummer heeft. 
--	Gezag type “TweehoofdigOuderlijkGezag” is gewijzigd naar “GezamenlijkOuderlijkGezag”.
--	De validatie van opgegeven fields is verruimd zodat elke waarde als subveld van een datum of waardetabel geaccepteerd wordt.
--	De validatie van opgegeven fields is aangescherpt zodat het niet meer toegestaan is om een subveld van gezag te vragen.
--	Afnemers die nu gezag gebruiken blijven gezag ontvangen in de vorm van versie 2.6.2. 
--	Met de request header 'accept-gezag-version' kunnen bestaande gezag consumers aangeven dat ze nu wel gezag in de gewijzigde vorm willen ontvangen. Daarmee kunnen ze het percentage gezag niet te bepalen antwoorden verlagen, omdat ze dan wel gezag kunnen krijgen zoals gewijzigd in de eerste twee punten.
+-	Gezag wordt nu geleverd voor een minderjarige met gehuwde ouders die in het buitenland is geboren of heeft verbleven. Daarmee wordt het percentage "gezag niet te bepalen" antwoorden verder verlaagd.
+-	Gezag kan nu worden bepaald voor minderjarigen met een ouder zonder burgerservicenummer. Daarmee wordt het percentage "gezag niet te bepalen" antwoorden verder verlaagd.
+-	Gezag type “TweehoofdigOuderlijkGezag” is gewijzigd naar “GezamenlijkOuderlijkGezag”, waarmee de juiste juridische term wordt gebruikt.
+-	De validatie van op te geven fields is aangescherpt. Het is niet meer toegestaan een subveld van gezag te vragen.
+-	De eerste twee wijzigingen in deze lijst zijn "breaking". Afnemers die nu gezag gebruiken, blijven gezag ontvangen in de vorm van versie 2.6.2. Met de request header 'accept-gezag-version' kunnen bestaande consumers van gezag aangeven dat ze gezag in de vorm van v2.7 willen ontvangen, zodat ook voor hen het percentage "gezag niet te bepalen" antwoorden wordt verlaagd.  
 
 ## versie 2.6.2 (3 juli 2025)
 - Een fout is opgelost waarbij in bepaalde gevallen niet alle gegevens van ouders of kinderen - zoals geslachtsnaam voorvoegsel - werden geleverd.
