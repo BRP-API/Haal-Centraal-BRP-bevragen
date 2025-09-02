@@ -10,7 +10,7 @@ title: Haal Centraal BRP Personen Bevragen
 -	Gezag kan nu worden bepaald voor minderjarigen met een ouder zonder burgerservicenummer. Daarmee wordt het percentage "gezag niet te bepalen" antwoorden verder verlaagd.
 -	Gezag type “TweehoofdigOuderlijkGezag” is gewijzigd naar “GezamenlijkOuderlijkGezag”, waarmee de juiste juridische term wordt gebruikt.
 -	De validatie van op te geven fields is aangescherpt. Het is niet meer toegestaan een subveld van gezag te vragen.
--	De eerste twee wijzigingen in deze lijst zijn "breaking". Afnemers die nu gezag gebruiken, blijven gezag ontvangen in de vorm van versie 2.6.2. Met de request header 'accept-gezag-version' kunnen bestaande consumers van gezag aangeven dat ze gezag in de vorm van v2.7 willen ontvangen, zodat ook voor hen het percentage "gezag niet te bepalen" antwoorden wordt verlaagd.  
+-	De eerste twee wijzigingen in deze lijst zijn "breaking". Afnemers die nu gezag gebruiken, blijven gezag ontvangen in de vorm van versie 2.6.2. Met de request header 'accept-gezag-version' kunnen bestaande consumers van gezag aangeven dat ze gezag in de vorm van v2.7 willen ontvangen, zodat ook voor hen het percentage "gezag niet te bepalen" antwoorden wordt verlaagd. Per 1 jan 2026 ontvangen alle afnemers gezag v2.7.
 
 ## versie 2.6.2 (3 juli 2025)
 - Een fout is opgelost waarbij in bepaalde gevallen niet alle gegevens van ouders of kinderen - zoals geslachtsnaam voorvoegsel - werden geleverd.
