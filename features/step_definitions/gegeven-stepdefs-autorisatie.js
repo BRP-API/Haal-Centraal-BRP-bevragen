@@ -41,7 +41,7 @@ function mapFieldsToAdHocRubrieken(fields) {
         case 'verblijfplaats.verblijfadres.officieleStraatnaam':
             return `${elementNrBurgerservicenummer} ${elementNrOfficieleStraatnaam} ${elementNrAdresseerbaarObjectIdentificatie}`;
         case 'verblijfplaatsBinnenland.datumVan':
-            return `${elementNrBurgerservicenummer} ${elementNrDatumAanvangAdreshouding} ${elementNrDatumAanvangAdresBuitenland}`;
+            return `${elementNrBurgerservicenummer} ${elementNrDatumAanvangAdreshouding}`;
         default:
             return '';
     }
