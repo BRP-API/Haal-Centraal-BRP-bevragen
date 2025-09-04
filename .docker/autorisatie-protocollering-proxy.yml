@@ -1,7 +1,7 @@
 services:
   autorisatie-protocollering-proxy:
     container_name: autorisatie-protocollering
-    image: ghcr.io/brp-api/brp-autorisatie-protocollering:1.9.0-202508151618
+    image: ghcr.io/brp-api/brp-autorisatie-protocollering:1.9.1-202509041528
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
       - ASPNETCORE_URLS=http://+:8080
