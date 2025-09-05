@@ -20,10 +20,44 @@ Given(/^de geauthenticeerde consumer heeft de volgende 'claim' gegevens$/, funct
         : dataTable.hashes()[0].gemeenteCode;
 });
 
+const elementNrBurgerservicenummer = '10120';
+const elementNrFunctieAdres = '81010';
+const elementNrGemeenteVanInschrijving = '80910';
+const elementNrDatumAanvangAdreshouding = '81030';
+const elementNrKorteStraatnaam = '81110';
+const elementNrOfficieleStraatnaam = '81115';
+const elementNrHuisnummer = '81120';
+const elementNrHuisletter = '81130';
+const elementNrHuisnummertoevoeging = '81140';
+const elementNrAanduidingBijHuisnummer = '81150';
+const elementNrPostcode = '81160';
+const elementNrWoonplaats = '81170';
+const elementNrAdresseerbaarObjectIdentificatie = '81180';
+const elementNrNummeraanduidingIdentificatie = '81190';
+const elementNrLocatiebeschrijving = '81210';
+const elementNrDatumAanvangAdresBuitenland = '81320';
+const elementNrDatumIngangGeldigheidVerblijfplaats = '88510';
+const elementNrGezag = 'PAGZ01';
+
+const verblijfadresBinnenlandElementen = `${elementNrKorteStraatnaam} ${elementNrOfficieleStraatnaam} ${elementNrHuisnummer} ${elementNrHuisletter} ${elementNrHuisnummertoevoeging} ${elementNrAanduidingBijHuisnummer} ${elementNrPostcode} ${elementNrWoonplaats} ${elementNrLocatiebeschrijving}`;
+const verblijfplaatsBinnenlandElementen = `${elementNrFunctieAdres} ${elementNrDatumAanvangAdreshouding} ${verblijfadresBinnenlandElementen} ${elementNrAdresseerbaarObjectIdentificatie} ${elementNrNummeraanduidingIdentificatie} ${elementNrDatumIngangGeldigheidVerblijfplaats}`;
+
 function mapFieldsToAdHocRubrieken(fields) {
     switch(fields) {
         case 'gezag':
-            return '10120 81180 PAGZ01'; // burgerservicenummer, adresseerbaarObjectIdentificatie, gezag
+            return `${elementNrBurgerservicenummer} ${elementNrAdresseerbaarObjectIdentificatie} ${elementNrGezag}`;
+        case 'verblijfplaats.adresseerbaarObjectIdentificatie':
+            return `${elementNrBurgerservicenummer} ${elementNrAdresseerbaarObjectIdentificatie}`;
+        case 'verblijfplaats.datumVan':
+            return `${elementNrBurgerservicenummer} ${elementNrDatumAanvangAdreshouding} ${elementNrDatumAanvangAdresBuitenland}`;
+        case 'verblijfplaats.verblijfadres.korteStraatnaam':
+            return `${elementNrBurgerservicenummer} ${elementNrKorteStraatnaam} ${elementNrAdresseerbaarObjectIdentificatie}`;
+        case 'verblijfplaats.verblijfadres.officieleStraatnaam':
+            return `${elementNrBurgerservicenummer} ${elementNrOfficieleStraatnaam} ${elementNrAdresseerbaarObjectIdentificatie}`;
+        case 'verblijfplaatsBinnenland':
+            return `${elementNrBurgerservicenummer} ${verblijfplaatsBinnenlandElementen}`;
+        case 'verblijfplaatsBinnenland.datumVan':
+            return `${elementNrBurgerservicenummer} ${elementNrDatumAanvangAdreshouding}`;
         default:
             return '';
     }
@@ -65,4 +99,8 @@ Given('een nieuwe/bestaande afnemer met indicatie {string} is geautoriseerd voor
 
 Given('een nieuwe/bestaande afnemer met indicatie {string} en gemeente code {string} is geautoriseerd voor het vragen van {string}', function (afnemerCode, gemeenteCode, fields) {
     createAfnemerAutorisatie(this.context, afnemerCode, gemeenteCode, fields);
+});
+
+Given('een nieuwe/bestaande afnemer met indicatie {string} is geautoriseerd voor het vragen van alle \'verblijfplaats binnenland\' velden', function (afnemerCode) {
+    createAfnemerAutorisatie(this.context, afnemerCode, undefined, 'verblijfplaatsBinnenland');
 });
