@@ -9,4 +9,3 @@ components:
       pattern: ^(?!0{16})[0-9]{16}$
       description: |
         De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
-      example: '0518200000366054'

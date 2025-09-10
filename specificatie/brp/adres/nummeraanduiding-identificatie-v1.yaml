@@ -9,4 +9,3 @@ components:
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       type: string
       pattern: ^[0-9]{16}$
-      example: "0518200000366054"

@@ -10,8 +10,6 @@ components:
         code:
           type: string
           pattern: ^[a-zA-Z0-9 \.]+$
-          example: '6030'
         omschrijving:
           type: string
           pattern: ^[a-zA-Z0-9À-ž \'\.\-\(\),]{1,200}$
-          example: Nederland

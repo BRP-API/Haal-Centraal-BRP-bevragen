@@ -9,4 +9,3 @@ components:
       maxLength: 40
       description: |
         Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.
-      example: 1600 Pennsylvania Avenue NW

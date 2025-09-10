@@ -10,4 +10,3 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
       description: |
         Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.
-      example: baron Van den Aedel

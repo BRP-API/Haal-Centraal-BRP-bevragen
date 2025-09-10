@@ -12,10 +12,8 @@ components:
         naam:
           type: string
           pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,650}$
-          example: H.W. baron van den Aedel
         aanspreekvorm:
           description: |
             Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.
           type: string
           pattern: ^[a-zA-Z ]{1,25}$
-          example: De hoogwelgeboren heer

@@ -9,4 +9,3 @@ components:
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
       type: string
       pattern: ^([Mm]|[Vv]|[Oo])$
-      example: "V"

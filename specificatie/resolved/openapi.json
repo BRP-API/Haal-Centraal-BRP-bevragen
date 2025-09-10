@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "BRP API Personen",
-    "description": "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.\n",
+    "description": "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [Getting started](https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.\n\n[<img src=\"https://run.pstmn.io/button.svg\" alt=\"Run In Postman\" style=\"width: 128px; height: 32px;\">](https://elements.getpostman.com/redirect?entityId=6707821-5940172f-a50a-4a66-b61b-b3bb63fb0287&entityType=collection&workspaceId=fbc0d981-545f-4f19-9ef3-f126d4b4d522)\n",
     "version": "2.7.0",
     "contact": {
       "url": "https://developer.rvig.nl/brp-api/contact/"
@@ -112,7 +112,7 @@
             "type": "string"
           },
           "fields": {
-            "description": "Hiermee kun je de velden opgeven die je wenst te ontvangen.\n\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\n\nMeer details over hoe fields werkt lees je in het [feature overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#filteren-van-de-velden-van-de-gevonden-personen).\nStel je fields eenvoudig samen met de [fields tool](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/fields){:target=\"_blank\" rel=\"noopener\"}.\n",
+            "description": "Hiermee kun je de velden opgeven die je wenst te ontvangen.\n\nVelden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.\nOpgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.\n\nMeer details over hoe fields werkt lees je in het [feature overzicht](https://developer.rvig.nl/brp-api/personen-response-filteren/).\nStel je fields eenvoudig samen met de [fields tool](https://developer.rvig.nl/brp-api/fields-samenstellen/).\n",
             "type": "array",
             "maxItems": 130,
             "minItems": 1,
@@ -127,37 +127,31 @@
       },
       "InclusiefOverledenPersonen": {
         "description": "Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.\n",
-        "type": "boolean",
-        "example": true
+        "type": "boolean"
       },
       "DatumFilter": {
         "type": "string",
-        "format": "date",
-        "example": "1964-09-24"
+        "format": "date"
       },
       "GeslachtsnaamFilter": {
         "description": "De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$",
-        "example": "Vries"
+        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$"
       },
       "GeslachtFilter": {
         "description": "Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.\n",
         "type": "string",
-        "pattern": "^([Mm]|[Vv]|[Oo])$",
-        "example": "V"
+        "pattern": "^([Mm]|[Vv]|[Oo])$"
       },
       "VoorvoegselFilter": {
         "description": "Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**\n",
         "type": "string",
-        "pattern": "^[a-zA-Z \\']{1,10}$",
-        "example": "de"
+        "pattern": "^[a-zA-Z \\']{1,10}$"
       },
       "VoornamenOptioneelFilter": {
         "description": "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,199}\\*{0,1}$",
-        "example": "Dirk"
+        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,199}\\*{0,1}$"
       },
       "ZoekMetGeslachtsnaamEnGeboortedatum": {
         "required": [
@@ -197,8 +191,7 @@
       "VoornamenVerplichtFilter": {
         "description": "De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**\n",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$",
-        "example": "Dirk"
+        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$|^[a-zA-Z0-9À-ž \\.\\-\\']{3,199}\\*{1}$"
       },
       "ZoekMetNaamEnGemeenteVanInschrijving": {
         "required": [
@@ -234,8 +227,7 @@
       },
       "Burgerservicenummer": {
         "type": "string",
-        "pattern": "^[0-9]{9}$",
-        "example": "555555021"
+        "pattern": "^[0-9]{9}$"
       },
       "RaadpleegMetBurgerservicenummer": {
         "required": [
@@ -263,27 +255,23 @@
       "Huisletter": {
         "description": "Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.\n",
         "type": "string",
-        "pattern": "^[a-zA-Z]{1}$",
-        "example": "a"
+        "pattern": "^[a-zA-Z]{1}$"
       },
       "Huisnummer": {
         "description": "Een nummer dat door de gemeente aan een adresseerbaar object is gegeven.\n",
         "type": "integer",
         "minimum": 1,
-        "maximum": 99999,
-        "example": 14
+        "maximum": 99999
       },
       "Huisnummertoevoeging": {
         "description": "Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.\n",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9 \\-]{1,4}$",
-        "example": "bis"
+        "pattern": "^[a-zA-Z0-9 \\-]{1,4}$"
       },
       "Postcode": {
         "description": "De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.\n",
         "type": "string",
-        "pattern": "^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$",
-        "example": "2341SX"
+        "pattern": "^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$"
       },
       "ZoekMetPostcodeEnHuisnummer": {
         "required": [
@@ -326,8 +314,7 @@
       "StraatFilter": {
         "description": "Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** \n",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$",
-        "example": "Tulpstraat"
+        "pattern": "^[a-zA-Z0-9À-ž \\-\\'\\.]{1,80}$|^[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}\\*{1}$|^\\*{1}[a-zA-Z0-9À-ž \\-\\'\\.]{7,79}$"
       },
       "ZoekMetStraatHuisnummerEnGemeenteVanInschrijving": {
         "required": [
@@ -364,8 +351,7 @@
       "NummeraanduidingIdentificatieFilter": {
         "type": "string",
         "pattern": "^(?!0{16})[0-9]{16}$",
-        "description": "De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n",
-        "example": "0518200000366054"
+        "description": "De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n"
       },
       "ZoekMetNummeraanduidingIdentificatie": {
         "required": [
@@ -391,8 +377,7 @@
       "AdresseerbaarObjectIdentificatieFilter": {
         "type": "string",
         "pattern": "^(?!0{16})[0-9]{16}$",
-        "description": "De identificatiecode van een adresseerbaar object uitgezonderd de standaardwaarde (0000000000000000)\n",
-        "example": "0226010000038820"
+        "description": "De identificatiecode van een adresseerbaar object uitgezonderd de standaardwaarde (0000000000000000)\n"
       },
       "ZoekMetAdresseerbaarObjectIdentificatie": {
         "required": [
@@ -423,8 +408,7 @@
       "GemeenteVanInschrijving": {
         "description": "Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.\n",
         "type": "string",
-        "pattern": "^[0-9]{4}$",
-        "example": "0518"
+        "pattern": "^[0-9]{4}$"
       },
       "Foutbericht": {
         "type": "object",
@@ -509,11 +493,6 @@
             "JaarDatum": "#/components/schemas/JaarDatum",
             "JaarMaandDatum": "#/components/schemas/JaarMaandDatum"
           }
-        },
-        "example": {
-          "type": "Datum",
-          "datum": "2018-07-01",
-          "langFormaat": "1 juli 2018"
         }
       },
       "VolledigeDatum": {
@@ -534,12 +513,7 @@
         ],
         "required": [
           "datum"
-        ],
-        "example": {
-          "type": "Datum",
-          "datum": "2018-07-01",
-          "langFormaat": "1 juli 2018"
-        }
+        ]
       },
       "DatumOnbekend": {
         "description": "representatie voor een volledig onbekend datum",
@@ -559,12 +533,7 @@
         ],
         "required": [
           "onbekend"
-        ],
-        "example": {
-          "type": "DatumOnbekend",
-          "onbekend": true,
-          "langFormaat": "onbekend"
-        }
+        ]
       },
       "Jaar": {
         "type": "integer",
@@ -589,12 +558,7 @@
         ],
         "required": [
           "jaar"
-        ],
-        "example": {
-          "type": "JaarDatum",
-          "jaar": 2018,
-          "langFormaat": 2018
-        }
+        ]
       },
       "Maand": {
         "type": "integer",
@@ -623,13 +587,7 @@
         "required": [
           "jaar",
           "maand"
-        ],
-        "example": {
-          "type": "JaarMaandDatum",
-          "jaar": 2018,
-          "maand": 7,
-          "langFormaat": "juli 2018"
-        }
+        ]
       },
       "GeboorteBasis": {
         "type": "object",
@@ -687,18 +645,16 @@
         "properties": {
           "code": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9 \\.]+$",
-            "example": "6030"
+            "pattern": "^[a-zA-Z0-9 \\.]+$"
           },
           "omschrijving": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9À-ž \\'\\.\\-\\(\\),]{1,200}$",
-            "example": "Nederland"
+            "pattern": "^[a-zA-Z0-9À-ž \\'\\.\\-\\(\\),]{1,200}$"
           }
         }
       },
       "PersoonInOnderzoekBeperkt": {
-        "description": "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n",
+        "description": "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon** - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n",
         "type": "object",
         "properties": {
           "datumIngangOnderzoekPersoon": {
@@ -718,7 +674,6 @@
       "Leeftijd": {
         "type": "integer",
         "description": "Leeftijd in jaren op het moment van bevragen.\n",
-        "example": 34,
         "minimum": 0,
         "maximum": 150
       },
@@ -726,8 +681,7 @@
         "description": "De verzameling namen voor de geslachtsnaam, gescheiden door spaties.\n",
         "type": "string",
         "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$",
-        "maxLength": 200,
-        "example": "Pieter Jan"
+        "maxLength": 200
       },
       "AdellijkeTitelPredicaatSoort": {
         "type": "string",
@@ -748,11 +702,6 @@
               "soort": {
                 "$ref": "#/components/schemas/AdellijkeTitelPredicaatSoort"
               }
-            },
-            "example": {
-              "code": "JV",
-              "omschrijving": "jonkvrouw",
-              "soort": "predicaat"
             }
           }
         ]
@@ -760,26 +709,22 @@
       "Voorvoegsel": {
         "type": "string",
         "pattern": "^[a-zA-Z \\']{1,10}$",
-        "maxLength": 10,
-        "example": "de"
+        "maxLength": 10
       },
       "Geslachtsnaam": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,200}$",
-        "description": "De achternaam van een persoon.\n",
-        "example": "Vries"
+        "description": "De achternaam van een persoon.\n"
       },
       "Voorletters": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9À-ž \\.]{1,40}$",
-        "description": "De voorletters van de persoon, afgeleid van de voornamen.\n",
-        "example": "P.J."
+        "description": "De voorletters van de persoon, afgeleid van de voornamen.\n"
       },
       "VolledigeNaam": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,450}$",
-        "description": "Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.\n",
-        "example": "Pieter Jan de Vries"
+        "description": "Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.\n"
       },
       "NaamBasis": {
         "type": "object",
@@ -889,38 +834,17 @@
       "Adresregel1": {
         "type": "string",
         "maxLength": 40,
-        "description": "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n",
-        "examples": [
-          {
-            "binnenlandsAdres": null,
-            "value": "Kappeyne v d Cappellostr 26A-3"
-          },
-          {
-            "buitenlandsAdres": null,
-            "value": "1600 Pennsylvania Avenue NW"
-          }
-        ]
+        "description": "Het eerste deel van een adres is een combinatie van de straat en huisnummer.\n"
       },
       "Adresregel2": {
         "type": "string",
         "maxLength": 50,
-        "description": "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
-        "examples": [
-          {
-            "binnenlandsAdres": null,
-            "value": "1234AA Nootdorp"
-          },
-          {
-            "buitenlandsAdres": null,
-            "value": "Washington, DC 20500"
-          }
-        ]
+        "description": "Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.\n"
       },
       "Adresregel3": {
         "type": "string",
         "maxLength": 35,
-        "description": "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
-        "example": "Selangor"
+        "description": "Het derde deel van een adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n"
       },
       "IndicatieVastgesteldVerblijftNietOpAdres": {
         "description": "Geeft aan dat is vastgesteld dat de persoon niet meer op de geregistreerde adres/locatie staat ingeschreven.\n",
@@ -990,8 +914,7 @@
       "Categorie": {
         "type": "string",
         "description": "Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd",
-        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\'\\/]{1,40}$",
-        "example": "Verblijfplaats"
+        "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\'\\/]{1,40}$"
       },
       "RniDeelnemer": {
         "type": "object",
@@ -1107,7 +1030,7 @@
         "pattern": "^[0-9]{10}$"
       },
       "PersoonInOnderzoek": {
-        "description": "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n* **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente\n* **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige\n",
+        "description": "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon** - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n* **datumIngangOnderzoekGemeente** - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente\n* **datumIngangOnderzoekGezag** - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige\n",
         "type": "object",
         "properties": {
           "datumIngangOnderzoekPersoon": {
@@ -1147,8 +1070,7 @@
         "type": "object",
         "properties": {
           "uitgeslotenVanKiesrecht": {
-            "type": "boolean",
-            "example": true
+            "type": "boolean"
           }
         }
       },
@@ -1552,20 +1474,17 @@
       "Regel1": {
         "type": "string",
         "maxLength": 40,
-        "description": "Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.\n",
-        "example": "1600 Pennsylvania Avenue NW"
+        "description": "Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.\n"
       },
       "Regel2": {
         "type": "string",
         "maxLength": 50,
-        "description": "Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.\n",
-        "example": "Washington, DC 20500"
+        "description": "Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.\n"
       },
       "Regel3": {
         "type": "string",
         "maxLength": 35,
-        "description": "Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n",
-        "example": "Selangor"
+        "description": "Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.\n"
       },
       "VerblijfadresBuitenlandInOnderzoek": {
         "allOf": [
@@ -1668,8 +1587,7 @@
         "description": "Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.\n",
         "title": "woonplaats naam",
         "type": "string",
-        "pattern": "^[a-zA-Z0-9À-ž, \\(\\)\\.\\-\\']{1,80}$",
-        "example": "Duiven"
+        "pattern": "^[a-zA-Z0-9À-ž, \\(\\)\\.\\-\\']{1,80}$"
       },
       "VerblijfadresBinnenlandInOnderzoek": {
         "allOf": [
@@ -1742,14 +1660,12 @@
       "AdresseerbaarObjectIdentificatie": {
         "type": "string",
         "pattern": "^[0-9]{16}$",
-        "description": "De identificatiecode van een adresseerbaar object.\n",
-        "example": "0226010000038820"
+        "description": "De identificatiecode van een adresseerbaar object.\n"
       },
       "NummeraanduidingIdentificatie": {
         "description": "Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.\n",
         "type": "string",
-        "pattern": "^[0-9]{16}$",
-        "example": "0518200000366054"
+        "pattern": "^[0-9]{16}$"
       },
       "AdresInOnderzoek": {
         "allOf": [
@@ -1860,8 +1776,7 @@
       "Locatiebeschrijving": {
         "type": "string",
         "maxLength": 35,
-        "description": "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n",
-        "example": "Naast de derde brug"
+        "description": "Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.\n"
       },
       "VerblijfadresLocatieInOnderzoek": {
         "allOf": [
@@ -2003,8 +1918,7 @@
       "Aanhef": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$",
-        "description": "Kun je gebruiken als aanhef in een brief gericht aan persoon.\n",
-        "example": "Hoogwelgeboren heer"
+        "description": "Kun je gebruiken als aanhef in een brief gericht aan persoon.\n"
       },
       "Aanschrijfwijze": {
         "type": "object",
@@ -2012,22 +1926,19 @@
         "properties": {
           "naam": {
             "type": "string",
-            "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$",
-            "example": "H.W. baron van den Aedel"
+            "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$"
           },
           "aanspreekvorm": {
             "description": "Deze regel moet als aparte regel boven de samengestelde naam worden geplaatst. Komt alleen voor bij personen met een adellijke titel of predicaat.\n",
             "type": "string",
-            "pattern": "^[a-zA-Z ]{1,25}$",
-            "example": "De hoogwelgeboren heer"
+            "pattern": "^[a-zA-Z ]{1,25}$"
           }
         }
       },
       "GebruikInLopendeTekst": {
         "type": "string",
         "pattern": "^[a-zA-Z0-9À-ž \\.\\-\\']{1,650}$",
-        "description": "Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.\n",
-        "example": "baron Van den Aedel"
+        "description": "Naam van persoon die je kunt gebruiken als je in lopende tekst (bijvoorbeeld in een brief) aan persoon refereert.\n"
       },
       "AdresseringInOnderzoek": {
         "description": "Geeft aan welke gegevens over de adressering in onderzoek zijn.\n",
@@ -2090,8 +2001,7 @@
       },
       "IndicatieCurateleRegister": {
         "type": "boolean",
-        "description": "Geeft aan dat de persoon onder curatele is gesteld.\n",
-        "example": true
+        "description": "Geeft aan dat de persoon onder curatele is gesteld.\n"
       },
       "Gezagsrelatie": {
         "type": "object",
@@ -2120,20 +2030,6 @@
             "Voogdij": "#/components/schemas/Voogdij",
             "TijdelijkGeenGezag": "#/components/schemas/TijdelijkGeenGezag",
             "GezagNietTeBepalen": "#/components/schemas/GezagNietTeBepalen"
-          }
-        },
-        "example": {
-          "type": "GezamenlijkOuderlijkGezag",
-          "ouders": [
-            {
-              "burgerservicenummer": "999998870"
-            },
-            {
-              "burgerservicenummer": "999998882"
-            }
-          ],
-          "minderjarige": {
-            "burgerservicenummer": "999998894"
           }
         }
       },
@@ -2467,8 +2363,7 @@
       },
       "OuderAanduiding": {
         "type": "string",
-        "pattern": "^[1|2]$",
-        "example": "1"
+        "pattern": "^[1|2]$"
       },
       "OuderBasis": {
         "type": "object",

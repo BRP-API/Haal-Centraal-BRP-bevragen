@@ -10,4 +10,3 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.]{1,40}$
       description: |
         De voorletters van de persoon, afgeleid van de voornamen.
-      example: "P.J."

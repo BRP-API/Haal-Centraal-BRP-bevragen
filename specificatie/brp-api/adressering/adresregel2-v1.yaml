@@ -9,8 +9,3 @@ components:
       maxLength: 50
       description: |
         Het tweede deel van een adres is een combinatie van woonplaats eventueel in combinatie met de postcode.
-      examples:
-        - binnenlandsAdres:
-          value: 1234AA Nootdorp
-        - buitenlandsAdres:
-          value: Washington, DC 20500

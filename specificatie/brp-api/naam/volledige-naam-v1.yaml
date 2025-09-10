@@ -10,7 +10,6 @@ components:
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,450}$
       description: |
         Combinatie van predicaat, voornamen, adellijke titel, voorvoegsels en geslachtsnaam, zonder toevoeging van een eventuele partnernaam.
-      example: Pieter Jan de Vries
     NaamVolledigeNaam:
       type: object
       properties:

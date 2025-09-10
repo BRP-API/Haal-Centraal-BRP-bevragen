@@ -9,4 +9,3 @@ components:
       properties:
         uitgeslotenVanKiesrecht:
           type: boolean
-          example: true

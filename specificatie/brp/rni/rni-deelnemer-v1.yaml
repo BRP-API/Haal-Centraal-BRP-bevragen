@@ -15,7 +15,6 @@ components:
       type: string
       description: Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       pattern: ^[a-zA-Z0-9À-ž \.\-\'\/]{1,40}$
-      example: Verblijfplaats
 
     RniDeelnemer:
       type: object

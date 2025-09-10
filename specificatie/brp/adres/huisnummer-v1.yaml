@@ -10,4 +10,3 @@ components:
       type: integer
       minimum: 1
       maximum: 99999
-      example: 14

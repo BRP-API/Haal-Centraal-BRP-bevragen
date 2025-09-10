@@ -9,4 +9,3 @@ components:
         Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
       type: string
       pattern: ^[0-9]{4}$
-      example: "0518"

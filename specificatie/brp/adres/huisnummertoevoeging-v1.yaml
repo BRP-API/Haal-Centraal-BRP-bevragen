@@ -9,4 +9,3 @@ components:
         Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
       type: string
       pattern: ^[a-zA-Z0-9 \-]{1,4}$
-      example: bis

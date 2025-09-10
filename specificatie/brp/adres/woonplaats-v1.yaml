@@ -10,4 +10,3 @@ components:
       title: woonplaats naam
       type: string
       pattern: ^[a-zA-Z0-9À-ž, \(\)\.\-\']{1,80}$
-      example: Duiven

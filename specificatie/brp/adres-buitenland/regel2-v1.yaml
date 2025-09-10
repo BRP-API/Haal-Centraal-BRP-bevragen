@@ -9,4 +9,3 @@ components:
       maxLength: 50
       description: |
         Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.
-      example: Washington, DC 20500

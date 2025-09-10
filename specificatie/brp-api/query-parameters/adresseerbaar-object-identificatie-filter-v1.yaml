@@ -9,4 +9,3 @@ components:
       pattern: ^(?!0{16})[0-9]{16}$
       description: |
         De identificatiecode van een adresseerbaar object uitgezonderd de standaardwaarde (0000000000000000)
-      example: '0226010000038820'
