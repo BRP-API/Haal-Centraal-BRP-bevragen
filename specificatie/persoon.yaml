@@ -135,7 +135,7 @@ components:
     PersoonInOnderzoekBeperkt:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn.
-        * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
+        * **datumIngangOnderzoekPersoon** - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
       type: object
       properties:
         datumIngangOnderzoekPersoon:
