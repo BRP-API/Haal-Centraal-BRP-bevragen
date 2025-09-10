@@ -11,6 +11,8 @@ info:
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
     Zie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.
+
+    [<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://elements.getpostman.com/redirect?entityId=6707821-5940172f-a50a-4a66-b61b-b3bb63fb0287&entityType=collection&workspaceId=fbc0d981-545f-4f19-9ef3-f126d4b4d522)
   version: 2.7.0
   contact:
     url: https://developer.rvig.nl/brp-api/contact/
