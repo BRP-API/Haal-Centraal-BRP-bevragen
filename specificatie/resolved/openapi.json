@@ -654,7 +654,7 @@
         }
       },
       "PersoonInOnderzoekBeperkt": {
-        "description": "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n",
+        "description": "Geeft aan welke gegevens van de persoon in onderzoek zijn.\n* **datumIngangOnderzoekPersoon** - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd\n",
         "type": "object",
         "properties": {
           "datumIngangOnderzoekPersoon": {
