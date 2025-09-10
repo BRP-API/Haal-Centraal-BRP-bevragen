@@ -9,4 +9,3 @@ components:
       maxLength: 35
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
-      example: Naast de derde brug

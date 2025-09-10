@@ -9,4 +9,3 @@ components:
       pattern: ^[0-9]{16}$
       description: |
         De identificatiecode van een adresseerbaar object.
-      example: "0226010000038820"

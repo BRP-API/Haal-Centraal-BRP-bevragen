@@ -9,8 +9,3 @@ components:
       maxLength: 40
       description: |
         Het eerste deel van een adres is een combinatie van de straat en huisnummer.
-      examples:
-        - binnenlandsAdres:
-          value: Kappeyne v d Cappellostr 26A-3
-        - buitenlandsAdres:
-          value: 1600 Pennsylvania Avenue NW
