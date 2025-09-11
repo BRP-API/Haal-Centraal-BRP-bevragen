@@ -1,6 +1,7 @@
 services:
   brp-api-gezag:
-    image: ghcr.io/brp-api/brp-api-gezag:latest
+    container_name: brp-api-gezag
+    image: ghcr.io/brp-api/brp-api-gezag:2.0.5-20250808082401
     environment:
       - LOGGING_LEVEL_GEZAG=DEBUG
       - SPRING_PROFILES_ACTIVE=prd # [pre, prd]
@@ -8,7 +9,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
     ports:
-      - "8080:8080"
+      - "8090:8080"
     networks:
       - brp-api-network
 
