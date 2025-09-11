@@ -3,7 +3,7 @@
   "info": {
     "title": "BRP API Personen",
     "description": "API voor het bevragen van personen uit de basisregistratie personen (BRP), inclusief de registratie niet-ingezeten (RNI). Met deze API kun je personen zoeken en actuele gegevens over personen, kinderen, partners en ouders raadplegen.\n\nGegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.\n\nZie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.\n",
-    "version": "2.6.0",
+    "version": "2.7.0",
     "contact": {
       "url": "https://developer.rvig.nl/brp-api/contact/"
     },
@@ -2093,7 +2093,7 @@
         "description": "Geeft aan dat de persoon onder curatele is gesteld.\n",
         "example": true
       },
-      "AbstractGezagsrelatie": {
+      "Gezagsrelatie": {
         "type": "object",
         "required": [
           "type",
@@ -2114,7 +2114,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "TweehoofdigOuderlijkGezag": "#/components/schemas/TweehoofdigOuderlijkGezag",
+            "GezamenlijkOuderlijkGezag": "#/components/schemas/GezamenlijkOuderlijkGezag",
             "EenhoofdigOuderlijkGezag": "#/components/schemas/EenhoofdigOuderlijkGezag",
             "GezamenlijkGezag": "#/components/schemas/GezamenlijkGezag",
             "Voogdij": "#/components/schemas/Voogdij",
@@ -2123,7 +2123,7 @@
           }
         },
         "example": {
-          "type": "TweehoofdigOuderlijkGezag",
+          "type": "GezamenlijkOuderlijkGezag",
           "ouders": [
             {
               "burgerservicenummer": "999998870"
@@ -2156,13 +2156,13 @@
           }
         },
         "required": [
-          "burgerservicenummer"
+          "naam"
         ]
       },
-      "TweehoofdigOuderlijkGezag": {
+      "GezamenlijkOuderlijkGezag": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/AbstractGezagsrelatie"
+            "$ref": "#/components/schemas/Gezagsrelatie"
           },
           {
             "type": "object",
@@ -2182,7 +2182,7 @@
       "EenhoofdigOuderlijkGezag": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/AbstractGezagsrelatie"
+            "$ref": "#/components/schemas/Gezagsrelatie"
           },
           {
             "type": "object",
@@ -2243,7 +2243,7 @@
       "GezamenlijkGezag": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/AbstractGezagsrelatie"
+            "$ref": "#/components/schemas/Gezagsrelatie"
           },
           {
             "type": "object",
@@ -2261,7 +2261,7 @@
       "Voogdij": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/AbstractGezagsrelatie"
+            "$ref": "#/components/schemas/Gezagsrelatie"
           },
           {
             "type": "object",
@@ -2285,7 +2285,7 @@
       "TijdelijkGeenGezag": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/AbstractGezagsrelatie"
+            "$ref": "#/components/schemas/Gezagsrelatie"
           },
           {
             "type": "object",
@@ -2295,12 +2295,15 @@
               }
             }
           }
+        ],
+        "required": [
+          "toelichting"
         ]
       },
       "GezagNietTeBepalen": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/AbstractGezagsrelatie"
+            "$ref": "#/components/schemas/Gezagsrelatie"
           },
           {
             "type": "object",
@@ -2310,6 +2313,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "toelichting"
         ]
       },
       "Minderjarige": {
@@ -2332,7 +2338,7 @@
       "Gezag": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/AbstractGezagsrelatie"
+          "$ref": "#/components/schemas/Gezagsrelatie"
         },
         "minItems": 0
       },

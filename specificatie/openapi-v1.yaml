@@ -10,10 +10,10 @@ info:
 
     Gegevens die er niet zijn of niet actueel zijn krijg je niet terug. Had een persoon bijvoorbeeld een verblijfstitel die nu niet meer geldig is, dan wordt die verblijfstitel niet opgenomen. In partners wordt alleen de actuele of de laatst ontbonden partner geleverd.
 
-    Zie de [Features overzicht](https://developer.rvig.nl/brp-api/personen-zoeken-en-raadplegen/) en [https://developer.rvig.nl/brp-api/getting-started/) voor nadere toelichting.
-  version: 2.7.0
+    Zie de [Features overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht) en [Getting started](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/getting-started) voor nadere toelichting.
+  version: 2.6.0
   contact:
-    url: https://developer.rvig.nl/brp-api/contact/
+    url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
@@ -21,7 +21,7 @@ tags:
   - name: Personen
 externalDocs:
   description: BRP API Personen website
-  url: https://developer.rvig.nl/brp-api/overview/
+  url: https://brp-api.github.io/Haal-Centraal-BRP-bevragen
 paths:
   /personen:
     post:
@@ -53,7 +53,7 @@ paths:
           content:
             'application/json; charset=utf-8':
               schema:
-                $ref: 'personen-query-response-v2.yaml#/components/schemas/PersonenQueryResponse'
+                $ref: 'personen-query-response-v1.yaml#/components/schemas/PersonenQueryResponse'
         '400':
           $ref: 'problem-details/400-bad-request-response-v1.yaml#/components/responses/400'
         '401':

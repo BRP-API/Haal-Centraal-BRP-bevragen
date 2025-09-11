@@ -82,7 +82,7 @@ components:
           $ref: 'brp/waardetabel-v1.yaml#/components/schemas/Waardetabel'
           deprecated: true
         gezag:
-          $ref: 'brp-api/gezag/gezagsrelatie-v2.yaml#/components/schemas/Gezag'
+          $ref: 'brp-api/gezag/gezagsrelatie-v1.yaml#/components/schemas/Gezag'
         verblijfstitel:
           $ref: 'brp-api/verblijfstitel/verblijfstitel-v1.yaml#/components/schemas/Verblijfstitel'
         kinderen:
