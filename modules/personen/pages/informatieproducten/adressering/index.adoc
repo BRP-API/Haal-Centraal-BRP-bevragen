@@ -1,0 +1,47 @@
+= Afleidingsregels Adressering
+
+== Wat is adressering?
+Adressering bevat alle gegevens die je nodig hebt voor het versturen van briefpost of een mailing. Kant en klaar, zonder dat jij gegevens zelf hoeft te bewerken. Voor het maken van de brief heb je nodig:
+
+. de *aanschrijfwijze* van de geadresseerde, conform het door geadresseerde gekozen gebruik van de partnernaam en eventuele adellijke titels
+. adresregel 1
+. adresregel 2
+. adresregel 3
+. land
+. de *aanhef* van de geadresseerde. Met deze introducerende zin begroet je de lezer op een correcte manier met Geachte, of Hoogwelgeboren heer.
+. *gebruik in lopende tekst* als je in de tekst van de brief aan een persoon refereert
+. Indicatie-vastgesteld-verblijft-niet-op-adres krijg je alleen als tijdens een onderzoek van de bronhouder is vastgesteld dat de persoon niet op het adres woont waar men is ingeschreven.
+
+image::envelop-buitenland.png[envelop buitenland]
+
+De eerste vijf gegevens kun je in de brief gebruiken voor een vensterenvelop. De adresregels zijn conform NEN 5825 afgekort, zodat ze binnen het venster van een vensterenvelop passen.
+Een in de BAG als “Burgemeester Le Fèvre de Montignylaan” opgenomen openbare ruimte wordt dan afgekort als “Burg L F de Montignyln".
+
+image::brief-binnenland.png[brief binnenland]
+
+== Controleer altijd op overleden personen!
+Voor personen die in een Nederlandse gemeente zijn ingeschreven kun je op overlijden controleren met de opschortingsgegevens die je xref:personen:meegeleverde-gegevens.adoc[automatisch meegeleverd krijgt]. Let op! Voor personen uit de RNI kun je deze niet gebruiken en moet je op datum overlijden controleren.
+
+== Autoriseren
+
+=== Elektronische post of briefpost
+Afnemers kunnen op twee manieren voor adressering worden geautoriseerd:
+
+. Adressering (briefpost): de afnemer wordt dan geautoriseerd voor de hele groep Adressering
+. Elektronische adressering: de afnemer die alleen elektronisch met haar klanten communiceert, wordt geautoriseerd voor een groep met alle velden van adressering zonder adresregels en land.
+
+=== Uitsluitend adressering binnenland
+De {apiname} Personen biedt gemeenten de mogelijkheid om conform de autorisaties voor verblijfplaats twee autorisatieprofielen voor adresregelvelden te realiseren:
+
+. geautoriseerd voor ZOWEL adresregels van binnenlandse verblijfplaatsen ALS adresregels van buitenlandse verblijfplaatsen (adresregel1, adresregel2, adresregel3 en land)
+. UITSLUITEND geautoriseerd voor adresregels van binnenlandse verblijfplaatsen (adresregel1 en adresregel2)
+Lees in xref:ROOT:personen-response-filteren.adoc[personen-response-filteren] hoe je fields parameter dan moet gebruiken.
+
+== Leeswijzer afleidingsregels
+De afleidingsregels voor adressering zijn afgestemd met De Hoge Raad van Adel.
+Meer weten? Lees hier hoe de velden van adressering worden afgeleid:
+
+* de xref:personen:informatieproducten/adressering/aanschrijfwijze.adoc[aanschrijfwijze] van de geadresseerde
+* de xref:personen:informatieproducten/adressering/adresregels.adoc[adresregels]
+* de xref:personen:informatieproducten/adressering/aanhef.adoc[aanhef] van de geadresseerde
+* het xref:personen:informatieproducten/adressering/gebruikinlopendetekst.adoc[gebruik in lopende tekst] als je in de tekst van de brief aan een persoon refereert.
