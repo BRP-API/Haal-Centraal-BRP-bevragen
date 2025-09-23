@@ -41,7 +41,7 @@ function createGegevensgroepAutorisatie(context, afnemerCode, gegevensgroep) {
             break;
         case 'verblijfplaats binnenland':
             data.push(['ad_hoc_rubrieken',
-                       '10120 81010 80910 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 88510 PAVP01']);
+                       '10120 81010 81030 80910 81110 81115 81120 81130 81140 81150 81160 81170 81180 81190 81210 88510']);
             break;
         default:
             data.push(['ad_hoc_rubrieken',
