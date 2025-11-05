@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: personen-mock
-          image: ghcr.io/brp-api/personen-mock:2.3.0-latest
+          image: ghcr.io/brp-api/personen-mock:2.7.0-latest
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Release
