@@ -248,20 +248,32 @@ function createDataTableForRequest(parameterNames, fields) {
             return undefined;
     }
 }
-        
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function handleRequestWithParameters(context, endpoint, parametersDataTable) {
     initializeAfnemerIdAndGemeenteCode(context);
 
+    let mustSleep = false;
     if(context.gezag !== undefined) {
         fs.writeFileSync(context.gezagDataPath, JSON.stringify(context.gezag, null, '\t'));
+        mustSleep = true;
     }
     if(context.downstreamApiResponseHeaders !== undefined) {
         fs.writeFileSync(context.downstreamApiDataPath + '/response-headers.json',
                          JSON.stringify(context.downstreamApiResponseHeaders[0], null, '\t'));
+        mustSleep = true;
     }
     if(context.downstreamApiResponseBody !== undefined) {
         fs.writeFileSync(context.downstreamApiDataPath + '/response-body.json',
                          context.downstreamApiResponseBody);
+        mustSleep = true;
+    }
+    if(mustSleep) {
+        // wait 15 ms to ensure the files are written before the request is made
+        await sleep(15);
     }
 
     addDefaultAutorisatieSettings(context, context.afnemerID);
