@@ -4,7 +4,7 @@ const { toDateOrString } = require('./brpDatum');
 
 function cloneEntityToDataTableArray(arrayOfArrays, entiteit) {
     if(entiteit) {
-        Object.keys(entiteit).forEach(key => {
+        for (const key of Object.keys(entiteit)) {
             switch(key) {
                 case 'pl_id':
                 case 'stapel_nr':
@@ -16,30 +16,30 @@ function cloneEntityToDataTableArray(arrayOfArrays, entiteit) {
                     arrayOfArrays.push([key, entiteit[key]]);
                     break;
             }
-        });
+        }
     }
 }
 
 function mapNaamWaardeDataTableToEntiteit(entiteit, dataTable, retainEmptyValues) {
-    dataTable.hashes().forEach(hash => {
+    for (const hash of dataTable.hashes()) {
         if(retainEmptyValues || hash.waarde) {
             entiteit[toDbColumnName(hash.naam)] = toDateOrString(hash.waarde, false);
         }
         else {
             delete entiteit[toDbColumnName(hash.naam)];
         }
-    });
+    }
 }
 
 function mapHashToEntiteit(entiteit, hash) {
-    Object.keys(hash).forEach(naam => {
+    for (const naam of Object.keys(hash)) {
         if(hash[naam]) {
             entiteit[toDbColumnName(naam)] = toDateOrString(hash[naam], false);
         }
         else {
             delete entiteit[toDbColumnName(naam)];
         }
-    });
+    }
 }
 
 function mapDataTableToEntiteit(entiteit, dataTable, retainEmptyValues) {
@@ -62,15 +62,15 @@ function mapDataTableToArrayOfArrays(arrayOfArrays, dataTable) {
     }
 
     if(dataTable.raw()[0][0] === 'naam') {
-        dataTable.hashes().forEach(hash => {
+        for (const hash of dataTable.hashes()) {
             arrayOfArrays.push([toDbColumnName(hash.naam), toDateOrString(hash.waarde, false)]);
-        });
+        }
     }
     else {
         const hash = dataTable.hashes()[0];
-        Object.keys(hash).forEach(naam => {
+        for (const naam of Object.keys(hash)) {
             arrayOfArrays.push([toDbColumnName(naam), toDateOrString(hash[naam], false)]);
-        });
+        }
     }
 }
 
@@ -91,9 +91,9 @@ function arrayOfArraysToDataTable(arrayOfArrays, dataTable) {
         ['naam', 'waarde']
     ];
 
-    arrayOfArrays.forEach(array => {
+    for (const array of arrayOfArrays) {
         data.push(array);
-    })
+    }
 
     mapDataTableToArrayOfArrays(data, dataTable);
 

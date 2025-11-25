@@ -7,9 +7,9 @@ const { getBsn,
 
 function getLeeftijd(persoon) {
     const geboortedatum = getGeboortedatum(persoon);
-    const jaar = parseInt(geboortedatum.substring(0, 4), 10);
-    const maand = parseInt(geboortedatum.substring(4, 6), 10) - 1; // 0-based in JavaScript
-    const dag = parseInt(geboortedatum.substring(6, 8), 10);
+    const jaar = Number.parseInt(geboortedatum.substring(0, 4), 10);
+    const maand = Number.parseInt(geboortedatum.substring(4, 6), 10) - 1; // 0-based in JavaScript
+    const dag = Number.parseInt(geboortedatum.substring(6, 8), 10);
 
     const vandaag = new Date();
 
@@ -56,7 +56,7 @@ function createGezagspersoon(context, aanduiding, isMinderjarige = false) {
 
     setProperty(retval, 'burgerservicenummer', getBsn(persoon));
 
-    global.logger.info(`isAllApiScenario: ${context.isAllApiScenario}, isInfoApiScenario: ${context.isInfoApiScenario}, isDataApiScenario: ${context.isDataApiScenario}, isGezagApiScenario: ${context.isGezagApiScenario}, isInfoApiAanroep: ${context.isInfoApiAanroep}, isDataApiAanroep: ${context.isDataApiAanroep}, isGezagApiAanroep: ${context.isGezagApiAanroep}`);
+    globalThis.logger.info(`isAllApiScenario: ${context.isAllApiScenario}, isInfoApiScenario: ${context.isInfoApiScenario}, isDataApiScenario: ${context.isDataApiScenario}, isGezagApiScenario: ${context.isGezagApiScenario}, isInfoApiAanroep: ${context.isInfoApiAanroep}, isDataApiAanroep: ${context.isDataApiAanroep}, isGezagApiAanroep: ${context.isGezagApiAanroep}`);
     if((context.isAllApiScenario && context.isAllApiAanroep) || (context.isInfoApiScenario && context.isInfoApiAanroep)) {
         retval.naam = {};
 
@@ -97,9 +97,9 @@ function createGezag(context, type, aanduidingMinderjarige, aanduidingMeerderjar
 
     switch(type) {
         case 'gezamenlijk ouderlijk gezag':
-            gezag.type = !context.isDeprecatedScenario
-                ? 'GezamenlijkOuderlijkGezag'
-                : 'TweehoofdigOuderlijkGezag';
+            gezag.type = context.isDeprecatedScenario
+                ? 'TweehoofdigOuderlijkGezag'
+                : 'GezamenlijkOuderlijkGezag';
             gezag.ouders = [
                 createGezagspersoon(context, aanduidingMeerderjarige1),
                 createGezagspersoon(context, aanduidingMeerderjarige2)

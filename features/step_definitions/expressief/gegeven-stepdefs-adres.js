@@ -47,7 +47,7 @@ async function getGemeentecode(gemeentenaam) {
         : undefined;
 
     if (!gemeentecode) {
-        global.logger.error(`Geen gemeente gevonden met naam ${gemeentenaam}`);
+        globalThis.logger.error(`Geen gemeente gevonden met naam ${gemeentenaam}`);
     }
 
     return gemeentecode;
