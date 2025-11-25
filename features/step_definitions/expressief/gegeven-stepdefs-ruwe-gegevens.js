@@ -16,7 +16,7 @@ const { arrayOfArraysToDataTable } = require('../dataTableFactory');
 
 defineParameterType({
   name: 'ouder type',
-  regexp: /(1|2)/
+  regexp: /[1-2]/
 });
 
 defineParameterType({
@@ -81,13 +81,13 @@ Given('kind {aanduiding} is {gewijzigd of gecorrigeerd} naar de volgende gegeven
 function inschrijvingOpVerblijfplaats(context, dataTable) {
   let persoon = getPersoon(context, undefined)
 
-  if (!persoon.verblijfplaats) {
-    createVerblijfplaats(
+  if (persoon.verblijfplaats) {
+    wijzigVerblijfplaats(
       persoon,
       dataTable
     );
   } else {
-    wijzigVerblijfplaats(
+    createVerblijfplaats(
       persoon,
       dataTable
     );

@@ -34,7 +34,7 @@ function getLastCollectieObjectFromExpected(context, naamColObj) {
 }
 
 function createObject(context, dataTable = undefined) {
-    return dataTable !== undefined
+    return dataTable
         ? createObjectFrom(dataTable, context.proxyAanroep)
         : {};
 }
@@ -48,7 +48,7 @@ function createObjectMetObjectVeld(context, naamObjProp, dataTable = undefined) 
 }
 
 function createCollectie(context, dataTable = undefined) {
-    return dataTable !== undefined
+    return dataTable
         ? createObjectArrayFrom(dataTable, context.proxyAanroep)
         : [];
 }

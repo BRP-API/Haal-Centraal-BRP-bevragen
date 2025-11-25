@@ -34,13 +34,11 @@ async function executeStatements(client, statements) {
     let pkId;
 
     for(const statement of statements) {
-        switch(statement.categorie) {
-            case 'inschrijving':
-                pkId = await executeInsertInschrijving(client, statement);
-                break;
-            default:
-                statement.values[0] = pkId;
-                await executeAndLogStatement(client, statement);
+        if(statement.categorie === 'inschrijving') {
+            pkId = await executeInsertInschrijving(client, statement);
+        } else {
+            statement.values[0] = pkId;
+            await executeAndLogStatement(client, statement);
         }
     }
 

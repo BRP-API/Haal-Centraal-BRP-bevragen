@@ -6,13 +6,13 @@ function createHeaders(dataTable, extraHeaders) {
     let headers = {};
 
     if(dataTable !== undefined){
-        dataTable.hashes()
+        const filteredParams = dataTable.hashes()
         .filter(function(param) {
             return param.naam.startsWith("header:");
-        })
-        .forEach(function(param) {
-            headers[param.naam.slice(8)] = param.waarde;
         });
+        for (const param of filteredParams) {
+            headers[param.naam.slice(8)] = param.waarde;
+        }
     }
 
     if(headers.Accept === undefined) {
@@ -21,9 +21,9 @@ function createHeaders(dataTable, extraHeaders) {
     if(headers["Content-Type"] === undefined) {
         headers["Content-Type"] = "application/json";
     }
-    extraHeaders.forEach(function(header){
+    for (const header of extraHeaders) {
         headers[header.naam] = header.waarde;
-    });
+    }
 
     return headers;
 }

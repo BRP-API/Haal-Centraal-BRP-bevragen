@@ -20,9 +20,9 @@ Then(/^heeft de persoon met burgerservicenummer '(\d*)' de volgende 'protocoller
 
     should.exist(actual, `Geen 'protocollering' gegevens gevonden voor persoon met burgerservicenummer ${burgerservicenummer}`);
 
-    Object.keys(sqlData).forEach(function(key) {
+    for (const key of Object.keys(sqlData)) {
         actual[key].split(' ').should.have.members(sqlData[key].split(' '), `${actual[key]} !== ${sqlData[key]}`);
-    });
+    }
 });
 
 Then(/^is voor de geauthenticeerde consumer '(\d*)' protocollering regels vastgelegd$/, async function (aantal) {

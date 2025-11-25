@@ -9,16 +9,16 @@ const { aanvullenPersoon,
     createOverlijden
 } = require('./persoon-2');
 const { getBsn, getGeboortedatum, getPersoon } = require('./contextHelpers');
-const { toBRPDate, toDateOrString } = require('./brpDatum');
+const { toBRPDate } = require('./brpDatum');
 
 function getPartner(persoon) {
     let partner;
 
-    Object.keys(persoon).forEach(property => {
+    for (const property of Object.keys(persoon)) {
         if (property.includes('partner')) {
             partner = persoon[property].at(-1);
         }
-    });
+    }
 
     return partner;
 }
@@ -241,32 +241,7 @@ Given(/^(.*) heeft '(.*)' het ouderschap ontkend$/, function (relatieveDatum, aa
     let plKind = getPersoon(this.context, undefined);
     let plOuder = getPersoon(this.context, aanduidingOuder);
 
-    wijzigKind(
-        plOuder,
-        arrayOfArraysToDataTable([
-            ['aktenummer (81.20)', '1AE0100'],
-        ]),
-        true,
-        getBsn(plKind),
-    );
-
-    let ouderType = 1;
-    if (plKind['ouder-2']) {
-        let tmp = plKind['ouder-2'][0];
-        if (tmp.burger_service_nr === getBsn(plOuder)) {
-            ouderType = 2;
-        }
-    }
-
-    wijzigOuder(
-        plKind,
-        ouderType,
-        arrayOfArraysToDataTable([
-            ['aktenummer (81.20)', '1AE0100'],
-            ['ingangsdatum geldigheid (85.10)', relatieveDatum],
-        ]),
-        true
-    );
+    ontkenningOuderschap(plKind, plOuder, relatieveDatum);
 
     global.logger.info(`Gegeven ${relatieveDatum} heeft '${aanduidingOuder}' het ouderschap ontkend`, getPersoon(this.context, undefined));
 });
@@ -275,6 +250,12 @@ Given('{string} heeft ontkend vader te zijn van {string}', function (aanduidingO
     let plKind = getPersoon(this.context, aanduidingKind);
     let plOuder = getPersoon(this.context, aanduidingOuder);
 
+    ontkenningOuderschap(plKind, plOuder, getGeboortedatum(plKind));
+
+    global.logger.info(`gegeven '${aanduidingOuder}' heeft ontkend vader te zijn`, getPersoon(this.context, undefined));
+});
+
+function ontkenningOuderschap(plKind, plOuder, datumIngangGeldigheid) {
     wijzigKind(
         plOuder,
         arrayOfArraysToDataTable([
@@ -297,10 +278,8 @@ Given('{string} heeft ontkend vader te zijn van {string}', function (aanduidingO
         ouderType,
         arrayOfArraysToDataTable([
             ['aktenummer (81.20)', '1AE0100'],
-            ['ingangsdatum geldigheid (85.10)', getGeboortedatum(plKind)],
+            ['ingangsdatum geldigheid (85.10)', datumIngangGeldigheid],
         ]),
         true
     );
-
-    global.logger.info(`gegeven '${aanduidingOuder}' heeft ontkend vader te zijn`, getPersoon(this.context, undefined));
-});
+}

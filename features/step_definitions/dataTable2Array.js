@@ -4,7 +4,7 @@ function createArrayFrom(dataTable, columnNameMap) {
     let retval = [];
 
     if(dataTable.raw()[0][0] === "naam") {
-        dataTable.hashes().forEach(function(row) {
+        for (const row of dataTable.hashes()) {
             if(row.naam !== 'pl_id') {
                 const propertyName = columnNameMap.get(row.naam);
 
@@ -12,7 +12,7 @@ function createArrayFrom(dataTable, columnNameMap) {
                     retval.push([ propertyName, toDateOrString(row.waarde, false) ]);
                 }
             }
-        });
+        }
     }
     else {
         retval = fromHash(dataTable.hashes()[0], columnNameMap);
@@ -24,11 +24,11 @@ function createArrayFrom(dataTable, columnNameMap) {
 function fromHash(hash, columnNameMap) {
     let retval = [];
 
-    Object.keys(hash).forEach(function(key) {
+    for (const key of Object.keys(hash)) {
         if(key !== 'pl_id') {
             retval.push([ columnNameMap.get(key), toDateOrString(hash[key], false) ]);
         }
-    });
+    }
 
     return retval;
 }

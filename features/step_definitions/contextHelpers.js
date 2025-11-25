@@ -1,7 +1,7 @@
 function getAdres(context, aanduiding) {
-    return !aanduiding
-        ? context.data.adressen.at(-1)
-        : context.data.adressen.find(a => a.id === `adres-${aanduiding}`);
+    return aanduiding
+        ? context.data.adressen.find(a => a.id === `adres-${aanduiding}`)
+        : context.data.adressen.at(-1);
 }
 
 function getAdresIndex(context, aanduiding) {
@@ -9,9 +9,9 @@ function getAdresIndex(context, aanduiding) {
 }
 
 function getPersoon(context, aanduiding) {
-    return !aanduiding
-        ? context.data?.personen?.at(-1)
-        : context.data?.personen?.find(p => p.id === `persoon-${aanduiding}`);
+    return aanduiding
+        ? context.data?.personen?.find(p => p.id === `persoon-${aanduiding}`)
+        : context.data?.personen?.at(-1);
 }
 
 function getPersoonMetAanduiding(context, aanduiding) {
@@ -58,16 +58,16 @@ function getBeschrijvingDocument(persoon) {
 // standaard worden de properties pl_id, stapel_nr, volg_nr en persoon_type uitgesloten
 // extra properties kunnen worden uitgesloten door ze mee te geven in de extraPropertiestoExclude array
 function persoonPropertiesToArrayofArrays(persoon, extraPropertiestoExclude = []) {
-    const propertiesToExclude = ['pl_id', 'stapel_nr', 'volg_nr', 'persoon_type'].concat(extraPropertiestoExclude);
+    const propertiesToExclude = new Set(['pl_id', 'stapel_nr', 'volg_nr', 'persoon_type', ...extraPropertiestoExclude]);
 
     const retval = [];
 
     if(persoon) {
-        Object.keys(persoon.persoon.at(-1)).forEach(key => {
-            if(!propertiesToExclude.includes(key)) {
+        for (const key of Object.keys(persoon.persoon.at(-1))) {
+            if(!propertiesToExclude.has(key)) {
                 retval.push([key, persoon.persoon.at(-1)[key]]);
             }
-        });
+        }
     }
 
     return retval;

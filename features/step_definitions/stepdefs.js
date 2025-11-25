@@ -4,7 +4,7 @@ const { setWorldConstructor, setDefaultTimeout, Before, After, AfterAll, AfterSt
 const { valideer200Response, valideerProblemDetailsResponse } = require('./responseHelpers');
 const { rollbackSqlStatements } = require('./postgresqlHelpers');
 const { rollback } = require('./postgresqlHelpers-2');
-const fs = require('fs');
+const fs = require('node:fs');
 
 setWorldConstructor(World);
 
@@ -13,9 +13,9 @@ setDefaultTimeout(30000);
 
 function persoonAanduidingenVerwijderen(personen) {
     if(personen) {
-        personen.forEach((persoon) => {
+        for (const persoon of personen) {
             delete persoon.id;
-        });
+        }
     }
 }
 
@@ -105,35 +105,48 @@ After(async function() {
         !this.context.isIntegratieScenario) {
         return;
     }
-    if(this.context.data) {
-        await rollback(this.context.sql, this.context.data);
+
+    await rollbackDbChanges(this.context, global.pool);
+
+    rollbackTempfiles(this.context);
+
+    await assertExpectedLogLines(this.context, global.logger, global.scenario);
+});
+
+async function rollbackDbChanges(context, pool) {
+    if (context.data) {
+        await rollback(context.sql, context.data);
     }
     else {
-        await rollbackSqlStatements(this.context.sql, this.context.sqlData, global.pool);
+        await rollbackSqlStatements(context.sql, context.sqlData, pool);
     }
+}
 
-    if(this.context.gezag !== undefined) {
-        fs.writeFileSync(this.context.gezagDataPath, JSON.stringify([], null, '\t'));
+function rollbackTempfiles(context) {
+    if(context.gezag !== undefined) {
+        fs.writeFileSync(context.gezagDataPath, JSON.stringify([], null, '\t'));
     }
-    if(this.context.downstreamApiResponseHeaders !== undefined){
-        fs.writeFileSync(this.context.downstreamApiDataPath + '/response-headers.json', JSON.stringify({}, null, '\t'));
+    if(context.downstreamApiResponseHeaders !== undefined){
+        fs.writeFileSync(context.downstreamApiDataPath + '/response-headers.json', JSON.stringify({}, null, '\t'));
     }
-    if(this.context.downstreamApiResponseBody !== undefined){
-        fs.rmSync(this.context.downstreamApiDataPath + '/response-body.json');
+    if(context.downstreamApiResponseBody !== undefined){
+        fs.rmSync(context.downstreamApiDataPath + '/response-body.json');
     }
+}
 
-    if(this.context.logFileToAssert !== undefined && fs.existsSync(this.context.logFileToAssert)) {
-        let array = fs.readFileSync(this.context.logFileToAssert).toString().split("\n");
-        if(this.context.nrOfLogLines + 1 != array.length) {
+async function assertExpectedLogLines(context, logger, scenario) {
+    if(context.logFileToAssert !== undefined && fs.existsSync(context.logFileToAssert)) {
+        let array = fs.readFileSync(context.logFileToAssert).toString().split("\n");
+        if(context.nrOfLogLines + 1 != array.length) {
             // wacht 50 ms en check vervolgens nog een keer of er een log regel is toegevoegd
             await sleep(50);
-            array = fs.readFileSync(this.context.logFileToAssert).toString().split("\n");
-            if(this.context.nrOfLogLines + 1 !== array.length) {
-                global.logger.warn(`${global.scenario.name}. nr of loglines ${array.length} should be ${this.context.nrOfLogLines + 1}`);
+            array = fs.readFileSync(context.logFileToAssert).toString().split("\n");
+            if(context.nrOfLogLines + 1 !== array.length) {
+                logger.warn(`${scenario.name}. nr of loglines ${array.length} should be ${context.nrOfLogLines + 1}`);
             }
         }
     }
-});
+}
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));

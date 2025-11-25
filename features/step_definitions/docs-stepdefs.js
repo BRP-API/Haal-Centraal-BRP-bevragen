@@ -7,7 +7,7 @@ const { insertIntoAdresStatement,
         insertIntoPersoonlijstStatement,
         insertIntoStatement } = require('./parameterizedSqlStatementFactory');
 const { stringifyValues } = require('./stringify');
-const { queryRowCount, queryLastRow, executeSqlStatements } = require('./postgresqlHelpers');
+const { queryRowCount, executeSqlStatements } = require('./postgresqlHelpers');
 const { toDateOrString } = require('./brpDatum');
 
 const { generateSqlStatementsFrom } = require('./sqlStatementsFactory');
@@ -42,9 +42,9 @@ Given(/^de response headers is gelijk aan$/, function (dataTable) {
     }
     let headers = this.context.response.headers;
 
-    dataTable.hashes().forEach(function(row){
+    for(const row of dataTable.hashes()){
         headers[row.naam] = row.waarde;
-    });
+    }
 });
 
 Given(/^de response status is gelijk aan (\d{3})$/, function (statusCode) {
@@ -57,7 +57,7 @@ function groepeerQueriesPerStap(dataTable) {
     let currentCategorie;
     let index = 0;
 
-    dataTable.hashes().forEach(function(hash) {
+    for (const hash of dataTable.hashes()) {
         if(hash.stap !== '') {
             // nieuwe stap
             index = Number(hash.stap) - 1;
@@ -71,7 +71,7 @@ function groepeerQueriesPerStap(dataTable) {
         }
 
         obj[currentCategorie].push(hash);
-    });
+    }
 
     return retval;
 }
@@ -116,20 +116,21 @@ function vergelijkActualMetExpectedStatements(categorie, expected, actual, sqlDa
     statement.text.should.equal(expected.text, `${expected.categorie}:\n${statement.text}\n!=\n${expected.text}`);
 
     let expectedValues = expected.values.split(',');
-    expectedValues.forEach((val, index) =>{
-        expectedValues[index] = toDateOrString(val, false);
-    });
+    for (let index = 0; index < expectedValues.length; index++) {
+        expectedValues[index] = toDateOrString(expectedValues[index], false);
+    }
 
     stringifyValues(statement.values).should.deep.equalInAnyOrder(expectedValues,
                                                  `${expected.categorie}: ${statement.values} != ${expected.values}`);
 }
 
 function vulPrimaryEnForeignKeys(sqlData, ids) {
-    sqlData.personen.forEach((persoon, index) => {
+    for (let index = 0; index < sqlData.personen.length; index++) {
+        const persoon = sqlData.personen[index];
 
         delete persoon.plId;
 
-        persoon.statements.forEach(statement => {
+        for (const statement of persoon.statements) {
             if(statement.categorie !== 'inschrijving') {
                 statement.values[0] = ids.plIds[index] + '';
             }
@@ -137,8 +138,8 @@ function vulPrimaryEnForeignKeys(sqlData, ids) {
                 const adresIndex = statement.values[2];
                 statement.values[2] = ids.adresIds[adresIndex] + '';
             }
-        });
-    });
+        }
+    }
 }
 
 function mapRowToSqlStatement(list, row) {
@@ -151,9 +152,9 @@ function mapRowToSqlStatement(list, row) {
 
     let expectedValues = row.values.split(',');
 
-    expectedValues.forEach((val, index) => {
-        expectedValues[index] = toDateOrString(val, false);
-    });
+    for (let index = 0; index < expectedValues.length; index++) {
+        expectedValues[index] = toDateOrString(expectedValues[index], false);
+    }
 
     let item = list.at(-1);
     item.statements.push({
@@ -170,29 +171,33 @@ function dataTableToSqlStatements(dataTable) {
         autorisaties: []
     }
 
-    dataTable.hashes().forEach(row => {
+    for (const row of dataTable.hashes()) {
         if(row.categorie === 'adres') {
             mapRowToSqlStatement(retval.adressen, row);
         }
         else {
             mapRowToSqlStatement(retval.personen, row);
         }
-    });
+    }
 
     return retval;
+}
+
+function vergelijkSqlStatementsNieuweStijl(context, dataTable) {
+    let actual = generateSqlStatementsFrom(context.data);
+
+    vulPrimaryEnForeignKeys(actual, context.sqlDataIds);
+
+    let expected = dataTableToSqlStatements(dataTable);
+
+    actual.should.deep.equalInAnyOrder(expected, `${JSON.stringify(actual, null, '\t')} != ${JSON.stringify(expected, null, '\t')}`);
 }
 
 Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     this.context.verifyResponse = false;
 
     if(this.context.data) {
-        let actual = generateSqlStatementsFrom(this.context.data);
-
-        vulPrimaryEnForeignKeys(actual, this.context.sqlDataIds);
-
-        let expected = dataTableToSqlStatements(dataTable);
-
-        actual.should.deep.equalInAnyOrder(expected, `${JSON.stringify(actual, null, '\t')} != ${JSON.stringify(expected, null, '\t')}`);
+        vergelijkSqlStatementsNieuweStijl(this.context, dataTable);
     }
     else {
         const { sqlData, sqlDataIds } = this.context;
@@ -202,7 +207,8 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
     
             let currentStap;
             for(const categorie of Object.keys(queries)) {
-                queries[categorie].forEach(function(query, index) {
+                for (let index = 0; index < queries[categorie].length; index++) {
+                    const query = queries[categorie][index];
                     if(query.stap !== '') {
                         currentStap = Number(query.stap) - 1;
                     }
@@ -219,7 +225,7 @@ Then(/^zijn de gegenereerde SQL statements$/, function(dataTable) {
                                                          query,
                                                          actual,
                                                          sqlDataIds);
-                });
+                }
             }
         }
     }

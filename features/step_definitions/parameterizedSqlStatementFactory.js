@@ -24,14 +24,17 @@ function addParameterizedValues(statement) {
 }
 
 function addSqlGeneratedColumns(sqlData, statement, isValue = false) {
-    if (sqlData !== undefined) {
-        sqlData.forEach((row, index) => {
-            statement.text += index === 0
-                ? `${row[isValue ? 1 : 0]}`
-                : `,${row[isValue ? 1 : 0]}`;
-        });
-        statement.text += ',';
+    if (sqlData === undefined) {
+        return;
     }
+    
+    sqlData.forEach((row, index) => {
+        const columnIndex = isValue ? 1 : 0;
+        statement.text += index === 0
+            ? `${row[columnIndex]}`
+            : `,${row[columnIndex]}`;
+    });
+    statement.text += ',';
 }
 
 function insertIntoStatementMetSqlGeneratedData(tabelNaam, data, sqlGeneratedData = undefined) {
@@ -140,10 +143,10 @@ function deleteStatement(tabelNaam, id = undefined) {
     const primaryKeyName = tabelPrimaryKeyMap[tabelNaam] || tabelPrimaryKeyMap.default;
 
     const statement = {
-        text: id !== undefined
+        text: id
             ? `DELETE FROM public.${tableNameMap.get(tabelNaam)} WHERE ${primaryKeyName}=$1`
             : `DELETE FROM public.${tableNameMap.get(tabelNaam)}`,
-        values: id !== undefined
+        values: id
             ? [id]
             : []
     };
