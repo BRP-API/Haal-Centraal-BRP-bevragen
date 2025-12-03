@@ -1,0 +1,29 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4.0
+    container_name: keycloak
+    environment:
+      KC_HOSTNAME: keycloak
+      KC_HOSTNAME_PORT: 8888
+      KC_HOSTNAME_STRICT_BACKCHANNEL: "true"
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: "true"
+      KC_LOG_LEVEL: info
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://keycloak:8888/health/ready" ]
+      interval: 15s
+      timeout: 2s
+      retries: 15
+    command: ["start-dev", "--http-port", "8888", "--https-port", "7443", "--import-realm"]
+    ports:
+      - "8888:8888"
+      - "7443:7443"
+    networks:
+        - brp-api-network
+    volumes:
+      - ./realm.json:/opt/keycloak/data/import/realm.json
+
+networks:
+      brp-api-network:
+        name: brp-api-network

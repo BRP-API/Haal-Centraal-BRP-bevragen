@@ -1,0 +1,315 @@
+{
+  "realm": "brp",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "client met gemeentecode (eigen gemeente)",
+      "secret": "secret",
+      "clientAuthenticatorType": "client-secret",
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "redirectUris": [
+        "*"
+      ],
+      "attributes": {
+        "afnemerID": "000008",
+        "gemeenteCode": "0800",
+        "OIN": "000000099000000080000",
+        "resourceServer": "ResourceServer02"
+      },
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "000000099000000080000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "afnemerID-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "jsonType.label": "JSON",
+            "client.attribute": "afnemerID",
+            "multivalued": "true"
+          }
+        },
+        {
+          "name": "gemeenteCode-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "gemeenteCode",
+            "jsonType.label": "String",
+            "client.attribute": "gemeenteCode",
+            "multivalued": "true"
+          }
+        },
+        {
+          "name": "OIN-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "OIN",
+            "jsonType.label": "String",
+            "client.attribute": "OIN",
+            "multivalued": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "client met gemeentecode (ander gemeente)",
+      "secret": "secret",
+      "clientAuthenticatorType": "client-secret",
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "redirectUris": [
+        "*"
+      ],
+      "attributes": {
+        "afnemerID": "000008",
+        "gemeenteCode": "0599",
+        "resourceServer": "ResourceServer02"
+      },
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "000000099000000080000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "afnemerID-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "jsonType.label": "String",
+            "client.attribute": "afnemerID",
+            "multivalued": "true"
+          }
+        },
+        {
+          "name": "gemeenteCode-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "gemeenteCode",
+            "jsonType.label": "String",
+            "client.attribute": "gemeenteCode",
+            "multivalued": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "client zonder gemeentecode",
+      "secret": "secret",
+      "clientAuthenticatorType": "client-secret",
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "redirectUris": [
+        "*"
+      ],
+      "attributes": {
+        "afnemerID": "000008",
+        "resourceServer": "ResourceServer02"
+      },
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "000000099000000080000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "afnemerID-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "jsonType.label": "String",
+            "client.attribute": "afnemerID",
+            "multivalued": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "client met gemeentecode (eigen gemeente, bestaand gezag afnemer)",
+      "secret": "secret",
+      "clientAuthenticatorType": "client-secret",
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "redirectUris": [
+        "*"
+      ],
+      "attributes": {
+        "afnemerID": "000009",
+        "gemeenteCode": "0900",
+        "resourceServer": "ResourceServer02"
+      },
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "000000099000000090000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "afnemerID-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "jsonType.label": "String",
+            "client.attribute": "afnemerID",
+            "multivalued": "true"
+          }
+        },
+        {
+          "name": "gemeenteCode-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "gemeenteCode",
+            "jsonType.label": "String",
+            "client.attribute": "gemeenteCode",
+            "multivalued": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "client zonder gemeentecode (bestaand gezag afnemer)",
+      "secret": "secret",
+      "clientAuthenticatorType": "client-secret",
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "redirectUris": [
+        "*"
+      ],
+      "attributes": {
+        "afnemerID": "000009",
+        "resourceServer": "ResourceServer02"
+      },
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "000000099000000090000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "afnemerID-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "jsonType.label": "String",
+            "client.attribute": "afnemerID",
+            "multivalued": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "KMAR",
+      "secret": "secret",
+      "clientAuthenticatorType": "client-secret",
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "redirectUris": [
+        "*"
+      ],
+      "attributes": {
+        "afnemerID": "720402",
+        "resourceServer": "ResourceServer02"
+      },
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "000000099000000080000"
+      ],
+      "protocolMappers": [
+        {
+          "name": "afnemerID-client-attr",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-client-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "jsonType.label": "String",
+            "client.attribute": "afnemerID",
+            "multivalued": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "clientScopes": [
+    {
+      "name": "000000099000000080000",
+      "protocol": "openid-connect",
+      "protocolMappers": [
+        {
+          "name": "OIN",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "OIN",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "OIN",
+            "jsonType.label": "String",
+            "multivalued": "true"
+          }
+        },
+        {
+          "name": "afnemerID",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "afnemerID",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "afnemerID",
+            "jsonType.label": "String",
+            "multivalued": "true"
+          }
+        },
+        {
+          "name": "gemeenteCode",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "gemeenteCode",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "gemeenteCode",
+            "jsonType.label": "String",
+            "multivalued": "true"
+          }
+        }
+      ]
+    }
+  ]
+}
