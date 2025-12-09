@@ -18,9 +18,9 @@ function createAdres(context, aanduiding, dataTable) {
 
     const adres = {
         adres: createAdresType(dataTable),
-        id: !aanduiding
-            ? `adres-${context.data.adressen.length + 1}`
-            : `adres-${aanduiding}`
+        id: aanduiding
+            ? `adres-${aanduiding}`
+            : `adres-${context.data.adressen.length + 1}`
     }
 
     context.data.adressen.push(adres);

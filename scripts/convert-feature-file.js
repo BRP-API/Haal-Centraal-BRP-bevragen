@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+const fs = require('node:fs').promises;
 const { parse } = require('gherkin-io');
 
 const lt = "\`<";

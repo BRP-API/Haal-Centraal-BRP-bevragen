@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('node:fs');
 
 function processFile(inputPath, outputPath, caption) {
     const content = fs.readFileSync(inputPath, 'utf8');

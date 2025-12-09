@@ -12,14 +12,14 @@ const { getPersoon,
 const { arrayOfArraysToDataTable } = require('../dataTableFactory');
 
 Given(/^heeft de volgende persoon zonder burgerservicenummer als ouder ([1-2])$/, function (ouderType, dataTable) {
-    global.logger.error(`DEPRECATED. gegeven heeft de volgende persoon zonder burgerservicenummer als ouder ${ouderType}`, dataTable);
+    globalThis.logger.error(`DEPRECATED. gegeven heeft de volgende persoon zonder burgerservicenummer als ouder ${ouderType}`, dataTable);
     createOuder(
         getPersoon(this.context, undefined),
         ouderType,
         dataTable
     );
 
-    global.logger.info(`heeft de volgende persoon zonder burgerservicenummer als ouder ${ouderType}`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`heeft de volgende persoon zonder burgerservicenummer als ouder ${ouderType}`, getPersoon(this.context, undefined));
 });
 
 function gegevenHeeftPersoonAlsOuder(context, aanduiding, ouderType, dataTable) {
@@ -47,7 +47,7 @@ function gegevenHeeftPersoonAlsOuder(context, aanduiding, ouderType, dataTable) 
 }
 
 Given(/^heeft '(.*)' als ouder ([1-2])$/, function (aanduiding, ouderType) {
-    global.logger.error(`DEPRECATED. gegeven heeft '${aanduiding}' als ouder ${ouderType}`);
+    globalThis.logger.error(`DEPRECATED. gegeven heeft '${aanduiding}' als ouder ${ouderType}`);
     const ouderData = arrayOfArraysToDataTable([
         ['datum ingang familierechtelijke betrekking (62.10)', 'gisteren - 17 jaar']
     ]);
@@ -70,7 +70,7 @@ Given('heeft {string} en {string} als ouders', gegevenHeeftOudersMetAanduiding);
 Given('heeft {string} en {string} als ouders vanaf de geboortedatum', gegevenHeeftOudersMetAanduiding);
 
 Given(/^heeft '(.*)' als ouder ([1-2]) met de volgende gegevens$/, function (aanduiding, ouderType, dataTable) {
-    global.logger.error(`DEPRECATED. gegeven heeft '${aanduiding}' als ouder ${ouderType} met de volgende gegevens`, dataTable);
+    globalThis.logger.error(`DEPRECATED. gegeven heeft '${aanduiding}' als ouder ${ouderType} met de volgende gegevens`, dataTable);
     gegevenHeeftPersoonAlsOuder(this.context, aanduiding, ouderType, dataTable);
 });
 

@@ -8,14 +8,14 @@ function createAndReturnInsertedStatement(entityName, primaryKey, entity, additi
 
     // Add primary key and additional columns
     statementText += primaryKey;
-    Object.keys(additionalColumns).forEach(column => {
+    for (const column of Object.keys(additionalColumns)) {
         statementText += `,${column}`;
-    });
+    }
 
     // Add entity columns
-    Object.keys(entity).forEach(key => {
+    for (const key of Object.keys(entity)) {
         statementText += `,${key}`;
-    });
+    }
 
     statementText += ') VALUES(';
 
@@ -23,15 +23,17 @@ function createAndReturnInsertedStatement(entityName, primaryKey, entity, additi
     statementText += `(SELECT COALESCE(MAX(${primaryKey}), 0)+1 FROM public.${tableName})`;
 
     // Add additional column values
-    Object.values(additionalColumns).forEach(value => {
+    for (const value of Object.values(additionalColumns)) {
         statementText += `,${value}`;
-    });
+    }
 
     // Add entity values
-    Object.keys(entity).forEach((key, index) => {
+    let index = 0;
+    for (const key of Object.keys(entity)) {
         values.push(entity[key]);
         statementText += `,$${index + 1}`;
-    });
+        index++;
+    }
 
     statementText += ') RETURNING *';
 
@@ -73,21 +75,25 @@ function createInsertIntoStatement(entityNaam, entity) {
     let statementText = `INSERT INTO public.${tableName}(`;
     let values = [];
 
-    Object.keys(entity).forEach((key, index) => {
+    let index = 0;
+    for (const key of Object.keys(entity)) {
         statementText += index === 0
             ? key
             : `,${key}`;
-    });
+        index++;
+    }
 
     statementText += ') VALUES(';
 
-    Object.keys(entity).forEach((key, index) => {
+    index = 0;
+    for (const key of Object.keys(entity)) {
         values.push(entity[key]);
 
         statementText += index === 0
             ? `$${index+1}`
             : `,$${index+1}`;
-    });
+        index++;
+    }
 
     statementText += ')';
 
@@ -101,7 +107,11 @@ function createInsertIntoStatement(entityNaam, entity) {
 function generateAdresSqlStatements(adressen) {
     let sqlStatements = [];
 
-    adressen?.forEach(adres => {
+    if (!adressen) {
+        return sqlStatements;
+    }
+
+    for (const adres of adressen) {
         let adresStatements = {
             stap: adres.id,
             statements: []
@@ -110,7 +120,7 @@ function generateAdresSqlStatements(adressen) {
         adresStatements.statements.push(createInsertIntoAdresStatement(adres.adres));
 
         sqlStatements.push(adresStatements);
-    });
+    }
 
     return sqlStatements;
 }
@@ -118,7 +128,11 @@ function generateAdresSqlStatements(adressen) {
 function generateAutorisatieSqlStatements(autorisaties) {
     let sqlStatements = [];
 
-    autorisaties?.forEach(autorisatie => {
+    if (!autorisaties) {
+        return sqlStatements;
+    }
+
+    for (const autorisatie of autorisaties) {
         let autorisatieStatements = {
             stap: autorisatie.id,
             statements: []
@@ -127,7 +141,7 @@ function generateAutorisatieSqlStatements(autorisaties) {
         autorisatieStatements.statements.push(createInsertAutorisatieIntoStatement(autorisatie.autorisatie));
 
         sqlStatements.push(autorisatieStatements);
-    });
+    }
 
     return sqlStatements;
 }
@@ -136,9 +150,37 @@ function getBsn(persoon) {
     return persoon.persoon.at(-1).burger_service_nr;
 }
 
+function generatePersoonSqlStatements(persoon) {
+    let persoonStatements = {
+        stap: persoon.id,
+        statements: []
+    };
+
+    for (const key of Object.keys(persoon)) {
+        let statement;
+        switch (key) {
+            case 'id':
+                break;
+            case 'inschrijving':
+                statement = createInsertIntoPersoonslijstStatement(persoon.inschrijving);
+                break;
+            default:
+                for (const p of persoon[key]) {
+                    persoonStatements.statements.push(createInsertIntoStatement(key, p));
+                }
+                break;
+        }
+
+        if (statement) {
+            persoonStatements.statements.push(statement);
+        }
+    }
+    return persoonStatements;
+}
+
 function generateSqlStatementsFrom(data) {
     if(!data) {
-        global.logger.warn('no data to generate sql statements');
+        globalThis.logger.warn('no data to generate sql statements');
         return undefined;
     }
 
@@ -148,39 +190,18 @@ function generateSqlStatementsFrom(data) {
         autorisaties: generateAutorisatieSqlStatements(data.autorisaties)
     };
 
-    data.personen?.forEach(persoon => {
-        let persoonStatements = {
-            stap: persoon.id,
-            statements: []
-        };
+    if (!data.personen) {
+        return sqlStatements;
+    }
 
+    for (const persoon of data.personen) {
         if(getBsn(persoon) === undefined) {
-            global.logger.info('persoon zonder burgerservicenummer. Geen sql statements generatie', persoon);
+            globalThis.logger.info('persoon zonder burgerservicenummer. Geen sql statements generatie', persoon);
         }
         else {
-            Object.keys(persoon).forEach(key => {
-                let statement;
-                switch(key) {
-                    case 'id':
-                        break;
-                    case 'inschrijving':
-                        statement = createInsertIntoPersoonslijstStatement(persoon.inschrijving);
-                        break;
-                    default:
-                        persoon[key].forEach(p => {
-                            persoonStatements.statements.push(createInsertIntoStatement(key, p));
-                        });
-                        break;
-                }
-
-                if(statement) {
-                    persoonStatements.statements.push(statement);
-                }
-            });
-
-            sqlStatements.personen.push(persoonStatements);
+            sqlStatements.personen.push(generatePersoonSqlStatements(persoon));
         }
-    });
+    }
 
     return sqlStatements;
 }

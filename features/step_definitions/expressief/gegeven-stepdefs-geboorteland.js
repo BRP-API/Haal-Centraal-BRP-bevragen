@@ -16,7 +16,7 @@ Given(/^is in Nederland geboren$/, function () {
         ])
     );
 
-    global.logger.info(`gegeven persoon is in Nederland geboren`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`gegeven persoon is in Nederland geboren`, getPersoon(this.context, undefined));
 });
 
 Given(/^is in België geboren$/, function () {
@@ -31,7 +31,7 @@ Given(/^is in België geboren$/, function () {
         ])
     );
 
-    global.logger.info(`gegeven persoon is in België geboren`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`gegeven persoon is in België geboren`, getPersoon(this.context, undefined));
 });
 
 Given(/^is in het buitenland geboren$/, function () {
@@ -46,7 +46,7 @@ Given(/^is in het buitenland geboren$/, function () {
         ])
     );
 
-    global.logger.info(`gegeven persoon is in het buitenland geboren`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`gegeven persoon is in het buitenland geboren`, getPersoon(this.context, undefined));
 });
 
 Given(/^is geboren in (.*)/, async function (landNaam) {
@@ -59,5 +59,5 @@ Given(/^is geboren in (.*)/, async function (landNaam) {
         ])
     );
 
-    global.logger.info(`gegeven persoon is geboren in ${landNaam}`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`gegeven persoon is geboren in ${landNaam}`, getPersoon(this.context, undefined));
 });

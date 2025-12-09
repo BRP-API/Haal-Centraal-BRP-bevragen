@@ -8,7 +8,6 @@ const { gegevenDePersoonIsIngeschrevenInGemeente,
         gegevenDePersoonIsIngeschrevenInDeBrp } = require('../expressief/gegeven-stepdefs-verblijfplaats');
 const { gegevenDePersoonHeeftAlsOuders } = require('../expressief/gegeven-stepdefs-ouder');
 const { gegevenDePersonenZijnGehuwd } = require('../expressief/gegeven-stepdefs-partner');
-const { gegevenDePersoonIsBijGeboorteaangifteErkendDoor } = require('../expressief/gegeven-stepdefs-erkenning');
 const { gegevenDePersoonIsGeadopteerdOpDatum } = require('../expressief/gegeven-stepdefs-adoptie');
 
 // **************************************************************************************************************
@@ -220,7 +219,7 @@ Given('de minderjarige persoon {string} die nooit ingezetene is geweest', functi
     ['rni-deelnemer (88.10)', '201']
   ];
 
-  opschortingData = [
+  const opschortingData = [
     ['datum opschorting bijhouding (67.10)', 'gisteren - 1 jaar'],
     ['reden opschorting bijhouding (67.20)', 'R']
   ];
