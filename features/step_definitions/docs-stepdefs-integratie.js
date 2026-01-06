@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { When, Then } = require('@cucumber/cucumber');
 const { queryRowCount } = require('./postgresqlHelpers');
 const { execute, select } = require('./postgresqlHelpers-2');
 const { generateSqlStatementsFrom } = require('./sqlStatementsFactory');
@@ -13,8 +13,8 @@ When(/^de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd$/, a
         const sqlStatements = generateSqlStatementsFrom(this.context.data);
 
         this.context.aantalRijen = {
-            'lo3_pl': await queryRowCount(global.pool, 'inschrijving'),
-            'lo3_pl_persoon': await queryRowCount(global.pool, 'persoon')
+            'lo3_pl': await queryRowCount(globalThis.pool, 'inschrijving'),
+            'lo3_pl_persoon': await queryRowCount(globalThis.pool, 'persoon')
         }
 
         await execute(sqlStatements);
@@ -26,18 +26,18 @@ When(/^de sql statements gegenereerd uit de gegeven stappen zijn uitgevoerd$/, a
 });
 
 function updateContextData(contextData, sqlData, idField) {
-    sqlData.forEach(sqlItem => {
+    for (const sqlItem of sqlData) {
         const item = contextData.find(item => item.id === sqlItem.stap);
         if (item) {
             item[idField] = sqlItem[idField];
         }
-    });
+    }
 }
 
 Then(/heeft ([a-z]*) '(.*)' de volgende rij(?:en)? in tabel '(.*)'/, async function(type, aanduiding, tabelNaam, dataTable) {
     const objecten = createObjectArrayFrom(dataTable);
 
-    objecten.forEach(item => {
+    for (const item of objecten) {
         if(item.adres_id) {
             const src = this.context.data.adressen.find(a => a.id === `adres-${item.adres_id}`);
             if(src) {
@@ -50,7 +50,7 @@ Then(/heeft ([a-z]*) '(.*)' de volgende rij(?:en)? in tabel '(.*)'/, async funct
                 item.pl_id = src.plId;
             }
         }
-    });
+    }
 
     const results = await select(tabelNaam, objecten);
 
@@ -58,17 +58,17 @@ Then(/heeft ([a-z]*) '(.*)' de volgende rij(?:en)? in tabel '(.*)'/, async funct
 });
 
 function validateResult(results) {
-    results.forEach(item => {
+    for (const item of results) {
         if (item.result.rows.length > 0) {
             assert.containsAllKeys(item.result.rows[0], Object.keys(item.row));
         } else {
             assert.fail(undefined, undefined, 'No matching records found!');
         }
-    })
+    }
 }
 
 Then(/^zijn er geen rijen in tabel '([a-z0-9_]*)'$/, async function (tabelNaam) {
-    const actual = await queryRowCount(global.pool, tabelNaam);
+    const actual = await queryRowCount(globalThis.pool, tabelNaam);
 
     should.exist(actual);
     actual.should.equal(this.context.aantalRijen[tabelNaam]);

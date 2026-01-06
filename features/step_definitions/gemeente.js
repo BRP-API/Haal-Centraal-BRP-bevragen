@@ -20,6 +20,52 @@ function createGemeente(context, gemeenteId, dataTable) {
     };
 }
 
+function wijzigGemeentecodeVanAdressen(context, oudGemeenteCode, nieuweGemeenteCode) {
+    let gewijzigdAdressenIds = [];
+
+    for (const elem of context.sqlData) {
+        let adres = elem['adres'];
+        if (adres !== undefined) {
+            for (const adresId of Object.keys(adres)) {
+                if (adres[adresId].data.find(el => el[0] === 'gemeente_code' && el[1] === oudGemeenteCode)) {
+                    const nieuwAdresIndex = Object.keys(adres).length;
+                    const nieuwAdresData = structuredClone(adres[adresId].data);
+                    nieuwAdresData.find(el => el[0] === 'gemeente_code')[1] = nieuweGemeenteCode;
+                    adres[nieuwAdresIndex + 1 + ''] = {
+                        index: nieuwAdresIndex,
+                        data: nieuwAdresData
+                    };
+
+                    gewijzigdAdressenIds.push([adresId, nieuwAdresIndex + 1 + '']);
+                }
+            }
+        }
+    }
+
+    return gewijzigdAdressenIds;
+}
+
+function wijzigGemeentecodeVanVerblijfplaatsen(sqlDatas, oudAdres, nieuwAdres, nieuweGemeenteCode, ingangsdatum) {
+    for (const sqlData of sqlDatas) {
+        let verblijfplaats = sqlData['verblijfplaats']?.at(-1);
+        if (verblijfplaats?.find(el => el[0] === 'adres_id' && el[1] === oudAdres.index + '') !== undefined) {
+            for (const data of sqlData['verblijfplaats']) {
+                let volgNr = data.find(el => el[0] === 'volg_nr');
+                volgNr[1] = Number(volgNr[1]) + 1 + '';
+            }
+
+            let nieuwVerblijfplaatsData = structuredClone(sqlData['verblijfplaats'].at(-1));
+            nieuwVerblijfplaatsData.find(el => el[0] === 'adres_id')[1] = nieuwAdres.index + '';
+            nieuwVerblijfplaatsData.find(el => el[0] === 'volg_nr')[1] = '0';
+            nieuwVerblijfplaatsData.find(el => el[0] === 'inschrijving_gemeente_code')[1] = nieuweGemeenteCode + '';
+            nieuwVerblijfplaatsData.find(el => el[0] === 'adreshouding_start_datum')[1] = ingangsdatum + '';
+            nieuwVerblijfplaatsData.push(['aangifte_adreshouding_oms', 'W']);
+
+            sqlData.verblijfplaats.push(nieuwVerblijfplaatsData);
+        }
+    }
+}
+
 function samenvoegenGemeente(context, gemeenteId, dataTable) {
     let gemeenteData = context.sqlData.find(el => el['gemeente'] !== undefined);
 
@@ -32,52 +78,17 @@ function samenvoegenGemeente(context, gemeenteId, dataTable) {
     const nieuweGemeenteCode = gemeente.data.find(el => el[0] === 'nieuwe_gemeente_code')[1];
     const ingangsdatum = gemeente.data.find(el => el[0] === 'tabel_regel_eind_datum')[1];
 
-    let gewijzigdAdressenIds = [];
-    context.sqlData.forEach(function(elem) {
-        let adres = elem['adres'];
-        if(adres !== undefined) {
-            Object.keys(adres).forEach(function(adresId) {
-                if(adres[adresId].data.find(el => el[0] === 'gemeente_code' && el[1] === oudGemeenteCode)) {
-                    const nieuwAdresIndex = Object.keys(adres).length;
-                    const nieuwAdresData = JSON.parse(JSON.stringify(adres[adresId].data));
-                    nieuwAdresData.find(el => el[0] === 'gemeente_code')[1] = nieuweGemeenteCode;
-                    adres[nieuwAdresIndex + 1 + ''] = {
-                        index: nieuwAdresIndex,
-                        data: nieuwAdresData
-                    };
-
-                    gewijzigdAdressenIds.push([adresId, nieuwAdresIndex + 1 + '']);
-                }
-            });
-        }
-    });
+    let gewijzigdAdressenIds = wijzigGemeentecodeVanAdressen(context, oudGemeenteCode, nieuweGemeenteCode);
 
     const sqlDatas = context.sqlData;
     const adressen = context.sqlData.find(el => el['adres'] !== undefined);
 
-    gewijzigdAdressenIds.forEach(function(elem) {
+    for (const elem of gewijzigdAdressenIds) {
         const oudAdres = adressen.adres[elem[0]];
         const nieuwAdres = adressen.adres[elem[1]];
 
-        sqlDatas.forEach(function(elem) {
-            let verblijfplaats = elem['verblijfplaats']?.at(-1);
-            if(verblijfplaats?.find(el => el[0] === 'adres_id' && el[1] === oudAdres.index + '') !== undefined) {
-                elem['verblijfplaats'].forEach(function(data) {
-                    let volgNr = data.find(el => el[0] === 'volg_nr');
-                    volgNr[1] = Number(volgNr[1]) + 1 + '';
-                });
-
-                let nieuwVerblijfplaatsData = JSON.parse(JSON.stringify(elem['verblijfplaats'].at(-1)));
-                nieuwVerblijfplaatsData.find(el => el[0] === 'adres_id')[1] = nieuwAdres.index + '';
-                nieuwVerblijfplaatsData.find(el => el[0] === 'volg_nr')[1] = '0';
-                nieuwVerblijfplaatsData.find(el => el[0] === 'inschrijving_gemeente_code')[1] = nieuweGemeenteCode + '';
-                nieuwVerblijfplaatsData.find(el => el[0] === 'adreshouding_start_datum')[1] = ingangsdatum + '';
-                nieuwVerblijfplaatsData.push(['aangifte_adreshouding_oms', 'W'])
-
-                elem.verblijfplaats.push(nieuwVerblijfplaatsData);
-            }
-        });
-    });
+        wijzigGemeentecodeVanVerblijfplaatsen(sqlDatas, oudAdres, nieuwAdres, nieuweGemeenteCode, ingangsdatum);
+    }
 }
 
 module.exports = {

@@ -21,7 +21,7 @@ function gegevenPersonenZijnOpDatumIngeschrevenOpAdres(persoonAanduidingen, datu
     for(const persoonAanduiding of persoonAanduidingen) {
         gegevenPersonenZijnIngeschrevenOpAdres(this.context, adresAanduiding, persoonAanduiding, datum);
     }
-    global.logger.info(`gegeven persoon|personen '${persoonAanduidingen}' is|zijn op '${datum}' ingeschreven op adres '${adresAanduiding}'`, getPersoon(this.context, persoonAanduidingen[0]));
+    globalThis.logger.info(`gegeven persoon|personen '${persoonAanduidingen}' is|zijn op '${datum}' ingeschreven op adres '${adresAanduiding}'`, getPersoon(this.context, persoonAanduidingen[0]));
 }
 
 function gegevenPersonenZijnOpDatumIngeschrevenOpAdresMetDeVolgendeGegevens(persoonAanduidingen, datum, adresAanduiding, dataTable) {

@@ -4,11 +4,11 @@ const { columnNameMap, persoonTypeMap } = require('./brp');
 function getNextStapelNr(sqlData, gegevensgroep) {
     let stapelNr = 0;
 
-    Object.keys(sqlData).forEach(function(key) {
+    for (const key of Object.keys(sqlData)) {
         if(key.startsWith(gegevensgroep)){
             stapelNr = Number(key.replace(`${gegevensgroep}-`, ''));
         }
-    });
+    }
 
     return stapelNr+1;
 }
@@ -132,13 +132,13 @@ function updatePersoon(context, dataTable) {
 }
 
 function ophogenVolgnr(sqlData, isCorrectie = false) {
-    sqlData.forEach(function(data) {
+    for (const data of sqlData) {
         let volgNr = data.find(el => el[0] === 'volg_nr');
         if(volgNr[1] === '0' && isCorrectie) {
             data.push(['onjuist_ind','O']);
         }
         volgNr[1] = Number(volgNr[1]) + 1 + '';
-    });
+    }
 }
 
 function wijzigPersoon(context, dataTable, isCorrectie = false) {
@@ -158,7 +158,7 @@ function wijzigGegevensgroep(context, gegevensgroep, dataTable, isCorrectie = fa
 
     const stapelNr = sqlData[foundRelatie][0].find(el => el[0] === 'stapel_nr');
 
-    if(stapelNr !== undefined) {
+    if (stapelNr) {
         sqlData[foundRelatie].push(createPersoonTypeData(gegevensgroep, dataTable, undefined, Number(stapelNr[1])+1));
     }
     else {

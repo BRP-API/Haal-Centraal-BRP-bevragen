@@ -72,7 +72,7 @@ function gegevenDePersoonHeeftGezagsrelaties(aanduiding) {
     }
     this.context.bsnCurrentGezagPersoon = getBsn(getPersoonMetAanduiding(this.context, aanduiding));
 
-    if(!this.context.gezag.find(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon)) {
+    if(!this.context.gezag.some(g => g.burgerservicenummer === this.context.bsnCurrentGezagPersoon)) {
         this.context.gezag.push({
             burgerservicenummer: this.context.bsnCurrentGezagPersoon,
             gezag: []
@@ -88,13 +88,17 @@ function deleteNietDeprecatedGezagsrelatieProperties(context, gezag) {
             delete gezag.ouder.naam;
         }
         if(gezag.ouders) {
-            gezag.ouders.forEach(o => delete o.naam);
+            for (const o of gezag.ouders) {
+                delete o.naam;
+            }
         }
         if(gezag.derde) {
             delete gezag.derde.naam;
         }
         if(gezag.derden) {
-            gezag.derden.forEach(d => delete d.naam);
+            for (const d of gezag.derden) {
+                delete d.naam;
+            }
         }
     }
 }

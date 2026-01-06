@@ -37,7 +37,7 @@ function createVerblijfplaatsVoorkomen(sqlData, adresIndex, dataTable, isWoonadr
         sqlData['verblijfplaats'] = [];
     }
 
-    sqlData['verblijfplaats'].forEach(function(data) {
+    for (const data of sqlData['verblijfplaats']) {
         let volgNr = data.find(el => el[0] === 'volg_nr');
         if(volgNr[1] === '0' && isCorrectie) {
             data.push(['onjuist_ind','O']);
@@ -46,7 +46,7 @@ function createVerblijfplaatsVoorkomen(sqlData, adresIndex, dataTable, isWoonadr
             }
         }
         volgNr[1] = Number(volgNr[1]) + 1 + '';
-    });
+    }
 
     sqlData['verblijfplaats'].push(createVerblijfplaatsVoorkomenData(dataTable, adresIndex, isWoonadres));
 }
