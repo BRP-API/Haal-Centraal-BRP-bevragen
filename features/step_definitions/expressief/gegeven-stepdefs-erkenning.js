@@ -165,13 +165,13 @@ function kindHeeftGeenOuders(kind) {
 function gegevenDePersoonIsErkend(context, persoonAanduiding, ouderAanduiding, erkenningsType, datumErkenning) {
     const kind = getPersoon(context, persoonAanduiding);
     if (!kind) {
-        global.logger.error(`persoon ${persoonAanduiding} niet gevonden`);
+        globalThis.logger.error(`persoon ${persoonAanduiding} niet gevonden`);
         return;
     }
 
     const ouder = getPersoon(context, ouderAanduiding);
     if (!ouder) {
-        global.logger.error(`ouder ${ouderAanduiding} niet gevonden`);
+        globalThis.logger.error(`ouder ${ouderAanduiding} niet gevonden`);
         return;
     }
 

@@ -3,14 +3,14 @@ function stringifyValues(o) {
 
     if(o === null) return 'null';
     
-    Object.keys(o).forEach(k => {
+    for (const k of Object.keys(o)) {
         if (typeof o[k] === 'object') {
             o[k] = stringifyValues(o[k]);
         }
         else {
             o[k] = '' + o[k];
         }
-    });
+    }
 
     return o;
 }

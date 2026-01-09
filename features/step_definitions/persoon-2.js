@@ -1,14 +1,14 @@
-const { toDbColumnName, toDbPersoonType } = require('./brp');
+const { toDbPersoonType } = require('./brp');
 const { mapDataTableToEntiteit } = require('./dataTableFactory');
 
 function getNextStapelNr(entiteit, gegevensgroep) {
     let stapelNr = 0;
 
-    Object.keys(entiteit).forEach(property => {
+    for (const property of Object.keys(entiteit)) {
         if (property.startsWith(gegevensgroep)) {
             stapelNr += 1;
         }
-    });
+    }
 
     return stapelNr + 1;
 }
@@ -30,11 +30,11 @@ function createPersoonType(persoonType, dataTable, stapelNr, retainEmptyValues) 
     mapDataTableToEntiteit(persoon, dataTable, retainEmptyValues);
 
     if (!retainEmptyValues) {
-        Object.keys(persoon).forEach(property => {
+        for (const property of Object.keys(persoon)) {
             if (!persoon[property]) {
                 delete persoon[property];
             }
-        });
+        }
     }
 
     return persoon;
@@ -53,19 +53,15 @@ function createPersoon(context, aanduiding, dataTable) {
         persoon: [createPersoonType('persoon', dataTable, 0)]
     };
 
-    persoon.id = !aanduiding
-        ? `persoon-${context.data.personen.length + 1}`
-        : `persoon-${aanduiding}`;
+    persoon.id = aanduiding
+        ? `persoon-${aanduiding}`
+        : `persoon-${context.data.personen.length + 1}`;
 
     context.data.personen.push(persoon);
 }
 
 function aanvullenPersoon(persoon, dataTable) {
     mapDataTableToEntiteit(persoon.persoon.at(-1), dataTable);
-}
-
-function aanvullenPartner(persoon, dataTable) {
-    mapDataTableToEntiteit(persoon.partner.at(-1), dataTable);
 }
 
 function aanvullenGezagsverhouding(persoon, dataTable) {
@@ -85,24 +81,32 @@ function aanvullenInschrijving(persoon, dataTable) {
     mapDataTableToEntiteit(persoon.inschrijving, dataTable);
 }
 
-function wijzigPersoon(persoon, dataTable, isCorrectie = false) {
-    persoon.persoon.forEach(p => {
-        p.volg_nr = Number(p.volg_nr) + 1 + '';
-        if (isCorrectie && p.volg_nr === '1') {
-            p.onjuist_ind = 'O';
+function incrementVolgnrs(gegevensgroepen, isCorrectie) {
+    if(!gegevensgroepen) {
+        return;
+    }
+
+    for (const groep of gegevensgroepen) {
+        groep.volg_nr = Number(groep.volg_nr) + 1 + '';
+        if (isCorrectie && groep.volg_nr === '1') {
+            groep.onjuist_ind = 'O';
         }
-    });
+    }
+}
+
+function wijzigPersoon(persoon, dataTable, isCorrectie = false) {
+    incrementVolgnrs(persoon.persoon, isCorrectie);
 
     persoon.persoon.push(createPersoonType('persoon', dataTable, 0));
 }
 
 function wijzigGeadopteerdPersoon(persoon, dataTable, isCorrectie = false) {
-    persoon.persoon.forEach(p => {
+    for (const p of persoon.persoon) {
         p.volg_nr = Number(p.volg_nr) + 1 + '';
         if (isCorrectie) { // corrigeer voor alle inschrijvingen
             p.onjuist_ind = 'O';
         }
-    });
+    }
 
     persoon.persoon.push(createPersoonType('persoon', dataTable, 0));
 }
@@ -123,49 +127,49 @@ function createKindMetAanduiding(persoon, aanduiding, dataTable) {
     ];
 }
 
-function wijzigKind(persoon, dataTable, isCorrectie = false, kindBsn = null) {
-    let kindData = createPersoonType('kind', dataTable, 0);
-    
+function getTeWijzigenKind(persoon, kindBsn, kindData) {
     let kind;
     
-    Object.keys(persoon).forEach(property => {
+    for (const property of Object.keys(persoon)) {
         if (property.startsWith('kind')) {
             if (persoon[property][0].burger_service_nr === kindBsn || persoon[property].at(-1).burger_service_nr === kindData.burger_service_nr) {
                kind = persoon[property]
             }
         }
-    });
-
-    if (!kind) {
-        // wanneer het kind niet gevonden wordt op burgerservicenummer, dan wordt het laatst opgevoerde kind (zonder burgerservicenummer) gezocht
-        Object.keys(persoon).forEach(property => {
-            if (property.startsWith('kind')) {
-                if (!persoon[property].at(-1).burger_service_nr || !kindData.burger_service_nr) {
-                    kind = persoon[property];
-                }
-            }
-        });
+    }
+    if(kind) {
+        return kind;
     }
 
+    // wanneer het kind niet gevonden wordt op burgerservicenummer, dan wordt het laatst opgevoerde kind (zonder burgerservicenummer) gezocht
+    for (const property of Object.keys(persoon)) {
+        if (property.startsWith('kind')) {
+            if (!persoon[property].at(-1).burger_service_nr || !kindData.burger_service_nr) {
+                kind = persoon[property];
+            }
+        }
+    }
+    return kind;
+}
+
+function wijzigKind(persoon, dataTable, isCorrectie = false, kindBsn = null) {
+    let kindData = createPersoonType('kind', dataTable, 0);
+    
+    let kind = getTeWijzigenKind(persoon, kindBsn, kindData);
     if (!kind) {
-        global.logger.warn(`geen kind met bsn ${kindData.burger_service_nr} gevonden`, persoon);
+        globalThis.logger.warn(`geen kind met bsn ${kindData.burger_service_nr} gevonden`, persoon);
         return;
     }
 
     kindData.stapel_nr = kind.at(-1).stapel_nr;
 
-    kind.forEach(p => {
-        p.volg_nr = Number(p.volg_nr) + 1 + '';
-        if (isCorrectie && p.volg_nr === '1') {
-            p.onjuist_ind = 'O';
-        }
-    });
+    incrementVolgnrs(kind, isCorrectie);
 
-    Object.keys(kindData).forEach(property => {
+    for (const property of Object.keys(kindData)) {
         if (!kindData[property]) {
             delete kindData[property];
         }
-    });
+    }
 
     kind.push(kindData);
 }
@@ -179,9 +183,9 @@ function wijzigKindMetAanduiding(persoon, aanduiding, dataTable, isCorrectie = f
         actueleKind.onjuist_ind = 'O';
     }
 
-    persoon[type].forEach(p => {
+    for (const p of persoon[type]) {
         p.volg_nr = Number(p.volg_nr) + 1 + '';
-    });
+    }
 
     persoon[type].push(createPersoonType('kind', dataTable, stapelnr));
 }
@@ -197,12 +201,7 @@ function createOuder(persoon, ouderType, dataTable) {
 function wijzigOuder(persoon, ouderType, dataTable, isCorrectie = false) {
     const type = `ouder-${ouderType}`;
 
-    persoon[type].forEach(p => {
-        p.volg_nr = Number(p.volg_nr) + 1 + '';
-        if (isCorrectie && p.volg_nr === '1') {
-            p.onjuist_ind = 'O';
-        }
-    });
+    incrementVolgnrs(persoon[type], isCorrectie);
 
     persoon[type].push(createPersoonType(type, dataTable, 0));
 }
@@ -223,6 +222,30 @@ function createPartnerMetAanduiding(persoon, aanduiding, dataTable) {
     ];
 }
 
+function getTeWijzigenPartner(persoon, partnerBsn, partnerData) {
+    let partner;
+
+    for (const property of Object.keys(persoon)) {
+        if (property.startsWith('partner')) {
+            if (persoon[property].at(-1).burger_service_nr === partnerBsn || persoon[property].at(-1).burger_service_nr === partnerData.burger_service_nr) {
+                partner = persoon[property];
+            }
+        }
+    }
+    if(partner) {
+        return partner;
+    }
+
+    for (const property of Object.keys(persoon)) {
+        if (property.startsWith('partner')) {
+            if (!persoon[property].at(-1).burger_service_nr || !partnerData.burger_service_nr) {
+                partner = persoon[property];
+            }
+        }
+    }
+    return partner;
+}
+
 /**
  * Wijzigt de partnergegevens van een persoon.
  * 
@@ -237,27 +260,9 @@ function createPartnerMetAanduiding(persoon, aanduiding, dataTable) {
 function wijzigPartner(persoon, dataTable, isCorrectie = false, mergeProperties = false, retainEmptyValues = false, partnerBsn = null) {
     let partnerData = createPersoonType('partner', dataTable, 0, retainEmptyValues);
 
-    let partner;
-    Object.keys(persoon).forEach(property => {
-        if (property.startsWith('partner')) {
-            if (persoon[property].at(-1).burger_service_nr === partnerBsn || persoon[property].at(-1).burger_service_nr === partnerData.burger_service_nr) {
-                partner = persoon[property];
-            }
-        }
-    });
-
+    let partner = getTeWijzigenPartner(persoon, partnerBsn, partnerData);
     if (!partner) {
-        Object.keys(persoon).forEach(property => {
-            if (property.startsWith('partner')) {
-                if (!persoon[property].at(-1).burger_service_nr || !partnerData.burger_service_nr) {
-                    partner = persoon[property];
-                }
-            }
-        });
-    }
-
-    if (!partner) {
-        global.logger.warn(`geen partner met bsn ${partnerData.burger_service_nr} gevonden`, persoon);
+        globalThis.logger.warn(`geen partner met bsn ${partnerData.burger_service_nr} gevonden`, persoon);
         return;
     }
 
@@ -269,18 +274,13 @@ function wijzigPartner(persoon, dataTable, isCorrectie = false, mergeProperties 
 
     partnerData.stapel_nr = partner.at(-1).stapel_nr;
 
-    partner.forEach(p => {
-        p.volg_nr = Number(p.volg_nr) + 1 + '';
-        if (isCorrectie && p.volg_nr === '1') {
-            p.onjuist_ind = 'O';
-        }
-    });
+    incrementVolgnrs(partner, isCorrectie);
 
-    Object.keys(partnerData).forEach(property => {
+    for (const property of Object.keys(partnerData)) {
         if (!partnerData[property]) {
             delete partnerData[property];
         }
-    });
+    }
 
     partner.push(partnerData);
 }
@@ -294,9 +294,9 @@ function wijzigPartnerMetAanduiding(persoon, aanduiding, dataTable, isCorrectie 
         actuelePartner.onjuist_ind = 'O';
     }
 
-    persoon[type].forEach(p => {
+    for (const p of persoon[type]) {
         p.volg_nr = Number(p.volg_nr) + 1 + '';
-    });
+    }
 
     persoon[type].push(createPersoonType('partner', dataTable, stapelnr));
 }
@@ -317,15 +317,10 @@ function createGezagsverhouding(persoon, dataTable) {
 }
 
 function wijzigGezagsverhouding (persoon, dataTable, isCorrectie) {
-    persoon.gezagsverhouding?.forEach(p => {
-      p.volg_nr = Number(p.volg_nr) + 1 + '';
-      if(isCorrectie && p.volg_nr === '1') {
-          p.onjuist_ind = 'O';
-      }
-    });
-  
+    incrementVolgnrs(persoon.gezagsverhouding, isCorrectie);
+
     createGezagsverhouding(persoon, dataTable);
-  };
+}
 
 function createVerblijfplaats(persoon, dataTable) {
     if (!persoon.verblijfplaats) {
@@ -343,12 +338,7 @@ function createVerblijfplaats(persoon, dataTable) {
 }
 
 function wijzigVerblijfplaats(persoon, dataTable, isCorrectie) {
-    persoon.verblijfplaats?.forEach(p => {
-        p.volg_nr = Number(p.volg_nr) + 1 + '';
-        if (isCorrectie && p.volg_nr === '1') {
-            p.onjuist_ind = 'O';
-        }
-    });
+    incrementVolgnrs(persoon.verblijfplaats, isCorrectie);
 
     createVerblijfplaats(persoon, dataTable);
 }

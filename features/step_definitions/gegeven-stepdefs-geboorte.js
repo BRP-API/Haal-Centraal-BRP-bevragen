@@ -28,7 +28,7 @@ function gegevenVondelingIsOpDatumGeboren(datum) {
     
     createVondelingOuders(getPersoon(this.context, undefined), datum);
 
-    global.logger.info(`is ${datum} als vondeling geboren`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`is ${datum} als vondeling geboren`, getPersoon(this.context, undefined));
 }
 
 function gegevenDePersoonIsGeborenOp(context, aanduiding, datum) {
@@ -48,7 +48,7 @@ function gegevenPersoonIsOpDatumGeboren(datum) {
         ])
     );
 
-    global.logger.info(`is ${datum} geboren`, getPersoon(this.context, undefined));
+    globalThis.logger.info(`is ${datum} geboren`, getPersoon(this.context, undefined));
 }
 
 function gegevenPersoonMetAanduidingIsOpDatumGeboren(aanduiding,datum) {
@@ -59,7 +59,7 @@ function gegevenPersoonMetAanduidingIsOpDatumGeboren(aanduiding,datum) {
         ])
     );
 
-    global.logger.info(`${aanduiding} is ${datum} geboren`, getPersoon(this.context, aanduiding));
+    globalThis.logger.info(`${aanduiding} is ${datum} geboren`, getPersoon(this.context, aanduiding));
 }
 
 Given('{string} is {relatieve datum} geboren', gegevenPersoonMetAanduidingIsOpDatumGeboren);
