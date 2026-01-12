@@ -1,5 +1,5 @@
 const { When } = require('@cucumber/cucumber');
-const fs = require('fs');
+const fsPromises = require('node:fs/promises');
 const { executeSqlStatements } = require('./postgresqlHelpers');
 const { execute } = require('./postgresqlHelpers-2');
 const { generateSqlStatementsFrom } = require('./sqlStatementsFactory');
@@ -90,7 +90,7 @@ async function execSqlStatements(context) {
 
     if(context.data) {
         const sqlStatements = generateSqlStatementsFrom(context.data);
-        global.logger.info('uit te voeren sql statements', sqlStatements);
+        globalThis.logger.info('uit te voeren sql statements', sqlStatements);
 
         if(!context.isStapDocumentatieScenario) {
             await execute(sqlStatements);
@@ -98,10 +98,8 @@ async function execSqlStatements(context) {
             copyPrimaryKeyValues(context, sqlStatements);
         }
     }
-    else {
-        if(!context.isStapDocumentatieScenario) {
-            await executeSqlStatements(context.sql, context.sqlData, global.pool);
-        }
+    else if(!context.isStapDocumentatieScenario) {
+        await executeSqlStatements(context.sql, context.sqlData, globalThis.pool);
     }
 }
 
@@ -126,9 +124,7 @@ function createDataTableForZoekMetAdresseerbaarObjectIdentificatie(adresseerbaar
         fields: fields
     };
 
-    requestBody.adresseerbaarObjectIdentificatie = !adresseerbaarObjectIdentificatie
-        ? '0000000000000001'
-        : adresseerbaarObjectIdentificatie;
+    requestBody.adresseerbaarObjectIdentificatie = adresseerbaarObjectIdentificatie || '0000000000000001';
 
     mapDataTableToEntiteit(requestBody, parametersDataTable);
 
@@ -141,12 +137,8 @@ function createDataTableForZoekMetGeslachtsnaamEnGeboortedatum(geslachtsnaam, ge
         fields: fields
     };
 
-    requestBody.geslachtsnaam = !geslachtsnaam
-        ? 'doe'
-        : geslachtsnaam;
-    requestBody.geboortedatum = !geboortedatum
-        ? '2000-01-01'
-        : geboortedatum;
+    requestBody.geslachtsnaam = geslachtsnaam || 'doe';
+    requestBody.geboortedatum = geboortedatum || '2000-01-01';
 
     mapDataTableToEntiteit(requestBody, parametersDataTable);
 
@@ -159,15 +151,9 @@ function createDataTableForZoekMetGeslachtsnaamVoornamenEnGemeenteVanInschrijvin
         fields: fields
     };
 
-    requestBody.geslachtsnaam = !geslachtsnaam
-        ? 'doe'
-        : geslachtsnaam;
-    requestBody.voornamen = !voornamen
-        ? 'john'
-        : voornamen;
-    requestBody.gemeenteVanInschrijving = !gemeenteVanInschrijving
-        ? '0000'
-        : gemeenteVanInschrijving;
+    requestBody.geslachtsnaam = geslachtsnaam || 'doe';
+    requestBody.voornamen = voornamen || 'john';
+    requestBody.gemeenteVanInschrijving = gemeenteVanInschrijving || '0000';
 
     mapDataTableToEntiteit(requestBody, parametersDataTable);
 
@@ -180,9 +166,7 @@ function createDataTableForZoekMetNummeraanduidingIdentificatie(nummeraanduiding
         fields: fields
     };
 
-    requestBody.nummeraanduidingIdentificatie = !nummeraanduidingIdentificatie
-        ? '0000000000000001'
-        : nummeraanduidingIdentificatie;
+    requestBody.nummeraanduidingIdentificatie = nummeraanduidingIdentificatie || '0000000000000001';
 
     mapDataTableToEntiteit(requestBody, parametersDataTable);
 
@@ -195,12 +179,8 @@ function createDataTableForZoekMetPostcodeEnHuisnummer(postcode, huisnummer, fie
         fields: fields
     };
 
-    requestBody.postcode = !postcode
-        ? '1000 AA'
-        : postcode;
-    requestBody.huisnummer = !huisnummer
-        ? '1'
-        : huisnummer;
+    requestBody.postcode = postcode || '1000 AA';
+    requestBody.huisnummer = huisnummer || '1';
 
     mapDataTableToEntiteit(requestBody, parametersDataTable);
 
@@ -213,15 +193,9 @@ function createDataTableForZoekMetStraatnaamHuisnummerEnGemeenteVanInschrijving(
         fields: fields
     };
 
-    requestBody.straat = !straat
-        ? 'straat'
-        : straat;
-    requestBody.huisnummer = !huisnummer
-        ? '1'
-        : huisnummer;
-    requestBody.gemeenteVanInschrijving = !gemeenteVanInschrijving
-        ? '0000'
-        : gemeenteVanInschrijving;
+    requestBody.straat = straat || 'straat';
+    requestBody.huisnummer = huisnummer || '1';
+    requestBody.gemeenteVanInschrijving = gemeenteVanInschrijving || '0000';
 
     mapDataTableToEntiteit(requestBody, parametersDataTable);
 
@@ -248,21 +222,35 @@ function createDataTableForRequest(parameterNames, fields) {
             return undefined;
     }
 }
-        
-async function handleRequestWithParameters(context, endpoint, parametersDataTable) {
-    initializeAfnemerIdAndGemeenteCode(context);
 
+async function writeFileSync(filePath, data) {
+    const fileHandle = await fsPromises.open(filePath, 'w');
+    try {
+        await fileHandle.writeFile(data);
+        await fileHandle.sync(); // Force flush to disk
+    } finally {
+        await fileHandle.close();
+    }
+}
+
+async function writeContextDataToFiles(context) {
     if(context.gezag !== undefined) {
-        fs.writeFileSync(context.gezagDataPath, JSON.stringify(context.gezag, null, '\t'));
+        await writeFileSync(context.gezagDataPath, JSON.stringify(context.gezag, null, '\t'));
     }
     if(context.downstreamApiResponseHeaders !== undefined) {
-        fs.writeFileSync(context.downstreamApiDataPath + '/response-headers.json',
+        await writeFileSync(context.downstreamApiDataPath + '/response-headers.json',
                          JSON.stringify(context.downstreamApiResponseHeaders[0], null, '\t'));
     }
     if(context.downstreamApiResponseBody !== undefined) {
-        fs.writeFileSync(context.downstreamApiDataPath + '/response-body.json',
+        await writeFileSync(context.downstreamApiDataPath + '/response-body.json',
                          context.downstreamApiResponseBody);
     }
+}
+
+async function handleRequestWithParameters(context, endpoint, parametersDataTable) {
+    initializeAfnemerIdAndGemeenteCode(context);
+
+    await writeContextDataToFiles(context);
 
     addDefaultAutorisatieSettings(context, context.afnemerID);
 
@@ -274,7 +262,7 @@ async function handleRequestWithParameters(context, endpoint, parametersDataTabl
 }
 
 When(/^([a-zA-Z-]*) wordt gezocht met de volgende parameters$/, async function (endpoint, dataTable) {
-    global.logger.info(`als ${endpoint} wordt gezocht met de volgende parameters`);
+    globalThis.logger.info(`als ${endpoint} wordt gezocht met de volgende parameters`);
 
     await handleRequestWithParameters(this.context, endpoint, dataTable);
 });

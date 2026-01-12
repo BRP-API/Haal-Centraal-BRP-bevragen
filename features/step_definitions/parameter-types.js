@@ -4,6 +4,7 @@ const { toDateOrString } = require('./brpDatum');
 const DEFAULT_DATEPART = '00';
 const DEFAULT_JAAR = '0000';
 const ONBEKENDE_DATUM = `${DEFAULT_JAAR}${DEFAULT_DATEPART}${DEFAULT_DATEPART}`;
+const MAAND_NAMEN = 'januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december';
 
 function formatDatePart(value, defaultValue = DEFAULT_DATEPART) {
     if (!value) return defaultValue;
@@ -69,7 +70,7 @@ defineDateParameterType(
 
 defineDateParameterType(
     'dd maand yyyy datum',
-    /(?:op )?(?:in )?'?(?:(\d{1,2}) )?(?:(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december) )?(\d{4})'?/,
+    new RegExp(`(?:op )?(?:in )?'?(?:([0-9]{1,2}) )?(?:(${MAAND_NAMEN}) )?([0-9]{4})'?`),
     (dag, maand, jaar) => getJaar(jaar) + getMaand(maand) + getDag(dag)
 );
 
@@ -77,9 +78,9 @@ defineParameterType({
     name: 'vandaag, gisteren of morgen x jaar geleden',
     regexp: /(?:(gisteren|vandaag|morgen) )?(\d{1,2}) jaar geleden/,
     transformer(dag, aantalJaren) {
-        return !dag
-            ? toDateOrString(`vandaag - ${aantalJaren} jaar`, false)
-            : toDateOrString(`${dag} - ${aantalJaren} jaar`, false);
+        return dag
+            ? toDateOrString(`${dag} - ${aantalJaren} jaar`, false)
+            : toDateOrString(`vandaag - ${aantalJaren} jaar`, false);
     }
 });
 

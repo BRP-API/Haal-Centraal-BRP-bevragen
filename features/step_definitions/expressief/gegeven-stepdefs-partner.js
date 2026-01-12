@@ -2,7 +2,6 @@ const { Given } = require('@cucumber/cucumber');
 const { createPartner, wijzigPartner } = require('../persoon-2');
 const { getPersoon, getBsn, persoonPropertiesToArrayofArrays } = require('../contextHelpers');
 const { objectToDataTable, arrayOfArraysToDataTable } = require('../dataTableFactory');
-const { toBRPDate } = require('../brpDatum');
 
 function deleteHuwelijkProperties(entiteit) {
     delete entiteit.relatie_start_datum;
@@ -13,12 +12,12 @@ function deleteHuwelijkProperties(entiteit) {
 function getPartnerActueleGegevens(persoon, bsnPartner) {
     let partner;
 
-    Object.keys(persoon).forEach(property => {
+    for (const property of Object.keys(persoon)) {
         if (property.includes('partner') &&
             persoon[property].at(-1).burger_service_nr === bsnPartner) {
             partner = persoon[property].at(-1);
         }
-    });
+    }
 
     return partner;
 }
@@ -69,13 +68,13 @@ function gegevenDePersonenZijnGehuwdGecorrigeerd(context, aanduiding1, aanduidin
     );
 }
 
-function gegevenDePersonenZijnGehuwdOfGeregistreerdPartnerschap(context, aanduiding1, aanduiding2, datumVerbintenis, plaatsVerbintenis, landVerbintenis, soortVerbintenis, dataTable) {
+function gegevenDePersonenZijnGehuwdOfGeregistreerdPartnerschap(context, aanduiding1, aanduiding2, datumVerbintenis, plaatsVerbintenis, landVerbintenis, soortVerbintenis) {
     const verbintenisData = arrayOfArraysToDataTable([
         ['datum huwelijkssluiting/aangaan geregistreerd partnerschap (06.10)', datumVerbintenis],
         ['plaats huwelijkssluiting/aangaan geregistreerd partnerschap (06.20)', plaatsVerbintenis],
         ['land huwelijkssluiting/aangaan geregistreerd partnerschap (06.30)', landVerbintenis],
         ['soort verbintenis (15.10)', soortVerbintenis]
-    ], dataTable);
+    ], undefined);
 
     gegevenDePersonenZijnGehuwd(context, aanduiding1, aanduiding2, verbintenisData);
 }

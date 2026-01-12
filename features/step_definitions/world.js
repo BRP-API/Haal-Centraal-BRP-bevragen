@@ -78,6 +78,13 @@ function configureOAuthSettings(context) {
                 clientSecret: 'secret',
                 scopes: [ '000000099000000090000' ],
                 resourceServer: 'ResourceServer02'
+            },
+            {
+                afnemerID: '720402',
+                clientId: 'KMAR',
+                clientSecret: 'secret',
+                scopes: [ '000000099000000080000' ],
+                resourceServer: 'ResourceServer02'
             }
         ]
     }
