@@ -9,4 +9,3 @@ components:
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
-      example: "555555021"

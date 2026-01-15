@@ -10,7 +10,6 @@ components:
       description: |
         Als je ook overleden personen in het antwoord wilt, geef dan de parameter inclusiefOverledenPersonen op met waarde True.
       type: boolean
-      example: true
     PersonenQuery:
       type: object
       required:
@@ -36,8 +35,8 @@ components:
             Velden die automatisch worden geleverd (inOnderzoek, geheimhoudingPersoonsgegevens, opschortingBijhouding, rni en verificatie) mag je niet opgeven in fields.
             Opgave van een pad dat verwijst naar een niet-bestaand veld of naar een automatisch geleverd veld leidt tot een 400 Bad Request.
             
-            Meer details over hoe fields werkt lees je in het [feature overzicht](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/features-overzicht#filteren-van-de-velden-van-de-gevonden-personen).
-            Stel je fields eenvoudig samen met de [fields tool](https://brp-api.github.io/Haal-Centraal-BRP-bevragen/v2/fields){:target="_blank" rel="noopener"}.
+            Meer details over hoe fields werkt lees je in het [feature overzicht](https://developer.rvig.nl/brp-api/personen-response-filteren/).
+            Stel je fields eenvoudig samen met de [fields tool](https://developer.rvig.nl/brp-api/fields-samenstellen/).
           type: array
           maxItems: 130
           minItems: 1
