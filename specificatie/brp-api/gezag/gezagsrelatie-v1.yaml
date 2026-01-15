@@ -27,13 +27,6 @@ components:
           Voogdij: '#/components/schemas/Voogdij'
           TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
           GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
-      example:
-        type: 'TweehoofdigOuderlijkGezag'
-        ouders:
-          - burgerservicenummer: '999998870'
-          - burgerservicenummer: '999998882'
-        minderjarige:
-          burgerservicenummer: '999998894'
 
     TweehoofdigOuderlijkGezag:
       allOf:
