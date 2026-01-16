@@ -47,31 +47,29 @@ function gegevenKindIsGeadopteerdDoorPersoonAlsOuder(context, kind, aanduidingOu
             ], dataTable),
             false
         );
-    } else {
-        if(kind[`ouder-${ouderType}`]) {
-            wijzigOuder(
-                kind,
-                ouderType,
-                arrayOfArraysToDataTable([
-                    ['burgerservicenummer (01.20)', getBsn(ouder)],
-                    ['geslachtsnaam (02.40)', getGeslachtsnaam(ouder)],
-                    ['geboortedatum (03.10)', getGeboortedatum(ouder)],
-                    ['geslachtsaanduiding (04.10)', getGeslachtsaanduiding(ouder)]
-                ], dataTable)
-            );
-        }
-        else{
-            createOuder(
-                kind,
-                ouderType,
-                arrayOfArraysToDataTable([
-                    ['burgerservicenummer (01.20)', getBsn(ouder)],
-                    ['geslachtsnaam (02.40)', getGeslachtsnaam(ouder)],
-                    ['geboortedatum (03.10)', getGeboortedatum(ouder)],
-                    ['geslachtsaanduiding (04.10)', getGeslachtsaanduiding(ouder)]
-                ], dataTable)
-            );
-        }
+    } else if(kind[`ouder-${ouderType}`]) {
+        wijzigOuder(
+            kind,
+            ouderType,
+            arrayOfArraysToDataTable([
+                ['burgerservicenummer (01.20)', getBsn(ouder)],
+                ['geslachtsnaam (02.40)', getGeslachtsnaam(ouder)],
+                ['geboortedatum (03.10)', getGeboortedatum(ouder)],
+                ['geslachtsaanduiding (04.10)', getGeslachtsaanduiding(ouder)]
+            ], dataTable)
+        );
+    }
+    else{
+        createOuder(
+            kind,
+            ouderType,
+            arrayOfArraysToDataTable([
+                ['burgerservicenummer (01.20)', getBsn(ouder)],
+                ['geslachtsnaam (02.40)', getGeslachtsnaam(ouder)],
+                ['geboortedatum (03.10)', getGeboortedatum(ouder)],
+                ['geslachtsaanduiding (04.10)', getGeslachtsaanduiding(ouder)]
+            ], dataTable)
+        );
     }
 
     createKind(
@@ -117,7 +115,7 @@ function gegevenIsGeadopteerdDoorPersoon(context, aanduidingKind, aanduidingOude
 
     gegevenKindIsGeadopteerdDoorPersoonAlsOuder(context, kind, aanduidingOuder, ouderType, adoptieOuderData);
 
-    global.logger.info(`persoon '${aanduidingKind}' is '${datum}' geadopteerd door '${aanduidingOuder}'`, getPersoon(context, aanduidingKind));
+    globalThis.logger.info(`persoon '${aanduidingKind}' is '${datum}' geadopteerd door '${aanduidingOuder}'`, getPersoon(context, aanduidingKind));
 }
 
 function gegevenIsGeadopteerdMetBeideOuders(aanduidingKind, aanduidingOuder1, aanduidingOuder2) {

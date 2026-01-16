@@ -106,9 +106,9 @@ components:
     PersoonInOnderzoek:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn.
-        * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
-        * **datumIngangOnderzoekGemeente - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente
-        * **datumIngangOnderzoekGezag - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige
+        * **datumIngangOnderzoekPersoon** - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
+        * **datumIngangOnderzoekGemeente** - Deze datum heeft betrekking op gemeenteVanInschrijving en datumInschrijvingInGemeente
+        * **datumIngangOnderzoekGezag** - Deze datumingang heeft betrekking op indicatieCurateleRegister en indicatieGezagMinderjarige
       type: object
       properties:
         datumIngangOnderzoekPersoon:
@@ -135,7 +135,7 @@ components:
     PersoonInOnderzoekBeperkt:
       description: |
         Geeft aan welke gegevens van de persoon in onderzoek zijn.
-        * **datumIngangOnderzoekPersoon - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
+        * **datumIngangOnderzoekPersoon** - Deze datum heeft betrekking op burgerservicenummer, geslacht en leeftijd
       type: object
       properties:
         datumIngangOnderzoekPersoon:

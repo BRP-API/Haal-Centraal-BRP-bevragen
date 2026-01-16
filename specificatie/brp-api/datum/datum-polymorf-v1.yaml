@@ -29,10 +29,6 @@ components:
           DatumOnbekend: '#/components/schemas/DatumOnbekend'
           JaarDatum: '#/components/schemas/JaarDatum'
           JaarMaandDatum: '#/components/schemas/JaarMaandDatum'
-      example:
-        type: Datum
-        datum: "2018-07-01"
-        langFormaat: "1 juli 2018"
 
     VolledigeDatum:
       description: Datum conform iso8601
@@ -45,10 +41,6 @@ components:
               format: date
       required:
         - datum
-      example:
-        type: Datum
-        datum: "2018-07-01"
-        langFormaat: "1 juli 2018"
 
     DatumOnbekend:
       description: representatie voor een volledig onbekend datum
@@ -61,10 +53,6 @@ components:
               default: true
       required:
         - onbekend
-      example:
-        type: DatumOnbekend
-        onbekend: true
-        langFormaat: "onbekend"
 
     JaarDatum:
       description: representatie voor een datum waarvan maand en dag onbekend zijn
@@ -76,10 +64,6 @@ components:
               $ref: '#/components/schemas/Jaar'
       required:
         - jaar
-      example:
-        type: JaarDatum
-        jaar: 2018
-        langFormaat: 2018
 
     JaarMaandDatum:
       description: representatie voor een datum waarvan de dag onbekend is
@@ -94,11 +78,6 @@ components:
       required:
         - jaar
         - maand
-      example:
-        type: JaarMaandDatum
-        jaar: 2018
-        maand: 7
-        langFormaat: "juli 2018"
 
     Jaar:
       type: integer

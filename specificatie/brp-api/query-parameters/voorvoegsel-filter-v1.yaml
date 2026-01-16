@@ -9,4 +9,3 @@ components:
         Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
       type: string
       pattern: ^[a-zA-Z \']{1,10}$
-      example: "de"

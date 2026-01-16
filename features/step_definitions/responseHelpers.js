@@ -13,7 +13,7 @@ function verifyAantal(context) {
         return;
     }
 
-    context.verifyAantal.forEach((va) => {
+    for (const va of context.verifyAantal) {
         const { naamColObj, naamSubColObj, aantal } = va;
 
         const actual = context?.response?.data[toCollectieNaam(naamColObj)];
@@ -31,13 +31,13 @@ function verifyAantal(context) {
 
             actualSubCollectie.length.should.equal(Number(aantal), `aantal ${naamSubColObj} is ongelijk aan ${aantal}\nactual: ${JSON.stringify(context.response.data, undefined, '\t')}`);
         }
-    });
+    }
 }
 
 function vergelijkActualMetExpected(context, inAnyOrder = true) {
     const actual = stringifyValues(context.response.data);
 
-    const expected = context.expected !== undefined
+    const expected = context.expected
         ? context.expected
         : {};
 
@@ -46,11 +46,11 @@ function vergelijkActualMetExpected(context, inAnyOrder = true) {
     }
 
     if(inAnyOrder) {
-        global.logger.debug("willekeurig collectie volgorde validatie");
+        globalThis.logger.debug("willekeurig collectie volgorde validatie");
         actual.should.deep.equalInAnyOrder(expected, `actual: ${JSON.stringify(actual, undefined, '\t')}\nexpected: ${JSON.stringify(expected, undefined, '\t')}`);
     }
     else {
-        global.logger.debug("vaste collectie volgorde validatie");
+        globalThis.logger.debug("vaste collectie volgorde validatie");
         actual.should.deep.equal(expected, `actual: ${JSON.stringify(actual, undefined, '\t')}\nexpected: ${JSON.stringify(expected, undefined, '\t')}`);
     }
 }

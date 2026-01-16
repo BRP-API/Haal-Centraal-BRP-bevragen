@@ -48,11 +48,11 @@ function initExpected(context, type, aanduidingMinderjarige, aanduidingMeerderja
     }
 
     const expectedPersoon = context.expected.personen.at(-1);
-    if(!expectedPersoon) {
-        context.expected.personen.push(createPersoonMetGezag(context, type, aanduidingMinderjarige, aanduidingMeerderjarige1, aanduidingMeerderjarige2, toelichting));
+    if(expectedPersoon) {
+        expectedPersoon.gezag.push(createGezag(context, type, aanduidingMinderjarige, aanduidingMeerderjarige1, aanduidingMeerderjarige2, toelichting));
     }
     else {
-        expectedPersoon.gezag.push(createGezag(context, type, aanduidingMinderjarige, aanduidingMeerderjarige1, aanduidingMeerderjarige2, toelichting));
+        context.expected.personen.push(createPersoonMetGezag(context, type, aanduidingMinderjarige, aanduidingMeerderjarige1, aanduidingMeerderjarige2, toelichting));
     }
 }
 
