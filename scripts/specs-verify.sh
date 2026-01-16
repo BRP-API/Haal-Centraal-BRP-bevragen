@@ -76,7 +76,8 @@ npx cucumber-js -f json:./test-reports/cucumber-js/personen/test-result-autorisa
                 -f summary:./test-reports/cucumber-js/personen/test-result-autorisatie-protocollering-summary.txt \
                 -f summary \
                 features/adressering \
+                features/autorisatie \
                 features/zoeken \
-                features/input-validatie/velden-vragen-met-fields \
+                features/input-validatie \
                 -p AenP \
                 > /dev/null
