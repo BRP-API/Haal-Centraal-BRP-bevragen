@@ -7,3 +7,4 @@ components:
     DatumFilter:
       type: string
       format: date
+      example: "1964-09-24"

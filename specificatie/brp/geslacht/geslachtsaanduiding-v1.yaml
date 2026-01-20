@@ -9,3 +9,6 @@ components:
       allOf:
         - $ref: '../waardetabel-v1.yaml#/components/schemas/Waardetabel'
         - type: object
+          example:
+            code: M
+            omschrijving: man

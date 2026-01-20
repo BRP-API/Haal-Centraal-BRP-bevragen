@@ -7,3 +7,4 @@ components:
     OuderAanduiding:
       type: string
       pattern: ^[1|2]$
+      example: '1'

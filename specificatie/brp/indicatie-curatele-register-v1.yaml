@@ -8,3 +8,4 @@ components:
       type: boolean
       description: |
         Geeft aan dat de persoon onder curatele is gesteld.
+      example: true
