@@ -5,6 +5,12 @@ info:
 paths: {}
 components:
   schemas:
+    Gezag:
+      type: array
+      items: 
+        $ref: '#/components/schemas/AbstractGezagsrelatie'
+      minItems: 0
+
     AbstractGezagsrelatie:
       type: object
       required:
