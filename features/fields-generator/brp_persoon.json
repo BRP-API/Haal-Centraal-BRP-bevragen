@@ -34,8 +34,10 @@
         "JaarDatum",
         "JaarMaandDatum",
         "Waardetabel",
-        "AdellijkeTitelPredicaatType",
-        "AbstractGezagsrelatie"
+        "AdellijkeTitelPredicaatType"
+    ],
+    "ignoreSubFields": [
+        "gezag"
     ],
     "aliases": [
         { 
@@ -61,6 +63,6 @@
             "excludeFields": [ "adresregel3", "land", "aanhef", "aanschrijfwijze", "gebruikInLopendeTekst" ]
         }
     ],
-    "sourceYaml": "/specificatie/genereervariant/openapi.yaml",
+    "sourceYaml": "/specificatie/resolved/openapi.yaml",
     "fieldslistFolder": "/features/"
 }
