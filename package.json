@@ -15,12 +15,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^20.3.1",
-    "@commitlint/config-conventional": "^20.3.1",
-    "@cucumber/cucumber": "^12.5.0",
-    "@redocly/cli": "^2.14.5",
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
+    "@cucumber/cucumber": "^12.6.0",
+    "@redocly/cli": "^2.17.0",
     "@stoplight/spectral-cli": "^6.15.0",
-    "axios": "^1.13.2",
+    "axios": "^1.13.5",
     "chai": "^4.5.0",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -30,7 +30,7 @@
     "jest": "^30.2.0",
     "multiple-cucumber-html-reporter": "^3.9.3",
     "nswag": "^14.6.3",
-    "pg": "^8.17.1",
+    "pg": "^8.18.0",
     "winston": "^3.19.0"
   },
   "config": {
