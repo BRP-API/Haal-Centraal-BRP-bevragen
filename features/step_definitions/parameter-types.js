@@ -51,7 +51,7 @@ defineParameterType({
 
 defineParameterType({
     name: 'aanduiding',
-    regexp: /'([a-zA-Z0-9À-ž-]*)'/
+    regexp: /'([a-zA-Z0-9À-ž- ]*)'/
 });
 
 defineParameterType({
