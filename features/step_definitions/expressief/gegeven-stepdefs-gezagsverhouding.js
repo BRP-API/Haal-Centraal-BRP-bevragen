@@ -74,6 +74,7 @@ Given('{dd-mm-yyyy datum} is in een gerechtelijke uitspraak het gezag toegewezen
 Given('{vandaag, gisteren of morgen x jaar geleden} is in een gerechtelijke uitspraak het gezag toegewezen aan {string} en een derde', uitspraakGezagOuderEnDerdeOpDatum);
 Given('{dd-mm-yyyy datum} is in een gerechtelijke uitspraak het gezag toegewezen aan ouder {string} en een derde', uitspraakGezagOuderEnDerdeOpDatum);
 Given('{vandaag, gisteren of morgen x jaar geleden} is in een gerechtelijke uitspraak het gezag toegewezen aan ouder {string} en een derde', uitspraakGezagOuderEnDerdeOpDatum);
+Given('{vandaag, gisteren of morgen - x jaar} is in een gerechtelijke uitspraak het gezag toegewezen aan {string} en een derde', uitspraakGezagOuderEnDerdeOpDatum);
 
 Given('in een gerechtelijke uitspraak is het gezag toegewezen aan beide ouders', function () {
     createGerechtelijkeUitspraak(this.context, undefined, IndicatieGezag.BeideOuders);
