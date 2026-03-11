@@ -132,7 +132,7 @@ Given(/^'(.*)' is overleden met de volgende gegevens$/, function (aanduiding, da
 
 Given("is bevoegd", function () {
     // do nothing
-})
+});
 
 Given(/^bijhouding van de persoonsgegevens van '(.*)' is opgeschort met de volgende gegevens$/, function (aanduiding, dataTable) {
     aanvullenInschrijving(
