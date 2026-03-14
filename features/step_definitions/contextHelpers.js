@@ -38,6 +38,10 @@ function getVoornamen(persoon) {
     return persoon.persoon.at(-1).voor_naam;
 }
 
+function getVoorvoegsel(persoon) {
+    return persoon.persoon.at(-1).geslachts_naam_voorvoegsel;
+}
+
 function getGeboortedatum(persoon) {
     return persoon.persoon.at(-1).geboorte_datum;
 }
@@ -95,6 +99,7 @@ module.exports = {
     getBeschrijvingDocument,
     getBsn,
     getVoornamen,
+    getVoorvoegsel,
     getGeslachtsnaam,
     getGeboortedatum,
     getGeslachtsaanduiding,
