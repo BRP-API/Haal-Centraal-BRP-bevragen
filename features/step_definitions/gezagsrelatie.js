@@ -1,6 +1,7 @@
 const { getBsn,
         getGeslachtsaanduiding,
         getGeslachtsnaam,
+        getVoorvoegsel,
         getVoornamen,
         getGeboortedatum,
         getPersoon } = require('./contextHelpers');
@@ -34,6 +35,7 @@ function setGezagRelatieProperties(persoon, retval, isMinderjarige) {
     retval.naam = {};
 
     setProperty(retval.naam, 'voornamen', getVoornamen(persoon));
+    setProperty(retval.naam, 'voorvoegsel', getVoorvoegsel(persoon));
     setProperty(retval.naam, 'geslachtsnaam', getGeslachtsnaam(persoon));
     const geslachtsaanduiding = getGeslachtsaanduiding(persoon);
     if(geslachtsaanduiding) {

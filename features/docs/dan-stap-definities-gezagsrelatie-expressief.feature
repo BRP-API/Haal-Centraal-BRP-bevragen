@@ -10,8 +10,8 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
       | burgerservicenummer (01.20) | geslachtsnaam (02.40) | geboortedatum (03.10) | geslachtsaanduiding (04.10) |
       |                   000000036 | Jansen                | gisteren - 2 jaar     | M                           |
     En de persoon 'Jeanette' heeft de volgende gegevens
-      | voornamen (02.10) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
-      | Jeanette          | Sanders               | V                           |
+      | voornamen (02.10) | voorvoegsel (02.30) | geslachtsnaam (02.40) | geslachtsaanduiding (04.10) |
+      | Jeanette          | van                 | Sanders               | V                           |
 
   Regel: Dan is het gezag over '{aanduiding minderjarige}' gezamenlijk ouderlijk gezag met ouder '{aanduiding ouder}' en ouder '{aanduiding ouder}'
     De volgorde waarin ouders genoemd worden is willekeurig en niet relevant
@@ -254,6 +254,7 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
                     {
                       "naam": {
                         "voornamen": "Jeanette",
+                        "voorvoegsel": "van",
                         "geslachtsnaam": "Sanders"
                       },
                       "geslacht": {
@@ -305,6 +306,7 @@ Functionaliteit: Stap definities ten behoeve van specificeren gezagsrelaties
                     {
                       "naam": {
                         "voornamen": "Jeanette",
+                        "voorvoegsel": "van",
                         "geslachtsnaam": "Sanders"
                       },
                       "geslacht": {
