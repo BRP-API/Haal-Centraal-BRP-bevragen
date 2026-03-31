@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.1.2
 info:
   title: referentie implementatie van data api contract mbv OAS 3.1
   description: |
@@ -6,10 +6,15 @@ info:
     Dit document kan worden gebruikt als referentie voor het opstellen van API contracten voor data APIs.
   version: 1.0.0
   contact: {}
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
 servers:
-  - url: https://api.example.com
+  - url: https://referentie-data-api.nl
     description: |
       De server waarop de API draait.
+security:
+  - clientCredentials: []
 tags:
   - name: Data API
     description: |
@@ -102,6 +107,13 @@ paths:
       tags:
         - Data API
 components:
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.example.com/token
+          scopes: {}
   schemas:
     DataApiRequest:
       type: object
@@ -215,7 +227,6 @@ components:
       pattern: ^[0-9]{16}$
       description: |
         De identificatiecode van een adresseerbaar object.
-      example: '0226010000038820'
     ANummer:
       description: |
         Het A-nummer van de persoon
@@ -224,11 +235,9 @@ components:
     Burgerservicenummer:
       type: string
       pattern: ^[0-9]{9}$
-      example: '555555021'
     GbaDatum:
       type: string
       pattern: ^[0-9]{8}$
-      example: '20180700'
     GeboorteBasis:
       type: object
       properties:
@@ -242,11 +251,9 @@ components:
         code:
           type: string
           pattern: ^[a-zA-Z0-9 \.]+$
-          example: '6030'
         omschrijving:
           type: string
           pattern: ^[a-zA-Z0-9À-ž \'\.\-\(\),]{1,200}$
-          example: Nederland
     GbaGeboorte:
       allOf:
         - $ref: '#/components/schemas/GeboorteBasis'
@@ -260,9 +267,6 @@ components:
       allOf:
         - $ref: '#/components/schemas/Waardetabel'
         - type: object
-          example:
-            code: M
-            omschrijving: man
     AbstractGezagsrelatie:
       type: object
       required:
@@ -285,20 +289,12 @@ components:
           Voogdij: '#/components/schemas/Voogdij'
           TijdelijkGeenGezag: '#/components/schemas/TijdelijkGeenGezag'
           GezagNietTeBepalen: '#/components/schemas/GezagNietTeBepalen'
-      example:
-        type: TweehoofdigOuderlijkGezag
-        ouders:
-          - burgerservicenummer: '999998870'
-          - burgerservicenummer: '999998882'
-        minderjarige:
-          burgerservicenummer: '999998894'
     Voornamen:
       description: |
         De verzameling namen voor de geslachtsnaam, gescheiden door spaties.
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
       maxLength: 200
-      example: Pieter Jan
     AdellijkeTitelPredicaatSoort:
       type: string
       enum:
@@ -313,21 +309,15 @@ components:
           properties:
             soort:
               $ref: '#/components/schemas/AdellijkeTitelPredicaatSoort'
-          example:
-            code: JV
-            omschrijving: jonkvrouw
-            soort: predicaat
     Voorvoegsel:
       type: string
       pattern: ^[a-zA-Z \']{1,10}$
       maxLength: 10
-      example: de
     Geslachtsnaam:
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$
       description: |
         De achternaam van een persoon.
-      example: Vries
     NaamBasis:
       type: object
       properties:
@@ -394,6 +384,7 @@ components:
     OnbekendeDerde:
       allOf:
         - $ref: '#/components/schemas/Derde'
+        - type: object
     GezamenlijkGezag:
       allOf:
         - $ref: '#/components/schemas/AbstractGezagsrelatie'
@@ -473,7 +464,6 @@ components:
         aanduidingGegevensInOnderzoek:
           type: string
           pattern: ^[0-9]{6}$
-          example: '100000'
         datumIngangOnderzoek:
           $ref: '#/components/schemas/GbaDatum'
     EuropeesKiesrechtBasis:
@@ -495,7 +485,6 @@ components:
       properties:
         uitgeslotenVanKiesrecht:
           type: boolean
-          example: true
     GbaUitsluitingKiesrecht:
       allOf:
         - $ref: '#/components/schemas/UitsluitingKiesrechtBasis'
@@ -559,7 +548,6 @@ components:
     OuderAanduiding:
       type: string
       pattern: ^[1|2]$
-      example: '1'
     OuderBasis:
       type: object
       properties:
@@ -600,14 +588,14 @@ components:
     GbaOverlijden:
       allOf:
         - $ref: '#/components/schemas/OverlijdenBasis'
-      type: object
-      properties:
-        datum:
-          description: |
-            datum waarop de persoon is overleden.
-          $ref: '#/components/schemas/GbaDatum'
-        inOnderzoek:
-          $ref: '#/components/schemas/InOnderzoek'
+        - type: object
+          properties:
+            datum:
+              description: |
+                datum waarop de persoon is overleden.
+              $ref: '#/components/schemas/GbaDatum'
+            inOnderzoek:
+              $ref: '#/components/schemas/InOnderzoek'
     PartnerBasis:
       type: object
       properties:
@@ -668,7 +656,6 @@ components:
       type: string
       description: Naam van categorie waarop de RNI-deelnemer gegevens heeft aangeleverd
       pattern: ^[a-zA-Z0-9À-ž \.\-\'\/]{1,40}$
-      example: Verblijfplaats
     RniDeelnemer:
       type: object
       description: Gegevens over de RNI-deelnemer die de gegevens in de betrokken categorie heeft aangeleverd.
@@ -690,56 +677,47 @@ components:
       type: integer
       minimum: 1
       maximum: 99999
-      example: 14
     Huisletter:
       description: |
         Een toevoeging aan een huisnummer in de vorm van een letter die door de gemeente aan een adresseerbaar object is gegeven.
       type: string
       pattern: ^[a-zA-Z]{1}$
-      example: a
     Huisnummertoevoeging:
       description: |
         Een toevoeging aan een huisnummer of een combinatie van huisnummer en huisletter die door de gemeente aan een adresseerbaar object is gegeven.
       type: string
       pattern: ^[a-zA-Z0-9 \-]{1,4}$
-      example: bis
     Postcode:
       description: |
         De door PostNL vastgestelde code die bij een bepaalde combinatie van een straatnaam en een huisnummer hoort.
       type: string
       pattern: ^[1-9]{1}[0-9]{3}[ ]?[A-Za-z]{2}$
-      example: 2341SX
     Woonplaats:
       description: |
         Een woonplaats is een gedeelte van het grondgebied van de gemeente met een naam.
       title: woonplaats naam
       type: string
       pattern: ^[a-zA-Z0-9À-ž, \(\)\.\-\']{1,80}$
-      example: Duiven
     Locatiebeschrijving:
       type: string
       maxLength: 35
       description: |
         Omschrijving van de ligging van een verblijfsobject, standplaats of ligplaats.
-      example: Naast de derde brug
     Regel1:
       type: string
       maxLength: 40
       description: |
         Het eerste deel van een buitenlands adres. Vaak is dit een combinatie van de straat en huisnummer.
-      example: 1600 Pennsylvania Avenue NW
     Regel2:
       type: string
       maxLength: 50
       description: |
         Het tweede deel van een buitenlands adres. Vaak is dit een combinatie van woonplaats eventueel in combinatie met de postcode.
-      example: Washington, DC 20500
     Regel3:
       type: string
       maxLength: 35
       description: |
         Het derde deel van een buitenlands adres is optioneel. Het gaat om een of meer geografische gebieden van het adres in het buitenland.
-      example: Selangor
     GbaVerblijfplaatsBeperkt:
       type: object
       properties:
@@ -774,7 +752,6 @@ components:
         Unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
       type: string
       pattern: ^[0-9]{16}$
-      example: '0518200000366054'
     OfficieleStraatnaam:
       description: |
         De officiële naam van een openbare ruimte uit de Basisregistratie Gebouwen en Adressen (BAG).
@@ -878,11 +855,9 @@ components:
       pattern: ^(?!0{16})[0-9]{16}$
       description: |
         De identificatiecode van een adresseerbaar object uitgezonderd de standaardwaarde (0000000000000000)
-      example: '0226010000038820'
     DatumFilter:
       type: string
       format: date
-      example: '1964-09-24'
     Field:
       description: |
         Het pad naar een gewenst veld in punt-gescheiden formaat. Bijvoorbeeld "burgerservicenummer", "geboorte.datum", "partners.naam.voornamen".
@@ -893,49 +868,41 @@ components:
         Een code die aangeeft in welke gemeente de persoon woont, of de laatste gemeente waar de persoon heeft gewoond, of de gemeente waar de persoon voor het eerst is ingeschreven.
       type: string
       pattern: ^[0-9]{4}$
-      example: '0518'
     GeslachtFilter:
       description: |
         Geeft aan dat de persoon een man of een vrouw is, of dat het geslacht (nog) onbekend is.
       type: string
       pattern: ^([Mm]|[Vv]|[Oo])$
-      example: V
     GeslachtsnaamFilter:
       description: |
         De (geslachts)naam waarvan de eventueel aanwezige voorvoegsels zijn afgesplitst. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
-      example: Vries
     NummeraanduidingIdentificatieFilter:
       type: string
       pattern: ^(?!0{16})[0-9]{16}$
       description: |
         De unieke identificatie van een nummeraanduiding (en het bijbehorende adres) in de BAG.
-      example: '0518200000366054'
     StraatFilter:
       description: |
         Een naam die door de gemeente aan een openbare ruimte is gegeven. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 7 letters.** **Zoeken met tekstvelden is case-insensitive.** 
       type: string
       pattern: ^[a-zA-Z0-9À-ž \-\'\.]{1,80}$|^[a-zA-Z0-9À-ž \-\'\.]{7,79}\*{1}$|^\*{1}[a-zA-Z0-9À-ž \-\'\.]{7,79}$
-      example: Tulpstraat
     VoornamenOptioneelFilter:
       description: |
         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan.** **Zoeken met tekstvelden is case-insensitive.**
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,199}\*{0,1}$
-      example: Dirk
     VoornamenVerplichtFilter:
       description: |
         De verzameling namen die, gescheiden door spaties, aan de geslachtsnaam voorafgaat. **Gebruik van de wildcard is toegestaan bij invoer van ten minste 3 letters.** **Zoeken met tekstvelden is case-insensitive.**
       type: string
       pattern: ^[a-zA-Z0-9À-ž \.\-\']{1,200}$|^[a-zA-Z0-9À-ž \.\-\']{3,199}\*{1}$
-      example: Dirk
     VoorvoegselFilter:
       description: |
         Deel van de geslachtsnaam dat vooraf gaat aan de rest van de geslachtsnaam. **Zoeken met tekstvelden is case-insensitive.**
       type: string
       pattern: ^[a-zA-Z \']{1,10}$
-      example: de
   responses:
     '400':
       description: Bad Request
