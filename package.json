@@ -15,16 +15,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@cucumber/cucumber": "^12.7.0",
-    "@redocly/cli": "^2.25.2",
-    "axios": "^1.14.0",
+    "@cucumber/cucumber": "^12.8.1",
+    "@redocly/cli": "^2.29.1",
+    "axios": "^1.15.2",
     "chai": "^4.5.0",
     "deep-equal-in-any-order": "^2.2.0",
     "gherkin-io": "^1.3.0",
     "husky": "^9.1.7",
     "jest": "^30.3.0",
     "multiple-cucumber-html-reporter": "^3.10.0",
-    "nswag": "^14.6.3",
+    "nswag": "^14.7.1",
     "pg": "^8.20.0",
     "winston": "^3.19.0"
   }
