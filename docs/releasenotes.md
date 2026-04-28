@@ -5,6 +5,10 @@ title: Haal Centraal BRP Personen Bevragen
 
 # Releasenotes Haal-Centraal BRP Personen Bevragen
 
+## versie 2.7.4 (2 april 2026)
+- Gezag kan nu de geboortemoeder bepalen wanneer de erkenning door de vader ook bij de moeder is geregistreerd.
+- Gezag kan bepalen of de minderjarige staande huwelijk geboren is in alle situaties waarbij de ouders met elkaar getrouwd, gescheiden, vervolgens hertrouwd en daarna opnieuw gescheiden zijn.
+
 ## versie 2.7.0 (9 september 2025)
 -	Gezag wordt nu geleverd voor een minderjarige met gehuwde ouders die in het buitenland is geboren of heeft verbleven. Daarmee wordt het percentage "gezag niet te bepalen" antwoorden verder verlaagd.
 -	Gezag kan nu worden bepaald voor minderjarigen met een ouder zonder burgerservicenummer. Daarmee wordt het percentage "gezag niet te bepalen" antwoorden verder verlaagd.
