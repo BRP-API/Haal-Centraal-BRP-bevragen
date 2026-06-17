@@ -1,0 +1,61 @@
+name: 'Scan Container Image for CVEs and generate SBOM with Trivy'
+description: 'Scan met behulp van Trivy een container image op CVEs, genereer een SBOM en uploadt de rapporten als artefacten.'
+inputs:
+  image:
+    description: 'Container image die moet worden gescand'
+    required: true
+  trivy-version:
+    description: 'Versie van Trivy die moet worden gebruikt'
+    required: false
+    default: 'v0.70.0'
+  severity:
+    description: 'Komma gescheiden lijst van severities die moet worden gerapporteerd'
+    required: false
+    default: 'CRITICAL,HIGH'
+  artifact-name:
+    description: 'Naam voor het trivy scan rapport'
+    required: false
+    default: 'trivy-image-report'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Scan container image for CVEs (JSON)
+      uses: aquasecurity/trivy-action@v0.36.0
+      with:
+        image-ref: ${{ inputs.image }}
+        format: json
+        output: trivy-image-report.json
+        severity: ${{ inputs.severity }}
+        ignore-unfixed: true
+        version: ${{ inputs.trivy-version }}
+        hide-progress: false
+        exit-code: '0'
+
+    - name: Convert JSON report to table format
+      shell: bash
+      run: trivy convert --format table --output trivy-image-report.txt trivy-image-report.json
+
+    - name: Publish CVE scan report to job summary
+      if: always()
+      shell: bash
+      run: |
+        echo '## CVE Scan Report' >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+        cat trivy-image-report.txt >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+
+    - name: Generate SBOM (CycloneDX JSON)
+      shell: bash
+      run: trivy image --format cyclonedx --output trivy-image-sbom.cdx.json ${{ inputs.image }}
+
+    - name: Upload CVE scan report artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: |
+          trivy-image-report.json
+          trivy-image-report.txt
+          trivy-image-sbom.cdx.json
+        if-no-files-found: warn
