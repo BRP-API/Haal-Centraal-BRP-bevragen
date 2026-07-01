@@ -1,0 +1,4 @@
+[source,gherkin]
+----
+include::example$features/bevragen/persoon-beperkt/overlijden/overzicht.feature[]
+----

@@ -1,0 +1,27 @@
+= Aanschrijfwijze
+
+De *aanschrijfwijze* gebruik je als:
+* de eerste regel(s) van de adressering op een envelop
+* links bovenaan een brief, direct boven het adres.
+
+Wil je weten hoe de aanschrijfwijze precies wordt samengesteld? 
+Lees hier de xref:personen:features/adressering/aanschrijfwijze/niet-adellijk.adoc[afleidingsregels voor het bepalen van de aanschrijfwijze]. Bekijk ook de afleidingsregels xref:personen:features/adressering/aanschrijfwijze/adellijk.adoc[voor personen van adel] of xref:personen:features/adressering/aanschrijfwijze/hoffelijkheidstitel.adoc[personen die gehuwd zijn (geweest) met een persoon van adel].
+
+Wil je weten welke regels zijn toegepast voor een specifiek persoon? Onderstaande stroomschema's helpen je op weg.
+
+== Alleenstaand
+image::stroomschema-aanschrijfwijze-alleenstaand.png[alleenstaand]
+
+== Met partner
+
+=== Geslacht = onbekend
+image::stroomschema-1.png[aanschrijfwijze geslacht O]
+
+=== Geslacht = man
+image::stroomschema-2.png[aanschrijfwijze geslacht M]
+
+=== Geslacht = vrouw
+image::stroomschema-aanschrijfwijze-V.png[aanschrijfwijze geslacht V]
+
+=== Hoffelijkheidstitel
+image::stroomschema-5.png[hoffelijkheidstitel]

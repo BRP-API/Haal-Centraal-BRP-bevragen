@@ -1,0 +1,19 @@
+= Aanhef
+
+De aanhef is een introducerende zin van een brief of e-mail waarmee je de lezer begroet. Met de aanhef uit de {apiname} Personen begroet je de lezer op een formeel correcte manier met Geachte, of Hoogwelgeboren heer.
+
+Wil je weten hoe de aanhef precies wordt samengesteld? Lees hier de xref:personen:features/adressering/aanhef/index.adoc[afleidingsregels voor het bepalen van de aanhef]. Bekijk ook de afleidingsregels xref:personen:features/adressering/aanhef/adellijke-titel-predicaat.adoc[voor personen van adel] of xref:personen:features/adressering/aanhef/adellijke-titel-predicaat-partner.adoc[personen die gehuwd zijn (geweest) met een persoon van adel].
+
+Wil je weten welke regels zijn toegepast voor een specifiek persoon? Onderstaande stroomschema's helpen je op weg.
+
+== Geslacht = onbekend
+image:stroomschema-1.png[aanhef geslacht O]
+
+== Geslacht = man
+image:stroomschema-2.png[aanhef geslacht M]
+
+== Geslacht = vrouw
+image:stroomschema-3.png[aanhef geslacht V]
+
+== Hoffelijkheidstitel
+image:stroomschema-4.png[hoffelijkheidstitel]

@@ -1,0 +1,4 @@
+[source,gherkin]
+----
+include::example$features/bevragen/zoek-met-postcode-en-huisnummer/fout-cases.feature[]
+----
