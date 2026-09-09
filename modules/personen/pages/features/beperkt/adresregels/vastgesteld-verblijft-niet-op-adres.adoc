@@ -1,0 +1,4 @@
+[source,gherkin]
+----
+include::example$features/bevragen/persoon-beperkt/adressering/adres-regels/vastgesteld-verblijft-niet-op-adres.feature[]
+----
