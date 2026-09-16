@@ -1,5 +1,6 @@
 .github/workflows/ci.yml
 .github/workflows/lint-oas.yml
+.github/workflows/repo-sync.yaml
 scripts/generate-step-summary.js
 scripts/containers-start.sh
 scripts/containers-stop.sh

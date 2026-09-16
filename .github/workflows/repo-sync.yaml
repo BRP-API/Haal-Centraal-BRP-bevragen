@@ -18,7 +18,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Sync met '${{ env.SOURCE_REPO_PATH }}' repo
         uses: AndreasAugustin/actions-template-sync@v1
