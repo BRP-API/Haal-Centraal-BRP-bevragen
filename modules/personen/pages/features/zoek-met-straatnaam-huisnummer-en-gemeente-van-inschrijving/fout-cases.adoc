@@ -1,0 +1,4 @@
+[source,gherkin]
+----
+include::example$features/bevragen/zoek-met-straatnaam-huisnummer-en-gemeente-van-inschrijving/fout-cases.feature[]
+----
