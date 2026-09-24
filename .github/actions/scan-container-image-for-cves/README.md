@@ -10,7 +10,6 @@ Een GitHub Action voor het scannen van een container image op CVE's met behulp v
   with:
     image: 'ghcr.io/brp-api/my-image:latest'
     trivy-version: 'v0.70.0'
-    severity: 'CRITICAL,HIGH'
 ```
 
 ## Input
@@ -19,7 +18,6 @@ Een GitHub Action voor het scannen van een container image op CVE's met behulp v
 |-------|-------------|---------|----------|
 | `image` | Container image die moet worden gescand | Ja | |
 | `trivy-version` | Versie van Trivy die moet worden gebruikt | Nee | `v0.70.0` |
-| `severity` | Door komma's gescheiden lijst met ernstniveaus (bijv. CRITICAL,HIGH) | Nee | `CRITICAL,HIGH` |
 | `artifact-name` | Naam voor het trivy scan rapport (zonder extensie) | Nee | `trivy-image-report` |
 
 ## Wat doet deze action

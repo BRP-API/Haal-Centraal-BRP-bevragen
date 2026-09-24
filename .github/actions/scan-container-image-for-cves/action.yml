@@ -7,11 +7,7 @@ inputs:
   trivy-version:
     description: 'Versie van Trivy die moet worden gebruikt'
     required: false
-    default: 'v0.70.0'
-  severity:
-    description: 'Komma gescheiden lijst van severities die moet worden gerapporteerd'
-    required: false
-    default: 'CRITICAL,HIGH'
+    default: 'v0.74.0'
   artifact-name:
     description: 'Naam voor het trivy scan rapport'
     required: false
@@ -26,7 +22,6 @@ runs:
         image-ref: ${{ inputs.image }}
         format: json
         output: trivy-image-report.json
-        severity: ${{ inputs.severity }}
         ignore-unfixed: true
         version: ${{ inputs.trivy-version }}
         hide-progress: false
@@ -51,7 +46,7 @@ runs:
 
     - name: Upload CVE scan report artifact
       if: always()
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v7
       with:
         name: ${{ inputs.artifact-name }}
         path: |
