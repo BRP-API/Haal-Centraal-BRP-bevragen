@@ -30,17 +30,6 @@ naam.voorletters
 naam.voornamen
 naam.voorvoegsel
 gezag
-gezag.type
-gezag.minderjarige
-gezag.minderjarige.burgerservicenummer
-gezag.ouders
-gezag.ouders.burgerservicenummer
-gezag.ouder
-gezag.ouder.burgerservicenummer
-gezag.derde
-gezag.derde.burgerservicenummer
-gezag.derden
-gezag.derden.burgerservicenummer
 adresseringBinnenland
 adresseringBinnenland.adresregel1
 adresseringBinnenland.adresregel2
