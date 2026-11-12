@@ -6,9 +6,36 @@ on:
     - cron: 0 0 * * *
   # handmatig trigger
   workflow_dispatch:
+    inputs:
+      source_branch:
+        description: Branch in de source repo om van te syncen
+        required: true
+        default: main
+      target_branch:
+        description: Branch in deze repo om naar te syncen
+        required: true
+        default: main
+      ignore_file:
+        description: Pad naar het templatesyncignore bestand (bepaalt welke bestanden gesynct worden)
+        required: false
+        default: .github/.templatesyncignore
+      commit_msg:
+        description: Commit message voor de sync commit
+        required: false
+        default: 'chore: sync met source repo'
+      pr_title:
+        description: Titel voor de pull request
+        required: false
+        default: "sync met source repo"
 
 env:
   SOURCE_REPO_PATH: ${{ vars.SYNC_SOURCE_REPO_PATH || 'BRP-API/brp-shared' }}
+  # bij de cronjob trigger zijn er geen inputs, dan wordt de default branch van de betreffende repo gebruikt
+  SOURCE_BRANCH: ${{ inputs.source_branch }}
+  TARGET_BRANCH: ${{ inputs.target_branch }}
+  IGNORE_FILE: ${{ inputs.ignore_file || '.github/.templatesyncignore' }}
+  COMMIT_MSG: "${{ inputs.commit_msg || 'chore: sync met source repo' }}"
+  PR_TITLE: "${{ inputs.pr_title || 'sync met source repo' }}"
 
 jobs:
   repo-sync:
@@ -19,12 +46,17 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
 
-      - name: Sync met '${{ env.SOURCE_REPO_PATH }}' repo
+      - name: Sync met '${{ env.SOURCE_REPO_PATH }}@${{ env.SOURCE_BRANCH || 'default' }}' naar '${{ env.TARGET_BRANCH || 'default' }}'
         uses: AndreasAugustin/actions-template-sync@6e1d0089686f8940604fc15baae62367bf6ee860 # version 2.6.0
         with:
           source_gh_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: ${{ env.SOURCE_REPO_PATH }}
-          pr_branch_name_prefix: chore/sync-met-source-repo
-          pr_title: "sync met '${{ env.SOURCE_REPO_PATH }}' repo"
-          pr_commit_msg: "chore: sync met '${{ env.SOURCE_REPO_PATH }}' repo"
+          source_branch: ${{ env.SOURCE_BRANCH }}
+          upstream_branch: ${{ env.TARGET_BRANCH }}
+          template_sync_ignore_file_path: ${{ env.IGNORE_FILE }}
+          pr_branch_name_prefix: chore/sync-met-source-repo${{ env.TARGET_BRANCH && format('-{0}', env.TARGET_BRANCH) || '' }}
+          pr_title: ${{ env.PR_TITLE }}
+          pr_commit_msg: ${{ env.COMMIT_MSG }}

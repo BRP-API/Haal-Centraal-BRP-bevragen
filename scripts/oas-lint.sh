@@ -1,3 +1,3 @@
 #!/bin/bash
 
-npx spectral lint ./specificatie/openapi.yaml
+npx --ignore-scripts redocly lint ./specificatie/openapi.yaml
