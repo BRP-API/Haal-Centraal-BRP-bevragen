@@ -1,24 +1,40 @@
 services:
   postgres:
     container_name: db
-    image: postgres:14.11-alpine
+    image: postgres:17.7-alpine
     restart: always
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - 5432:5432
     volumes:
       - ./scripts/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
     security_opt:
       - no-new-privileges:true
+    healthcheck:
+      # Controleer via TCP (-h 127.0.0.1) i.p.v. de standaard unix socket.
+      # Bij de eerste start draait postgres schema.sql met een tijdelijke server die
+      # alleen via de unix socket bereikbaar is en daarna herstart. Zonder -h zou de
+      # healthcheck al tijdens die initialisatie 'healthy' melden, waardoor afhankelijke
+      # services (autorisatie-protocollering-proxy) te vroeg starten.
+      # Let op: -U en -d worden alleen gebruikt om te verbinden; pg_isready controleert
+      # niet of de gebruiker of database bestaat, alleen of de server verbindingen accepteert.
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U root -d rvig_haalcentraal_testdata"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
     networks:
       - brp-api-network
   
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4:latest
+    profiles: ["tools"]
     restart: always
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@haalcentraal.nl
