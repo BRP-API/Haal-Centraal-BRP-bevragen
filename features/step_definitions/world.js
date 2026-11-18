@@ -39,7 +39,7 @@ function configureSqlSettings(context) {
 function configureOAuthSettings(context) {
     context.oAuth = {
         enable: false,
-        accessTokenUrl: 'http://identityserver:6000/connect/token',
+        accessTokenUrl: 'http://localhost:8081/realms/brp-api/protocol/openid-connect/token',
         clients:[
             {
                 afnemerID: '000008',
