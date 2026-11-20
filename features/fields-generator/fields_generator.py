@@ -33,7 +33,7 @@ import os.path
 
 def writeComponent (path, ref, referer=""):
     if debug==True:
-        print ("-- " + ref)
+        print ("--writeComponent path:" + path + " @ ref:" + ref + " << referer:" + referer)
 
     if ref in SETTINGS.get("forbiddenFields"):
         return
@@ -68,14 +68,17 @@ def writeComponent (path, ref, referer=""):
             writeComponent (path, component.get("items").get("$ref"))
 
     if component.get("discriminator") is not None:
-        for discriminator, component in  component.get("discriminator").get("mapping").items():
+        for discriminator, component in component.get("discriminator").get("mapping").items():
             if debug==True:
-                print ("mapping: " + discriminator + " ==> " + component)
+                print ("~~discriminator mapping: " + discriminator + " ==> " + component)
 
             writeComponent (path, component, ref)
 
 
 def writeProperty(path, property, propertyDef):
+    if debug==True:
+        print ("--writeProperty path:" + path + " > property:" + property)
+
     if property in SETTINGS.get("forbiddenFields"):
         return
 
@@ -86,7 +89,11 @@ def writeProperty(path, property, propertyDef):
         fields.append(path + "." + property)
     else:
         fields.append(property)
-
+    
+    if property in SETTINGS.get("ignoreSubFields"):
+        print("property zit in ignoreSubFields")
+        return
+    
     if path=="":
         path = property
     else:
@@ -203,7 +210,7 @@ SWAGGER = yaml.full_load(open(SETTINGS.get("projectFolder") + SETTINGS.get("sour
 
 for schemaComponent in SETTINGS.get("schemaComponents"):
     if info==True:
-            print (schemaComponent.get("name"))
+        print ("=================================================== " + schemaComponent.get("name") + " ===================================================")
 
     if filterAutoFields==True:
         filePath = SETTINGS.get("projectFolder") + SETTINGS.get("fieldslistFolder") + "fields-filtered-"  + schemaComponent.get("name") + ".csv"
