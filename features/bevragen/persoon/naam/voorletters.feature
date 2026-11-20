@@ -42,7 +42,7 @@ Regel: Voorletters wordt samengesteld uit de eerste letter van de voornamen gesc
     Gegeven de persoon met burgerservicenummer '000000425' heeft de volgende gegevens
     | naam                  | waarde |
     | voornamen (02.10)     |        |
-    | geslachtsnaam (02.40) | Boer   | 
+    | geslachtsnaam (02.40) | Boer   |
     Als personen wordt gezocht met de volgende parameters
     | naam                | waarde                               |
     | type                | RaadpleegMetBurgerservicenummer      |
